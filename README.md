@@ -116,6 +116,59 @@ the lead-to-order SOP, and the CPQ approval matrix:
   `discrimination: 1`, so the sweeps are solvable-but-tricky by design).
   Transcripts: `sim/logs/*.jsonl`.
 
+## Capability-frontier program (waves)
+
+Goal: iterate world difficulty via the blobfish API until tasks sit at grok-4.5's
+edge — *flaky* tasks (sometimes pass, sometimes fail) mark the frontier where
+longer tool-chains push the model off-distribution.
+
+**Wave 1 (baseline, 84 trials, $16):** 16 solid-pass · **1 flaky (task_012, 75%
+pass @ ~8 calls)** · 10 solid-fail. Pass rate by interaction depth: **69% at 1–5
+tool calls → 28% at 6–10 → 0% at 21+** — grok-4.5 degrades sharply as chains
+lengthen, exactly the off-distribution effect the program probes. Failure
+taxonomy: collateral-damage guards (literal bulk sweeps over pinned target
+subsets) and wrong-lifecycle-transition writes (the world's declared status
+graph defies CRM priors; the model answers from its training prior instead of
+taking the extra hop to look the rule up). Data: `data/flake/wave1*.json`;
+scanner: `sim/run-flake-scan.mjs`.
+
+**Difficulty mechanics (from the blobfish-0 source), reproducible via API:**
+- Tasks are random walks on a tool graph (nodes = tools, edges = produce /
+  inspect / fk / workflow); **walk depth is capped by graph size**
+  (`min(20, tool nodes)`), so `mock_services` (e.g. stripe: 587 ops) is the
+  dominant depth lever — not the failure-rate knob.
+- `target_failure_rate ≥ 0.6` selects longer walks ({3,5} steps) and 500-row
+  table volume (more distractor mass).
+- Anchor filenames map to research "angles"; ≥15 uploaded sources + all 12
+  angles covered clears the grounding gate (`docs/anchors/wave2/` supplies 18,
+  incl. `personas_roles-*` and `regulations-*`).
+- `requested_task_count` triggers a DeepSeek release evaluation whose
+  `pre_model_context_routing_receipts` check killed wave 1's job — omit it.
+- Post-build hardening endpoints: `POST /worlds/{id}/regenerate`
+  (`difficulty: {lowMaxSteps, mediumMaxSteps ≤ 10}` — direct hop control),
+  `POST /worlds/{id}/calibrate` (`escalate: true` → scrubbed tool names,
+  obscured entity references, distractor rows), `POST /worlds/{id}/reanchor`
+  (new seed docs + new `target_failure_rate`, same lineage).
+- Same `company_instance_key` + `fresh: true` **evolves** the same company
+  (expansion directives, prior-task carry-forward) rather than regenerating.
+
+**Wave 2:** launched with that recipe (`scripts/run-deep-wave.sh`,
+anchors `docs/anchors/wave2/`, salesforce+stripe+slack mock services,
+`target_failure_rate 0.7`, no task count) — results land in
+`world/blobfish-wave2/` + `data/flake/wave2*.json`.
+
+## UI evidence (`screenshots/`)
+
+- `blobfish-hosted-viewer.png` + `hosted-band-*.png` — blobfish.ai's own world
+  viewer (`/w/sbx_70c53d3467d54e5b`): prompt→world trace, thesis, anchoring
+  chips, persona role clusters, task list, and the **task dependency DAG**
+  (121 tools · 186 edges · "20 grounded paths from random walks").
+- `blobfish-cli-dashboard.png` — Blobfish Gym (the CLI's local dashboard,
+  exported from blobfish-0) reading our downloaded deep world package.
+- `dashboard-wave1-merged.png` — this repo's own dashboard
+  (`scripts/build-dashboard.mjs` → `dashboard/index.html`): world stats,
+  depth curve, failure taxonomy, scoreboard, verified live rollout.
+
 ## Repo layout
 
 ```

@@ -9,7 +9,7 @@
  *   node sim/run-simulation.mjs --local [scenario]   local mode: runs the scripted quote-to-cash
  *                                                    scenario against the local mock CRM MCP.
  */
-import { readFileSync, existsSync, mkdirSync, appendFileSync } from "node:fs";
+import { readFileSync, existsSync, mkdirSync, appendFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { McpClient } from "./lib/mcp-client.mjs";
@@ -20,6 +20,8 @@ const config = JSON.parse(readFileSync(join(ROOT, "config", "world.config.json")
 const argv = process.argv.slice(2);
 const LOCAL = argv.includes("--local");
 const taskFlag = argv.includes("--task") ? argv[argv.indexOf("--task") + 1] : null;
+const jsonOutFlag = argv.includes("--json-out") ? argv[argv.indexOf("--json-out") + 1] : null;
+const worldFileFlag = argv.includes("--world-file") ? argv[argv.indexOf("--world-file") + 1] : null;
 
 function loadEnv() {
   const env = { ...process.env };
@@ -120,9 +122,11 @@ function printStats(usage, toolCallCount) {
 const taskField = (t, ...names) => names.map((n) => t[n]).find((v) => v !== undefined && v !== null);
 
 async function mainBlobfish() {
-  const worldPath = existsSync(join(ROOT, config.blobfish.worldFile))
-    ? join(ROOT, config.blobfish.worldFile)
-    : join(ROOT, config.blobfish.previewWorldFile);
+  const worldPath = worldFileFlag
+    ? worldFileFlag
+    : existsSync(join(ROOT, config.blobfish.worldFile))
+      ? join(ROOT, config.blobfish.worldFile)
+      : join(ROOT, config.blobfish.previewWorldFile);
   if (!existsSync(worldPath)) {
     console.error(`No blobfish world file found (${config.blobfish.worldFile}). Run the generation job first, or use --local.`);
     process.exit(1);
@@ -177,6 +181,20 @@ async function mainBlobfish() {
   mcp.close();
   const passed = v.data?.passed === true;
   console.log(passed ? "RESULT: PASSED" : "RESULT: NOT PASSED");
+  if (jsonOutFlag) {
+    writeFileSync(jsonOutFlag, JSON.stringify({
+      mode: "blobfish",
+      taskId,
+      passed,
+      reward: v.data?.reward ?? 0,
+      failedConditions: v.data?.failed_conditions ?? [],
+      toolCalls: toolCallCount,
+      usage,
+      costUsd: +(((usage.prompt / 1e6) * 2) + ((usage.completion / 1e6) * 6)).toFixed(4),
+      log: LOG,
+      finishedAt: new Date().toISOString(),
+    }, null, 2));
+  }
   return passed ? 0 : 2;
 }
 

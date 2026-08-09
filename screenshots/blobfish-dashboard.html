@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en" data-palette="#059a58,#b8880c,#d43c3c,#1e90b0">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blobfish Gym — observability</title>
+<style>
+  /* Chrome tokens (text/surfaces) — brand. Data marks are the validated
+     four-slot status/magnitude palette declared in data-palette. */
+  :root{
+    --bg:#060a14; --surface:#0c1220; --surface-2:#111a2c;
+    --border:rgba(0,212,255,.10); --border-bright:rgba(0,212,255,.22);
+    --text:#d8e4f0; --text-2:#6882a4; --text-3:#3d5070;
+    --chrome:#00d4ff;
+    --mark:#1e90b0;          /* magnitude, single hue */
+    --mark-mute:#2a3a52;     /* de-emphasis gray */
+    --good:#059a58; --warn:#b8880c; --bad:#d43c3c;
+    --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+    --radius:8px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font:14px/1.55 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}
+  a{color:var(--chrome)}
+  code,pre,.mono{font-family:var(--mono)}
+  h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.01em}
+  h2{font-size:15px} h3{font-size:13px;color:var(--text-2)}
+  .eyebrow{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-2)}
+  button{font:inherit;cursor:pointer}
+
+  header{position:sticky;top:0;z-index:5;display:flex;gap:16px;align-items:center;
+    flex-wrap:wrap;padding:12px 20px;background:rgba(6,10,20,.94);
+    border-bottom:1px solid var(--border);backdrop-filter:blur(6px)}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:600}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--chrome);
+    box-shadow:0 0 10px rgba(0,212,255,.5)}
+  select{background:var(--surface-2);color:var(--text);border:1px solid var(--border-bright);
+    border-radius:6px;padding:7px 10px;font:inherit;max-width:340px}
+  .spacer{flex:1}
+  .hint{font-size:11px;color:var(--text-3)}
+
+  main{max-width:1360px;margin:0 auto;padding:22px 20px 60px}
+  section{margin-bottom:26px}
+  .panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px}
+  .panel + .panel{margin-top:14px}
+  .panel-head{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+  .panel-head .sub{font-size:12px;color:var(--text-3)}
+
+  /* KPI row */
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+  .tile{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px}
+  .tile .label{font-size:11px;color:var(--text-2);text-transform:uppercase;letter-spacing:.07em}
+  .tile .value{font-size:26px;font-weight:600;margin-top:4px;font-variant-numeric:tabular-nums}
+  .tile .foot{font-size:11px;color:var(--text-3);margin-top:2px}
+  .hero .value{font-size:52px;line-height:1.05;letter-spacing:-.02em}
+
+  /* Bars: horizontal, thin, 4px rounded data-end, 2px gaps */
+  .bars{display:flex;flex-direction:column;gap:2px}
+  .bar-row{display:grid;grid-template-columns:minmax(96px,168px) 1fr 74px;
+    align-items:center;gap:12px;padding:3px 0;border-radius:4px}
+  .bar-row:hover{background:rgba(255,255,255,.025)}
+  .bar-row .name{font-size:12px;color:var(--text-2);overflow:hidden;
+    text-overflow:ellipsis;white-space:nowrap}
+  .bar-track{position:relative;height:14px;background:rgba(255,255,255,.035);border-radius:4px}
+  .bar-fill{height:100%;border-radius:0 4px 4px 0;background:var(--mark);min-width:2px;
+    transition:width .18s ease}
+  .bar-fill.mute{background:var(--mark-mute)}
+  .bar-row .val{font-size:12px;text-align:right;font-variant-numeric:tabular-nums;color:var(--text)}
+  .bar-row.clickable{cursor:pointer}
+  .bar-row.selected .name{color:var(--text);font-weight:600}
+  .grid-line{border-top:1px dashed rgba(255,255,255,.06);margin:8px 0 4px}
+
+  /* status marks: colour + icon + label, never colour alone */
+  .badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;
+    padding:3px 8px;border-radius:20px;background:var(--surface-2);
+    border:1px solid var(--border);white-space:nowrap}
+  .badge .sw{width:8px;height:8px;border-radius:2px;flex:none}
+  .sw-good{background:var(--good)} .sw-bad{background:var(--bad)} .sw-warn{background:var(--warn)}
+
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th{text-align:left;font-weight:500;color:var(--text-2);font-size:11px;
+    text-transform:uppercase;letter-spacing:.06em;padding:8px 10px;
+    border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1;
+    background:var(--surface)}
+  td{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:middle}
+  tbody tr{cursor:pointer}
+  tbody tr:hover{background:rgba(0,212,255,.05)}
+  tbody tr.active{background:rgba(0,212,255,.09)}
+  td.num{text-align:right;font-variant-numeric:tabular-nums}
+  .tid{font-family:var(--mono);font-size:11.5px;color:var(--text-2)}
+
+  .cols{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;align-items:start}
+  @media(max-width:1080px){.cols{grid-template-columns:1fr}}
+  .scroll{max-height:560px;overflow:auto}
+
+  /* turn timeline */
+  .turn{border:1px solid var(--border);border-radius:6px;margin-bottom:8px;overflow:hidden}
+  .turn-head{display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--surface-2)}
+  .turn-n{font-size:11px;color:var(--text-3);font-family:var(--mono);min-width:26px}
+  .turn-tool{font-family:var(--mono);font-size:12.5px;color:var(--text)}
+  .turn-body{padding:10px 12px;border-top:1px solid var(--border)}
+  .kv{font-size:11px;color:var(--text-2);margin-bottom:3px}
+  pre{margin:0;background:rgba(3,7,16,.85);border:1px solid var(--border);
+    border-radius:6px;padding:9px 11px;font-size:11.5px;overflow:auto;max-height:190px;
+    white-space:pre-wrap;word-break:break-word;color:var(--text)}
+  pre.err{border-color:rgba(212,60,60,.4)}
+  .empty{color:var(--text-3);font-size:12.5px;padding:14px 2px}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+  .chip{font-size:11px;padding:4px 10px;border-radius:20px;background:var(--surface-2);
+    border:1px solid var(--border);color:var(--text-2)}
+  .chip[aria-pressed=true]{border-color:var(--border-bright);color:var(--text)}
+  details summary{cursor:pointer;font-size:11px;color:var(--text-3);margin-top:10px}
+  details table{margin-top:8px}
+  .tooltip{position:fixed;pointer-events:none;z-index:20;background:var(--surface-2);
+    border:1px solid var(--border-bright);border-radius:6px;padding:6px 9px;font-size:11.5px;
+    opacity:0;transition:opacity .1s;box-shadow:0 6px 20px rgba(0,0,0,.5)}
+  .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--text-2);margin-top:6px}
+  .meta b{color:var(--text);font-weight:500}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><span class="dot"></span> Blobfish Gym</div>
+  <select id="worldSel" aria-label="World"></select>
+  <select id="runSel" aria-label="Run"></select>
+  <div class="spacer"></div>
+  <div class="hint" id="modeHint"></div>
+</header>
+
+<main>
+  <section id="worldCard" class="panel"></section>
+
+  <section>
+    <div class="kpis" id="kpis"></div>
+  </section>
+
+  <section class="cols">
+    <div class="panel">
+      <div class="panel-head"><h2>Completion rate by run</h2>
+        <span class="sub">click a bar to switch run</span></div>
+      <div class="bars" id="runBars"></div>
+      <details><summary>Table view</summary><div id="runTable"></div></details>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h2>Failure reasons</h2><span class="sub" id="frSub"></span></div>
+      <div class="bars" id="failBars"></div>
+      <details><summary>Table view</summary><div id="failTable"></div></details>
+    </div>
+  </section>
+
+  <section class="cols">
+    <div class="panel">
+      <div class="panel-head"><h2>Breakdown</h2><span class="sub">pass rate within each slice</span></div>
+      <div id="breakdowns"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h2>Environment health</h2>
+        <span class="sub">failed tool calls, grouped</span></div>
+      <div id="toolErrors"></div>
+    </div>
+  </section>
+
+  <section class="cols">
+    <div class="panel">
+      <div class="panel-head"><h2>Episodes</h2><span class="sub" id="epSub"></span></div>
+      <div class="chips" id="filters"></div>
+      <div class="scroll"><table>
+        <thead><tr>
+          <th>Task</th><th>Verdict</th><th>Reason</th>
+          <th class="num">Steps</th><th class="num">Reward</th><th>Persona</th>
+        </tr></thead>
+        <tbody id="epRows"></tbody>
+      </table></div>
+    </div>
+    <div class="panel" id="epDetail"><div class="empty">Select an episode to inspect its turns.</div></div>
+  </section>
+</main>
+
+<div class="tooltip" id="tip"></div>
+
+<script>
+const SNAPSHOT = {"worlds": [{"world_id": "sbx_7d7d8fedcecb4458", "world_dir": "/Users/samuelchien/dev/salesforce-grok/world/blobfish/package/sbx_7d7d8fedcecb4458", "vertical": "", "tenant": "", "tables": 33, "rows": 2377, "tools": 104, "tasks": 27, "tasks_train": 22, "tasks_heldout": 5, "difficulty": {"unknown": 27}, "personas": [], "brief": "", "seed": null, "engine": null, "tables_without_tools": [], "runs": [], "run_count": 0, "total_episodes": 0, "tool_errors": [], "runs_detail": {}, "episodes_detail": {}}], "generated_by": "blobfish dashboard"};
+const STATIC = SNAPSHOT !== null;
+
+const REASON_LABELS = {
+  passed:"Passed",
+  state_not_reached:"State not reached",
+  wrong_answer:"Wrong answer",
+  no_answer:"No answer submitted",
+  unverifiable:"Unverifiable (weak verifier)",
+  verifier_error:"Verifier crashed/timed out",
+  no_verifier:"No verifier on task",
+  unknown:"Unclassified",
+};
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) =>
+  ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const pct = (x) => (x * 100).toFixed(1) + "%";
+const fmt = (v) => typeof v === "object" ? JSON.stringify(v, null, 2) : String(v ?? "");
+
+// ---- data access: identical shapes served or static ----------------------
+async function getWorlds() {
+  if (STATIC) return SNAPSHOT.worlds;
+  return (await (await fetch("/api/worlds")).json()).worlds;
+}
+async function getRun(worldId, runId) {
+  if (STATIC) return world(worldId).runs_detail[runId];
+  return await (await fetch(`/api/run?world=${encodeURIComponent(worldId)}&run=${encodeURIComponent(runId)}`)).json();
+}
+async function getEpisode(worldId, runId, epId) {
+  if (STATIC) return world(worldId).episodes_detail[`${runId}/${epId}`];
+  return await (await fetch(`/api/episode?world=${encodeURIComponent(worldId)}&run=${encodeURIComponent(runId)}&episode=${encodeURIComponent(epId)}`)).json();
+}
+async function getToolErrors(worldId) {
+  if (STATIC) return world(worldId).tool_errors;
+  return (await (await fetch(`/api/tool-errors?world=${encodeURIComponent(worldId)}`)).json()).errors;
+}
+
+let WORLDS = [], state = { world:null, run:null, episode:null, filter:"all", runData:null };
+const world = (id) => WORLDS.find((w) => w.world_id === id);
+
+// ---- charts --------------------------------------------------------------
+const tip = $("tip");
+function bindTip(el, html) {
+  el.addEventListener("mousemove", (e) => {
+    tip.innerHTML = html;
+    tip.style.opacity = 1;
+    tip.style.left = Math.min(e.clientX + 14, innerWidth - 220) + "px";
+    tip.style.top = (e.clientY + 16) + "px";
+  });
+  el.addEventListener("mouseleave", () => { tip.style.opacity = 0; });
+}
+
+/** Horizontal bars. Single hue for magnitude; `selected` gets emphasis and
+ *  the rest go de-emphasis gray (never a second hue). */
+function bars(container, rows, opts = {}) {
+  const { max = Math.max(1, ...rows.map((r) => r.value)), fmtVal = String,
+          selected = null, onClick = null } = opts;
+  container.innerHTML = "";
+  if (!rows.length) { container.innerHTML = '<div class="empty">No data.</div>'; return; }
+  rows.forEach((r) => {
+    const row = document.createElement("div");
+    row.className = "bar-row" + (onClick ? " clickable" : "") + (r.name === selected ? " selected" : "");
+    const muted = selected !== null && r.name !== selected;
+    row.innerHTML = `<div class="name" title="${esc(r.name)}">${esc(r.label ?? r.name)}</div>
+      <div class="bar-track"><div class="bar-fill${muted ? " mute" : ""}"
+        style="width:${Math.max(1, (r.value / max) * 100)}%"></div></div>
+      <div class="val">${esc(fmtVal(r.value))}</div>`;
+    bindTip(row, `<b>${esc(r.name)}</b><br>${esc(r.tip ?? fmtVal(r.value))}`);
+    if (onClick) {
+      row.tabIndex = 0; row.setAttribute("role", "button");
+      row.addEventListener("click", () => onClick(r));
+      row.addEventListener("keydown", (e) => { if (e.key === "Enter") onClick(r); });
+    }
+    container.appendChild(row);
+  });
+}
+
+function tableView(el, cols, rows) {
+  el.innerHTML = `<table><thead><tr>${cols.map((c) => `<th>${esc(c)}</th>`).join("")}</tr></thead>
+    <tbody>${rows.map((r) => `<tr>${r.map((c) => `<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
+}
+
+const verdictBadge = (passed) => passed
+  ? '<span class="badge"><span class="sw sw-good"></span>✓ Pass</span>'
+  : '<span class="badge"><span class="sw sw-bad"></span>✗ Fail</span>';
+
+// ---- render --------------------------------------------------------------
+function renderWorldCard(w) {
+  const uncovered = (w.tables_without_tools || []).length;
+  $("worldCard").innerHTML = `
+    <div class="panel-head"><span class="eyebrow">Environment</span></div>
+    <h2 class="mono">${esc(w.world_id)}</h2>
+    <div class="meta">
+      <span>vertical <b>${esc(w.vertical || w.topic || "—")}</b></span>
+      <span>tenant <b>${esc(w.tenant || "—")}</b></span>
+      <span>tables <b>${w.tables}</b></span>
+      <span>rows <b>${w.rows}</b></span>
+      <span>tools <b>${w.tools}</b></span>
+      <span>tasks <b>${w.tasks}</b> (train ${w.tasks_train} / heldout ${w.tasks_heldout})</span>
+      <span>personas <b>${(w.personas || []).length}</b></span>
+      <span>seed <b>${esc(w.seed ?? "—")}</b></span>
+      ${uncovered ? `<span class="badge"><span class="sw sw-warn"></span>${uncovered} table(s) without tools</span>` : ""}
+    </div>${w.brief ? `<div class="meta"><span style="color:var(--text-3)">${esc(w.brief)}</span></div>` : ""}`;
+}
+
+function renderKpis(s) {
+  const tiles = [
+    { label:"Pass rate", value:pct(s.pass_rate), foot:`${s.passed}/${s.episodes} episodes`, hero:true },
+    { label:"Episodes", value:s.episodes, foot:`${s.failed} failed` },
+    { label:"Avg steps", value:s.avg_steps, foot:`${s.tool_calls} tool calls` },
+    { label:"Avg reward", value:s.avg_reward.toFixed(2), foot:"executable verifier" },
+    { label:"Tool error rate", value:pct(s.tool_error_rate), foot:`${s.failed_tool_calls} failed calls` },
+    { label:"Avg duration", value:s.avg_duration_s != null ? s.avg_duration_s + "s" : "—", foot:"per episode" },
+  ];
+  $("kpis").innerHTML = tiles.map((t) => `<div class="tile${t.hero ? " hero" : ""}">
+      <div class="label">${esc(t.label)}</div>
+      <div class="value">${esc(t.value)}</div>
+      <div class="foot">${esc(t.foot)}</div></div>`).join("");
+}
+
+function renderRunBars(w) {
+  const rows = w.runs.map((r) => ({
+    name:r.run_id, value:r.pass_rate,
+    tip:`${r.passed}/${r.episodes} passed · avg ${r.avg_steps} steps · ${r.policies.join(", ")}`,
+  }));
+  bars($("runBars"), rows, {
+    max:1, fmtVal:pct, selected:state.run,
+    onClick:(r) => selectRun(r.name),
+  });
+  tableView($("runTable"), ["Run","Episodes","Passed","Pass rate","Avg steps"],
+    w.runs.map((r) => [r.run_id, r.episodes, r.passed, pct(r.pass_rate), r.avg_steps]));
+}
+
+function renderFailures(s) {
+  const entries = Object.entries(s.failure_reasons || {});
+  $("frSub").textContent = entries.length ? `${s.failed} failed episode(s)` : "";
+  const rows = entries.map(([k, v]) => ({
+    name:k, label:REASON_LABELS[k] || k, value:v,
+    tip:`${v} episode(s) — ${REASON_LABELS[k] || k}`,
+  }));
+  if (!rows.length) {
+    $("failBars").innerHTML = '<div class="empty">✓ No failures in this run.</div>';
+    $("failTable").innerHTML = "";
+    return;
+  }
+  bars($("failBars"), rows, { fmtVal:(v) => v + "×" });
+  tableView($("failTable"), ["Reason","Episodes"], rows.map((r) => [r.label, r.value]));
+}
+
+function renderBreakdowns(s) {
+  const groups = [["Split","by_split"],["Difficulty","by_difficulty"],
+                  ["Persona","by_persona"],["Origin","by_origin"]];
+  const host = $("breakdowns");
+  host.innerHTML = "";
+  groups.forEach(([title, key]) => {
+    const data = s[key] || [];
+    if (data.length <= 1 && key !== "by_split") return;
+    const h = document.createElement("h3");
+    h.textContent = title; h.style.margin = "10px 0 6px";
+    host.appendChild(h);
+    const box = document.createElement("div");
+    box.className = "bars";
+    host.appendChild(box);
+    bars(box, data.map((d) => ({
+      name:d.name, value:d.pass_rate,
+      tip:`${d.passed}/${d.episodes} passed`,
+    })), { max:1, fmtVal:pct });
+  });
+}
+
+function renderToolErrors(errors) {
+  const host = $("toolErrors");
+  if (!errors.length) {
+    host.innerHTML = '<div class="empty">✓ No failed tool calls in this world.</div>';
+    return;
+  }
+  bars(host, errors.map((e) => ({
+    name:e.signature, value:e.count,
+    tip:`${e.count} failed call(s)<br>tools: ${esc((e.tools || []).slice(0, 4).join(", "))}`,
+  })), { fmtVal:(v) => v + "×" });
+  const note = document.createElement("div");
+  note.className = "hint";
+  note.style.marginTop = "10px";
+  note.textContent = "Failed tool calls usually indicate environment bugs, not agent mistakes.";
+  host.appendChild(note);
+}
+
+function renderFilters(eps) {
+  const counts = { all:eps.length, passed:0, failed:0 };
+  const reasons = {};
+  eps.forEach((e) => {
+    if (e.passed) counts.passed++;
+    else { counts.failed++; reasons[e.failure_reason] = (reasons[e.failure_reason] || 0) + 1; }
+  });
+  const chips = [["all", `All ${counts.all}`], ["passed", `Passed ${counts.passed}`],
+                 ["failed", `Failed ${counts.failed}`],
+                 ...Object.entries(reasons).map(([k, v]) => [k, `${REASON_LABELS[k] || k} ${v}`])];
+  $("filters").innerHTML = chips.map(([k, label]) =>
+    `<button class="chip" data-f="${esc(k)}" aria-pressed="${state.filter === k}">${esc(label)}</button>`).join("");
+  $("filters").querySelectorAll(".chip").forEach((c) =>
+    c.addEventListener("click", () => { state.filter = c.dataset.f; renderEpisodes(); }));
+}
+
+function renderEpisodes() {
+  const eps = state.runData.episodes;
+  renderFilters(eps);
+  const shown = eps.filter((e) =>
+    state.filter === "all" ? true :
+    state.filter === "passed" ? e.passed :
+    state.filter === "failed" ? !e.passed :
+    e.failure_reason === state.filter);
+  $("epSub").textContent = `${shown.length} shown · run ${state.run}`;
+  $("epRows").innerHTML = shown.map((e) => `
+    <tr data-ep="${esc(e.episode_id)}" class="${state.episode === e.episode_id ? "active" : ""}">
+      <td class="tid">${esc(e.task_id)}</td>
+      <td>${verdictBadge(e.passed)}</td>
+      <td style="color:var(--text-2);font-size:11.5px">${esc(e.passed ? "—" : (REASON_LABELS[e.failure_reason] || e.failure_reason))}</td>
+      <td class="num">${e.steps}${e.failed_calls ? ` <span title="${e.failed_calls} failed call(s)" style="color:var(--text-3)">(${e.failed_calls}✗)</span>` : ""}</td>
+      <td class="num">${e.reward.toFixed(1)}</td>
+      <td style="color:var(--text-2)">${esc(e.persona || "—")}</td>
+    </tr>`).join("") || `<tr><td colspan="6" class="empty">No episodes match this filter.</td></tr>`;
+  $("epRows").querySelectorAll("tr[data-ep]").forEach((tr) =>
+    tr.addEventListener("click", () => selectEpisode(tr.dataset.ep)));
+}
+
+function renderEpisodeDetail(d) {
+  const verdict = verdictBadge(d.passed);
+  const weak = d.weak_vcode
+    ? '<span class="badge"><span class="sw sw-warn"></span>weak verifier → answer-matched</span>' : "";
+  const turns = (d.turns || []).map((t) => `
+    <div class="turn">
+      <div class="turn-head">
+        <span class="turn-n">${t.n}</span>
+        <span class="turn-tool">${esc(t.tool)}(${esc(JSON.stringify(t.args).slice(1, -1))})</span>
+        <div class="spacer" style="flex:1"></div>
+        ${t.ok ? '<span class="badge"><span class="sw sw-good"></span>ok</span>'
+               : `<span class="badge"><span class="sw sw-bad"></span>✗ ${esc(t.error_class)}</span>`}
+      </div>
+      <div class="turn-body">
+        ${t.ok
+          ? `<div class="kv">output</div><pre>${esc(fmt(t.output)).slice(0, 1600)}</pre>`
+          : `<div class="kv">error</div><pre class="err">${esc(t.error)}</pre>`}
+      </div>
+    </div>`).join("") || '<div class="empty">No tool calls — the agent answered without acting.</div>';
+
+  $("epDetail").innerHTML = `
+    <div class="panel-head"><h2>Turns</h2><span class="sub mono">${esc(d.episode_id)}</span></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+      ${verdict}${weak}
+      <span class="badge">${esc(d.split)}</span>
+      <span class="badge">${esc(d.difficulty || "—")}</span>
+      <span class="badge">${d.steps} step(s)</span>
+      ${d.duration_s != null ? `<span class="badge">${d.duration_s}s</span>` : ""}
+    </div>
+    <div class="kv">instruction${d.persona ? ` · as ${esc(d.persona)}` : ""}</div>
+    <pre>${esc(d.instruction || "—")}</pre>
+    ${!d.passed ? `<div class="kv" style="margin-top:10px">why it failed</div>
+      <pre class="err">${esc(REASON_LABELS[d.failure_reason] || d.failure_reason)}${
+        d.vcode_error ? "\n" + esc(d.vcode_error) : ""}</pre>` : ""}
+    <div class="kv" style="margin-top:10px">answer submitted</div>
+    <pre>${esc((d.answer || "—")).slice(0, 900)}</pre>
+    ${d.ground_truth ? `<details><summary>Ground truth (experimenter only)</summary>
+      <pre>${esc(fmt(d.ground_truth)).slice(0, 900)}</pre></details>` : ""}
+    <div class="kv" style="margin:14px 0 6px">interaction — ${(d.turns || []).length} turn(s)</div>
+    ${turns}`;
+}
+
+// ---- controllers ---------------------------------------------------------
+async function selectEpisode(epId) {
+  state.episode = epId;
+  renderEpisodes();
+  renderEpisodeDetail(await getEpisode(state.world, state.run, epId));
+}
+
+async function selectRun(runId) {
+  state.run = runId; state.episode = null; state.filter = "all";
+  $("runSel").value = runId;
+  state.runData = await getRun(state.world, runId);
+  const w = world(state.world);
+  renderKpis(state.runData.stats);
+  renderRunBars(w);
+  renderFailures(state.runData.stats);
+  renderBreakdowns(state.runData.stats);
+  renderEpisodes();
+  $("epDetail").innerHTML = '<div class="empty">Select an episode to inspect its turns.</div>';
+}
+
+async function selectWorld(worldId) {
+  state.world = worldId;
+  const w = world(worldId);
+  renderWorldCard(w);
+  $("runSel").innerHTML = w.runs.map((r) =>
+    `<option value="${esc(r.run_id)}">${esc(r.run_id)} — ${pct(r.pass_rate)} (${r.episodes})</option>`).join("");
+  renderToolErrors(await getToolErrors(worldId));
+  if (w.runs.length) await selectRun(w.runs[0].run_id);
+  else {
+    $("kpis").innerHTML = "";
+    $("runBars").innerHTML = '<div class="empty">No runs yet. Try <code>blobfish eval &lt;world&gt; --policy oracle</code>.</div>';
+    $("epRows").innerHTML = "";
+  }
+}
+
+(async function init() {
+  $("modeHint").textContent = STATIC ? "static export · read-only" : "localhost · read-only";
+  WORLDS = await getWorlds();
+  if (!WORLDS.length) {
+    document.querySelector("main").innerHTML = '<div class="panel empty">No worlds found.</div>';
+    return;
+  }
+  $("worldSel").innerHTML = WORLDS.map((w) =>
+    `<option value="${esc(w.world_id)}">${esc(w.world_id)} — ${w.total_episodes} ep</option>`).join("");
+  $("worldSel").addEventListener("change", (e) => selectWorld(e.target.value));
+  $("runSel").addEventListener("change", (e) => selectRun(e.target.value));
+  await selectWorld(WORLDS[0].world_id);
+})();
+</script>
+</body>
+</html>
