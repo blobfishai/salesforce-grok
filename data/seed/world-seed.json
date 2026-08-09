@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "org": "Morgan Stanley (SIMULATED)",
+    "synthetic": true,
+    "disclaimer": "All records are fictional test data for a simulation world. Not affiliated with, endorsed by, or representative of Morgan Stanley. Client names, contacts, and figures are invented.",
+    "currency": "USD",
+    "createdDate": "2026-08-09",
+    "stages": ["Qualification", "Discovery", "Proposal", "Negotiation", "Closed Won", "Closed Lost"],
+    "stageProbability": { "Qualification": 0.1, "Discovery": 0.25, "Proposal": 0.5, "Negotiation": 0.75, "Closed Won": 1, "Closed Lost": 0 }
+  },
+  "businessUnits": ["Institutional Securities", "Wealth Management", "Investment Management"],
+  "users": [
+    { "id": "005-EW-001", "name": "Elena Vasquez", "role": "Account Executive", "businessUnit": "Institutional Securities", "synthetic": true },
+    { "id": "005-DD-001", "name": "Marcus Chen", "role": "Deal Desk", "businessUnit": "Institutional Securities", "synthetic": true },
+    { "id": "005-CO-001", "name": "Priya Raman", "role": "Compliance Officer", "businessUnit": "Firmwide", "synthetic": true },
+    { "id": "005-FI-001", "name": "David Okafor", "role": "Finance", "businessUnit": "Firmwide", "synthetic": true },
+    { "id": "005-WM-001", "name": "Sofia Almeida", "role": "Account Executive", "businessUnit": "Wealth Management", "synthetic": true }
+  ],
+  "products": [
+    { "id": "01t-PB-001", "name": "Prime Brokerage Onboarding", "family": "Institutional Securities", "listPrice": 1200000, "regulated": true, "synthetic": true },
+    { "id": "01t-FX-002", "name": "FX Liquidity Access Tier-1", "family": "Institutional Securities", "listPrice": 850000, "regulated": true, "synthetic": true },
+    { "id": "01t-RS-003", "name": "Global Research Portal — Enterprise Seat Pack", "family": "Investment Management", "listPrice": 450000, "regulated": false, "synthetic": true },
+    { "id": "01t-TS-004", "name": "Treasury Settlement Suite", "family": "Institutional Securities", "listPrice": 2400000, "regulated": true, "synthetic": true },
+    { "id": "01t-ESG-05", "name": "ESG Analytics Add-on", "family": "Investment Management", "listPrice": 180000, "regulated": false, "synthetic": true }
+  ],
+  "leads": [
+    { "id": "00Q-2026-001", "company": "Ravenscroft Family Office", "contactName": "Isabelle Fournier", "email": "i.fournier@ravenscroftfo.example", "segment": "Family Office", "region": "EMEA", "status": "Working", "interestProductId": "01t-RS-003", "synthetic": true },
+    { "id": "00Q-2026-002", "company": "Talon Ridge Ventures", "contactName": "Dmitri Sokolov", "email": "d.sokolov@talonridge.example", "segment": "Private Equity", "region": "AMER", "status": "New", "interestProductId": "01t-ESG-05", "synthetic": true }
+  ],
+  "accounts": [
+    { "id": "001-APX-001", "name": "Apex Global Holdings", "segment": "Hedge Fund", "region": "AMER", "tier": "Platinum", "newClient": false, "synthetic": true },
+    { "id": "001-BLU-002", "name": "Bluewater Pension Trust", "segment": "Pension", "region": "EMEA", "tier": "Gold", "newClient": false, "synthetic": true },
+    { "id": "001-NGC-003", "name": "Northgate Capital Partners", "segment": "Private Equity", "region": "AMER", "tier": "Gold", "newClient": true, "synthetic": true },
+    { "id": "001-HEL-004", "name": "Helios Sovereign Fund", "segment": "Sovereign Wealth", "region": "APAC", "tier": "Platinum", "newClient": true, "synthetic": true },
+    { "id": "001-CRE-005", "name": "Crescent Insurance Group", "segment": "Insurance", "region": "AMER", "tier": "Silver", "newClient": false, "synthetic": true }
+  ],
+  "contacts": [
+    { "id": "003-APX-001", "accountId": "001-APX-001", "name": "Jonathan Reyes", "title": "COO", "email": "j.reyes@apexglobal.example", "synthetic": true },
+    { "id": "003-BLU-001", "accountId": "001-BLU-002", "name": "Margaret Whitfield", "title": "Head of Investments", "email": "m.whitfield@bluewaterpt.example", "synthetic": true },
+    { "id": "003-NGC-001", "accountId": "001-NGC-003", "name": "Alan Osei", "title": "Managing Partner", "email": "a.osei@northgatecp.example", "synthetic": true },
+    { "id": "003-HEL-001", "accountId": "001-HEL-004", "name": "Mei-Lin Tan", "title": "Director of Treasury", "email": "ml.tan@heliossf.example", "synthetic": true },
+    { "id": "003-CRE-001", "accountId": "001-CRE-005", "name": "Robert Kaczmarek", "title": "CFO", "email": "r.kaczmarek@crescentins.example", "synthetic": true }
+  ],
+  "opportunities": [
+    { "id": "006-2026-001", "accountId": "001-APX-001", "name": "Apex — Prime Brokerage Expansion", "stage": "Negotiation", "amount": 2400000, "ownerId": "005-EW-001", "products": [{ "productId": "01t-PB-001", "qty": 2 }], "closeDate": "2026-09-30", "synthetic": true },
+    { "id": "006-2026-002", "accountId": "001-BLU-002", "name": "Bluewater — Research Portal Renewal", "stage": "Closed Won", "amount": 450000, "ownerId": "005-WM-001", "products": [{ "productId": "01t-RS-003", "qty": 1 }], "closeDate": "2026-06-30", "synthetic": true },
+    { "id": "006-2026-003", "accountId": "001-HEL-004", "name": "Helios — Treasury Settlement Platform", "stage": "Proposal", "amount": 7200000, "ownerId": "005-EW-001", "products": [{ "productId": "01t-TS-004", "qty": 3 }], "closeDate": "2026-09-15", "synthetic": true },
+    { "id": "006-2026-004", "accountId": "001-NGC-003", "name": "Northgate — FX Liquidity Access", "stage": "Discovery", "amount": 850000, "ownerId": "005-EW-001", "products": [{ "productId": "01t-FX-002", "qty": 1 }], "closeDate": "2026-10-31", "synthetic": true },
+    { "id": "006-2026-005", "accountId": "001-CRE-005", "name": "Crescent — ESG Analytics", "stage": "Qualification", "amount": 360000, "ownerId": "005-WM-001", "products": [{ "productId": "01t-ESG-05", "qty": 2 }], "closeDate": "2026-11-30", "synthetic": true }
+  ],
+  "quotes": [
+    {
+      "id": "0Q0-2026-001", "opportunityId": "006-2026-002", "discountPct": 0, "listTotal": 450000, "tcv": 450000,
+      "status": "Converted", "approvalSteps": [], "createdDate": "2026-06-01", "synthetic": true
+    }
+  ],
+  "orders": [
+    { "id": "801-2026-001", "quoteId": "0Q0-2026-001", "status": "Activated", "tcv": 450000, "activatedDate": "2026-06-15", "synthetic": true }
+  ],
+  "cases": [
+    { "id": "500-2026-0001", "accountId": "001-BLU-002", "subject": "Research portal seat provisioning", "priority": "Medium", "status": "Closed", "relatedOpportunityId": "006-2026-002", "openedDate": "2026-06-16", "closedDate": "2026-06-25", "resolution": "Seats provisioned and SSO enabled.", "synthetic": true }
+  ],
+  "activities": [
+    { "id": "00T-2026-0001", "type": "Meeting", "subject": "Apex expansion — pricing workshop", "relatedTo": "006-2026-001", "userId": "005-EW-001", "date": "2026-07-28", "notes": "Walked through tiered pricing; COO wants revised discount.", "synthetic": true },
+    { "id": "00T-2026-0002", "type": "Email", "subject": "Helios — treasury settlement proposal sent", "relatedTo": "006-2026-003", "userId": "005-EW-001", "date": "2026-08-01", "notes": "Proposal v2 with 3-unit deployment sent to Director of Treasury.", "synthetic": true }
+  ],
+  "approvalPolicy": {
+    "sequence": ["Deal Desk", "Compliance Officer", "Finance"],
+    "rules": {
+      "Deal Desk": { "description": "discountPct > 15 OR tcv > 5,000,000", "discountPctGt": 15, "tcvGt": 5000000 },
+      "Compliance Officer": { "description": "account.newClient OR any product regulated", "newClient": true, "regulatedProduct": true },
+      "Finance": { "description": "tcv > 25,000,000", "tcvGt": 25000000 }
+    },
+    "autoApproveWhenNoRuleTriggers": true,
+    "closedWonOnlyViaOrderConversion": true
+  }
+}

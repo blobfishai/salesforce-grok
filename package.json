@@ -1,0 +1,18 @@
+{
+  "name": "salesforce-grok-simworld",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Simulation world for a synthetic Morgan Stanley Salesforce-CRM enterprise flow: blobfish.ai-generated world (CRMArena-style depth) exposed over MCP, driven and evaluated with a grok-4.5 agent.",
+  "scripts": {
+    "mcp": "node mcp/blobfish-crm-bridge.mjs",
+    "mcp:local": "node mcp/salesforce-crm-server.mjs",
+    "sim": "node sim/run-simulation.mjs",
+    "sim:local": "node sim/run-simulation.mjs --local",
+    "test": "node test/smoke.mjs",
+    "world:serve": "cd world/blobfish/package/sbx_7d7d8fedcecb4458 && PORT=8971 python3 server.py"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

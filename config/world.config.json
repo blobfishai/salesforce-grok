@@ -1,0 +1,38 @@
+{
+  "world": "morgan-stanley-simulated-crm",
+  "disclaimer": "Simulation only. All entities synthetic. Not affiliated with Morgan Stanley.",
+  "engine": {
+    "provider": "xai",
+    "baseUrl": "https://api.x.ai/v1",
+    "model": "grok-4.5",
+    "contextWindowTokens": 500000,
+    "longContextThresholdTokens": 200000,
+    "rateLimits": { "requestsPerMinute": 7200, "tokensPerMinute": 50000000 },
+    "contextGuardRatio": 0.9,
+    "maxCompletionTokens": 4096,
+    "maxAgentTurns": 24
+  },
+  "mcp": {
+    "name": "blobfish-crm-bridge",
+    "transport": "stdio",
+    "command": "node",
+    "args": ["mcp/blobfish-crm-bridge.mjs"]
+  },
+  "mcpLocalFallback": {
+    "name": "salesforce-crm-mock",
+    "transport": "stdio",
+    "command": "node",
+    "args": ["mcp/salesforce-crm-server.mjs"]
+  },
+  "seed": "data/seed/world-seed.json",
+  "blobfish": {
+    "api": "https://blobfish.ai/api/v1",
+    "localBase": "http://127.0.0.1:8971",
+    "worldId": "sbx_7d7d8fedcecb4458",
+    "worldFile": "world/blobfish/world.json",
+    "package": "world/blobfish/package/",
+    "previewCrmWorldId": "sbx_70c53d3467d54e5b",
+    "previewErpWorldId": "sbx_8a6d6c92f5a64425",
+    "previewWorldFile": "world/blobfish-preview/world.json"
+  }
+}
