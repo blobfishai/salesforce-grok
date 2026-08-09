@@ -38,7 +38,7 @@ if (!LOCAL && (!KEY || !WORLD_ID || WORLD_ID === "PENDING")) {
   process.exit(1);
 }
 const WORLD_BASE = LOCAL
-  ? (config.blobfish.localBase ?? "http://127.0.0.1:8090")
+  ? (env.BLOBFISH_LOCAL_BASE ?? config.blobfish.localBase ?? "http://127.0.0.1:8971")
   : `${config.blobfish.api}/sandbox/worlds/${WORLD_ID}`;
 const MCP_URL = `${WORLD_BASE}/mcp`;
 
