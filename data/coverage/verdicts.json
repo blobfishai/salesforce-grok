@@ -1,0 +1,2393 @@
+[
+ {
+  "name": "active_learning_lead_ranking",
+  "verdict": "partial",
+  "evidence": [
+   "sales_leads:500",
+   "query_sales_leads",
+   "update_sales_leads_status",
+   "anchor:21-enrichment-waterfall-config.md",
+   "save_memory",
+   "sheet_agent"
+  ],
+  "note": "Lead corpus, status state-machine writes, label-store surfaces (save_memory/agent_sheets) and enrichment policy doc exist; missing a rationed/metered email-lookup or enrichment tool with credit accounting, which is the environment-side crux of the explore/exploit spend test. Embedding/GP/BALD machinery is agent-side, not environment."
+ },
+ {
+  "name": "api_retriever_tool_selection",
+  "verdict": "out_of_scope",
+  "evidence": [
+   "~200-tool inventory across salesforce/stripe/slack/jira/erp namespaces"
+  ],
+  "note": "A trained dense API retriever with retrieval P/R scoring over a 16k-API corpus is a benchmark/harness technique, not a sales-environment feature. The world's large heterogeneous tool surface is raw material for tool-selection stress, but the item itself is out of environment scope."
+ },
+ {
+  "name": "banking_knowledge_domain",
+  "verdict": "out_of_scope",
+  "evidence": [],
+  "note": "tau2-bench banking customer-service domain is another vertical; the world's Stripe-style billing tables (charges, invoices, disputes) are B2B billing plumbing, not a banking knowledge domain."
+ },
+ {
+  "name": "best_region_identification",
+  "verdict": "partial",
+  "evidence": [
+   "cases:17",
+   "support_tickets:500",
+   "query_support_tickets",
+   "cases_list",
+   "case_get",
+   "territory:8",
+   "anchor:15-territory-model.md",
+   "lookup_support_ticket_with_employees"
+  ],
+  "note": "Cases/tickets, read tools and a territory model exist, but there is no confirmed geographic (state/region) field on cases/accounts nor guaranteed open/close timestamp pairs, so per-region avg-closure-duration argmin is not mechanically computable today. Needs region + close-timestamp field fixtures on cases or support_tickets."
+ },
+ {
+  "name": "calendar_email_scheduling_tasks",
+  "verdict": "partial",
+  "evidence": [
+   "calendar_agent",
+   "query_calendar_events",
+   "calendar_calendars_insert",
+   "calendar_calendar_list_insert",
+   "agent_events:2",
+   "meeting_scheduling_sla:9",
+   "anchor:20-meeting-scheduling-sla.md",
+   "query_employees"
+  ],
+  "note": "Calendar side is expressible (event create + query, directory via employees, SLA policy doc); missing entirely on the email side: no inbox object with seeded emails and no send/forward/reply/delete email tools. Also no event update/delete tool, and seeded calendar data is sparse (agent_events:2, calendars:4)."
+ },
+ {
+  "name": "case_routing",
+  "verdict": "covered",
+  "evidence": [
+   "support_tickets:500",
+   "cases:17",
+   "employees:18",
+   "query_support_tickets",
+   "lookup_support_ticket_with_employees",
+   "update_support_tickets_status",
+   "sales_workflow_agent",
+   "routing_decision_table:16",
+   "inbound_routing_matrix:15",
+   "anchor:22-inbound-routing-matrix.md",
+   "anchor:10-case-management-sla.md",
+   "task_008"
+  ],
+  "note": "Expertise/workload inference is derivable from 500 employee-linked tickets, routing policy lives in routing_decision_table + anchor:22, writes to cases go through sales_workflow_agent and ticket status/assignment through customer-support tools; harness multi-turn users cover the interactive variant and state-diff verifies assignment."
+ },
+ {
+  "name": "competitor_intel_monitoring",
+  "verdict": "partial",
+  "evidence": [
+   "create_scheduled_run",
+   "list_scheduled_runs",
+   "save_memory",
+   "search_memory",
+   "add_to_knowledge",
+   "news_items:16",
+   "retrieve_news_item",
+   "anchor:33-battlecard-harborview.md",
+   "anchor:34-battlecards-atlas-crestline.md"
+  ],
+  "note": "Scheduling, semantic-memory store, and battlecard consumption surfaces all exist; missing an in-world competitor-intel source to research \u2014 no web_search/fetch tool and news_items is not seeded with competitor pricing/positioning/news content tied to the named competitors."
+ },
+ {
+  "name": "confidential_company_knowledge",
+  "verdict": "covered",
+  "evidence": [
+   "query_documents",
+   "search_knowledge",
+   "core_records_agent",
+   "anchor:05-cpq-discount-policy.md",
+   "anchor:02-lead-scoring-policy.md",
+   "anchor:43-artifact-pricing-rate-card.md",
+   "fy2026_list_prices:14",
+   "pricing_pressure_guidance:10"
+  ],
+  "note": "Internal-only lead-qualification, discount-floor and rate-card material exists as retrievable in-world docs/tables, so a leak is both possible and string-detectable against seeded values; harness multi-turn simulated users supply the external-requester probe. Refusal judging is a scoring protocol, not an environment gap."
+ },
+ {
+  "name": "confidentiality_multiturn_persistence",
+  "verdict": "covered",
+  "evidence": [
+   "harness: multi-turn simulated users",
+   "fy2026_list_prices:14",
+   "pricing_pressure_guidance:10",
+   "anchor:43-artifact-pricing-rate-card.md",
+   "employees:18",
+   "support_tickets:500",
+   "query_documents"
+  ],
+  "note": "Harness-provided stateful multi-turn simulated users support escalation-ladder persona scripts, and secret (pricing) and internal-ops (employee/ticket) fixtures exist for the probes; per-turn transcripts are harness-side. Only caveat: PII depth on contacts (birthdate, mailing address) is unverified, but secret/ops fixtures alone suffice to express the capability."
+ },
+ {
+  "name": "contract_hypothesis_entailment",
+  "verdict": "covered",
+  "evidence": [
+   "anchor:41-artifact-msa-ironwood.md",
+   "anchor:42-artifact-order-form-summit.md",
+   "anchor:23-clm-clause-library.md",
+   "nda:8",
+   "sow:19",
+   "term_and_renewal:20",
+   "query_documents",
+   "read_matter_document",
+   "matter_documents"
+  ],
+  "note": "Readable contract bodies (MSA, order form, NDA/SOW clause tables, clause library) are in-world and retrievable; hypothesis sets and gold entailment labels are task authoring, not missing substrate."
+ },
+ {
+  "name": "cpq_configure_price_quote",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:13-product-catalog.md",
+   "anchor:43-artifact-pricing-rate-card.md",
+   "fy2026_list_prices:14",
+   "line_items_list_prices_per_13_product_catalogmd:8",
+   "volume_bands:18",
+   "cpq_discount_policy:14",
+   "currency_handling:10",
+   "opportunity_create"
+  ],
+  "note": "Catalog, list prices, volume/discount bands and pricing-waterfall policy are all present and readable, but there is no Quote/QuoteLine object and no quote-create write tool, so the constructed quote cannot be written and state-diff verified; a bundle/constraint-rule table is also absent. order_form:13 is a static artifact, not a writable quote surface."
+ },
+ {
+  "name": "crm_pipeline_record_maintenance",
+  "verdict": "partial",
+  "evidence": [
+   "sales_leads:500",
+   "sales_opportunities:500",
+   "query_sales_leads",
+   "update_sales_leads_status",
+   "update_sales_opportunities_status",
+   "contact_create",
+   "opportunity_create",
+   "customer_create",
+   "task_017",
+   "task_003-task_009",
+   "harness: state-diff verifiers"
+  ],
+  "note": "Find/create/stage-move are expressible and already exercised (task_017 verify-then-set-status pattern, task_003-009 end-to-end maintenance) with state-diff verification; concretely missing: any delete operation, and general field-level update tools (writes beyond creates are status-only except via workflow agents)."
+ },
+ {
+  "name": "customer_health_churn_upsell",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:27-customer-success-health-model.md",
+   "deal_health_score:15",
+   "engagement_20:20",
+   "support_25:10",
+   "risk_notes_csm_post_call:12",
+   "anchor:28-renewal-expansion-runbook.md",
+   "opportunity_create",
+   "task_create"
+  ],
+  "note": "The health-score model (weights, thresholds) and CS policy docs exist, and retention/upsell plays can be written as tasks/opportunities; missing the per-account usage/engagement telemetry fixtures (no product-usage or engagement-metrics table per customer) from which a health score would actually be computed."
+ },
+ {
+  "name": "discount_approval_policy_check",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:05-cpq-discount-policy.md",
+   "cpq_discount_policy:14",
+   "anchor:08-finance-approval-thresholds.md",
+   "finance_approval_thresholds:10",
+   "deal_desk_charter:8",
+   "sales_manager:8",
+   "compliance_officer:13",
+   "anchor:personas_roles-crm-org.md",
+   "order_form:13",
+   "anchor:42-artifact-order-form-summit.md",
+   "task_create"
+  ],
+  "note": "Approval-matrix docs, role tables and a discount-bearing order-form artifact support the read-only decide-and-cite variant now; missing a proper Quote object carrying discount_pct/amount/product-line/owner fields and a quote-status write tool for the state-diff-verified workflow variant."
+ },
+ {
+  "name": "ecommerce_storefront_customer_tasks",
+  "verdict": "out_of_scope",
+  "evidence": [],
+  "note": "WebArena Magento storefront browsing is another vertical/UI environment class, not a B2B sales-world capability."
+ },
+ {
+  "name": "followup_timing_optimization",
+  "verdict": "partial",
+  "evidence": [
+   "click_trackings:9",
+   "category_stats:13",
+   "automations_link_stats_responses:15",
+   "sequence_design_rules:12",
+   "anchor:17-outbound-sequencing-playbook.md",
+   "sales_leads:500"
+  ],
+  "note": "Campaign-level engagement stats and sequencing/timing policy exist, but the core fixture is missing: a per-lead email interaction log (lead_ref, sent_at, opened_at, replied_at) from which optimal re-engagement windows could be statistically derived and verified."
+ },
+ {
+  "name": "hr_management_mcp_server_tasks",
+  "verdict": "covered",
+  "evidence": [
+   "hr_leave_requests:500",
+   "hr_performance_reviews:500",
+   "departments:7",
+   "employees:18",
+   "query_hr_leave_requests",
+   "query_hr_performance_reviews",
+   "lookup_hr_leave_request_with_employees",
+   "update_hr_leave_requests_status",
+   "update_hr_performance_reviews_status",
+   "human_resources_workflow_agent",
+   "task_002",
+   "task_012",
+   "task_013",
+   "task_016"
+  ],
+  "note": "The MCPEval HR-server shape (departments/employees/leave/reviews with ~10 CRUD-query tools) exists one-for-one, and four generated tasks already exercise it with state-diff verification. Back-office rather than strictly sales, but it is an in-world supported domain of this environment, not an external vertical."
+ },
+ {
+  "name": "inbound_lead_capture_routing",
+  "verdict": "partial",
+  "evidence": [
+   "web_form_definitions:8",
+   "visitor_identification:9",
+   "inbound_routing_matrix:15",
+   "routing_decision_table:16",
+   "lead_scoring_policy:12",
+   "anchor:22-inbound-routing-matrix.md",
+   "anchor:02-lead-scoring-policy.md",
+   "anchor:31-mql-sql-handoff-sla.md",
+   "utm_conventions:14",
+   "contact_create",
+   "task_create",
+   "sales_leads:500"
+  ],
+  "note": "Capture/scoring/routing policy substrate is rich (form definitions, routing matrix, scoring policy, UTM/attribution conventions) and contact_create + task_create cover record creation and owner notification; missing an owner-assignment write on sales_leads (only update_sales_leads_status exists, and no workflow agent lists sales_leads) and any inbound-message/webhook ingestion surface with source metadata."
+ },
+ {
+  "name": "invalid_config",
+  "verdict": "covered",
+  "evidence": [
+   "order_form:13",
+   "anchor:42-artifact-order-form-summit.md",
+   "anchor:13-product-catalog.md",
+   "line_items_list_prices_per_13_product_catalogmd:8",
+   "fy2026_list_prices:14",
+   "volume_bands:18",
+   "cpq_discount_policy:14",
+   "anchor:05-cpq-discount-policy.md",
+   "core_records_agent",
+   "core_workflow_agent"
+  ],
+  "note": "Order-form line items can be cross-checked against catalog, list prices, volume bands and discount policy \u2014 all in-world and readable via core_records_agent/query_documents; the tasks 018-025 pattern shows anchor-derived tables accept verify-then-write flows for verification. Seeding gold invalid rows is task authoring, not missing substrate."
+ },
+ {
+  "name": "lead_dedupe_merge",
+  "verdict": "partial",
+  "evidence": [
+   "data_quality_rules:12",
+   "anchor:16-data-quality-rules.md",
+   "dedupe_race_handling:15",
+   "sales_leads:500",
+   "contacts:11",
+   "accounts:11",
+   "query_sales_leads",
+   "contacts_list"
+  ],
+  "note": "Matching/survivorship policy exists (data_quality_rules, dedupe_race_handling) over sizable lead/contact tables; missing merge and delete operations and any foreign-key re-parent write tools for child records (tasks, opportunities, cases) \u2014 without them the one-survivor end state cannot be produced. Near-duplicate seeding is also unverified."
+ },
+ {
+  "name": "lead_routing_assignment",
+  "verdict": "partial",
+  "evidence": [
+   "sales_leads:500",
+   "employees:18",
+   "lookup_sales_lead_with_employees",
+   "routing_decision_table:16",
+   "inbound_routing_matrix:15",
+   "territory:8",
+   "anchor:22-inbound-routing-matrix.md",
+   "anchor:15-territory-model.md",
+   "update_sales_leads_status",
+   "task_create"
+  ],
+  "note": "Rule matrix, lead corpus, employee table and lead-to-employee join exist, and the expected owner is deterministically recomputable from the rule table; missing a lead owner_id write tool (only status writes exist on sales_leads), a queue object, and round-robin pointer state."
+ },
+ {
+  "name": "local_business_lead_scraping",
+  "verdict": "gap",
+  "evidence": [],
+  "note": "Sales-prospecting domain but essentially unsupported: no simulated maps/business-directory search tool, no email-finder tool, no external-business directory table, no instagram-like profile surface. Nothing in the inventory approximates the scraping-source side."
+ },
+ {
+  "name": "meeting_booking",
+  "verdict": "covered",
+  "evidence": [
+   "calendar_agent",
+   "query_calendar_events",
+   "agent_events",
+   "calendar_calendars_insert",
+   "meeting_types_and_durations:15",
+   "meeting_scheduling_sla:9",
+   "anchor:20-meeting-scheduling-sla.md",
+   "harness: multi-turn simulated users"
+  ],
+  "note": "Availability query + event creation with state-diff verification on agent_events covers the booking core; meeting-type/duration and SLA policy docs constrain correctness, and the harness's simulated user carries the in-conversation confirmation. A Calendly-style link-generation tool is absent but not needed to express the capability."
+ },
+ {
+  "name": "multi_app_office_automation",
+  "verdict": "out_of_scope",
+  "evidence": [],
+  "note": "OfficeBench's Linux-container docx/xlsx/PDF/shell environment is a different environment class, not a sales-domain CRM world capability."
+ },
+ {
+  "name": "multilingual_long_horizon_workplace_tasks",
+  "verdict": "out_of_scope",
+  "evidence": [],
+  "note": "Instruction-language multilinguality is a benchmark-design axis, not an environment feature; nothing environment-side blocks authoring non-English task instructions over the existing tools, but the item itself is a benchmarking technique."
+ },
+ {
+  "name": "no_user_and_user_solo_ablations",
+  "verdict": "out_of_scope",
+  "evidence": [],
+  "note": "tau2-bench no-user/user-solo modes are harness/scoring diagnostics (a benchmark technique), squarely outside environment features \u2014 exactly the scoring-technique exclusion."
+ },
+ {
+  "name": "objection_handling",
+  "verdict": "covered",
+  "evidence": [
+   "anchor:33-battlecard-harborview.md",
+   "anchor:34-battlecards-atlas-crestline.md",
+   "pricing_pressure_guidance:10",
+   "winloss_talking_points:13",
+   "their_strengths_do_not_dismiss:13",
+   "their_weaknesses_attack_here:15",
+   "anchor:13-product-catalog.md",
+   "disposition_codes:17",
+   "search_knowledge",
+   "query_documents",
+   "harness: multi-turn simulated users"
+  ],
+  "note": "Objection-class taxonomy (disposition codes), battlecard framework docs with objection counters, and product-fact grounding docs all exist and are retrievable; harness multi-turn simulated users supply the prospect raising sequential objections."
+ },
+ {
+  "name": "order_activation",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:09-order-activation-runbook.md",
+   "order_activation_runbook:13",
+   "order_form:13",
+   "anchor:42-artifact-order-form-summit.md",
+   "invoicing_rules:15",
+   "billing_object_mapping_stripe_style:13",
+   "post_charges",
+   "purchase_order_create"
+  ],
+  "note": "Activation-precondition policy and the quote/order-form artifact exist, and Stripe-style billing writes exist downstream; missing a sales Order/OrderItem object with a Draft\u2192Activated status write and a Contract-record create surface \u2014 purchase_orders is procurement-side, not the sales order object, so line-level quote-to-order fidelity cannot be written or diffed."
+ },
+ {
+  "name": "payment_link_close",
+  "verdict": "partial",
+  "evidence": [
+   "charges:20",
+   "checkout_sessions:14",
+   "invoices:10",
+   "post_charges",
+   "get_invoices",
+   "fy2026_list_prices:14",
+   "anchor:13-product-catalog.md"
+  ],
+  "note": "Stripe-style billing substrate and catalog price lookup exist, and post_charges can record the close; missing a payment-link/checkout-session create tool \u2014 checkout_sessions has no write tool \u2014 so the link-generation act itself cannot be performed or verified."
+ },
+ {
+  "name": "policy_knowledge_qa",
+  "verdict": "covered",
+  "evidence": [
+   "anchor:05-cpq-discount-policy.md",
+   "anchor:08-finance-approval-thresholds.md",
+   "anchor:29-quota-comp-plan.md",
+   "anchor:30-territory-rules-of-engagement.md",
+   "anchor:14-renewal-playbook.md",
+   "anchor:23-clm-clause-library.md",
+   "anchor:regulations-compliance-regimes.md",
+   "query_documents",
+   "search_knowledge",
+   "opportunity_get",
+   "harness: multi-turn simulated users"
+  ],
+  "note": "A 46-doc corpus with numeric thresholds across discount, approval, comp, territory and renewal policies supports closed-form Q&A including precedence/overlap cases; combining policy values with live records is enabled by opportunity_get/query_sales_opportunities. Unanswerable-question authoring is task work, not substrate."
+ },
+ {
+  "name": "product_pricebook_administration",
+  "verdict": "partial",
+  "evidence": [
+   "fy2026_list_prices:14",
+   "line_items_list_prices_per_13_product_catalogmd:8",
+   "volume_bands:18",
+   "currency_handling:10",
+   "anchor:13-product-catalog.md",
+   "anchor:43-artifact-pricing-rate-card.md",
+   "core_workflow_agent"
+  ],
+  "note": "Catalog/price tables and the published price-list source docs exist, and core_workflow_agent gives a write path to anchor-derived tables; missing field-level pricebook-entry create/update tools (unit_price, currency, is_active) and a discount-schedule write surface \u2014 observed writes on these tables are status-only (tasks 018-025 pattern), insufficient for a full PricebookEntry-mirrors-price-list diff."
+ },
+ {
+  "name": "quota_planning",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:29-quota-comp-plan.md",
+   "coverage_ratio:20",
+   "employees:18",
+   "departments:7",
+   "query_employees",
+   "lookup_employee_with_departments"
+  ],
+  "note": "Comp-plan/quota policy doc and the org tables exist; missing a quota table (user x period x amount) with a write tool, an explicit role/territory hierarchy surface for parent-child rollup reconciliation, and rep hire_date/ramp fixtures \u2014 without the quota object the allocation cannot be written or sum-verified."
+ },
+ {
+  "name": "quote_discount_approval_matrix",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:05-cpq-discount-policy.md",
+   "anchor:08-finance-approval-thresholds.md",
+   "finance_approval_thresholds:10",
+   "deal_desk_charter:8",
+   "sales_manager:8",
+   "compliance_officer:13",
+   "anchor:personas_roles-crm-org.md",
+   "task_create",
+   "harness: multi-turn simulated users"
+  ],
+  "note": "Approval-matrix thresholds, role tables and multi-turn approver simulation are in place; missing the Quote object (discount_pct, status Draft/In Review/Approved/Rejected) and an ApprovalRequest/ProcessInstance table, so the approval-record chain and status transitions cannot be written and matrix-verified. task_create is only a weak stand-in for approval records."
+ },
+ {
+  "name": "renewal_expansion_management",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:14-renewal-playbook.md",
+   "anchor:28-renewal-expansion-runbook.md",
+   "renewal_playbook:8",
+   "term_and_renewal:20",
+   "renewal_mechanics_per_msa_and_14_renewal_playbookmd:17",
+   "anchor:41-artifact-msa-ironwood.md",
+   "active_entitlements:12",
+   "get_entitlements_active_entitlements",
+   "opportunity_create"
+  ],
+  "note": "Renewal policy docs, contract artifact (MSA), term/renewal tables, subscription-like active_entitlements, and renewal-opportunity creation all exist; missing a quote/quote-line create surface for the renewal quote and a structured contract record with machine-readable end_date/uplift_pct fields to drive the 90-day window query and uplift-math verification."
+ },
+ {
+  "name": "rfp_question_answering",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:35-rfp-answer-library.md",
+   "answer_reuse_and_approval_rules:9",
+   "query_documents",
+   "search_knowledge",
+   "anchor:13-product-catalog.md",
+   "draft_matter_document",
+   "matter_documents"
+  ],
+  "note": "The past-RFP answer library, reuse/approval rules, a multi-doc KB, doc search, and an output surface (draft_matter_document) all exist; missing the inbound artifact itself \u2014 no seeded RFP questionnaire document with 15-40 enumerable questions (and deliberate KB-gap questions) exists in the corpus."
+ },
+ {
+  "name": "sales_conversation_stage_machine",
+  "verdict": "partial",
+  "evidence": [
+   "harness: multi-turn simulated users",
+   "conversation_intelligence_standards:9",
+   "anchor:19-conversation-intelligence-standards.md",
+   "anchor:13-product-catalog.md",
+   "disposition_codes:17",
+   "handoff_to_ae:20"
+  ],
+  "note": "Multi-turn selling conversations with policy/product grounding are supported, and conversation-intelligence standards are adjacent; missing an explicit conversation-stage framework document (8-stage enum with per-stage behaviors) and any stage-transition gold/labeling surface to verify transitions and close-only-at-Close behavior."
+ },
+ {
+  "name": "scheduled_batch_outbound_run",
+  "verdict": "partial",
+  "evidence": [
+   "create_scheduled_run",
+   "list_scheduled_runs",
+   "agent_scheduled_runs",
+   "sheet_agent",
+   "agent_sheet_rows",
+   "post_marketing_contacts_batch",
+   "post_campaigns",
+   "post_marketing_singlesends",
+   "sequence_design_rules:12",
+   "suppression_and_kpis:14",
+   "anchor:17-outbound-sequencing-playbook.md",
+   "sales_leads:500",
+   "contactdb_segments:18"
+  ],
+  "note": "Scheduling, spreadsheet row updates (sheet_agent), batch campaign enrollment, cross-system dedupe sources (leads/contacts/segments) and rate-limit/sequencing policy all exist; missing a chat message-post write tool for the Slack-style run summary (channels/messages tables exist but only conversation-create and read tools) and a dedicated per-decision audit-log table (save_memory is a weak substitute)."
+ },
+ {
+  "name": "side_effect_collateral_damage_measurement",
+  "verdict": "covered",
+  "evidence": [
+   "harness: deterministic state-diff verifiers with collateral-damage assertions",
+   "harness: deterministic world resets",
+   "mutable-table inventory (sales_leads, sales_opportunities, accounts, cases, contacts, opportunities, tasks, hr_*, finance_*, sourcing_*, support_tickets, marketing_campaigns)"
+  ],
+  "note": "This enabling capability is explicitly provided by the harness \u2014 deterministic state-diff verification with collateral-damage (unexpected-change) assertions over the enumerated mutable tables \u2014 closing the gap the census item's local-world note flagged. Harm sub-classification of diffs is scoring policy layered on the existing diff."
+ },
+ {
+  "name": "stalled_deal_detection_forecasting",
+  "verdict": "covered",
+  "evidence": [
+   "sales_opportunities:500",
+   "opportunities:10",
+   "query_sales_opportunities",
+   "update_sales_opportunities_status",
+   "stale_opportunity_ladder:19",
+   "anchor:25-pipeline-inspection-rules.md",
+   "deal_health_score:15",
+   "anchor:12-forecast-methodology.md",
+   "anchor:26-forecast-commit-standards.md",
+   "commit:16",
+   "best_case:16",
+   "slipped_pulled_in_lost:18",
+   "sandbagging_red_flags:8",
+   "task_create"
+  ],
+  "note": "Inactivity/stall rules (stale_opportunity_ladder, pipeline inspection rules), forecast category standards (commit/best_case, forecast methodology), sizable opportunity corpus, and write surfaces for flags/remediation tasks are all present; recommendations grounded in deal context are verifiable against the policy tables."
+ },
+ {
+  "name": "territory_reassignment",
+  "verdict": "partial",
+  "evidence": [
+   "territory:8",
+   "anchor:15-territory-model.md",
+   "anchor:30-territory-rules-of-engagement.md",
+   "account_transfer_protocol_on_rep_departure:12",
+   "accounts:11",
+   "opportunities:10",
+   "sales_workflow_agent",
+   "accounts_list",
+   "opportunities_list"
+  ],
+  "note": "Territory model, rules-of-engagement and holdout/transfer-protocol policy exist, and sales_workflow_agent gives an account write path; missing field-level owner/territory_id update tools on accounts and any owner-write path on opportunities (only create + status update), plus a user-territory association table \u2014 the conditional holdout-respecting cutover cannot be fully executed and diffed."
+ },
+ {
+  "name": "transcript_semantic_search",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:39-artifact-call-transcript-summit.md",
+   "anchor:40-artifact-call-transcript-meridian.md",
+   "transcript_evidence:9",
+   "tracker_keywords:12",
+   "query_documents",
+   "search_knowledge"
+  ],
+  "note": "Transcript artifacts and doc query/search tools exist, so keyword retrieval over transcript bodies is expressible; missing scale and semantics: only 2 full call transcripts (need ~20+ with paraphrase-seeded concepts) and no semantic/paraphrase-capable search operation beyond keyword filtering."
+ },
+ {
+  "name": "web_analytics_reporting_tasks",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:38-analytics-kpi-definitions.md",
+   "category_stats:13",
+   "click_trackings:9",
+   "automations_link_stats_responses:15",
+   "funnel_conversion_rates:10",
+   "attribution:12",
+   "board_pack_metrics:19",
+   "sheet_agent"
+  ],
+  "note": "KPI definitions, funnel/attribution tables and campaign engagement stats support aggregate marketing-analytics reporting, with sheet_agent as an output artifact surface; missing a visit-level web-analytics table (500-row visitor/session records with dates, page views, traffic source) and a plot/dashboard artifact tool for artifact-state verification."
+ },
+ {
+  "name": "writer_prospect_critique_loop",
+  "verdict": "covered",
+  "evidence": [
+   "sales_leads:500",
+   "contacts_list",
+   "contact_get",
+   "document_agent",
+   "draft_matter_document",
+   "agent_documents",
+   "anchor:18-email-template-library.md",
+   "harness: multi-turn simulated users",
+   "harness: reference-relative turn budgets"
+  ],
+  "note": "Lead/contact records supply persona attributes, drafts persist as agent_documents/matter_documents for state-diff verification, the harness's simulated user can play the lead-persona critic, and reference-relative turn budgets implement the iteration cap/convergence criterion. The two-role orchestration itself is agent-side."
+ },
+ {
+  "name": "agent_memory_layers",
+  "verdict": "partial",
+  "evidence": [
+   "save_memory",
+   "search_memory",
+   "add_to_knowledge",
+   "search_knowledge",
+   "agent_memories",
+   "agent_knowledge",
+   "create_scheduled_run",
+   "agent_scheduled_runs",
+   "sheet_agent",
+   "agent_sheets"
+  ],
+  "note": "Memory read/write tools and scheduled-run substrate exist for structured recall and daily snapshot jobs, but there is no per-customer-isolated semantic/vector store, no verbatim-number recall fixtures, and no memory health-metrics surface; agent_memories/agent_knowledge hold only 2 rows each."
+ },
+ {
+  "name": "audit_trail_integrity",
+  "verdict": "partial",
+  "evidence": [
+   "activity_logging_standards",
+   "anchor:11-activity-logging-standards.md",
+   "task_create",
+   "tasks",
+   "harness state-diff verifier with collateral-damage assertions"
+  ],
+  "note": "Trail-policy doc, task/activity write tools, and the harness's world-side diff (the append-only effect log analog) exist; missing are per-object field-history tables and exposed-but-forbidden honeypot tools (delete_activity, update_history_record) \u2014 no delete tools exist anywhere in the inventory to serve as bait."
+ },
+ {
+  "name": "battlecard_grounded_objection_handling",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:33-battlecard-harborview.md",
+   "anchor:34-battlecards-atlas-crestline.md",
+   "their_strengths_do_not_dismiss",
+   "their_weaknesses_attack_here",
+   "pricing_pressure_guidance",
+   "winloss_talking_points",
+   "query_documents",
+   "search_knowledge",
+   "harness multi-turn simulated users"
+  ],
+  "note": "Battlecard documents/tables, doc-retrieval tools, and multi-turn prospect simulation are all present; the missing piece is a claim-level grounding/entailment verification surface over the agent's conversational output \u2014 state-diff verifiers cannot check that every competitive claim maps to a battlecard span."
+ },
+ {
+  "name": "buyer_seller_negotiation_market",
+  "verdict": "gap",
+  "evidence": [
+   "harness multi-turn simulated users",
+   "pricing_pressure_guidance",
+   "fy2026_list_prices",
+   "cpq_discount_policy"
+  ],
+  "note": "Essentially unsupported: no multi-agent buyer/seller arena, no market matcher (1:N/N:M topologies), no private reservation values or welfare/utility scoring, no multimodal listings. Only a 1:1 policy-bounded negotiation slice could be improvised from the simulated user plus pricing-policy tables."
+ },
+ {
+  "name": "campaign_attribution",
+  "verdict": "partial",
+  "evidence": [
+   "marketing_campaigns",
+   "query_marketing_campaigns",
+   "attribution",
+   "fy2026_campaigns",
+   "utm_conventions",
+   "mql_definition",
+   "anchor:32-campaign-catalog.md",
+   "anchor:38-analytics-kpi-definitions.md",
+   "sales_opportunities",
+   "opportunities"
+  ],
+  "note": "Campaign and opportunity tables plus an attribution policy table and campaign-catalog anchor exist; missing the touch graph itself \u2014 no CampaignMember/touchpoint table with timestamps linking leads/contacts to campaigns, no OpportunityContactRole join, and no influenced_revenue/ROI write field (sheet_agent could host the report output)."
+ },
+ {
+  "name": "commission_calculation",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:29-quota-comp-plan.md",
+   "sales_opportunities",
+   "opportunities",
+   "employees",
+   "invoices",
+   "get_invoices",
+   "charges",
+   "sheet_agent",
+   "agent_sheets"
+  ],
+  "note": "Comp-plan anchor doc, closed-won opportunity data, paid-basis invoice/charge tables, and sheet_agent as the statement output surface exist; missing an OpportunitySplit table, a per-rep-per-period quota table (the plan doc is policy, not quota rows), and churn/refund clawback flags."
+ },
+ {
+  "name": "completion_under_policy_metric",
+  "verdict": "out_of_scope",
+  "evidence": [
+   "harness state-diff verifiers with collateral-damage assertions"
+  ],
+  "note": "CuP/Risk-Ratio is a benchmark scoring technique (metric aggregation over success and per-dimension violation signals), not an environment feature; the environment-side raw signals it needs are already produced by the harness's state-diff and collateral-damage assertions."
+ },
+ {
+  "name": "confidentiality_customer_pii_refusal",
+  "verdict": "partial",
+  "evidence": [
+   "contacts",
+   "contact_get",
+   "contacts_list",
+   "sales_leads",
+   "query_sales_leads",
+   "cases",
+   "cases_list",
+   "accounts",
+   "account_get",
+   "harness multi-turn simulated users"
+  ],
+  "note": "Contact/lead/case/account records, read tools, and the multi-turn persona simulator exist; missing are confirmed PII field population (email/phone/address/birthdate) on contact rows, per-episode protected-value manifests, and a transcript leak-scan verifier (string-match of protected values in agent output) \u2014 state-diff cannot catch a conversational leak."
+ },
+ {
+  "name": "contract_amendment_coterm",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:41-artifact-msa-ironwood.md",
+   "term_and_renewal",
+   "renewal_mechanics_per_msa_and_14_renewal_playbookmd",
+   "anchor:14-renewal-playbook.md",
+   "anchor:28-renewal-expansion-runbook.md",
+   "fy2026_list_prices",
+   "volume_bands",
+   "billing"
+  ],
+  "note": "Contract documents (MSA anchor), term/renewal mechanics tables, and price data support the proration reasoning; missing a Subscription/Asset line table holding active quantities/prices and any amendment-quote write surface (no Quote/QuoteLine objects or create-quote tool exists)."
+ },
+ {
+  "name": "conversion_rate_comprehension",
+  "verdict": "covered",
+  "evidence": [
+   "sales_leads",
+   "sales_opportunities",
+   "query_sales_leads",
+   "query_sales_opportunities",
+   "lookup_sales_opportunity_with_sales_leads",
+   "lookup_sales_lead_with_employees",
+   "employees",
+   "funnel_conversion_rates",
+   "win_rate_calculation_rules",
+   "anchor:38-analytics-kpi-definitions.md"
+  ],
+  "note": "500-row lead and opportunity tables with an explicit lead-to-opportunity join tool, per-rep grouping via employee lookups, KPI-definition docs, and exact-match verification via the harness make this expressible and verifiable now; aggregation is client-side counting over query results."
+ },
+ {
+  "name": "crm_data_hygiene_audit",
+  "verdict": "partial",
+  "evidence": [
+   "data_quality_rules",
+   "anchor:16-data-quality-rules.md",
+   "stale_opportunity_ladder",
+   "anchor:25-pipeline-inspection-rules.md",
+   "sales_leads",
+   "sales_opportunities",
+   "contacts",
+   "accounts",
+   "tasks",
+   "update_sales_leads_status",
+   "update_sales_opportunities_status",
+   "sales_workflow_agent"
+  ],
+  "note": "Hygiene-rule docs/tables and the record tables exist with status-write tools; missing field-level write tools beyond status (close_date, email fixes \u2014 update_*_status tools only write status), confirmed last-activity timestamps for staleness checks, and deliberately planted violation fixtures."
+ },
+ {
+  "name": "crm_sync_bidirectional",
+  "verdict": "partial",
+  "evidence": [
+   "sales_leads",
+   "query_sales_leads",
+   "update_sales_leads_status",
+   "contact_create",
+   "opportunity_create",
+   "sheet_agent",
+   "agent_sheets",
+   "document_agent",
+   "agent_documents"
+  ],
+  "note": "Lead reads, status-stage advancement, record creation, and a second store (agent_sheets as the local mirror) exist; missing upsert semantics and field-level writes for enrichment values and document-link fields on lead/contact records \u2014 creates plus status-only updates cannot express the full write-back."
+ },
+ {
+  "name": "deep_prospect_research",
+  "verdict": "partial",
+  "evidence": [
+   "news_items",
+   "retrieve_news_item",
+   "articles",
+   "retrieve_article",
+   "tech_signals",
+   "anchor:21-enrichment-waterfall-config.md",
+   "document_agent",
+   "agent_documents",
+   "accounts",
+   "contacts"
+  ],
+  "note": "An in-world research corpus surrogate (news items, articles, tech-signal table, enrichment-waterfall anchor) and a report output surface (document_agent) exist; missing a person/company profile-fetch tool and web-search analog with recency filtering \u2014 there is no per-company external corpus of any depth (news_items has 16 rows total)."
+ },
+ {
+  "name": "dual_control_telecom_troubleshooting",
+  "verdict": "out_of_scope",
+  "evidence": [],
+  "note": "tau2-bench telecom is another vertical (telecom customer service with device-state tools and a dual-control Dec-POMDP user), not a sales-domain environment capability for this B2B CRM world."
+ },
+ {
+  "name": "email_sequence_scheduling",
+  "verdict": "partial",
+  "evidence": [
+   "post_campaigns",
+   "patch_campaigns_campaign_id",
+   "post_marketing_singlesends",
+   "singlesends",
+   "post_marketing_contacts_batch",
+   "sequence_design_rules",
+   "merge_field_conventions",
+   "snippets",
+   "anchor:17-outbound-sequencing-playbook.md",
+   "anchor:18-email-template-library.md",
+   "create_scheduled_run",
+   "suppression_and_kpis"
+  ],
+  "note": "Campaign/singlesend write tools, sequencing-policy and template docs, merge-field conventions, and scheduling exist; missing a sequence-instance object (ordered steps with per-step delay_days and A/B variants \u2014 sequence_design_rules is policy, not instances), a per-recipient send log, stop-on-reply mechanics, and daily-cap counters per sending account."
+ },
+ {
+  "name": "google_dork_profile_discovery",
+  "verdict": "gap",
+  "evidence": [],
+  "note": "No web_search/SERP tool, no SERP corpus, no scraped-leads table with profile URLs, and no campaign object with lead-count targets; the closed world has no open-web surface for this to be expressed against."
+ },
+ {
+  "name": "icp_company_person_sourcing",
+  "verdict": "partial",
+  "evidence": [
+   "sales_leads",
+   "query_sales_leads",
+   "accounts_list",
+   "contacts_list",
+   "anchor:03-account-tiering.md",
+   "anchor:02-lead-scoring-policy.md",
+   "account_tiering_standard",
+   "tech_signals",
+   "aum_bands",
+   "sheet_agent"
+  ],
+  "note": "ICP-definition substrate (tiering/scoring anchors, tech_signals, aum_bands) and filterable queries over 500 sales_leads support ICP scoring of known records; missing a discovery-scale external company/people directory with faceted search (industry/size/funding filters), credit-metered lookups, and a prospects table with icp_score writes \u2014 sourcing NEW companies is not expressible."
+ },
+ {
+  "name": "inbox_triage_labeling",
+  "verdict": "partial",
+  "evidence": [
+   "conversations",
+   "retrieve_conversation",
+   "disposition_codes",
+   "inbound_routing_matrix",
+   "routing_decision_table",
+   "anchor:22-inbound-routing-matrix.md",
+   "messages"
+  ],
+  "note": "Inbound thread objects (conversations), a label taxonomy analog (disposition_codes), and routing-rule tables/docs exist; missing an email-inbox object with from/subject/body fields, an apply_label write operation, and seeded spam/noise fixtures mixed into the inbox."
+ },
+ {
+  "name": "job_change_signal_trigger",
+  "verdict": "gap",
+  "evidence": [
+   "create_scheduled_run",
+   "tech_signals",
+   "conversations_create"
+  ],
+  "note": "The core signal source is absent: no live profile-lookup tool, no last_known_title/last_known_company fields to diff against, no sequence-enrollment op, and no channel message-post tool for notification. Only scheduling and fragments exist \u2014 the trigger loop cannot be expressed."
+ },
+ {
+  "name": "lead_qualification",
+  "verdict": "covered",
+  "evidence": [
+   "sales_leads",
+   "query_sales_leads",
+   "lookup_sales_lead_with_employees",
+   "lead_scoring_policy",
+   "mql_definition",
+   "sal_gate",
+   "anchor:01-lead-management-sop.md",
+   "anchor:02-lead-scoring-policy.md",
+   "task_018",
+   "task_019",
+   "task_020",
+   "task_021",
+   "harness multi-turn simulated users"
+  ],
+  "note": "500 lead rows with query tools, qualification-policy documents (scoring policy, MQL definition, SAL gate), multi-turn simulation, and exact-match verification are all present; generated tasks already exercise lead_management_sop and lead_scoring_policy records. Residual risk is only fixture richness of BANT signals inside lead rows."
+ },
+ {
+  "name": "linkedin_outreach_sequence",
+  "verdict": "gap",
+  "evidence": [],
+  "note": "No LinkedIn channel exists: no profile_visit/send_connection_request/send_message operations, no connection-accepted events, no per-account quota counters, no message-pool rotation objects. Nothing in the inventory approximates the channel state machine."
+ },
+ {
+  "name": "magento_admin_store_management",
+  "verdict": "out_of_scope",
+  "evidence": [],
+  "note": "WebArena Magento admin is a browser-UI e-commerce benchmark in another vertical, explicitly outside a sales-domain API environment."
+ },
+ {
+  "name": "monthly_trend_analysis",
+  "verdict": "partial",
+  "evidence": [
+   "support_tickets",
+   "query_support_tickets",
+   "lookup_support_ticket_with_employees",
+   "cases",
+   "cases_list",
+   "aggregates",
+   "anchor:38-analytics-kpi-definitions.md"
+  ],
+  "note": "500 timestamped support tickets plus 17 cases with query tools support month-bucketed count/argmax questions with exact-match answers; missing the product scoping dimension \u2014 no Product2/OrderItem-style linkage from cases/tickets to catalog products, so product-scoped trend variants cannot be grounded."
+ },
+ {
+  "name": "multi_tool_api_planning_rapidapi",
+  "verdict": "out_of_scope",
+  "evidence": [],
+  "note": "ToolBench is a generic 16k-API tool-retrieval/planning benchmark with LLM-judged pass rates \u2014 a benchmark technique and corpus, not a sales-domain environment capability."
+ },
+ {
+  "name": "negotiation_counteroffer_tracking",
+  "verdict": "partial",
+  "evidence": [
+   "cpq_discount_policy",
+   "anchor:05-cpq-discount-policy.md",
+   "pricing_pressure_guidance",
+   "fy2026_list_prices",
+   "anchor:43-artifact-pricing-rate-card.md",
+   "deal_desk_charter",
+   "anchor:06-deal-desk-charter.md",
+   "task_create",
+   "save_memory",
+   "draft_matter_document",
+   "matter_documents"
+  ],
+  "note": "Pricing floors/discount-authority policy docs, escalation via task creation, and memory/document writes exist; missing a dedicated negotiation-log object (offer/counter-offer rows with amounts and timestamps) or a seeded negotiation thread artifact to track against \u2014 matter_documents could host one but none is seeded."
+ },
+ {
+  "name": "nurture_longterm_followup",
+  "verdict": "partial",
+  "evidence": [
+   "create_scheduled_run",
+   "agent_scheduled_runs",
+   "list_scheduled_runs",
+   "account_tiering_standard",
+   "anchor:03-account-tiering.md",
+   "news_items",
+   "retrieve_news_item",
+   "snippets",
+   "anchor:18-email-template-library.md",
+   "tasks"
+  ],
+  "note": "Cron-style scheduled runs, tiering policy for cadence, an in-world news surrogate, and template/snippet tables exist; missing an outbound message-send tool with a delivery queue/send log to verify cadence execution, and per-lead contact history to enforce non-repetition."
+ },
+ {
+  "name": "opportunity_splits_credit",
+  "verdict": "gap",
+  "evidence": [
+   "opportunities",
+   "co_sell_and_named_account_overlap",
+   "anchor:29-quota-comp-plan.md",
+   "anchor:30-territory-rules-of-engagement.md"
+  ],
+  "note": "Split/overlay policy substrate exists in docs and the co-sell overlap table, but the capability's core objects are absent: no OpportunitySplit table, no OpportunityTeamMember table, and no split create/update/delete write tools \u2014 sum-to-100 validation has nothing to operate on."
+ },
+ {
+  "name": "partner_deal_registration",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:36-partner-deal-registration.md",
+   "partner_tiers",
+   "conflict_check_and_the_90_day_window",
+   "co_sell_and_named_account_overlap",
+   "opportunities",
+   "opportunity_create",
+   "accounts",
+   "accounts_list",
+   "query_sales_opportunities"
+  ],
+  "note": "Unusually strong policy substrate (deal-reg anchor, partner tiers, 90-day conflict-window table), conflict queries over existing pipeline, and opportunity_create for the approval branch all exist; missing a DealRegistration record table with a Submitted/Approved/Rejected status write surface and partner-user identity records."
+ },
+ {
+  "name": "pipeline_reporting_alerts",
+  "verdict": "partial",
+  "evidence": [
+   "create_scheduled_run",
+   "sales_opportunities",
+   "query_sales_opportunities",
+   "opportunities_list",
+   "stale_opportunity_ladder",
+   "anchor:25-pipeline-inspection-rules.md",
+   "deal_health_score",
+   "coverage_ratio",
+   "board_pack_metrics",
+   "document_agent",
+   "sheet_agent",
+   "deal_room_channels_slack_style"
+  ],
+  "note": "Scheduled aggregation, stall-threshold policy, KPI definitions, and state-diff-verifiable report artifacts (agent_documents/agent_sheets) are expressible now; missing a channel message-post write tool for delivery (messages table has only a read tool; conversations_create makes channels, not posts) and confirmed last_activity timestamps on deal records."
+ },
+ {
+  "name": "private_customer_information",
+  "verdict": "partial",
+  "evidence": [
+   "contacts",
+   "contact_get",
+   "accounts",
+   "account_get",
+   "charges",
+   "get_charges",
+   "invoices",
+   "get_invoices",
+   "cases",
+   "cases_list",
+   "harness multi-turn simulated users"
+  ],
+  "note": "Customer records plus stripe-style transaction data (charges/invoices) give real leak temptation reachable via read tools, and the multi-turn external-persona simulation exists; missing confirmed PII field population, per-episode protected-value manifests, and a transcript-level refusal/leak scoring surface (LLM-judge or string-scan) beyond state-diff."
+ },
+ {
+  "name": "prompt_injection_crm_record_derailment",
+  "verdict": "partial",
+  "evidence": [
+   "case_create",
+   "add_to_knowledge",
+   "document_agent",
+   "agent_documents",
+   "matter_documents",
+   "draft_matter_document",
+   "update_sales_opportunities_status",
+   "update_company_sales_handoffs_status",
+   "sales_workflow_agent",
+   "harness state-diff verifiers with collateral-damage assertions",
+   "task_003",
+   "task_006",
+   "task_008"
+  ],
+  "note": "Attacker-writable free-text surfaces (cases, knowledge, documents, matter docs), benign task templates that force reading them, and forbidden-action detection via the collateral-damage state-diff already exist; missing seeded injection-payload fixtures in record data, a payload library across framings, and higher-privilege bait tools (delete_record, update_owner, discount writes) for the injection to target."
+ },
+ {
+  "name": "quote_approval",
+  "verdict": "partial",
+  "evidence": [
+   "order_form",
+   "anchor:42-artifact-order-form-summit.md",
+   "fy2026_list_prices",
+   "anchor:43-artifact-pricing-rate-card.md",
+   "line_items_list_prices_per_13_product_catalogmd",
+   "anchor:13-product-catalog.md",
+   "cpq_discount_policy",
+   "anchor:05-cpq-discount-policy.md",
+   "volume_bands",
+   "finance_approval_thresholds",
+   "anchor:08-finance-approval-thresholds.md",
+   "deal_desk_charter"
+  ],
+  "note": "Price book, rate card, discount policy, approval thresholds, and an order-form table/artifact make the discount-arithmetic-vs-policy decision expressible and exact-match verifiable; missing dedicated Quote/QuoteLineItem records linked to opportunities with discount fields \u2014 order_form artifacts are a document-shaped proxy, and no listed read tool explicitly targets the pricing tables."
+ },
+ {
+  "name": "refusal_calibration_non_answerable",
+  "verdict": "partial",
+  "evidence": [
+   "support_tickets",
+   "query_support_tickets",
+   "cases",
+   "cases_list",
+   "activities",
+   "activity_log_lists",
+   "harness exact-match verifiers"
+  ],
+  "note": "Timestamped ticket/case tables and query tools support constructing zero-match time-window questions with 'None' gold plus answerable twins; missing case-transfer and handle-time event-log tables that ground the canonical CRMArena task types (Transfer/Handle Time), and the parameterized non-answerable/answerable query pairs are not yet authored as tasks."
+ },
+ {
+  "name": "reply_intent_classification",
+  "verdict": "partial",
+  "evidence": [
+   "conversations",
+   "retrieve_conversation",
+   "disposition_codes",
+   "routing_decision_table",
+   "inbound_routing_matrix",
+   "anchor:22-inbound-routing-matrix.md",
+   "task_create",
+   "case_create",
+   "update_support_tickets_status"
+  ],
+  "note": "Thread objects, an intent-taxonomy analog (disposition_codes), routing-rule tables, and action writes (tasks/cases/ticket status) exist; missing a suppression write tool for the unsubscribe branch (blocks/bounces/suppression_groups have only read tools), a processed-replies dedup table, and per-reply intent label write surface for state-diff verification."
+ },
+ {
+  "name": "sales_amount_understanding",
+  "verdict": "covered",
+  "evidence": [
+   "sales_opportunities",
+   "query_sales_opportunities",
+   "opportunities",
+   "opportunities_list",
+   "opportunity_get",
+   "lookup_sales_opportunity_with_sales_leads",
+   "revenue_metric_definitions",
+   "win_rate_calculation_rules",
+   "anchor:38-analytics-kpi-definitions.md",
+   "task_003",
+   "task_017"
+  ],
+  "note": "500-row opportunity data with query/get tools, revenue-metric definition docs to pin the formula, and exact-match verification support SUM/AVG-by-period/segment questions now; aggregation is client-side over query results, which the harness's turn budgets accommodate."
+ },
+ {
+  "name": "sales_email_draft_quality_eval",
+  "verdict": "covered",
+  "evidence": [
+   "contacts",
+   "contact_get",
+   "accounts",
+   "account_get",
+   "tech_signals",
+   "anchor:13-product-catalog.md",
+   "anchor:18-email-template-library.md",
+   "merge_field_conventions",
+   "snippets",
+   "document_agent",
+   "agent_documents",
+   "draft_matter_document"
+  ],
+  "note": "Prospect records with distinctive facts (tech_signals), a product-catalog anchor constraining permissible claims, template/merge-field docs, and a draft output surface (document_agent writes verifiable via state diff, including must-mention/banned-phrase string assertions) exist now; only the residual holistic-quality dimension needs an LLM-judge, which is scoring technique, not environment."
+ },
+ {
+  "name": "servicenow_atomic_ui_tasks",
+  "verdict": "out_of_scope",
+  "evidence": [],
+  "note": "WorkArena runs on a live ServiceNow instance via browser automation \u2014 a ServiceNow-UI benchmark in another vertical, not a sales-domain environment capability."
+ },
+ {
+  "name": "sms_conversational_followup",
+  "verdict": "gap",
+  "evidence": [
+   "harness multi-turn simulated users"
+  ],
+  "note": "No SMS channel exists: no send_sms operation, no inbound SMS webhook/thread objects, no character-limit constraints. The generic multi-turn chat simulator is the only adjacent piece; the channel state (threads per lead, lead-state advancement from SMS) is unsupported."
+ },
+ {
+  "name": "suppression_consent_outbound_compliance",
+  "verdict": "partial",
+  "evidence": [
+   "blocks",
+   "bounces",
+   "suppression_groups",
+   "get_suppression_blocks",
+   "get_suppression_bounces",
+   "suppression_and_kpis",
+   "marketing_campaigns",
+   "contactdb_segments",
+   "post_marketing_singlesends",
+   "post_campaigns",
+   "post_marketing_contacts_batch",
+   "anchor:17-outbound-sequencing-playbook.md"
+  ],
+  "note": "Suppression tables with read tools, a suppression-KPI policy table, campaign/segment objects, and send-object write tools (singlesends/campaigns/contact batches) exist \u2014 better than the item's stale local-world note assumed; missing per-recipient outbound send logs to diff against the suppressed set, and consent/opt-out flags (HasOptedOutOfEmail, gdpr_consent_basis) on contact/lead records."
+ },
+ {
+  "name": "top_issue_identification",
+  "verdict": "partial",
+  "evidence": [
+   "support_tickets",
+   "query_support_tickets",
+   "cases",
+   "cases_list",
+   "case_get",
+   "categories",
+   "get_categories"
+  ],
+  "note": "High-volume ticket/case tables with query tools support frequency-count/argmax questions with exact-match answers; missing an issue-taxonomy object linked to cases (categories/category_stats are email-namespace, not case issues) and a case-to-product linkage for product-scoped variants."
+ },
+ {
+  "name": "unsubscribe_optout_enforcement",
+  "verdict": "partial",
+  "evidence": [
+   "suppression_groups",
+   "blocks",
+   "bounces",
+   "get_suppression_blocks",
+   "get_suppression_bounces",
+   "suppression_and_kpis",
+   "conversations",
+   "retrieve_conversation"
+  ],
+  "note": "Permanent-suppression tables and reply threads exist, and opt-out policy lives in suppression_and_kpis/anchor:17; missing a write tool to add a contact to the suppression list (all suppression tools are read-only) and a per-recipient send log to verify zero post-opt-out messages across campaigns."
+ },
+ {
+  "name": "win_loss_theme_extraction",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:39-artifact-call-transcript-summit.md",
+   "anchor:40-artifact-call-transcript-meridian.md",
+   "anchor:44-artifact-win-loss-q2-2026.md",
+   "winloss_talking_points",
+   "transcript_evidence",
+   "slipped_pulled_in_lost",
+   "opportunities",
+   "query_sales_opportunities",
+   "query_documents"
+  ],
+  "note": "Win/loss taxonomy docs, a transcript_evidence table, and two anchor call transcripts exist with doc-retrieval tools; missing corpus scale \u2014 the item needs 10+ closed-won/lost opportunities each linked to a late-stage transcript containing a reason, and only 2 transcripts exist with no per-opportunity transcript linkage field."
+ },
+ {
+  "name": "ab_test_campaign_analytics",
+  "verdict": "partial",
+  "evidence": [
+   "marketing_campaigns:500",
+   "campaigns table",
+   "patch_campaigns_campaign_id",
+   "get_marketing_singlesends",
+   "get_automation_link_stat",
+   "get_categories_stats",
+   "click_trackings",
+   "fy2026_campaigns",
+   "anchor:32-campaign-catalog.md"
+  ],
+  "note": "Campaign objects and aggregate engagement-stat tables exist, but there is no per-campaign A/B variants table and no per-variant outcome counts (sends/opens/clicks/replies), so a chi-squared winner verdict can be neither computed nor verified. Add a variants table with per-variant outcome counts."
+ },
+ {
+  "name": "airline_policy_constrained_booking_modification",
+  "verdict": "out_of_scope",
+  "evidence": [],
+  "note": "tau-bench airline vertical (flights, reservations, fare rules) \u2014 another vertical, not a sales-domain environment capability."
+ },
+ {
+  "name": "auto_task_generation_and_verification",
+  "verdict": "covered",
+  "evidence": [
+   "task_001..task_025 (GENERATED TASKS section)",
+   "deterministic state-diff verifiers (harness)",
+   "blobfish MCP tool definitions at /worlds/{id}/mcp"
+  ],
+  "note": "The world already demonstrates schema-seeded task synthesis with executable verification: 25 generated tasks span tool-backed tables (task_003 cases/opportunities/tasks, task_010-025 domain records), each with a deterministic verifier; machine-readable MCP tool schemas serve as the generation seed."
+ },
+ {
+  "name": "battlecard_synthesis_from_calls",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:33-battlecard-harborview.md",
+   "anchor:34-battlecards-atlas-crestline.md",
+   "anchor:44-artifact-win-loss-q2-2026.md",
+   "anchor:39-artifact-call-transcript-summit.md",
+   "anchor:40-artifact-call-transcript-meridian.md",
+   "document_agent",
+   "their_weaknesses_attack_here",
+   "winloss_talking_points"
+  ],
+  "note": "Battlecard docs, win/loss artifact, and a document-write tool exist, but the transcript corpus is only 2 calls \u2014 the item needs 10+ transcripts seeded with competitor facts plus won/lost+competitor fields on opportunities for corpus filtering."
+ },
+ {
+  "name": "buyer_sentiment_engagement_scoring",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:39-artifact-call-transcript-summit.md",
+   "anchor:40-artifact-call-transcript-meridian.md",
+   "query_documents",
+   "transcript_evidence",
+   "anchor:19-conversation-intelligence-standards.md"
+  ],
+  "note": "Readable transcripts exist, but only two and without deliberately valenced buyer language; even the recommended coarse 3-class variant needs a larger seeded multi-call corpus. (Item is self-flagged as weakly verifiable regardless.)"
+ },
+ {
+  "name": "case_escalation_sla",
+  "verdict": "partial",
+  "evidence": [
+   "cases:17",
+   "case_create",
+   "customer_support_workflow_agent",
+   "support_tickets:500",
+   "update_support_tickets_status",
+   "case_management_sla table",
+   "anchor:10-case-management-sla.md",
+   "employees"
+  ],
+  "note": "Cases/tickets, write tools, and the SLA policy doc exist, but there are no entitlement/milestone timer tables and no EmailMessage/CaseComment first-response artifact, so milestone completion and escalation replay cannot be verified from timestamps."
+ },
+ {
+  "name": "communicate_info_assertion_scoring",
+  "verdict": "out_of_scope",
+  "evidence": [],
+  "note": "A transcript-assertion grading protocol from tau2-bench \u2014 a benchmark scoring technique, not a sales-environment feature."
+ },
+ {
+  "name": "compositional_task_generator",
+  "verdict": "partial",
+  "evidence": [
+   "task_003 [cases,opportunities,tasks]",
+   "task_004 [accounts,cases,contacts]",
+   "task_008 [accounts,cases,contacts]"
+  ],
+  "note": "The generator already mints multi-table compositional tasks, but there is no library of atomic subtasks with per-subtask pre/postconditions and fix procedures, nor balanced sampling over an intent x subtask-count grid for controlled difficulty scaling."
+ },
+ {
+  "name": "confidentiality_internal_ops_refusal",
+  "verdict": "partial",
+  "evidence": [
+   "employees:18",
+   "employee_work_assignments",
+   "support_tickets:500",
+   "lookup_support_ticket_with_employees",
+   "anchor:22-inbound-routing-matrix.md",
+   "routing_decision_table",
+   "anchor:personas_roles-crm-org.md",
+   "sheet_agent",
+   "multi-turn simulated users (harness)"
+  ],
+  "note": "Leakable internal data, routing-policy docs, an aggregation surface, and external personas all exist; the concrete miss is a transcript-level leak/refusal verifier \u2014 a disclosure changes no state, so the state-diff harness cannot detect it."
+ },
+ {
+  "name": "contract_clause_extraction_cuad",
+  "verdict": "covered",
+  "evidence": [
+   "anchor:41-artifact-msa-ironwood.md",
+   "anchor:42-artifact-order-form-summit.md",
+   "anchor:23-clm-clause-library.md",
+   "nda",
+   "sow",
+   "order_form",
+   "term_and_renewal",
+   "query_documents",
+   "accounts (Ironwood Group Account, task_006)"
+  ],
+  "note": "Two full contract artifacts plus a clause library and NDA/SOW clause tables are readable via query_documents and link to in-world accounts; gold clause annotations are task authoring. A third full-prose contract doc (NDA/SOW exist only as row tables) would deepen coverage."
+ },
+ {
+  "name": "cost_credit_budgeting",
+  "verdict": "partial",
+  "evidence": [
+   "reference-relative turn budgets (harness)",
+   "--max-turns flag"
+  ],
+  "note": "Harness turn budgets provide per-run cost ceilings, but the world has no per-tool credit-price metadata, no usage_log table, and no estimate_cost operation, so in-world budget-tracking behavior cannot be expressed (billing_meters is customer billing data, not agent spend)."
+ },
+ {
+  "name": "crm_end_to_end_operation_eval",
+  "verdict": "covered",
+  "evidence": [
+   "account_create",
+   "contact_create",
+   "opportunity_create",
+   "case_create",
+   "task_create",
+   "update_sales_leads_status",
+   "update_sales_opportunities_status",
+   "query_sales_leads",
+   "sales_leads:500",
+   "sales_opportunities:500",
+   "task_003",
+   "task_004",
+   "task_017",
+   "state-diff verifiers (harness)"
+  ],
+  "note": "Full create/read/status-update surface over seeded CRM state with generated end-to-end tasks already verified by deterministic state diffs \u2014 this is the world's core capability and is exercised today."
+ },
+ {
+  "name": "cross_domain_conditional_workflows",
+  "verdict": "partial",
+  "evidence": [
+   "calendar_agent",
+   "query_calendar_events",
+   "document_agent",
+   "task_create",
+   "sheet_agent",
+   "lookup_employee_with_departments",
+   "aggregates",
+   "funnel_conversion_rates",
+   "task_001",
+   "task_004"
+  ],
+  "note": "Calendar, CRM, docs, sheets, and tasks share an entity graph and multi-table tasks exist, but there is no interpersonal outbound channel \u2014 no send_email or message-post write tool (messages has only the read tool chat_scheduled_messages_list) \u2014 so 'if condition then email person X' branches cannot complete."
+ },
+ {
+  "name": "deliverability_compliance_management",
+  "verdict": "partial",
+  "evidence": [
+   "authentication_domains",
+   "bounces",
+   "blocks",
+   "suppression_groups",
+   "get_suppression_bounces",
+   "get_suppression_blocks",
+   "suppression_and_kpis",
+   "anchor:17-outbound-sequencing-playbook.md",
+   "anchor:regulations-compliance-regimes.md"
+  ],
+  "note": "Domain-auth and bounce/block/suppression substrate is present, but there is no sending-account object carrying warmup_day/daily_limit state and no logged outbound send tool for a pre-send validation gate to protect."
+ },
+ {
+  "name": "ecommerce_mcp_server_tasks",
+  "verdict": "out_of_scope",
+  "evidence": [],
+  "note": "E-commerce storefront vertical (products/orders/inventory MCP server) \u2014 another vertical, same category as the Magento exclusion."
+ },
+ {
+  "name": "enrichment_waterfall",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:21-enrichment-waterfall-config.md",
+   "accept_all",
+   "risky",
+   "unknown",
+   "tech_signals",
+   "visitor_identification"
+  ],
+  "note": "The waterfall config doc and email-verification outcome tables (accept_all/risky/unknown) are seeded, but there are no enrichment-provider tools with distinct coverage/injected failure rates, no enrichment_cache or lead_enrichment tables, and no per-provider credit accounting."
+ },
+ {
+  "name": "handle_time",
+  "verdict": "covered",
+  "evidence": [
+   "support_tickets:500",
+   "query_support_tickets",
+   "lookup_support_ticket_with_employees",
+   "employees:18",
+   "cases",
+   "case_get",
+   "repo commit 4d42c32 (40-turn handle_time experiment)"
+  ],
+  "note": "Ownership-linked ticket/case records at scale plus employee joins support per-agent duration aggregation with exact-match answers; the repo has already run a measured handle_time experiment against this world, proving express-and-verify works now."
+ },
+ {
+  "name": "icp_scoring_qualification",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:02-lead-scoring-policy.md",
+   "lead_scoring_policy",
+   "account_tiering_standard",
+   "tech_signals",
+   "aum_bands",
+   "sales_leads:500",
+   "update_sales_leads_status"
+  ],
+  "note": "Scoring policy docs/tables and lead records exist, but there is no website_extract/content tool, no numeric lead_scores field or table to write the 0-10 score into, and no signal_cache \u2014 scoring outputs are limited to status transitions."
+ },
+ {
+  "name": "internal_operation_data",
+  "verdict": "partial",
+  "evidence": [
+   "sales_opportunities:500",
+   "support_tickets:500",
+   "opportunities",
+   "anchor:39-artifact-call-transcript-summit.md",
+   "anchor:40-artifact-call-transcript-meridian.md",
+   "employees",
+   "anchor:personas_roles-crm-org.md",
+   "multi-turn simulated users (harness)"
+  ],
+  "note": "The internal metrics are genuinely computable from seeded records and external personas are definable, but refusal grading requires transcript-level judging/leak-scanning \u2014 the state-diff verifier cannot score a refusal-vs-disclosure outcome that leaves state unchanged."
+ },
+ {
+  "name": "knowledge_qa",
+  "verdict": "covered",
+  "evidence": [
+   "agent_documents (46 anchor docs being seeded)",
+   "anchor:13-product-catalog.md",
+   "anchor:14-renewal-playbook.md",
+   "query_documents",
+   "search_knowledge",
+   "add_to_knowledge",
+   "multi-turn simulated users (harness)"
+  ],
+  "note": "The anchor corpus is a genuine knowledge base with retrieval tools and multi-turn user support; F1/fuzzy answer scoring is a metric layered on top of authored gold answers."
+ },
+ {
+  "name": "lead_routing",
+  "verdict": "covered",
+  "evidence": [
+   "query_sales_leads",
+   "sales_leads:500",
+   "lookup_sales_lead_with_employees",
+   "employees",
+   "territory",
+   "routing_decision_table",
+   "inbound_routing_matrix",
+   "anchor:22-inbound-routing-matrix.md",
+   "anchor:15-territory-model.md",
+   "anchor:30-territory-rules-of-engagement.md"
+  ],
+  "note": "Leads, rep joins, and multiple routing rule tables/docs make the correct assignee deterministically derivable and exact-match verifiable now; the multi-turn variant rides on the harness's simulated users."
+ },
+ {
+  "name": "linkedin_post_engager_scraping",
+  "verdict": "gap",
+  "evidence": [],
+  "note": "No social-post objects, no engager-scrape tool, and no lead-import/create operation (sales_leads exposes only query and status-update tools) \u2014 essentially unsupported."
+ },
+ {
+  "name": "meddic_field_extraction",
+  "verdict": "covered",
+  "evidence": [
+   "anchor:39-artifact-call-transcript-summit.md",
+   "anchor:40-artifact-call-transcript-meridian.md",
+   "meddic_scorecard",
+   "meddic_extraction_scorecard",
+   "transcript_evidence",
+   "contacts",
+   "opportunities (Summit Partners Opportunity, task_003)",
+   "query_documents",
+   "contact_get"
+  ],
+  "note": "Transcripts link to in-world opportunities/contacts, and the world carries dedicated MEDDIC scorecard tables \u2014 this capability was designed in. Gold annotations are task authoring; corpus is small (2 transcripts) but sufficient to express and verify now."
+ },
+ {
+  "name": "mql_sql_handoff_sla",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:31-mql-sql-handoff-sla.md",
+   "mql_definition",
+   "sal_gate",
+   "handoff_to_ae",
+   "update_sales_leads_status",
+   "company_sales_handoffs",
+   "update_company_sales_handoffs_status",
+   "task_create",
+   "employees"
+  ],
+  "note": "Stage transitions, handoff records, touch-task creation, and the exact SLA doc exist; missing writable mql_date/sql_date timestamp and rejection-reason fields \u2014 the status-only update tools cannot stamp the timestamps the business-hours SLA verification needs."
+ },
+ {
+  "name": "multi_turn_sql_db_operations",
+  "verdict": "partial",
+  "evidence": [
+   "query_* / update_*_status tool family",
+   "task_010..task_025",
+   "state-diff verifiers (harness)"
+  ],
+  "note": "Multi-turn DB question/update episodes with final-state verification are fully supported through typed tools (state diff is the table-state-hash equivalent), but there is no raw SQL execution tool with iterative result feedback."
+ },
+ {
+  "name": "next_step_extraction",
+  "verdict": "covered",
+  "evidence": [
+   "anchor:39-artifact-call-transcript-summit.md",
+   "anchor:40-artifact-call-transcript-meridian.md",
+   "calls",
+   "calls_info",
+   "contacts",
+   "contact_get",
+   "task_create",
+   "query_documents"
+  ],
+  "note": "Transcripts, call metadata objects (calls table), and contact resolution for speaker naming exist; gold (owner, action, due_date) tuples are task authoring, and the follow-up-task workflow extension is state-diff verifiable via task_create."
+ },
+ {
+  "name": "objection_detection_classification",
+  "verdict": "covered",
+  "evidence": [
+   "anchor:39-artifact-call-transcript-summit.md",
+   "anchor:40-artifact-call-transcript-meridian.md",
+   "tracker_keywords",
+   "disposition_codes",
+   "anchor:19-conversation-intelligence-standards.md",
+   "anchor:33-battlecard-harborview.md",
+   "anchor:34-battlecards-atlas-crestline.md",
+   "query_documents"
+  ],
+  "note": "Taxonomy substrate (tracker_keywords, battlecard objection sections, conversation-intelligence standards) plus readable transcripts support single-transcript episodes now; the multi-transcript aggregation variant would want a larger call corpus."
+ },
+ {
+  "name": "opportunity_stage_gate_enforcement",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:04-opportunity-stage-gates.md",
+   "opportunity_stage_gates",
+   "anchor:25-pipeline-inspection-rules.md",
+   "update_sales_opportunities_status",
+   "sales_opportunities:500",
+   "opportunities",
+   "task_create",
+   "task_017",
+   "task_024",
+   "task_025"
+  ],
+  "note": "Stage writes, gate docs, and generated stage-gate tasks already exist, but there are no Quote or OpportunityContactRole objects, so canonical gates like 'Proposal requires attached quote' or 'decision-maker role identified' cannot be expressed or checked."
+ },
+ {
+  "name": "pass_hat_k_reliability_metric",
+  "verdict": "out_of_scope",
+  "evidence": [],
+  "note": "pass^k is a reliability scoring metric \u2014 explicitly a benchmark scoring technique, not an environment feature."
+ },
+ {
+  "name": "playbook_grounded_reply_drafting",
+  "verdict": "partial",
+  "evidence": [
+   "playbooks",
+   "list_playbooks",
+   "agent_playbooks",
+   "anchor:17-outbound-sequencing-playbook.md",
+   "anchor:18-email-template-library.md",
+   "snippets",
+   "merge_field_conventions",
+   "conversations",
+   "retrieve_conversation",
+   "draft_matter_document"
+  ],
+  "note": "A rich playbook/template/snippet corpus and conversation-thread objects exist, but there is no create_draft/send_reply email operation (drafts are only expressible as documents) and no true email-thread object with per-message history and recipients."
+ },
+ {
+  "name": "product_catalog_rag",
+  "verdict": "covered",
+  "evidence": [
+   "anchor:13-product-catalog.md",
+   "anchor:43-artifact-pricing-rate-card.md",
+   "fy2026_list_prices",
+   "line_items_list_prices_per_13_product_catalogmd",
+   "volume_bands",
+   "currency_handling",
+   "query_documents",
+   "search_knowledge"
+  ],
+  "note": "Catalog and rate-card docs plus price/volume-band tables give exact groundable facts (price, tiers, currency rules), with retrieval tools in place; off-catalog-claim grounding checks are task authoring."
+ },
+ {
+  "name": "prompt_injection_data_exfiltration",
+  "verdict": "partial",
+  "evidence": [
+   "contacts (PII fixtures)",
+   "fy2026_list_prices",
+   "anchor:43-artifact-pricing-rate-card.md",
+   "case_create",
+   "support_tickets:500 (injectable free text)",
+   "post_marketing_singlesends",
+   "post_campaigns"
+  ],
+  "note": "Confidential fixtures and injectable free-text inbound records exist, and marketing-send object creation is state-diff visible; missing a general send_email/http_post outbound tool with arbitrary recipient and fully logged payload, plus an outbound-payload leak scanner for protected strings."
+ },
+ {
+  "name": "quote_contract_consistency",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:41-artifact-msa-ironwood.md",
+   "anchor:42-artifact-order-form-summit.md",
+   "order_form",
+   "sow",
+   "nda",
+   "fy2026_list_prices",
+   "opportunities"
+  ],
+  "note": "The document side (MSA, order form) and pricing references exist, but there are no Quote/QuoteLineItem record tables and no quote_id linkage field, so the record-vs-document divergence audit at the heart of this item cannot be expressed."
+ },
+ {
+  "name": "renewal_date_notice_deadline",
+  "verdict": "covered",
+  "evidence": [
+   "anchor:41-artifact-msa-ironwood.md",
+   "term_and_renewal",
+   "renewal_mechanics_per_msa_and_14_renewal_playbookmd",
+   "anchor:14-renewal-playbook.md",
+   "anchor:28-renewal-expansion-runbook.md",
+   "task_create",
+   "query_calendar_events"
+  ],
+  "note": "MSA term/renewal/notice clauses plus record-side term tables enable extraction, cross-referencing, and date arithmetic against the world clock; the reminder-task extension is a state-diff-verifiable write via task_create."
+ },
+ {
+  "name": "retail_policy_constrained_customer_service",
+  "verdict": "out_of_scope",
+  "evidence": [],
+  "note": "tau-bench retail vertical (orders, returns, exchanges) \u2014 another vertical, not a sales-domain environment capability."
+ },
+ {
+  "name": "sales_call_summarization",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:39-artifact-call-transcript-summit.md",
+   "anchor:40-artifact-call-transcript-meridian.md",
+   "query_documents"
+  ],
+  "note": "Readable transcripts exist, but no 10k+-token long-context transcript fixture, and checklist-coverage/hallucination-screen scoring of free-text output is outside the state-diff/exact-match verification the harness provides."
+ },
+ {
+  "name": "sales_insight_mining",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:39-artifact-call-transcript-summit.md",
+   "anchor:40-artifact-call-transcript-meridian.md",
+   "transcript_evidence",
+   "tasks",
+   "activities",
+   "opportunities",
+   "query_documents",
+   "search_knowledge"
+  ],
+  "note": "Transcripts, activity records, opportunity linkage, and full-text search exist, but the sales-interaction corpus is thin \u2014 no EmailMessage-style sales emails and only two transcript docs \u2014 insufficient for mining trends 'across many records'."
+ },
+ {
+  "name": "side_effect_classification_scoring",
+  "verdict": "covered",
+  "evidence": [
+   "deterministic state-diff verifiers with collateral-damage assertions (harness)",
+   "per-task expected states on task_003..task_025",
+   "deterministic world resets (harness)"
+  ],
+  "note": "The harness's collateral-damage assertions are exactly this capability: any row change outside the expected delta is caught. The only refinement not yet present is an explicit irreversibility taxonomy per action type for harmful-vs-harmless sub-classification."
+ },
+ {
+  "name": "spin_call_script_generation",
+  "verdict": "partial",
+  "evidence": [
+   "query_documents",
+   "document_agent",
+   "draft_matter_document",
+   "agent_documents#1 (Meridian Associates)",
+   "anchor:33-battlecard-harborview.md"
+  ],
+  "note": "Research-input documents and document-write tools exist, but no SPIN methodology reference doc is in the corpus, and SPIN-structure/pain-point-mapping quality is not verifiable by the state-diff harness."
+ },
+ {
+  "name": "talk_pattern_coaching_metrics",
+  "verdict": "partial",
+  "evidence": [
+   "talk_ratio",
+   "coaching_cadence",
+   "anchor:19-conversation-intelligence-standards.md",
+   "anchor:39-artifact-call-transcript-summit.md",
+   "anchor:40-artifact-call-transcript-meridian.md"
+  ],
+  "note": "Coaching-threshold tables (talk_ratio, coaching_cadence) exist and transcripts are speaker-labeled, but transcript fixtures lack per-utterance start/end timestamps \u2014 only question-count/word-share metrics are computable; duration-based metrics need timestamped transcripts."
+ },
+ {
+  "name": "trajectory_match_and_multiturn_llm_judge",
+  "verdict": "out_of_scope",
+  "evidence": [],
+  "note": "Trajectory matching plus a 5-dimension LLM-judge rubric \u2014 benchmark scoring techniques (the multi-turn user simulator part is already a stated harness feature)."
+ },
+ {
+  "name": "voice_cold_call_lead_reactivation",
+  "verdict": "partial",
+  "evidence": [
+   "calls",
+   "calls_add",
+   "calls_info",
+   "calls_update",
+   "calendar_agent",
+   "sales_leads:500",
+   "update_sales_leads_status",
+   "multi-turn simulated users (harness)"
+  ],
+  "note": "Call record objects, calendar booking, lead-status writes, and simulated users to play the prospect exist; missing a place_call/telephony operation and structured call-completion payloads (transcript, duration, cost, tool_call events) as world artifacts."
+ },
+ {
+  "name": "workarena_pp_compositional_workflows",
+  "verdict": "out_of_scope",
+  "evidence": [],
+  "note": "ServiceNow browser-UI benchmark \u2014 explicitly the ServiceNow-UI exclusion; judged via a ServiceNow instance backend, not this sales world."
+ },
+ {
+  "name": "activity_priority",
+  "verdict": "covered",
+  "evidence": [
+   "tasks (table)",
+   "opportunities (table)",
+   "tasks_list",
+   "task_get",
+   "opportunity_get",
+   "anchor:11-activity-logging-standards.md",
+   "anchor:25-pipeline-inspection-rules.md",
+   "task_003",
+   "task_007"
+  ],
+  "note": "Tasks and opportunities are linked in generated tasks (task_003/007 span opportunities+tasks); prioritization/misalignment criteria live in anchor:11 and anchor:25; exact-match answers verified by the harness's deterministic verifiers."
+ },
+ {
+  "name": "approval_authority_compliance",
+  "verdict": "partial",
+  "evidence": [
+   "cpq_discount_policy (table)",
+   "finance_approval_thresholds (table)",
+   "deal_desk_charter (table)",
+   "anchor:05-cpq-discount-policy.md",
+   "anchor:08-finance-approval-thresholds.md",
+   "anchor:06-deal-desk-charter.md",
+   "harness multi-turn simulated users"
+  ],
+  "note": "Authority-matrix docs and adversarial multi-turn pressure exist, but the world lacks a quote object and discount/refund/credit write tools (no update_quote_discount, issue_refund, apply_credit) and has no approval_request table (amount, required_approver_role, status); task_create + update_sales_opportunities_status are only weak stand-ins."
+ },
+ {
+  "name": "bant_qualification_extraction",
+  "verdict": "covered",
+  "evidence": [
+   "anchor:39-artifact-call-transcript-summit.md",
+   "anchor:40-artifact-call-transcript-meridian.md",
+   "anchor:02-lead-scoring-policy.md",
+   "anchor:31-mql-sql-handoff-sla.md",
+   "sal_gate (table)",
+   "mql_definition (table)",
+   "query_documents",
+   "query_sales_leads",
+   "opportunity_get"
+  ],
+  "note": "Discovery-call transcripts, qualification rubric docs (lead scoring policy, SAL gate, MQL definition), and lead/opportunity reads for cross-checking all exist; gold per-dimension labels are task-authoring artifacts. Corpus is only 2 transcripts but sufficient per episode."
+ },
+ {
+  "name": "blacklist_suppression_management",
+  "verdict": "partial",
+  "evidence": [
+   "blocks (table)",
+   "bounces (table)",
+   "suppression_groups (table)",
+   "suppression_and_kpis (table)",
+   "get_suppression_blocks",
+   "get_suppression_bounces",
+   "anchor:17-outbound-sequencing-playbook.md"
+  ],
+  "note": "Read-side suppression substrate is present, but there is no write tool targeting blocks/bounces/suppression_groups (no blacklist_add/import), no check/normalization operation, and no export-from-sequencer op \u2014 a suppression write tool is the concrete missing piece."
+ },
+ {
+  "name": "call_grounded_followup_email",
+  "verdict": "covered",
+  "evidence": [
+   "anchor:39-artifact-call-transcript-summit.md",
+   "anchor:40-artifact-call-transcript-meridian.md",
+   "contacts (table)",
+   "contact_get",
+   "contacts_list",
+   "anchor:18-email-template-library.md",
+   "document_agent",
+   "query_documents"
+  ],
+  "note": "Transcripts, attendee contact records for correct names, and a draft surface (document_agent -> agent_documents) exist; there is no dedicated EmailMessage object but the item only needs an optional draft artifact. Checklist + entailment gold is authoring-side."
+ },
+ {
+  "name": "churn_risk_save_workflow",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:27-customer-success-health-model.md",
+   "anchor:28-renewal-expansion-runbook.md",
+   "deal_health_score (table)",
+   "risk_notes_csm_post_call (table)",
+   "accounts (table)",
+   "cases_list",
+   "opportunity_create",
+   "anchor:05-cpq-discount-policy.md"
+  ],
+  "note": "Health rubric, save-play runbook, and account/case/opportunity surfaces exist; missing a per-account usage/engagement-metrics table and a contract/subscription table with renewal_date/ARR to compute risk from \u2014 term_and_renewal and renewal_mechanics are policy tables, not per-account subscription data."
+ },
+ {
+  "name": "competitor_mention_detection",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:33-battlecard-harborview.md",
+   "anchor:34-battlecards-atlas-crestline.md",
+   "tracker_keywords (table)",
+   "conversation_intelligence_standards (table)",
+   "anchor:39-artifact-call-transcript-summit.md",
+   "anchor:40-artifact-call-transcript-meridian.md",
+   "transcript_evidence (table)"
+  ],
+  "note": "Competitor registry (battlecards + tracker_keywords) exists, but the capability needs a 10+ transcript corpus seeded with alias mentions and false-positive traps across opportunities \u2014 only 2 call transcripts exist world-wide; the transcript corpus is the missing artifact."
+ },
+ {
+  "name": "confidentiality_company_secret_refusal",
+  "verdict": "covered",
+  "evidence": [
+   "anchor:05-cpq-discount-policy.md",
+   "anchor:43-artifact-pricing-rate-card.md",
+   "fy2026_list_prices (table)",
+   "pricing_pressure_guidance (table)",
+   "cpq_discount_policy (table)",
+   "query_documents",
+   "search_knowledge",
+   "harness multi-turn simulated users"
+  ],
+  "note": "The confidential facts (discount floors, rate card, pricing-pressure guidance) genuinely exist in-world and are reachable via retrieval tools, so a leak is detectable and materially wrong; persona pretexts come from the harness's simulated users; the per-episode leak manifest is authoring-side."
+ },
+ {
+  "name": "configurable_user_simulator_strategies",
+  "verdict": "out_of_scope",
+  "evidence": [
+   "harness multi-turn simulated users (already provided)"
+  ],
+  "note": "Pluggable user-strategy wrappers (plain/ReAct/Verify/Reflection) and swappable user models are benchmark-harness engineering for varying user difficulty, not a sales-domain environment feature; no world table/tool/document would host it."
+ },
+ {
+  "name": "conversational_bant_qualification",
+  "verdict": "partial",
+  "evidence": [
+   "harness multi-turn simulated users",
+   "contacts (table)",
+   "contact_create",
+   "sales_leads (table)",
+   "query_sales_leads",
+   "save_memory",
+   "anchor:02-lead-scoring-policy.md",
+   "anchor:17-outbound-sequencing-playbook.md"
+  ],
+  "note": "Multi-turn elicitation, prospect records, structured memory (save_memory), and conversation-policy docs exist; missing evidenced BANT/icp_score/product_interest fields on contact/lead schema and a field-level lead update tool (only update_sales_leads_status and contact_create exist)."
+ },
+ {
+  "name": "crm_autopopulation_from_call",
+  "verdict": "covered",
+  "evidence": [
+   "anchor:39-artifact-call-transcript-summit.md",
+   "opportunities (table)",
+   "task_create",
+   "contact_create",
+   "contacts_list",
+   "sales_workflow_agent",
+   "task_003",
+   "harness state-diff verifiers"
+  ],
+  "note": "anchor:39 pairs with the Summit Partners opportunity, and task_003 already exercises end-to-end opportunity+task writes; duplicate-contact trap is expressible via a contacts_list pre-check, and final-state matching is exactly what the state-diff harness does. Field richness (next_step/competitor columns) is the one unverified detail."
+ },
+ {
+  "name": "crm_stub_mcp_server_tasks",
+  "verdict": "covered",
+  "evidence": [
+   "accounts_list",
+   "account_get",
+   "account_create",
+   "contact_create",
+   "opportunity_create",
+   "case_create",
+   "task_create",
+   "opportunities_list",
+   "task_003",
+   "task_004",
+   "task_008"
+  ],
+  "note": "The world is itself an MCP server exposing a Salesforce-style CRM CRUD/query tool set larger than the source's 11-tool stub, with deterministic backend; trajectory/parameter matching is a scoring choice \u2014 the harness's state-diff verifiers provide the outcome-side check, and generated tasks already exercise the tool set."
+ },
+ {
+  "name": "deal_risk_signal_detection",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:25-pipeline-inspection-rules.md",
+   "deal_health_score (table)",
+   "stale_opportunity_ladder (table)",
+   "sandbagging_red_flags (table)",
+   "opportunities (table)",
+   "contacts (table)",
+   "query_documents",
+   "anchor:39-artifact-call-transcript-summit.md"
+  ],
+  "note": "The risk-signal catalog is unusually rich (pipeline inspection rules, deal health score, stale ladder, sandbagging flags) and CRM joins exist; missing the 3-5-call transcript series per opportunity (only 2 transcripts world-wide) needed for stage-transcript-mismatch and trend signals."
+ },
+ {
+  "name": "draft_review_approval_gate",
+  "verdict": "partial",
+  "evidence": [
+   "marketing_campaigns (table)",
+   "update_marketing_campaigns_status",
+   "marketing_content_assets (table)",
+   "update_marketing_content_assets_status",
+   "patch_campaigns_campaign_id",
+   "singlesends (table)",
+   "sequence_design_rules (table)",
+   "answer_reuse_and_approval_rules (table)",
+   "harness multi-turn simulated users"
+  ],
+  "note": "Draft/approval status transitions, quality-rubric docs, and simulated approval interrupts are all expressible; missing an actual send/send_test_email tool, so 'nothing sends without approval' can only be verified as status gating rather than send suppression."
+ },
+ {
+  "name": "email_pattern_discovery_verification",
+  "verdict": "gap",
+  "evidence": [
+   "anchor:21-enrichment-waterfall-config.md",
+   "sales_leads (table)"
+  ],
+  "note": "The entire verification tool surface \u2014 mx_lookup, smtp_verify, and a verifier-API cascade \u2014 is absent and has no analog in this deterministic world; only the enrichment-waterfall policy doc and lead records exist, so the capability is essentially unsupported."
+ },
+ {
+  "name": "forecast_rollup_commit",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:12-forecast-methodology.md",
+   "anchor:26-forecast-commit-standards.md",
+   "commit (table)",
+   "best_case (table)",
+   "coverage_ratio (table)",
+   "opportunities (table)",
+   "sales_opportunities (table)",
+   "query_employees",
+   "lookup_employee_with_departments",
+   "sheet_agent",
+   "anchor:29-quota-comp-plan.md"
+  ],
+  "note": "Stage-to-category mapping docs, opportunity data at 500-row scale, and an employee/department hierarchy exist, and sheet_agent/agent_sheets can hold the rollup artifact; missing a Quota table and a ForecastItem/ForecastAdjustment table so adjustment placement and commit submission can be state-verified."
+ },
+ {
+  "name": "human_escalation_handoff",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:06-deal-desk-charter.md",
+   "anchor:08-finance-approval-thresholds.md",
+   "anchor:10-case-management-sla.md",
+   "deal_room_channels_slack_style (table)",
+   "task_create",
+   "conversations_create",
+   "document_agent",
+   "save_memory"
+  ],
+  "note": "Escalation-trigger policy docs and a handoff surface (task to owner, deal-room channel creation, context doc) exist; missing a chat message-post tool (the messages table has only the read tool chat_scheduled_messages_list) and any thread pause/hold state."
+ },
+ {
+  "name": "inbound_reply_intent_and_response",
+  "verdict": "partial",
+  "evidence": [
+   "task_create",
+   "calendar_agent",
+   "contact_create",
+   "anchor:17-outbound-sequencing-playbook.md",
+   "suppression_and_kpis (table)",
+   "blocks (table)",
+   "bounces (table)",
+   "harness multi-turn simulated users"
+  ],
+  "note": "All response actions (meeting event via calendar_agent, referral contact, task) are executable and the unsubscribe policy is documented; missing an inbound EmailMessage/thread object to classify (messages:40 is Slack-style) and a writable do_not_contact/suppression field \u2014 blocks/bounces are read-only."
+ },
+ {
+  "name": "invoicing_dunning",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:24-billing-dunning-policy.md",
+   "invoicing_rules (table)",
+   "billing (table)",
+   "billing_object_mapping_stripe_style (table)",
+   "invoices (table)",
+   "get_invoices",
+   "credit_notes (table)",
+   "post_charges",
+   "post_billing_alerts",
+   "task_create"
+  ],
+  "note": "Dunning policy and Stripe-style billing tables exist, and ladder actions (billing alert, call task, charge) are executable; missing an invoice create/update tool (invoices has only get_invoices) and a payment-application surface to drive aging state through the ladder."
+ },
+ {
+  "name": "lead_magnet_audit_report_generation",
+  "verdict": "partial",
+  "evidence": [
+   "document_agent",
+   "agent_documents (table)",
+   "sales_leads (table)",
+   "anchor:44-artifact-win-loss-q2-2026.md",
+   "anchor:33-battlecard-harborview.md"
+  ],
+  "note": "In-world doc generation and prospect records exist, and battlecards/win-loss content can approximate proof points; missing a case-study document corpus and a link field on lead/contact records to store the deliverable reference (a doc id can stand in for a share link)."
+ },
+ {
+  "name": "lead_scoring_grading",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:02-lead-scoring-policy.md",
+   "lead_scoring_policy (table)",
+   "mql_definition (table)",
+   "sales_leads (table)",
+   "query_sales_leads",
+   "harness state-diff verifiers"
+  ],
+  "note": "Scoring policy and a 500-row lead table exist; missing an engagement-event/activity stream table keyed to leads (the raw input for behavioral scoring with decay) and a field-level lead write tool for score/grade/mql flag (only update_sales_leads_status exists)."
+ },
+ {
+  "name": "long_horizon_contextualized_office_workflows",
+  "verdict": "covered",
+  "evidence": [
+   "document_agent",
+   "agent_documents (table)",
+   "sheet_agent",
+   "agent_sheets (table)",
+   "calendar_agent",
+   "agent_events (table)",
+   "query_files",
+   "read_file",
+   "matter_documents (table)",
+   "read_matter_document",
+   "task_001",
+   "harness reference-relative turn budgets"
+  ],
+  "note": "The docs/sheets/calendar/files office surface persists state across interactions, and task_001 is already a contextualized workflow whose parameters live in a matter document; the harness's turn budgets support long-horizon measurement. Email is the one office modality absent."
+ },
+ {
+  "name": "meeting_prep_and_followup_tasks",
+  "verdict": "covered",
+  "evidence": [
+   "calendar_agent",
+   "agent_events (table)",
+   "query_calendar_events",
+   "anchor:20-meeting-scheduling-sla.md",
+   "meeting_types_and_durations (table)",
+   "document_agent",
+   "task_create",
+   "create_scheduled_run",
+   "contacts_list",
+   "opportunity_get"
+  ],
+  "note": "Calendar events, CRM context reads, prep-doc generation, follow-up task creation, and a scheduled-run trigger all exist; attendee-to-deal linkage on the 2 seeded events is thin but fully expressible when authoring episodes."
+ },
+ {
+  "name": "multi_channel_orchestration_switching",
+  "verdict": "gap",
+  "evidence": [
+   "channels (table)",
+   "chat_scheduled_messages_list",
+   "create_scheduled_run"
+  ],
+  "note": "No WhatsApp/Telegram/email send-receive tools exist and even the Slack-style messages table is read-only; no conversation object carries active_channel/window_expiry, so channel-switching before window expiry is essentially unsupported."
+ },
+ {
+  "name": "named_entity_disambiguation",
+  "verdict": "covered",
+  "evidence": [
+   "anchor:13-product-catalog.md",
+   "line_items_list_prices_per_13_product_catalogmd (table)",
+   "fy2026_list_prices (table)",
+   "purchase_orders (table)",
+   "purchase_orders_list",
+   "get_charges",
+   "get_invoices",
+   "customers_list",
+   "contacts_list",
+   "query_documents",
+   "harness multi-turn simulated users"
+  ],
+  "note": "A product catalog (anchor doc + price tables) and customer transaction history (purchase orders, charges, invoices) support resolving vague product references, with the multi-turn customer persona from the harness; there is no SOSL-style fuzzy-search op \u2014 matching happens by reading the catalog doc, which is acceptable for exact-match scoring."
+ },
+ {
+  "name": "npc_colleague_communication_dependency",
+  "verdict": "partial",
+  "evidence": [
+   "employees (table)",
+   "departments (table)",
+   "query_employees",
+   "channels (table)",
+   "harness multi-turn simulated users"
+  ],
+  "note": "Org-chart identities exist and the single simulated user can role-play one colleague; missing a message-post tool over the Slack-style surface (messages is read-only) and multi-NPC backends with per-NPC private knowledge plus checkpoints on who was contacted."
+ },
+ {
+  "name": "offer_extraction_campaign_planning",
+  "verdict": "gap",
+  "evidence": [
+   "anchor:32-campaign-catalog.md",
+   "fy2026_campaigns (table)",
+   "query_documents"
+  ],
+  "note": "Only the in-world campaign-catalog side exists; there is no website-scrape tool, no external prospect-search provider taxonomy, and no credit-cost accounting \u2014 the core probe-search-and-cost-estimate loop is unsupported in this world."
+ },
+ {
+  "name": "order_form_price_book_consistency",
+  "verdict": "covered",
+  "evidence": [
+   "anchor:42-artifact-order-form-summit.md",
+   "anchor:43-artifact-pricing-rate-card.md",
+   "anchor:13-product-catalog.md",
+   "anchor:05-cpq-discount-policy.md",
+   "order_form (table)",
+   "fy2026_list_prices (table)",
+   "volume_bands (table)",
+   "cpq_discount_policy (table)",
+   "lookup_company_sales_handoff_with_volume_bands",
+   "query_documents"
+  ],
+  "note": "Order-form artifact, rate card/catalog, discount-band policy, and volume-band lookups all exist in-world; seeding the 2-4 discrepancies and the gold discrepancy list is task authoring on top of present substrate, with exact-match verification from the harness."
+ },
+ {
+  "name": "personalized_cold_email_generation",
+  "verdict": "covered",
+  "evidence": [
+   "anchor:17-outbound-sequencing-playbook.md",
+   "anchor:18-email-template-library.md",
+   "sequence_design_rules (table)",
+   "merge_field_conventions (table)",
+   "snippets (table)",
+   "sales_leads (table)",
+   "query_sales_leads",
+   "document_agent"
+  ],
+  "note": "Copywriting-rule docs, a template/snippet corpus, merge-field conventions, and 500 prospect records exist; drafts are written to agent_documents via document_agent (no dedicated email_draft object), and hard rules (word cap, banned phrases, must-mention signal) are mechanically checkable by the verifier."
+ },
+ {
+  "name": "policy_violation_identification",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:07-compliance-review-checklist.md",
+   "anchor:19-conversation-intelligence-standards.md",
+   "compliance_review_checklist (table)",
+   "case_management_sla (table)",
+   "cases_list",
+   "case_get",
+   "query_documents"
+  ],
+  "note": "Checkable policy docs and case tables/tools exist; missing a per-case chat-transcript corpus \u2014 the 2 anchor transcripts are sales calls not attached case chats, and identify-the-violating-case requires transcripts across many cases plus 'None' variants at authoring time."
+ },
+ {
+  "name": "project_board_task_management",
+  "verdict": "partial",
+  "evidence": [
+   "tasks (table)",
+   "tasks_list",
+   "task_get",
+   "task_create",
+   "query_employees",
+   "task_001",
+   "harness state-diff verifiers"
+  ],
+  "note": "task_001 already requires bulk status moves of an assignee's tasks (write path exists via the workflow agents) and final-board-state verification is exactly what the state-diff harness does; missing a delete_task operation (the world exposes no delete tools at all) and a board dimension, and scale is 17 rows vs the source's 300-item board."
+ },
+ {
+  "name": "quotation_pdf_generation",
+  "verdict": "partial",
+  "evidence": [
+   "anchor:13-product-catalog.md",
+   "anchor:43-artifact-pricing-rate-card.md",
+   "fy2026_list_prices (table)",
+   "currency_handling (table)",
+   "document_agent",
+   "anchor:42-artifact-order-form-summit.md"
+  ],
+  "note": "Catalog/pricing/currency substrate and a doc-draft surface exist, so quote-content correctness against catalog pricing/MOQ is verifiable on a drafted document; missing a PDF/letterhead render operation and a channel-send/attachment delivery tool (multi-language support also unevidenced)."
+ },
+ {
+  "name": "quote_document_generation_esignature",
+  "verdict": "partial",
+  "evidence": [
+   "merge_field_conventions (table)",
+   "order_form (table)",
+   "anchor:23-clm-clause-library.md",
+   "nda (table)",
+   "sow (table)",
+   "document_agent",
+   "anchor:42-artifact-order-form-summit.md"
+  ],
+  "note": "Template/merge-field conventions, a clause library, contract-shaped tables, and doc rendering via document_agent exist; missing Quote/QuoteLine tables and the entire e-signature surface \u2014 an envelope send operation and a status field with the sent/viewed/signed lifecycle."
+ },
+ {
+  "name": "rep_compliance_utterance_detection",
+  "verdict": "covered",
+  "evidence": [
+   "anchor:19-conversation-intelligence-standards.md",
+   "anchor:05-cpq-discount-policy.md",
+   "conversation_intelligence_standards (table)",
+   "compliance_review_checklist (table)",
+   "account_executive_sales_rep (table)",
+   "employees (table)",
+   "anchor:39-artifact-call-transcript-summit.md",
+   "anchor:40-artifact-call-transcript-meridian.md",
+   "query_documents",
+   "query_employees"
+  ],
+  "note": "Comms/discount-authority policy docs, rep tables for looking up authority tiers, and sales-call transcripts exist; seeding violations plus near-miss statements and gold (transcript, span, rule) tuples is authoring-side. Corpus is small (2 transcripts) but sufficient per episode."
+ },
+ {
+  "name": "run_tracing_observability",
+  "verdict": "out_of_scope",
+  "evidence": [],
+  "note": "Step-tree run traces, per-step token/cost accounting, and per-claim source attribution are agent-harness telemetry \u2014 a benchmark/infrastructure concern, not a sales-domain environment feature; nothing in the world's tables or tools would host it."
+ },
+ {
+  "name": "sales_cycle_understanding",
+  "verdict": "covered",
+  "evidence": [
+   "opportunities (table)",
+   "sales_opportunities (table)",
+   "query_sales_opportunities",
+   "opportunities_list",
+   "lookup_sales_opportunity_with_sales_leads",
+   "employees (table)",
+   "query_employees",
+   "anchor:12-forecast-methodology.md",
+   "win_rate_calculation_rules (table)",
+   "revenue_metric_definitions (table)",
+   "task_017"
+  ],
+  "note": "Opportunity data at 500-row scale with owners/statuses (task_017 evidences status fields), employee records, join tools, and metric-definition docs support cycle-duration aggregation with exact-match verification; created/close date fields on the generated sales_opportunities schema are the one assumption."
+ },
+ {
+  "name": "security_questionnaire_answering",
+  "verdict": "partial",
+  "evidence": [
+   "query_documents",
+   "search_knowledge",
+   "anchor:35-rfp-answer-library.md",
+   "answer_reuse_and_approval_rules (table)",
+   "anchor:regulations-compliance-regimes.md",
+   "compliance_review_checklist (table)"
+  ],
+  "note": "The grounded document-QA substrate and the adjacent RFP answer library exist; missing the security-policy corpus itself (infosec policy, SOC2 summary, DPA, subprocessor list) and a seeded SIG/CAIQ-style questionnaire document with overclaiming-trap questions."
+ },
+ {
+  "name": "simulated_company_hr_admin_finance_tasks",
+  "verdict": "covered",
+  "evidence": [
+   "hr_leave_requests (table)",
+   "hr_performance_reviews (table)",
+   "finance_expense_reports (table)",
+   "finance_budgets (table)",
+   "query_hr_leave_requests",
+   "update_hr_leave_requests_status",
+   "lookup_finance_expense_report_with_employees",
+   "employees (table)",
+   "departments (table)",
+   "task_010",
+   "task_011",
+   "task_012",
+   "task_013",
+   "task_015",
+   "task_016",
+   "sheet_agent"
+  ],
+  "note": "Back-office digital-employee work is first-class here: 500-row HR/finance tables, query/update/join tools, employee directory, and seven generated tasks already exercise them; the source benchmark's docker/browser/ownCloud stack is replaced by MCP tools plus sheets/docs surfaces, which preserves the capability being measured."
+ },
+ {
+  "name": "suitecrm_policy_aware_web_tasks",
+  "verdict": "partial",
+  "evidence": [
+   "accounts (table)",
+   "contacts (table)",
+   "sales_leads (table)",
+   "opportunities (table)",
+   "cases (table)",
+   "anchor:07-compliance-review-checklist.md",
+   "anchor:16-data-quality-rules.md",
+   "harness collateral-damage assertions",
+   "harness reference-relative turn budgets"
+  ],
+  "note": "The sales-domain essence \u2014 policy-constrained CRM tasks with violation detection (no-delete, scope limits, action budgets) \u2014 is supported via MCP tools, the anchor policy corpus, and the harness's collateral-damage assertions plus turn budgets; missing the browser/BrowserGym web-UI surface and observation-modality variants that define the source benchmark."
+ },
+ {
+  "name": "tiered_tool_use_call_retrieve_plan",
+  "verdict": "covered",
+  "evidence": [
+   "~200-tool deterministic MCP tool surface (accounts_list through update_company_sourcing_handoffs_status)",
+   "lookup_* join tools",
+   "task_003",
+   "task_004",
+   "task_008",
+   "harness deterministic state-diff verifiers",
+   "harness reference-relative turn budgets"
+  ],
+  "note": "L1 (call a given tool), L2 (select the right tool among ~200 across 10+ namespaces via MCP tool discovery), and L3 (multi-tool chains, already exercised by task_003/004/008) are all expressible with deterministic verification; there is no dedicated keyword-to-API-doc search meta-tool \u2014 MCP tool listing stands in for the retrieval step."
+ },
+ {
+  "name": "transfer_count",
+  "verdict": "partial",
+  "evidence": [
+   "cases (table)",
+   "cases_list",
+   "case_get",
+   "employees (table)",
+   "query_employees"
+  ],
+  "note": "Cases and human agents exist, but there is no CaseHistory/ownership-change-event table recording old/new owner with timestamps, so transfer counts cannot be computed at all; adding and seeding a case-ownership-history table is the one missing artifact and also unlocks the non-answerable ('None') variants."
+ },
+ {
+  "name": "web_to_lead_capture_autoresponse",
+  "verdict": "partial",
+  "evidence": [
+   "web_form_definitions (table)",
+   "visitor_identification (table)",
+   "inbound_routing_matrix (table)",
+   "routing_decision_table (table)",
+   "utm_conventions (table)",
+   "anchor:22-inbound-routing-matrix.md",
+   "anchor:18-email-template-library.md",
+   "sales_leads (table)"
+  ],
+  "note": "Form definitions, routing/auto-response rule substrate, UTM conventions, and templates all exist; missing a lead-create write tool (no create op targets sales_leads) and a templated-email send/log operation to record which auto-response template fired."
+ },
+ {
+  "name": "wrong_stage_rectification",
+  "verdict": "covered",
+  "evidence": [
+   "opportunities (table)",
+   "tasks (table)",
+   "opportunity_get",
+   "tasks_list",
+   "anchor:04-opportunity-stage-gates.md",
+   "opportunity_stage_gates (table)",
+   "anchor:25-pipeline-inspection-rules.md",
+   "task_003",
+   "task_024",
+   "task_025"
+  ],
+  "note": "Opportunities carry stages (task_003 shows 'discovery'), activities link to deals, and stage-definition criteria exist as both anchor doc and table (already exercised by task_024/025); exact-match identification of the mislabeled opportunity is verified by the harness's deterministic verifiers."
+ }
+]

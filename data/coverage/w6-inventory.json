@@ -1,0 +1,5078 @@
+{
+ "world_id": "sbx_291042075d7547f4",
+ "tables": {
+  "lead_management_sop": {
+   "rows": 11,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "lead_scoring_policy": {
+   "rows": 12,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "account_tiering_standard": {
+   "rows": 9,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "opportunity_stage_gates": {
+   "rows": 10,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "cpq_discount_policy": {
+   "rows": 14,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "deal_desk_charter": {
+   "rows": 8,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "compliance_review_checklist": {
+   "rows": 11,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "finance_approval_thresholds": {
+   "rows": 10,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "order_activation_runbook": {
+   "rows": 13,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "case_management_sla": {
+   "rows": 20,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "activity_logging_standards": {
+   "rows": 11,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "forecast_methodology": {
+   "rows": 14,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "renewal_playbook": {
+   "rows": 8,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "territory": {
+   "rows": 8,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "data_quality_rules": {
+   "rows": 12,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "account_executive_sales_rep": {
+   "rows": 16,
+   "cols": [
+    "id",
+    "owns_leads",
+    "opportunities",
+    "quotes",
+    "status",
+    "created_at"
+   ]
+  },
+  "sales_analyst": {
+   "rows": 8,
+   "cols": [
+    "id",
+    "read_mostly_persona",
+    "territory_id",
+    "territory_rollups",
+    "data_quality_rules_id",
+    "and_data_quality_exception_lists",
+    "status",
+    "created_at"
+   ]
+  },
+  "compliance_officer": {
+   "rows": 13,
+   "cols": [
+    "id",
+    "second_approver",
+    "compliance_review_checklist_id",
+    "runs_07_compliance_review_checklistmd",
+    "status",
+    "created_at"
+   ]
+  },
+  "sales_manager": {
+   "rows": 8,
+   "cols": [
+    "id",
+    "reassigns_territories",
+    "reviews_tier_changes",
+    "and_signs_off_renewal_strategy",
+    "status",
+    "created_at"
+   ]
+  },
+  "record_retention": {
+   "rows": 15,
+   "cols": [
+    "id",
+    "approvals",
+    "activities",
+    "audit_logs_are_append_only",
+    "status",
+    "created_at"
+   ]
+  },
+  "sequence_design_rules": {
+   "rows": 12,
+   "cols": [
+    "id",
+    "maximum",
+    "account_tiering_standard_id",
+    "standard",
+    "emails",
+    "email",
+    "calls",
+    "one",
+    "status",
+    "created_at"
+   ]
+  },
+  "merge_field_conventions": {
+   "rows": 18,
+   "cols": [
+    "id",
+    "merge",
+    "region",
+    "subjects",
+    "no",
+    "competitor",
+    "every",
+    "client",
+    "status",
+    "created_at"
+   ]
+  },
+  "snippets": {
+   "rows": 18,
+   "cols": [
+    "id",
+    "ftr",
+    "obj",
+    "ref",
+    "noshow",
+    "status",
+    "created_at"
+   ]
+  },
+  "conversation_intelligence_standards": {
+   "rows": 9,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "disposition_codes": {
+   "rows": 17,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "meddic_scorecard": {
+   "rows": 11,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "talk_ratio": {
+   "rows": 10,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "tracker_keywords": {
+   "rows": 12,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "snippets_and_retention": {
+   "rows": 14,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "coaching_cadence": {
+   "rows": 15,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "meeting_scheduling_sla": {
+   "rows": 9,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "meeting_types_and_durations": {
+   "rows": 15,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "handoff_to_ae": {
+   "rows": 20,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "aum_bands": {
+   "rows": 10,
+   "cols": [
+    "id",
+    "band_a_50b",
+    "band_b_10b50b",
+    "band_c_1b10b",
+    "status",
+    "created_at"
+   ]
+  },
+  "tech_signals": {
+   "rows": 14,
+   "cols": [
+    "id",
+    "order_execution_management_system",
+    "portfolio_accounting_platform",
+    "market_data_terminal",
+    "atlas_prime_analytics",
+    "status",
+    "created_at"
+   ]
+  },
+  "accept_all": {
+   "rows": 18,
+   "cols": [
+    "id",
+    "sequence_design_rules_id",
+    "sequence_eligible",
+    "capped_at_1_email_week_contact",
+    "status",
+    "created_at"
+   ]
+  },
+  "risky": {
+   "rows": 12,
+   "cols": [
+    "id",
+    "excluded_from_email_steps",
+    "risk_notes_csm_post_call_id",
+    "call_and_linked_in_steps_only",
+    "monthly_timeline_business_days_id",
+    "re_verify_after_30_days",
+    "status",
+    "created_at"
+   ]
+  },
+  "unknown": {
+   "rows": 19,
+   "cols": [
+    "id",
+    "re_verify_within_24_hours",
+    "max_3_attempts",
+    "risky_id",
+    "then_treat_as_risky",
+    "status",
+    "created_at"
+   ]
+  },
+  "inbound_routing_matrix": {
+   "rows": 15,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "visitor_identification": {
+   "rows": 9,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "web_form_definitions": {
+   "rows": 8,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "routing_decision_table": {
+   "rows": 16,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "suppression_and_kpis": {
+   "rows": 14,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "order_form": {
+   "rows": 13,
+   "cols": [
+    "id",
+    "tcv",
+    "discounts",
+    "status",
+    "created_at"
+   ]
+  },
+  "nda": {
+   "rows": 8,
+   "cols": [
+    "id",
+    "mutual",
+    "term_and_renewal_id",
+    "year_term",
+    "status",
+    "created_at"
+   ]
+  },
+  "sow": {
+   "rows": 19,
+   "cols": [
+    "id",
+    "professional_services_scope_eg",
+    "prime_brokerage_onboarding_implementation",
+    "status",
+    "created_at"
+   ]
+  },
+  "invoicing_rules": {
+   "rows": 15,
+   "cols": [
+    "id",
+    "terms",
+    "subscriptions",
+    "po",
+    "multi",
+    "status",
+    "created_at"
+   ]
+  },
+  "deal_health_score": {
+   "rows": 15,
+   "cols": [
+    "id",
+    "meddic",
+    "activity_logging_standards_id",
+    "activity",
+    "opportunity_stage_gates_id",
+    "stage",
+    "account",
+    "close",
+    "status",
+    "created_at"
+   ]
+  },
+  "stale_opportunity_ladder": {
+   "rows": 19,
+   "cols": [
+    "id",
+    "day",
+    "status",
+    "created_at"
+   ]
+  },
+  "coverage_ratio": {
+   "rows": 20,
+   "cols": [
+    "id",
+    "amer",
+    "emea",
+    "apac",
+    "status",
+    "created_at"
+   ]
+  },
+  "slipped_pulled_in_lost": {
+   "rows": 18,
+   "cols": [
+    "id",
+    "slipped",
+    "pulled",
+    "lost",
+    "status",
+    "created_at"
+   ]
+  },
+  "commit": {
+   "rows": 16,
+   "cols": [
+    "id",
+    "cpq_discount_policy_id",
+    "cpq_discount_policymd",
+    "deal_health_score_id",
+    "account_health_not_red",
+    "deal_health_not_red",
+    "close_date_inside_the_quarter",
+    "compliance_review_checklist_id",
+    "compliance_review_checklistmd",
+    "finance_approval_thresholds_id",
+    "finance_approval_thresholdsmd",
+    "status",
+    "created_at"
+   ]
+  },
+  "best_case": {
+   "rows": 16,
+   "cols": [
+    "id",
+    "close_date_inside_the_quarter",
+    "deal_health_score_id",
+    "account_health_green_or_yellow",
+    "status",
+    "created_at"
+   ]
+  },
+  "sandbagging_red_flags": {
+   "rows": 8,
+   "cols": [
+    "id",
+    "a",
+    "an",
+    "commit_id",
+    "commit",
+    "close",
+    "status",
+    "created_at"
+   ]
+  },
+  "support_25": {
+   "rows": 10,
+   "cols": [
+    "id",
+    "start_at_100",
+    "per_open_high_case",
+    "per_open_medium_case",
+    "status",
+    "created_at"
+   ]
+  },
+  "engagement_20": {
+   "rows": 20,
+   "cols": [
+    "id",
+    "start_at_100",
+    "clamp_to_0_100",
+    "status",
+    "created_at"
+   ]
+  },
+  "playbooks": {
+   "rows": 17,
+   "cols": [
+    "id",
+    "churn",
+    "onboarding",
+    "expansion",
+    "status",
+    "created_at"
+   ]
+  },
+  "week_1_t_120_to_t_114": {
+   "rows": 16,
+   "cols": [
+    "id",
+    "opportunity_auto_creates",
+    "ae_owns_it",
+    "activity_logging_standards_id",
+    "activity_logging_standardsmd",
+    "status",
+    "created_at"
+   ]
+  },
+  "week_2_t_113_to_t_107": {
+   "rows": 19,
+   "cols": [
+    "id",
+    "account_review_health_band",
+    "seat_utilization",
+    "open_cases",
+    "conflict_check_and_the_90_day_window_id",
+    "billing_dunning_status_expansion_qualification_check",
+    "status",
+    "created_at"
+   ]
+  },
+  "weeks_10_12_t_57_to_t_37": {
+   "rows": 20,
+   "cols": [
+    "id",
+    "contracting_signature_order_customer_first",
+    "sales_manager_id",
+    "countersign_by_the_sales_manager",
+    "status",
+    "created_at"
+   ]
+  },
+  "weeks_13_16_t_36_to_t_8": {
+   "rows": 14,
+   "cols": [
+    "id",
+    "countersign",
+    "booking",
+    "finance_approval_thresholds_id",
+    "finance_controller_reconciliation",
+    "status",
+    "created_at"
+   ]
+  },
+  "monthly_timeline_business_days": {
+   "rows": 11,
+   "cols": [
+    "id",
+    "bd",
+    "status",
+    "created_at"
+   ]
+  },
+  "account_transfer_protocol_on_rep_departure": {
+   "rows": 12,
+   "cols": [
+    "id",
+    "day",
+    "within",
+    "open",
+    "every",
+    "status",
+    "created_at"
+   ]
+  },
+  "mql_definition": {
+   "rows": 17,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "sal_gate": {
+   "rows": 13,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "attribution": {
+   "rows": 12,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "fy2026_campaigns": {
+   "rows": 13,
+   "cols": [
+    "id",
+    "sovereign",
+    "settlement",
+    "prime",
+    "signal",
+    "northlight",
+    "switch",
+    "status",
+    "created_at"
+   ]
+  },
+  "utm_conventions": {
+   "rows": 14,
+   "cols": [
+    "id",
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "status",
+    "created_at"
+   ]
+  },
+  "their_strengths_do_not_dismiss": {
+   "rows": 13,
+   "cols": [
+    "id",
+    "deep",
+    "aggressive",
+    "fast",
+    "status",
+    "created_at"
+   ]
+  },
+  "their_weaknesses_attack_here": {
+   "rows": 15,
+   "cols": [
+    "id",
+    "no",
+    "t_99",
+    "thin",
+    "research",
+    "status",
+    "created_at"
+   ]
+  },
+  "pricing_pressure_guidance": {
+   "rows": 10,
+   "cols": [
+    "id",
+    "never",
+    "authority",
+    "above",
+    "prefer",
+    "do",
+    "status",
+    "created_at"
+   ]
+  },
+  "winloss_talking_points": {
+   "rows": 13,
+   "cols": [
+    "id",
+    "win",
+    "loss",
+    "track",
+    "status",
+    "created_at"
+   ]
+  },
+  "strengths": {
+   "rows": 19,
+   "cols": [
+    "id",
+    "modern",
+    "aggressive",
+    "status",
+    "created_at"
+   ]
+  },
+  "weaknesses": {
+   "rows": 15,
+   "cols": [
+    "id",
+    "zero",
+    "amer",
+    "the",
+    "no",
+    "status",
+    "created_at"
+   ]
+  },
+  "answer_reuse_and_approval_rules": {
+   "rows": 9,
+   "cols": [
+    "id",
+    "verbatim",
+    "any",
+    "never",
+    "versioning",
+    "contract",
+    "out",
+    "status",
+    "created_at"
+   ]
+  },
+  "partner_tiers": {
+   "rows": 14,
+   "cols": [
+    "id",
+    "select",
+    "premier",
+    "status",
+    "created_at"
+   ]
+  },
+  "conflict_check_and_the_90_day_window": {
+   "rows": 9,
+   "cols": [
+    "id",
+    "on",
+    "a",
+    "conflicts",
+    "an",
+    "status",
+    "created_at"
+   ]
+  },
+  "co_sell_and_named_account_overlap": {
+   "rows": 13,
+   "cols": [
+    "id",
+    "when",
+    "all",
+    "partner_tiers_id",
+    "partner",
+    "status",
+    "created_at"
+   ]
+  },
+  "billing_object_mapping_stripe_style": {
+   "rows": 13,
+   "cols": [
+    "id",
+    "crm",
+    "closed",
+    "invoice",
+    "creditnote",
+    "status",
+    "created_at"
+   ]
+  },
+  "deal_room_channels_slack_style": {
+   "rows": 19,
+   "cols": [
+    "id",
+    "a",
+    "members",
+    "catalog",
+    "channels",
+    "status",
+    "created_at"
+   ]
+  },
+  "dedupe_race_handling": {
+   "rows": 15,
+   "cols": [
+    "id",
+    "simultaneous",
+    "cross",
+    "after",
+    "status",
+    "created_at"
+   ]
+  },
+  "failure_and_retry_semantics": {
+   "rows": 9,
+   "cols": [
+    "id",
+    "delivery",
+    "retry",
+    "dlq",
+    "consent",
+    "status",
+    "created_at"
+   ]
+  },
+  "funnel_conversion_rates": {
+   "rows": 10,
+   "cols": [
+    "id",
+    "mql",
+    "sql",
+    "opportunity",
+    "funnel",
+    "status",
+    "created_at"
+   ]
+  },
+  "win_rate_calculation_rules": {
+   "rows": 16,
+   "cols": [
+    "id",
+    "population",
+    "formula",
+    "excluded",
+    "competitive",
+    "count",
+    "status",
+    "created_at"
+   ]
+  },
+  "revenue_metric_definitions": {
+   "rows": 15,
+   "cols": [
+    "id",
+    "mrr",
+    "arr",
+    "grr",
+    "nrr",
+    "cohort",
+    "status",
+    "created_at"
+   ]
+  },
+  "board_pack_metrics": {
+   "rows": 19,
+   "cols": [
+    "id",
+    "arr",
+    "count",
+    "pipeline",
+    "forecast_methodology_id",
+    "forecast",
+    "funnel_conversion_rates_id",
+    "funnel",
+    "median",
+    "deal_health_score_id",
+    "health",
+    "status",
+    "created_at"
+   ]
+  },
+  "meddic_extraction_scorecard": {
+   "rows": 8,
+   "cols": [
+    "id",
+    "revenue_metric_definitions_id",
+    "metric",
+    "economic",
+    "routing_decision_table_id",
+    "decision",
+    "identify",
+    "champion",
+    "competition",
+    "next",
+    "status",
+    "created_at"
+   ]
+  },
+  "risk_notes_csm_post_call": {
+   "rows": 12,
+   "cols": [
+    "id",
+    "churn",
+    "deal_health_score_id",
+    "health",
+    "commercial",
+    "committed",
+    "status",
+    "created_at"
+   ]
+  },
+  "term_and_renewal": {
+   "rows": 20,
+   "cols": [
+    "id",
+    "initial",
+    "auto",
+    "renewal",
+    "status",
+    "created_at"
+   ]
+  },
+  "line_items_list_prices_per_13_product_catalogmd": {
+   "rows": 8,
+   "cols": [
+    "id",
+    "term_and_renewal_id",
+    "term",
+    "acv",
+    "status",
+    "created_at"
+   ]
+  },
+  "billing": {
+   "rows": 14,
+   "cols": [
+    "id",
+    "payment",
+    "dunning",
+    "credit",
+    "status",
+    "created_at"
+   ]
+  },
+  "renewal_mechanics_per_msa_and_14_renewal_playbookmd": {
+   "rows": 17,
+   "cols": [
+    "id",
+    "auto",
+    "renewal",
+    "account_tiering_standard_id",
+    "standard",
+    "status",
+    "created_at"
+   ]
+  },
+  "fy2026_list_prices": {
+   "rows": 14,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "volume_bands": {
+   "rows": 18,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "currency_handling": {
+   "rows": 10,
+   "cols": [
+    "id",
+    "name",
+    "status",
+    "created_at"
+   ]
+  },
+  "aggregates": {
+   "rows": 8,
+   "cols": [
+    "id",
+    "win",
+    "competitive",
+    "tcv",
+    "forecast_methodology_id",
+    "forecast",
+    "status",
+    "created_at"
+   ]
+  },
+  "transcript_evidence": {
+   "rows": 9,
+   "cols": [
+    "id",
+    "rec",
+    "status",
+    "created_at"
+   ]
+  },
+  "departments": {
+   "rows": 7,
+   "cols": [
+    "id",
+    "department_code",
+    "name",
+    "focus",
+    "headcount",
+    "annual_budget"
+   ]
+  },
+  "employees": {
+   "rows": 18,
+   "cols": [
+    "id",
+    "employee_number",
+    "name",
+    "email",
+    "job_title",
+    "department_id",
+    "hire_date",
+    "status"
+   ]
+  },
+  "employee_work_assignments": {
+   "rows": 12,
+   "cols": [
+    "id",
+    "employee_id",
+    "reviewer_employee_id",
+    "department_id",
+    "service",
+    "work_item_ref",
+    "assignment_role",
+    "status"
+   ]
+  },
+  "sales_leads": {
+   "rows": 500,
+   "cols": [
+    "id",
+    "lead_number",
+    "company_name",
+    "contact_name",
+    "source",
+    "estimated_value",
+    "owner_employee_id",
+    "created_at",
+    "status"
+   ]
+  },
+  "sales_opportunities": {
+   "rows": 500,
+   "cols": [
+    "id",
+    "opportunity_number",
+    "title",
+    "lead_id",
+    "amount",
+    "owner_employee_id",
+    "expected_close_date",
+    "lead_management_sop_id",
+    "status"
+   ]
+  },
+  "hr_leave_requests": {
+   "rows": 500,
+   "cols": [
+    "id",
+    "request_number",
+    "employee_id",
+    "leave_type",
+    "start_date",
+    "days_requested",
+    "approver_employee_id",
+    "status"
+   ]
+  },
+  "hr_performance_reviews": {
+   "rows": 500,
+   "cols": [
+    "id",
+    "review_number",
+    "employee_id",
+    "reviewer_employee_id",
+    "review_period",
+    "overall_rating",
+    "status"
+   ]
+  },
+  "finance_expense_reports": {
+   "rows": 500,
+   "cols": [
+    "id",
+    "report_number",
+    "employee_id",
+    "category",
+    "amount",
+    "submitted_at",
+    "approver_employee_id",
+    "status"
+   ]
+  },
+  "finance_budgets": {
+   "rows": 500,
+   "cols": [
+    "id",
+    "budget_number",
+    "department_id",
+    "fiscal_quarter",
+    "allocated_amount",
+    "spent_amount",
+    "status"
+   ]
+  },
+  "support_tickets": {
+   "rows": 500,
+   "cols": [
+    "id",
+    "ticket_number",
+    "subject",
+    "customer_name",
+    "priority",
+    "assignee_employee_id",
+    "opened_at",
+    "lead_management_sop_id",
+    "status"
+   ]
+  },
+  "marketing_campaigns": {
+   "rows": 500,
+   "cols": [
+    "id",
+    "campaign_code",
+    "name",
+    "channel",
+    "budget",
+    "owner_employee_id",
+    "start_date",
+    "end_date",
+    "status"
+   ]
+  },
+  "marketing_content_assets": {
+   "rows": 500,
+   "cols": [
+    "id",
+    "asset_number",
+    "title",
+    "asset_type",
+    "campaign_id",
+    "author_employee_id",
+    "due_date",
+    "status"
+   ]
+  },
+  "sourcing_vendors": {
+   "rows": 500,
+   "cols": [
+    "id",
+    "vendor_number",
+    "name",
+    "category",
+    "contact_name",
+    "owner_employee_id",
+    "onboarded_at",
+    "status"
+   ]
+  },
+  "sourcing_purchase_orders": {
+   "rows": 500,
+   "cols": [
+    "id",
+    "po_number",
+    "vendor_id",
+    "requested_by_employee_id",
+    "amount",
+    "ordered_at",
+    "approver_employee_id",
+    "status"
+   ]
+  },
+  "accounts": {
+   "rows": 11,
+   "cols": [
+    "id",
+    "name",
+    "industry",
+    "status",
+    "owner_id",
+    "annual_revenue",
+    "created_at"
+   ]
+  },
+  "cases": {
+   "rows": 17,
+   "cols": [
+    "id",
+    "account_id",
+    "contact_id",
+    "subject",
+    "status",
+    "priority",
+    "owner_id",
+    "description",
+    "created_at"
+   ]
+  },
+  "contacts": {
+   "rows": 11,
+   "cols": [
+    "id",
+    "account_id",
+    "name",
+    "email",
+    "status",
+    "owner_id",
+    "created_at"
+   ]
+  },
+  "opportunities": {
+   "rows": 10,
+   "cols": [
+    "id",
+    "account_id",
+    "name",
+    "status",
+    "amount",
+    "close_date",
+    "owner_id",
+    "created_at"
+   ]
+  },
+  "tasks": {
+   "rows": 17,
+   "cols": [
+    "id",
+    "account_id",
+    "subject",
+    "status",
+    "priority",
+    "assigned_to",
+    "due_at",
+    "description"
+   ]
+  },
+  "account_links": {
+   "rows": 17,
+   "cols": [
+    "id",
+    "created",
+    "expires_at",
+    "object",
+    "url"
+   ]
+  },
+  "account_sessions": {
+   "rows": 8,
+   "cols": [
+    "id",
+    "account",
+    "client_secret",
+    "components",
+    "expires_at",
+    "livemode",
+    "object"
+   ]
+  },
+  "active_entitlements": {
+   "rows": 12,
+   "cols": [
+    "id",
+    "created_at"
+   ]
+  },
+  "alerts": {
+   "rows": 20,
+   "cols": [
+    "id",
+    "created_at"
+   ]
+  },
+  "amount_details_line_items": {
+   "rows": 9,
+   "cols": [
+    "id",
+    "created_at"
+   ]
+  },
+  "apple_pay_domains": {
+   "rows": 14,
+   "cols": [
+    "id",
+    "created",
+    "domain_name",
+    "livemode",
+    "object"
+   ]
+  },
+  "application_fees": {
+   "rows": 19,
+   "cols": [
+    "id",
+    "account",
+    "amount",
+    "amount_refunded",
+    "application",
+    "charge",
+    "created",
+    "currency",
+    "livemode",
+    "object",
+    "refunded",
+    "refunds",
+    "balance_transaction",
+    "fee_source"
+   ]
+  },
+  "apps_secrets": {
+   "rows": 16,
+   "cols": [
+    "id",
+    "created",
+    "livemode",
+    "name",
+    "object",
+    "scope",
+    "deleted",
+    "expires_at",
+    "payload"
+   ]
+  },
+  "authorizations": {
+   "rows": 15,
+   "cols": [
+    "id",
+    "created_at"
+   ]
+  },
+  "balance_settings": {
+   "rows": 14,
+   "cols": [
+    "id",
+    "object",
+    "payments"
+   ]
+  },
+  "balance_transactions": {
+   "rows": 11,
+   "cols": [
+    "id",
+    "amount",
+    "available_on",
+    "balance_type",
+    "created",
+    "currency",
+    "fee",
+    "fee_details",
+    "net",
+    "object",
+    "reporting_category",
+    "status",
+    "type",
+    "description"
+   ]
+  },
+  "balances": {
+   "rows": 11,
+   "cols": [
+    "id",
+    "available",
+    "livemode",
+    "object",
+    "pending",
+    "connect_reserved",
+    "instant_available",
+    "issuing",
+    "refund_and_dispute_prefunding"
+   ]
+  },
+  "bank_accounts": {
+   "rows": 11,
+   "cols": [
+    "id",
+    "country",
+    "currency",
+    "last4",
+    "object",
+    "status",
+    "account",
+    "account_holder_name",
+    "account_holder_type",
+    "account_type",
+    "available_payout_methods",
+    "bank_name",
+    "customer",
+    "default_for_currency"
+   ]
+  },
+  "billing_alerts": {
+   "rows": 10,
+   "cols": [
+    "id",
+    "alert_type",
+    "livemode",
+    "object",
+    "title",
+    "status",
+    "usage_threshold"
+   ]
+  },
+  "billing_credit_balance_summaries": {
+   "rows": 15,
+   "cols": [
+    "id",
+    "balances",
+    "customer",
+    "livemode",
+    "object",
+    "customer_account"
+   ]
+  },
+  "billing_credit_balance_transactions": {
+   "rows": 14,
+   "cols": [
+    "id",
+    "created",
+    "credit_grant",
+    "effective_at",
+    "livemode",
+    "object",
+    "credit",
+    "debit",
+    "test_clock",
+    "type"
+   ]
+  },
+  "billing_meters": {
+   "rows": 10,
+   "cols": [
+    "id",
+    "created",
+    "customer_mapping",
+    "default_aggregation",
+    "display_name",
+    "event_name",
+    "livemode",
+    "object",
+    "status",
+    "status_transitions",
+    "updated",
+    "value_settings",
+    "event_time_window"
+   ]
+  },
+  "capabilities": {
+   "rows": 12,
+   "cols": [
+    "id",
+    "account",
+    "object",
+    "requested",
+    "status",
+    "future_requirements",
+    "requested_at",
+    "requirements"
+   ]
+  },
+  "charges": {
+   "rows": 20,
+   "cols": [
+    "id",
+    "amount",
+    "amount_captured",
+    "amount_refunded",
+    "billing_details",
+    "captured",
+    "created",
+    "currency",
+    "disputed",
+    "livemode",
+    "metadata",
+    "object",
+    "paid",
+    "refunded"
+   ]
+  },
+  "checkout_sessions": {
+   "rows": 14,
+   "cols": [
+    "id",
+    "automatic_tax",
+    "created",
+    "custom_fields",
+    "custom_text",
+    "expires_at",
+    "livemode",
+    "mode",
+    "object",
+    "payment_method_types",
+    "payment_status",
+    "shipping_options",
+    "client_reference_id",
+    "status"
+   ]
+  },
+  "climate_orders": {
+   "rows": 13,
+   "cols": [
+    "id",
+    "amount_fees",
+    "amount_subtotal",
+    "amount_total",
+    "created",
+    "currency",
+    "delivery_details",
+    "expected_delivery_year",
+    "livemode",
+    "metadata",
+    "metric_tons",
+    "object",
+    "product",
+    "status"
+   ]
+  },
+  "credit_notes": {
+   "rows": 13,
+   "cols": [
+    "id",
+    "amount",
+    "amount_shipping",
+    "created",
+    "currency",
+    "customer",
+    "discount_amount",
+    "discount_amounts",
+    "invoice",
+    "lines",
+    "livemode",
+    "number",
+    "object",
+    "pdf"
+   ]
+  },
+  "disputes": {
+   "rows": 15,
+   "cols": [
+    "id",
+    "amount",
+    "balance_transactions",
+    "charge",
+    "created",
+    "currency",
+    "enhanced_eligibility_types",
+    "evidence",
+    "evidence_details",
+    "is_charge_refundable",
+    "livemode",
+    "metadata",
+    "object",
+    "reason"
+   ]
+  },
+  "identity_verification_sessions": {
+   "rows": 20,
+   "cols": [
+    "id",
+    "created",
+    "livemode",
+    "metadata",
+    "object",
+    "status",
+    "type",
+    "client_reference_id",
+    "client_secret",
+    "last_error",
+    "last_verification_report",
+    "options",
+    "provided_details",
+    "redaction"
+   ]
+  },
+  "invoice_rendering_templates": {
+   "rows": 20,
+   "cols": [
+    "id",
+    "created",
+    "livemode",
+    "object",
+    "status",
+    "version",
+    "metadata",
+    "nickname"
+   ]
+  },
+  "invoices": {
+   "rows": 10,
+   "cols": [
+    "id",
+    "amount_due",
+    "amount_overpaid",
+    "amount_paid",
+    "amount_paid_off_stripe",
+    "amount_remaining",
+    "amount_shipping",
+    "attempt_count",
+    "attempted",
+    "auto_advance",
+    "automatic_tax",
+    "collection_method",
+    "created",
+    "currency"
+   ]
+  },
+  "issuing_authorizations": {
+   "rows": 16,
+   "cols": [
+    "id",
+    "amount",
+    "approved",
+    "authorization_method",
+    "balance_transactions",
+    "card",
+    "created",
+    "currency",
+    "livemode",
+    "merchant_amount",
+    "merchant_currency",
+    "merchant_data",
+    "metadata",
+    "object"
+   ]
+  },
+  "activities": {
+   "rows": 18,
+   "cols": [
+    "id",
+    "created_at"
+   ]
+  },
+  "all_segments_responses": {
+   "rows": 16,
+   "cols": [
+    "id",
+    "contacts_count",
+    "created_at",
+    "name",
+    "next_sample_update",
+    "parent_list_ids",
+    "query_version",
+    "sample_updated_at",
+    "status",
+    "updated_at",
+    "metadata"
+   ]
+  },
+  "api_keys": {
+   "rows": 12,
+   "cols": [
+    "id",
+    "name",
+    "scopes",
+    "created_at"
+   ]
+  },
+  "assigneds": {
+   "rows": 14,
+   "cols": [
+    "id",
+    "created_at"
+   ]
+  },
+  "authentication_domains": {
+   "rows": 11,
+   "cols": [
+    "id",
+    "automatic_security",
+    "custom_spf",
+    "default",
+    "dns",
+    "domain",
+    "ips",
+    "legacy",
+    "subdomain",
+    "user_id",
+    "username",
+    "valid"
+   ]
+  },
+  "automations_link_stats_responses": {
+   "rows": 15,
+   "cols": [
+    "id",
+    "metadata",
+    "results",
+    "total_clicks"
+   ]
+  },
+  "automations_responses": {
+   "rows": 11,
+   "cols": [
+    "id",
+    "results",
+    "metadata"
+   ]
+  },
+  "batches": {
+   "rows": 14,
+   "cols": [
+    "id",
+    "ids",
+    "created_at"
+   ]
+  },
+  "blocks": {
+   "rows": 17,
+   "cols": [
+    "id",
+    "delete_all",
+    "emails",
+    "email",
+    "created_at"
+   ]
+  },
+  "bounces": {
+   "rows": 17,
+   "cols": [
+    "id",
+    "delete_all",
+    "emails",
+    "created_at",
+    "created",
+    "status",
+    "email",
+    "reason"
+   ]
+  },
+  "campaigns": {
+   "rows": 8,
+   "cols": [
+    "id",
+    "created_at",
+    "title",
+    "status",
+    "sender_id",
+    "suppression_group_id",
+    "categories",
+    "custom_unsubscribe_url",
+    "editor",
+    "html_content",
+    "ip_pool",
+    "list_ids",
+    "plain_content",
+    "segment_ids"
+   ]
+  },
+  "categories": {
+   "rows": 17,
+   "cols": [
+    "id",
+    "created_at"
+   ]
+  },
+  "category_stats": {
+   "rows": 13,
+   "cols": [
+    "id",
+    "date",
+    "stats"
+   ]
+  },
+  "certificates": {
+   "rows": 13,
+   "cols": [
+    "id",
+    "enabled",
+    "integration_id",
+    "public_certificate",
+    "created_at"
+   ]
+  },
+  "click_trackings": {
+   "rows": 9,
+   "cols": [
+    "id",
+    "enable_text",
+    "enabled"
+   ]
+  },
+  "contact_exports": {
+   "rows": 19,
+   "cols": [
+    "id",
+    "created_at",
+    "expires_at",
+    "status",
+    "updated_at",
+    "metadata",
+    "completed_at",
+    "contact_count",
+    "message",
+    "urls"
+   ]
+  },
+  "contactdb_segments": {
+   "rows": 18,
+   "cols": [
+    "conditions",
+    "name",
+    "list_id",
+    "recipient_count"
+   ]
+  },
+  "singlesends": {
+   "rows": 12,
+   "cols": [
+    "id",
+    "created_at",
+    "name",
+    "status",
+    "categories",
+    "email_config",
+    "send_at",
+    "send_to",
+    "updated_at",
+    "warnings"
+   ]
+  },
+  "suppression_groups": {
+   "rows": 14,
+   "cols": [
+    "id",
+    "description",
+    "name",
+    "is_default",
+    "last_email_sent_at",
+    "unsubscribes"
+   ]
+  },
+  "activity_log_lists": {
+   "rows": 10,
+   "cols": [
+    "id",
+    "type",
+    "pages",
+    "activity_logs"
+   ]
+  },
+  "admin_lists": {
+   "rows": 15,
+   "cols": [
+    "id",
+    "type",
+    "admins"
+   ]
+  },
+  "admin_with_apps": {
+   "rows": 9,
+   "cols": [
+    "id",
+    "type",
+    "name",
+    "email",
+    "job_title",
+    "away_mode_enabled",
+    "away_mode_reassign",
+    "has_inbox_seat",
+    "team_ids",
+    "avatar",
+    "email_verified",
+    "app"
+   ]
+  },
+  "admins": {
+   "rows": 16,
+   "cols": [
+    "id",
+    "away_status_reason_id",
+    "type",
+    "name",
+    "email",
+    "job_title",
+    "away_mode_enabled",
+    "away_mode_reassign",
+    "has_inbox_seat",
+    "team_ids",
+    "avatar",
+    "team_priority_level"
+   ]
+  },
+  "ai_call_responses": {
+   "rows": 19,
+   "cols": [
+    "id",
+    "app_id",
+    "status",
+    "intercom_call_id",
+    "external_call_id",
+    "intercom_conversation_id",
+    "user_phone_number",
+    "call_transcript",
+    "call_summary",
+    "intent"
+   ]
+  },
+  "article_lists": {
+   "rows": 18,
+   "cols": [
+    "id",
+    "type",
+    "pages",
+    "total_count",
+    "data"
+   ]
+  },
+  "articles": {
+   "rows": 12,
+   "cols": [
+    "id",
+    "workspace_id",
+    "author_id",
+    "state",
+    "parent_id",
+    "type",
+    "title",
+    "description",
+    "body",
+    "created_at",
+    "updated_at",
+    "url",
+    "parent_ids",
+    "parent_type"
+   ]
+  },
+  "away_status_reason_lists": {
+   "rows": 10,
+   "cols": [
+    "id",
+    "type",
+    "data"
+   ]
+  },
+  "collections": {
+   "rows": 18,
+   "cols": [
+    "id",
+    "workspace_id",
+    "parent_id",
+    "help_center_id",
+    "name",
+    "description",
+    "created_at",
+    "updated_at",
+    "url",
+    "icon",
+    "order",
+    "default_locale",
+    "translated_content"
+   ]
+  },
+  "content_import_sources": {
+   "rows": 9,
+   "cols": [
+    "id",
+    "type",
+    "last_synced_at",
+    "sync_behavior",
+    "status",
+    "url",
+    "created_at",
+    "updated_at",
+    "audience_ids"
+   ]
+  },
+  "conversations": {
+   "rows": 18,
+   "cols": [
+    "id",
+    "state",
+    "admin_assignee_id",
+    "team_assignee_id",
+    "type",
+    "title",
+    "created_at",
+    "updated_at",
+    "waiting_since",
+    "snoozed_until",
+    "open",
+    "read",
+    "priority",
+    "company"
+   ]
+  },
+  "data_exports": {
+   "rows": 8,
+   "cols": [
+    "id",
+    "status",
+    "job_identifier",
+    "download_expires_at",
+    "download_url"
+   ]
+  },
+  "help_centers": {
+   "rows": 12,
+   "cols": [
+    "id",
+    "workspace_id",
+    "created_at",
+    "updated_at",
+    "identifier",
+    "website_turned_on",
+    "display_name",
+    "url",
+    "custom_domain"
+   ]
+  },
+  "news_items": {
+   "rows": 16,
+   "cols": [
+    "id",
+    "workspace_id",
+    "sender_id",
+    "state",
+    "type",
+    "title",
+    "body",
+    "newsfeed_assignments",
+    "labels",
+    "cover_image_url",
+    "reactions",
+    "deliver_silently",
+    "created_at",
+    "updated_at"
+   ]
+  },
+  "admin_apps_approveds": {
+   "rows": 8,
+   "cols": [
+    "id",
+    "created_at"
+   ]
+  },
+  "admin_apps_requests": {
+   "rows": 19,
+   "cols": [
+    "id",
+    "created_at"
+   ]
+  },
+  "admin_apps_restricteds": {
+   "rows": 18,
+   "cols": [
+    "id",
+    "created_at"
+   ]
+  },
+  "admin_conversations": {
+   "rows": 15,
+   "cols": [
+    "id",
+    "channel_id",
+    "name",
+    "description",
+    "is_private",
+    "org_wide",
+    "team_id",
+    "leaving_team_ids",
+    "user_ids",
+    "prefs",
+    "target_team_ids",
+    "org_channel",
+    "created_at"
+   ]
+  },
+  "admin_conversations_ekms": {
+   "rows": 12,
+   "cols": [
+    "id",
+    "created_at"
+   ]
+  },
+  "admin_conversations_restrict_accesses": {
+   "rows": 19,
+   "cols": [
+    "id",
+    "token",
+    "team_id",
+    "group_id",
+    "channel_id",
+    "created_at"
+   ]
+  },
+  "admin_emojis": {
+   "rows": 16,
+   "cols": [
+    "id",
+    "token",
+    "name",
+    "url",
+    "alias_for",
+    "new_name",
+    "created_at"
+   ]
+  },
+  "admin_invite_requests": {
+   "rows": 16,
+   "cols": [
+    "id",
+    "team_id",
+    "invite_request_id",
+    "created_at"
+   ]
+  },
+  "admin_invite_requests_approveds": {
+   "rows": 10,
+   "cols": [
+    "id",
+    "created_at"
+   ]
+  },
+  "admin_invite_requests_denieds": {
+   "rows": 18,
+   "cols": [
+    "id",
+    "created_at"
+   ]
+  },
+  "calls": {
+   "rows": 13,
+   "cols": [
+    "id",
+    "external_unique_id",
+    "external_display_id",
+    "join_url",
+    "desktop_app_join_url",
+    "date_start",
+    "title",
+    "created_by",
+    "users",
+    "duration",
+    "created_at"
+   ]
+  },
+  "channels": {
+   "rows": 8,
+   "cols": [
+    "accepted_user",
+    "created",
+    "creator",
+    "id",
+    "is_archived",
+    "is_channel",
+    "is_frozen",
+    "is_general",
+    "is_member",
+    "is_moved",
+    "is_mpim",
+    "is_non_threadable",
+    "is_org_shared",
+    "is_pending_ext_shared"
+   ]
+  },
+  "files": {
+   "rows": 6,
+   "cols": [
+    "channels",
+    "comments_count",
+    "created",
+    "date_delete",
+    "display_as_bot",
+    "editable",
+    "editor",
+    "external_id",
+    "external_type",
+    "external_url",
+    "filetype",
+    "groups",
+    "has_rich_preview",
+    "id"
+   ]
+  },
+  "messages": {
+   "rows": 40,
+   "cols": [
+    "attachments",
+    "blocks",
+    "bot_id",
+    "bot_profile",
+    "client_msg_id",
+    "comment",
+    "display_as_bot",
+    "file",
+    "files",
+    "icons",
+    "inviter",
+    "is_delayed_message",
+    "is_intro",
+    "is_starred"
+   ]
+  },
+  "acl_rules": {
+   "rows": 6,
+   "cols": [
+    "role",
+    "id",
+    "scope",
+    "kind",
+    "etag"
+   ]
+  },
+  "acls": {
+   "rows": 17,
+   "cols": [
+    "id",
+    "items",
+    "next_sync_token",
+    "etag",
+    "next_page_token",
+    "kind"
+   ]
+  },
+  "calendar_list_entries": {
+   "rows": 4,
+   "cols": [
+    "hidden",
+    "primary",
+    "auto_accept_invitations",
+    "location",
+    "conference_properties",
+    "background_color",
+    "color_id",
+    "description",
+    "id",
+    "etag",
+    "selected",
+    "access_role",
+    "summary",
+    "notification_settings"
+   ]
+  },
+  "calendar_lists": {
+   "rows": 9,
+   "cols": [
+    "id",
+    "items",
+    "next_sync_token",
+    "etag",
+    "next_page_token",
+    "kind"
+   ]
+  },
+  "calendars": {
+   "rows": 4,
+   "cols": [
+    "conference_properties",
+    "time_zone",
+    "kind",
+    "description",
+    "label_properties",
+    "id",
+    "data_owner",
+    "etag",
+    "auto_accept_invitations",
+    "location",
+    "summary"
+   ]
+  },
+  "colors": {
+   "rows": 17,
+   "cols": [
+    "id",
+    "updated",
+    "calendar",
+    "event",
+    "kind"
+   ]
+  },
+  "customers": {
+   "rows": 8,
+   "cols": [
+    "id",
+    "name",
+    "email",
+    "status",
+    "currency",
+    "balance",
+    "created_at"
+   ]
+  },
+  "journal_entries": {
+   "rows": 8,
+   "cols": [
+    "id",
+    "status",
+    "amount",
+    "currency",
+    "memo",
+    "approved_by",
+    "created_at"
+   ]
+  },
+  "purchase_orders": {
+   "rows": 10,
+   "cols": [
+    "id",
+    "vendor_id",
+    "status",
+    "amount",
+    "currency",
+    "owner_id",
+    "created_at"
+   ]
+  },
+  "vendors": {
+   "rows": 14,
+   "cols": [
+    "id",
+    "name",
+    "email",
+    "status",
+    "currency",
+    "balance",
+    "created_at"
+   ]
+  },
+  "company_marketing_handoffs": {
+   "rows": 4,
+   "cols": [
+    "id",
+    "handoff_ref",
+    "core_record_id",
+    "system_record_id",
+    "source_system",
+    "source_table",
+    "requested_action",
+    "status",
+    "contract_id"
+   ]
+  },
+  "company_sales_handoffs": {
+   "rows": 4,
+   "cols": [
+    "id",
+    "handoff_ref",
+    "core_record_id",
+    "system_record_id",
+    "source_system",
+    "source_table",
+    "requested_action",
+    "status",
+    "contract_id"
+   ]
+  },
+  "company_finance_handoffs": {
+   "rows": 4,
+   "cols": [
+    "id",
+    "handoff_ref",
+    "core_record_id",
+    "system_record_id",
+    "source_system",
+    "source_table",
+    "requested_action",
+    "status",
+    "contract_id"
+   ]
+  },
+  "company_sourcing_handoffs": {
+   "rows": 4,
+   "cols": [
+    "id",
+    "handoff_ref",
+    "core_record_id",
+    "system_record_id",
+    "source_system",
+    "source_table",
+    "requested_action",
+    "status",
+    "contract_id"
+   ]
+  },
+  "agent_sheets": {
+   "rows": 0,
+   "cols": [
+    "id",
+    "title",
+    "columns_spec",
+    "created_at"
+   ]
+  },
+  "agent_sheet_rows": {
+   "rows": 0,
+   "cols": [
+    "id",
+    "sheet_id",
+    "row_index",
+    "cells"
+   ]
+  },
+  "agent_documents": {
+   "rows": 2,
+   "cols": [
+    "id",
+    "title",
+    "body",
+    "updated_at"
+   ]
+  },
+  "agent_events": {
+   "rows": 2,
+   "cols": [
+    "id",
+    "title",
+    "event_date",
+    "created_at"
+   ]
+  },
+  "agent_memories": {
+   "rows": 2,
+   "cols": [
+    "id",
+    "content",
+    "created_at"
+   ]
+  },
+  "agent_knowledge": {
+   "rows": 2,
+   "cols": [
+    "id",
+    "content",
+    "source",
+    "created_at"
+   ]
+  },
+  "agent_playbooks": {
+   "rows": 2,
+   "cols": [
+    "id",
+    "name",
+    "steps",
+    "created_at"
+   ]
+  },
+  "agent_scheduled_runs": {
+   "rows": 2,
+   "cols": [
+    "id",
+    "name",
+    "schedule",
+    "playbook_name",
+    "status",
+    "created_at"
+   ]
+  },
+  "agent_files": {
+   "rows": 3,
+   "cols": [
+    "id",
+    "filename",
+    "content_type",
+    "content"
+   ]
+  },
+  "matter_documents": {
+   "rows": 1,
+   "cols": [
+    "id",
+    "title",
+    "doc_type",
+    "related_shape",
+    "body"
+   ]
+  }
+ },
+ "tools": [
+  {
+   "name": "sheet_agent",
+   "mcp": "github.sheet_agent",
+   "ns": "github",
+   "type": "write",
+   "tables": [
+    "agent_sheet_rows",
+    "agent_sheets"
+   ],
+   "desc": "Delegate spreadsheet/records work to morgan_stanley_simulated's records sub-agent in free text. Supports: crea"
+  },
+  {
+   "name": "read_file",
+   "mcp": "notion.read_file",
+   "ns": "notion",
+   "type": "read",
+   "tables": [
+    "agent_files"
+   ],
+   "desc": "Read a seeded document fixture (CSV/TSV export) by filename \u2014 the ingest side of file\u2192records workflows."
+  },
+  {
+   "name": "list_playbooks",
+   "mcp": "core.list_playbooks",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "agent_playbooks"
+   ],
+   "desc": "List the saved automation playbooks."
+  },
+  {
+   "name": "list_scheduled_runs",
+   "mcp": "calendar.list_scheduled_runs",
+   "ns": "calendar",
+   "type": "read",
+   "tables": [
+    "agent_scheduled_runs"
+   ],
+   "desc": "List the scheduled automation runs."
+  },
+  {
+   "name": "query_files",
+   "mcp": "core.query_files",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "agent_files"
+   ],
+   "desc": "Search or list the seeded file registry before reading one exact filename."
+  },
+  {
+   "name": "query_calendar_events",
+   "mcp": "calendar.query_calendar_events",
+   "ns": "calendar",
+   "type": "read",
+   "tables": [
+    "agent_events"
+   ],
+   "desc": "Search or list calendar events by title or date before scheduling another event."
+  },
+  {
+   "name": "query_documents",
+   "mcp": "notion.query_documents",
+   "ns": "notion",
+   "type": "read",
+   "tables": [
+    "agent_documents"
+   ],
+   "desc": "Search or list working documents by title or body before drafting or appending."
+  },
+  {
+   "name": "search_memory",
+   "mcp": "core.search_memory",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "agent_memories"
+   ],
+   "desc": "Search or list durable memory entries before saving a new operating preference."
+  },
+  {
+   "name": "search_knowledge",
+   "mcp": "core.search_knowledge",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "agent_knowledge"
+   ],
+   "desc": "Search or list shared knowledge by content or source before adding another entry."
+  },
+  {
+   "name": "customer_support_records_agent",
+   "mcp": "jira.customer_support_records_agent",
+   "ns": "jira",
+   "type": "read",
+   "tables": [
+    "activity_log_lists",
+    "admin_lists",
+    "admin_with_apps",
+    "admins",
+    "ai_call_responses",
+    "article_lists",
+    "articles",
+    "away_status_reason_lists",
+    "collections",
+    "content_import_sources",
+    "conversations",
+    "data_exports",
+    "help_centers",
+    "news_items",
+    "support_tickets"
+   ],
+   "desc": "Delegate customer support record lookup to morgan_stanley_simulated's read-only records sub-agent using a natu"
+  },
+  {
+   "name": "core_records_agent",
+   "mcp": "salesforce.core_records_agent",
+   "ns": "salesforce",
+   "type": "read",
+   "tables": [
+    "accept_all",
+    "account_tiering_standard",
+    "activity_logging_standards",
+    "attribution",
+    "case_management_sla",
+    "coaching_cadence",
+    "compliance_review_checklist",
+    "conversation_intelligence_standards",
+    "cpq_discount_policy",
+    "currency_handling",
+    "data_quality_rules",
+    "deal_desk_charter",
+    "disposition_codes",
+    "finance_approval_thresholds",
+    "forecast_methodology",
+    "fy2026_list_prices",
+    "handoff_to_ae",
+    "inbound_routing_matrix",
+    "lead_management_sop",
+    "lead_scoring_policy",
+    "meddic_scorecard",
+    "meeting_scheduling_sla",
+    "meeting_types_and_durations",
+    "mql_definition",
+    "opportunity_stage_gates",
+    "order_activation_runbook",
+    "renewal_playbook",
+    "risky",
+    "routing_decision_table",
+    "sal_gate",
+    "sequence_design_rules",
+    "snippets",
+    "snippets_and_retention",
+    "suppression_and_kpis",
+    "talk_ratio",
+    "territory",
+    "tracker_keywords",
+    "visitor_identification",
+    "volume_bands",
+    "web_form_definitions"
+   ],
+   "desc": "Delegate core record lookup to morgan_stanley_simulated's read-only records sub-agent using a natural-language"
+  },
+  {
+   "name": "finance_records_agent",
+   "mcp": "github.finance_records_agent",
+   "ns": "github",
+   "type": "read",
+   "tables": [
+    "account_links",
+    "account_sessions",
+    "apple_pay_domains",
+    "application_fees",
+    "apps_secrets",
+    "balance_settings",
+    "balance_transactions",
+    "balances",
+    "bank_accounts",
+    "billing_alerts",
+    "billing_credit_balance_summaries",
+    "billing_credit_balance_transactions",
+    "billing_meters",
+    "capabilities",
+    "charges",
+    "checkout_sessions",
+    "climate_orders",
+    "company_finance_handoffs",
+    "credit_notes",
+    "disputes",
+    "finance_budgets",
+    "finance_expense_reports",
+    "identity_verification_sessions",
+    "invoice_rendering_templates",
+    "invoices",
+    "issuing_authorizations"
+   ],
+   "desc": "Delegate finance record lookup to morgan_stanley_simulated's read-only records sub-agent using a natural-langu"
+  },
+  {
+   "name": "human_resources_records_agent",
+   "mcp": "core.human_resources_records_agent",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "hr_leave_requests",
+    "hr_performance_reviews"
+   ],
+   "desc": "Delegate human resources record lookup to morgan_stanley_simulated's read-only records sub-agent using a natur"
+  },
+  {
+   "name": "marketing_records_agent",
+   "mcp": "salesforce.marketing_records_agent",
+   "ns": "salesforce",
+   "type": "read",
+   "tables": [
+    "all_segments_responses",
+    "api_keys",
+    "automations_link_stats_responses",
+    "automations_responses",
+    "batches",
+    "blocks",
+    "bounces",
+    "campaigns",
+    "category_stats",
+    "certificates",
+    "click_trackings",
+    "company_marketing_handoffs",
+    "contact_exports",
+    "contactdb_segments",
+    "marketing_campaigns",
+    "marketing_content_assets",
+    "singlesends",
+    "suppression_groups"
+   ],
+   "desc": "Delegate marketing record lookup to morgan_stanley_simulated's read-only records sub-agent using a natural-lan"
+  },
+  {
+   "name": "organization_records_agent",
+   "mcp": "email.organization_records_agent",
+   "ns": "email",
+   "type": "read",
+   "tables": [
+    "departments",
+    "employee_work_assignments",
+    "employees"
+   ],
+   "desc": "Delegate organization record lookup to morgan_stanley_simulated's read-only records sub-agent using a natural-"
+  },
+  {
+   "name": "sales_records_agent",
+   "mcp": "salesforce.sales_records_agent",
+   "ns": "salesforce",
+   "type": "read",
+   "tables": [
+    "accounts",
+    "cases",
+    "company_sales_handoffs",
+    "contacts",
+    "opportunities",
+    "sales_leads",
+    "sales_opportunities",
+    "tasks"
+   ],
+   "desc": "Delegate sales record lookup to morgan_stanley_simulated's read-only records sub-agent using a natural-languag"
+  },
+  {
+   "name": "sourcing_records_agent",
+   "mcp": "salesforce.sourcing_records_agent",
+   "ns": "salesforce",
+   "type": "read",
+   "tables": [
+    "company_sourcing_handoffs",
+    "customers",
+    "journal_entries",
+    "purchase_orders",
+    "sourcing_purchase_orders",
+    "sourcing_vendors",
+    "vendors"
+   ],
+   "desc": "Delegate sourcing record lookup to morgan_stanley_simulated's read-only records sub-agent using a natural-lang"
+  },
+  {
+   "name": "accounts_list",
+   "mcp": "salesforce.accounts_list",
+   "ns": "salesforce",
+   "type": "read",
+   "tables": [
+    "accounts"
+   ],
+   "desc": "List accounts with bounded lifecycle filtering. (GET /services/data/v1/accounts) Declared lifecycle: accounts."
+  },
+  {
+   "name": "cases_list",
+   "mcp": "pagerduty.cases_list",
+   "ns": "pagerduty",
+   "type": "read",
+   "tables": [
+    "cases"
+   ],
+   "desc": "List cases with bounded lifecycle filtering. (GET /services/data/v1/cases) Declared lifecycle: cases.status: n"
+  },
+  {
+   "name": "contacts_list",
+   "mcp": "salesforce.contacts_list",
+   "ns": "salesforce",
+   "type": "read",
+   "tables": [
+    "contacts"
+   ],
+   "desc": "List contacts with bounded lifecycle filtering. (GET /services/data/v1/contacts) Declared lifecycle: contacts."
+  },
+  {
+   "name": "opportunities_list",
+   "mcp": "core.opportunities_list",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "opportunities"
+   ],
+   "desc": "List opportunities with bounded lifecycle filtering. (GET /services/data/v1/opportunities) Declared lifecycle:"
+  },
+  {
+   "name": "tasks_list",
+   "mcp": "core.tasks_list",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "tasks"
+   ],
+   "desc": "List tasks with bounded lifecycle filtering. (GET /services/data/v1/tasks) Declared lifecycle: tasks.status: o"
+  },
+  {
+   "name": "case_get",
+   "mcp": "core.case_get",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "cases"
+   ],
+   "desc": "Get one case by id. (GET /services/data/v1/cases/{id}). The id argument is the exact opaque primary key, not a"
+  },
+  {
+   "name": "account_get",
+   "mcp": "salesforce.account_get",
+   "ns": "salesforce",
+   "type": "read",
+   "tables": [
+    "accounts"
+   ],
+   "desc": "Get one account by id. (GET /services/data/v1/accounts/{id}). The id argument is the exact opaque primary key,"
+  },
+  {
+   "name": "get_billing_alerts_id",
+   "mcp": "pagerduty.get_billing_alerts_id",
+   "ns": "pagerduty",
+   "type": "read",
+   "tables": [
+    "billing_alerts"
+   ],
+   "desc": "Retrieve a billing alert (GET /v1/billing/alerts/{id}). The id argument is the exact opaque primary key, not a"
+  },
+  {
+   "name": "contact_get",
+   "mcp": "salesforce.contact_get",
+   "ns": "salesforce",
+   "type": "read",
+   "tables": [
+    "contacts"
+   ],
+   "desc": "Get one contact by id. (GET /services/data/v1/contacts/{id}). The id argument is the exact opaque primary key,"
+  },
+  {
+   "name": "task_get",
+   "mcp": "core.task_get",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "tasks"
+   ],
+   "desc": "Get one task by id. (GET /services/data/v1/tasks/{id}). The id argument is the exact opaque primary key, not a"
+  },
+  {
+   "name": "opportunity_get",
+   "mcp": "salesforce.opportunity_get",
+   "ns": "salesforce",
+   "type": "read",
+   "tables": [
+    "opportunities"
+   ],
+   "desc": "Get one opportunity by id. (GET /services/data/v1/opportunities/{id}). The id argument is the exact opaque pri"
+  },
+  {
+   "name": "get_billing_meters_id",
+   "mcp": "core.get_billing_meters_id",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "billing_meters"
+   ],
+   "desc": "Retrieve a billing meter (GET /v1/billing/meters/{id}). The id argument is the exact opaque primary key, not a"
+  },
+  {
+   "name": "get_accounts_account_capabilities",
+   "mcp": "salesforce.get_accounts_account_capabilities",
+   "ns": "salesforce",
+   "type": "read",
+   "tables": [
+    "capabilities"
+   ],
+   "desc": "List all account capabilities (GET /v1/accounts/{account}/capabilities)"
+  },
+  {
+   "name": "get_charges",
+   "mcp": "stripe.get_charges",
+   "ns": "stripe",
+   "type": "read",
+   "tables": [
+    "charges"
+   ],
+   "desc": "List all charges (GET /v1/charges)"
+  },
+  {
+   "name": "get_charges_charge_dispute",
+   "mcp": "stripe.get_charges_charge_dispute",
+   "ns": "stripe",
+   "type": "read",
+   "tables": [
+    "disputes"
+   ],
+   "desc": "<p>Retrieve a dispute for a specified charge.</p> (GET /v1/charges/{charge}/dispute)"
+  },
+  {
+   "name": "get_credit_notes",
+   "mcp": "core.get_credit_notes",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "credit_notes"
+   ],
+   "desc": "List all credit notes (GET /v1/credit_notes)"
+  },
+  {
+   "name": "get_invoices",
+   "mcp": "stripe.get_invoices",
+   "ns": "stripe",
+   "type": "read",
+   "tables": [
+    "invoices"
+   ],
+   "desc": "List all invoices (GET /v1/invoices) Declared lifecycle: invoices.status: draft \u2192 open \u2192 paid \u2192 uncollectible "
+  },
+  {
+   "name": "get_invoice_rendering_templates",
+   "mcp": "stripe.get_invoice_rendering_templates",
+   "ns": "stripe",
+   "type": "read",
+   "tables": [
+    "invoice_rendering_templates"
+   ],
+   "desc": "List all invoice rendering templates (GET /v1/invoice_rendering_templates) Declared lifecycle: invoice_renderi"
+  },
+  {
+   "name": "get_entitlements_active_entitlements",
+   "mcp": "core.get_entitlements_active_entitlements",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "active_entitlements"
+   ],
+   "desc": "List all active entitlements (GET /v1/entitlements/active_entitlements)"
+  },
+  {
+   "name": "get_billing_alerts",
+   "mcp": "pagerduty.get_billing_alerts",
+   "ns": "pagerduty",
+   "type": "read",
+   "tables": [
+    "alerts"
+   ],
+   "desc": "List billing alerts (GET /v1/billing/alerts)"
+  },
+  {
+   "name": "get_application_fees",
+   "mcp": "core.get_application_fees",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "application_fees"
+   ],
+   "desc": "List all application fees (GET /v1/application_fees)"
+  },
+  {
+   "name": "get_payment_intents_intent_amount_details_line_items",
+   "mcp": "stripe.get_payment_intents_intent_amount_details_line_items",
+   "ns": "stripe",
+   "type": "read",
+   "tables": [
+    "amount_details_line_items"
+   ],
+   "desc": "List all PaymentIntent LineItems (GET /v1/payment_intents/{intent}/amount_details_line_items)"
+  },
+  {
+   "name": "get_issuing_authorizations",
+   "mcp": "core.get_issuing_authorizations",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "authorizations"
+   ],
+   "desc": "List all authorizations (GET /v1/issuing/authorizations)"
+  },
+  {
+   "name": "get_balance_transactions",
+   "mcp": "core.get_balance_transactions",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "balance_transactions"
+   ],
+   "desc": "List all balance transactions (GET /v1/balance_transactions)"
+  },
+  {
+   "name": "get_customers_customer_bank_accounts",
+   "mcp": "salesforce.get_customers_customer_bank_accounts",
+   "ns": "salesforce",
+   "type": "read",
+   "tables": [
+    "bank_accounts"
+   ],
+   "desc": "List all bank accounts (GET /v1/customers/{customer}/bank_accounts)"
+  },
+  {
+   "name": "get_billing_credit_balance_transactions_id",
+   "mcp": "core.get_billing_credit_balance_transactions_id",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "billing_credit_balance_transactions"
+   ],
+   "desc": "Retrieve a credit balance transaction (GET /v1/billing/credit_balance_transactions/{id}). The id argument is t"
+  },
+  {
+   "name": "get_billing_credit_balance_summary",
+   "mcp": "core.get_billing_credit_balance_summary",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "billing_credit_balance_summaries"
+   ],
+   "desc": "Retrieve the credit balance summary for a customer (GET /v1/billing/credit_balance_summary)"
+  },
+  {
+   "name": "get_tracking_settings_click",
+   "mcp": "core.get_tracking_settings_click",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "click_trackings"
+   ],
+   "desc": "Retrieve Click Track Settings (GET /tracking_settings/click)"
+  },
+  {
+   "name": "get_marketing_singlesends",
+   "mcp": "core.get_marketing_singlesends",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "singlesends"
+   ],
+   "desc": "Get All Single Sends (GET /marketing/singlesends)"
+  },
+  {
+   "name": "get_campaigns",
+   "mcp": "core.get_campaigns",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "campaigns"
+   ],
+   "desc": "Retrieve all Campaigns (GET /campaigns)"
+  },
+  {
+   "name": "get_api_keys",
+   "mcp": "core.get_api_keys",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "api_keys"
+   ],
+   "desc": "Retrieve all API Keys belonging to the authenticated user (GET /api_keys)"
+  },
+  {
+   "name": "get_contactdb_segments_segment_id",
+   "mcp": "salesforce.get_contactdb_segments_segment_id",
+   "ns": "salesforce",
+   "type": "read",
+   "tables": [
+    "contactdb_segments"
+   ],
+   "desc": "Retrieve a segment (GET /contactdb/segments/{segment_id})"
+  },
+  {
+   "name": "get_access_settings_activity",
+   "mcp": "core.get_access_settings_activity",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "activities"
+   ],
+   "desc": "Retrieve all recent access attempts (GET /access_settings/activity)"
+  },
+  {
+   "name": "get_ips_assigned",
+   "mcp": "core.get_ips_assigned",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "assigneds"
+   ],
+   "desc": "Retrieve all assigned IPs (GET /ips/assigned)"
+  },
+  {
+   "name": "getall_automation_stats",
+   "mcp": "core.getall_automation_stats",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "automations_responses"
+   ],
+   "desc": "Get All Automation Stats (GET /marketing/stats/automations)"
+  },
+  {
+   "name": "get_automation_link_stat",
+   "mcp": "core.get_automation_link_stat",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "automations_link_stats_responses"
+   ],
+   "desc": "Get Automation Click Tracking Stats by ID (GET /marketing/stats/automations/{id}/links). The id argument is th"
+  },
+  {
+   "name": "get_suppression_blocks",
+   "mcp": "core.get_suppression_blocks",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "blocks"
+   ],
+   "desc": "Retrieve all blocks (GET /suppression/blocks)"
+  },
+  {
+   "name": "get_categories_stats",
+   "mcp": "email.get_categories_stats",
+   "ns": "email",
+   "type": "read",
+   "tables": [
+    "category_stats"
+   ],
+   "desc": "Retrieve Email Statistics for Categories (GET /categories/stats)"
+  },
+  {
+   "name": "get_mc_contacts_exports_id",
+   "mcp": "salesforce.get_mc_contacts_exports_id",
+   "ns": "salesforce",
+   "type": "read",
+   "tables": [
+    "contact_exports"
+   ],
+   "desc": "Export Contacts Status (GET /marketing/contacts/exports/{id}). The id argument is the exact opaque primary key"
+  },
+  {
+   "name": "get_categories",
+   "mcp": "core.get_categories",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "categories"
+   ],
+   "desc": "Retrieve all categories (GET /categories)"
+  },
+  {
+   "name": "get_suppression_bounces",
+   "mcp": "core.get_suppression_bounces",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "bounces"
+   ],
+   "desc": "Retrieve all bounces (GET /suppression/bounces)"
+  },
+  {
+   "name": "retrieve_article",
+   "mcp": "core.retrieve_article",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "articles"
+   ],
+   "desc": "Retrieve an article (GET /articles/{article_id})"
+  },
+  {
+   "name": "retrieve_conversation",
+   "mcp": "core.retrieve_conversation",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "conversations"
+   ],
+   "desc": "Retrieve a conversation (GET /conversations/{conversation_id})"
+  },
+  {
+   "name": "get_content_import_source",
+   "mcp": "core.get_content_import_source",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "content_import_sources"
+   ],
+   "desc": "Retrieve a content import source (GET /ai/content_import_sources/{source_id})"
+  },
+  {
+   "name": "list_admins",
+   "mcp": "core.list_admins",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "admin_lists"
+   ],
+   "desc": "List all admins (GET /admins)"
+  },
+  {
+   "name": "retrieve_collection",
+   "mcp": "core.retrieve_collection",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "collections"
+   ],
+   "desc": "Retrieve a collection (GET /help_center/collections/{collection_id})"
+  },
+  {
+   "name": "retrieve_news_item",
+   "mcp": "core.retrieve_news_item",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "news_items"
+   ],
+   "desc": "Retrieve a news item (GET /news/news_items/{news_item_id})"
+  },
+  {
+   "name": "identify_admin",
+   "mcp": "core.identify_admin",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "admin_with_apps"
+   ],
+   "desc": "Identify an admin (GET /me)"
+  },
+  {
+   "name": "retrieve_admin",
+   "mcp": "core.retrieve_admin",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "admins"
+   ],
+   "desc": "Retrieve an admin (GET /admins/{admin_id})"
+  },
+  {
+   "name": "list_articles",
+   "mcp": "core.list_articles",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "article_lists"
+   ],
+   "desc": "List all articles (GET /articles)"
+  },
+  {
+   "name": "list_away_status_reasons",
+   "mcp": "core.list_away_status_reasons",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "away_status_reason_lists"
+   ],
+   "desc": "List all away status reasons (GET /away_status_reasons)"
+  },
+  {
+   "name": "admin_conversations_get_conversation_prefs",
+   "mcp": "slack.admin_conversations_get_conversation_prefs",
+   "ns": "slack",
+   "type": "read",
+   "tables": [
+    "admin_conversations"
+   ],
+   "desc": "Get conversation preferences for a public or private channel. (GET /admin.conversations.getConversationPrefs)"
+  },
+  {
+   "name": "calls_info",
+   "mcp": "core.calls_info",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "calls"
+   ],
+   "desc": "Returns information about a Call. (GET /calls.info)"
+  },
+  {
+   "name": "admin_emoji_list",
+   "mcp": "erp.admin_emoji_list",
+   "ns": "erp",
+   "type": "read",
+   "tables": [
+    "admin_emojis"
+   ],
+   "desc": "List emoji for an Enterprise Grid organization. (GET /admin.emoji.list)"
+  },
+  {
+   "name": "admin_apps_approved_list",
+   "mcp": "core.admin_apps_approved_list",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "admin_apps_approveds"
+   ],
+   "desc": "List approved apps for an org or workspace. (GET /admin.apps.approved.list)"
+  },
+  {
+   "name": "chat_scheduled_messages_list",
+   "mcp": "slack.chat_scheduled_messages_list",
+   "ns": "slack",
+   "type": "read",
+   "tables": [
+    "messages"
+   ],
+   "desc": "Returns a list of scheduled messages. (GET /chat.scheduledMessages.list)"
+  },
+  {
+   "name": "admin_conversations_ekm_list_original_connected_channel_info",
+   "mcp": "slack.admin_conversations_ekm_list_original_connected_channel_info",
+   "ns": "slack",
+   "type": "read",
+   "tables": [
+    "admin_conversations_ekms"
+   ],
+   "desc": "List all disconnected channels\u2014i.e., channels that were once connected to other workspaces and then disconnect"
+  },
+  {
+   "name": "admin_apps_requests_list",
+   "mcp": "core.admin_apps_requests_list",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "admin_apps_requests"
+   ],
+   "desc": "List app requests for a team/workspace. (GET /admin.apps.requests.list)"
+  },
+  {
+   "name": "admin_conversations_restrict_access_list_groups",
+   "mcp": "slack.admin_conversations_restrict_access_list_groups",
+   "ns": "slack",
+   "type": "read",
+   "tables": [
+    "admin_conversations_restrict_accesses"
+   ],
+   "desc": "List all IDP Groups linked to a channel (GET /admin.conversations.restrictAccess.listGroups)"
+  },
+  {
+   "name": "admin_apps_restricted_list",
+   "mcp": "core.admin_apps_restricted_list",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "admin_apps_restricteds"
+   ],
+   "desc": "List restricted apps for an org or workspace. (GET /admin.apps.restricted.list)"
+  },
+  {
+   "name": "admin_invite_requests_approved_list",
+   "mcp": "core.admin_invite_requests_approved_list",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "admin_invite_requests_approveds"
+   ],
+   "desc": "List all approved workspace invite requests. (GET /admin.inviteRequests.approved.list)"
+  },
+  {
+   "name": "admin_invite_requests_denied_list",
+   "mcp": "core.admin_invite_requests_denied_list",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "admin_invite_requests_denieds"
+   ],
+   "desc": "List all denied workspace invite requests. (GET /admin.inviteRequests.denied.list)"
+  },
+  {
+   "name": "admin_invite_requests_list",
+   "mcp": "core.admin_invite_requests_list",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "admin_invite_requests"
+   ],
+   "desc": "List all pending workspace invite requests. (GET /admin.inviteRequests.list)"
+  },
+  {
+   "name": "calendar_calendar_list_list",
+   "mcp": "calendar.calendar_calendar_list_list",
+   "ns": "calendar",
+   "type": "read",
+   "tables": [
+    "calendar_lists"
+   ],
+   "desc": "Returns the calendars on the user's calendar list. (GET /users/me/calendarList)"
+  },
+  {
+   "name": "calendar_acl_list",
+   "mcp": "calendar.calendar_acl_list",
+   "ns": "calendar",
+   "type": "read",
+   "tables": [
+    "acls"
+   ],
+   "desc": "Returns the rules in the access control list for the calendar. (GET /calendars/{calendarId}/acl)"
+  },
+  {
+   "name": "calendar_calendar_list_get",
+   "mcp": "calendar.calendar_calendar_list_get",
+   "ns": "calendar",
+   "type": "read",
+   "tables": [
+    "calendar_list_entries"
+   ],
+   "desc": "Returns a calendar from the user's calendar list. (GET /users/me/calendarList/{calendarId})"
+  },
+  {
+   "name": "calendar_calendars_get",
+   "mcp": "calendar.calendar_calendars_get",
+   "ns": "calendar",
+   "type": "read",
+   "tables": [
+    "calendars"
+   ],
+   "desc": "Returns metadata for a calendar. (GET /calendars/{calendarId})"
+  },
+  {
+   "name": "purchase_orders_list",
+   "mcp": "erp.purchase_orders_list",
+   "ns": "erp",
+   "type": "read",
+   "tables": [
+    "purchase_orders"
+   ],
+   "desc": "List purchase_orders with bounded lifecycle filtering. (GET /services/data/v1/purchase_orders) Declared lifecy"
+  },
+  {
+   "name": "customers_list",
+   "mcp": "core.customers_list",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "customers"
+   ],
+   "desc": "List customers with bounded lifecycle filtering. (GET /services/data/v1/customers) Declared lifecycle: custome"
+  },
+  {
+   "name": "journal_entries_list",
+   "mcp": "core.journal_entries_list",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "journal_entries"
+   ],
+   "desc": "List journal_entries with bounded lifecycle filtering. (GET /services/data/v1/journal_entries) Declared lifecy"
+  },
+  {
+   "name": "vendors_list",
+   "mcp": "core.vendors_list",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "vendors"
+   ],
+   "desc": "List vendors with bounded lifecycle filtering. (GET /services/data/v1/vendors) Declared lifecycle: vendors.sta"
+  },
+  {
+   "name": "customer_get",
+   "mcp": "core.customer_get",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "customers"
+   ],
+   "desc": "Get one customer by id. (GET /services/data/v1/customers/{id}). The id argument is the exact opaque primary ke"
+  },
+  {
+   "name": "purchase_order_get",
+   "mcp": "erp.purchase_order_get",
+   "ns": "erp",
+   "type": "read",
+   "tables": [
+    "purchase_orders"
+   ],
+   "desc": "Get one purchase_order by id. (GET /services/data/v1/purchase_orders/{id}). The id argument is the exact opaqu"
+  },
+  {
+   "name": "journal_entry_get",
+   "mcp": "core.journal_entry_get",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "journal_entries"
+   ],
+   "desc": "Get one journal_entry by id. (GET /services/data/v1/journal_entries/{id}). The id argument is the exact opaque"
+  },
+  {
+   "name": "vendor_get",
+   "mcp": "core.vendor_get",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "vendors"
+   ],
+   "desc": "Get one vendor by id. (GET /services/data/v1/vendors/{id}). The id argument is the exact opaque primary key, n"
+  },
+  {
+   "name": "query_departments",
+   "mcp": "core.query_departments",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "departments"
+   ],
+   "desc": "Search and filter departments. Returns matching rows. Use this to resolve a human name, title, external code, "
+  },
+  {
+   "name": "query_employees",
+   "mcp": "core.query_employees",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "employees"
+   ],
+   "desc": "Search and filter employees. Returns matching rows. Declared lifecycle: employees.status: active \u2192 on_leave \u2192 "
+  },
+  {
+   "name": "query_sales_leads",
+   "mcp": "salesforce.query_sales_leads",
+   "ns": "salesforce",
+   "type": "read",
+   "tables": [
+    "sales_leads"
+   ],
+   "desc": "Search and filter sales_leads. Returns matching rows. Declared lifecycle: sales_leads.status: new \u2192 contacted "
+  },
+  {
+   "name": "query_employee_work_assignments",
+   "mcp": "core.query_employee_work_assignments",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "employee_work_assignments"
+   ],
+   "desc": "Search and filter employee_work_assignments. Returns matching rows. Declared lifecycle: employee_work_assignme"
+  },
+  {
+   "name": "query_sales_opportunities",
+   "mcp": "core.query_sales_opportunities",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "sales_opportunities"
+   ],
+   "desc": "Search and filter sales_opportunities. Returns matching rows. Declared lifecycle: sales_opportunities.status: "
+  },
+  {
+   "name": "query_hr_leave_requests",
+   "mcp": "core.query_hr_leave_requests",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "hr_leave_requests"
+   ],
+   "desc": "Search and filter hr_leave_requests. Returns matching rows. Declared lifecycle: hr_leave_requests.status: subm"
+  },
+  {
+   "name": "query_hr_performance_reviews",
+   "mcp": "core.query_hr_performance_reviews",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "hr_performance_reviews"
+   ],
+   "desc": "Search and filter hr_performance_reviews. Returns matching rows. Declared lifecycle: hr_performance_reviews.st"
+  },
+  {
+   "name": "query_finance_expense_reports",
+   "mcp": "github.query_finance_expense_reports",
+   "ns": "github",
+   "type": "read",
+   "tables": [
+    "finance_expense_reports"
+   ],
+   "desc": "Search and filter finance_expense_reports. Returns matching rows. Declared lifecycle: finance_expense_reports."
+  },
+  {
+   "name": "query_finance_budgets",
+   "mcp": "core.query_finance_budgets",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "finance_budgets"
+   ],
+   "desc": "Search and filter finance_budgets. Returns matching rows. Declared lifecycle: finance_budgets.status: draft \u2192 "
+  },
+  {
+   "name": "query_sourcing_vendors",
+   "mcp": "core.query_sourcing_vendors",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "sourcing_vendors"
+   ],
+   "desc": "Search and filter sourcing_vendors. Returns matching rows. Declared lifecycle: sourcing_vendors.status: prospe"
+  },
+  {
+   "name": "query_marketing_content_assets",
+   "mcp": "core.query_marketing_content_assets",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "marketing_content_assets"
+   ],
+   "desc": "Search and filter marketing_content_assets. Returns matching rows. Declared lifecycle: marketing_content_asset"
+  },
+  {
+   "name": "query_marketing_campaigns",
+   "mcp": "core.query_marketing_campaigns",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "marketing_campaigns"
+   ],
+   "desc": "Search and filter marketing_campaigns. Returns matching rows. Declared lifecycle: marketing_campaigns.status: "
+  },
+  {
+   "name": "query_support_tickets",
+   "mcp": "jira.query_support_tickets",
+   "ns": "jira",
+   "type": "read",
+   "tables": [
+    "support_tickets"
+   ],
+   "desc": "Search and filter support_tickets. Returns matching rows. Declared lifecycle: support_tickets.status: open \u2192 i"
+  },
+  {
+   "name": "query_company_marketing_handoffs",
+   "mcp": "core.query_company_marketing_handoffs",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "company_marketing_handoffs"
+   ],
+   "desc": "Search and filter company_marketing_handoffs. Returns matching rows. Declared lifecycle: company_marketing_han"
+  },
+  {
+   "name": "query_sourcing_purchase_orders",
+   "mcp": "erp.query_sourcing_purchase_orders",
+   "ns": "erp",
+   "type": "read",
+   "tables": [
+    "sourcing_purchase_orders"
+   ],
+   "desc": "Search and filter sourcing_purchase_orders. Returns matching rows. Declared lifecycle: sourcing_purchase_order"
+  },
+  {
+   "name": "query_company_sales_handoffs",
+   "mcp": "core.query_company_sales_handoffs",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "company_sales_handoffs"
+   ],
+   "desc": "Search and filter company_sales_handoffs. Returns matching rows. Declared lifecycle: company_sales_handoffs.st"
+  },
+  {
+   "name": "query_company_finance_handoffs",
+   "mcp": "core.query_company_finance_handoffs",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "company_finance_handoffs"
+   ],
+   "desc": "Search and filter company_finance_handoffs. Returns matching rows. Declared lifecycle: company_finance_handoff"
+  },
+  {
+   "name": "query_company_sourcing_handoffs",
+   "mcp": "core.query_company_sourcing_handoffs",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "company_sourcing_handoffs"
+   ],
+   "desc": "Search and filter company_sourcing_handoffs. Returns matching rows. Declared lifecycle: company_sourcing_hando"
+  },
+  {
+   "name": "lookup_employee_with_departments",
+   "mcp": "core.lookup_employee_with_departments",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "departments",
+    "employees"
+   ],
+   "desc": "Look up a employee record with its parent departments data joined. The id argument is the exact opaque primary"
+  },
+  {
+   "name": "lookup_sales_lead_with_employees",
+   "mcp": "salesforce.lookup_sales_lead_with_employees",
+   "ns": "salesforce",
+   "type": "read",
+   "tables": [
+    "employees",
+    "sales_leads"
+   ],
+   "desc": "Look up a sales lead record with its parent employees data joined. The id argument is the exact opaque primary"
+  },
+  {
+   "name": "lookup_employee_work_assignment_with_employees",
+   "mcp": "core.lookup_employee_work_assignment_with_employees",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "employee_work_assignments",
+    "employees"
+   ],
+   "desc": "Look up a employee work assignment record with its parent employees data joined. The id argument is the exact "
+  },
+  {
+   "name": "lookup_sales_opportunity_with_sales_leads",
+   "mcp": "salesforce.lookup_sales_opportunity_with_sales_leads",
+   "ns": "salesforce",
+   "type": "read",
+   "tables": [
+    "sales_leads",
+    "sales_opportunities"
+   ],
+   "desc": "Look up a sales opportunitie record with its parent sales leads data joined. The id argument is the exact opaq"
+  },
+  {
+   "name": "lookup_hr_leave_request_with_employees",
+   "mcp": "core.lookup_hr_leave_request_with_employees",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "employees",
+    "hr_leave_requests"
+   ],
+   "desc": "Look up a hr leave request record with its parent employees data joined. The id argument is the exact opaque p"
+  },
+  {
+   "name": "lookup_finance_expense_report_with_employees",
+   "mcp": "github.lookup_finance_expense_report_with_employees",
+   "ns": "github",
+   "type": "read",
+   "tables": [
+    "employees",
+    "finance_expense_reports"
+   ],
+   "desc": "Look up a finance expense report record with its parent employees data joined. The id argument is the exact op"
+  },
+  {
+   "name": "lookup_finance_budget_with_departments",
+   "mcp": "core.lookup_finance_budget_with_departments",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "departments",
+    "finance_budgets"
+   ],
+   "desc": "Look up a finance budget record with its parent departments data joined. The id argument is the exact opaque p"
+  },
+  {
+   "name": "lookup_support_ticket_with_employees",
+   "mcp": "jira.lookup_support_ticket_with_employees",
+   "ns": "jira",
+   "type": "read",
+   "tables": [
+    "employees",
+    "support_tickets"
+   ],
+   "desc": "Look up a support ticket record with its parent employees data joined. The id argument is the exact opaque pri"
+  },
+  {
+   "name": "lookup_marketing_campaign_with_employees",
+   "mcp": "core.lookup_marketing_campaign_with_employees",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "employees",
+    "marketing_campaigns"
+   ],
+   "desc": "Look up a marketing campaign record with its parent employees data joined. The id argument is the exact opaque"
+  },
+  {
+   "name": "lookup_marketing_content_asset_with_marketing_campaigns",
+   "mcp": "core.lookup_marketing_content_asset_with_marketing_campaigns",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "marketing_campaigns",
+    "marketing_content_assets"
+   ],
+   "desc": "Look up a marketing content asset record with its parent marketing campaigns data joined. The id argument is t"
+  },
+  {
+   "name": "lookup_sourcing_purchase_order_with_sourcing_vendors",
+   "mcp": "erp.lookup_sourcing_purchase_order_with_sourcing_vendors",
+   "ns": "erp",
+   "type": "read",
+   "tables": [
+    "sourcing_purchase_orders",
+    "sourcing_vendors"
+   ],
+   "desc": "Look up a sourcing purchase order record with its parent sourcing vendors data joined. The id argument is the "
+  },
+  {
+   "name": "lookup_sourcing_vendor_with_employees",
+   "mcp": "core.lookup_sourcing_vendor_with_employees",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "employees",
+    "sourcing_vendors"
+   ],
+   "desc": "Look up a sourcing vendor record with its parent employees data joined. The id argument is the exact opaque pr"
+  },
+  {
+   "name": "lookup_company_sales_handoff_with_volume_bands",
+   "mcp": "core.lookup_company_sales_handoff_with_volume_bands",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "company_sales_handoffs",
+    "volume_bands"
+   ],
+   "desc": "Look up a company sales handoff record with its parent volume bands data joined. The id argument is the exact "
+  },
+  {
+   "name": "lookup_company_marketing_handoff_with_volume_bands",
+   "mcp": "core.lookup_company_marketing_handoff_with_volume_bands",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "company_marketing_handoffs",
+    "volume_bands"
+   ],
+   "desc": "Look up a company marketing handoff record with its parent volume bands data joined. The id argument is the ex"
+  },
+  {
+   "name": "lookup_company_finance_handoff_with_volume_bands",
+   "mcp": "core.lookup_company_finance_handoff_with_volume_bands",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "company_finance_handoffs",
+    "volume_bands"
+   ],
+   "desc": "Look up a company finance handoff record with its parent volume bands data joined. The id argument is the exac"
+  },
+  {
+   "name": "lookup_company_sourcing_handoff_with_volume_bands",
+   "mcp": "core.lookup_company_sourcing_handoff_with_volume_bands",
+   "ns": "core",
+   "type": "read",
+   "tables": [
+    "company_sourcing_handoffs",
+    "volume_bands"
+   ],
+   "desc": "Look up a company sourcing handoff record with its parent volume bands data joined. The id argument is the exa"
+  },
+  {
+   "name": "document_agent",
+   "mcp": "notion.document_agent",
+   "ns": "notion",
+   "type": "write",
+   "tables": [
+    "agent_documents"
+   ],
+   "desc": "Delegate document work to morgan_stanley_simulated's document sub-agent in free text. Supports: create doc \"Ti"
+  },
+  {
+   "name": "calendar_agent",
+   "mcp": "calendar.calendar_agent",
+   "ns": "calendar",
+   "type": "write",
+   "tables": [
+    "agent_events"
+   ],
+   "desc": "Delegate scheduling to morgan_stanley_simulated's calendar sub-agent in free text. Supports: schedule \"Title\" "
+  },
+  {
+   "name": "save_memory",
+   "mcp": "core.save_memory",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "agent_memories"
+   ],
+   "desc": "Save a durable memory entry the agent can rely on in later sessions."
+  },
+  {
+   "name": "add_to_knowledge",
+   "mcp": "core.add_to_knowledge",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "agent_knowledge"
+   ],
+   "desc": "Add an entry to the shared knowledge base."
+  },
+  {
+   "name": "create_playbook",
+   "mcp": "core.create_playbook",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "agent_playbooks"
+   ],
+   "desc": "Create a reusable automation playbook (named step list)."
+  },
+  {
+   "name": "create_scheduled_run",
+   "mcp": "calendar.create_scheduled_run",
+   "ns": "calendar",
+   "type": "write",
+   "tables": [
+    "agent_scheduled_runs"
+   ],
+   "desc": "Schedule a recurring automation run (re-enters as a new task episode)."
+  },
+  {
+   "name": "core_workflow_agent",
+   "mcp": "salesforce.core_workflow_agent",
+   "ns": "salesforce",
+   "type": "write",
+   "tables": [
+    "accept_all",
+    "account_tiering_standard",
+    "activity_logging_standards",
+    "attribution",
+    "case_management_sla",
+    "coaching_cadence",
+    "compliance_review_checklist",
+    "conversation_intelligence_standards",
+    "cpq_discount_policy",
+    "currency_handling",
+    "data_quality_rules",
+    "deal_desk_charter",
+    "disposition_codes",
+    "finance_approval_thresholds",
+    "forecast_methodology",
+    "fy2026_list_prices",
+    "handoff_to_ae",
+    "inbound_routing_matrix",
+    "lead_management_sop",
+    "lead_scoring_policy",
+    "meddic_scorecard",
+    "meeting_scheduling_sla",
+    "meeting_types_and_durations",
+    "mql_definition",
+    "opportunity_stage_gates",
+    "order_activation_runbook",
+    "renewal_playbook",
+    "risky",
+    "routing_decision_table",
+    "sal_gate",
+    "sequence_design_rules",
+    "snippets",
+    "snippets_and_retention",
+    "suppression_and_kpis",
+    "talk_ratio",
+    "territory",
+    "tracker_keywords",
+    "visitor_identification",
+    "volume_bands",
+    "web_form_definitions"
+   ],
+   "desc": "Delegate core record work to morgan_stanley_simulated's workflow sub-agent using a natural-language request. P"
+  },
+  {
+   "name": "customer_support_workflow_agent",
+   "mcp": "jira.customer_support_workflow_agent",
+   "ns": "jira",
+   "type": "write",
+   "tables": [
+    "activity_log_lists",
+    "admin_lists",
+    "admin_with_apps",
+    "admins",
+    "ai_call_responses",
+    "article_lists",
+    "articles",
+    "away_status_reason_lists",
+    "collections",
+    "content_import_sources",
+    "conversations",
+    "data_exports",
+    "help_centers",
+    "news_items",
+    "support_tickets"
+   ],
+   "desc": "Delegate customer support record work to morgan_stanley_simulated's workflow sub-agent using a natural-languag"
+  },
+  {
+   "name": "finance_workflow_agent",
+   "mcp": "github.finance_workflow_agent",
+   "ns": "github",
+   "type": "write",
+   "tables": [
+    "account_links",
+    "account_sessions",
+    "apple_pay_domains",
+    "application_fees",
+    "apps_secrets",
+    "balance_settings",
+    "balance_transactions",
+    "balances",
+    "bank_accounts",
+    "billing_alerts",
+    "billing_credit_balance_summaries",
+    "billing_credit_balance_transactions",
+    "billing_meters",
+    "capabilities",
+    "charges",
+    "checkout_sessions",
+    "climate_orders",
+    "company_finance_handoffs",
+    "credit_notes",
+    "disputes",
+    "finance_budgets",
+    "finance_expense_reports",
+    "identity_verification_sessions",
+    "invoice_rendering_templates",
+    "invoices",
+    "issuing_authorizations"
+   ],
+   "desc": "Delegate finance record work to morgan_stanley_simulated's workflow sub-agent using a natural-language request"
+  },
+  {
+   "name": "human_resources_workflow_agent",
+   "mcp": "core.human_resources_workflow_agent",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "hr_leave_requests",
+    "hr_performance_reviews"
+   ],
+   "desc": "Delegate human resources record work to morgan_stanley_simulated's workflow sub-agent using a natural-language"
+  },
+  {
+   "name": "marketing_workflow_agent",
+   "mcp": "salesforce.marketing_workflow_agent",
+   "ns": "salesforce",
+   "type": "write",
+   "tables": [
+    "all_segments_responses",
+    "api_keys",
+    "automations_link_stats_responses",
+    "automations_responses",
+    "batches",
+    "blocks",
+    "bounces",
+    "campaigns",
+    "category_stats",
+    "certificates",
+    "click_trackings",
+    "company_marketing_handoffs",
+    "contact_exports",
+    "contactdb_segments",
+    "marketing_campaigns",
+    "marketing_content_assets",
+    "singlesends",
+    "suppression_groups"
+   ],
+   "desc": "Delegate marketing record work to morgan_stanley_simulated's workflow sub-agent using a natural-language reque"
+  },
+  {
+   "name": "organization_workflow_agent",
+   "mcp": "email.organization_workflow_agent",
+   "ns": "email",
+   "type": "write",
+   "tables": [
+    "departments",
+    "employee_work_assignments",
+    "employees"
+   ],
+   "desc": "Delegate organization record work to morgan_stanley_simulated's workflow sub-agent using a natural-language re"
+  },
+  {
+   "name": "sales_workflow_agent",
+   "mcp": "salesforce.sales_workflow_agent",
+   "ns": "salesforce",
+   "type": "write",
+   "tables": [
+    "accounts",
+    "cases",
+    "company_sales_handoffs",
+    "contacts",
+    "opportunities",
+    "sales_leads",
+    "sales_opportunities",
+    "tasks"
+   ],
+   "desc": "Delegate sales record work to morgan_stanley_simulated's workflow sub-agent using a natural-language request. "
+  },
+  {
+   "name": "sourcing_workflow_agent",
+   "mcp": "salesforce.sourcing_workflow_agent",
+   "ns": "salesforce",
+   "type": "write",
+   "tables": [
+    "company_sourcing_handoffs",
+    "customers",
+    "journal_entries",
+    "purchase_orders",
+    "sourcing_purchase_orders",
+    "sourcing_vendors",
+    "vendors"
+   ],
+   "desc": "Delegate sourcing record work to morgan_stanley_simulated's workflow sub-agent using a natural-language reques"
+  },
+  {
+   "name": "account_create",
+   "mcp": "salesforce.account_create",
+   "ns": "salesforce",
+   "type": "write",
+   "tables": [
+    "accounts"
+   ],
+   "desc": "Create one tenant-scoped account. (POST /services/data/v1/accounts) Declared lifecycle: accounts.status: prosp"
+  },
+  {
+   "name": "case_create",
+   "mcp": "pagerduty.case_create",
+   "ns": "pagerduty",
+   "type": "write",
+   "tables": [
+    "cases"
+   ],
+   "desc": "Create one tenant-scoped case. (POST /services/data/v1/cases) Declared lifecycle: cases.status: new \u2192 working "
+  },
+  {
+   "name": "contact_create",
+   "mcp": "salesforce.contact_create",
+   "ns": "salesforce",
+   "type": "write",
+   "tables": [
+    "contacts"
+   ],
+   "desc": "Create one tenant-scoped contact. (POST /services/data/v1/contacts) Declared lifecycle: contacts.status: new \u2192"
+  },
+  {
+   "name": "opportunity_create",
+   "mcp": "salesforce.opportunity_create",
+   "ns": "salesforce",
+   "type": "write",
+   "tables": [
+    "opportunities"
+   ],
+   "desc": "Create one tenant-scoped opportunity. (POST /services/data/v1/opportunities) Declared lifecycle: opportunities"
+  },
+  {
+   "name": "task_create",
+   "mcp": "core.task_create",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "tasks"
+   ],
+   "desc": "Create one tenant-scoped task. (POST /services/data/v1/tasks) Declared lifecycle: tasks.status: open \u2192 in_prog"
+  },
+  {
+   "name": "post_billing_alerts",
+   "mcp": "pagerduty.post_billing_alerts",
+   "ns": "pagerduty",
+   "type": "write",
+   "tables": [
+    "billing_alerts"
+   ],
+   "desc": "Create a billing alert (POST /v1/billing/alerts)"
+  },
+  {
+   "name": "post_billing_meters",
+   "mcp": "core.post_billing_meters",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "billing_meters"
+   ],
+   "desc": "Create a billing meter (POST /v1/billing/meters)"
+  },
+  {
+   "name": "post_charges",
+   "mcp": "stripe.post_charges",
+   "ns": "stripe",
+   "type": "write",
+   "tables": [
+    "charges"
+   ],
+   "desc": "<p>This method is no longer recommended\u2014use the <a href=\"/docs/api/payment_intents\">Payment Intents API</a> to"
+  },
+  {
+   "name": "post_climate_orders",
+   "mcp": "core.post_climate_orders",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "climate_orders"
+   ],
+   "desc": "Create an order (POST /v1/climate/orders)"
+  },
+  {
+   "name": "post_charges_charge_dispute_close",
+   "mcp": "stripe.post_charges_charge_dispute_close",
+   "ns": "stripe",
+   "type": "write",
+   "tables": [
+    "disputes"
+   ],
+   "desc": "PostChargesChargeDisputeClose (POST /v1/charges/{charge}/dispute/close)"
+  },
+  {
+   "name": "post_identity_verification_sessions",
+   "mcp": "core.post_identity_verification_sessions",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "identity_verification_sessions"
+   ],
+   "desc": "Create a VerificationSession (POST /v1/identity/verification_sessions)"
+  },
+  {
+   "name": "post_test_helpers_issuing_authorizations",
+   "mcp": "core.post_test_helpers_issuing_authorizations",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "issuing_authorizations"
+   ],
+   "desc": "Create a test-mode authorization (POST /v1/test_helpers/issuing/authorizations)"
+  },
+  {
+   "name": "post_account_links",
+   "mcp": "salesforce.post_account_links",
+   "ns": "salesforce",
+   "type": "write",
+   "tables": [
+    "account_links"
+   ],
+   "desc": "Create an account link (POST /v1/account_links)"
+  },
+  {
+   "name": "post_account_sessions",
+   "mcp": "salesforce.post_account_sessions",
+   "ns": "salesforce",
+   "type": "write",
+   "tables": [
+    "account_sessions"
+   ],
+   "desc": "Create an Account Session (POST /v1/account_sessions)"
+  },
+  {
+   "name": "patch_marketing_singlesends_id",
+   "mcp": "core.patch_marketing_singlesends_id",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "singlesends"
+   ],
+   "desc": "Update Single Send (PATCH /marketing/singlesends/{id}). The id argument is the exact opaque primary key, not a"
+  },
+  {
+   "name": "patch_api_keys_api_key_id",
+   "mcp": "core.patch_api_keys_api_key_id",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "api_keys"
+   ],
+   "desc": "Update API key name (PATCH /api_keys/{api_key_id})"
+  },
+  {
+   "name": "patch_campaigns_campaign_id",
+   "mcp": "core.patch_campaigns_campaign_id",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "campaigns"
+   ],
+   "desc": "Update a Campaign (PATCH /campaigns/{campaign_id})"
+  },
+  {
+   "name": "post_marketing_singlesends",
+   "mcp": "core.post_marketing_singlesends",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "singlesends"
+   ],
+   "desc": "Create Single Send (POST /marketing/singlesends)"
+  },
+  {
+   "name": "create_api_keys",
+   "mcp": "core.create_api_keys",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "api_keys"
+   ],
+   "desc": "Create API keys (POST /api_keys)"
+  },
+  {
+   "name": "post_campaigns",
+   "mcp": "core.post_campaigns",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "campaigns"
+   ],
+   "desc": "Create a Campaign (POST /campaigns)"
+  },
+  {
+   "name": "post_marketing_contacts_batch",
+   "mcp": "salesforce.post_marketing_contacts_batch",
+   "ns": "salesforce",
+   "type": "write",
+   "tables": [
+    "batches"
+   ],
+   "desc": "Get Batched Contacts by IDs (POST /marketing/contacts/batch)"
+  },
+  {
+   "name": "update_article",
+   "mcp": "core.update_article",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "articles"
+   ],
+   "desc": "Update an article (PUT /articles/{article_id}) Declared lifecycle: articles.state: published \u2192 draft."
+  },
+  {
+   "name": "update_content_import_source",
+   "mcp": "core.update_content_import_source",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "content_import_sources"
+   ],
+   "desc": "Update a content import source (PUT /ai/content_import_sources/{source_id}) Declared lifecycle: content_import"
+  },
+  {
+   "name": "update_news_item",
+   "mcp": "core.update_news_item",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "news_items"
+   ],
+   "desc": "Update a news item (PUT /news/news_items/{news_item_id}) Declared lifecycle: news_items.state: draft \u2192 live."
+  },
+  {
+   "name": "update_collection",
+   "mcp": "core.update_collection",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "collections"
+   ],
+   "desc": "Update a collection (PUT /help_center/collections/{collection_id})"
+  },
+  {
+   "name": "create_article",
+   "mcp": "core.create_article",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "articles"
+   ],
+   "desc": "Create an article (POST /articles) Declared lifecycle: articles.state: published \u2192 draft."
+  },
+  {
+   "name": "create_content_import_source",
+   "mcp": "core.create_content_import_source",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "content_import_sources"
+   ],
+   "desc": "Create a content import source (POST /ai/content_import_sources) Declared lifecycle: content_import_sources.st"
+  },
+  {
+   "name": "create_data_export",
+   "mcp": "core.create_data_export",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "data_exports"
+   ],
+   "desc": "Create content data export (POST /export/content/data)"
+  },
+  {
+   "name": "create_news_item",
+   "mcp": "core.create_news_item",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "news_items"
+   ],
+   "desc": "Create a news item (POST /news/news_items) Declared lifecycle: news_items.state: draft \u2192 live."
+  },
+  {
+   "name": "create_collection",
+   "mcp": "core.create_collection",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "collections"
+   ],
+   "desc": "Create a collection (POST /help_center/collections)"
+  },
+  {
+   "name": "admin_conversations_rename",
+   "mcp": "slack.admin_conversations_rename",
+   "ns": "slack",
+   "type": "write",
+   "tables": [
+    "admin_conversations"
+   ],
+   "desc": "Rename a public or private channel. (POST /admin.conversations.rename)"
+  },
+  {
+   "name": "admin_emoji_rename",
+   "mcp": "core.admin_emoji_rename",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "admin_emojis"
+   ],
+   "desc": "Rename an emoji. (POST /admin.emoji.rename)"
+  },
+  {
+   "name": "calls_update",
+   "mcp": "core.calls_update",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "calls"
+   ],
+   "desc": "Updates information about a Call. (POST /calls.update). The id argument is the exact opaque primary key, not a"
+  },
+  {
+   "name": "admin_conversations_create",
+   "mcp": "slack.admin_conversations_create",
+   "ns": "slack",
+   "type": "write",
+   "tables": [
+    "admin_conversations"
+   ],
+   "desc": "Create a public or private channel-based conversation. (POST /admin.conversations.create)"
+  },
+  {
+   "name": "admin_emoji_add",
+   "mcp": "core.admin_emoji_add",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "admin_emojis"
+   ],
+   "desc": "Add an emoji. (POST /admin.emoji.add)"
+  },
+  {
+   "name": "calls_add",
+   "mcp": "core.calls_add",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "calls"
+   ],
+   "desc": "Registers a new Call. (POST /calls.add)"
+  },
+  {
+   "name": "conversations_create",
+   "mcp": "slack.conversations_create",
+   "ns": "slack",
+   "type": "write",
+   "tables": [
+    "channels"
+   ],
+   "desc": "Initiates a public or private channel-based conversation (POST /conversations.create)"
+  },
+  {
+   "name": "files_remote_add",
+   "mcp": "core.files_remote_add",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "files"
+   ],
+   "desc": "Adds a file from a remote service (POST /files.remote.add)"
+  },
+  {
+   "name": "calendar_calendar_list_insert",
+   "mcp": "calendar.calendar_calendar_list_insert",
+   "ns": "calendar",
+   "type": "write",
+   "tables": [
+    "calendar_list_entries"
+   ],
+   "desc": "Inserts an existing calendar into the user's calendar list. (POST /users/me/calendarList)"
+  },
+  {
+   "name": "calendar_calendars_insert",
+   "mcp": "calendar.calendar_calendars_insert",
+   "ns": "calendar",
+   "type": "write",
+   "tables": [
+    "calendars"
+   ],
+   "desc": "Creates a secondary calendar. The authenticated user for the request is made the data owner of the new calenda"
+  },
+  {
+   "name": "customer_create",
+   "mcp": "core.customer_create",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "customers"
+   ],
+   "desc": "Create one tenant-scoped customer. (POST /services/data/v1/customers) Declared lifecycle: customers.status: pr"
+  },
+  {
+   "name": "journal_entry_create",
+   "mcp": "core.journal_entry_create",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "journal_entries"
+   ],
+   "desc": "Create one tenant-scoped journal_entry. (POST /services/data/v1/journal_entries) Declared lifecycle: journal_e"
+  },
+  {
+   "name": "purchase_order_create",
+   "mcp": "erp.purchase_order_create",
+   "ns": "erp",
+   "type": "write",
+   "tables": [
+    "purchase_orders"
+   ],
+   "desc": "Create one tenant-scoped purchase_order. (POST /services/data/v1/purchase_orders) Declared lifecycle: purchase"
+  },
+  {
+   "name": "vendor_create",
+   "mcp": "core.vendor_create",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "vendors"
+   ],
+   "desc": "Create one tenant-scoped vendor. (POST /services/data/v1/vendors) Declared lifecycle: vendors.status: pending_"
+  },
+  {
+   "name": "update_departments_department_code",
+   "mcp": "core.update_departments_department_code",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "departments"
+   ],
+   "desc": "Update the department code of a departments record. The id argument is the exact opaque primary key, not a hum"
+  },
+  {
+   "name": "update_employees_status",
+   "mcp": "core.update_employees_status",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "employees"
+   ],
+   "desc": "Update status of a employees record. Valid statuses: active, on_leave, terminated. Declared lifecycle: employe"
+  },
+  {
+   "name": "update_employee_work_assignments_status",
+   "mcp": "core.update_employee_work_assignments_status",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "employee_work_assignments"
+   ],
+   "desc": "Update status of a employee work assignments record. Valid statuses: assigned, in_progress, completed, cancell"
+  },
+  {
+   "name": "update_sales_leads_status",
+   "mcp": "salesforce.update_sales_leads_status",
+   "ns": "salesforce",
+   "type": "write",
+   "tables": [
+    "sales_leads"
+   ],
+   "desc": "Update status of a sales leads record. Valid statuses: new, contacted, qualified, converted, lost. Declared li"
+  },
+  {
+   "name": "update_sales_opportunities_status",
+   "mcp": "core.update_sales_opportunities_status",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "sales_opportunities"
+   ],
+   "desc": "Update status of a sales opportunities record. Valid statuses: discovery, proposal, negotiation, closed_won, c"
+  },
+  {
+   "name": "update_hr_leave_requests_status",
+   "mcp": "core.update_hr_leave_requests_status",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "hr_leave_requests"
+   ],
+   "desc": "Update status of a hr leave requests record. Valid statuses: submitted, approved, rejected, cancelled. Declare"
+  },
+  {
+   "name": "update_hr_performance_reviews_status",
+   "mcp": "core.update_hr_performance_reviews_status",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "hr_performance_reviews"
+   ],
+   "desc": "Update status of a hr performance reviews record. Valid statuses: draft, submitted, acknowledged, finalized. D"
+  },
+  {
+   "name": "update_finance_expense_reports_status",
+   "mcp": "github.update_finance_expense_reports_status",
+   "ns": "github",
+   "type": "write",
+   "tables": [
+    "finance_expense_reports"
+   ],
+   "desc": "Update status of a finance expense reports record. Valid statuses: submitted, approved, reimbursed, rejected. "
+  },
+  {
+   "name": "update_finance_budgets_status",
+   "mcp": "core.update_finance_budgets_status",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "finance_budgets"
+   ],
+   "desc": "Update status of a finance budgets record. Valid statuses: draft, active, closed. Declared lifecycle: finance_"
+  },
+  {
+   "name": "update_support_tickets_status",
+   "mcp": "jira.update_support_tickets_status",
+   "ns": "jira",
+   "type": "write",
+   "tables": [
+    "support_tickets"
+   ],
+   "desc": "Update status of a support tickets record. Valid statuses: open, in_progress, waiting_customer, resolved, clos"
+  },
+  {
+   "name": "update_marketing_campaigns_status",
+   "mcp": "core.update_marketing_campaigns_status",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "marketing_campaigns"
+   ],
+   "desc": "Update status of a marketing campaigns record. Valid statuses: draft, planned, active, paused, completed. Decl"
+  },
+  {
+   "name": "update_marketing_content_assets_status",
+   "mcp": "core.update_marketing_content_assets_status",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "marketing_content_assets"
+   ],
+   "desc": "Update status of a marketing content assets record. Valid statuses: draft, in_review, approved, published, arc"
+  },
+  {
+   "name": "update_sourcing_vendors_status",
+   "mcp": "core.update_sourcing_vendors_status",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "sourcing_vendors"
+   ],
+   "desc": "Update status of a sourcing vendors record. Valid statuses: prospective, under_review, approved, suspended. De"
+  },
+  {
+   "name": "update_sourcing_purchase_orders_status",
+   "mcp": "erp.update_sourcing_purchase_orders_status",
+   "ns": "erp",
+   "type": "write",
+   "tables": [
+    "sourcing_purchase_orders"
+   ],
+   "desc": "Update status of a sourcing purchase orders record. Valid statuses: draft, submitted, approved, received, clos"
+  },
+  {
+   "name": "update_company_marketing_handoffs_status",
+   "mcp": "core.update_company_marketing_handoffs_status",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "company_marketing_handoffs"
+   ],
+   "desc": "Update status of a company marketing handoffs record. Valid statuses: queued, linked, verified, completed. Dec"
+  },
+  {
+   "name": "update_company_sales_handoffs_status",
+   "mcp": "core.update_company_sales_handoffs_status",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "company_sales_handoffs"
+   ],
+   "desc": "Update status of a company sales handoffs record. Valid statuses: queued, linked, verified, completed. Declare"
+  },
+  {
+   "name": "update_company_finance_handoffs_status",
+   "mcp": "core.update_company_finance_handoffs_status",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "company_finance_handoffs"
+   ],
+   "desc": "Update status of a company finance handoffs record. Valid statuses: queued, linked, verified, completed. Decla"
+  },
+  {
+   "name": "update_company_sourcing_handoffs_status",
+   "mcp": "core.update_company_sourcing_handoffs_status",
+   "ns": "core",
+   "type": "write",
+   "tables": [
+    "company_sourcing_handoffs"
+   ],
+   "desc": "Update status of a company sourcing handoffs record. Valid statuses: queued, linked, verified, completed. Decl"
+  },
+  {
+   "name": "read_matter_document",
+   "mcp": "notion.read_matter_document",
+   "ns": "notion",
+   "type": "read",
+   "tables": [
+    "matter_documents"
+   ],
+   "desc": "Read one matter document in full, including its body"
+  },
+  {
+   "name": "draft_matter_document",
+   "mcp": "notion.draft_matter_document",
+   "ns": "notion",
+   "type": "write",
+   "tables": [
+    "matter_documents"
+   ],
+   "desc": "Draft a new matter document deliverable (memo, analysis, markup response) with full body content"
+  },
+  {
+   "name": "query_matter_documents",
+   "mcp": "notion.query_matter_documents",
+   "ns": "notion",
+   "type": "read",
+   "tables": [
+    "matter_documents"
+   ],
+   "desc": "List matter documents by title fragment, doc_type, or related shape \u2014 bodies excluded; read_matter_document re"
+  }
+ ],
+ "documents": [
+  {
+   "table": "agent_documents",
+   "id": 1,
+   "title": "Meridian Associates"
+  },
+  {
+   "table": "agent_documents",
+   "id": 2,
+   "title": "Riverside Supply Co"
+  },
+  {
+   "table": "agent_knowledge",
+   "id": 1,
+   "title": ""
+  },
+  {
+   "table": "agent_knowledge",
+   "id": 2,
+   "title": ""
+  },
+  {
+   "table": "agent_playbooks",
+   "id": 1,
+   "title": "Pioneer Industries"
+  },
+  {
+   "table": "agent_playbooks",
+   "id": 2,
+   "title": "Harbor Systems"
+  },
+  {
+   "table": "matter_documents",
+   "id": 1,
+   "title": "Deal materials \u2014 project_management: Move all of {name}'s tasks that are in progress to in"
+  }
+ ],
+ "tasks": [
+  {
+   "id": "task_001",
+   "tables": [
+    "matter_documents"
+   ],
+   "tier": "easy",
+   "prompt": "Move all of kofi's tasks that are in progress to in review The input materials are in matter document(s) \"Deal materials \u2014 project"
+  },
+  {
+   "id": "task_002",
+   "tables": [
+    "hr_leave_requests"
+   ],
+   "tier": "easy",
+   "prompt": "Find hr leave requests LEAVE-243410 (approved) and look up a hr leave request record with its parent employees data joined. the id"
+  },
+  {
+   "id": "task_003",
+   "tables": [
+    "cases",
+    "opportunities",
+    "tasks"
+   ],
+   "tier": "hard",
+   "prompt": "At morgan_stanley_simulated: There's a pending item (Summit Partners Opportunity (discovery)) in opportunities that needs processi"
+  },
+  {
+   "id": "task_004",
+   "tables": [
+    "accounts",
+    "cases",
+    "contacts",
+    "tasks"
+   ],
+   "tier": "hard",
+   "prompt": "At morgan_stanley_simulated: The latest handoff left open in tasks ready for review. Handle it end to end. This workflow also upda"
+  },
+  {
+   "id": "task_005",
+   "tables": [
+    "cases",
+    "contacts",
+    "tasks"
+   ],
+   "tier": "hard",
+   "prompt": "At morgan_stanley_simulated: There's a pending item (Owen Haddad (active)) in contacts that needs processing. Handle it end to end"
+  },
+  {
+   "id": "task_006",
+   "tables": [
+    "cases",
+    "contacts"
+   ],
+   "tier": "hard",
+   "prompt": "A teammate flagged the Ironwood Group Account for follow-up. Handle it end to end, including updating contacts and cases. Create t"
+  },
+  {
+   "id": "task_007",
+   "tables": [
+    "opportunities",
+    "tasks"
+   ],
+   "tier": "hard",
+   "prompt": "At morgan_stanley_simulated: The operations queue has Nina Iyer (active) in contacts waiting for attention. Handle it end to end. "
+  },
+  {
+   "id": "task_008",
+   "tables": [
+    "accounts",
+    "cases",
+    "contacts"
+   ],
+   "tier": "hard",
+   "prompt": "At morgan_stanley_simulated: The operations queue has new in cases waiting for attention. Handle it end to end. This workflow also"
+  },
+  {
+   "id": "task_009",
+   "tables": [
+    "accounts",
+    "tasks"
+   ],
+   "tier": "hard",
+   "prompt": "At morgan_stanley_simulated: The operations queue has Ironwood Group Account (active) in accounts waiting for attention. Handle it"
+  },
+  {
+   "id": "task_010",
+   "tables": [
+    "employee_work_assignments"
+   ],
+   "tier": null,
+   "prompt": "In the morgan_stanley_simulated world, process employee work assignments record \"stripe:work-item:0003\", which is assigned to Mari"
+  },
+  {
+   "id": "task_011",
+   "tables": [
+    "finance_expense_reports"
+   ],
+   "tier": null,
+   "prompt": "In the morgan_stanley_simulated world, process finance expense reports record \"EXP-249471\", which is assigned to Mei Huang and Ais"
+  },
+  {
+   "id": "task_012",
+   "tables": [
+    "hr_leave_requests"
+   ],
+   "tier": null,
+   "prompt": "In the morgan_stanley_simulated world, process hr leave requests record \"LEAVE-103588\", which is assigned to Fatima Ali and James "
+  },
+  {
+   "id": "task_013",
+   "tables": [
+    "hr_performance_reviews"
+   ],
+   "tier": null,
+   "prompt": "In the morgan_stanley_simulated world, process hr performance reviews record \"REVIEW-925959\", which is assigned to Brian Murphy an"
+  },
+  {
+   "id": "task_014",
+   "tables": [
+    "sourcing_purchase_orders"
+   ],
+   "tier": null,
+   "prompt": "In the morgan_stanley_simulated world, process sourcing purchase orders record \"PO-211706\", which is assigned to Thomas Lee and Da"
+  },
+  {
+   "id": "task_015",
+   "tables": [
+    "finance_expense_reports"
+   ],
+   "tier": null,
+   "prompt": "In the morgan_stanley_simulated world, process finance expense reports record \"EXP-500085\", which is assigned to Lisa Park and Ele"
+  },
+  {
+   "id": "task_016",
+   "tables": [
+    "hr_performance_reviews"
+   ],
+   "tier": null,
+   "prompt": "In the morgan_stanley_simulated world, process hr performance reviews record \"REVIEW-990587\", which is assigned to Michael Johnson"
+  },
+  {
+   "id": "task_017",
+   "tables": [
+    "sales_opportunities",
+    "lead_management_sop"
+   ],
+   "tier": null,
+   "prompt": "In the morgan_stanley_simulated world: Find the sales opportunity OPP-902092, verify status is \"discovery\", then set its status to"
+  },
+  {
+   "id": "task_018",
+   "tables": [
+    "lead_management_sop"
+   ],
+   "tier": null,
+   "prompt": "In the morgan_stanley_simulated world: Find the lead management sop Northgate Associates, verify status is \"active\", then set its "
+  },
+  {
+   "id": "task_019",
+   "tables": [
+    "lead_management_sop"
+   ],
+   "tier": null,
+   "prompt": "In the morgan_stanley_simulated world: Find the lead management sop Meridian Logistics, verify status is \"inactive\", then set its "
+  },
+  {
+   "id": "task_020",
+   "tables": [
+    "lead_scoring_policy"
+   ],
+   "tier": null,
+   "prompt": "In the morgan_stanley_simulated world: Find the lead scoring policy Summit Services, verify status is \"active\", then set its statu"
+  },
+  {
+   "id": "task_021",
+   "tables": [
+    "lead_scoring_policy"
+   ],
+   "tier": null,
+   "prompt": "In the morgan_stanley_simulated world: Find the lead scoring policy Ironwood Associates, verify status is \"inactive\", then set its"
+  },
+  {
+   "id": "task_022",
+   "tables": [
+    "account_tiering_standard"
+   ],
+   "tier": null,
+   "prompt": "In the morgan_stanley_simulated world: Find the account tiering standard Meridian Works, verify status is \"active\", then set its s"
+  },
+  {
+   "id": "task_023",
+   "tables": [
+    "account_tiering_standard"
+   ],
+   "tier": null,
+   "prompt": "In the morgan_stanley_simulated world: Find the account tiering standard Lakeshore Industries, verify status is \"inactive\", then s"
+  },
+  {
+   "id": "task_024",
+   "tables": [
+    "opportunity_stage_gates"
+   ],
+   "tier": null,
+   "prompt": "In the morgan_stanley_simulated world: Find the opportunity stage gate Harbor Partners, verify status is \"active\", then set its st"
+  },
+  {
+   "id": "task_025",
+   "tables": [
+    "opportunity_stage_gates"
+   ],
+   "tier": null,
+   "prompt": "In the morgan_stanley_simulated world: Find the opportunity stage gate Summit Holdings, verify status is \"inactive\", then set its "
+  }
+ ]
+}
