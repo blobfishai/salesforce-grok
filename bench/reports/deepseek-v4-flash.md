@@ -16,6 +16,34 @@
 | task_018 | 1 | 13 | real | state_changed, hr_leave_requests_67_status_is_approved | [jsonl](../failed-traces/wave5/deepseek-v4-flash/lb-w5-deepseek-v4-flash--task_018-t1.jsonl) |
 | task_018 | 2 | 26 | real | hr_leave_requests_67_status_is_approved, no_offtask_table_changes, no_undeclared_rows_created | [jsonl](../failed-traces/wave5/deepseek-v4-flash/lb-w5-deepseek-v4-flash--task_018-t2.jsonl) |
 
+## Sweep `w6-densified-flash` (world wave6)
+
+- trials 50 · passed 30 · failed 20 · env-bug 4 · artifact-only 4 · **real 12**
+- real failure modes: missing_creation ×10, collateral_writes ×8, undocumented_order_artifact ×12, wrong_end_state ×3, shortcutting ×1
+
+| task | trial | calls | classification | failed assertions | trace |
+|---|---|---|---|---|---|
+| task_001 | 1 | 63 | ENV BUG | rows_inserted_into_matter_documents, no_offtask_table_changes, no_undeclared_rows_created | [jsonl](../failed-traces/wave6/deepseek-v4-flash/w6-densified-flash--task_001-t1.jsonl) |
+| task_001 | 2 | 70 | ENV BUG | rows_inserted_into_matter_documents, no_offtask_table_changes, no_undeclared_rows_created | [jsonl](../failed-traces/wave6/deepseek-v4-flash/w6-densified-flash--task_001-t2.jsonl) |
+| task_002 | 1 | 3 | ENV BUG | required_workflow_path, hr_leave_requests_8_status_is_cancelled, no_collateral_hr_leave_requests | [jsonl](../failed-traces/wave6/deepseek-v4-flash/w6-densified-flash--task_002-t1.jsonl) |
+| task_002 | 2 | 3 | ENV BUG | required_workflow_path, hr_leave_requests_8_status_is_cancelled, no_collateral_hr_leave_requests | [jsonl](../failed-traces/wave6/deepseek-v4-flash/w6-densified-flash--task_002-t2.jsonl) |
+| task_003 | 1 | 63 | real | required_workflow_path, rows_inserted_into_cases, rows_inserted_into_opportunities, rows_inserted_into_tasks | [jsonl](../failed-traces/wave6/deepseek-v4-flash/w6-densified-flash--task_003-t1.jsonl) |
+| task_003 | 2 | 55 | real | state_changed, required_workflow_path, rows_inserted_into_cases, rows_inserted_into_opportunities | [jsonl](../failed-traces/wave6/deepseek-v4-flash/w6-densified-flash--task_003-t2.jsonl) |
+| task_004 | 1 | 83 | artifact-only | required_workflow_path | [jsonl](../failed-traces/wave6/deepseek-v4-flash/w6-densified-flash--task_004-t1.jsonl) |
+| task_004 | 2 | 68 | artifact-only | required_workflow_path | [jsonl](../failed-traces/wave6/deepseek-v4-flash/w6-densified-flash--task_004-t2.jsonl) |
+| task_005 | 1 | 62 | real | required_workflow_path, rows_inserted_into_cases, rows_inserted_into_contacts, rows_inserted_into_tasks | [jsonl](../failed-traces/wave6/deepseek-v4-flash/w6-densified-flash--task_005-t1.jsonl) |
+| task_005 | 2 | 51 | real | state_changed, required_workflow_path, rows_inserted_into_cases, rows_inserted_into_contacts | [jsonl](../failed-traces/wave6/deepseek-v4-flash/w6-densified-flash--task_005-t2.jsonl) |
+| task_006 | 1 | 106 | real | required_workflow_path, no_offtask_table_changes, no_undeclared_rows_created | [jsonl](../failed-traces/wave6/deepseek-v4-flash/w6-densified-flash--task_006-t1.jsonl) |
+| task_006 | 2 | 61 | artifact-only | required_workflow_path | [jsonl](../failed-traces/wave6/deepseek-v4-flash/w6-densified-flash--task_006-t2.jsonl) |
+| task_007 | 1 | 31 | real | state_changed, required_workflow_path, rows_inserted_into_opportunities, rows_inserted_into_tasks | [jsonl](../failed-traces/wave6/deepseek-v4-flash/w6-densified-flash--task_007-t1.jsonl) |
+| task_007 | 2 | 132 | real | required_workflow_path, rows_inserted_into_opportunities, rows_inserted_into_tasks, no_offtask_table_changes | [jsonl](../failed-traces/wave6/deepseek-v4-flash/w6-densified-flash--task_007-t2.jsonl) |
+| task_008 | 1 | 70 | real | required_workflow_path, rows_inserted_into_accounts, rows_inserted_into_cases, rows_inserted_into_contacts | [jsonl](../failed-traces/wave6/deepseek-v4-flash/w6-densified-flash--task_008-t1.jsonl) |
+| task_008 | 2 | 53 | real | required_workflow_path, rows_inserted_into_accounts, rows_inserted_into_cases, rows_inserted_into_contacts | [jsonl](../failed-traces/wave6/deepseek-v4-flash/w6-densified-flash--task_008-t2.jsonl) |
+| task_009 | 1 | 74 | real | required_workflow_path, rows_inserted_into_accounts, rows_inserted_into_tasks, no_offtask_table_changes | [jsonl](../failed-traces/wave6/deepseek-v4-flash/w6-densified-flash--task_009-t1.jsonl) |
+| task_009 | 2 | 66 | real | required_workflow_path, rows_inserted_into_accounts, rows_inserted_into_tasks, no_offtask_table_changes | [jsonl](../failed-traces/wave6/deepseek-v4-flash/w6-densified-flash--task_009-t2.jsonl) |
+| task_017 | 1 | 4 | artifact-only | required_workflow_path | [jsonl](../failed-traces/wave6/deepseek-v4-flash/w6-densified-flash--task_017-t1.jsonl) |
+| task_017 | 2 | 2 | real | reads_before_writes, no_shortcut_direct_update, required_workflow_path | [jsonl](../failed-traces/wave6/deepseek-v4-flash/w6-densified-flash--task_017-t2.jsonl) |
+
 ## Sweep `w6-flash-validation` (world wave6)
 
 - trials 50 · passed 30 · failed 20 · env-bug 4 · artifact-only 3 · **real 13**

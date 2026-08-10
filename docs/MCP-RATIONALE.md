@@ -194,6 +194,22 @@ ships ~40 tools on one server.
 | Data | live tenant data | seeded synthetic Morgan Stanley (SIMULATED) fixtures with planted task hooks and 500-row distractor mass |
 | Verification | none (you trust the vendor) | every write is verifiable: state-diff + trace assertions, no LLM judge |
 
+## Post-densification validation (measured 2026-08-10)
+
+Flash re-sweep on the 407-tool world (25 tasks × 2 trials, deepseek-v4-flash,
+$7.20, 0 infra errors — `data/flake/w6-densified-flash.json`) vs the
+205-tool baseline (`w6-flash-validation.json`, $3.18):
+
+- **Task outcomes identical**: same 15 solid-pass, same 10 solid-fail, 0 flaky
+  on both sides — densification preserved benchmark comparability at the
+  reference tier.
+- **Depth frontier unchanged**: 1-5 calls 87% (was 88%), 21+ calls 0% (both).
+- **Distractor drag is real**: already-failing deep tasks wander much further
+  on the doubled surface (task_004 47→75.5 avg calls, task_006 54.5→83.5,
+  task_007 45.5→81.5) and per-sweep cost doubled from the larger per-turn tool
+  context. Whether the frontier model's flicker band moves at 407 tools is the
+  open question for the next grok-4.5 sweep.
+
 ## The one-sentence answer
 
 Each vendor server exists because the thesis prompt names its lifecycle leg, its
