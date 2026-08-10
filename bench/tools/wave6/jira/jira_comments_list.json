@@ -1,0 +1,31 @@
+{
+ "name": "jira_comments_list",
+ "mcp_name": "jira.jira_comments_list",
+ "asset_namespace": "jira",
+ "description": "Returns all comments for an issue (GET /rest/api/3/issue/{issueIdOrKey}/comment)",
+ "type": "read",
+ "target_tables": [
+  "jira_comments"
+ ],
+ "parameters": {
+  "issue_key": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "issue_key": {
+    "type": "string",
+    "description": "The ID or key of the issue, for example CRM-22."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The maximum number of comments to return. Default: 30."
+   }
+  },
+  "required": [
+   "issue_key"
+  ],
+  "additionalProperties": false
+ }
+}

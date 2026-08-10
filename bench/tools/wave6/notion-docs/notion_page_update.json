@@ -1,0 +1,36 @@
+{
+ "name": "notion_page_update",
+ "mcp_name": "notion.notion_page_update",
+ "asset_namespace": "notion",
+ "description": "Update page property values or the archived status for the specified page (PATCH /v1/pages/{page_id})",
+ "type": "write",
+ "target_tables": [
+  "notion_pages"
+ ],
+ "parameters": {
+  "page_id": "string",
+  "title": "string",
+  "archived": "boolean"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "page_id": {
+    "type": "string",
+    "description": "Identifier for a Notion page."
+   },
+   "title": {
+    "type": "string",
+    "description": "New title for the page (properties.title, plain text). Only written when provided."
+   },
+   "archived": {
+    "type": "boolean",
+    "description": "Whether the page is archived (deleted). Set to true to archive a page, false to un-archive it."
+   }
+  },
+  "required": [
+   "page_id"
+  ],
+  "additionalProperties": false
+ }
+}

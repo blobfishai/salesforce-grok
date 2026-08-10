@@ -1,0 +1,41 @@
+{
+ "name": "gh_commits_list",
+ "mcp_name": "github.gh_commits_list",
+ "asset_namespace": "github",
+ "description": "List commits on a repository (GET /repos/{owner}/{repo}/commits)",
+ "type": "read",
+ "target_tables": [
+  "gh_commits"
+ ],
+ "parameters": {
+  "repo": "string",
+  "sha": "string",
+  "author": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "repo": {
+    "type": "string",
+    "description": "The repository full name in owner/repo form."
+   },
+   "sha": {
+    "type": "string",
+    "description": "SHA or branch to start listing commits from. Default: the repository's default branch. (Matched against the branch name here.)"
+   },
+   "author": {
+    "type": "string",
+    "description": "GitHub username to filter by commit author."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The number of results per page (max 100). GitHub param: per_page. Default: 30."
+   }
+  },
+  "required": [
+   "repo"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "name": "pd_escalation_policy_get",
+ "mcp_name": "pagerduty.pd_escalation_policy_get",
+ "asset_namespace": "pagerduty",
+ "description": "Get information about an existing escalation policy and its rules (GET /escalation_policies/{id})",
+ "type": "read",
+ "target_tables": [
+  "pd_escalation_policies"
+ ],
+ "parameters": {
+  "id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "string",
+    "description": "The ID of the escalation policy to retrieve (e.g. PEPBILL)."
+   }
+  },
+  "required": [
+   "id"
+  ],
+  "additionalProperties": false
+ }
+}

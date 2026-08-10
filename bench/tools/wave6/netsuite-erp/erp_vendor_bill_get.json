@@ -1,0 +1,26 @@
+{
+ "name": "erp_vendor_bill_get",
+ "mcp_name": "erp.erp_vendor_bill_get",
+ "asset_namespace": "erp",
+ "description": "Retrieve a single vendor bill by its tranId-style identifier (GET /services/rest/record/v1/vendorBill/{id})",
+ "type": "read",
+ "target_tables": [
+  "erp_vendor_bills"
+ ],
+ "parameters": {
+  "id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "string",
+    "description": "Vendor bill document number (tranId), e.g. BILL-3002."
+   }
+  },
+  "required": [
+   "id"
+  ],
+  "additionalProperties": false
+ }
+}

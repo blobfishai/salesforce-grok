@@ -1,0 +1,26 @@
+{
+ "name": "erp_sales_order_get",
+ "mcp_name": "erp.erp_sales_order_get",
+ "asset_namespace": "erp",
+ "description": "Retrieve a single sales order by its tranId-style internal identifier (GET /services/rest/record/v1/salesOrder/{id})",
+ "type": "read",
+ "target_tables": [
+  "erp_sales_orders"
+ ],
+ "parameters": {
+  "id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "string",
+    "description": "Sales order document number (tranId), e.g. SO-2026-0104."
+   }
+  },
+  "required": [
+   "id"
+  ],
+  "additionalProperties": false
+ }
+}

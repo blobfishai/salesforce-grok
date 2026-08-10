@@ -1,0 +1,44 @@
+{
+ "name": "gh_pull_merge",
+ "mcp_name": "github.gh_pull_merge",
+ "asset_namespace": "github",
+ "description": "Merge a pull request: closes it, sets merged_at and merge_commit_sha, records the merge commit, and advances the base branch (PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge)",
+ "type": "write",
+ "target_tables": [
+  "gh_pull_requests",
+  "gh_commits",
+  "gh_branches"
+ ],
+ "parameters": {
+  "repo": "string",
+  "pull_number": "integer",
+  "commit_title": "string",
+  "merge_method": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "repo": {
+    "type": "string",
+    "description": "The repository full name in owner/repo form."
+   },
+   "pull_number": {
+    "type": "integer",
+    "description": "The number that identifies the pull request."
+   },
+   "commit_title": {
+    "type": "string",
+    "description": "Title for the automatic commit message."
+   },
+   "merge_method": {
+    "type": "string",
+    "description": "The merge method to use. Can be one of: merge, squash, rebase. Default: merge."
+   }
+  },
+  "required": [
+   "repo",
+   "pull_number"
+  ],
+  "additionalProperties": false
+ }
+}

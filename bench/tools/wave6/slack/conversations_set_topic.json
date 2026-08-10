@@ -1,0 +1,32 @@
+{
+ "name": "conversations_set_topic",
+ "mcp_name": "slack.conversations_set_topic",
+ "asset_namespace": "slack",
+ "description": "Sets the topic for a conversation (POST /conversations.setTopic)",
+ "type": "write",
+ "target_tables": [
+  "channels"
+ ],
+ "parameters": {
+  "channel": "string",
+  "topic": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "channel": {
+    "type": "string",
+    "description": "Conversation to set the topic of."
+   },
+   "topic": {
+    "type": "string",
+    "description": "The new topic string. Does not support formatting or linkification."
+   }
+  },
+  "required": [
+   "channel",
+   "topic"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,43 @@
+{
+ "name": "chat_schedule_message",
+ "mcp_name": "slack.chat_schedule_message",
+ "asset_namespace": "slack",
+ "description": "Schedules a message to be sent to a channel at a future Unix timestamp; returns the scheduled_message_id (POST /chat.scheduleMessage)",
+ "type": "write",
+ "target_tables": [
+  "slack_scheduled_messages"
+ ],
+ "parameters": {
+  "channel": "string",
+  "text": "string",
+  "post_at": "integer",
+  "thread_ts": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "channel": {
+    "type": "string",
+    "description": "Channel to send the message to, e.g. C0000001."
+   },
+   "text": {
+    "type": "string",
+    "description": "The formatted text of the message to be published."
+   },
+   "post_at": {
+    "type": "integer",
+    "description": "Unix timestamp representing the future time the message should post to Slack."
+   },
+   "thread_ts": {
+    "type": "string",
+    "description": "Provide another message's ts value to make this message a reply."
+   }
+  },
+  "required": [
+   "channel",
+   "text",
+   "post_at"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,77 @@
+{
+ "name": "erp_invoice_create",
+ "mcp_name": "erp.erp_invoice_create",
+ "asset_namespace": "erp",
+ "description": "Create a standalone or order-billed invoice; new invoices open with the full amount remaining (POST /services/rest/record/v1/invoice)",
+ "type": "write",
+ "target_tables": [
+  "erp_invoices"
+ ],
+ "parameters": {
+  "entity": "string",
+  "entity_name": "string",
+  "created_from": "string",
+  "trandate": "string",
+  "due_date": "string",
+  "memo": "string",
+  "subsidiary": "string",
+  "currency": "string",
+  "subtotal": "number",
+  "tax_total": "number",
+  "total": "number"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "entity": {
+    "type": "string",
+    "description": "Customer (entity) internal id billed on the invoice, e.g. customer_006."
+   },
+   "entity_name": {
+    "type": "string",
+    "description": "Display name of the customer account."
+   },
+   "created_from": {
+    "type": "string",
+    "description": "Sales order tranId this invoice bills (createdFrom); omit for standalone invoices."
+   },
+   "trandate": {
+    "type": "string",
+    "description": "Transaction date (trandate), YYYY-MM-DD."
+   },
+   "due_date": {
+    "type": "string",
+    "description": "Payment due date (dueDate), YYYY-MM-DD."
+   },
+   "memo": {
+    "type": "string",
+    "description": "Memo visible on the transaction (memo)."
+   },
+   "subsidiary": {
+    "type": "string",
+    "description": "Subsidiary internal id the transaction posts to (subsidiary, e.g. '3')."
+   },
+   "currency": {
+    "type": "string",
+    "description": "Transaction currency internal id (currency): usd, eur or gbp."
+   },
+   "subtotal": {
+    "type": "number",
+    "description": "Sum of line amounts before tax (subtotal)."
+   },
+   "tax_total": {
+    "type": "number",
+    "description": "Total tax on the invoice (taxTotal)."
+   },
+   "total": {
+    "type": "number",
+    "description": "Invoice grand total including tax (total)."
+   }
+  },
+  "required": [
+   "entity",
+   "total"
+  ],
+  "additionalProperties": false
+ }
+}

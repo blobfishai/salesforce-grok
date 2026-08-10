@@ -1,0 +1,36 @@
+{
+ "name": "jira_sprints_list",
+ "mcp_name": "jira.jira_sprints_list",
+ "asset_namespace": "jira",
+ "description": "Returns all sprints from a board, optionally filtered by state (GET /rest/agile/1.0/board/{boardId}/sprint)",
+ "type": "read",
+ "target_tables": [
+  "jira_sprints"
+ ],
+ "parameters": {
+  "board_id": "integer",
+  "state": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "board_id": {
+    "type": "integer",
+    "description": "The ID of the board that contains the requested sprints, for example 1."
+   },
+   "state": {
+    "type": "string",
+    "description": "Filters results to sprints in the specified states. Valid values: future, active, closed."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The maximum number of sprints to return per page. Default: 30."
+   }
+  },
+  "required": [
+   "board_id"
+  ],
+  "additionalProperties": false
+ }
+}

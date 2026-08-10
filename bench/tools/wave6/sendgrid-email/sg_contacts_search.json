@@ -1,0 +1,31 @@
+{
+ "name": "sg_contacts_search",
+ "mcp_name": "email.sg_contacts_search",
+ "asset_namespace": "email",
+ "description": "Search marketing contacts with a query string matched against email, first name, last name, and company. (POST /v3/marketing/contacts/search)",
+ "type": "read",
+ "target_tables": [
+  "sg_contacts"
+ ],
+ "parameters": {
+  "query": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "query": {
+    "type": "string",
+    "description": "A search query matched against the contact's email, first_name, last_name, and company fields."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The maximum number of contacts to return. Defaults to 30."
+   }
+  },
+  "required": [
+   "query"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "name": "notion_block_get",
+ "mcp_name": "notion.notion_block_get",
+ "asset_namespace": "notion",
+ "description": "Retrieve a block object using the ID specified (GET /v1/blocks/{block_id})",
+ "type": "read",
+ "target_tables": [
+  "notion_blocks"
+ ],
+ "parameters": {
+  "block_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "block_id": {
+    "type": "string",
+    "description": "Identifier for a Notion block."
+   }
+  },
+  "required": [
+   "block_id"
+  ],
+  "additionalProperties": false
+ }
+}

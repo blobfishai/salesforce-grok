@@ -1,0 +1,42 @@
+{
+ "name": "pd_service_create",
+ "mcp_name": "pagerduty.pd_service_create",
+ "asset_namespace": "pagerduty",
+ "description": "Create a new service tied to an escalation policy (POST /services)",
+ "type": "write",
+ "target_tables": [
+  "pd_services"
+ ],
+ "parameters": {
+  "name": "string",
+  "description": "string",
+  "escalation_policy_id": "string",
+  "team_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "name": {
+    "type": "string",
+    "description": "The name of the service."
+   },
+   "description": {
+    "type": "string",
+    "description": "The user-provided description of the service."
+   },
+   "escalation_policy_id": {
+    "type": "string",
+    "description": "The ID of the escalation policy used by this service (service.escalation_policy.id)."
+   },
+   "team_id": {
+    "type": "string",
+    "description": "The ID of the team associated with the service."
+   }
+  },
+  "required": [
+   "name",
+   "escalation_policy_id"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "name": "post_refunds",
+ "mcp_name": "stripe.post_refunds",
+ "asset_namespace": "stripe",
+ "description": "When you create a new refund, you must specify a Charge or a PaymentIntent object on which to create it; funds will be refunded to the credit or debit card that was originally charged. (POST /v1/refunds)",
+ "type": "write",
+ "target_tables": [
+  "refunds",
+  "charges"
+ ],
+ "parameters": {
+  "charge": "string",
+  "payment_intent": "string",
+  "amount": "integer",
+  "reason": "string",
+  "metadata": "json"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "charge": {
+    "type": "string",
+    "description": "The identifier of the charge to refund."
+   },
+   "payment_intent": {
+    "type": "string",
+    "description": "The identifier of the PaymentIntent to refund."
+   },
+   "amount": {
+    "type": "integer",
+    "description": "A positive integer in cents representing how much of this charge to refund. Can refund only up to the remaining, unrefunded amount of the charge."
+   },
+   "reason": {
+    "type": "string",
+    "description": "String indicating the reason for the refund. If set, possible values are duplicate, fraudulent, and requested_by_customer. If you believe the charge to be fraudulent, specifying fraudulent as the reason will add the associated card and email to your block lists, and will also help us improve our fraud detection algorithms."
+   },
+   "metadata": {
+    "type": "object",
+    "description": "Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format."
+   }
+  },
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,28 @@
+{
+ "name": "sg_templates_list",
+ "mcp_name": "email.sg_templates_list",
+ "asset_namespace": "email",
+ "description": "Retrieve all transactional email templates on your account. (GET /v3/templates)",
+ "type": "read",
+ "target_tables": [
+  "sg_templates"
+ ],
+ "parameters": {
+  "generations": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "generations": {
+    "type": "string",
+    "description": "Comma-delimited list specifying which generations of templates to return. Options are legacy, dynamic or legacy,dynamic."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The number of templates to be returned in each page of results. Defaults to 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}

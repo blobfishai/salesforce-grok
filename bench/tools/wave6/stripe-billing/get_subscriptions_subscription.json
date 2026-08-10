@@ -1,0 +1,26 @@
+{
+ "name": "get_subscriptions_subscription",
+ "mcp_name": "stripe.get_subscriptions_subscription",
+ "asset_namespace": "stripe",
+ "description": "Retrieves the subscription with the given ID. (GET /v1/subscriptions/{subscription})",
+ "type": "read",
+ "target_tables": [
+  "subscriptions"
+ ],
+ "parameters": {
+  "subscription": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "subscription": {
+    "type": "string",
+    "description": "The identifier of the subscription to be retrieved."
+   }
+  },
+  "required": [
+   "subscription"
+  ],
+  "additionalProperties": false
+ }
+}

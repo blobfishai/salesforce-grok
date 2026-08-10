@@ -1,0 +1,33 @@
+{
+ "name": "erp_inventory_levels_list",
+ "mcp_name": "erp.erp_inventory_levels_list",
+ "asset_namespace": "erp",
+ "description": "List per-location inventory balances for stocked items, optionally filtered by item or location (POST /services/rest/query/v1/suiteql - inventorybalance)",
+ "type": "read",
+ "target_tables": [
+  "erp_inventory_levels"
+ ],
+ "parameters": {
+  "item": "string",
+  "location": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "item": {
+    "type": "string",
+    "description": "Item id / SKU filter, e.g. HW-DFA-100."
+   },
+   "location": {
+    "type": "string",
+    "description": "Location name filter: Newark DC, London DC or Frankfurt DC."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "Maximum number of records to return (default 30)."
+   }
+  },
+  "additionalProperties": false
+ }
+}

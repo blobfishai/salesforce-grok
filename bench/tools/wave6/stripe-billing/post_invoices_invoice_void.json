@@ -1,0 +1,26 @@
+{
+ "name": "post_invoices_invoice_void",
+ "mcp_name": "stripe.post_invoices_invoice_void",
+ "asset_namespace": "stripe",
+ "description": "Mark a finalized invoice as void; this cannot be undone. Voiding an invoice is similar to deletion, however it only applies to finalized invoices and maintains a papertrail where the invoice can still be found. (POST /v1/invoices/{invoice}/void)",
+ "type": "write",
+ "target_tables": [
+  "invoices"
+ ],
+ "parameters": {
+  "invoice": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "invoice": {
+    "type": "string",
+    "description": "The identifier of the invoice to void."
+   }
+  },
+  "required": [
+   "invoice"
+  ],
+  "additionalProperties": false
+ }
+}

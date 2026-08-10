@@ -1,0 +1,31 @@
+{
+ "name": "notion_blocks_children_list",
+ "mcp_name": "notion.notion_blocks_children_list",
+ "asset_namespace": "notion",
+ "description": "Return a paginated array of child block objects contained in the block (page) specified (GET /v1/blocks/{block_id}/children)",
+ "type": "read",
+ "target_tables": [
+  "notion_blocks"
+ ],
+ "parameters": {
+  "block_id": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "block_id": {
+    "type": "string",
+    "description": "Identifier for a block. Also accepts a page ID, returning the page's top-level blocks."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The number of items from the full list desired in the response (page_size). Default 30, maximum 100."
+   }
+  },
+  "required": [
+   "block_id"
+  ],
+  "additionalProperties": false
+ }
+}

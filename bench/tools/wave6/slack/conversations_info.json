@@ -1,0 +1,26 @@
+{
+ "name": "conversations_info",
+ "mcp_name": "slack.conversations_info",
+ "asset_namespace": "slack",
+ "description": "Retrieve information about a conversation (GET /conversations.info)",
+ "type": "read",
+ "target_tables": [
+  "channels"
+ ],
+ "parameters": {
+  "channel": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "channel": {
+    "type": "string",
+    "description": "Conversation ID to learn more about, for example C0000001."
+   }
+  },
+  "required": [
+   "channel"
+  ],
+  "additionalProperties": false
+ }
+}

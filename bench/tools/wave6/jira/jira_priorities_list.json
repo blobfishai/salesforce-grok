@@ -1,0 +1,23 @@
+{
+ "name": "jira_priorities_list",
+ "mcp_name": "jira.jira_priorities_list",
+ "asset_namespace": "jira",
+ "description": "Returns the list of issue priorities (GET /rest/api/3/priority/search)",
+ "type": "read",
+ "target_tables": [
+  "jira_priorities"
+ ],
+ "parameters": {
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "limit": {
+    "type": "integer",
+    "description": "The maximum number of priorities to return per page. Default: 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,37 @@
+{
+ "name": "jira_issue_assign",
+ "mcp_name": "jira.jira_issue_assign",
+ "asset_namespace": "jira",
+ "description": "Assigns an issue to a user (PUT /rest/api/3/issue/{issueIdOrKey}/assignee)",
+ "type": "write",
+ "target_tables": [
+  "jira_issues"
+ ],
+ "parameters": {
+  "issue_key": "string",
+  "assignee": "string",
+  "assignee_email": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "issue_key": {
+    "type": "string",
+    "description": "The ID or key of the issue to assign, for example RECON-102."
+   },
+   "assignee": {
+    "type": "string",
+    "description": "The display name of the user the issue is assigned to, for example Grace Liu."
+   },
+   "assignee_email": {
+    "type": "string",
+    "description": "The email address of the assignee, for example grace.liu@morganstanleysimulated.com."
+   }
+  },
+  "required": [
+   "issue_key",
+   "assignee"
+  ],
+  "additionalProperties": false
+ }
+}

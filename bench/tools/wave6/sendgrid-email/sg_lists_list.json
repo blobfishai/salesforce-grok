@@ -1,0 +1,23 @@
+{
+ "name": "sg_lists_list",
+ "mcp_name": "email.sg_lists_list",
+ "asset_namespace": "email",
+ "description": "Retrieve all of your marketing contact lists. (GET /v3/marketing/lists)",
+ "type": "read",
+ "target_tables": [
+  "sg_lists"
+ ],
+ "parameters": {
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "limit": {
+    "type": "integer",
+    "description": "Maximum number of lists to return. Defaults to 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}

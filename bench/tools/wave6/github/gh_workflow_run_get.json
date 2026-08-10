@@ -1,0 +1,26 @@
+{
+ "name": "gh_workflow_run_get",
+ "mcp_name": "github.gh_workflow_run_get",
+ "asset_namespace": "github",
+ "description": "Get a workflow run by its id (GET /repos/{owner}/{repo}/actions/runs/{run_id})",
+ "type": "read",
+ "target_tables": [
+  "gh_workflow_runs"
+ ],
+ "parameters": {
+  "run_id": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "run_id": {
+    "type": "integer",
+    "description": "The unique identifier of the workflow run."
+   }
+  },
+  "required": [
+   "run_id"
+  ],
+  "additionalProperties": false
+ }
+}

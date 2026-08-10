@@ -1,0 +1,31 @@
+{
+ "name": "notion_comments_list",
+ "mcp_name": "notion.notion_comments_list",
+ "asset_namespace": "notion",
+ "description": "Retrieve a list of un-resolved comment objects from the specified page or block (GET /v1/comments)",
+ "type": "read",
+ "target_tables": [
+  "notion_comments"
+ ],
+ "parameters": {
+  "block_id": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "block_id": {
+    "type": "string",
+    "description": "Identifier for the page or block whose comments you want to retrieve."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The number of items from the full list desired in the response (page_size). Default 30, maximum 100."
+   }
+  },
+  "required": [
+   "block_id"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "name": "get_refunds",
+ "mcp_name": "stripe.get_refunds",
+ "asset_namespace": "stripe",
+ "description": "Returns a list of all refunds you created; refunds are returned in sorted order, with the most recent refunds appearing first. (GET /v1/refunds)",
+ "type": "read",
+ "target_tables": [
+  "refunds"
+ ],
+ "parameters": {
+  "charge": "string",
+  "payment_intent": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "charge": {
+    "type": "string",
+    "description": "Only return refunds for the charge specified by this charge ID."
+   },
+   "payment_intent": {
+    "type": "string",
+    "description": "Only return refunds for the PaymentIntent specified by this ID."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}

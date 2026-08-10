@@ -1,0 +1,23 @@
+{
+ "name": "jira_statuses_list",
+ "mcp_name": "jira.jira_statuses_list",
+ "asset_namespace": "jira",
+ "description": "Returns a list of all workflow statuses with their status categories (GET /rest/api/3/status)",
+ "type": "read",
+ "target_tables": [
+  "jira_statuses"
+ ],
+ "parameters": {
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "limit": {
+    "type": "integer",
+    "description": "The maximum number of statuses to return per page. Default: 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}

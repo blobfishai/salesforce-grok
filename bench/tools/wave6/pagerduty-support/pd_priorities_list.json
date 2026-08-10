@@ -1,0 +1,23 @@
+{
+ "name": "pd_priorities_list",
+ "mcp_name": "pagerduty.pd_priorities_list",
+ "asset_namespace": "pagerduty",
+ "description": "List existing priority levels (P1 through P5) configured for the account (GET /priorities)",
+ "type": "read",
+ "target_tables": [
+  "pd_priorities"
+ ],
+ "parameters": {
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "limit": {
+    "type": "integer",
+    "description": "The number of results per page. Defaults to 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}

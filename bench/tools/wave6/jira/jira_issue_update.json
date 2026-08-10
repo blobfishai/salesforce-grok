@@ -1,0 +1,51 @@
+{
+ "name": "jira_issue_update",
+ "mcp_name": "jira.jira_issue_update",
+ "asset_namespace": "jira",
+ "description": "Edits an issue; only the fields provided are updated. Status changes must go through jira_issue_transition (PUT /rest/api/3/issue/{issueIdOrKey})",
+ "type": "write",
+ "target_tables": [
+  "jira_issues"
+ ],
+ "parameters": {
+  "issue_key": "string",
+  "summary": "string",
+  "description": "string",
+  "issue_type": "string",
+  "priority": "string",
+  "labels": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "issue_key": {
+    "type": "string",
+    "description": "The ID or key of the issue to edit, for example RECON-101."
+   },
+   "summary": {
+    "type": "string",
+    "description": "The new one-line summary of the issue."
+   },
+   "description": {
+    "type": "string",
+    "description": "The new detailed description of the issue."
+   },
+   "issue_type": {
+    "type": "string",
+    "description": "The new issue type name, for example Bug, Task, or Story."
+   },
+   "priority": {
+    "type": "string",
+    "description": "The new priority name, for example Highest, High, Medium, Low."
+   },
+   "labels": {
+    "type": "string",
+    "description": "The full replacement comma-separated label list for the issue."
+   }
+  },
+  "required": [
+   "issue_key"
+  ],
+  "additionalProperties": false
+ }
+}

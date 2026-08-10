@@ -1,0 +1,42 @@
+{
+ "name": "notion_database_create",
+ "mcp_name": "notion.notion_database_create",
+ "asset_namespace": "notion",
+ "description": "Create a database as a subpage in the specified parent page, with the defined property schema (POST /v1/databases)",
+ "type": "write",
+ "target_tables": [
+  "notion_databases"
+ ],
+ "parameters": {
+  "parent_id": "string",
+  "title": "string",
+  "description": "string",
+  "properties": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "parent_id": {
+    "type": "string",
+    "description": "The parent page the database is created under (parent.page_id)."
+   },
+   "title": {
+    "type": "string",
+    "description": "Title of the database as it appears in Notion (plain text)."
+   },
+   "description": {
+    "type": "string",
+    "description": "Description of the database as it appears in Notion (plain text)."
+   },
+   "properties": {
+    "type": "string",
+    "description": "JSON-encoded property schema of the database: an object mapping property names to their type definitions, e.g. {\"Name\": {\"type\": \"title\"}, \"Risk\": {\"type\": \"select\"}}."
+   }
+  },
+  "required": [
+   "title",
+   "properties"
+  ],
+  "additionalProperties": false
+ }
+}

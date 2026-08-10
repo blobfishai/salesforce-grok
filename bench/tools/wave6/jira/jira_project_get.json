@@ -1,0 +1,26 @@
+{
+ "name": "jira_project_get",
+ "mcp_name": "jira.jira_project_get",
+ "asset_namespace": "jira",
+ "description": "Returns the project details for a project, including lead and category (GET /rest/api/3/project/{projectIdOrKey})",
+ "type": "read",
+ "target_tables": [
+  "jira_projects"
+ ],
+ "parameters": {
+  "project_key": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "project_key": {
+    "type": "string",
+    "description": "The project ID or project key (case sensitive), for example RECON."
+   }
+  },
+  "required": [
+   "project_key"
+  ],
+  "additionalProperties": false
+ }
+}

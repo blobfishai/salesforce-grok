@@ -1,0 +1,46 @@
+{
+ "name": "pd_service_update",
+ "mcp_name": "pagerduty.pd_service_update",
+ "asset_namespace": "pagerduty",
+ "description": "Update an existing service's name, description, state, or escalation policy (PUT /services/{id})",
+ "type": "write",
+ "target_tables": [
+  "pd_services"
+ ],
+ "parameters": {
+  "id": "string",
+  "name": "string",
+  "description": "string",
+  "status": "string",
+  "escalation_policy_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "string",
+    "description": "The ID of the service to update."
+   },
+   "name": {
+    "type": "string",
+    "description": "The name of the service."
+   },
+   "description": {
+    "type": "string",
+    "description": "The user-provided description of the service."
+   },
+   "status": {
+    "type": "string",
+    "description": "The current state of the service. One of: active, warning, critical, maintenance, disabled."
+   },
+   "escalation_policy_id": {
+    "type": "string",
+    "description": "The ID of the escalation policy used by this service (service.escalation_policy.id)."
+   }
+  },
+  "required": [
+   "id"
+  ],
+  "additionalProperties": false
+ }
+}

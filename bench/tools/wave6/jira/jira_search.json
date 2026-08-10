@@ -1,0 +1,51 @@
+{
+ "name": "jira_search",
+ "mcp_name": "jira.jira_search",
+ "asset_namespace": "jira",
+ "description": "Search for issues using a JQL-style text query matched against issue summary and description, with optional project, status, and assignee filters (GET /rest/api/3/search/jql)",
+ "type": "read",
+ "target_tables": [
+  "jira_issues"
+ ],
+ "parameters": {
+  "jql": "string",
+  "project": "string",
+  "status": "string",
+  "assignee": "string",
+  "max_results": "integer",
+  "start_at": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "jql": {
+    "type": "string",
+    "description": "The JQL-style search text. Matched case-insensitively as a substring of the issue summary or description."
+   },
+   "project": {
+    "type": "string",
+    "description": "Restrict results to issues in the project with this project key, for example RECON."
+   },
+   "status": {
+    "type": "string",
+    "description": "Restrict results to issues currently in this status, for example In Progress."
+   },
+   "assignee": {
+    "type": "string",
+    "description": "Restrict results to issues assigned to this user. Accepts the display name or the email address."
+   },
+   "max_results": {
+    "type": "integer",
+    "description": "The maximum number of issues to return per page. Default: 50."
+   },
+   "start_at": {
+    "type": "integer",
+    "description": "The index of the first issue to return (0-based). Default: 0."
+   }
+  },
+  "required": [
+   "jql"
+  ],
+  "additionalProperties": false
+ }
+}

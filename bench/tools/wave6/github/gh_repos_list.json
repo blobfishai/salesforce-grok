@@ -1,0 +1,23 @@
+{
+ "name": "gh_repos_list",
+ "mcp_name": "github.gh_repos_list",
+ "asset_namespace": "github",
+ "description": "List repositories for the revops organization (GET /orgs/{org}/repos)",
+ "type": "read",
+ "target_tables": [
+  "gh_repos"
+ ],
+ "parameters": {
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "limit": {
+    "type": "integer",
+    "description": "The number of results per page (max 100). GitHub param: per_page. Default: 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}

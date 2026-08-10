@@ -1,0 +1,43 @@
+{
+ "name": "chat_post_message",
+ "mcp_name": "slack.chat_post_message",
+ "asset_namespace": "slack",
+ "description": "Sends a message to a channel as the workspace bot; the message ts is generated server-side and threaded replies bump the parent's reply_count (POST /chat.postMessage)",
+ "type": "write",
+ "target_tables": [
+  "messages",
+  "channels"
+ ],
+ "parameters": {
+  "channel": "string",
+  "text": "string",
+  "thread_ts": "string",
+  "username": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "channel": {
+    "type": "string",
+    "description": "Channel, private group, or IM channel to send message to. Can be an encoded ID (C…), or a name (#launch-room)."
+   },
+   "text": {
+    "type": "string",
+    "description": "The formatted text of the message to be published."
+   },
+   "thread_ts": {
+    "type": "string",
+    "description": "Provide another message's ts value to make this message a reply. Avoid using a reply's ts value; use its parent instead."
+   },
+   "username": {
+    "type": "string",
+    "description": "Set your bot's user name for this message. Defaults to ms-crm-agent."
+   }
+  },
+  "required": [
+   "channel",
+   "text"
+  ],
+  "additionalProperties": false
+ }
+}

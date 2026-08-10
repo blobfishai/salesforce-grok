@@ -1,0 +1,86 @@
+{
+ "name": "calendar_events_insert",
+ "mcp_name": "calendar.calendar_events_insert",
+ "asset_namespace": "calendar",
+ "description": "Creates an event. (POST /calendars/{calendarId}/events)",
+ "type": "write",
+ "target_tables": [
+  "agent_events",
+  "cal_event_details",
+  "cal_event_attendees",
+  "calendars"
+ ],
+ "parameters": {
+  "calendar_id": "string",
+  "summary": "string",
+  "description": "string",
+  "location": "string",
+  "start": "json",
+  "end": "json",
+  "attendees": "json",
+  "recurrence": "json",
+  "color_id": "string",
+  "transparency": "string",
+  "visibility": "string",
+  "send_updates": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "calendar_id": {
+    "type": "string",
+    "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method."
+   },
+   "summary": {
+    "type": "string",
+    "description": "Title of the event."
+   },
+   "description": {
+    "type": "string",
+    "description": "Description of the event. Can contain HTML."
+   },
+   "location": {
+    "type": "string",
+    "description": "Geographic location of the event as free-form text."
+   },
+   "start": {
+    "type": "object",
+    "description": "The (inclusive) start time of the event: object with 'date_time' (RFC3339 timestamp) or 'date' (YYYY-MM-DD, for all-day events), and optional 'time_zone' (IANA Time Zone Database name)."
+   },
+   "end": {
+    "type": "object",
+    "description": "The (exclusive) end time of the event: object with 'date_time' (RFC3339 timestamp) or 'date' (YYYY-MM-DD, for all-day events), and optional 'time_zone'."
+   },
+   "attendees": {
+    "type": "object",
+    "description": "The attendees of the event: JSON list of objects, each with 'email' (required), and optional 'display_name', 'optional' (boolean), 'response_status' ('needsAction', 'declined', 'tentative', 'accepted')."
+   },
+   "recurrence": {
+    "type": "object",
+    "description": "List of RRULE lines for a recurring event, as specified in RFC5545, e.g. [\"RRULE:FREQ=WEEKLY;COUNT=4\"]. Supported: FREQ=DAILY|WEEKLY|MONTHLY with INTERVAL, COUNT, UNTIL."
+   },
+   "color_id": {
+    "type": "string",
+    "description": "The color of the event. This is an ID referring to an entry in the event section of the colors definition (see the colors endpoint)."
+   },
+   "transparency": {
+    "type": "string",
+    "description": "Whether the event blocks time on the calendar. 'opaque' (default) — the event does block time; 'transparent' — the event does not block time."
+   },
+   "visibility": {
+    "type": "string",
+    "description": "Visibility of the event. 'default', 'public', 'private', or 'confidential'."
+   },
+   "send_updates": {
+    "type": "string",
+    "description": "Whether to send notifications about the creation of the new event. Acceptable values: 'all', 'externalOnly', 'none'. No mail is actually delivered in this sandbox; the value is validated only."
+   }
+  },
+  "required": [
+   "calendar_id",
+   "start",
+   "end"
+  ],
+  "additionalProperties": false
+ }
+}

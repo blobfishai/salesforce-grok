@@ -1,0 +1,33 @@
+{
+ "name": "sg_domains_list",
+ "mcp_name": "email.sg_domains_list",
+ "asset_namespace": "email",
+ "description": "Retrieve a list of all domain authentication records (domain whitelabels) for your account. (GET /v3/whitelabel/domains)",
+ "type": "read",
+ "target_tables": [
+  "authentication_domains"
+ ],
+ "parameters": {
+  "domain": "string",
+  "username": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "domain": {
+    "type": "string",
+    "description": "Filter the results to a specific authenticated domain."
+   },
+   "username": {
+    "type": "string",
+    "description": "Filter authenticated domains by the username of the subuser they are associated with."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The number of domains to return. Defaults to 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}

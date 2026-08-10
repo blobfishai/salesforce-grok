@@ -1,0 +1,40 @@
+{
+ "name": "pd_incident_note_create",
+ "mcp_name": "pagerduty.pd_incident_note_create",
+ "asset_namespace": "pagerduty",
+ "description": "Create a note on the specified incident and record an annotate log entry (POST /incidents/{id}/notes)",
+ "type": "write",
+ "target_tables": [
+  "pd_incident_notes",
+  "pd_incidents",
+  "pd_users",
+  "pd_log_entries"
+ ],
+ "parameters": {
+  "incident_id": "string",
+  "content": "string",
+  "from": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "incident_id": {
+    "type": "string",
+    "description": "The ID of the incident to add the note to (path {id} of POST /incidents/{id}/notes)."
+   },
+   "content": {
+    "type": "string",
+    "description": "The note content (note.content)."
+   },
+   "from": {
+    "type": "string",
+    "description": "The email address of a valid PagerDuty user adding the note; maps to the API's required From header."
+   }
+  },
+  "required": [
+   "incident_id",
+   "content"
+  ],
+  "additionalProperties": false
+ }
+}

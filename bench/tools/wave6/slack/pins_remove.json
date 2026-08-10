@@ -1,0 +1,33 @@
+{
+ "name": "pins_remove",
+ "mcp_name": "slack.pins_remove",
+ "asset_namespace": "slack",
+ "description": "Un-pins an item from a channel, addressed by the compound (channel, timestamp) key (POST /pins.remove)",
+ "type": "write",
+ "target_tables": [
+  "slack_pins",
+  "channels"
+ ],
+ "parameters": {
+  "channel": "string",
+  "timestamp": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "channel": {
+    "type": "string",
+    "description": "Channel where the item is pinned to."
+   },
+   "timestamp": {
+    "type": "string",
+    "description": "Timestamp of the pinned message to un-pin."
+   }
+  },
+  "required": [
+   "channel",
+   "timestamp"
+  ],
+  "additionalProperties": false
+ }
+}

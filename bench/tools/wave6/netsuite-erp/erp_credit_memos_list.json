@@ -1,0 +1,33 @@
+{
+ "name": "erp_credit_memos_list",
+ "mcp_name": "erp.erp_credit_memos_list",
+ "asset_namespace": "erp",
+ "description": "List credit memo transactions, optionally filtered by status or customer entity (GET /services/rest/record/v1/creditMemo)",
+ "type": "read",
+ "target_tables": [
+  "erp_credit_memos"
+ ],
+ "parameters": {
+  "status": "string",
+  "entity": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "description": "Credit memo status filter: open or fullyApplied."
+   },
+   "entity": {
+    "type": "string",
+    "description": "Customer (entity) internal id, e.g. customer_003."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "Maximum number of records to return (default 30)."
+   }
+  },
+  "additionalProperties": false
+ }
+}

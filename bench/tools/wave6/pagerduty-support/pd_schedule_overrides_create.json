@@ -1,0 +1,44 @@
+{
+ "name": "pd_schedule_overrides_create",
+ "mcp_name": "pagerduty.pd_schedule_overrides_create",
+ "asset_namespace": "pagerduty",
+ "description": "Create an override for a specific user covering the specified time range on a schedule (POST /schedules/{id}/overrides)",
+ "type": "write",
+ "target_tables": [
+  "pd_schedule_overrides"
+ ],
+ "parameters": {
+  "schedule_id": "string",
+  "user_id": "string",
+  "start": "string",
+  "end_time": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "schedule_id": {
+    "type": "string",
+    "description": "The ID of the schedule to create the override on (path {id} of POST /schedules/{id}/overrides)."
+   },
+   "user_id": {
+    "type": "string",
+    "description": "The ID of the user who will be on call during the override (override.user.id)."
+   },
+   "start": {
+    "type": "string",
+    "description": "The start date and time for the override, ISO 8601 (override.start)."
+   },
+   "end_time": {
+    "type": "string",
+    "description": "The end date and time for the override, ISO 8601 (the API's override.end field)."
+   }
+  },
+  "required": [
+   "schedule_id",
+   "user_id",
+   "start",
+   "end_time"
+  ],
+  "additionalProperties": false
+ }
+}

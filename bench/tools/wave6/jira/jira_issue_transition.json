@@ -1,0 +1,39 @@
+{
+ "name": "jira_issue_transition",
+ "mcp_name": "jira.jira_issue_transition",
+ "asset_namespace": "jira",
+ "description": "Performs a workflow transition on an issue; the transition must be valid from the issue's current status per the workflow's transitions table (POST /rest/api/3/issue/{issueIdOrKey}/transitions)",
+ "type": "write",
+ "target_tables": [
+  "jira_issues",
+  "jira_transitions",
+  "jira_comments"
+ ],
+ "parameters": {
+  "issue_key": "string",
+  "transition_id": "string",
+  "comment": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "issue_key": {
+    "type": "string",
+    "description": "The ID or key of the issue to transition, for example RECON-101."
+   },
+   "transition_id": {
+    "type": "string",
+    "description": "The ID of the transition to perform, for example 21. Use jira_transitions_list to find the transitions valid from the issue's current status."
+   },
+   "comment": {
+    "type": "string",
+    "description": "An optional comment to add to the issue when the transition is performed."
+   }
+  },
+  "required": [
+   "issue_key",
+   "transition_id"
+  ],
+  "additionalProperties": false
+ }
+}

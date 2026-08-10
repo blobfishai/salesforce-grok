@@ -1,0 +1,1705 @@
+{
+ "vendor": "sendgrid-email",
+ "namespace": "email",
+ "tables": [
+  {
+   "name": "sg_mail_sends",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "to_email",
+     "type": "TEXT"
+    },
+    {
+     "name": "from_email",
+     "type": "TEXT"
+    },
+    {
+     "name": "subject",
+     "type": "TEXT"
+    },
+    {
+     "name": "body",
+     "type": "TEXT"
+    },
+    {
+     "name": "template_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "categories",
+     "type": "TEXT"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "sent_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "msg_a1f4c2e97b3d0568",
+     "to_email": "chloe.tan@summit-group.example",
+     "from_email": "renewals@morganstanleysimulated.com",
+     "subject": "Your Morgan Stanley (SIMULATED) agreement renews in 90 days",
+     "body": "Hi Chloe, your advisory agreement for Summit Group is up for renewal on 2026-04-12. Your CSM will reach out this week to schedule the renewal review.",
+     "template_id": "d-8f3c2a1b9e4d47c6a05b12de34f56a78",
+     "categories": "renewal,transactional",
+     "status": "delivered",
+     "sent_at": "2026-01-12T15:04:00Z"
+    },
+    {
+     "id": "msg_b7d90e3a54c12f86",
+     "to_email": "derek.osei@meridian-partners.example",
+     "from_email": "contact77709@morganstanleysimulated.com",
+     "subject": "Quick intro - Morgan Stanley (SIMULATED) institutional coverage",
+     "body": "Derek, I work with treasurers at firms like Meridian on cash sweep programs. Worth a 15-minute call next week?",
+     "template_id": "d-7a1f0e9d8c7b6a5f4e3d2c1b0a998877",
+     "categories": "outbound,sequence-step-1",
+     "status": "delivered",
+     "sent_at": "2026-01-13T14:22:00Z"
+    },
+    {
+     "id": "msg_c3e8f1a2d6b94075",
+     "to_email": "diego.marchetti@ironwood-capital.example",
+     "from_email": "contact77709@morganstanleysimulated.com",
+     "subject": "Quick intro - Morgan Stanley (SIMULATED) institutional coverage",
+     "body": "Diego, I work with treasurers at firms like Ironwood on cash sweep programs. Worth a 15-minute call next week?",
+     "template_id": "d-7a1f0e9d8c7b6a5f4e3d2c1b0a998877",
+     "categories": "outbound,sequence-step-1",
+     "status": "dropped",
+     "sent_at": "2026-01-13T14:23:00Z"
+    },
+    {
+     "id": "msg_d9a04b7c1e5f2683",
+     "to_email": "l.novotna@ironwood-capital.example",
+     "from_email": "contact77709@morganstanleysimulated.com",
+     "subject": "Quick intro - Morgan Stanley (SIMULATED) institutional coverage",
+     "body": "Lenka, I work with treasurers at firms like Ironwood on cash sweep programs. Worth a 15-minute call next week?",
+     "template_id": "d-7a1f0e9d8c7b6a5f4e3d2c1b0a998877",
+     "categories": "outbound,sequence-step-1",
+     "status": "delivered",
+     "sent_at": "2026-01-14T09:41:00Z"
+    },
+    {
+     "id": "msg_e2b56c8d3f0a1497",
+     "to_email": "priya.raman@harborview.example",
+     "from_email": "renewals@morganstanleysimulated.com",
+     "subject": "Q1 business review - pick a slot",
+     "body": "Priya, time to book Harborview's Q1 QBR. Agenda: portfolio performance, service tickets, FY2026 roadmap.",
+     "template_id": "d-55aa66bb77cc88dd99ee00ff11a22b3c",
+     "categories": "qbr,customer-success",
+     "status": "delivered",
+     "sent_at": "2026-01-20T17:30:00Z"
+    },
+    {
+     "id": "msg_f8c17d2e9a4b3506",
+     "to_email": "j.mccall@atlas-holdings.example",
+     "from_email": "contact77709@morganstanleysimulated.com",
+     "subject": "How Crestline cut settlement breaks by 40%",
+     "body": "James, following up with the case study I mentioned - a peer fund cut settlement breaks 40% in two quarters.",
+     "template_id": "d-c4d5e6f708192a3b4c5d6e7f80912a3b",
+     "categories": "outbound,sequence-step-2",
+     "status": "bounced",
+     "sent_at": "2026-01-21T11:15:00Z"
+    },
+    {
+     "id": "msg_09d3e4f5a6b7c812",
+     "to_email": "s.whitfield@crestline.example",
+     "from_email": "renewals@morganstanleysimulated.com",
+     "subject": "Final notice: Crestline agreement renews in 30 days",
+     "body": "Simone, this is the 30-day notice for Crestline's advisory agreement renewal on 2026-03-04. Reply to lock the renewal call.",
+     "template_id": "d-2b7e91c4d5f643a8b9c0d1e2f3a4b5c6",
+     "categories": "renewal,transactional",
+     "status": "delivered",
+     "sent_at": "2026-02-02T16:08:00Z"
+    },
+    {
+     "id": "msg_1a2b3c4d5e6f7089",
+     "to_email": "omar.haddad@riverside-group.example",
+     "from_email": "onboarding@morganstanleysimulated.com",
+     "subject": "Welcome to Morgan Stanley (SIMULATED) Wealth Advisory",
+     "body": "Omar, welcome aboard. Here is your onboarding checklist and your named team for Riverside Group.",
+     "template_id": "d-0192a3b4c5d6e7f80912a3b4c5d6e7f8",
+     "categories": "onboarding,transactional",
+     "status": "delivered",
+     "sent_at": "2026-02-03T13:55:00Z"
+    },
+    {
+     "id": "msg_2c4e6a8b0d1f3957",
+     "to_email": "r.ellison@summit-group.example",
+     "from_email": "contact77709@morganstanleysimulated.com",
+     "subject": "Quick intro - Morgan Stanley (SIMULATED) institutional coverage",
+     "body": "Rachel, I work with treasurers at firms like Summit Group on cash sweep programs. Worth a 15-minute call next week?",
+     "template_id": "d-7a1f0e9d8c7b6a5f4e3d2c1b0a998877",
+     "categories": "outbound,sequence-step-1",
+     "status": "delivered",
+     "sent_at": "2026-02-05T10:12:00Z"
+    },
+    {
+     "id": "msg_3d5f7b9c1e2a4068",
+     "to_email": "a.fontaine@meridian-partners.example",
+     "from_email": "events@morganstanleysimulated.com",
+     "subject": "Wealth Advisory Monthly - February 2026",
+     "body": "Amelie, this month: rate outlook, muni desk commentary, and the FY2026 client summit agenda.",
+     "template_id": null,
+     "categories": "newsletter",
+     "status": "delivered",
+     "sent_at": "2026-02-09T08:00:00Z"
+    }
+   ]
+  },
+  {
+   "name": "sg_templates",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "generation",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    },
+    {
+     "name": "updated_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "d-8f3c2a1b9e4d47c6a05b12de34f56a78",
+     "name": "Renewal Notice - 90 Day",
+     "generation": "dynamic",
+     "created_at": "2026-01-05T10:02:00Z",
+     "updated_at": "2026-01-11T09:30:00Z"
+    },
+    {
+     "id": "d-2b7e91c4d5f643a8b9c0d1e2f3a4b5c6",
+     "name": "Renewal Notice - 30 Day Final",
+     "generation": "dynamic",
+     "created_at": "2026-01-05T10:06:00Z",
+     "updated_at": "2026-01-28T15:12:00Z"
+    },
+    {
+     "id": "d-7a1f0e9d8c7b6a5f4e3d2c1b0a998877",
+     "name": "Outbound Sequence Step 1 - Intro",
+     "generation": "dynamic",
+     "created_at": "2026-01-06T11:40:00Z",
+     "updated_at": "2026-01-12T16:45:00Z"
+    },
+    {
+     "id": "d-c4d5e6f708192a3b4c5d6e7f80912a3b",
+     "name": "Outbound Sequence Step 2 - Case Study",
+     "generation": "dynamic",
+     "created_at": "2026-01-06T11:44:00Z",
+     "updated_at": "2026-01-19T10:05:00Z"
+    },
+    {
+     "id": "d-55aa66bb77cc88dd99ee00ff11a22b3c",
+     "name": "QBR Invitation",
+     "generation": "dynamic",
+     "created_at": "2026-01-07T09:15:00Z",
+     "updated_at": "2026-01-15T14:20:00Z"
+    },
+    {
+     "id": "d-0192a3b4c5d6e7f80912a3b4c5d6e7f8",
+     "name": "Onboarding Welcome - Wealth Advisory",
+     "generation": "dynamic",
+     "created_at": "2026-01-08T08:50:00Z",
+     "updated_at": "2026-02-01T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "name": "sg_template_versions",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "template_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "subject",
+     "type": "TEXT"
+    },
+    {
+     "name": "html_content",
+     "type": "TEXT"
+    },
+    {
+     "name": "plain_content",
+     "type": "TEXT"
+    },
+    {
+     "name": "active",
+     "type": "INTEGER"
+    },
+    {
+     "name": "editor",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "ver_1f9a3c5e7b2d",
+     "template_id": "d-8f3c2a1b9e4d47c6a05b12de34f56a78",
+     "name": "v2 - legal approved",
+     "subject": "Your Morgan Stanley (SIMULATED) agreement renews in 90 days",
+     "html_content": "<p>Hi {{first_name}},</p><p>Your advisory agreement for {{account_name}} is up for renewal on {{renewal_date}}. Your CSM will reach out this week to schedule the renewal review.</p>",
+     "plain_content": "Hi {{first_name}}, your advisory agreement for {{account_name}} is up for renewal on {{renewal_date}}.",
+     "active": 1,
+     "editor": "code",
+     "created_at": "2026-01-11T09:30:00Z"
+    },
+    {
+     "id": "ver_2e8b4d6f0a1c",
+     "template_id": "d-8f3c2a1b9e4d47c6a05b12de34f56a78",
+     "name": "v1 - draft",
+     "subject": "Renewal coming up for {{account_name}}",
+     "html_content": "<p>Hi {{first_name}}, your agreement renews soon.</p>",
+     "plain_content": "Hi {{first_name}}, your agreement renews soon.",
+     "active": 0,
+     "editor": "code",
+     "created_at": "2026-01-05T10:02:00Z"
+    },
+    {
+     "id": "ver_3a7c5e9b1d2f",
+     "template_id": "d-2b7e91c4d5f643a8b9c0d1e2f3a4b5c6",
+     "name": "v1",
+     "subject": "Final notice: {{account_name}} agreement renews in 30 days",
+     "html_content": "<p>{{first_name}}, this is the 30-day notice for {{account_name}}'s advisory agreement renewal on {{renewal_date}}. Reply to lock the renewal call.</p>",
+     "plain_content": "{{first_name}}, this is the 30-day renewal notice for {{account_name}}.",
+     "active": 1,
+     "editor": "code",
+     "created_at": "2026-01-28T15:12:00Z"
+    },
+    {
+     "id": "ver_4b8d6f0c2e3a",
+     "template_id": "d-7a1f0e9d8c7b6a5f4e3d2c1b0a998877",
+     "name": "v3 - shorter opener",
+     "subject": "Quick intro - Morgan Stanley (SIMULATED) institutional coverage",
+     "html_content": "<p>{{first_name}}, I work with treasurers at firms like {{account_name}} on cash sweep programs. Worth a 15-minute call next week?</p>",
+     "plain_content": "{{first_name}}, I work with treasurers at firms like {{account_name}} on cash sweep programs. Worth a 15-minute call?",
+     "active": 1,
+     "editor": "code",
+     "created_at": "2026-01-12T16:45:00Z"
+    },
+    {
+     "id": "ver_5c9e7a1d3f4b",
+     "template_id": "d-c4d5e6f708192a3b4c5d6e7f80912a3b",
+     "name": "v2",
+     "subject": "How a peer fund cut settlement breaks by 40%",
+     "html_content": "<p>{{first_name}}, following up with the case study I mentioned - a peer fund cut settlement breaks 40% in two quarters.</p>",
+     "plain_content": "{{first_name}}, following up with the case study - a peer fund cut settlement breaks 40% in two quarters.",
+     "active": 1,
+     "editor": "code",
+     "created_at": "2026-01-19T10:05:00Z"
+    },
+    {
+     "id": "ver_6d0f8b2e4a5c",
+     "template_id": "d-55aa66bb77cc88dd99ee00ff11a22b3c",
+     "name": "v1",
+     "subject": "Q1 business review - pick a slot",
+     "html_content": "<p>{{first_name}}, time to book {{account_name}}'s Q1 QBR. Agenda: portfolio performance, service tickets, FY2026 roadmap.</p>",
+     "plain_content": "{{first_name}}, time to book {{account_name}}'s Q1 QBR.",
+     "active": 1,
+     "editor": "design",
+     "created_at": "2026-01-15T14:20:00Z"
+    },
+    {
+     "id": "ver_7e1a9c3f5b6d",
+     "template_id": "d-0192a3b4c5d6e7f80912a3b4c5d6e7f8",
+     "name": "v4 - with checklist",
+     "subject": "Welcome to Morgan Stanley (SIMULATED) Wealth Advisory",
+     "html_content": "<p>{{first_name}}, welcome aboard. Here is your onboarding checklist and your named team for {{account_name}}.</p>",
+     "plain_content": "{{first_name}}, welcome aboard. Here is your onboarding checklist.",
+     "active": 1,
+     "editor": "design",
+     "created_at": "2026-02-01T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "name": "sg_contacts",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "email",
+     "type": "TEXT"
+    },
+    {
+     "name": "first_name",
+     "type": "TEXT"
+    },
+    {
+     "name": "last_name",
+     "type": "TEXT"
+    },
+    {
+     "name": "company",
+     "type": "TEXT"
+    },
+    {
+     "name": "phone_number",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    },
+    {
+     "name": "updated_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "9c1d24a3-77b0-4a2e-8f5d-1a2b3c4d5e01",
+     "email": "chloe.tan@summit-group.example",
+     "first_name": "Chloe",
+     "last_name": "Tan",
+     "company": "Summit Group",
+     "phone_number": "+1-212-555-0141",
+     "created_at": "2026-01-05T09:00:00Z",
+     "updated_at": "2026-01-12T15:04:00Z"
+    },
+    {
+     "id": "b4e2f8c1-3a5d-4b6e-9c0f-2b3c4d5e6f02",
+     "email": "r.ellison@summit-group.example",
+     "first_name": "Rachel",
+     "last_name": "Ellison",
+     "company": "Summit Group",
+     "phone_number": "+1-212-555-0176",
+     "created_at": "2026-01-05T09:02:00Z",
+     "updated_at": "2026-02-05T10:12:00Z"
+    },
+    {
+     "id": "d7a91b2c-5e4f-4c8a-b1d3-3c4d5e6f7a03",
+     "email": "derek.osei@meridian-partners.example",
+     "first_name": "Derek",
+     "last_name": "Osei",
+     "company": "Meridian",
+     "phone_number": "+1-312-555-0122",
+     "created_at": "2026-01-06T10:30:00Z",
+     "updated_at": "2026-01-13T14:22:00Z"
+    },
+    {
+     "id": "e8b03c4d-6f5a-4d9b-a2e4-4d5e6f7a8b04",
+     "email": "a.fontaine@meridian-partners.example",
+     "first_name": "Amelie",
+     "last_name": "Fontaine",
+     "company": "Meridian",
+     "phone_number": "+1-312-555-0187",
+     "created_at": "2026-01-06T10:32:00Z",
+     "updated_at": "2026-02-09T08:00:00Z"
+    },
+    {
+     "id": "f9c14d5e-7a6b-4e0c-b3f5-5e6f7a8b9c05",
+     "email": "diego.marchetti@ironwood-capital.example",
+     "first_name": "Diego",
+     "last_name": "Marchetti",
+     "company": "Ironwood",
+     "phone_number": "+1-617-555-0119",
+     "created_at": "2026-01-06T11:00:00Z",
+     "updated_at": "2026-01-09T17:44:00Z"
+    },
+    {
+     "id": "0ad25e6f-8b7c-4f1d-c4a6-6f7a8b9c0d06",
+     "email": "l.novotna@ironwood-capital.example",
+     "first_name": "Lenka",
+     "last_name": "Novotna",
+     "company": "Ironwood",
+     "phone_number": "+1-617-555-0163",
+     "created_at": "2026-01-06T11:02:00Z",
+     "updated_at": "2026-01-14T09:41:00Z"
+    },
+    {
+     "id": "1be36f7a-9c8d-402e-d5b7-7a8b9c0d1e07",
+     "email": "priya.raman@harborview.example",
+     "first_name": "Priya",
+     "last_name": "Raman",
+     "company": "Harborview",
+     "phone_number": "+1-415-555-0152",
+     "created_at": "2026-01-07T08:45:00Z",
+     "updated_at": "2026-01-20T17:30:00Z"
+    },
+    {
+     "id": "2cf47a8b-0d9e-413f-e6c8-8b9c0d1e2f08",
+     "email": "j.mccall@atlas-holdings.example",
+     "first_name": "James",
+     "last_name": "McCall",
+     "company": "Atlas",
+     "phone_number": "+1-646-555-0134",
+     "created_at": "2026-01-07T08:47:00Z",
+     "updated_at": "2026-01-21T11:15:00Z"
+    },
+    {
+     "id": "3da58b9c-1e0f-4240-f7d9-9c0d1e2f3a09",
+     "email": "s.whitfield@crestline.example",
+     "first_name": "Simone",
+     "last_name": "Whitfield",
+     "company": "Crestline",
+     "phone_number": "+1-203-555-0128",
+     "created_at": "2026-01-08T09:20:00Z",
+     "updated_at": "2026-02-02T16:08:00Z"
+    },
+    {
+     "id": "4eb69c0d-2f1a-4351-a8ea-0d1e2f3a4b10",
+     "email": "omar.haddad@riverside-group.example",
+     "first_name": "Omar",
+     "last_name": "Haddad",
+     "company": "Riverside Group",
+     "phone_number": "+1-201-555-0195",
+     "created_at": "2026-01-08T09:25:00Z",
+     "updated_at": "2026-02-03T13:55:00Z"
+    }
+   ]
+  },
+  {
+   "name": "sg_lists",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "contact_count",
+     "type": "INTEGER"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "list_e4d1a7b2",
+     "name": "FY2026 Renewal Notices",
+     "contact_count": 3,
+     "created_at": "2026-01-05T08:30:00Z"
+    },
+    {
+     "id": "list_f5c2b8a3",
+     "name": "Outbound Sequence - Q1 Prospects",
+     "contact_count": 4,
+     "created_at": "2026-01-06T10:00:00Z"
+    },
+    {
+     "id": "list_a6d3c9b4",
+     "name": "Newsletter - Wealth Advisory Monthly",
+     "contact_count": 2,
+     "created_at": "2026-01-07T09:00:00Z"
+    },
+    {
+     "id": "list_b7e4d0c5",
+     "name": "Event - FY2026 Client Summit Invitees",
+     "contact_count": 2,
+     "created_at": "2026-01-09T14:10:00Z"
+    },
+    {
+     "id": "list_c8f5e1d6",
+     "name": "Customer Onboarding - Active",
+     "contact_count": 1,
+     "created_at": "2026-01-10T11:25:00Z"
+    },
+    {
+     "id": "list_d9a6f2e7",
+     "name": "QBR Reminders - Q1",
+     "contact_count": 1,
+     "created_at": "2026-01-12T13:40:00Z"
+    }
+   ]
+  },
+  {
+   "name": "sg_list_members",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "list_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "contact_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "mem_01a2b3c4d5e6",
+     "list_id": "list_e4d1a7b2",
+     "contact_id": "9c1d24a3-77b0-4a2e-8f5d-1a2b3c4d5e01",
+     "created_at": "2026-01-05T08:35:00Z"
+    },
+    {
+     "id": "mem_12b3c4d5e6f7",
+     "list_id": "list_e4d1a7b2",
+     "contact_id": "3da58b9c-1e0f-4240-f7d9-9c0d1e2f3a09",
+     "created_at": "2026-01-05T08:36:00Z"
+    },
+    {
+     "id": "mem_23c4d5e6f7a8",
+     "list_id": "list_e4d1a7b2",
+     "contact_id": "1be36f7a-9c8d-402e-d5b7-7a8b9c0d1e07",
+     "created_at": "2026-01-05T08:37:00Z"
+    },
+    {
+     "id": "mem_34d5e6f7a8b9",
+     "list_id": "list_f5c2b8a3",
+     "contact_id": "d7a91b2c-5e4f-4c8a-b1d3-3c4d5e6f7a03",
+     "created_at": "2026-01-06T10:05:00Z"
+    },
+    {
+     "id": "mem_45e6f7a8b9c0",
+     "list_id": "list_f5c2b8a3",
+     "contact_id": "0ad25e6f-8b7c-4f1d-c4a6-6f7a8b9c0d06",
+     "created_at": "2026-01-06T10:06:00Z"
+    },
+    {
+     "id": "mem_56f7a8b9c0d1",
+     "list_id": "list_f5c2b8a3",
+     "contact_id": "2cf47a8b-0d9e-413f-e6c8-8b9c0d1e2f08",
+     "created_at": "2026-01-06T10:07:00Z"
+    },
+    {
+     "id": "mem_67a8b9c0d1e2",
+     "list_id": "list_f5c2b8a3",
+     "contact_id": "b4e2f8c1-3a5d-4b6e-9c0f-2b3c4d5e6f02",
+     "created_at": "2026-01-06T10:08:00Z"
+    },
+    {
+     "id": "mem_78b9c0d1e2f3",
+     "list_id": "list_a6d3c9b4",
+     "contact_id": "e8b03c4d-6f5a-4d9b-a2e4-4d5e6f7a8b04",
+     "created_at": "2026-01-07T09:05:00Z"
+    },
+    {
+     "id": "mem_89c0d1e2f3a4",
+     "list_id": "list_a6d3c9b4",
+     "contact_id": "9c1d24a3-77b0-4a2e-8f5d-1a2b3c4d5e01",
+     "created_at": "2026-01-07T09:06:00Z"
+    },
+    {
+     "id": "mem_90d1e2f3a4b5",
+     "list_id": "list_b7e4d0c5",
+     "contact_id": "d7a91b2c-5e4f-4c8a-b1d3-3c4d5e6f7a03",
+     "created_at": "2026-01-09T14:15:00Z"
+    },
+    {
+     "id": "mem_a1e2f3a4b5c6",
+     "list_id": "list_b7e4d0c5",
+     "contact_id": "1be36f7a-9c8d-402e-d5b7-7a8b9c0d1e07",
+     "created_at": "2026-01-09T14:16:00Z"
+    },
+    {
+     "id": "mem_b2f3a4b5c6d7",
+     "list_id": "list_c8f5e1d6",
+     "contact_id": "4eb69c0d-2f1a-4351-a8ea-0d1e2f3a4b10",
+     "created_at": "2026-01-10T11:30:00Z"
+    }
+   ]
+  },
+  {
+   "name": "sg_senders",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "nickname",
+     "type": "TEXT"
+    },
+    {
+     "name": "from_email",
+     "type": "TEXT"
+    },
+    {
+     "name": "from_name",
+     "type": "TEXT"
+    },
+    {
+     "name": "reply_to",
+     "type": "TEXT"
+    },
+    {
+     "name": "address",
+     "type": "TEXT"
+    },
+    {
+     "name": "city",
+     "type": "TEXT"
+    },
+    {
+     "name": "country",
+     "type": "TEXT"
+    },
+    {
+     "name": "verified",
+     "type": "INTEGER"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "sender_1a4f8c2e",
+     "nickname": "SDR Outbound - Mei Huang",
+     "from_email": "contact77709@morganstanleysimulated.com",
+     "from_name": "Mei Huang",
+     "reply_to": "contact77709@morganstanleysimulated.com",
+     "address": "1585 Broadway",
+     "city": "New York",
+     "country": "USA",
+     "verified": 1,
+     "created_at": "2026-01-05T08:00:00Z"
+    },
+    {
+     "id": "sender_2b5a9d3f",
+     "nickname": "Renewals Desk",
+     "from_email": "renewals@morganstanleysimulated.com",
+     "from_name": "Morgan Stanley (SIMULATED) Renewals",
+     "reply_to": "renewals@morganstanleysimulated.com",
+     "address": "1585 Broadway",
+     "city": "New York",
+     "country": "USA",
+     "verified": 1,
+     "created_at": "2026-01-05T08:05:00Z"
+    },
+    {
+     "id": "sender_3c6b0e4a",
+     "nickname": "Client Events",
+     "from_email": "events@morganstanleysimulated.com",
+     "from_name": "Morgan Stanley (SIMULATED) Events",
+     "reply_to": "events@morganstanleysimulated.com",
+     "address": "1585 Broadway",
+     "city": "New York",
+     "country": "USA",
+     "verified": 1,
+     "created_at": "2026-01-06T09:10:00Z"
+    },
+    {
+     "id": "sender_4d7c1f5b",
+     "nickname": "Onboarding Team",
+     "from_email": "onboarding@morganstanleysimulated.com",
+     "from_name": "Morgan Stanley (SIMULATED) Onboarding",
+     "reply_to": "onboarding@morganstanleysimulated.com",
+     "address": "1585 Broadway",
+     "city": "New York",
+     "country": "USA",
+     "verified": 1,
+     "created_at": "2026-01-06T09:15:00Z"
+    },
+    {
+     "id": "sender_5e8d2a6c",
+     "nickname": "Recruiting - Sarah Kim",
+     "from_email": "sarah.kim@morganstanleysimulated.com",
+     "from_name": "Sarah Kim",
+     "reply_to": "sarah.kim@morganstanleysimulated.com",
+     "address": "1585 Broadway",
+     "city": "New York",
+     "country": "USA",
+     "verified": 0,
+     "created_at": "2026-01-15T10:20:00Z"
+    },
+    {
+     "id": "sender_6f9e3b7d",
+     "nickname": "Wealth Advisory Newsletter",
+     "from_email": "newsletter@morganstanleysimulated.com",
+     "from_name": "Wealth Advisory Monthly",
+     "reply_to": "no-reply@morganstanleysimulated.com",
+     "address": "1585 Broadway",
+     "city": "New York",
+     "country": "USA",
+     "verified": 1,
+     "created_at": "2026-01-07T08:55:00Z"
+    }
+   ]
+  },
+  {
+   "name": "sg_api_keys",
+   "columns": [
+    {
+     "name": "api_key_id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "scopes",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "api_key_id": "vXq3P9tRZmS1bK7Y",
+     "name": "marketing-automation-prod",
+     "scopes": "[\"mail.send\", \"templates.read\", \"marketing.read\"]",
+     "created_at": "2026-01-05T07:30:00Z"
+    },
+    {
+     "api_key_id": "hJ2mN8pQ4rS6tU0w",
+     "name": "renewal-pipeline",
+     "scopes": "[\"mail.send\", \"templates.read\"]",
+     "created_at": "2026-01-05T07:32:00Z"
+    },
+    {
+     "api_key_id": "aB5cD7eF9gH1iJ3k",
+     "name": "crm-sync-readonly",
+     "scopes": "[\"marketing.read\", \"stats.read\", \"suppression.read\"]",
+     "created_at": "2026-01-06T12:00:00Z"
+    },
+    {
+     "api_key_id": "zY8xW6vU4tS2rQ0p",
+     "name": "ci-smoke-tests",
+     "scopes": "[\"mail.send\"]",
+     "created_at": "2026-01-09T15:45:00Z"
+    },
+    {
+     "api_key_id": "mL4kJ2iH0gF8eD6c",
+     "name": "events-platform",
+     "scopes": "[\"mail.send\", \"templates.read\", \"templates.update\"]",
+     "created_at": "2026-01-12T09:18:00Z"
+    },
+    {
+     "api_key_id": "qP7oN5mL3kJ1iH9g",
+     "name": "suppression-manager",
+     "scopes": "[\"suppression.create\", \"suppression.delete\", \"suppression.read\", \"asm.groups.read\"]",
+     "created_at": "2026-01-20T14:02:00Z"
+    }
+   ]
+  },
+  {
+   "name": "sg_global_suppressions",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "email",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "gs_4f1c9a2e7b3d",
+     "email": "diego.marchetti@ironwood-capital.example",
+     "created_at": "2026-01-09T17:44:00Z"
+    },
+    {
+     "id": "gs_5a2d0b3f8c4e",
+     "email": "victor.lindqvist@crestline.example",
+     "created_at": "2026-01-10T09:12:00Z"
+    },
+    {
+     "id": "gs_6b3e1c4a9d5f",
+     "email": "h.brennan@atlas-holdings.example",
+     "created_at": "2026-01-11T16:30:00Z"
+    },
+    {
+     "id": "gs_7c4f2d5b0e6a",
+     "email": "t.okafor@harborview.example",
+     "created_at": "2026-01-14T11:08:00Z"
+    },
+    {
+     "id": "gs_8d5a3e6c1f7b",
+     "email": "m.silva@riverside-group.example",
+     "created_at": "2026-01-18T13:26:00Z"
+    },
+    {
+     "id": "gs_9e6b4f7d2a8c",
+     "email": "k.yamada@summit-group.example",
+     "created_at": "2026-01-22T10:41:00Z"
+    },
+    {
+     "id": "gs_0f7c5a8e3b9d",
+     "email": "former.contact@meridian-partners.example",
+     "created_at": "2026-02-01T08:19:00Z"
+    }
+   ]
+  },
+  {
+   "name": "sg_suppressions",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "group_id",
+     "type": "REAL"
+    },
+    {
+     "name": "email",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "sup_1a3c5e7b9d0f",
+     "group_id": 1.0,
+     "email": "ops-digest@summit-group.example",
+     "created_at": "2026-01-08T09:00:00Z"
+    },
+    {
+     "id": "sup_2b4d6f8a0c1e",
+     "group_id": 1.0,
+     "email": "chloe.tan@summit-group.example",
+     "created_at": "2026-01-09T10:15:00Z"
+    },
+    {
+     "id": "sup_3c5e7a9b1d2f",
+     "group_id": 1.0,
+     "email": "billing@summit-group.example",
+     "created_at": "2026-01-12T14:33:00Z"
+    },
+    {
+     "id": "sup_4d6f8b0c2e3a",
+     "group_id": 2.0,
+     "email": "derek.osei@meridian-partners.example",
+     "created_at": "2026-01-13T15:02:00Z"
+    },
+    {
+     "id": "sup_5e7a9c1d3f4b",
+     "group_id": 2.0,
+     "email": "treasury@meridian-partners.example",
+     "created_at": "2026-01-15T11:47:00Z"
+    },
+    {
+     "id": "sup_6f8b0d2e4a5c",
+     "group_id": 2.0,
+     "email": "j.mccall@atlas-holdings.example",
+     "created_at": "2026-01-21T12:20:00Z"
+    },
+    {
+     "id": "sup_7a9c1e3f5b6d",
+     "group_id": 1.0,
+     "email": "l.novotna@ironwood-capital.example",
+     "created_at": "2026-01-25T09:58:00Z"
+    },
+    {
+     "id": "sup_8b0d2f4a6c7e",
+     "group_id": 2.0,
+     "email": "s.whitfield@crestline.example",
+     "created_at": "2026-02-04T16:11:00Z"
+    }
+   ]
+  }
+ ],
+ "tools": [
+  {
+   "name": "post_mail_send",
+   "description": "Send an email over SendGrid's Web API. Logs the outbound message, resolves subject/body from the active template version when template_id is given, and drops (does not deliver) mail to globally suppressed recipients. (POST /v3/mail/send)",
+   "op": "custom",
+   "type": "write",
+   "table": "sg_mail_sends",
+   "extra_tables": [
+    "sg_templates",
+    "sg_template_versions",
+    "sg_global_suppressions"
+   ],
+   "params": {
+    "to": {
+     "type": "string",
+     "description": "The intended recipient's email address."
+    },
+    "from": {
+     "type": "string",
+     "description": "The 'from' email address used to deliver the message. This address should be a verified sender in your account."
+    },
+    "subject": {
+     "type": "string",
+     "description": "The global or 'message level' subject of your email. Required unless a template with a subject defined is used."
+    },
+    "body": {
+     "type": "string",
+     "description": "The content of your email. When template_id is set and body is omitted, the active template version's html_content is used."
+    },
+    "template_id": {
+     "type": "string",
+     "description": "An email template ID. A template that contains a subject and content - either text or html - will override any subject and content values specified at the message level."
+    },
+    "categories": {
+     "type": "object",
+     "description": "An array of category names for this message. Each category name may not exceed 255 characters. A comma-separated string is also accepted."
+    }
+   },
+   "required": [
+    "to",
+    "from"
+   ],
+   "custom_source": "def post_mail_send(db_path='state.db', **kwargs):\n    import sqlite3, hashlib, datetime\n    to = kwargs.get('to')\n    from_email = kwargs.get('from')\n    subject = kwargs.get('subject')\n    body = kwargs.get('body')\n    template_id = kwargs.get('template_id')\n    categories = kwargs.get('categories')\n    if isinstance(categories, list):\n        categories = ','.join(str(c) for c in categories)\n    if not to:\n        return {\"errors\": [{\"field\": \"to\", \"message\": \"The to parameter is required and must be a valid email address.\"}]}\n    if not from_email:\n        return {\"errors\": [{\"field\": \"from\", \"message\": \"The from email address is required for every send and should belong to a verified sender identity.\"}]}\n    if not subject and not template_id:\n        return {\"errors\": [{\"field\": \"subject\", \"message\": \"The subject is required. You can get around this requirement if you use a template with a subject defined.\"}]}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    if template_id:\n        tpl = cur.execute(\"SELECT * FROM sg_templates WHERE id = ?\", (template_id,)).fetchone()\n        if tpl is None:\n            conn.close()\n            return {\"errors\": [{\"field\": \"template_id\", \"message\": \"Template with id '%s' not found.\" % template_id}]}\n        ver = cur.execute(\"SELECT * FROM sg_template_versions WHERE template_id = ? AND active = 1\", (template_id,)).fetchone()\n        if ver is not None:\n            if not subject:\n                subject = ver[\"subject\"]\n            if not body:\n                body = ver[\"html_content\"]\n    suppressed = cur.execute(\"SELECT * FROM sg_global_suppressions WHERE email = ?\", (to,)).fetchone()\n    now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')\n    msg_id = 'msg_' + hashlib.sha256((str(to) + '|' + str(subject) + '|' + now).encode('utf-8')).hexdigest()[:16]\n    status = 'dropped' if suppressed is not None else 'delivered'\n    cur.execute(\n        \"INSERT INTO sg_mail_sends (id, to_email, from_email, subject, body, template_id, categories, status, sent_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)\",\n        (msg_id, to, from_email, subject, body, template_id, categories, status, now))\n    conn.commit()\n    row = cur.execute(\"SELECT * FROM sg_mail_sends WHERE id = ?\", (msg_id,)).fetchone()\n    conn.close()\n    result = dict(row)\n    result[\"message_id\"] = msg_id\n    if status == 'dropped':\n        result[\"drop_reason\"] = \"Recipient address is on the global unsubscribe list; message was logged as dropped and not delivered.\"\n    return result\n"
+  },
+  {
+   "name": "sg_mail_sends_list",
+   "description": "Filter all messages sent through the mail send log to search recent email activity. (GET /v3/messages)",
+   "op": "list",
+   "table": "sg_mail_sends",
+   "params": {
+    "to_email": {
+     "type": "string",
+     "description": "Filter messages by the intended recipient's email address."
+    },
+    "status": {
+     "type": "string",
+     "description": "Filter messages by status: processed, delivered, bounced, blocked, or dropped."
+    },
+    "template_id": {
+     "type": "string",
+     "description": "Filter messages by the email template ID used for the send."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The number of messages returned. Defaults to 30."
+    }
+   },
+   "filters": [
+    "to_email",
+    "status",
+    "template_id"
+   ]
+  },
+  {
+   "name": "sg_templates_list",
+   "description": "Retrieve all transactional email templates on your account. (GET /v3/templates)",
+   "op": "list",
+   "table": "sg_templates",
+   "params": {
+    "generations": {
+     "type": "string",
+     "description": "Comma-delimited list specifying which generations of templates to return. Options are legacy, dynamic or legacy,dynamic."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The number of templates to be returned in each page of results. Defaults to 30."
+    }
+   },
+   "filters": [
+    "generations"
+   ],
+   "filter_map": {
+    "generations": "generation"
+   }
+  },
+  {
+   "name": "sg_templates_get",
+   "description": "Retrieve a single transactional email template by ID. (GET /v3/templates/{template_id})",
+   "op": "get",
+   "table": "sg_templates",
+   "params": {
+    "template_id": {
+     "type": "string",
+     "description": "The ID of the transactional template you want to retrieve."
+    }
+   },
+   "required": [
+    "template_id"
+   ],
+   "id_param": "template_id",
+   "id_column": "id"
+  },
+  {
+   "name": "sg_templates_create",
+   "description": "Create a transactional email template. Destination for this template is the mail send endpoint; each user can create up to 300 templates. (POST /v3/templates)",
+   "op": "create",
+   "table": "sg_templates",
+   "params": {
+    "name": {
+     "type": "string",
+     "description": "The name for the new transactional template. Max length 100 characters."
+    },
+    "generation": {
+     "type": "string",
+     "description": "Defines the generation of the template: legacy or dynamic. Dynamic templates support Handlebars substitution."
+    }
+   },
+   "required": [
+    "name"
+   ],
+   "fields": [
+    "name",
+    "generation"
+   ],
+   "id_prefix": "d-"
+  },
+  {
+   "name": "sg_templates_update",
+   "description": "Edit a transactional email template's metadata; any fields not provided are left unchanged. (PATCH /v3/templates/{template_id})",
+   "op": "update",
+   "table": "sg_templates",
+   "params": {
+    "template_id": {
+     "type": "string",
+     "description": "The ID of the transactional template you want to edit."
+    },
+    "name": {
+     "type": "string",
+     "description": "The new name for the transactional template. Max length 100 characters."
+    }
+   },
+   "required": [
+    "template_id"
+   ],
+   "id_param": "template_id",
+   "id_column": "id",
+   "set_fields": [
+    "name"
+   ]
+  },
+  {
+   "name": "sg_template_version_create",
+   "description": "Create a new version of a transactional template. A version is the body/subject content of a template; only one version per template can be active. (POST /v3/templates/{template_id}/versions)",
+   "op": "create",
+   "table": "sg_template_versions",
+   "params": {
+    "template_id": {
+     "type": "string",
+     "description": "The ID of the transactional template for which the new version is created."
+    },
+    "name": {
+     "type": "string",
+     "description": "Name of the transactional template version. Max length 100 characters."
+    },
+    "subject": {
+     "type": "string",
+     "description": "Subject of the new transactional template version. Max length 255 characters."
+    },
+    "html_content": {
+     "type": "string",
+     "description": "The HTML content of the version. Maximum of 1048576 bytes allowed."
+    },
+    "plain_content": {
+     "type": "string",
+     "description": "Text/plain content of the transactional template version. Maximum of 1048576 bytes allowed."
+    },
+    "active": {
+     "type": "integer",
+     "description": "Set the version as the active version associated with the template (0 is inactive, 1 is active). Only one version of a template can be active."
+    },
+    "editor": {
+     "type": "string",
+     "description": "The editor used in the UI: code or design."
+    }
+   },
+   "required": [
+    "template_id",
+    "name",
+    "subject"
+   ],
+   "fields": [
+    "template_id",
+    "name",
+    "subject",
+    "html_content",
+    "plain_content",
+    "active",
+    "editor"
+   ],
+   "id_prefix": "ver_"
+  },
+  {
+   "name": "sg_contacts_upsert",
+   "description": "Add or update a marketing contact. Contacts are matched by email address: if the email exists the contact is updated, otherwise a new contact is created. Returns a job_id like the asynchronous SendGrid import. (PUT /v3/marketing/contacts)",
+   "op": "custom",
+   "type": "write",
+   "table": "sg_contacts",
+   "params": {
+    "email": {
+     "type": "string",
+     "description": "The contact's primary email address. Required and used as the upsert key."
+    },
+    "first_name": {
+     "type": "string",
+     "description": "The contact's personal name."
+    },
+    "last_name": {
+     "type": "string",
+     "description": "The contact's family name."
+    },
+    "company": {
+     "type": "string",
+     "description": "The name of the contact's employer or account."
+    },
+    "phone_number": {
+     "type": "string",
+     "description": "The contact's phone number, including country code."
+    }
+   },
+   "required": [
+    "email"
+   ],
+   "custom_source": "def sg_contacts_upsert(db_path='state.db', **kwargs):\n    import sqlite3, hashlib, datetime\n    email = kwargs.get('email')\n    if not email:\n        return {\"errors\": [{\"field\": \"email\", \"message\": \"email is required for every contact; contacts are matched and upserted by email address.\"}]}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')\n    fields = ['first_name', 'last_name', 'company', 'phone_number']\n    existing = cur.execute(\"SELECT * FROM sg_contacts WHERE email = ?\", (email,)).fetchone()\n    if existing is not None:\n        sets = [\"updated_at = ?\"]\n        vals = [now]\n        for f in fields:\n            if kwargs.get(f) is not None:\n                sets.append(f + \" = ?\")\n                vals.append(kwargs.get(f))\n        vals.append(email)\n        cur.execute(\"UPDATE sg_contacts SET \" + \", \".join(sets) + \" WHERE email = ?\", vals)\n        conn.commit()\n        status = 'updated'\n        row = cur.execute(\"SELECT * FROM sg_contacts WHERE email = ?\", (email,)).fetchone()\n    else:\n        h = hashlib.sha256(email.encode('utf-8')).hexdigest()\n        contact_id = h[0:8] + '-' + h[8:12] + '-' + h[12:16] + '-' + h[16:20] + '-' + h[20:32]\n        cur.execute(\n            \"INSERT INTO sg_contacts (id, email, first_name, last_name, company, phone_number, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)\",\n            (contact_id, email, kwargs.get('first_name'), kwargs.get('last_name'), kwargs.get('company'), kwargs.get('phone_number'), now, now))\n        conn.commit()\n        status = 'created'\n        row = cur.execute(\"SELECT * FROM sg_contacts WHERE id = ?\", (contact_id,)).fetchone()\n    conn.close()\n    jh = hashlib.sha256((email + '|' + now).encode('utf-8')).hexdigest()\n    return {\"job_id\": jh[0:8] + '-' + jh[8:12] + '-' + jh[12:16] + '-' + jh[16:20] + '-' + jh[20:32], \"status\": status, \"contact\": dict(row)}\n"
+  },
+  {
+   "name": "sg_contacts_search",
+   "description": "Search marketing contacts with a query string matched against email, first name, last name, and company. (POST /v3/marketing/contacts/search)",
+   "op": "search",
+   "table": "sg_contacts",
+   "params": {
+    "query": {
+     "type": "string",
+     "description": "A search query matched against the contact's email, first_name, last_name, and company fields."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The maximum number of contacts to return. Defaults to 30."
+    }
+   },
+   "required": [
+    "query"
+   ],
+   "query_param": "query",
+   "search_columns": [
+    "email",
+    "first_name",
+    "last_name",
+    "company"
+   ]
+  },
+  {
+   "name": "sg_contacts_list",
+   "description": "Retrieve all of your marketing contacts, most useful for enumerating the contact base page by page. (GET /v3/marketing/contacts)",
+   "op": "list",
+   "table": "sg_contacts",
+   "params": {
+    "limit": {
+     "type": "integer",
+     "description": "The number of contacts to return per page. Defaults to 30."
+    }
+   }
+  },
+  {
+   "name": "sg_lists_list",
+   "description": "Retrieve all of your marketing contact lists. (GET /v3/marketing/lists)",
+   "op": "list",
+   "table": "sg_lists",
+   "params": {
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of lists to return. Defaults to 30."
+    }
+   }
+  },
+  {
+   "name": "sg_lists_create",
+   "description": "Create a new marketing contact list. (POST /v3/marketing/lists)",
+   "op": "create",
+   "table": "sg_lists",
+   "params": {
+    "name": {
+     "type": "string",
+     "description": "Your name for the list. Must be unique across all lists; max length 100 characters."
+    }
+   },
+   "required": [
+    "name"
+   ],
+   "fields": [
+    "name"
+   ],
+   "defaults": {
+    "contact_count": 0
+   },
+   "id_prefix": "list_"
+  },
+  {
+   "name": "sg_list_add_contact",
+   "description": "Add an existing marketing contact to a contact list and update the list's contact count. Returns the membership record; adding a contact that is already a member is a no-op. (PUT /v3/marketing/contacts with list_ids)",
+   "op": "custom",
+   "type": "write",
+   "table": "sg_list_members",
+   "extra_tables": [
+    "sg_lists",
+    "sg_contacts"
+   ],
+   "params": {
+    "list_id": {
+     "type": "string",
+     "description": "The ID of the list the contact should be added to."
+    },
+    "contact_id": {
+     "type": "string",
+     "description": "The ID of an existing marketing contact to add to the list."
+    }
+   },
+   "required": [
+    "list_id",
+    "contact_id"
+   ],
+   "custom_source": "def sg_list_add_contact(db_path='state.db', **kwargs):\n    import sqlite3, hashlib, datetime\n    list_id = kwargs.get('list_id')\n    contact_id = kwargs.get('contact_id')\n    if not list_id:\n        return {\"errors\": [{\"field\": \"list_id\", \"message\": \"list_id is required.\"}]}\n    if not contact_id:\n        return {\"errors\": [{\"field\": \"contact_id\", \"message\": \"contact_id is required.\"}]}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    lst = cur.execute(\"SELECT * FROM sg_lists WHERE id = ?\", (list_id,)).fetchone()\n    if lst is None:\n        conn.close()\n        return {\"errors\": [{\"field\": \"list_id\", \"message\": \"List with id '%s' not found.\" % list_id}]}\n    contact = cur.execute(\"SELECT * FROM sg_contacts WHERE id = ?\", (contact_id,)).fetchone()\n    if contact is None:\n        conn.close()\n        return {\"errors\": [{\"field\": \"contact_id\", \"message\": \"Contact with id '%s' not found.\" % contact_id}]}\n    member = cur.execute(\"SELECT * FROM sg_list_members WHERE list_id = ? AND contact_id = ?\", (list_id, contact_id)).fetchone()\n    if member is not None:\n        conn.close()\n        result = dict(member)\n        result[\"already_member\"] = True\n        return result\n    now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')\n    mem_id = 'mem_' + hashlib.sha256((str(list_id) + '|' + str(contact_id)).encode('utf-8')).hexdigest()[:12]\n    cur.execute(\"INSERT INTO sg_list_members (id, list_id, contact_id, created_at) VALUES (?, ?, ?, ?)\", (mem_id, list_id, contact_id, now))\n    cur.execute(\"UPDATE sg_lists SET contact_count = COALESCE(contact_count, 0) + 1 WHERE id = ?\", (list_id,))\n    conn.commit()\n    row = cur.execute(\"SELECT * FROM sg_list_members WHERE id = ?\", (mem_id,)).fetchone()\n    count = cur.execute(\"SELECT contact_count FROM sg_lists WHERE id = ?\", (list_id,)).fetchone()\n    conn.close()\n    result = dict(row)\n    result[\"already_member\"] = False\n    result[\"list_contact_count\"] = count[\"contact_count\"]\n    return result\n"
+  },
+  {
+   "name": "sg_segments_list",
+   "description": "Retrieve all of your contact segments. Segments are dynamically refreshed groups of contacts defined by filter conditions. (GET /v3/contactdb/segments)",
+   "op": "list",
+   "table": "contactdb_segments",
+   "params": {
+    "list_id": {
+     "type": "integer",
+     "description": "Filter segments by the ID of the list the segment is a child of."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of segments to return. Defaults to 30."
+    }
+   },
+   "filters": [
+    "list_id"
+   ]
+  },
+  {
+   "name": "sg_unsubscribe_groups_list",
+   "description": "Retrieve all suppression (unsubscribe) groups associated with your account. (GET /v3/asm/groups)",
+   "op": "list",
+   "table": "suppression_groups",
+   "params": {
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of unsubscribe groups to return. Defaults to 30."
+    }
+   }
+  },
+  {
+   "name": "sg_unsubscribe_groups_create",
+   "description": "Create a new suppression (unsubscribe) group. Unsubscribe groups let recipients opt out of specific categories of email such as marketing or alerts. (POST /v3/asm/groups)",
+   "op": "create",
+   "table": "suppression_groups",
+   "params": {
+    "name": {
+     "type": "string",
+     "description": "The name of the new suppression group. Each group name must be unique; max length 30 characters."
+    },
+    "description": {
+     "type": "string",
+     "description": "A brief description of the suppression group's purpose, shown to recipients on the unsubscribe preferences page. Max length 100 characters."
+    },
+    "is_default": {
+     "type": "boolean",
+     "description": "Indicates whether the unsubscribe group is the default group used when no group is specified on a send."
+    }
+   },
+   "required": [
+    "name",
+    "description"
+   ],
+   "fields": [
+    "name",
+    "description",
+    "is_default"
+   ],
+   "defaults": {
+    "unsubscribes": 0
+   },
+   "id_prefix": "group_"
+  },
+  {
+   "name": "sg_suppressions_add",
+   "description": "Add an email address to a suppression (unsubscribe) group and increment the group's unsubscribe count. Adding an address that is already suppressed in the group is a no-op. (POST /v3/asm/groups/{group_id}/suppressions)",
+   "op": "custom",
+   "type": "write",
+   "table": "sg_suppressions",
+   "extra_tables": [
+    "suppression_groups"
+   ],
+   "params": {
+    "group_id": {
+     "type": "integer",
+     "description": "The ID of the unsubscribe group the email address should be added to."
+    },
+    "email": {
+     "type": "string",
+     "description": "The email address to add to the unsubscribe group."
+    }
+   },
+   "required": [
+    "group_id",
+    "email"
+   ],
+   "custom_source": "def sg_suppressions_add(db_path='state.db', **kwargs):\n    import sqlite3, hashlib, datetime\n    group_id = kwargs.get('group_id')\n    email = kwargs.get('email')\n    if group_id is None:\n        return {\"errors\": [{\"field\": \"group_id\", \"message\": \"The id of the unsubscribe group is required.\"}]}\n    if not email:\n        return {\"errors\": [{\"field\": \"email\", \"message\": \"The email address to add to the unsubscribe group is required.\"}]}\n    try:\n        gid = float(group_id)\n    except (TypeError, ValueError):\n        gid = group_id\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    group = cur.execute(\"SELECT * FROM suppression_groups WHERE id = ?\", (gid,)).fetchone()\n    if group is None:\n        conn.close()\n        return {\"errors\": [{\"field\": \"group_id\", \"message\": \"Unsubscribe group with id '%s' not found.\" % group_id}]}\n    existing = cur.execute(\"SELECT * FROM sg_suppressions WHERE group_id = ? AND email = ?\", (gid, email)).fetchone()\n    if existing is not None:\n        conn.close()\n        result = dict(existing)\n        result[\"already_suppressed\"] = True\n        return result\n    now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')\n    sup_id = 'sup_' + hashlib.sha256((str(gid) + '|' + email).encode('utf-8')).hexdigest()[:12]\n    cur.execute(\"INSERT INTO sg_suppressions (id, group_id, email, created_at) VALUES (?, ?, ?, ?)\", (sup_id, gid, email, now))\n    cur.execute(\"UPDATE suppression_groups SET unsubscribes = COALESCE(unsubscribes, 0) + 1 WHERE id = ?\", (gid,))\n    conn.commit()\n    row = cur.execute(\"SELECT * FROM sg_suppressions WHERE id = ?\", (sup_id,)).fetchone()\n    conn.close()\n    result = dict(row)\n    result[\"already_suppressed\"] = False\n    return result\n"
+  },
+  {
+   "name": "sg_suppressions_list",
+   "description": "Retrieve suppressed (unsubscribed) email addresses, optionally filtered to a single unsubscribe group or email address. (GET /v3/asm/groups/{group_id}/suppressions)",
+   "op": "list",
+   "table": "sg_suppressions",
+   "params": {
+    "group_id": {
+     "type": "integer",
+     "description": "The ID of the unsubscribe group whose suppressed addresses you want to retrieve."
+    },
+    "email": {
+     "type": "string",
+     "description": "Filter suppressions by a specific email address."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of suppressions to return. Defaults to 30."
+    }
+   },
+   "filters": [
+    "group_id",
+    "email"
+   ]
+  },
+  {
+   "name": "sg_global_suppressions_add",
+   "description": "Add one or more email addresses to the global suppressions group. Globally suppressed recipients never receive mail from this account; addresses already suppressed are skipped. (POST /v3/asm/suppressions/global)",
+   "op": "custom",
+   "type": "write",
+   "table": "sg_global_suppressions",
+   "params": {
+    "recipient_emails": {
+     "type": "object",
+     "description": "An array of email addresses to be added to the global suppressions group. A single address or comma-separated string is also accepted."
+    }
+   },
+   "required": [
+    "recipient_emails"
+   ],
+   "custom_source": "def sg_global_suppressions_add(db_path='state.db', **kwargs):\n    import sqlite3, hashlib, datetime\n    recipient_emails = kwargs.get('recipient_emails')\n    if not recipient_emails:\n        return {\"errors\": [{\"field\": \"recipient_emails\", \"message\": \"recipient_emails is required: one email address, a comma-separated list, or an array of email addresses to add to the global suppression group.\"}]}\n    if isinstance(recipient_emails, str):\n        emails = [e.strip() for e in recipient_emails.split(',') if e.strip()]\n    elif isinstance(recipient_emails, list):\n        emails = [str(e).strip() for e in recipient_emails if str(e).strip()]\n    else:\n        return {\"errors\": [{\"field\": \"recipient_emails\", \"message\": \"recipient_emails must be a string or an array of email addresses.\"}]}\n    if not emails:\n        return {\"errors\": [{\"field\": \"recipient_emails\", \"message\": \"No valid email addresses were provided.\"}]}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')\n    added = []\n    already_suppressed = []\n    for email in emails:\n        existing = cur.execute(\"SELECT * FROM sg_global_suppressions WHERE email = ?\", (email,)).fetchone()\n        if existing is not None:\n            already_suppressed.append(email)\n            continue\n        gs_id = 'gs_' + hashlib.sha256(email.encode('utf-8')).hexdigest()[:12]\n        cur.execute(\"INSERT INTO sg_global_suppressions (id, email, created_at) VALUES (?, ?, ?)\", (gs_id, email, now))\n        added.append(email)\n    conn.commit()\n    conn.close()\n    return {\"recipient_emails\": emails, \"added\": added, \"already_suppressed\": already_suppressed}\n"
+  },
+  {
+   "name": "sg_global_suppressions_list",
+   "description": "Retrieve a list of all email addresses that are globally suppressed (globally unsubscribed) for your account. (GET /v3/suppression/unsubscribes)",
+   "op": "list",
+   "table": "sg_global_suppressions",
+   "params": {
+    "email": {
+     "type": "string",
+     "description": "Filter the results to a specific globally suppressed email address."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The number of results to display on each page. Defaults to 30."
+    }
+   },
+   "filters": [
+    "email"
+   ]
+  },
+  {
+   "name": "sg_blocks_delete",
+   "description": "Delete a specific email address from your blocks list so that future sends to that address are attempted again. (DELETE /v3/suppression/blocks/{email})",
+   "op": "delete",
+   "table": "blocks",
+   "params": {
+    "email": {
+     "type": "string",
+     "description": "The specific email address of the blocked recipient you want to remove from the blocks list."
+    }
+   },
+   "required": [
+    "email"
+   ],
+   "id_param": "email",
+   "id_column": "email"
+  },
+  {
+   "name": "sg_bounces_delete",
+   "description": "Delete a specific email address from your bounce list. Once removed, mail to that address will be attempted again on future sends. (DELETE /v3/suppression/bounces/{email})",
+   "op": "delete",
+   "table": "bounces",
+   "params": {
+    "email": {
+     "type": "string",
+     "description": "The specific email address of the bounced recipient you want to remove from the bounce list."
+    }
+   },
+   "required": [
+    "email"
+   ],
+   "id_param": "email",
+   "id_column": "email"
+  },
+  {
+   "name": "sg_stats_get",
+   "description": "Retrieve email statistics aggregated from the mail send log, blocks, and bounces between two dates, aggregated by day, week, or month. (GET /v3/stats)",
+   "op": "custom",
+   "type": "read",
+   "table": "sg_mail_sends",
+   "extra_tables": [
+    "blocks",
+    "bounces"
+   ],
+   "params": {
+    "start_date": {
+     "type": "string",
+     "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD."
+    },
+    "end_date": {
+     "type": "string",
+     "description": "The end date of the statistics to retrieve. Defaults to today. Must follow format YYYY-MM-DD."
+    },
+    "aggregated_by": {
+     "type": "string",
+     "description": "How to group the statistics. Must be either day, week, or month. Defaults to day."
+    }
+   },
+   "required": [
+    "start_date"
+   ],
+   "custom_source": "def sg_stats_get(db_path='state.db', **kwargs):\n    import sqlite3, datetime\n    start_date = kwargs.get('start_date')\n    end_date = kwargs.get('end_date')\n    aggregated_by = kwargs.get('aggregated_by') or 'day'\n    if not start_date:\n        return {\"errors\": [{\"field\": \"start_date\", \"message\": \"The starting date of the statistics to retrieve is required. Must follow format YYYY-MM-DD.\"}]}\n    def _parse(value):\n        try:\n            return datetime.datetime.strptime(value, '%Y-%m-%d').date()\n        except (TypeError, ValueError):\n            return None\n    if _parse(start_date) is None:\n        return {\"errors\": [{\"field\": \"start_date\", \"message\": \"Date must follow format YYYY-MM-DD; got '%s'.\" % start_date}]}\n    if end_date is None:\n        end_date = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d')\n    if _parse(end_date) is None:\n        return {\"errors\": [{\"field\": \"end_date\", \"message\": \"Date must follow format YYYY-MM-DD; got '%s'.\" % end_date}]}\n    if aggregated_by not in ('day', 'week', 'month'):\n        return {\"errors\": [{\"field\": \"aggregated_by\", \"message\": \"aggregated_by must be one of: day, week, month.\"}]}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    sends = cur.execute(\n        \"SELECT substr(sent_at, 1, 10) AS d, status FROM sg_mail_sends WHERE substr(sent_at, 1, 10) >= ? AND substr(sent_at, 1, 10) <= ?\",\n        (start_date, end_date)).fetchall()\n    block_rows = cur.execute(\n        \"SELECT substr(created_at, 1, 10) AS d FROM blocks WHERE substr(created_at, 1, 10) >= ? AND substr(created_at, 1, 10) <= ?\",\n        (start_date, end_date)).fetchall()\n    bounce_rows = cur.execute(\n        \"SELECT substr(created_at, 1, 10) AS d FROM bounces WHERE substr(created_at, 1, 10) >= ? AND substr(created_at, 1, 10) <= ?\",\n        (start_date, end_date)).fetchall()\n    conn.close()\n    def bucket(dstr):\n        dt = datetime.datetime.strptime(dstr, '%Y-%m-%d').date()\n        if aggregated_by == 'day':\n            return dstr\n        if aggregated_by == 'week':\n            iso = dt.isocalendar()\n            return '%04d-W%02d' % (iso[0], iso[1])\n        return dstr[:7]\n    buckets = {}\n    def bump(dstr, key, n=1):\n        b = None\n        try:\n            b = bucket(dstr)\n        except (TypeError, ValueError):\n            return\n        m = buckets.setdefault(b, {\"requests\": 0, \"delivered\": 0, \"drops\": 0, \"bounces\": 0, \"blocks\": 0})\n        m[key] = m[key] + n\n    for r in sends:\n        bump(r[\"d\"], \"requests\")\n        if r[\"status\"] == 'delivered':\n            bump(r[\"d\"], \"delivered\")\n        elif r[\"status\"] == 'dropped':\n            bump(r[\"d\"], \"drops\")\n        elif r[\"status\"] == 'bounced':\n            bump(r[\"d\"], \"bounces\")\n    for r in block_rows:\n        bump(r[\"d\"], \"blocks\")\n    for r in bounce_rows:\n        bump(r[\"d\"], \"bounces\")\n    result = [{\"date\": key, \"stats\": [{\"metrics\": buckets[key]}]} for key in sorted(buckets)]\n    return {\"start_date\": start_date, \"end_date\": end_date, \"aggregated_by\": aggregated_by, \"result\": result}\n"
+  },
+  {
+   "name": "sg_stats_by_category",
+   "description": "Retrieve email statistics for one or more categories between two dates, computed from the mail send log's category tags; matching historical category_stats records for the range are included. (GET /v3/categories/stats)",
+   "op": "custom",
+   "type": "read",
+   "table": "sg_mail_sends",
+   "extra_tables": [
+    "category_stats"
+   ],
+   "params": {
+    "categories": {
+     "type": "string",
+     "description": "The individual categories that you want retrieve statistics for. A comma-separated list or an array of category names."
+    },
+    "start_date": {
+     "type": "string",
+     "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD."
+    },
+    "end_date": {
+     "type": "string",
+     "description": "The end date of the statistics to retrieve. Defaults to today. Must follow format YYYY-MM-DD."
+    }
+   },
+   "required": [
+    "categories",
+    "start_date"
+   ],
+   "custom_source": "def sg_stats_by_category(db_path='state.db', **kwargs):\n    import sqlite3, datetime\n    categories = kwargs.get('categories')\n    start_date = kwargs.get('start_date')\n    end_date = kwargs.get('end_date')\n    if not categories:\n        return {\"errors\": [{\"field\": \"categories\", \"message\": \"The categories to retrieve statistics for are required: a comma-separated list or an array of category names.\"}]}\n    if not start_date:\n        return {\"errors\": [{\"field\": \"start_date\", \"message\": \"The starting date of the statistics to retrieve is required. Must follow format YYYY-MM-DD.\"}]}\n    def _parse(value):\n        try:\n            return datetime.datetime.strptime(value, '%Y-%m-%d').date()\n        except (TypeError, ValueError):\n            return None\n    if _parse(start_date) is None:\n        return {\"errors\": [{\"field\": \"start_date\", \"message\": \"Date must follow format YYYY-MM-DD; got '%s'.\" % start_date}]}\n    if end_date is None:\n        end_date = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d')\n    if _parse(end_date) is None:\n        return {\"errors\": [{\"field\": \"end_date\", \"message\": \"Date must follow format YYYY-MM-DD; got '%s'.\" % end_date}]}\n    if isinstance(categories, str):\n        cats = [c.strip() for c in categories.split(',') if c.strip()]\n    elif isinstance(categories, list):\n        cats = [str(c).strip() for c in categories if str(c).strip()]\n    else:\n        return {\"errors\": [{\"field\": \"categories\", \"message\": \"categories must be a string or an array of category names.\"}]}\n    if not cats:\n        return {\"errors\": [{\"field\": \"categories\", \"message\": \"No valid category names were provided.\"}]}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    buckets = {}\n    for cat in cats:\n        rows = cur.execute(\n            \"SELECT substr(sent_at, 1, 10) AS d, status FROM sg_mail_sends WHERE categories LIKE ? AND substr(sent_at, 1, 10) >= ? AND substr(sent_at, 1, 10) <= ?\",\n            ('%' + cat + '%', start_date, end_date)).fetchall()\n        for r in rows:\n            day = buckets.setdefault(r[\"d\"], {})\n            m = day.setdefault(cat, {\"requests\": 0, \"delivered\": 0, \"drops\": 0, \"bounces\": 0})\n            m[\"requests\"] = m[\"requests\"] + 1\n            if r[\"status\"] == 'delivered':\n                m[\"delivered\"] = m[\"delivered\"] + 1\n            elif r[\"status\"] == 'dropped':\n                m[\"drops\"] = m[\"drops\"] + 1\n            elif r[\"status\"] == 'bounced':\n                m[\"bounces\"] = m[\"bounces\"] + 1\n    historical = cur.execute(\n        \"SELECT * FROM category_stats WHERE date >= ? AND date <= ?\",\n        (start_date, end_date)).fetchall()\n    conn.close()\n    result = []\n    for day in sorted(buckets):\n        stats = [{\"type\": \"category\", \"name\": cat, \"metrics\": buckets[day][cat]} for cat in sorted(buckets[day])]\n        result.append({\"date\": day, \"stats\": stats})\n    return {\"start_date\": start_date, \"end_date\": end_date, \"result\": result, \"category_stat_records\": [dict(h) for h in historical]}\n"
+  },
+  {
+   "name": "sg_senders_list",
+   "description": "Retrieve a list of all sender identities that have been created for your account. (GET /v3/senders)",
+   "op": "list",
+   "table": "sg_senders",
+   "params": {
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of sender identities to return. Defaults to 30."
+    }
+   }
+  },
+  {
+   "name": "sg_senders_create",
+   "description": "Create a new sender identity. A verification email is sent to the from address; the sender cannot be used until verified. (POST /v3/senders)",
+   "op": "create",
+   "table": "sg_senders",
+   "params": {
+    "nickname": {
+     "type": "string",
+     "description": "A nickname for the sender identity. Not used for sending; shown in the UI for reference."
+    },
+    "from_email": {
+     "type": "string",
+     "description": "The email address that will appear in the from field of sent messages."
+    },
+    "from_name": {
+     "type": "string",
+     "description": "The name that will appear alongside the from email address."
+    },
+    "reply_to": {
+     "type": "string",
+     "description": "The email address to which replies will be sent."
+    },
+    "address": {
+     "type": "string",
+     "description": "The physical address of the sender identity, required for CAN-SPAM compliance."
+    },
+    "city": {
+     "type": "string",
+     "description": "The city of the sender identity."
+    },
+    "country": {
+     "type": "string",
+     "description": "The country of the sender identity."
+    }
+   },
+   "required": [
+    "nickname",
+    "from_email",
+    "from_name"
+   ],
+   "fields": [
+    "nickname",
+    "from_email",
+    "from_name",
+    "reply_to",
+    "address",
+    "city",
+    "country"
+   ],
+   "defaults": {
+    "verified": 0
+   },
+   "id_prefix": "sender_"
+  },
+  {
+   "name": "sg_senders_get",
+   "description": "Retrieve a specific sender identity by ID. (GET /v3/senders/{sender_id})",
+   "op": "get",
+   "table": "sg_senders",
+   "params": {
+    "sender_id": {
+     "type": "string",
+     "description": "The ID of the sender identity you want to retrieve."
+    }
+   },
+   "required": [
+    "sender_id"
+   ],
+   "id_param": "sender_id",
+   "id_column": "id"
+  },
+  {
+   "name": "sg_domains_list",
+   "description": "Retrieve a list of all domain authentication records (domain whitelabels) for your account. (GET /v3/whitelabel/domains)",
+   "op": "list",
+   "table": "authentication_domains",
+   "params": {
+    "domain": {
+     "type": "string",
+     "description": "Filter the results to a specific authenticated domain."
+    },
+    "username": {
+     "type": "string",
+     "description": "Filter authenticated domains by the username of the subuser they are associated with."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The number of domains to return. Defaults to 30."
+    }
+   },
+   "filters": [
+    "domain",
+    "username"
+   ]
+  },
+  {
+   "name": "sg_domain_authenticate",
+   "description": "Authenticate a domain (create a domain whitelabel). Domain authentication signs mail with DKIM and sets the SPF record; the new domain starts unvalidated until its DNS records are verified. (POST /v3/whitelabel/domains)",
+   "op": "create",
+   "table": "authentication_domains",
+   "params": {
+    "domain": {
+     "type": "string",
+     "description": "Domain being authenticated, e.g. morganstanleysimulated.com."
+    },
+    "subdomain": {
+     "type": "string",
+     "description": "The subdomain to use for this authenticated domain, e.g. em1234."
+    },
+    "username": {
+     "type": "string",
+     "description": "The username associated with this domain."
+    },
+    "custom_spf": {
+     "type": "boolean",
+     "description": "Specify whether to use a custom SPF record or the default SPF."
+    },
+    "default": {
+     "type": "boolean",
+     "description": "Whether to use this authenticated domain as the fallback if no authenticated domains match the sender's domain."
+    },
+    "automatic_security": {
+     "type": "boolean",
+     "description": "Whether to allow SendGrid to manage your SPF records, DKIM keys, and DKIM key rotation."
+    }
+   },
+   "required": [
+    "domain"
+   ],
+   "fields": [
+    "domain",
+    "subdomain",
+    "username",
+    "custom_spf",
+    "default",
+    "automatic_security"
+   ],
+   "defaults": {
+    "valid": 0,
+    "legacy": 0
+   },
+   "id_prefix": "dom_"
+  },
+  {
+   "name": "sg_api_keys_list",
+   "description": "Retrieve all API Keys that belong to the authenticated user; returns the key IDs, names, and scopes but never the key secrets. (GET /v3/api_keys)",
+   "op": "list",
+   "table": "sg_api_keys",
+   "params": {
+    "limit": {
+     "type": "integer",
+     "description": "Specifies the number of results to be returned by the API. Defaults to 30."
+    }
+   }
+  }
+ ]
+}

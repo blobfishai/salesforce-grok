@@ -1,0 +1,26 @@
+{
+ "name": "gh_commit_get",
+ "mcp_name": "github.gh_commit_get",
+ "asset_namespace": "github",
+ "description": "Get a single commit by SHA (GET /repos/{owner}/{repo}/commits/{ref})",
+ "type": "read",
+ "target_tables": [
+  "gh_commits"
+ ],
+ "parameters": {
+  "sha": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "sha": {
+    "type": "string",
+    "description": "The full 40-character SHA of the commit."
+   }
+  },
+  "required": [
+   "sha"
+  ],
+  "additionalProperties": false
+ }
+}

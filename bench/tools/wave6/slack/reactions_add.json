@@ -1,0 +1,40 @@
+{
+ "name": "reactions_add",
+ "mcp_name": "slack.reactions_add",
+ "asset_namespace": "slack",
+ "description": "Adds a reaction (emoji) to a message; validates the (channel, timestamp) message exists and rejects already_reacted duplicates (POST /reactions.add)",
+ "type": "write",
+ "target_tables": [
+  "slack_reactions",
+  "channels",
+  "messages"
+ ],
+ "parameters": {
+  "channel": "string",
+  "timestamp": "string",
+  "name": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "channel": {
+    "type": "string",
+    "description": "Channel where the message to add reaction to was posted."
+   },
+   "timestamp": {
+    "type": "string",
+    "description": "Timestamp of the message to add reaction to."
+   },
+   "name": {
+    "type": "string",
+    "description": "Reaction (emoji) name, without colons, e.g. thumbsup."
+   }
+  },
+  "required": [
+   "channel",
+   "timestamp",
+   "name"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,28 @@
+{
+ "name": "sg_segments_list",
+ "mcp_name": "email.sg_segments_list",
+ "asset_namespace": "email",
+ "description": "Retrieve all of your contact segments. Segments are dynamically refreshed groups of contacts defined by filter conditions. (GET /v3/contactdb/segments)",
+ "type": "read",
+ "target_tables": [
+  "contactdb_segments"
+ ],
+ "parameters": {
+  "list_id": "integer",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "list_id": {
+    "type": "integer",
+    "description": "Filter segments by the ID of the list the segment is a child of."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "Maximum number of segments to return. Defaults to 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}

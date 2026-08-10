@@ -1,0 +1,32 @@
+{
+ "name": "gh_issue_get",
+ "mcp_name": "github.gh_issue_get",
+ "asset_namespace": "github",
+ "description": "Get an issue by repository and issue number (GET /repos/{owner}/{repo}/issues/{issue_number})",
+ "type": "read",
+ "target_tables": [
+  "gh_issues"
+ ],
+ "parameters": {
+  "repo": "string",
+  "issue_number": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "repo": {
+    "type": "string",
+    "description": "The repository full name in owner/repo form."
+   },
+   "issue_number": {
+    "type": "integer",
+    "description": "The number that identifies the issue."
+   }
+  },
+  "required": [
+   "repo",
+   "issue_number"
+  ],
+  "additionalProperties": false
+ }
+}

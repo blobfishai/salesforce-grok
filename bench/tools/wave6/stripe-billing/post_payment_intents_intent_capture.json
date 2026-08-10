@@ -1,0 +1,31 @@
+{
+ "name": "post_payment_intents_intent_capture",
+ "mcp_name": "stripe.post_payment_intents_intent_capture",
+ "asset_namespace": "stripe",
+ "description": "Capture the funds of an existing uncaptured PaymentIntent when its status is requires_capture; uncaptured PaymentIntents are cancelled a set number of days after they are created (7 by default). (POST /v1/payment_intents/{intent}/capture)",
+ "type": "write",
+ "target_tables": [
+  "payment_intents"
+ ],
+ "parameters": {
+  "intent": "string",
+  "amount_to_capture": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "intent": {
+    "type": "string",
+    "description": "The identifier of the PaymentIntent to capture."
+   },
+   "amount_to_capture": {
+    "type": "integer",
+    "description": "The amount to capture from the PaymentIntent, which must be less than or equal to the original amount. Defaults to the full amount_capturable if it's not provided."
+   }
+  },
+  "required": [
+   "intent"
+  ],
+  "additionalProperties": false
+ }
+}

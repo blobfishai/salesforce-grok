@@ -1,0 +1,37 @@
+{
+ "name": "gh_issue_comments_list",
+ "mcp_name": "github.gh_issue_comments_list",
+ "asset_namespace": "github",
+ "description": "List comments on an issue (GET /repos/{owner}/{repo}/issues/{issue_number}/comments)",
+ "type": "read",
+ "target_tables": [
+  "gh_issue_comments"
+ ],
+ "parameters": {
+  "repo": "string",
+  "issue_number": "integer",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "repo": {
+    "type": "string",
+    "description": "The repository full name in owner/repo form."
+   },
+   "issue_number": {
+    "type": "integer",
+    "description": "The number that identifies the issue."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The number of results per page (max 100). GitHub param: per_page. Default: 30."
+   }
+  },
+  "required": [
+   "repo",
+   "issue_number"
+  ],
+  "additionalProperties": false
+ }
+}

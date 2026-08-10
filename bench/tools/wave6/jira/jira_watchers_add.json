@@ -1,0 +1,37 @@
+{
+ "name": "jira_watchers_add",
+ "mcp_name": "jira.jira_watchers_add",
+ "asset_namespace": "jira",
+ "description": "Adds a user as a watcher of an issue (POST /rest/api/3/issue/{issueIdOrKey}/watchers)",
+ "type": "write",
+ "target_tables": [
+  "jira_watchers"
+ ],
+ "parameters": {
+  "issue_key": "string",
+  "watcher_name": "string",
+  "watcher_email": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "issue_key": {
+    "type": "string",
+    "description": "The ID or key of the issue to watch, for example DESK-8."
+   },
+   "watcher_name": {
+    "type": "string",
+    "description": "The display name of the user to add as a watcher, for example Tom Alvarez."
+   },
+   "watcher_email": {
+    "type": "string",
+    "description": "The email address of the user to add as a watcher."
+   }
+  },
+  "required": [
+   "issue_key",
+   "watcher_name"
+  ],
+  "additionalProperties": false
+ }
+}

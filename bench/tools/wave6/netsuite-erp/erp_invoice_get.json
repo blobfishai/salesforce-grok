@@ -1,0 +1,26 @@
+{
+ "name": "erp_invoice_get",
+ "mcp_name": "erp.erp_invoice_get",
+ "asset_namespace": "erp",
+ "description": "Retrieve a single invoice with totals and amount remaining (GET /services/rest/record/v1/invoice/{id})",
+ "type": "read",
+ "target_tables": [
+  "erp_invoices"
+ ],
+ "parameters": {
+  "id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "string",
+    "description": "Invoice document number (tranId), e.g. INV-1002."
+   }
+  },
+  "required": [
+   "id"
+  ],
+  "additionalProperties": false
+ }
+}

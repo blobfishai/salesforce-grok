@@ -1,0 +1,28 @@
+{
+ "name": "get_products",
+ "mcp_name": "stripe.get_products",
+ "asset_namespace": "stripe",
+ "description": "Returns a list of your products; the products are returned sorted by creation date, with the most recently created products appearing first. (GET /v1/products)",
+ "type": "read",
+ "target_tables": [
+  "products"
+ ],
+ "parameters": {
+  "active": "boolean",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "active": {
+    "type": "boolean",
+    "description": "Only return products that are active or inactive (e.g., pass false to list all inactive products)."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}

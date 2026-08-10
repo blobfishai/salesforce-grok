@@ -1,0 +1,48 @@
+{
+ "name": "pd_incidents_list",
+ "mcp_name": "pagerduty.pd_incidents_list",
+ "asset_namespace": "pagerduty",
+ "description": "List incidents, filterable by status, service, urgency, and created-at date range (GET /incidents)",
+ "type": "read",
+ "target_tables": [
+  "pd_incidents"
+ ],
+ "parameters": {
+  "status": "string",
+  "service_id": "string",
+  "urgency": "string",
+  "since": "string",
+  "until": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "description": "Return only incidents with this status. One of: triggered, acknowledged, resolved. Scalar form of the API's statuses[] filter."
+   },
+   "service_id": {
+    "type": "string",
+    "description": "Return only incidents associated with this service. Scalar form of the API's service_ids[] filter."
+   },
+   "urgency": {
+    "type": "string",
+    "description": "Return only incidents with this urgency. One of: high, low. Scalar form of the API's urgencies[] filter."
+   },
+   "since": {
+    "type": "string",
+    "description": "The start of the date range over which you want to search, ISO 8601 (e.g. 2026-08-01T00:00:00Z). Compared against created_at."
+   },
+   "until": {
+    "type": "string",
+    "description": "The end of the date range over which you want to search, ISO 8601. Compared against created_at."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The number of results per page. Defaults to 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}

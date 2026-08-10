@@ -1,0 +1,47 @@
+{
+ "name": "notion_search",
+ "mcp_name": "notion.notion_search",
+ "asset_namespace": "notion",
+ "description": "Search all pages and databases shared with the integration by title; filter by object type and sort by last edited time (POST /v1/search)",
+ "type": "read",
+ "target_tables": [
+  "notion_pages",
+  "notion_databases"
+ ],
+ "parameters": {
+  "query": "string",
+  "filter": "json",
+  "sort": "json",
+  "start_cursor": "string",
+  "page_size": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "query": {
+    "type": "string",
+    "description": "The text that the API compares page and database titles against."
+   },
+   "filter": {
+    "type": "object",
+    "description": "A set of criteria that limits results to either only pages or only databases: {\"value\": \"page\"|\"database\", \"property\": \"object\"}."
+   },
+   "sort": {
+    "type": "object",
+    "description": "Criteria to order results by; only last_edited_time is supported: {\"direction\": \"ascending\"|\"descending\", \"timestamp\": \"last_edited_time\"}."
+   },
+   "start_cursor": {
+    "type": "string",
+    "description": "A cursor value returned in a previous response; results start after the cursor. Defaults to the first page of results."
+   },
+   "page_size": {
+    "type": "integer",
+    "description": "The number of items from the full list to include in the response. Maximum: 100."
+   }
+  },
+  "required": [
+   "query"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,28 @@
+{
+ "name": "pd_services_list",
+ "mcp_name": "pagerduty.pd_services_list",
+ "asset_namespace": "pagerduty",
+ "description": "List existing services, optionally filtered by team (GET /services)",
+ "type": "read",
+ "target_tables": [
+  "pd_services"
+ ],
+ "parameters": {
+  "team_id": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "team_id": {
+    "type": "string",
+    "description": "Return only services belonging to this team. Scalar form of the API's team_ids[] filter."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The number of results per page. Defaults to 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}

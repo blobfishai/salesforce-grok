@@ -1,0 +1,48 @@
+{
+ "name": "calendar_events_instances",
+ "mcp_name": "calendar.calendar_events_instances",
+ "asset_namespace": "calendar",
+ "description": "Returns instances of the specified recurring event; a non-recurring event yields itself as its single instance. (GET /calendars/{calendarId}/events/{eventId}/instances)",
+ "type": "read",
+ "target_tables": [
+  "agent_events",
+  "cal_event_details"
+ ],
+ "parameters": {
+  "calendar_id": "string",
+  "event_id": "integer",
+  "time_min": "string",
+  "time_max": "string",
+  "max_results": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "calendar_id": {
+    "type": "string",
+    "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method."
+   },
+   "event_id": {
+    "type": "integer",
+    "description": "Recurring event identifier."
+   },
+   "time_min": {
+    "type": "string",
+    "description": "Lower bound (exclusive) for an event's end time to filter by. Must be an RFC3339 timestamp."
+   },
+   "time_max": {
+    "type": "string",
+    "description": "Upper bound (exclusive) for an event's start time to filter by. Must be an RFC3339 timestamp."
+   },
+   "max_results": {
+    "type": "integer",
+    "description": "Maximum number of events returned on one result page. Default 30."
+   }
+  },
+  "required": [
+   "calendar_id",
+   "event_id"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "name": "sg_blocks_delete",
+ "mcp_name": "email.sg_blocks_delete",
+ "asset_namespace": "email",
+ "description": "Delete a specific email address from your blocks list so that future sends to that address are attempted again. (DELETE /v3/suppression/blocks/{email})",
+ "type": "write",
+ "target_tables": [
+  "blocks"
+ ],
+ "parameters": {
+  "email": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "email": {
+    "type": "string",
+    "description": "The specific email address of the blocked recipient you want to remove from the blocks list."
+   }
+  },
+  "required": [
+   "email"
+  ],
+  "additionalProperties": false
+ }
+}

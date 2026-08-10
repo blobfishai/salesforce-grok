@@ -1,0 +1,51 @@
+{
+ "name": "gh_workflow_runs_list",
+ "mcp_name": "github.gh_workflow_runs_list",
+ "asset_namespace": "github",
+ "description": "List workflow runs with repo/workflow/status/branch filters; status accepts run statuses or conclusions like the real API (GET /repos/{owner}/{repo}/actions/runs)",
+ "type": "read",
+ "target_tables": [
+  "gh_workflow_runs"
+ ],
+ "parameters": {
+  "repo": "string",
+  "workflow_id": "string",
+  "status": "string",
+  "branch": "string",
+  "actor": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "repo": {
+    "type": "string",
+    "description": "The repository full name in owner/repo form."
+   },
+   "workflow_id": {
+    "type": "string",
+    "description": "The workflow file name, e.g. ci.yml or deploy.yml."
+   },
+   "status": {
+    "type": "string",
+    "description": "Returns workflow runs with the check run status or conclusion that you specify. For example, a conclusion can be success or failure; a status can be queued, in_progress, or completed."
+   },
+   "branch": {
+    "type": "string",
+    "description": "Returns workflow runs associated with a branch. Use the name of the branch of the push."
+   },
+   "actor": {
+    "type": "string",
+    "description": "Returns someone's workflow runs. Use the login for the user who created the push."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The number of results per page (max 100). GitHub param: per_page. Default: 30."
+   }
+  },
+  "required": [
+   "repo"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "name": "erp_saved_search_run",
+ "mcp_name": "erp.erp_saved_search_run",
+ "asset_namespace": "erp",
+ "description": "Run a simplified transaction saved search over sales orders; keywords LIKE-match against tranId, customer name, memo and status (POST /services/rest/query/v1/suiteql)",
+ "type": "read",
+ "target_tables": [
+  "erp_sales_orders"
+ ],
+ "parameters": {
+  "query": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "query": {
+    "type": "string",
+    "description": "Search keywords, e.g. 'Harborview', 'pendingApproval' or 'SO-2026-0108'."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "Maximum number of records to return (default 30)."
+   }
+  },
+  "required": [
+   "query"
+  ],
+  "additionalProperties": false
+ }
+}

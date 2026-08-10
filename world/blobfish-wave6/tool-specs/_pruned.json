@@ -1,0 +1,239 @@
+{
+ "comment": "Tools removed as domain-irrelevant (verified reference-free in tasks/verifiers/trajectories). Tables kept — verifier baselines hash all tables.",
+ "pruned": [
+  {
+   "name": "get_accounts_account_capabilities",
+   "mcp_name": "salesforce.get_accounts_account_capabilities",
+   "asset_namespace": "salesforce",
+   "target_tables": [
+    "capabilities"
+   ],
+   "reason": "Stripe Connect capabilities — marketplace infra"
+  },
+  {
+   "name": "get_application_fees",
+   "mcp_name": "core.get_application_fees",
+   "asset_namespace": "core",
+   "target_tables": [
+    "application_fees"
+   ],
+   "reason": "Stripe Connect platform fees — marketplace infra"
+  },
+  {
+   "name": "get_issuing_authorizations",
+   "mcp_name": "core.get_issuing_authorizations",
+   "asset_namespace": "core",
+   "target_tables": [
+    "authorizations"
+   ],
+   "reason": "Stripe Issuing (card platform) — no GTM workflow"
+  },
+  {
+   "name": "get_customers_customer_bank_accounts",
+   "mcp_name": "salesforce.get_customers_customer_bank_accounts",
+   "asset_namespace": "salesforce",
+   "target_tables": [
+    "bank_accounts"
+   ],
+   "reason": "Stripe customer bank accounts — no payment-method workflow"
+  },
+  {
+   "name": "get_tracking_settings_click",
+   "mcp_name": "core.get_tracking_settings_click",
+   "asset_namespace": "core",
+   "target_tables": [
+    "click_trackings"
+   ],
+   "reason": "SendGrid click-tracking settings read — config noise"
+  },
+  {
+   "name": "get_access_settings_activity",
+   "mcp_name": "core.get_access_settings_activity",
+   "asset_namespace": "core",
+   "target_tables": [
+    "activities"
+   ],
+   "reason": "SendGrid IP access audit log — security noise"
+  },
+  {
+   "name": "get_ips_assigned",
+   "mcp_name": "core.get_ips_assigned",
+   "asset_namespace": "core",
+   "target_tables": [
+    "assigneds"
+   ],
+   "reason": "SendGrid IP administration — deliverability config noise"
+  },
+  {
+   "name": "list_away_status_reasons",
+   "mcp_name": "core.list_away_status_reasons",
+   "asset_namespace": "core",
+   "target_tables": [
+    "away_status_reason_lists"
+   ],
+   "reason": "Intercom away-status config — no GTM workflow"
+  },
+  {
+   "name": "admin_conversations_get_conversation_prefs",
+   "mcp_name": "slack.admin_conversations_get_conversation_prefs",
+   "asset_namespace": "slack",
+   "target_tables": [
+    "admin_conversations"
+   ],
+   "reason": "Slack channel prefs — config noise (also the param-ignoring fidelity bug)"
+  },
+  {
+   "name": "admin_emoji_list",
+   "mcp_name": "erp.admin_emoji_list",
+   "asset_namespace": "erp",
+   "target_tables": [
+    "admin_emojis"
+   ],
+   "reason": "Slack emoji admin (mounted on the ERP vendor!) — noise"
+  },
+  {
+   "name": "admin_apps_approved_list",
+   "mcp_name": "core.admin_apps_approved_list",
+   "asset_namespace": "core",
+   "target_tables": [
+    "admin_apps_approveds"
+   ],
+   "reason": "Slack app management — no GTM workflow"
+  },
+  {
+   "name": "admin_conversations_ekm_list_original_connected_channel_info",
+   "mcp_name": "slack.admin_conversations_ekm_list_original_connected_channel_info",
+   "asset_namespace": "slack",
+   "target_tables": [
+    "admin_conversations_ekms"
+   ],
+   "reason": "Slack EKM key management — enterprise-security noise"
+  },
+  {
+   "name": "admin_apps_requests_list",
+   "mcp_name": "core.admin_apps_requests_list",
+   "asset_namespace": "core",
+   "target_tables": [
+    "admin_apps_requests"
+   ],
+   "reason": "Slack app management — no GTM workflow"
+  },
+  {
+   "name": "admin_conversations_restrict_access_list_groups",
+   "mcp_name": "slack.admin_conversations_restrict_access_list_groups",
+   "asset_namespace": "slack",
+   "target_tables": [
+    "admin_conversations_restrict_accesses"
+   ],
+   "reason": "Slack IDP group ACLs — enterprise-security noise"
+  },
+  {
+   "name": "admin_apps_restricted_list",
+   "mcp_name": "core.admin_apps_restricted_list",
+   "asset_namespace": "core",
+   "target_tables": [
+    "admin_apps_restricteds"
+   ],
+   "reason": "Slack app management — no GTM workflow"
+  },
+  {
+   "name": "admin_invite_requests_approved_list",
+   "mcp_name": "core.admin_invite_requests_approved_list",
+   "asset_namespace": "core",
+   "target_tables": [
+    "admin_invite_requests_approveds"
+   ],
+   "reason": "Slack workspace invite admin — no GTM workflow"
+  },
+  {
+   "name": "admin_invite_requests_denied_list",
+   "mcp_name": "core.admin_invite_requests_denied_list",
+   "asset_namespace": "core",
+   "target_tables": [
+    "admin_invite_requests_denieds"
+   ],
+   "reason": "Slack workspace invite admin — no GTM workflow"
+  },
+  {
+   "name": "admin_invite_requests_list",
+   "mcp_name": "core.admin_invite_requests_list",
+   "asset_namespace": "core",
+   "target_tables": [
+    "admin_invite_requests"
+   ],
+   "reason": "Slack workspace invite admin — no GTM workflow"
+  },
+  {
+   "name": "post_climate_orders",
+   "mcp_name": "core.post_climate_orders",
+   "asset_namespace": "core",
+   "target_tables": [
+    "climate_orders"
+   ],
+   "reason": "Stripe Climate (carbon removal) — no GTM workflow"
+  },
+  {
+   "name": "post_identity_verification_sessions",
+   "mcp_name": "core.post_identity_verification_sessions",
+   "asset_namespace": "core",
+   "target_tables": [
+    "identity_verification_sessions"
+   ],
+   "reason": "Stripe Identity (consumer KYC) — no SOP references it"
+  },
+  {
+   "name": "post_test_helpers_issuing_authorizations",
+   "mcp_name": "core.post_test_helpers_issuing_authorizations",
+   "asset_namespace": "core",
+   "target_tables": [
+    "issuing_authorizations"
+   ],
+   "reason": "Stripe Issuing test helper — no GTM workflow"
+  },
+  {
+   "name": "post_account_links",
+   "mcp_name": "salesforce.post_account_links",
+   "asset_namespace": "salesforce",
+   "target_tables": [
+    "account_links"
+   ],
+   "reason": "Stripe Connect onboarding — marketplace infra, not B2B billing"
+  },
+  {
+   "name": "post_account_sessions",
+   "mcp_name": "salesforce.post_account_sessions",
+   "asset_namespace": "salesforce",
+   "target_tables": [
+    "account_sessions"
+   ],
+   "reason": "Stripe Connect embedded sessions — marketplace infra"
+  },
+  {
+   "name": "admin_emoji_rename",
+   "mcp_name": "core.admin_emoji_rename",
+   "asset_namespace": "core",
+   "target_tables": [
+    "admin_emojis"
+   ],
+   "reason": "Slack emoji admin — noise"
+  },
+  {
+   "name": "admin_emoji_add",
+   "mcp_name": "core.admin_emoji_add",
+   "asset_namespace": "core",
+   "target_tables": [
+    "admin_emojis"
+   ],
+   "reason": "Slack emoji admin — noise"
+  },
+  {
+   "name": "files_remote_add",
+   "mcp_name": "core.files_remote_add",
+   "asset_namespace": "core",
+   "target_tables": [
+    "files"
+   ],
+   "reason": "Slack files.remote registration — no workflow references it"
+  }
+ ]
+}

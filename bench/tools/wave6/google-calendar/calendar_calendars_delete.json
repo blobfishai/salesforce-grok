@@ -1,0 +1,26 @@
+{
+ "name": "calendar_calendars_delete",
+ "mcp_name": "calendar.calendar_calendars_delete",
+ "asset_namespace": "calendar",
+ "description": "Deletes a secondary calendar. Use calendars.clear for clearing all events on primary calendars. (DELETE /calendars/{calendarId})",
+ "type": "write",
+ "target_tables": [
+  "calendars"
+ ],
+ "parameters": {
+  "calendar_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "calendar_id": {
+    "type": "string",
+    "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method."
+   }
+  },
+  "required": [
+   "calendar_id"
+  ],
+  "additionalProperties": false
+ }
+}

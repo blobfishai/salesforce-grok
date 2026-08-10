@@ -1,0 +1,32 @@
+{
+ "name": "gh_pull_get",
+ "mcp_name": "github.gh_pull_get",
+ "asset_namespace": "github",
+ "description": "Get a pull request by repository and number (GET /repos/{owner}/{repo}/pulls/{pull_number})",
+ "type": "read",
+ "target_tables": [
+  "gh_pull_requests"
+ ],
+ "parameters": {
+  "repo": "string",
+  "pull_number": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "repo": {
+    "type": "string",
+    "description": "The repository full name in owner/repo form."
+   },
+   "pull_number": {
+    "type": "integer",
+    "description": "The number that identifies the pull request."
+   }
+  },
+  "required": [
+   "repo",
+   "pull_number"
+  ],
+  "additionalProperties": false
+ }
+}

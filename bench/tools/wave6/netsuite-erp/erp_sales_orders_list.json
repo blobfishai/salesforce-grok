@@ -1,0 +1,33 @@
+{
+ "name": "erp_sales_orders_list",
+ "mcp_name": "erp.erp_sales_orders_list",
+ "asset_namespace": "erp",
+ "description": "List sales order transactions, optionally filtered by status or customer entity (GET /services/rest/record/v1/salesOrder)",
+ "type": "read",
+ "target_tables": [
+  "erp_sales_orders"
+ ],
+ "parameters": {
+  "status": "string",
+  "entity": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "description": "Order status filter: pendingApproval, pendingFulfillment, billed or cancelled."
+   },
+   "entity": {
+    "type": "string",
+    "description": "Customer (entity) internal id the order is billed to, e.g. customer_006."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "Maximum number of records to return (default 30)."
+   }
+  },
+  "additionalProperties": false
+ }
+}

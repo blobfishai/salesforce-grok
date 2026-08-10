@@ -1,0 +1,26 @@
+{
+ "name": "pd_user_get",
+ "mcp_name": "pagerduty.pd_user_get",
+ "asset_namespace": "pagerduty",
+ "description": "Get details about an existing user (GET /users/{id})",
+ "type": "read",
+ "target_tables": [
+  "pd_users"
+ ],
+ "parameters": {
+  "id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "string",
+    "description": "The ID of the user to retrieve (e.g. PHUANG1)."
+   }
+  },
+  "required": [
+   "id"
+  ],
+  "additionalProperties": false
+ }
+}

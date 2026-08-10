@@ -1,0 +1,32 @@
+{
+ "name": "users_set_presence",
+ "mcp_name": "slack.users_set_presence",
+ "asset_namespace": "slack",
+ "description": "Manually sets user presence to auto, active, or away; targets the given workspace user (the real API acts on the authed user) (POST /users.setPresence)",
+ "type": "write",
+ "target_tables": [
+  "slack_users"
+ ],
+ "parameters": {
+  "user": "string",
+  "presence": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "user": {
+    "type": "string",
+    "description": "User to set presence for, e.g. U0000003."
+   },
+   "presence": {
+    "type": "string",
+    "description": "Either auto, active, or away."
+   }
+  },
+  "required": [
+   "user",
+   "presence"
+  ],
+  "additionalProperties": false
+ }
+}

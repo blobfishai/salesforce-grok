@@ -1,0 +1,58 @@
+{
+ "name": "sg_senders_create",
+ "mcp_name": "email.sg_senders_create",
+ "asset_namespace": "email",
+ "description": "Create a new sender identity. A verification email is sent to the from address; the sender cannot be used until verified. (POST /v3/senders)",
+ "type": "write",
+ "target_tables": [
+  "sg_senders"
+ ],
+ "parameters": {
+  "nickname": "string",
+  "from_email": "string",
+  "from_name": "string",
+  "reply_to": "string",
+  "address": "string",
+  "city": "string",
+  "country": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "nickname": {
+    "type": "string",
+    "description": "A nickname for the sender identity. Not used for sending; shown in the UI for reference."
+   },
+   "from_email": {
+    "type": "string",
+    "description": "The email address that will appear in the from field of sent messages."
+   },
+   "from_name": {
+    "type": "string",
+    "description": "The name that will appear alongside the from email address."
+   },
+   "reply_to": {
+    "type": "string",
+    "description": "The email address to which replies will be sent."
+   },
+   "address": {
+    "type": "string",
+    "description": "The physical address of the sender identity, required for CAN-SPAM compliance."
+   },
+   "city": {
+    "type": "string",
+    "description": "The city of the sender identity."
+   },
+   "country": {
+    "type": "string",
+    "description": "The country of the sender identity."
+   }
+  },
+  "required": [
+   "nickname",
+   "from_email",
+   "from_name"
+  ],
+  "additionalProperties": false
+ }
+}

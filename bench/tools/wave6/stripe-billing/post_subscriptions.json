@@ -1,0 +1,57 @@
+{
+ "name": "post_subscriptions",
+ "mcp_name": "stripe.post_subscriptions",
+ "asset_namespace": "stripe",
+ "description": "Creates a new subscription on an existing customer. (POST /v1/subscriptions)",
+ "type": "write",
+ "target_tables": [
+  "subscriptions"
+ ],
+ "parameters": {
+  "customer": "string",
+  "price": "string",
+  "quantity": "integer",
+  "currency": "string",
+  "collection_method": "string",
+  "default_payment_method": "string",
+  "metadata": "json"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "customer": {
+    "type": "string",
+    "description": "The identifier of the customer to subscribe."
+   },
+   "price": {
+    "type": "string",
+    "description": "items[0][price]: The ID of the recurring price to subscribe the customer to."
+   },
+   "quantity": {
+    "type": "integer",
+    "description": "items[0][quantity]: Quantity for this item."
+   },
+   "currency": {
+    "type": "string",
+    "description": "Three-letter ISO currency code, in lowercase. Must be a supported currency."
+   },
+   "collection_method": {
+    "type": "string",
+    "description": "Either charge_automatically, or send_invoice. When charging automatically, Stripe will attempt to pay this subscription at the end of the cycle using the default source attached to the customer. When sending an invoice, Stripe will email your customer an invoice with payment instructions. Defaults to charge_automatically."
+   },
+   "default_payment_method": {
+    "type": "string",
+    "description": "ID of the default payment method for the subscription. It must belong to the customer associated with the subscription."
+   },
+   "metadata": {
+    "type": "object",
+    "description": "Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format."
+   }
+  },
+  "required": [
+   "customer",
+   "price"
+  ],
+  "additionalProperties": false
+ }
+}

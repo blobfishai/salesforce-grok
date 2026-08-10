@@ -1,0 +1,66 @@
+{
+ "name": "post_invoiceitems",
+ "mcp_name": "stripe.post_invoiceitems",
+ "asset_namespace": "stripe",
+ "description": "Creates an item to be added to a draft invoice (up to 250 items per invoice); if no invoice is specified, the item will be on the next invoice created for the customer specified. (POST /v1/invoiceitems)",
+ "type": "write",
+ "target_tables": [
+  "invoiceitems"
+ ],
+ "parameters": {
+  "customer": "string",
+  "amount": "integer",
+  "currency": "string",
+  "description": "string",
+  "invoice": "string",
+  "price": "string",
+  "quantity": "integer",
+  "unit_amount": "integer",
+  "metadata": "json"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "customer": {
+    "type": "string",
+    "description": "The ID of the customer who will be billed when this invoice item is billed."
+   },
+   "amount": {
+    "type": "integer",
+    "description": "The integer amount in cents of the charge to be applied to the upcoming invoice. Passing in a negative amount will reduce the amount_due on the invoice."
+   },
+   "currency": {
+    "type": "string",
+    "description": "Three-letter ISO currency code, in lowercase. Must be a supported currency."
+   },
+   "description": {
+    "type": "string",
+    "description": "An arbitrary string which you can attach to the invoice item. The description is displayed in the invoice for easy tracking."
+   },
+   "invoice": {
+    "type": "string",
+    "description": "The ID of an existing invoice to add this invoice item to. When left blank, the invoice item will be added to the next upcoming scheduled invoice."
+   },
+   "price": {
+    "type": "string",
+    "description": "The ID of the price object."
+   },
+   "quantity": {
+    "type": "integer",
+    "description": "Non-negative integer. The quantity of units for the invoice item."
+   },
+   "unit_amount": {
+    "type": "integer",
+    "description": "The integer unit amount in cents of the charge to be applied to the upcoming invoice. This unit_amount will be multiplied by the quantity to get the full amount. Passing in a negative unit_amount will reduce the amount_due on the invoice."
+   },
+   "metadata": {
+    "type": "object",
+    "description": "Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format."
+   }
+  },
+  "required": [
+   "customer"
+  ],
+  "additionalProperties": false
+ }
+}

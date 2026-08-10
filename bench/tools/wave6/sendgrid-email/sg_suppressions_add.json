@@ -1,0 +1,33 @@
+{
+ "name": "sg_suppressions_add",
+ "mcp_name": "email.sg_suppressions_add",
+ "asset_namespace": "email",
+ "description": "Add an email address to a suppression (unsubscribe) group and increment the group's unsubscribe count. Adding an address that is already suppressed in the group is a no-op. (POST /v3/asm/groups/{group_id}/suppressions)",
+ "type": "write",
+ "target_tables": [
+  "sg_suppressions",
+  "suppression_groups"
+ ],
+ "parameters": {
+  "group_id": "integer",
+  "email": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "group_id": {
+    "type": "integer",
+    "description": "The ID of the unsubscribe group the email address should be added to."
+   },
+   "email": {
+    "type": "string",
+    "description": "The email address to add to the unsubscribe group."
+   }
+  },
+  "required": [
+   "group_id",
+   "email"
+  ],
+  "additionalProperties": false
+ }
+}

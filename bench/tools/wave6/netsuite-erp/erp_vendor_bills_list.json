@@ -1,0 +1,38 @@
+{
+ "name": "erp_vendor_bills_list",
+ "mcp_name": "erp.erp_vendor_bills_list",
+ "asset_namespace": "erp",
+ "description": "List vendor bill transactions (AP), optionally filtered by payment status, approval status or vendor entity (GET /services/rest/record/v1/vendorBill)",
+ "type": "read",
+ "target_tables": [
+  "erp_vendor_bills"
+ ],
+ "parameters": {
+  "status": "string",
+  "approval_status": "string",
+  "entity": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "description": "Bill payment status filter: open or paid."
+   },
+   "approval_status": {
+    "type": "string",
+    "description": "Approval routing status filter (approvalStatus): pendingApproval, approved or rejected."
+   },
+   "entity": {
+    "type": "string",
+    "description": "Vendor (entity) internal id, e.g. vendor_005."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "Maximum number of records to return (default 30)."
+   }
+  },
+  "additionalProperties": false
+ }
+}

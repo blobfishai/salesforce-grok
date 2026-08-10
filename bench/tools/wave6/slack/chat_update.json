@@ -1,0 +1,39 @@
+{
+ "name": "chat_update",
+ "mcp_name": "slack.chat_update",
+ "asset_namespace": "slack",
+ "description": "Updates a message in a channel; the message is addressed by the compound (channel, ts) key rather than a single-column ID (POST /chat.update)",
+ "type": "write",
+ "target_tables": [
+  "messages",
+  "channels"
+ ],
+ "parameters": {
+  "channel": "string",
+  "ts": "string",
+  "text": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "channel": {
+    "type": "string",
+    "description": "Channel containing the message to be updated. Can be an encoded ID, or a name."
+   },
+   "ts": {
+    "type": "string",
+    "description": "Timestamp of the message to be updated, e.g. 1786312800.000101."
+   },
+   "text": {
+    "type": "string",
+    "description": "New text for the message."
+   }
+  },
+  "required": [
+   "channel",
+   "ts",
+   "text"
+  ],
+  "additionalProperties": false
+ }
+}

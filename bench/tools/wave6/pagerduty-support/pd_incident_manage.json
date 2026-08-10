@@ -1,0 +1,50 @@
+{
+ "name": "pd_incident_manage",
+ "mcp_name": "pagerduty.pd_incident_manage",
+ "asset_namespace": "pagerduty",
+ "description": "Acknowledge, resolve, or escalate an incident; resolving stamps resolved_at, escalating reassigns to the on-call at the given level and re-triggers (PUT /incidents/{id})",
+ "type": "write",
+ "target_tables": [
+  "pd_incidents",
+  "pd_log_entries",
+  "pd_oncalls",
+  "pd_users",
+  "pd_incident_notes"
+ ],
+ "parameters": {
+  "id": "string",
+  "status": "string",
+  "escalation_level": "integer",
+  "resolution": "string",
+  "from": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "string",
+    "description": "The ID of the incident to manage."
+   },
+   "status": {
+    "type": "string",
+    "description": "The new status of the incident: acknowledged or resolved (incident.status). Resolving stamps resolved_at; resolved incidents cannot be modified further."
+   },
+   "escalation_level": {
+    "type": "integer",
+    "description": "Escalate the incident to the on-call target at this level of its escalation policy; the incident returns to the triggered state (escalation_level)."
+   },
+   "resolution": {
+    "type": "string",
+    "description": "The resolution message for the incident; recorded as an incident note when status is resolved (incident.resolution)."
+   },
+   "from": {
+    "type": "string",
+    "description": "The email address of a valid PagerDuty user making the request; maps to the API's required From header and is recorded on log entries."
+   }
+  },
+  "required": [
+   "id"
+  ],
+  "additionalProperties": false
+ }
+}

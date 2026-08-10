@@ -1,0 +1,61 @@
+{
+ "name": "gh_pull_create",
+ "mcp_name": "github.gh_pull_create",
+ "asset_namespace": "github",
+ "description": "Create a pull request; the number is assigned from the repository's shared issue/PR sequence (POST /repos/{owner}/{repo}/pulls)",
+ "type": "write",
+ "target_tables": [
+  "gh_pull_requests",
+  "gh_repos",
+  "gh_issues",
+  "gh_branches"
+ ],
+ "parameters": {
+  "repo": "string",
+  "title": "string",
+  "head": "string",
+  "base": "string",
+  "body": "string",
+  "draft": "boolean",
+  "user": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "repo": {
+    "type": "string",
+    "description": "The repository full name in owner/repo form."
+   },
+   "title": {
+    "type": "string",
+    "description": "The title of the new pull request."
+   },
+   "head": {
+    "type": "string",
+    "description": "The name of the branch where your changes are implemented."
+   },
+   "base": {
+    "type": "string",
+    "description": "The name of the branch you want the changes pulled into. Default: main."
+   },
+   "body": {
+    "type": "string",
+    "description": "The contents of the pull request."
+   },
+   "draft": {
+    "type": "boolean",
+    "description": "Indicates whether the pull request is a draft. Default: false."
+   },
+   "user": {
+    "type": "string",
+    "description": "Login of the PR author (the authenticated user in the real API). Default: revops-bot."
+   }
+  },
+  "required": [
+   "repo",
+   "title",
+   "head"
+  ],
+  "additionalProperties": false
+ }
+}

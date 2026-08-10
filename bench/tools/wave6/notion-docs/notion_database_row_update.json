@@ -1,0 +1,36 @@
+{
+ "name": "notion_database_row_update",
+ "mcp_name": "notion.notion_database_row_update",
+ "asset_namespace": "notion",
+ "description": "Update property values or the archived status of a database page (row) (PATCH /v1/pages/{page_id})",
+ "type": "write",
+ "target_tables": [
+  "notion_database_rows"
+ ],
+ "parameters": {
+  "page_id": "string",
+  "properties": "string",
+  "archived": "boolean"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "page_id": {
+    "type": "string",
+    "description": "Identifier for the database page (row) to update."
+   },
+   "properties": {
+    "type": "string",
+    "description": "JSON-encoded property values to write, keyed by property name. Replaces the stored property values when provided."
+   },
+   "archived": {
+    "type": "boolean",
+    "description": "Whether the page is archived (deleted). Set to true to archive the row."
+   }
+  },
+  "required": [
+   "page_id"
+  ],
+  "additionalProperties": false
+ }
+}

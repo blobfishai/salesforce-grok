@@ -1,0 +1,57 @@
+{
+ "name": "erp_sales_order_create",
+ "mcp_name": "erp.erp_sales_order_create",
+ "asset_namespace": "erp",
+ "description": "Create a sales order for a customer; new orders start in pendingApproval (POST /services/rest/record/v1/salesOrder)",
+ "type": "write",
+ "target_tables": [
+  "erp_sales_orders"
+ ],
+ "parameters": {
+  "entity": "string",
+  "entity_name": "string",
+  "trandate": "string",
+  "memo": "string",
+  "subsidiary": "string",
+  "currency": "string",
+  "total": "number"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "entity": {
+    "type": "string",
+    "description": "Customer (entity) internal id the order is billed to, e.g. customer_002."
+   },
+   "entity_name": {
+    "type": "string",
+    "description": "Display name of the customer account, e.g. 'Summit Group Account'."
+   },
+   "trandate": {
+    "type": "string",
+    "description": "Transaction date (trandate), YYYY-MM-DD."
+   },
+   "memo": {
+    "type": "string",
+    "description": "Memo visible on the transaction (memo)."
+   },
+   "subsidiary": {
+    "type": "string",
+    "description": "Subsidiary internal id the transaction posts to (subsidiary, e.g. '3')."
+   },
+   "currency": {
+    "type": "string",
+    "description": "Transaction currency internal id (currency): usd, eur or gbp."
+   },
+   "total": {
+    "type": "number",
+    "description": "Order total in the transaction currency (total)."
+   }
+  },
+  "required": [
+   "entity",
+   "total"
+  ],
+  "additionalProperties": false
+ }
+}

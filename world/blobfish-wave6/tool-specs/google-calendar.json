@@ -1,0 +1,864 @@
+{
+ "vendor": "google-calendar",
+ "namespace": "calendar",
+ "tables": [
+  {
+   "name": "cal_event_details",
+   "columns": [
+    {
+     "name": "event_id",
+     "type": "INTEGER",
+     "pk": true
+    },
+    {
+     "name": "calendar_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "start_datetime",
+     "type": "TEXT"
+    },
+    {
+     "name": "end_datetime",
+     "type": "TEXT"
+    },
+    {
+     "name": "time_zone",
+     "type": "TEXT"
+    },
+    {
+     "name": "location",
+     "type": "TEXT"
+    },
+    {
+     "name": "description",
+     "type": "TEXT"
+    },
+    {
+     "name": "organizer_email",
+     "type": "TEXT"
+    },
+    {
+     "name": "recurrence",
+     "type": "TEXT"
+    },
+    {
+     "name": "color_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "transparency",
+     "type": "TEXT"
+    },
+    {
+     "name": "visibility",
+     "type": "TEXT"
+    },
+    {
+     "name": "updated",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "event_id": 1,
+     "calendar_id": "00000000000000000001",
+     "status": "confirmed",
+     "start_datetime": "2026-01-20T15:00:00Z",
+     "end_datetime": "2026-01-20T15:45:00Z",
+     "time_zone": "America/New_York",
+     "location": "Zoom — Meridian onboarding bridge",
+     "description": "Meridian onboarding kickoff with the Northgate Services migration team — confirm data-owner sign-off and workstream owners.",
+     "organizer_email": "contact77709@morganstanleysimulated.com",
+     "recurrence": null,
+     "color_id": "7",
+     "transparency": "opaque",
+     "visibility": "default",
+     "updated": "2026-01-15T09:00:00Z"
+    },
+    {
+     "event_id": 2,
+     "calendar_id": "00000000000000000002",
+     "status": "confirmed",
+     "start_datetime": "2026-01-22T17:00:00Z",
+     "end_datetime": "2026-01-22T18:00:00Z",
+     "time_zone": "America/New_York",
+     "location": "Conf room 4B / Zoom",
+     "description": "Summit Group Account renewal call — weekly deal-desk review of FY2026 renewal pricing ahead of contract close.",
+     "organizer_email": "contact77709@morganstanleysimulated.com",
+     "recurrence": "RRULE:FREQ=WEEKLY;COUNT=4",
+     "color_id": "11",
+     "transparency": "opaque",
+     "visibility": "default",
+     "updated": "2026-01-15T09:00:00Z"
+    }
+   ]
+  },
+  {
+   "name": "cal_event_attendees",
+   "columns": [
+    {
+     "name": "id",
+     "type": "INTEGER",
+     "pk": true
+    },
+    {
+     "name": "event_id",
+     "type": "INTEGER"
+    },
+    {
+     "name": "email",
+     "type": "TEXT"
+    },
+    {
+     "name": "display_name",
+     "type": "TEXT"
+    },
+    {
+     "name": "response_status",
+     "type": "TEXT"
+    },
+    {
+     "name": "optional",
+     "type": "INTEGER"
+    },
+    {
+     "name": "organizer",
+     "type": "INTEGER"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": 1,
+     "event_id": 1,
+     "email": "contact77709@morganstanleysimulated.com",
+     "display_name": "Mei Huang",
+     "response_status": "accepted",
+     "optional": 0,
+     "organizer": 1
+    },
+    {
+     "id": 2,
+     "event_id": 1,
+     "email": "sarah.kim@morganstanleysimulated.com",
+     "display_name": "Sarah Kim",
+     "response_status": "accepted",
+     "optional": 0,
+     "organizer": 0
+    },
+    {
+     "id": 3,
+     "event_id": 1,
+     "email": "onboarding.meridian@morganstanleysimulated.com",
+     "display_name": "Meridian Onboarding Desk",
+     "response_status": "needsAction",
+     "optional": 0,
+     "organizer": 0
+    },
+    {
+     "id": 4,
+     "event_id": 1,
+     "email": "ops.northgate@morganstanleysimulated.com",
+     "display_name": "Northgate Services Ops",
+     "response_status": "tentative",
+     "optional": 1,
+     "organizer": 0
+    },
+    {
+     "id": 5,
+     "event_id": 2,
+     "email": "contact77709@morganstanleysimulated.com",
+     "display_name": "Mei Huang",
+     "response_status": "accepted",
+     "optional": 0,
+     "organizer": 1
+    },
+    {
+     "id": 6,
+     "event_id": 2,
+     "email": "deal.desk@morganstanleysimulated.com",
+     "display_name": "Deal Desk",
+     "response_status": "accepted",
+     "optional": 0,
+     "organizer": 0
+    },
+    {
+     "id": 7,
+     "event_id": 2,
+     "email": "renewals.summit@morganstanleysimulated.com",
+     "display_name": "Summit Group Renewals",
+     "response_status": "needsAction",
+     "optional": 0,
+     "organizer": 0
+    },
+    {
+     "id": 8,
+     "event_id": 2,
+     "email": "legal.review@morganstanleysimulated.com",
+     "display_name": "Legal Review",
+     "response_status": "declined",
+     "optional": 1,
+     "organizer": 0
+    }
+   ]
+  },
+  {
+   "name": "cal_settings",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "value",
+     "type": "TEXT"
+    },
+    {
+     "name": "kind",
+     "type": "TEXT"
+    },
+    {
+     "name": "etag",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "locale",
+     "value": "en",
+     "kind": "calendar#setting",
+     "etag": "a1f0c44e9b21"
+    },
+    {
+     "id": "timezone",
+     "value": "America/New_York",
+     "kind": "calendar#setting",
+     "etag": "b7d2911fce03"
+    },
+    {
+     "id": "format24HourTime",
+     "value": "false",
+     "kind": "calendar#setting",
+     "etag": "c9e60271ab44"
+    },
+    {
+     "id": "weekStart",
+     "value": "1",
+     "kind": "calendar#setting",
+     "etag": "d0aa93c5127e"
+    },
+    {
+     "id": "dateFieldOrder",
+     "value": "MDY",
+     "kind": "calendar#setting",
+     "etag": "e44b1c08f9d2"
+    },
+    {
+     "id": "defaultEventLength",
+     "value": "30",
+     "kind": "calendar#setting",
+     "etag": "f18e6d24073a"
+    },
+    {
+     "id": "hideWeekends",
+     "value": "false",
+     "kind": "calendar#setting",
+     "etag": "0a9c37b6e514"
+    },
+    {
+     "id": "showDeclinedEvents",
+     "value": "true",
+     "kind": "calendar#setting",
+     "etag": "1b83f04ad672"
+    },
+    {
+     "id": "remindOnRespondedEventsOnly",
+     "value": "false",
+     "kind": "calendar#setting",
+     "etag": "2c6e88d19f05"
+    },
+    {
+     "id": "useKeyboardShortcuts",
+     "value": "true",
+     "kind": "calendar#setting",
+     "etag": "3d515a72c8b9"
+    }
+   ]
+  }
+ ],
+ "tools": [
+  {
+   "name": "calendar_events_list",
+   "description": "Returns events on the specified calendar. (GET /calendars/{calendarId}/events)",
+   "op": "custom",
+   "type": "read",
+   "table": "agent_events",
+   "extra_tables": [
+    "cal_event_details",
+    "cal_event_attendees",
+    "calendars"
+   ],
+   "params": {
+    "calendar_id": {
+     "type": "string",
+     "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method."
+    },
+    "time_min": {
+     "type": "string",
+     "description": "Lower bound (exclusive) for an event's end time to filter by. Must be an RFC3339 timestamp, e.g. 2026-01-19T00:00:00Z."
+    },
+    "time_max": {
+     "type": "string",
+     "description": "Upper bound (exclusive) for an event's start time to filter by. Must be an RFC3339 timestamp."
+    },
+    "q": {
+     "type": "string",
+     "description": "Free text search terms to find events that match these terms in the summary, description, location, or attendees' emails and display names."
+    },
+    "single_events": {
+     "type": "boolean",
+     "description": "Whether to expand recurring events into instances and only return single one-off events and instances of recurring events, but not the underlying recurring events themselves. Default False."
+    },
+    "show_deleted": {
+     "type": "boolean",
+     "description": "Whether to include deleted events (with status equal to 'cancelled') in the result. Default False."
+    },
+    "max_results": {
+     "type": "integer",
+     "description": "Maximum number of events returned on one result page. Default 30."
+    }
+   },
+   "required": [
+    "calendar_id"
+   ],
+   "custom_source": "def calendar_events_list(db_path='state.db', **kwargs):\n    \"\"\"Returns events on the specified calendar. (GET /calendars/{calendarId}/events)\"\"\"\n    _missing = [p for p in ['calendar_id'] if kwargs.get(p) is None]\n    if _missing:\n        return {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}\n    import sqlite3, json, datetime, hashlib\n\n    def _ts(v):\n        if v is None:\n            return None\n        s = str(v).strip()\n        if len(s) == 10:\n            s = s + 'T00:00:00+00:00'\n        s = s.replace('Z', '+00:00')\n        try:\n            dt = datetime.datetime.fromisoformat(s)\n        except ValueError:\n            return None\n        if dt.tzinfo is not None:\n            dt = dt.astimezone(datetime.timezone.utc).replace(tzinfo=None)\n        return dt\n\n    def _iso(dt):\n        return dt.strftime('%Y-%m-%dT%H:%M:%SZ')\n\n    def _expand(start_dt, end_dt, rrule, cap=60):\n        rule = {}\n        for part in str(rrule).split(':', 1)[-1].split(';'):\n            if '=' in part:\n                k, v = part.split('=', 1)\n                rule[k.upper()] = v\n        freq = rule.get('FREQ', '').upper()\n        if freq not in ('DAILY', 'WEEKLY', 'MONTHLY'):\n            return [(start_dt, end_dt)]\n        try:\n            interval = max(1, int(rule.get('INTERVAL', 1)))\n        except ValueError:\n            interval = 1\n        count = None\n        if rule.get('COUNT'):\n            try:\n                count = int(rule['COUNT'])\n            except ValueError:\n                count = None\n        until = _ts(rule.get('UNTIL', '').replace('T', 'T')[:8] + 'T23:59:59Z') if rule.get('UNTIL') else None\n        dur = end_dt - start_dt\n        out = []\n        i = 0\n        while len(out) < cap:\n            if freq == 'DAILY':\n                s = start_dt + datetime.timedelta(days=i * interval)\n            elif freq == 'WEEKLY':\n                s = start_dt + datetime.timedelta(weeks=i * interval)\n            else:\n                m = start_dt.month - 1 + i * interval\n                y = start_dt.year + m // 12\n                m = m % 12 + 1\n                dim = [31, 29 if (y % 4 == 0 and (y % 100 != 0 or y % 400 == 0)) else 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][m - 1]\n                s = start_dt.replace(year=y, month=m, day=min(start_dt.day, dim))\n            if count is not None and i >= count:\n                break\n            if until is not None and s > until:\n                break\n            out.append((s, s + dur))\n            i += 1\n            if count is None and until is None and i >= cap:\n                break\n        return out\n\n    def _ev_out(row, att_rows, start=None, end=None, inst_id=None):\n        d = {\n            'kind': 'calendar#event',\n            'id': inst_id if inst_id is not None else row['id'],\n            'status': row['status'],\n            'summary': row['title'],\n            'description': row['description'],\n            'location': row['location'],\n            'color_id': row['color_id'],\n            'transparency': row['transparency'],\n            'visibility': row['visibility'],\n            'organizer': {'email': row['organizer_email']},\n            'start': {'date_time': start if start is not None else row['start_datetime'], 'time_zone': row['time_zone']},\n            'end': {'date_time': end if end is not None else row['end_datetime'], 'time_zone': row['time_zone']},\n            'created': row['created_at'],\n            'updated': row['updated'],\n            'attendees': [\n                {'email': a['email'], 'display_name': a['display_name'], 'response_status': a['response_status'],\n                 'optional': bool(a['optional']), 'organizer': bool(a['organizer'])}\n                for a in att_rows\n            ],\n        }\n        if row['recurrence']:\n            if inst_id is not None:\n                d['recurring_event_id'] = row['id']\n            else:\n                d['recurrence'] = [row['recurrence']]\n        return d\n\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    try:\n        if cur.execute('SELECT 1 FROM \"calendars\" WHERE \"id\" = ?', [str(kwargs['calendar_id'])]).fetchone() is None:\n            return {'error': 'calendar not found', 'status': 404}\n        rows = cur.execute(\n            'SELECT e.\"id\", e.\"title\", e.\"event_date\", e.\"created_at\", d.* FROM \"agent_events\" e '\n            'JOIN \"cal_event_details\" d ON d.\"event_id\" = e.\"id\" WHERE d.\"calendar_id\" = ? ORDER BY d.\"start_datetime\"',\n            [str(kwargs['calendar_id'])]).fetchall()\n        show_deleted = bool(kwargs.get('show_deleted'))\n        single_events = bool(kwargs.get('single_events'))\n        tmin = _ts(kwargs.get('time_min'))\n        tmax = _ts(kwargs.get('time_max'))\n        q = str(kwargs['q']).lower() if kwargs.get('q') is not None else None\n        limit = int(kwargs.get('max_results') or 30)\n        items = []\n        for row in rows:\n            if not show_deleted and row['status'] == 'cancelled':\n                continue\n            att = cur.execute('SELECT * FROM \"cal_event_attendees\" WHERE \"event_id\" = ? ORDER BY \"id\"', [row['id']]).fetchall()\n            if q is not None:\n                hay = ' '.join([str(row['title'] or ''), str(row['description'] or ''), str(row['location'] or '')] +\n                               [str(a['email'] or '') + ' ' + str(a['display_name'] or '') for a in att]).lower()\n                if q not in hay:\n                    continue\n            s0, e0 = _ts(row['start_datetime']), _ts(row['end_datetime'])\n            if row['recurrence'] and single_events:\n                for s, e in _expand(s0, e0, row['recurrence']):\n                    if tmin is not None and e <= tmin:\n                        continue\n                    if tmax is not None and s >= tmax:\n                        continue\n                    items.append(_ev_out(row, att, start=_iso(s), end=_iso(e),\n                                         inst_id='%s_%s' % (row['id'], s.strftime('%Y%m%dT%H%M%SZ'))))\n            else:\n                occs = _expand(s0, e0, row['recurrence']) if row['recurrence'] else [(s0, e0)]\n                if tmin is not None and all(e <= tmin for s, e in occs):\n                    continue\n                if tmax is not None and all(s >= tmax for s, e in occs):\n                    continue\n                items.append(_ev_out(row, att))\n        items = items[:max(1, limit)]\n        return {'kind': 'calendar#events', 'items': items, 'count': len(items)}\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "calendar_events_get",
+   "description": "Returns an event based on its Google Calendar ID. (GET /calendars/{calendarId}/events/{eventId})",
+   "op": "custom",
+   "type": "read",
+   "table": "agent_events",
+   "extra_tables": [
+    "cal_event_details",
+    "cal_event_attendees"
+   ],
+   "params": {
+    "calendar_id": {
+     "type": "string",
+     "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method."
+    },
+    "event_id": {
+     "type": "integer",
+     "description": "Event identifier."
+    }
+   },
+   "required": [
+    "calendar_id",
+    "event_id"
+   ],
+   "custom_source": "def calendar_events_get(db_path='state.db', **kwargs):\n    \"\"\"Returns an event based on its Google Calendar ID. (GET /calendars/{calendarId}/events/{eventId})\"\"\"\n    _missing = [p for p in ['calendar_id', 'event_id'] if kwargs.get(p) is None]\n    if _missing:\n        return {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}\n    import sqlite3, json, datetime, hashlib\n    try:\n        _eid = int(kwargs['event_id'])\n    except (TypeError, ValueError):\n        return {'error': 'invalid event_id: %r' % (kwargs.get('event_id'),), 'status': 400}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    try:\n        row = cur.execute(\n            'SELECT e.\"id\", e.\"title\", e.\"event_date\", e.\"created_at\", d.* FROM \"agent_events\" e '\n            'JOIN \"cal_event_details\" d ON d.\"event_id\" = e.\"id\" WHERE e.\"id\" = ? AND d.\"calendar_id\" = ?',\n            [_eid, str(kwargs['calendar_id'])]).fetchone()\n        if row is None:\n            return {'error': 'event not found', 'status': 404}\n        att = cur.execute('SELECT * FROM \"cal_event_attendees\" WHERE \"event_id\" = ? ORDER BY \"id\"', [_eid]).fetchall()\n        out = {\n            'kind': 'calendar#event',\n            'id': row['id'],\n            'status': row['status'],\n            'summary': row['title'],\n            'description': row['description'],\n            'location': row['location'],\n            'color_id': row['color_id'],\n            'transparency': row['transparency'],\n            'visibility': row['visibility'],\n            'organizer': {'email': row['organizer_email']},\n            'start': {'date_time': row['start_datetime'], 'time_zone': row['time_zone']},\n            'end': {'date_time': row['end_datetime'], 'time_zone': row['time_zone']},\n            'created': row['created_at'],\n            'updated': row['updated'],\n            'attendees': [\n                {'email': a['email'], 'display_name': a['display_name'], 'response_status': a['response_status'],\n                 'optional': bool(a['optional']), 'organizer': bool(a['organizer'])}\n                for a in att\n            ],\n        }\n        if row['recurrence']:\n            out['recurrence'] = [row['recurrence']]\n        return out\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "calendar_events_insert",
+   "description": "Creates an event. (POST /calendars/{calendarId}/events)",
+   "op": "custom",
+   "type": "write",
+   "table": "agent_events",
+   "extra_tables": [
+    "cal_event_details",
+    "cal_event_attendees",
+    "calendars"
+   ],
+   "params": {
+    "calendar_id": {
+     "type": "string",
+     "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method."
+    },
+    "summary": {
+     "type": "string",
+     "description": "Title of the event."
+    },
+    "description": {
+     "type": "string",
+     "description": "Description of the event. Can contain HTML."
+    },
+    "location": {
+     "type": "string",
+     "description": "Geographic location of the event as free-form text."
+    },
+    "start": {
+     "type": "object",
+     "description": "The (inclusive) start time of the event: object with 'date_time' (RFC3339 timestamp) or 'date' (YYYY-MM-DD, for all-day events), and optional 'time_zone' (IANA Time Zone Database name)."
+    },
+    "end": {
+     "type": "object",
+     "description": "The (exclusive) end time of the event: object with 'date_time' (RFC3339 timestamp) or 'date' (YYYY-MM-DD, for all-day events), and optional 'time_zone'."
+    },
+    "attendees": {
+     "type": "object",
+     "description": "The attendees of the event: JSON list of objects, each with 'email' (required), and optional 'display_name', 'optional' (boolean), 'response_status' ('needsAction', 'declined', 'tentative', 'accepted')."
+    },
+    "recurrence": {
+     "type": "object",
+     "description": "List of RRULE lines for a recurring event, as specified in RFC5545, e.g. [\"RRULE:FREQ=WEEKLY;COUNT=4\"]. Supported: FREQ=DAILY|WEEKLY|MONTHLY with INTERVAL, COUNT, UNTIL."
+    },
+    "color_id": {
+     "type": "string",
+     "description": "The color of the event. This is an ID referring to an entry in the event section of the colors definition (see the colors endpoint)."
+    },
+    "transparency": {
+     "type": "string",
+     "description": "Whether the event blocks time on the calendar. 'opaque' (default) — the event does block time; 'transparent' — the event does not block time."
+    },
+    "visibility": {
+     "type": "string",
+     "description": "Visibility of the event. 'default', 'public', 'private', or 'confidential'."
+    },
+    "send_updates": {
+     "type": "string",
+     "description": "Whether to send notifications about the creation of the new event. Acceptable values: 'all', 'externalOnly', 'none'. No mail is actually delivered in this sandbox; the value is validated only."
+    }
+   },
+   "required": [
+    "calendar_id",
+    "start",
+    "end"
+   ],
+   "custom_source": "def calendar_events_insert(db_path='state.db', **kwargs):\n    \"\"\"Creates an event. (POST /calendars/{calendarId}/events)\"\"\"\n    _missing = [p for p in ['calendar_id', 'start', 'end'] if kwargs.get(p) is None]\n    if _missing:\n        return {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}\n    import sqlite3, json, datetime, hashlib\n    if kwargs.get('send_updates') is not None and kwargs.get('send_updates') not in ['all', 'externalOnly', 'none']:\n        return {'error': 'invalid value for send_updates: %r. Accepted: all, externalOnly, none' % (kwargs.get('send_updates'),),\n                'status': 422, 'parameter': 'send_updates', 'accepted': ['all', 'externalOnly', 'none']}\n\n    def _edge(v):\n        if isinstance(v, str) and v[:1] in ('{', '['):\n            try:\n                v = json.loads(v)\n            except ValueError:\n                pass\n        if isinstance(v, dict):\n            return v.get('date_time') or v.get('date'), v.get('time_zone')\n        return str(v), None\n\n    def _norm(s):\n        s = str(s).strip()\n        if len(s) == 10:\n            return s + 'T00:00:00Z', s\n        return s, s[:10]\n\n    start_raw, tz1 = _edge(kwargs['start'])\n    end_raw, tz2 = _edge(kwargs['end'])\n    if not start_raw or not end_raw:\n        return {'error': \"invalid start/end: expected an object with 'date_time' (RFC3339) or 'date' (YYYY-MM-DD)\", 'status': 400}\n    start_dtstr, event_date = _norm(start_raw)\n    end_dtstr, _ = _norm(end_raw)\n    tz = tz1 or tz2 or 'America/New_York'\n    attendees = kwargs.get('attendees')\n    if isinstance(attendees, str):\n        try:\n            attendees = json.loads(attendees)\n        except ValueError:\n            attendees = [{'email': attendees}]\n    if isinstance(attendees, dict):\n        attendees = [attendees]\n    attendees = attendees or []\n    recurrence = kwargs.get('recurrence')\n    if isinstance(recurrence, str) and recurrence[:1] == '[':\n        try:\n            recurrence = json.loads(recurrence)\n        except ValueError:\n            pass\n    if isinstance(recurrence, list):\n        recurrence = recurrence[0] if recurrence else None\n    now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    try:\n        if cur.execute('SELECT 1 FROM \"calendars\" WHERE \"id\" = ?', [str(kwargs['calendar_id'])]).fetchone() is None:\n            return {'error': 'calendar not found', 'status': 404}\n        next_id = max(\n            cur.execute('SELECT COALESCE(MAX(\"id\"), 0) FROM \"agent_events\"').fetchone()[0],\n            cur.execute('SELECT COALESCE(MAX(\"event_id\"), 0) FROM \"cal_event_details\"').fetchone()[0]) + 1\n        cur.execute('INSERT INTO \"agent_events\" (\"id\", \"title\", \"event_date\", \"created_at\") VALUES (?, ?, ?, ?)',\n                    [next_id, kwargs.get('summary') or '(No title)', event_date, now])\n        cur.execute(\n            'INSERT OR REPLACE INTO \"cal_event_details\" (\"event_id\", \"calendar_id\", \"status\", \"start_datetime\", \"end_datetime\", '\n            '\"time_zone\", \"location\", \"description\", \"organizer_email\", \"recurrence\", \"color_id\", \"transparency\", \"visibility\", \"updated\") '\n            'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',\n            [next_id, str(kwargs['calendar_id']), 'confirmed', start_dtstr, end_dtstr, tz,\n             kwargs.get('location'), kwargs.get('description'), 'contact77709@morganstanleysimulated.com',\n             recurrence, kwargs.get('color_id'), kwargs.get('transparency') or 'opaque',\n             kwargs.get('visibility') or 'default', now])\n        cur.execute('DELETE FROM \"cal_event_attendees\" WHERE \"event_id\" = ?', [next_id])\n        att_out = []\n        for a in attendees:\n            if not isinstance(a, dict) or not a.get('email'):\n                continue\n            aid = cur.execute('SELECT COALESCE(MAX(\"id\"), 0) FROM \"cal_event_attendees\"').fetchone()[0] + 1\n            cur.execute('INSERT INTO \"cal_event_attendees\" (\"id\", \"event_id\", \"email\", \"display_name\", \"response_status\", \"optional\", \"organizer\") VALUES (?, ?, ?, ?, ?, ?, ?)',\n                        [aid, next_id, str(a['email']), a.get('display_name'), a.get('response_status') or 'needsAction',\n                         1 if a.get('optional') else 0, 1 if a.get('organizer') else 0])\n            att_out.append({'email': str(a['email']), 'display_name': a.get('display_name'),\n                            'response_status': a.get('response_status') or 'needsAction',\n                            'optional': bool(a.get('optional')), 'organizer': bool(a.get('organizer'))})\n        conn.commit()\n        out = {\n            'kind': 'calendar#event', 'id': next_id, 'status': 'confirmed',\n            'summary': kwargs.get('summary') or '(No title)',\n            'description': kwargs.get('description'), 'location': kwargs.get('location'),\n            'color_id': kwargs.get('color_id'), 'transparency': kwargs.get('transparency') or 'opaque',\n            'visibility': kwargs.get('visibility') or 'default',\n            'organizer': {'email': 'contact77709@morganstanleysimulated.com'},\n            'start': {'date_time': start_dtstr, 'time_zone': tz},\n            'end': {'date_time': end_dtstr, 'time_zone': tz},\n            'created': now, 'updated': now, 'attendees': att_out,\n        }\n        if recurrence:\n            out['recurrence'] = [recurrence]\n        return out\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "calendar_events_update",
+   "description": "Updates an event; this method does not support patch semantics — writable fields omitted from the request are cleared. (PUT /calendars/{calendarId}/events/{eventId})",
+   "op": "custom",
+   "type": "write",
+   "table": "agent_events",
+   "extra_tables": [
+    "cal_event_details",
+    "cal_event_attendees"
+   ],
+   "params": {
+    "calendar_id": {
+     "type": "string",
+     "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method."
+    },
+    "event_id": {
+     "type": "integer",
+     "description": "Event identifier."
+    },
+    "summary": {
+     "type": "string",
+     "description": "Title of the event."
+    },
+    "description": {
+     "type": "string",
+     "description": "Description of the event. Can contain HTML."
+    },
+    "location": {
+     "type": "string",
+     "description": "Geographic location of the event as free-form text."
+    },
+    "start": {
+     "type": "object",
+     "description": "The (inclusive) start time of the event: object with 'date_time' (RFC3339 timestamp) or 'date' (YYYY-MM-DD), and optional 'time_zone'."
+    },
+    "end": {
+     "type": "object",
+     "description": "The (exclusive) end time of the event: object with 'date_time' (RFC3339 timestamp) or 'date' (YYYY-MM-DD), and optional 'time_zone'."
+    },
+    "attendees": {
+     "type": "object",
+     "description": "The attendees of the event: JSON list of objects, each with 'email' (required), and optional 'display_name', 'optional' (boolean), 'response_status'. Omitting this field clears the attendee list (full-update semantics)."
+    },
+    "recurrence": {
+     "type": "object",
+     "description": "List of RRULE lines for a recurring event, as specified in RFC5545, e.g. [\"RRULE:FREQ=WEEKLY;COUNT=4\"]."
+    },
+    "status": {
+     "type": "string",
+     "description": "Status of the event. 'confirmed' (default), 'tentative', or 'cancelled'."
+    },
+    "color_id": {
+     "type": "string",
+     "description": "The color of the event. This is an ID referring to an entry in the event section of the colors definition."
+    },
+    "transparency": {
+     "type": "string",
+     "description": "Whether the event blocks time on the calendar. 'opaque' (default) or 'transparent'."
+    },
+    "visibility": {
+     "type": "string",
+     "description": "Visibility of the event. 'default', 'public', 'private', or 'confidential'."
+    },
+    "send_updates": {
+     "type": "string",
+     "description": "Guests who should receive notifications about the event update. Acceptable values: 'all', 'externalOnly', 'none'. Validated only; no mail is delivered in this sandbox."
+    }
+   },
+   "required": [
+    "calendar_id",
+    "event_id",
+    "start",
+    "end"
+   ],
+   "custom_source": "def calendar_events_update(db_path='state.db', **kwargs):\n    \"\"\"Updates an event; does not support patch semantics — omitted writable fields are cleared. (PUT /calendars/{calendarId}/events/{eventId})\"\"\"\n    _missing = [p for p in ['calendar_id', 'event_id', 'start', 'end'] if kwargs.get(p) is None]\n    if _missing:\n        return {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}\n    import sqlite3, json, datetime, hashlib\n    try:\n        _eid = int(kwargs['event_id'])\n    except (TypeError, ValueError):\n        return {'error': 'invalid event_id: %r' % (kwargs.get('event_id'),), 'status': 400}\n    if kwargs.get('send_updates') is not None and kwargs.get('send_updates') not in ['all', 'externalOnly', 'none']:\n        return {'error': 'invalid value for send_updates: %r. Accepted: all, externalOnly, none' % (kwargs.get('send_updates'),),\n                'status': 422, 'parameter': 'send_updates', 'accepted': ['all', 'externalOnly', 'none']}\n    if kwargs.get('status') is not None and kwargs.get('status') not in ['confirmed', 'tentative', 'cancelled']:\n        return {'error': 'invalid value for status: %r. Accepted: confirmed, tentative, cancelled' % (kwargs.get('status'),),\n                'status': 422, 'parameter': 'status', 'accepted': ['confirmed', 'tentative', 'cancelled']}\n\n    def _edge(v):\n        if isinstance(v, str) and v[:1] in ('{', '['):\n            try:\n                v = json.loads(v)\n            except ValueError:\n                pass\n        if isinstance(v, dict):\n            return v.get('date_time') or v.get('date'), v.get('time_zone')\n        return str(v), None\n\n    def _norm(s):\n        s = str(s).strip()\n        if len(s) == 10:\n            return s + 'T00:00:00Z', s\n        return s, s[:10]\n\n    start_raw, tz1 = _edge(kwargs['start'])\n    end_raw, tz2 = _edge(kwargs['end'])\n    if not start_raw or not end_raw:\n        return {'error': \"invalid start/end: expected an object with 'date_time' (RFC3339) or 'date' (YYYY-MM-DD)\", 'status': 400}\n    start_dtstr, event_date = _norm(start_raw)\n    end_dtstr, _ = _norm(end_raw)\n    attendees = kwargs.get('attendees')\n    if isinstance(attendees, str):\n        try:\n            attendees = json.loads(attendees)\n        except ValueError:\n            attendees = [{'email': attendees}]\n    if isinstance(attendees, dict):\n        attendees = [attendees]\n    attendees = attendees or []\n    recurrence = kwargs.get('recurrence')\n    if isinstance(recurrence, str) and recurrence[:1] == '[':\n        try:\n            recurrence = json.loads(recurrence)\n        except ValueError:\n            pass\n    if isinstance(recurrence, list):\n        recurrence = recurrence[0] if recurrence else None\n    now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    try:\n        row = cur.execute('SELECT * FROM \"cal_event_details\" WHERE \"event_id\" = ? AND \"calendar_id\" = ?',\n                          [_eid, str(kwargs['calendar_id'])]).fetchone()\n        if row is None:\n            return {'error': 'event not found', 'status': 404}\n        tz = tz1 or tz2 or row['time_zone']\n        cur.execute('UPDATE \"agent_events\" SET \"title\" = ?, \"event_date\" = ? WHERE \"id\" = ?',\n                    [kwargs.get('summary') or '(No title)', event_date, _eid])\n        cur.execute(\n            'UPDATE \"cal_event_details\" SET \"status\" = ?, \"start_datetime\" = ?, \"end_datetime\" = ?, \"time_zone\" = ?, '\n            '\"location\" = ?, \"description\" = ?, \"recurrence\" = ?, \"color_id\" = ?, \"transparency\" = ?, \"visibility\" = ?, \"updated\" = ? '\n            'WHERE \"event_id\" = ?',\n            [kwargs.get('status') or 'confirmed', start_dtstr, end_dtstr, tz,\n             kwargs.get('location'), kwargs.get('description'), recurrence, kwargs.get('color_id'),\n             kwargs.get('transparency') or 'opaque', kwargs.get('visibility') or 'default', now, _eid])\n        cur.execute('DELETE FROM \"cal_event_attendees\" WHERE \"event_id\" = ?', [_eid])\n        att_out = []\n        for a in attendees:\n            if not isinstance(a, dict) or not a.get('email'):\n                continue\n            aid = cur.execute('SELECT COALESCE(MAX(\"id\"), 0) FROM \"cal_event_attendees\"').fetchone()[0] + 1\n            cur.execute('INSERT INTO \"cal_event_attendees\" (\"id\", \"event_id\", \"email\", \"display_name\", \"response_status\", \"optional\", \"organizer\") VALUES (?, ?, ?, ?, ?, ?, ?)',\n                        [aid, _eid, str(a['email']), a.get('display_name'), a.get('response_status') or 'needsAction',\n                         1 if a.get('optional') else 0, 1 if a.get('organizer') else 0])\n            att_out.append({'email': str(a['email']), 'display_name': a.get('display_name'),\n                            'response_status': a.get('response_status') or 'needsAction',\n                            'optional': bool(a.get('optional')), 'organizer': bool(a.get('organizer'))})\n        conn.commit()\n        out = {\n            'kind': 'calendar#event', 'id': _eid, 'status': kwargs.get('status') or 'confirmed',\n            'summary': kwargs.get('summary') or '(No title)',\n            'description': kwargs.get('description'), 'location': kwargs.get('location'),\n            'color_id': kwargs.get('color_id'), 'transparency': kwargs.get('transparency') or 'opaque',\n            'visibility': kwargs.get('visibility') or 'default',\n            'organizer': {'email': row['organizer_email']},\n            'start': {'date_time': start_dtstr, 'time_zone': tz},\n            'end': {'date_time': end_dtstr, 'time_zone': tz},\n            'updated': now, 'attendees': att_out,\n        }\n        if recurrence:\n            out['recurrence'] = [recurrence]\n        return out\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "calendar_events_patch",
+   "description": "Updates an event; this method supports patch semantics — only the fields provided in the request are changed. (PATCH /calendars/{calendarId}/events/{eventId})",
+   "op": "custom",
+   "type": "write",
+   "table": "agent_events",
+   "extra_tables": [
+    "cal_event_details",
+    "cal_event_attendees"
+   ],
+   "params": {
+    "calendar_id": {
+     "type": "string",
+     "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method."
+    },
+    "event_id": {
+     "type": "integer",
+     "description": "Event identifier."
+    },
+    "summary": {
+     "type": "string",
+     "description": "Title of the event."
+    },
+    "description": {
+     "type": "string",
+     "description": "Description of the event. Can contain HTML."
+    },
+    "location": {
+     "type": "string",
+     "description": "Geographic location of the event as free-form text."
+    },
+    "start": {
+     "type": "object",
+     "description": "The (inclusive) start time of the event: object with 'date_time' (RFC3339 timestamp) or 'date' (YYYY-MM-DD), and optional 'time_zone'."
+    },
+    "end": {
+     "type": "object",
+     "description": "The (exclusive) end time of the event: object with 'date_time' (RFC3339 timestamp) or 'date' (YYYY-MM-DD), and optional 'time_zone'."
+    },
+    "attendees": {
+     "type": "object",
+     "description": "The attendees of the event: JSON list of objects, each with 'email' (required), and optional 'display_name', 'optional' (boolean), 'response_status'. When provided, replaces the whole attendee list."
+    },
+    "recurrence": {
+     "type": "object",
+     "description": "List of RRULE lines for a recurring event, as specified in RFC5545, e.g. [\"RRULE:FREQ=WEEKLY;COUNT=4\"]."
+    },
+    "status": {
+     "type": "string",
+     "description": "Status of the event. 'confirmed', 'tentative', or 'cancelled'."
+    },
+    "color_id": {
+     "type": "string",
+     "description": "The color of the event. This is an ID referring to an entry in the event section of the colors definition."
+    },
+    "transparency": {
+     "type": "string",
+     "description": "Whether the event blocks time on the calendar. 'opaque' or 'transparent'."
+    },
+    "visibility": {
+     "type": "string",
+     "description": "Visibility of the event. 'default', 'public', 'private', or 'confidential'."
+    },
+    "send_updates": {
+     "type": "string",
+     "description": "Guests who should receive notifications about the event update. Acceptable values: 'all', 'externalOnly', 'none'. Validated only; no mail is delivered in this sandbox."
+    }
+   },
+   "required": [
+    "calendar_id",
+    "event_id"
+   ],
+   "custom_source": "def calendar_events_patch(db_path='state.db', **kwargs):\n    \"\"\"Updates an event; supports patch semantics — only the fields provided are changed. (PATCH /calendars/{calendarId}/events/{eventId})\"\"\"\n    _missing = [p for p in ['calendar_id', 'event_id'] if kwargs.get(p) is None]\n    if _missing:\n        return {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}\n    import sqlite3, json, datetime, hashlib\n    try:\n        _eid = int(kwargs['event_id'])\n    except (TypeError, ValueError):\n        return {'error': 'invalid event_id: %r' % (kwargs.get('event_id'),), 'status': 400}\n    if kwargs.get('send_updates') is not None and kwargs.get('send_updates') not in ['all', 'externalOnly', 'none']:\n        return {'error': 'invalid value for send_updates: %r. Accepted: all, externalOnly, none' % (kwargs.get('send_updates'),),\n                'status': 422, 'parameter': 'send_updates', 'accepted': ['all', 'externalOnly', 'none']}\n    if kwargs.get('status') is not None and kwargs.get('status') not in ['confirmed', 'tentative', 'cancelled']:\n        return {'error': 'invalid value for status: %r. Accepted: confirmed, tentative, cancelled' % (kwargs.get('status'),),\n                'status': 422, 'parameter': 'status', 'accepted': ['confirmed', 'tentative', 'cancelled']}\n\n    def _edge(v):\n        if isinstance(v, str) and v[:1] in ('{', '['):\n            try:\n                v = json.loads(v)\n            except ValueError:\n                pass\n        if isinstance(v, dict):\n            return v.get('date_time') or v.get('date'), v.get('time_zone')\n        return str(v), None\n\n    def _norm(s):\n        s = str(s).strip()\n        if len(s) == 10:\n            return s + 'T00:00:00Z', s\n        return s, s[:10]\n\n    now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    try:\n        row = cur.execute('SELECT * FROM \"cal_event_details\" WHERE \"event_id\" = ? AND \"calendar_id\" = ?',\n                          [_eid, str(kwargs['calendar_id'])]).fetchone()\n        if row is None:\n            return {'error': 'event not found', 'status': 404}\n        if kwargs.get('summary') is not None:\n            cur.execute('UPDATE \"agent_events\" SET \"title\" = ? WHERE \"id\" = ?', [str(kwargs['summary']), _eid])\n        det_sets, det_args = [], []\n        if kwargs.get('start') is not None:\n            start_raw, tz1 = _edge(kwargs['start'])\n            if not start_raw:\n                return {'error': \"invalid start: expected an object with 'date_time' (RFC3339) or 'date' (YYYY-MM-DD)\", 'status': 400}\n            start_dtstr, event_date = _norm(start_raw)\n            det_sets.append('\"start_datetime\" = ?'); det_args.append(start_dtstr)\n            if tz1:\n                det_sets.append('\"time_zone\" = ?'); det_args.append(tz1)\n            cur.execute('UPDATE \"agent_events\" SET \"event_date\" = ? WHERE \"id\" = ?', [event_date, _eid])\n        if kwargs.get('end') is not None:\n            end_raw, tz2 = _edge(kwargs['end'])\n            if not end_raw:\n                return {'error': \"invalid end: expected an object with 'date_time' (RFC3339) or 'date' (YYYY-MM-DD)\", 'status': 400}\n            end_dtstr, _ = _norm(end_raw)\n            det_sets.append('\"end_datetime\" = ?'); det_args.append(end_dtstr)\n        for param, col in [('description', 'description'), ('location', 'location'), ('status', 'status'),\n                           ('color_id', 'color_id'), ('transparency', 'transparency'), ('visibility', 'visibility')]:\n            if kwargs.get(param) is not None:\n                det_sets.append('\"%s\" = ?' % col); det_args.append(str(kwargs[param]))\n        recurrence = kwargs.get('recurrence')\n        if recurrence is not None:\n            if isinstance(recurrence, str) and recurrence[:1] == '[':\n                try:\n                    recurrence = json.loads(recurrence)\n                except ValueError:\n                    pass\n            if isinstance(recurrence, list):\n                recurrence = recurrence[0] if recurrence else None\n            det_sets.append('\"recurrence\" = ?'); det_args.append(recurrence)\n        det_sets.append('\"updated\" = ?'); det_args.append(now)\n        cur.execute('UPDATE \"cal_event_details\" SET ' + ', '.join(det_sets) + ' WHERE \"event_id\" = ?', det_args + [_eid])\n        attendees = kwargs.get('attendees')\n        if attendees is not None:\n            if isinstance(attendees, str):\n                try:\n                    attendees = json.loads(attendees)\n                except ValueError:\n                    attendees = [{'email': attendees}]\n            if isinstance(attendees, dict):\n                attendees = [attendees]\n            cur.execute('DELETE FROM \"cal_event_attendees\" WHERE \"event_id\" = ?', [_eid])\n            for a in attendees or []:\n                if not isinstance(a, dict) or not a.get('email'):\n                    continue\n                aid = cur.execute('SELECT COALESCE(MAX(\"id\"), 0) FROM \"cal_event_attendees\"').fetchone()[0] + 1\n                cur.execute('INSERT INTO \"cal_event_attendees\" (\"id\", \"event_id\", \"email\", \"display_name\", \"response_status\", \"optional\", \"organizer\") VALUES (?, ?, ?, ?, ?, ?, ?)',\n                            [aid, _eid, str(a['email']), a.get('display_name'), a.get('response_status') or 'needsAction',\n                             1 if a.get('optional') else 0, 1 if a.get('organizer') else 0])\n        conn.commit()\n        row = cur.execute(\n            'SELECT e.\"id\", e.\"title\", e.\"event_date\", e.\"created_at\", d.* FROM \"agent_events\" e '\n            'JOIN \"cal_event_details\" d ON d.\"event_id\" = e.\"id\" WHERE e.\"id\" = ?', [_eid]).fetchone()\n        att = cur.execute('SELECT * FROM \"cal_event_attendees\" WHERE \"event_id\" = ? ORDER BY \"id\"', [_eid]).fetchall()\n        out = {\n            'kind': 'calendar#event', 'id': row['id'], 'status': row['status'], 'summary': row['title'],\n            'description': row['description'], 'location': row['location'], 'color_id': row['color_id'],\n            'transparency': row['transparency'], 'visibility': row['visibility'],\n            'organizer': {'email': row['organizer_email']},\n            'start': {'date_time': row['start_datetime'], 'time_zone': row['time_zone']},\n            'end': {'date_time': row['end_datetime'], 'time_zone': row['time_zone']},\n            'created': row['created_at'], 'updated': row['updated'],\n            'attendees': [\n                {'email': a['email'], 'display_name': a['display_name'], 'response_status': a['response_status'],\n                 'optional': bool(a['optional']), 'organizer': bool(a['organizer'])}\n                for a in att\n            ],\n        }\n        if row['recurrence']:\n            out['recurrence'] = [row['recurrence']]\n        return out\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "calendar_events_delete",
+   "description": "Deletes an event. (DELETE /calendars/{calendarId}/events/{eventId})",
+   "op": "delete",
+   "table": "agent_events",
+   "id_param": "event_id",
+   "id_column": "id",
+   "params": {
+    "event_id": {
+     "type": "integer",
+     "description": "Event identifier."
+    }
+   },
+   "required": [
+    "event_id"
+   ]
+  },
+  {
+   "name": "calendar_events_move",
+   "description": "Moves an event to another calendar, i.e. changes an event's organizer calendar. (POST /calendars/{calendarId}/events/{eventId}/move)",
+   "op": "custom",
+   "type": "write",
+   "table": "cal_event_details",
+   "extra_tables": [
+    "agent_events",
+    "calendars"
+   ],
+   "params": {
+    "calendar_id": {
+     "type": "string",
+     "description": "Calendar identifier of the source calendar where the event currently is on."
+    },
+    "event_id": {
+     "type": "integer",
+     "description": "Event identifier."
+    },
+    "destination": {
+     "type": "string",
+     "description": "Calendar identifier of the target calendar where the event is to be moved to."
+    },
+    "send_updates": {
+     "type": "string",
+     "description": "Guests who should receive notifications about the change of the event's organizer. Acceptable values: 'all', 'externalOnly', 'none'. Validated only; no mail is delivered in this sandbox."
+    }
+   },
+   "required": [
+    "calendar_id",
+    "event_id",
+    "destination"
+   ],
+   "custom_source": "def calendar_events_move(db_path='state.db', **kwargs):\n    \"\"\"Moves an event to another calendar, i.e. changes an event's organizer calendar. (POST /calendars/{calendarId}/events/{eventId}/move)\"\"\"\n    _missing = [p for p in ['calendar_id', 'event_id', 'destination'] if kwargs.get(p) is None]\n    if _missing:\n        return {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}\n    import sqlite3, json, datetime, hashlib\n    try:\n        _eid = int(kwargs['event_id'])\n    except (TypeError, ValueError):\n        return {'error': 'invalid event_id: %r' % (kwargs.get('event_id'),), 'status': 400}\n    if kwargs.get('send_updates') is not None and kwargs.get('send_updates') not in ['all', 'externalOnly', 'none']:\n        return {'error': 'invalid value for send_updates: %r. Accepted: all, externalOnly, none' % (kwargs.get('send_updates'),),\n                'status': 422, 'parameter': 'send_updates', 'accepted': ['all', 'externalOnly', 'none']}\n    now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    try:\n        row = cur.execute('SELECT * FROM \"cal_event_details\" WHERE \"event_id\" = ? AND \"calendar_id\" = ?',\n                          [_eid, str(kwargs['calendar_id'])]).fetchone()\n        if row is None:\n            return {'error': 'event not found', 'status': 404}\n        if cur.execute('SELECT 1 FROM \"calendars\" WHERE \"id\" = ?', [str(kwargs['destination'])]).fetchone() is None:\n            return {'error': 'destination calendar not found', 'status': 404}\n        cur.execute('UPDATE \"cal_event_details\" SET \"calendar_id\" = ?, \"updated\" = ? WHERE \"event_id\" = ?',\n                    [str(kwargs['destination']), now, _eid])\n        conn.commit()\n        ev = cur.execute(\n            'SELECT e.\"id\", e.\"title\", e.\"event_date\", d.* FROM \"agent_events\" e '\n            'JOIN \"cal_event_details\" d ON d.\"event_id\" = e.\"id\" WHERE e.\"id\" = ?', [_eid]).fetchone()\n        return {\n            'kind': 'calendar#event', 'id': ev['id'], 'status': ev['status'], 'summary': ev['title'],\n            'calendar_id': ev['calendar_id'],\n            'organizer': {'email': ev['organizer_email']},\n            'start': {'date_time': ev['start_datetime'], 'time_zone': ev['time_zone']},\n            'end': {'date_time': ev['end_datetime'], 'time_zone': ev['time_zone']},\n            'updated': ev['updated'],\n        }\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "calendar_events_quick_add",
+   "description": "Creates an event based on a simple text string; the sandbox parser recognizes an ISO date (YYYY-MM-DD), a time (HH:MM or 2pm), and the words 'today'/'tomorrow'; the rest becomes the title. (POST /calendars/{calendarId}/events/quickAdd)",
+   "op": "custom",
+   "type": "write",
+   "table": "agent_events",
+   "extra_tables": [
+    "cal_event_details",
+    "cal_settings",
+    "calendars"
+   ],
+   "params": {
+    "calendar_id": {
+     "type": "string",
+     "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method."
+    },
+    "text": {
+     "type": "string",
+     "description": "The text describing the event to be created, e.g. 'Deal-desk review with Summit Group 2026-02-03 14:00'."
+    },
+    "send_updates": {
+     "type": "string",
+     "description": "Guests who should receive notifications about the creation of the new event. Acceptable values: 'all', 'externalOnly', 'none'. Validated only; no mail is delivered in this sandbox."
+    }
+   },
+   "required": [
+    "calendar_id",
+    "text"
+   ],
+   "custom_source": "def calendar_events_quick_add(db_path='state.db', **kwargs):\n    \"\"\"Creates an event based on a simple text string, parsing out an ISO date (YYYY-MM-DD), a time (HH:MM), and 'today'/'tomorrow'. (POST /calendars/{calendarId}/events/quickAdd)\"\"\"\n    _missing = [p for p in ['calendar_id', 'text'] if kwargs.get(p) is None]\n    if _missing:\n        return {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}\n    import sqlite3, json, datetime, hashlib\n    if kwargs.get('send_updates') is not None and kwargs.get('send_updates') not in ['all', 'externalOnly', 'none']:\n        return {'error': 'invalid value for send_updates: %r. Accepted: all, externalOnly, none' % (kwargs.get('send_updates'),),\n                'status': 422, 'parameter': 'send_updates', 'accepted': ['all', 'externalOnly', 'none']}\n    text = str(kwargs['text']).strip()\n    if not text:\n        return {'error': 'text must be a non-empty string', 'status': 400}\n    today = datetime.date(2026, 1, 15)\n    date_val, time_val, title_tokens = None, None, []\n    for tok in text.split():\n        bare = tok.strip('.,;()')\n        parsed = False\n        if date_val is None:\n            try:\n                date_val = datetime.datetime.strptime(bare, '%Y-%m-%d').date()\n                parsed = True\n            except ValueError:\n                if bare.lower() == 'today':\n                    date_val = today\n                    parsed = True\n                elif bare.lower() == 'tomorrow':\n                    date_val = today + datetime.timedelta(days=1)\n                    parsed = True\n        if not parsed and time_val is None:\n            for fmt in ('%H:%M', '%I:%M%p', '%I%p'):\n                try:\n                    time_val = datetime.datetime.strptime(bare.lower(), fmt.lower() if '%p' in fmt else fmt).time()\n                    parsed = True\n                    break\n                except ValueError:\n                    continue\n        if not parsed:\n            title_tokens.append(tok)\n    while title_tokens and title_tokens[-1].lower().strip('.,;') in ('on', 'at', 'from'):\n        title_tokens.pop()\n    title = ' '.join(title_tokens).strip() or text\n    if date_val is None:\n        date_val = today\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    try:\n        if cur.execute('SELECT 1 FROM \"calendars\" WHERE \"id\" = ?', [str(kwargs['calendar_id'])]).fetchone() is None:\n            return {'error': 'calendar not found', 'status': 404}\n        try:\n            default_len = int((cur.execute('SELECT \"value\" FROM \"cal_settings\" WHERE \"id\" = ?', ['defaultEventLength']).fetchone() or ['30'])[0])\n        except (ValueError, TypeError):\n            default_len = 30\n        start_dt = datetime.datetime.combine(date_val, time_val or datetime.time(9, 0))\n        end_dt = start_dt + datetime.timedelta(minutes=default_len)\n        start_s = start_dt.strftime('%Y-%m-%dT%H:%M:%SZ')\n        end_s = end_dt.strftime('%Y-%m-%dT%H:%M:%SZ')\n        now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')\n        next_id = max(\n            cur.execute('SELECT COALESCE(MAX(\"id\"), 0) FROM \"agent_events\"').fetchone()[0],\n            cur.execute('SELECT COALESCE(MAX(\"event_id\"), 0) FROM \"cal_event_details\"').fetchone()[0]) + 1\n        cur.execute('INSERT INTO \"agent_events\" (\"id\", \"title\", \"event_date\", \"created_at\") VALUES (?, ?, ?, ?)',\n                    [next_id, title, date_val.strftime('%Y-%m-%d'), now])\n        cur.execute(\n            'INSERT OR REPLACE INTO \"cal_event_details\" (\"event_id\", \"calendar_id\", \"status\", \"start_datetime\", \"end_datetime\", '\n            '\"time_zone\", \"location\", \"description\", \"organizer_email\", \"recurrence\", \"color_id\", \"transparency\", \"visibility\", \"updated\") '\n            'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',\n            [next_id, str(kwargs['calendar_id']), 'confirmed', start_s, end_s, 'America/New_York',\n             None, None, 'contact77709@morganstanleysimulated.com', None, None, 'opaque', 'default', now])\n        conn.commit()\n        return {\n            'kind': 'calendar#event', 'id': next_id, 'status': 'confirmed', 'summary': title,\n            'start': {'date_time': start_s, 'time_zone': 'America/New_York'},\n            'end': {'date_time': end_s, 'time_zone': 'America/New_York'},\n            'organizer': {'email': 'contact77709@morganstanleysimulated.com'},\n            'created': now, 'updated': now,\n        }\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "calendar_events_instances",
+   "description": "Returns instances of the specified recurring event; a non-recurring event yields itself as its single instance. (GET /calendars/{calendarId}/events/{eventId}/instances)",
+   "op": "custom",
+   "type": "read",
+   "table": "agent_events",
+   "extra_tables": [
+    "cal_event_details"
+   ],
+   "params": {
+    "calendar_id": {
+     "type": "string",
+     "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method."
+    },
+    "event_id": {
+     "type": "integer",
+     "description": "Recurring event identifier."
+    },
+    "time_min": {
+     "type": "string",
+     "description": "Lower bound (exclusive) for an event's end time to filter by. Must be an RFC3339 timestamp."
+    },
+    "time_max": {
+     "type": "string",
+     "description": "Upper bound (exclusive) for an event's start time to filter by. Must be an RFC3339 timestamp."
+    },
+    "max_results": {
+     "type": "integer",
+     "description": "Maximum number of events returned on one result page. Default 30."
+    }
+   },
+   "required": [
+    "calendar_id",
+    "event_id"
+   ],
+   "custom_source": "def calendar_events_instances(db_path='state.db', **kwargs):\n    \"\"\"Returns instances of the specified recurring event. (GET /calendars/{calendarId}/events/{eventId}/instances)\"\"\"\n    _missing = [p for p in ['calendar_id', 'event_id'] if kwargs.get(p) is None]\n    if _missing:\n        return {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}\n    import sqlite3, json, datetime, hashlib\n    try:\n        _eid = int(kwargs['event_id'])\n    except (TypeError, ValueError):\n        return {'error': 'invalid event_id: %r' % (kwargs.get('event_id'),), 'status': 400}\n\n    def _ts(v):\n        if v is None:\n            return None\n        s = str(v).strip()\n        if len(s) == 10:\n            s = s + 'T00:00:00+00:00'\n        s = s.replace('Z', '+00:00')\n        try:\n            dt = datetime.datetime.fromisoformat(s)\n        except ValueError:\n            return None\n        if dt.tzinfo is not None:\n            dt = dt.astimezone(datetime.timezone.utc).replace(tzinfo=None)\n        return dt\n\n    def _iso(dt):\n        return dt.strftime('%Y-%m-%dT%H:%M:%SZ')\n\n    def _expand(start_dt, end_dt, rrule, cap=60):\n        rule = {}\n        for part in str(rrule).split(':', 1)[-1].split(';'):\n            if '=' in part:\n                k, v = part.split('=', 1)\n                rule[k.upper()] = v\n        freq = rule.get('FREQ', '').upper()\n        if freq not in ('DAILY', 'WEEKLY', 'MONTHLY'):\n            return [(start_dt, end_dt)]\n        try:\n            interval = max(1, int(rule.get('INTERVAL', 1)))\n        except ValueError:\n            interval = 1\n        count = None\n        if rule.get('COUNT'):\n            try:\n                count = int(rule['COUNT'])\n            except ValueError:\n                count = None\n        until = _ts(rule['UNTIL'][:8] + 'T23:59:59Z') if rule.get('UNTIL') else None\n        dur = end_dt - start_dt\n        out = []\n        i = 0\n        while len(out) < cap:\n            if freq == 'DAILY':\n                s = start_dt + datetime.timedelta(days=i * interval)\n            elif freq == 'WEEKLY':\n                s = start_dt + datetime.timedelta(weeks=i * interval)\n            else:\n                m = start_dt.month - 1 + i * interval\n                y = start_dt.year + m // 12\n                m = m % 12 + 1\n                dim = [31, 29 if (y % 4 == 0 and (y % 100 != 0 or y % 400 == 0)) else 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][m - 1]\n                s = start_dt.replace(year=y, month=m, day=min(start_dt.day, dim))\n            if count is not None and i >= count:\n                break\n            if until is not None and s > until:\n                break\n            out.append((s, s + dur))\n            i += 1\n            if count is None and until is None and i >= cap:\n                break\n        return out\n\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    try:\n        row = cur.execute(\n            'SELECT e.\"id\", e.\"title\", e.\"created_at\", d.* FROM \"agent_events\" e '\n            'JOIN \"cal_event_details\" d ON d.\"event_id\" = e.\"id\" WHERE e.\"id\" = ? AND d.\"calendar_id\" = ?',\n            [_eid, str(kwargs['calendar_id'])]).fetchone()\n        if row is None:\n            return {'error': 'event not found', 'status': 404}\n        s0, e0 = _ts(row['start_datetime']), _ts(row['end_datetime'])\n        occs = _expand(s0, e0, row['recurrence']) if row['recurrence'] else [(s0, e0)]\n        tmin = _ts(kwargs.get('time_min'))\n        tmax = _ts(kwargs.get('time_max'))\n        limit = int(kwargs.get('max_results') or 30)\n        items = []\n        for s, e in occs:\n            if tmin is not None and e <= tmin:\n                continue\n            if tmax is not None and s >= tmax:\n                continue\n            items.append({\n                'kind': 'calendar#event',\n                'id': '%s_%s' % (row['id'], s.strftime('%Y%m%dT%H%M%SZ')),\n                'recurring_event_id': row['id'],\n                'status': row['status'], 'summary': row['title'],\n                'location': row['location'], 'description': row['description'],\n                'organizer': {'email': row['organizer_email']},\n                'start': {'date_time': _iso(s), 'time_zone': row['time_zone']},\n                'end': {'date_time': _iso(e), 'time_zone': row['time_zone']},\n            })\n            if len(items) >= max(1, limit):\n                break\n        return {'kind': 'calendar#events', 'items': items, 'count': len(items)}\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "calendar_freebusy_query",
+   "description": "Returns free/busy information for a set of calendars, computed from their non-transparent, non-cancelled events (recurring events are expanded). (POST /freeBusy)",
+   "op": "custom",
+   "type": "read",
+   "table": "cal_event_details",
+   "extra_tables": [
+    "agent_events",
+    "calendars"
+   ],
+   "params": {
+    "time_min": {
+     "type": "string",
+     "description": "The start of the interval for the query formatted as an RFC3339 timestamp."
+    },
+    "time_max": {
+     "type": "string",
+     "description": "The end of the interval for the query formatted as an RFC3339 timestamp."
+    },
+    "items": {
+     "type": "object",
+     "description": "List of calendars to query, as objects with an 'id' field, e.g. [{\"id\": \"00000000000000000002\"}]. Bare string IDs are also accepted."
+    },
+    "time_zone": {
+     "type": "string",
+     "description": "Time zone used in the response. Optional. The default is UTC; busy blocks are always reported in UTC in this sandbox."
+    }
+   },
+   "required": [
+    "time_min",
+    "time_max",
+    "items"
+   ],
+   "custom_source": "def calendar_freebusy_query(db_path='state.db', **kwargs):\n    \"\"\"Returns free/busy information for a set of calendars. (POST /freeBusy)\"\"\"\n    _missing = [p for p in ['time_min', 'time_max', 'items'] if kwargs.get(p) is None]\n    if _missing:\n        return {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}\n    import sqlite3, json, datetime, hashlib\n\n    def _ts(v):\n        if v is None:\n            return None\n        s = str(v).strip()\n        if len(s) == 10:\n            s = s + 'T00:00:00+00:00'\n        s = s.replace('Z', '+00:00')\n        try:\n            dt = datetime.datetime.fromisoformat(s)\n        except ValueError:\n            return None\n        if dt.tzinfo is not None:\n            dt = dt.astimezone(datetime.timezone.utc).replace(tzinfo=None)\n        return dt\n\n    def _iso(dt):\n        return dt.strftime('%Y-%m-%dT%H:%M:%SZ')\n\n    def _expand(start_dt, end_dt, rrule, cap=60):\n        rule = {}\n        for part in str(rrule).split(':', 1)[-1].split(';'):\n            if '=' in part:\n                k, v = part.split('=', 1)\n                rule[k.upper()] = v\n        freq = rule.get('FREQ', '').upper()\n        if freq not in ('DAILY', 'WEEKLY', 'MONTHLY'):\n            return [(start_dt, end_dt)]\n        try:\n            interval = max(1, int(rule.get('INTERVAL', 1)))\n        except ValueError:\n            interval = 1\n        count = None\n        if rule.get('COUNT'):\n            try:\n                count = int(rule['COUNT'])\n            except ValueError:\n                count = None\n        until = _ts(rule['UNTIL'][:8] + 'T23:59:59Z') if rule.get('UNTIL') else None\n        dur = end_dt - start_dt\n        out = []\n        i = 0\n        while len(out) < cap:\n            if freq == 'DAILY':\n                s = start_dt + datetime.timedelta(days=i * interval)\n            elif freq == 'WEEKLY':\n                s = start_dt + datetime.timedelta(weeks=i * interval)\n            else:\n                m = start_dt.month - 1 + i * interval\n                y = start_dt.year + m // 12\n                m = m % 12 + 1\n                dim = [31, 29 if (y % 4 == 0 and (y % 100 != 0 or y % 400 == 0)) else 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][m - 1]\n                s = start_dt.replace(year=y, month=m, day=min(start_dt.day, dim))\n            if count is not None and i >= count:\n                break\n            if until is not None and s > until:\n                break\n            out.append((s, s + dur))\n            i += 1\n            if count is None and until is None and i >= cap:\n                break\n        return out\n\n    tmin = _ts(kwargs['time_min'])\n    tmax = _ts(kwargs['time_max'])\n    if tmin is None or tmax is None:\n        return {'error': 'time_min and time_max must be RFC3339 timestamps, e.g. 2026-01-19T00:00:00Z', 'status': 400}\n    items = kwargs['items']\n    if isinstance(items, str):\n        try:\n            items = json.loads(items)\n        except ValueError:\n            items = [{'id': items}]\n    if isinstance(items, dict):\n        items = [items]\n    cal_ids = []\n    for it in items or []:\n        if isinstance(it, dict) and it.get('id') is not None:\n            cal_ids.append(str(it['id']))\n        elif isinstance(it, str):\n            cal_ids.append(it)\n    if not cal_ids:\n        return {'error': \"items must be a list of calendar objects with an 'id' field\", 'status': 400}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    try:\n        calendars = {}\n        for cal_id in cal_ids:\n            if cur.execute('SELECT 1 FROM \"calendars\" WHERE \"id\" = ?', [cal_id]).fetchone() is None:\n                calendars[cal_id] = {'errors': [{'domain': 'global', 'reason': 'notFound'}]}\n                continue\n            busy = []\n            rows = cur.execute(\n                'SELECT d.* FROM \"cal_event_details\" d JOIN \"agent_events\" e ON e.\"id\" = d.\"event_id\" '\n                'WHERE d.\"calendar_id\" = ? AND d.\"status\" != ? AND d.\"transparency\" != ?',\n                [cal_id, 'cancelled', 'transparent']).fetchall()\n            for row in rows:\n                s0, e0 = _ts(row['start_datetime']), _ts(row['end_datetime'])\n                if s0 is None or e0 is None:\n                    continue\n                occs = _expand(s0, e0, row['recurrence']) if row['recurrence'] else [(s0, e0)]\n                for s, e in occs:\n                    if e <= tmin or s >= tmax:\n                        continue\n                    busy.append({'start': _iso(s), 'end': _iso(e)})\n            busy.sort(key=lambda b: b['start'])\n            calendars[cal_id] = {'busy': busy}\n        return {'kind': 'calendar#freeBusy', 'time_min': str(kwargs['time_min']),\n                'time_max': str(kwargs['time_max']), 'calendars': calendars}\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "calendar_acl_insert",
+   "description": "Creates an access control rule; the rule is appended to the 'items' collection of the calendar's ACL row, matching how calendar_acl_list reads it. (POST /calendars/{calendarId}/acl)",
+   "op": "custom",
+   "type": "write",
+   "table": "acls",
+   "params": {
+    "calendar_id": {
+     "type": "string",
+     "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method."
+    },
+    "role": {
+     "type": "string",
+     "description": "The role assigned to the scope. Possible values: 'none', 'freeBusyReader', 'reader', 'writer', 'owner'."
+    },
+    "scope": {
+     "type": "object",
+     "description": "The extent to which calendar access is granted by this rule: object with 'type' ('default', 'user', 'group', or 'domain') and 'value' (the email address of a user or group, or the name of a domain; omitted for type 'default')."
+    },
+    "send_notifications": {
+     "type": "boolean",
+     "description": "Whether to send notifications about the calendar sharing change. Optional. The default is True. No mail is delivered in this sandbox."
+    }
+   },
+   "required": [
+    "calendar_id",
+    "role",
+    "scope"
+   ],
+   "custom_source": "def calendar_acl_insert(db_path='state.db', **kwargs):\n    \"\"\"Creates an access control rule on a calendar's ACL collection. (POST /calendars/{calendarId}/acl)\"\"\"\n    _missing = [p for p in ['calendar_id', 'role', 'scope'] if kwargs.get(p) is None]\n    if _missing:\n        return {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}\n    import sqlite3, json, datetime, hashlib\n    _roles = ['none', 'freeBusyReader', 'reader', 'writer', 'owner']\n    if kwargs['role'] not in _roles:\n        return {'error': 'invalid value for role: %r. Accepted: %s' % (kwargs['role'], ', '.join(_roles)),\n                'status': 422, 'parameter': 'role', 'accepted': _roles}\n    scope = kwargs['scope']\n    if isinstance(scope, str):\n        try:\n            scope = json.loads(scope)\n        except ValueError:\n            scope = {'type': 'user', 'value': scope}\n    if not isinstance(scope, dict) or scope.get('type') not in ['default', 'user', 'group', 'domain']:\n        return {'error': \"invalid scope: expected an object with 'type' in default, user, group, domain and (except for 'default') a 'value'\",\n                'status': 422, 'parameter': 'scope', 'accepted_types': ['default', 'user', 'group', 'domain']}\n    if scope.get('type') != 'default' and not scope.get('value'):\n        return {'error': \"scope.value is required for scope type %r\" % (scope.get('type'),), 'status': 422, 'parameter': 'scope'}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    try:\n        row = cur.execute('SELECT * FROM \"acls\" WHERE \"id\" = ?', [str(kwargs['calendar_id'])]).fetchone()\n        if row is None:\n            return {'error': 'calendar acl collection not found', 'status': 404}\n        try:\n            rules = json.loads(row['items']) if row['items'] else []\n        except ValueError:\n            rules = []\n        if not isinstance(rules, list):\n            rules = []\n        rule_id = scope['type'] if scope['type'] == 'default' else '%s:%s' % (scope['type'], scope['value'])\n        etag = hashlib.sha256(('%s|%s|%s' % (kwargs['calendar_id'], rule_id, kwargs['role'])).encode('utf-8')).hexdigest()[:12]\n        rule = {'kind': 'calendar#aclRule', 'id': rule_id, 'etag': etag, 'role': kwargs['role'],\n                'scope': {'type': scope['type'], 'value': scope.get('value')}}\n        rules = [r for r in rules if not (isinstance(r, dict) and r.get('id') == rule_id)]\n        rules.append(rule)\n        cur.execute('UPDATE \"acls\" SET \"items\" = ? WHERE \"id\" = ?', [json.dumps(rules), str(kwargs['calendar_id'])])\n        conn.commit()\n        return rule\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "calendar_acl_delete",
+   "description": "Deletes an access control rule from the 'items' collection of the calendar's ACL row. (DELETE /calendars/{calendarId}/acl/{ruleId})",
+   "op": "custom",
+   "type": "write",
+   "table": "acls",
+   "params": {
+    "calendar_id": {
+     "type": "string",
+     "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method."
+    },
+    "rule_id": {
+     "type": "string",
+     "description": "ACL rule identifier, e.g. 'user:deal.desk@morganstanleysimulated.com'."
+    }
+   },
+   "required": [
+    "calendar_id",
+    "rule_id"
+   ],
+   "custom_source": "def calendar_acl_delete(db_path='state.db', **kwargs):\n    \"\"\"Deletes an access control rule from a calendar's ACL collection. (DELETE /calendars/{calendarId}/acl/{ruleId})\"\"\"\n    _missing = [p for p in ['calendar_id', 'rule_id'] if kwargs.get(p) is None]\n    if _missing:\n        return {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}\n    import sqlite3, json, datetime, hashlib\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    try:\n        row = cur.execute('SELECT * FROM \"acls\" WHERE \"id\" = ?', [str(kwargs['calendar_id'])]).fetchone()\n        if row is None:\n            return {'error': 'calendar acl collection not found', 'status': 404}\n        try:\n            rules = json.loads(row['items']) if row['items'] else []\n        except ValueError:\n            rules = []\n        if not isinstance(rules, list):\n            rules = []\n        kept = [r for r in rules if not (isinstance(r, dict) and r.get('id') == str(kwargs['rule_id']))]\n        if len(kept) == len(rules):\n            return {'error': 'acl rule not found', 'status': 404}\n        cur.execute('UPDATE \"acls\" SET \"items\" = ? WHERE \"id\" = ?', [json.dumps(kept), str(kwargs['calendar_id'])])\n        conn.commit()\n        return {'success': True, 'deleted': str(kwargs['rule_id']), 'calendar_id': str(kwargs['calendar_id'])}\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "calendar_calendars_update",
+   "description": "Updates metadata for a calendar. (PUT /calendars/{calendarId})",
+   "op": "update",
+   "table": "calendars",
+   "id_param": "calendar_id",
+   "id_column": "id",
+   "set_fields": [
+    "summary",
+    "description",
+    "location",
+    "time_zone"
+   ],
+   "params": {
+    "calendar_id": {
+     "type": "string",
+     "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method."
+    },
+    "summary": {
+     "type": "string",
+     "description": "Title of the calendar."
+    },
+    "description": {
+     "type": "string",
+     "description": "Description of the calendar."
+    },
+    "location": {
+     "type": "string",
+     "description": "Geographic location of the calendar as free-form text."
+    },
+    "time_zone": {
+     "type": "string",
+     "description": "The time zone of the calendar, formatted as an IANA Time Zone Database name, e.g. 'Europe/Zurich'."
+    }
+   },
+   "required": [
+    "calendar_id"
+   ]
+  },
+  {
+   "name": "calendar_calendars_delete",
+   "description": "Deletes a secondary calendar. Use calendars.clear for clearing all events on primary calendars. (DELETE /calendars/{calendarId})",
+   "op": "delete",
+   "table": "calendars",
+   "id_param": "calendar_id",
+   "id_column": "id",
+   "params": {
+    "calendar_id": {
+     "type": "string",
+     "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method."
+    }
+   },
+   "required": [
+    "calendar_id"
+   ]
+  },
+  {
+   "name": "calendar_colors_get",
+   "description": "Returns the color definitions for calendars and events. (GET /colors)",
+   "op": "list",
+   "table": "colors",
+   "params": {}
+  },
+  {
+   "name": "calendar_settings_list",
+   "description": "Returns all user settings for the authenticated user. (GET /users/me/settings)",
+   "op": "list",
+   "table": "cal_settings",
+   "params": {}
+  }
+ ]
+}

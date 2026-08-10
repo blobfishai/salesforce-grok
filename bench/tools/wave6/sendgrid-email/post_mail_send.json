@@ -1,0 +1,55 @@
+{
+ "name": "post_mail_send",
+ "mcp_name": "email.post_mail_send",
+ "asset_namespace": "email",
+ "description": "Send an email over SendGrid's Web API. Logs the outbound message, resolves subject/body from the active template version when template_id is given, and drops (does not deliver) mail to globally suppressed recipients. (POST /v3/mail/send)",
+ "type": "write",
+ "target_tables": [
+  "sg_mail_sends",
+  "sg_templates",
+  "sg_template_versions",
+  "sg_global_suppressions"
+ ],
+ "parameters": {
+  "to": "string",
+  "from": "string",
+  "subject": "string",
+  "body": "string",
+  "template_id": "string",
+  "categories": "json"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "to": {
+    "type": "string",
+    "description": "The intended recipient's email address."
+   },
+   "from": {
+    "type": "string",
+    "description": "The 'from' email address used to deliver the message. This address should be a verified sender in your account."
+   },
+   "subject": {
+    "type": "string",
+    "description": "The global or 'message level' subject of your email. Required unless a template with a subject defined is used."
+   },
+   "body": {
+    "type": "string",
+    "description": "The content of your email. When template_id is set and body is omitted, the active template version's html_content is used."
+   },
+   "template_id": {
+    "type": "string",
+    "description": "An email template ID. A template that contains a subject and content - either text or html - will override any subject and content values specified at the message level."
+   },
+   "categories": {
+    "type": "object",
+    "description": "An array of category names for this message. Each category name may not exceed 255 characters. A comma-separated string is also accepted."
+   }
+  },
+  "required": [
+   "to",
+   "from"
+  ],
+  "additionalProperties": false
+ }
+}

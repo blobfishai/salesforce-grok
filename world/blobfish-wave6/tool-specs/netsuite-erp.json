@@ -1,0 +1,1909 @@
+{
+ "vendor": "netsuite-erp",
+ "namespace": "erp",
+ "tables": [
+  {
+   "name": "erp_sales_orders",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "entity",
+     "type": "TEXT"
+    },
+    {
+     "name": "entity_name",
+     "type": "TEXT"
+    },
+    {
+     "name": "trandate",
+     "type": "TEXT"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "memo",
+     "type": "TEXT"
+    },
+    {
+     "name": "subsidiary",
+     "type": "TEXT"
+    },
+    {
+     "name": "currency",
+     "type": "TEXT"
+    },
+    {
+     "name": "total",
+     "type": "REAL"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "SO-2026-0101",
+     "entity": "customer_002",
+     "entity_name": "Summit Group Account",
+     "trandate": "2026-01-05",
+     "status": "billed",
+     "memo": "Atlas Platform enterprise license renewal + premium support",
+     "subsidiary": "3",
+     "currency": "gbp",
+     "total": 142000.0,
+     "created_at": "2026-01-05T09:12:00Z"
+    },
+    {
+     "id": "SO-2026-0102",
+     "entity": "customer_006",
+     "entity_name": "Riverside Group Account",
+     "trandate": "2026-01-06",
+     "status": "pendingFulfillment",
+     "memo": "Market Data Feed L2 rollout - 2 trading desks",
+     "subsidiary": "4",
+     "currency": "eur",
+     "total": 84000.0,
+     "created_at": "2026-01-06T10:04:00Z"
+    },
+    {
+     "id": "SO-2026-0103",
+     "entity": "customer_001",
+     "entity_name": "Meridian",
+     "trandate": "2026-01-06",
+     "status": "pendingApproval",
+     "memo": "Professional licenses x3 + standard onboarding (new logo)",
+     "subsidiary": "4",
+     "currency": "eur",
+     "total": 190000.0,
+     "created_at": "2026-01-06T15:41:00Z"
+    },
+    {
+     "id": "SO-2026-0104",
+     "entity": "customer_005",
+     "entity_name": "Ironwood",
+     "trandate": "2026-01-07",
+     "status": "pendingFulfillment",
+     "memo": "DFA-100 edge appliances x4 + risk analytics feed",
+     "subsidiary": "3",
+     "currency": "gbp",
+     "total": 68000.0,
+     "created_at": "2026-01-07T08:27:00Z"
+    },
+    {
+     "id": "SO-2026-0105",
+     "entity": "customer_007",
+     "entity_name": "Harborview",
+     "trandate": "2026-01-05",
+     "status": "billed",
+     "memo": "Enterprise onboarding + 4 training days",
+     "subsidiary": "4",
+     "currency": "eur",
+     "total": 99000.0,
+     "created_at": "2026-01-05T13:55:00Z"
+    },
+    {
+     "id": "SO-2026-0106",
+     "entity": "customer_004",
+     "entity_name": "Atlas",
+     "trandate": "2026-01-07",
+     "status": "pendingApproval",
+     "memo": "Atlas Platform enterprise license - win-back opportunity",
+     "subsidiary": "1",
+     "currency": "usd",
+     "total": 150000.0,
+     "created_at": "2026-01-07T17:30:00Z"
+    },
+    {
+     "id": "SO-2026-0107",
+     "entity": "customer_003",
+     "entity_name": "Crestline",
+     "trandate": "2026-01-07",
+     "status": "cancelled",
+     "memo": "Entered in error - superseded by revised quote",
+     "subsidiary": "3",
+     "currency": "gbp",
+     "total": 118000.0,
+     "created_at": "2026-01-07T18:02:00Z"
+    },
+    {
+     "id": "SO-2026-0108",
+     "entity": "customer_002",
+     "entity_name": "Summit Group Account",
+     "trandate": "2026-01-08",
+     "status": "pendingFulfillment",
+     "memo": "DFA-200 HA pair for DR site",
+     "subsidiary": "3",
+     "currency": "gbp",
+     "total": 18800.0,
+     "created_at": "2026-01-08T09:44:00Z"
+    },
+    {
+     "id": "SO-2026-0109",
+     "entity": "customer_006",
+     "entity_name": "Riverside Group Account",
+     "trandate": "2026-01-08",
+     "status": "pendingApproval",
+     "memo": "Training workshops x6 - Q1 enablement",
+     "subsidiary": "4",
+     "currency": "eur",
+     "total": 21000.0,
+     "created_at": "2026-01-08T11:19:00Z"
+    },
+    {
+     "id": "SO-2026-0110",
+     "entity": "customer_007",
+     "entity_name": "Harborview",
+     "trandate": "2026-01-08",
+     "status": "billed",
+     "memo": "Market Data Feed L1 - annual subscription",
+     "subsidiary": "4",
+     "currency": "eur",
+     "total": 18000.0,
+     "created_at": "2026-01-08T14:06:00Z"
+    }
+   ]
+  },
+  {
+   "name": "erp_invoices",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "created_from",
+     "type": "TEXT"
+    },
+    {
+     "name": "entity",
+     "type": "TEXT"
+    },
+    {
+     "name": "entity_name",
+     "type": "TEXT"
+    },
+    {
+     "name": "trandate",
+     "type": "TEXT"
+    },
+    {
+     "name": "due_date",
+     "type": "TEXT"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "memo",
+     "type": "TEXT"
+    },
+    {
+     "name": "subsidiary",
+     "type": "TEXT"
+    },
+    {
+     "name": "currency",
+     "type": "TEXT"
+    },
+    {
+     "name": "subtotal",
+     "type": "REAL"
+    },
+    {
+     "name": "tax_total",
+     "type": "REAL"
+    },
+    {
+     "name": "total",
+     "type": "REAL"
+    },
+    {
+     "name": "amount_remaining",
+     "type": "REAL"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "INV-1001",
+     "created_from": "SO-2026-0101",
+     "entity": "customer_002",
+     "entity_name": "Summit Group Account",
+     "trandate": "2026-01-05",
+     "due_date": "2026-02-04",
+     "status": "paid",
+     "memo": "Billed from SO-2026-0101 (license renewal + support)",
+     "subsidiary": "3",
+     "currency": "gbp",
+     "subtotal": 142000.0,
+     "tax_total": 28400.0,
+     "total": 170400.0,
+     "amount_remaining": 0.0,
+     "created_at": "2026-01-05T16:20:00Z"
+    },
+    {
+     "id": "INV-1002",
+     "created_from": "SO-2026-0105",
+     "entity": "customer_007",
+     "entity_name": "Harborview",
+     "trandate": "2026-01-06",
+     "due_date": "2026-02-05",
+     "status": "open",
+     "memo": "Billed from SO-2026-0105 (enterprise onboarding + training)",
+     "subsidiary": "4",
+     "currency": "eur",
+     "subtotal": 99000.0,
+     "tax_total": 18810.0,
+     "total": 117810.0,
+     "amount_remaining": 57810.0,
+     "created_at": "2026-01-06T09:31:00Z"
+    },
+    {
+     "id": "INV-1003",
+     "created_from": "SO-2026-0110",
+     "entity": "customer_007",
+     "entity_name": "Harborview",
+     "trandate": "2026-01-08",
+     "due_date": "2026-02-07",
+     "status": "open",
+     "memo": "Billed from SO-2026-0110 (Market Data Feed L1)",
+     "subsidiary": "4",
+     "currency": "eur",
+     "subtotal": 18000.0,
+     "tax_total": 3420.0,
+     "total": 21420.0,
+     "amount_remaining": 21420.0,
+     "created_at": "2026-01-08T15:12:00Z"
+    },
+    {
+     "id": "INV-1004",
+     "created_from": "",
+     "entity": "customer_004",
+     "entity_name": "Atlas",
+     "trandate": "2026-01-06",
+     "due_date": "2026-02-05",
+     "status": "open",
+     "memo": "Premium support add-on renewal FY2026",
+     "subsidiary": "1",
+     "currency": "usd",
+     "subtotal": 30000.0,
+     "tax_total": 0.0,
+     "total": 30000.0,
+     "amount_remaining": 30000.0,
+     "created_at": "2026-01-06T18:47:00Z"
+    },
+    {
+     "id": "INV-1005",
+     "created_from": "",
+     "entity": "customer_006",
+     "entity_name": "Riverside Group Account",
+     "trandate": "2026-01-05",
+     "due_date": "2026-01-19",
+     "status": "paid",
+     "memo": "Training workshops pilot - 2 days",
+     "subsidiary": "4",
+     "currency": "eur",
+     "subtotal": 7000.0,
+     "tax_total": 1330.0,
+     "total": 8330.0,
+     "amount_remaining": 0.0,
+     "created_at": "2026-01-05T11:58:00Z"
+    },
+    {
+     "id": "INV-1006",
+     "created_from": "",
+     "entity": "customer_003",
+     "entity_name": "Crestline",
+     "trandate": "2025-12-15",
+     "due_date": "2026-01-14",
+     "status": "open",
+     "memo": "Q4 FY2025 data feed true-up - account on credit hold, dunning level 2",
+     "subsidiary": "3",
+     "currency": "gbp",
+     "subtotal": 5250.0,
+     "tax_total": 1050.0,
+     "total": 6300.0,
+     "amount_remaining": 6300.0,
+     "created_at": "2025-12-15T10:05:00Z"
+    },
+    {
+     "id": "INV-1007",
+     "created_from": "",
+     "entity": "customer_006",
+     "entity_name": "Riverside Group Account",
+     "trandate": "2026-01-07",
+     "due_date": "2026-02-06",
+     "status": "open",
+     "memo": "Market data feed overage - December usage",
+     "subsidiary": "4",
+     "currency": "eur",
+     "subtotal": 12600.0,
+     "tax_total": 2394.0,
+     "total": 14994.0,
+     "amount_remaining": 14994.0,
+     "created_at": "2026-01-07T13:22:00Z"
+    },
+    {
+     "id": "INV-1008",
+     "created_from": "",
+     "entity": "customer_002",
+     "entity_name": "Summit Group Account",
+     "trandate": "2026-01-07",
+     "due_date": "2026-02-06",
+     "status": "paid",
+     "memo": "Onboarding milestone 1 of 3",
+     "subsidiary": "3",
+     "currency": "gbp",
+     "subtotal": 25000.0,
+     "tax_total": 5000.0,
+     "total": 30000.0,
+     "amount_remaining": 0.0,
+     "created_at": "2026-01-07T09:50:00Z"
+    }
+   ]
+  },
+  {
+   "name": "erp_items",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "display_name",
+     "type": "TEXT"
+    },
+    {
+     "name": "type",
+     "type": "TEXT"
+    },
+    {
+     "name": "base_price",
+     "type": "REAL"
+    },
+    {
+     "name": "currency",
+     "type": "TEXT"
+    },
+    {
+     "name": "income_account",
+     "type": "TEXT"
+    },
+    {
+     "name": "is_inactive",
+     "type": "INTEGER"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "LIC-PLAT-ENT",
+     "display_name": "Atlas Platform - Enterprise License (Annual)",
+     "type": "nonInventoryItem",
+     "base_price": 150000.0,
+     "currency": "usd",
+     "income_account": "4010 License Revenue",
+     "is_inactive": 0,
+     "created_at": "2026-01-05T08:00:00Z"
+    },
+    {
+     "id": "LIC-PLAT-PRO",
+     "display_name": "Atlas Platform - Professional License (Annual)",
+     "type": "nonInventoryItem",
+     "base_price": 60000.0,
+     "currency": "usd",
+     "income_account": "4010 License Revenue",
+     "is_inactive": 0,
+     "created_at": "2026-01-05T08:00:00Z"
+    },
+    {
+     "id": "LIC-PLAT-TEAM",
+     "display_name": "Atlas Platform - Team License (Annual, retired FY2026)",
+     "type": "nonInventoryItem",
+     "base_price": 24000.0,
+     "currency": "usd",
+     "income_account": "4010 License Revenue",
+     "is_inactive": 1,
+     "created_at": "2026-01-05T08:00:00Z"
+    },
+    {
+     "id": "FEED-MKT-L1",
+     "display_name": "Market Data Feed - Level 1",
+     "type": "nonInventoryItem",
+     "base_price": 18000.0,
+     "currency": "usd",
+     "income_account": "4020 Data Feed Revenue",
+     "is_inactive": 0,
+     "created_at": "2026-01-05T08:00:00Z"
+    },
+    {
+     "id": "FEED-MKT-L2",
+     "display_name": "Market Data Feed - Level 2 (Depth of Book)",
+     "type": "nonInventoryItem",
+     "base_price": 42000.0,
+     "currency": "usd",
+     "income_account": "4020 Data Feed Revenue",
+     "is_inactive": 0,
+     "created_at": "2026-01-05T08:00:00Z"
+    },
+    {
+     "id": "FEED-RISK",
+     "display_name": "Risk Analytics Data Feed",
+     "type": "nonInventoryItem",
+     "base_price": 36000.0,
+     "currency": "usd",
+     "income_account": "4020 Data Feed Revenue",
+     "is_inactive": 0,
+     "created_at": "2026-01-05T08:00:00Z"
+    },
+    {
+     "id": "SVC-ONBOARD-STD",
+     "display_name": "Onboarding - Standard Implementation",
+     "type": "serviceItem",
+     "base_price": 25000.0,
+     "currency": "usd",
+     "income_account": "4030 Services Revenue",
+     "is_inactive": 0,
+     "created_at": "2026-01-05T08:00:00Z"
+    },
+    {
+     "id": "SVC-ONBOARD-ENT",
+     "display_name": "Onboarding - Enterprise Implementation",
+     "type": "serviceItem",
+     "base_price": 85000.0,
+     "currency": "usd",
+     "income_account": "4030 Services Revenue",
+     "is_inactive": 0,
+     "created_at": "2026-01-05T08:00:00Z"
+    },
+    {
+     "id": "SVC-TRAINING",
+     "display_name": "Training Workshop (per day)",
+     "type": "serviceItem",
+     "base_price": 3500.0,
+     "currency": "usd",
+     "income_account": "4030 Services Revenue",
+     "is_inactive": 0,
+     "created_at": "2026-01-05T08:00:00Z"
+    },
+    {
+     "id": "SUP-PREMIUM",
+     "display_name": "Premium Support Add-on (Annual)",
+     "type": "serviceItem",
+     "base_price": 30000.0,
+     "currency": "usd",
+     "income_account": "4040 Support Revenue",
+     "is_inactive": 0,
+     "created_at": "2026-01-05T08:00:00Z"
+    },
+    {
+     "id": "HW-DFA-100",
+     "display_name": "DFA-100 Data Feed Edge Appliance",
+     "type": "inventoryItem",
+     "base_price": 12500.0,
+     "currency": "usd",
+     "income_account": "4050 Hardware Revenue",
+     "is_inactive": 0,
+     "created_at": "2026-01-05T08:00:00Z"
+    },
+    {
+     "id": "HW-DFA-200",
+     "display_name": "DFA-200 Data Feed Edge Appliance (HA pair)",
+     "type": "inventoryItem",
+     "base_price": 23800.0,
+     "currency": "usd",
+     "income_account": "4050 Hardware Revenue",
+     "is_inactive": 0,
+     "created_at": "2026-01-05T08:00:00Z"
+    }
+   ]
+  },
+  {
+   "name": "erp_inventory_levels",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "item",
+     "type": "TEXT"
+    },
+    {
+     "name": "location",
+     "type": "TEXT"
+    },
+    {
+     "name": "quantity_on_hand",
+     "type": "INTEGER"
+    },
+    {
+     "name": "quantity_committed",
+     "type": "INTEGER"
+    },
+    {
+     "name": "quantity_available",
+     "type": "INTEGER"
+    },
+    {
+     "name": "reorder_point",
+     "type": "INTEGER"
+    },
+    {
+     "name": "last_counted_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "INVLVL-001",
+     "item": "HW-DFA-100",
+     "location": "Newark DC",
+     "quantity_on_hand": 42,
+     "quantity_committed": 6,
+     "quantity_available": 36,
+     "reorder_point": 15,
+     "last_counted_at": "2026-01-05T07:30:00Z"
+    },
+    {
+     "id": "INVLVL-002",
+     "item": "HW-DFA-100",
+     "location": "London DC",
+     "quantity_on_hand": 18,
+     "quantity_committed": 2,
+     "quantity_available": 16,
+     "reorder_point": 8,
+     "last_counted_at": "2026-01-05T07:30:00Z"
+    },
+    {
+     "id": "INVLVL-003",
+     "item": "HW-DFA-100",
+     "location": "Frankfurt DC",
+     "quantity_on_hand": 9,
+     "quantity_committed": 0,
+     "quantity_available": 9,
+     "reorder_point": 6,
+     "last_counted_at": "2026-01-06T07:30:00Z"
+    },
+    {
+     "id": "INVLVL-004",
+     "item": "HW-DFA-200",
+     "location": "Newark DC",
+     "quantity_on_hand": 12,
+     "quantity_committed": 3,
+     "quantity_available": 9,
+     "reorder_point": 5,
+     "last_counted_at": "2026-01-06T07:30:00Z"
+    },
+    {
+     "id": "INVLVL-005",
+     "item": "HW-DFA-200",
+     "location": "London DC",
+     "quantity_on_hand": 7,
+     "quantity_committed": 1,
+     "quantity_available": 6,
+     "reorder_point": 4,
+     "last_counted_at": "2026-01-07T07:30:00Z"
+    },
+    {
+     "id": "INVLVL-006",
+     "item": "HW-DFA-200",
+     "location": "Frankfurt DC",
+     "quantity_on_hand": 4,
+     "quantity_committed": 2,
+     "quantity_available": 2,
+     "reorder_point": 3,
+     "last_counted_at": "2026-01-07T07:30:00Z"
+    }
+   ]
+  },
+  {
+   "name": "erp_vendor_bills",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "entity",
+     "type": "TEXT"
+    },
+    {
+     "name": "entity_name",
+     "type": "TEXT"
+    },
+    {
+     "name": "trandate",
+     "type": "TEXT"
+    },
+    {
+     "name": "due_date",
+     "type": "TEXT"
+    },
+    {
+     "name": "approval_status",
+     "type": "TEXT"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "memo",
+     "type": "TEXT"
+    },
+    {
+     "name": "subsidiary",
+     "type": "TEXT"
+    },
+    {
+     "name": "currency",
+     "type": "TEXT"
+    },
+    {
+     "name": "amount",
+     "type": "REAL"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "BILL-3001",
+     "entity": "vendor_002",
+     "entity_name": "Riverside Group Vendor",
+     "trandate": "2026-01-05",
+     "due_date": "2026-02-04",
+     "approval_status": "approved",
+     "status": "paid",
+     "memo": "Market data sourcing - January",
+     "subsidiary": "3",
+     "currency": "gbp",
+     "amount": 4200.0,
+     "created_at": "2026-01-05T12:10:00Z"
+    },
+    {
+     "id": "BILL-3002",
+     "entity": "vendor_005",
+     "entity_name": "Ironwood Systems Vendor",
+     "trandate": "2026-01-06",
+     "due_date": "2026-02-05",
+     "approval_status": "pendingApproval",
+     "status": "open",
+     "memo": "Colocation Q1 FY2026",
+     "subsidiary": "4",
+     "currency": "eur",
+     "amount": 15750.0,
+     "created_at": "2026-01-06T08:45:00Z"
+    },
+    {
+     "id": "BILL-3003",
+     "entity": "vendor_001",
+     "entity_name": "Lakeshore Operations Vendor",
+     "trandate": "2026-01-06",
+     "due_date": "2026-02-05",
+     "approval_status": "pendingApproval",
+     "status": "open",
+     "memo": "Facilities maintenance retainer",
+     "subsidiary": "1",
+     "currency": "usd",
+     "amount": 8900.0,
+     "created_at": "2026-01-06T14:33:00Z"
+    },
+    {
+     "id": "BILL-3004",
+     "entity": "vendor_004",
+     "entity_name": "Fairview Holdings Vendor",
+     "trandate": "2026-01-07",
+     "due_date": "2026-02-06",
+     "approval_status": "approved",
+     "status": "open",
+     "memo": "Translation and localization services",
+     "subsidiary": "4",
+     "currency": "eur",
+     "amount": 2300.0,
+     "created_at": "2026-01-07T10:02:00Z"
+    },
+    {
+     "id": "BILL-3005",
+     "entity": "vendor_003",
+     "entity_name": "Lakeshore Services Vendor",
+     "trandate": "2026-01-07",
+     "due_date": "2026-02-06",
+     "approval_status": "rejected",
+     "status": "open",
+     "memo": "Rejected: missing PO reference - resubmit with purchase_order id",
+     "subsidiary": "1",
+     "currency": "usd",
+     "amount": 12000.0,
+     "created_at": "2026-01-07T15:27:00Z"
+    },
+    {
+     "id": "BILL-3006",
+     "entity": "vendor_012",
+     "entity_name": "Fairview Systems Vendor",
+     "trandate": "2026-01-07",
+     "due_date": "2026-02-06",
+     "approval_status": "pendingApproval",
+     "status": "open",
+     "memo": "Three-way match: purchase_order_004 received 2026-01-07",
+     "subsidiary": "3",
+     "currency": "gbp",
+     "amount": 40.02,
+     "created_at": "2026-01-07T16:40:00Z"
+    },
+    {
+     "id": "BILL-3007",
+     "entity": "vendor_006",
+     "entity_name": "Lakeshore Operations Vendor",
+     "trandate": "2026-01-08",
+     "due_date": "2026-02-07",
+     "approval_status": "pendingApproval",
+     "status": "open",
+     "memo": "Contract staffing - January",
+     "subsidiary": "3",
+     "currency": "gbp",
+     "amount": 6400.0,
+     "created_at": "2026-01-08T09:05:00Z"
+    },
+    {
+     "id": "BILL-3008",
+     "entity": "vendor_010",
+     "entity_name": "Northgate Services Vendor",
+     "trandate": "2026-01-08",
+     "due_date": "2026-02-07",
+     "approval_status": "approved",
+     "status": "paid",
+     "memo": "Network circuits - January",
+     "subsidiary": "1",
+     "currency": "usd",
+     "amount": 3150.0,
+     "created_at": "2026-01-08T11:52:00Z"
+    }
+   ]
+  },
+  {
+   "name": "erp_customer_payments",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "entity",
+     "type": "TEXT"
+    },
+    {
+     "name": "applied_to",
+     "type": "TEXT"
+    },
+    {
+     "name": "trandate",
+     "type": "TEXT"
+    },
+    {
+     "name": "payment_method",
+     "type": "TEXT"
+    },
+    {
+     "name": "memo",
+     "type": "TEXT"
+    },
+    {
+     "name": "currency",
+     "type": "TEXT"
+    },
+    {
+     "name": "payment_amount",
+     "type": "REAL"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "PMT-4001",
+     "entity": "customer_002",
+     "applied_to": "INV-1001",
+     "trandate": "2026-01-06",
+     "payment_method": "wire",
+     "memo": "Full payment INV-1001",
+     "currency": "gbp",
+     "payment_amount": 170400.0,
+     "status": "deposited",
+     "created_at": "2026-01-06T10:18:00Z"
+    },
+    {
+     "id": "PMT-4002",
+     "entity": "customer_007",
+     "applied_to": "INV-1002",
+     "trandate": "2026-01-07",
+     "payment_method": "wire",
+     "memo": "Partial payment per milestone schedule",
+     "currency": "eur",
+     "payment_amount": 60000.0,
+     "status": "deposited",
+     "created_at": "2026-01-07T09:02:00Z"
+    },
+    {
+     "id": "PMT-4003",
+     "entity": "customer_006",
+     "applied_to": "INV-1005",
+     "trandate": "2026-01-06",
+     "payment_method": "ach",
+     "memo": "Training pilot paid in full",
+     "currency": "eur",
+     "payment_amount": 8330.0,
+     "status": "deposited",
+     "created_at": "2026-01-06T16:44:00Z"
+    },
+    {
+     "id": "PMT-4004",
+     "entity": "customer_002",
+     "applied_to": "INV-1008",
+     "trandate": "2026-01-08",
+     "payment_method": "wire",
+     "memo": "Onboarding milestone 1",
+     "currency": "gbp",
+     "payment_amount": 30000.0,
+     "status": "deposited",
+     "created_at": "2026-01-08T08:20:00Z"
+    },
+    {
+     "id": "PMT-4005",
+     "entity": "customer_006",
+     "applied_to": "",
+     "trandate": "2026-01-08",
+     "payment_method": "wire",
+     "memo": "Unapplied - remittance advice missing, hold for reconciliation",
+     "currency": "eur",
+     "payment_amount": 5000.0,
+     "status": "undeposited",
+     "created_at": "2026-01-08T12:31:00Z"
+    },
+    {
+     "id": "PMT-4006",
+     "entity": "customer_004",
+     "applied_to": "",
+     "trandate": "2026-01-08",
+     "payment_method": "check",
+     "memo": "Check received - pending application to INV-1004",
+     "currency": "usd",
+     "payment_amount": 15000.0,
+     "status": "undeposited",
+     "created_at": "2026-01-08T17:09:00Z"
+    }
+   ]
+  },
+  {
+   "name": "erp_credit_memos",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "entity",
+     "type": "TEXT"
+    },
+    {
+     "name": "entity_name",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_from",
+     "type": "TEXT"
+    },
+    {
+     "name": "trandate",
+     "type": "TEXT"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "memo",
+     "type": "TEXT"
+    },
+    {
+     "name": "currency",
+     "type": "TEXT"
+    },
+    {
+     "name": "total",
+     "type": "REAL"
+    },
+    {
+     "name": "amount_remaining",
+     "type": "REAL"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "CM-7001",
+     "entity": "customer_007",
+     "entity_name": "Harborview",
+     "created_from": "INV-1002",
+     "trandate": "2026-01-07",
+     "status": "open",
+     "memo": "SLA credit - onboarding delay",
+     "currency": "eur",
+     "total": 5000.0,
+     "amount_remaining": 5000.0,
+     "created_at": "2026-01-07T14:15:00Z"
+    },
+    {
+     "id": "CM-7002",
+     "entity": "customer_002",
+     "entity_name": "Summit Group Account",
+     "created_from": "",
+     "trandate": "2026-01-05",
+     "status": "fullyApplied",
+     "memo": "Q4 FY2025 service credit",
+     "currency": "gbp",
+     "total": 2500.0,
+     "amount_remaining": 0.0,
+     "created_at": "2026-01-05T15:40:00Z"
+    },
+    {
+     "id": "CM-7003",
+     "entity": "customer_006",
+     "entity_name": "Riverside Group Account",
+     "created_from": "INV-1007",
+     "trandate": "2026-01-08",
+     "status": "open",
+     "memo": "Feed outage credit - 2026-01-03 incident",
+     "currency": "eur",
+     "total": 1200.0,
+     "amount_remaining": 1200.0,
+     "created_at": "2026-01-08T10:26:00Z"
+    },
+    {
+     "id": "CM-7004",
+     "entity": "customer_003",
+     "entity_name": "Crestline",
+     "created_from": "INV-1006",
+     "trandate": "2026-01-08",
+     "status": "open",
+     "memo": "Goodwill credit pending credit-hold review",
+     "currency": "gbp",
+     "total": 400.0,
+     "amount_remaining": 400.0,
+     "created_at": "2026-01-08T13:03:00Z"
+    },
+    {
+     "id": "CM-7005",
+     "entity": "customer_001",
+     "entity_name": "Meridian",
+     "created_from": "",
+     "trandate": "2026-01-06",
+     "status": "fullyApplied",
+     "memo": "Pilot discount applied at billing",
+     "currency": "eur",
+     "total": 1000.0,
+     "amount_remaining": 0.0,
+     "created_at": "2026-01-06T11:11:00Z"
+    },
+    {
+     "id": "CM-7006",
+     "entity": "customer_004",
+     "entity_name": "Atlas",
+     "created_from": "",
+     "trandate": "2026-01-07",
+     "status": "open",
+     "memo": "Support downtime credit",
+     "currency": "usd",
+     "total": 750.0,
+     "amount_remaining": 750.0,
+     "created_at": "2026-01-07T19:38:00Z"
+    }
+   ]
+  },
+  {
+   "name": "erp_currencies",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "symbol",
+     "type": "TEXT"
+    },
+    {
+     "name": "display_symbol",
+     "type": "TEXT"
+    },
+    {
+     "name": "exchange_rate",
+     "type": "REAL"
+    },
+    {
+     "name": "is_base",
+     "type": "INTEGER"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "usd",
+     "name": "US Dollar",
+     "symbol": "USD",
+     "display_symbol": "$",
+     "exchange_rate": 1.0,
+     "is_base": 1
+    },
+    {
+     "id": "eur",
+     "name": "Euro",
+     "symbol": "EUR",
+     "display_symbol": "€",
+     "exchange_rate": 1.08,
+     "is_base": 0
+    },
+    {
+     "id": "gbp",
+     "name": "British Pound",
+     "symbol": "GBP",
+     "display_symbol": "£",
+     "exchange_rate": 1.27,
+     "is_base": 0
+    },
+    {
+     "id": "jpy",
+     "name": "Japanese Yen",
+     "symbol": "JPY",
+     "display_symbol": "¥",
+     "exchange_rate": 0.0067,
+     "is_base": 0
+    },
+    {
+     "id": "chf",
+     "name": "Swiss Franc",
+     "symbol": "CHF",
+     "display_symbol": "CHF",
+     "exchange_rate": 1.11,
+     "is_base": 0
+    },
+    {
+     "id": "cad",
+     "name": "Canadian Dollar",
+     "symbol": "CAD",
+     "display_symbol": "C$",
+     "exchange_rate": 0.73,
+     "is_base": 0
+    }
+   ]
+  },
+  {
+   "name": "erp_subsidiaries",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "country",
+     "type": "TEXT"
+    },
+    {
+     "name": "currency",
+     "type": "TEXT"
+    },
+    {
+     "name": "parent",
+     "type": "TEXT"
+    },
+    {
+     "name": "is_elimination",
+     "type": "INTEGER"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "1",
+     "name": "Morgan Stanley (SIMULATED) Holdings Inc.",
+     "country": "US",
+     "currency": "usd",
+     "parent": "",
+     "is_elimination": 0
+    },
+    {
+     "id": "2",
+     "name": "Morgan Stanley (SIMULATED) Wealth Management LLC",
+     "country": "US",
+     "currency": "usd",
+     "parent": "1",
+     "is_elimination": 0
+    },
+    {
+     "id": "3",
+     "name": "Morgan Stanley (SIMULATED) International Ltd",
+     "country": "GB",
+     "currency": "gbp",
+     "parent": "1",
+     "is_elimination": 0
+    },
+    {
+     "id": "4",
+     "name": "Morgan Stanley (SIMULATED) Europe GmbH",
+     "country": "DE",
+     "currency": "eur",
+     "parent": "1",
+     "is_elimination": 0
+    },
+    {
+     "id": "5",
+     "name": "Morgan Stanley (SIMULATED) Ireland Ltd",
+     "country": "IE",
+     "currency": "eur",
+     "parent": "4",
+     "is_elimination": 0
+    },
+    {
+     "id": "6",
+     "name": "Elimination Subsidiary (Consolidation)",
+     "country": "US",
+     "currency": "usd",
+     "parent": "1",
+     "is_elimination": 1
+    }
+   ]
+  }
+ ],
+ "tools": [
+  {
+   "name": "erp_sales_orders_list",
+   "description": "List sales order transactions, optionally filtered by status or customer entity (GET /services/rest/record/v1/salesOrder)",
+   "op": "list",
+   "table": "erp_sales_orders",
+   "params": {
+    "status": {
+     "type": "string",
+     "description": "Order status filter: pendingApproval, pendingFulfillment, billed or cancelled."
+    },
+    "entity": {
+     "type": "string",
+     "description": "Customer (entity) internal id the order is billed to, e.g. customer_006."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return (default 30)."
+    }
+   },
+   "filters": [
+    "status",
+    "entity"
+   ]
+  },
+  {
+   "name": "erp_sales_order_get",
+   "description": "Retrieve a single sales order by its tranId-style internal identifier (GET /services/rest/record/v1/salesOrder/{id})",
+   "op": "get",
+   "table": "erp_sales_orders",
+   "params": {
+    "id": {
+     "type": "string",
+     "description": "Sales order document number (tranId), e.g. SO-2026-0104."
+    }
+   },
+   "required": [
+    "id"
+   ],
+   "id_param": "id"
+  },
+  {
+   "name": "erp_sales_order_create",
+   "description": "Create a sales order for a customer; new orders start in pendingApproval (POST /services/rest/record/v1/salesOrder)",
+   "op": "create",
+   "table": "erp_sales_orders",
+   "params": {
+    "entity": {
+     "type": "string",
+     "description": "Customer (entity) internal id the order is billed to, e.g. customer_002."
+    },
+    "entity_name": {
+     "type": "string",
+     "description": "Display name of the customer account, e.g. 'Summit Group Account'."
+    },
+    "trandate": {
+     "type": "string",
+     "description": "Transaction date (trandate), YYYY-MM-DD."
+    },
+    "memo": {
+     "type": "string",
+     "description": "Memo visible on the transaction (memo)."
+    },
+    "subsidiary": {
+     "type": "string",
+     "description": "Subsidiary internal id the transaction posts to (subsidiary, e.g. '3')."
+    },
+    "currency": {
+     "type": "string",
+     "description": "Transaction currency internal id (currency): usd, eur or gbp."
+    },
+    "total": {
+     "type": "number",
+     "description": "Order total in the transaction currency (total)."
+    }
+   },
+   "required": [
+    "entity",
+    "total"
+   ],
+   "fields": [
+    "entity",
+    "entity_name",
+    "trandate",
+    "memo",
+    "subsidiary",
+    "currency",
+    "total"
+   ],
+   "defaults": {
+    "status": "pendingApproval"
+   },
+   "id_prefix": "SO-2026-"
+  },
+  {
+   "name": "erp_sales_order_update_status",
+   "description": "Transition a sales order along its lifecycle: pendingApproval -> pendingFulfillment -> billed (cancel allowed before billing); invalid jumps are rejected (PATCH /services/rest/record/v1/salesOrder/{id})",
+   "op": "custom",
+   "type": "write",
+   "table": "erp_sales_orders",
+   "params": {
+    "id": {
+     "type": "string",
+     "description": "Sales order document number (tranId), e.g. SO-2026-0103."
+    },
+    "status": {
+     "type": "string",
+     "description": "Target status: pendingFulfillment, billed or cancelled. Must be a valid next step from the order's current status."
+    }
+   },
+   "required": [
+    "id",
+    "status"
+   ],
+   "custom_source": "def erp_sales_order_update_status(db_path='state.db', **kwargs):\n    import sqlite3\n    so_id = kwargs.get('id')\n    new_status = kwargs.get('status')\n    if not so_id or not new_status:\n        return {'error': {'status': 400, 'name': 'USER_ERROR', 'message': \"Params 'id' and 'status' are required.\"}}\n    transitions = {\n        'pendingApproval': ['pendingFulfillment', 'cancelled'],\n        'pendingFulfillment': ['billed', 'cancelled'],\n        'billed': [],\n        'cancelled': []\n    }\n    if new_status not in transitions:\n        return {'error': {'status': 400, 'name': 'INVALID_ORDER_STATUS', 'message': \"Unknown status '%s'. Valid statuses: pendingApproval, pendingFulfillment, billed, cancelled.\" % new_status}}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    row = conn.execute('SELECT * FROM erp_sales_orders WHERE id = ?', (so_id,)).fetchone()\n    if row is None:\n        conn.close()\n        return {'error': {'status': 404, 'name': 'RCRD_DSNT_EXIST', 'message': \"Sales order '%s' does not exist.\" % so_id}}\n    current = row['status']\n    allowed = transitions.get(current, [])\n    if new_status not in allowed:\n        conn.close()\n        return {'error': {'status': 400, 'name': 'INVALID_STATUS_TRANSITION', 'message': \"Cannot move sales order %s from '%s' to '%s'. Allowed next statuses: %s.\" % (so_id, current, new_status, ', '.join(allowed) if allowed else 'none (terminal status)')}}\n    conn.execute('UPDATE erp_sales_orders SET status = ? WHERE id = ?', (new_status, so_id))\n    conn.commit()\n    updated = dict(conn.execute('SELECT * FROM erp_sales_orders WHERE id = ?', (so_id,)).fetchone())\n    conn.close()\n    return updated\n"
+  },
+  {
+   "name": "erp_saved_search_run",
+   "description": "Run a simplified transaction saved search over sales orders; keywords LIKE-match against tranId, customer name, memo and status (POST /services/rest/query/v1/suiteql)",
+   "op": "search",
+   "table": "erp_sales_orders",
+   "params": {
+    "query": {
+     "type": "string",
+     "description": "Search keywords, e.g. 'Harborview', 'pendingApproval' or 'SO-2026-0108'."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return (default 30)."
+    }
+   },
+   "required": [
+    "query"
+   ],
+   "query_param": "query",
+   "search_columns": [
+    "id",
+    "entity_name",
+    "memo",
+    "status"
+   ]
+  },
+  {
+   "name": "erp_invoices_list",
+   "description": "List invoice transactions (AR), optionally filtered by status, customer entity or originating sales order (GET /services/rest/record/v1/invoice)",
+   "op": "list",
+   "table": "erp_invoices",
+   "params": {
+    "status": {
+     "type": "string",
+     "description": "Invoice status filter: open, paid or voided."
+    },
+    "entity": {
+     "type": "string",
+     "description": "Customer (entity) internal id, e.g. customer_007."
+    },
+    "created_from": {
+     "type": "string",
+     "description": "Originating sales order tranId (createdFrom), e.g. SO-2026-0105."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return (default 30)."
+    }
+   },
+   "filters": [
+    "status",
+    "entity",
+    "created_from"
+   ]
+  },
+  {
+   "name": "erp_invoice_get",
+   "description": "Retrieve a single invoice with totals and amount remaining (GET /services/rest/record/v1/invoice/{id})",
+   "op": "get",
+   "table": "erp_invoices",
+   "params": {
+    "id": {
+     "type": "string",
+     "description": "Invoice document number (tranId), e.g. INV-1002."
+    }
+   },
+   "required": [
+    "id"
+   ],
+   "id_param": "id"
+  },
+  {
+   "name": "erp_invoice_create",
+   "description": "Create a standalone or order-billed invoice; new invoices open with the full amount remaining (POST /services/rest/record/v1/invoice)",
+   "op": "create",
+   "table": "erp_invoices",
+   "params": {
+    "entity": {
+     "type": "string",
+     "description": "Customer (entity) internal id billed on the invoice, e.g. customer_006."
+    },
+    "entity_name": {
+     "type": "string",
+     "description": "Display name of the customer account."
+    },
+    "created_from": {
+     "type": "string",
+     "description": "Sales order tranId this invoice bills (createdFrom); omit for standalone invoices."
+    },
+    "trandate": {
+     "type": "string",
+     "description": "Transaction date (trandate), YYYY-MM-DD."
+    },
+    "due_date": {
+     "type": "string",
+     "description": "Payment due date (dueDate), YYYY-MM-DD."
+    },
+    "memo": {
+     "type": "string",
+     "description": "Memo visible on the transaction (memo)."
+    },
+    "subsidiary": {
+     "type": "string",
+     "description": "Subsidiary internal id the transaction posts to (subsidiary, e.g. '3')."
+    },
+    "currency": {
+     "type": "string",
+     "description": "Transaction currency internal id (currency): usd, eur or gbp."
+    },
+    "subtotal": {
+     "type": "number",
+     "description": "Sum of line amounts before tax (subtotal)."
+    },
+    "tax_total": {
+     "type": "number",
+     "description": "Total tax on the invoice (taxTotal)."
+    },
+    "total": {
+     "type": "number",
+     "description": "Invoice grand total including tax (total)."
+    }
+   },
+   "required": [
+    "entity",
+    "total"
+   ],
+   "fields": [
+    "entity",
+    "entity_name",
+    "created_from",
+    "trandate",
+    "due_date",
+    "memo",
+    "subsidiary",
+    "currency",
+    "subtotal",
+    "tax_total",
+    "total"
+   ],
+   "defaults": {
+    "status": "open"
+   },
+   "id_prefix": "INV-"
+  },
+  {
+   "name": "erp_items_list",
+   "description": "List items in the GTM catalog (licenses, data feeds, services, appliances), optionally filtered by item type or inactive flag (GET /services/rest/record/v1/serviceItem, also inventoryItem/nonInventoryItem)",
+   "op": "list",
+   "table": "erp_items",
+   "params": {
+    "type": {
+     "type": "string",
+     "description": "Item type filter: inventoryItem, nonInventoryItem or serviceItem."
+    },
+    "is_inactive": {
+     "type": "integer",
+     "description": "Set 1 to list only retired items, 0 for active items (isInactive)."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return (default 30)."
+    }
+   },
+   "filters": [
+    "type",
+    "is_inactive"
+   ]
+  },
+  {
+   "name": "erp_item_get",
+   "description": "Retrieve a single item record by its itemId/SKU (GET /services/rest/record/v1/serviceItem/{id})",
+   "op": "get",
+   "table": "erp_items",
+   "params": {
+    "id": {
+     "type": "string",
+     "description": "Item id / SKU (itemId), e.g. FEED-MKT-L2 or HW-DFA-100."
+    }
+   },
+   "required": [
+    "id"
+   ],
+   "id_param": "id"
+  },
+  {
+   "name": "erp_item_create",
+   "description": "Create a new item in the catalog (POST /services/rest/record/v1/serviceItem)",
+   "op": "create",
+   "table": "erp_items",
+   "params": {
+    "display_name": {
+     "type": "string",
+     "description": "Item display name shown on transaction lines (displayName)."
+    },
+    "type": {
+     "type": "string",
+     "description": "Item type: inventoryItem, nonInventoryItem or serviceItem."
+    },
+    "base_price": {
+     "type": "number",
+     "description": "List/base price in USD (basePrice)."
+    },
+    "currency": {
+     "type": "string",
+     "description": "Pricing currency internal id; catalog prices are usd."
+    },
+    "income_account": {
+     "type": "string",
+     "description": "Income account posted on sale, e.g. '4030 Services Revenue' (incomeAccount)."
+    }
+   },
+   "required": [
+    "display_name",
+    "type",
+    "base_price"
+   ],
+   "fields": [
+    "display_name",
+    "type",
+    "base_price",
+    "currency",
+    "income_account"
+   ],
+   "defaults": {
+    "is_inactive": 0
+   },
+   "id_prefix": "ITEM-"
+  },
+  {
+   "name": "erp_inventory_levels_list",
+   "description": "List per-location inventory balances for stocked items, optionally filtered by item or location (POST /services/rest/query/v1/suiteql - inventorybalance)",
+   "op": "list",
+   "table": "erp_inventory_levels",
+   "params": {
+    "item": {
+     "type": "string",
+     "description": "Item id / SKU filter, e.g. HW-DFA-100."
+    },
+    "location": {
+     "type": "string",
+     "description": "Location name filter: Newark DC, London DC or Frankfurt DC."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return (default 30)."
+    }
+   },
+   "filters": [
+    "item",
+    "location"
+   ]
+  },
+  {
+   "name": "erp_inventory_adjustment_create",
+   "description": "Post an inventory adjustment that changes quantity on hand by adjustQtyBy for one item at one location; adjustments that would drive stock negative are rejected (POST /services/rest/record/v1/inventoryAdjustment)",
+   "op": "custom",
+   "type": "write",
+   "table": "erp_inventory_levels",
+   "params": {
+    "item": {
+     "type": "string",
+     "description": "Item id / SKU being adjusted, e.g. HW-DFA-200."
+    },
+    "location": {
+     "type": "string",
+     "description": "Adjustment location (adjLocation): Newark DC, London DC or Frankfurt DC."
+    },
+    "adjust_qty_by": {
+     "type": "integer",
+     "description": "Signed quantity delta (adjustQtyBy); negative decreases stock."
+    },
+    "memo": {
+     "type": "string",
+     "description": "Memo visible on the transaction (memo)."
+    }
+   },
+   "required": [
+    "item",
+    "location",
+    "adjust_qty_by"
+   ],
+   "custom_source": "def erp_inventory_adjustment_create(db_path='state.db', **kwargs):\n    import sqlite3, datetime\n    item = kwargs.get('item')\n    location = kwargs.get('location')\n    qty = kwargs.get('adjust_qty_by')\n    if not item or not location or qty is None:\n        return {'error': {'status': 400, 'name': 'USER_ERROR', 'message': \"Params 'item', 'location' and 'adjust_qty_by' are required.\"}}\n    try:\n        qty = int(qty)\n    except (TypeError, ValueError):\n        return {'error': {'status': 400, 'name': 'USER_ERROR', 'message': \"'adjust_qty_by' must be an integer (negative to decrease stock).\"}}\n    if qty == 0:\n        return {'error': {'status': 400, 'name': 'USER_ERROR', 'message': \"'adjust_qty_by' must be non-zero.\"}}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    row = conn.execute('SELECT * FROM erp_inventory_levels WHERE item = ? AND location = ?', (item, location)).fetchone()\n    if row is None:\n        conn.close()\n        return {'error': {'status': 404, 'name': 'RCRD_DSNT_EXIST', 'message': \"No inventory level exists for item '%s' at location '%s'.\" % (item, location)}}\n    new_on_hand = row['quantity_on_hand'] + qty\n    new_available = row['quantity_available'] + qty\n    if new_on_hand < 0 or new_available < 0:\n        conn.close()\n        return {'error': {'status': 400, 'name': 'INVALID_QTY', 'message': 'Adjustment of %d would drive item %s at %s negative (on hand %d, available %d).' % (qty, item, location, row['quantity_on_hand'], row['quantity_available'])}}\n    conn.execute('UPDATE erp_inventory_levels SET quantity_on_hand = ?, quantity_available = ? WHERE item = ? AND location = ?', (new_on_hand, new_available, item, location))\n    conn.commit()\n    updated = dict(conn.execute('SELECT * FROM erp_inventory_levels WHERE item = ? AND location = ?', (item, location)).fetchone())\n    conn.close()\n    now = datetime.datetime.utcnow().replace(microsecond=0)\n    return {'inventory_adjustment': {'item': item, 'location': location, 'adjust_qty_by': qty, 'memo': kwargs.get('memo') or '', 'trandate': now.strftime('%Y-%m-%d')}, 'inventory_level': updated}\n"
+  },
+  {
+   "name": "erp_vendor_bills_list",
+   "description": "List vendor bill transactions (AP), optionally filtered by payment status, approval status or vendor entity (GET /services/rest/record/v1/vendorBill)",
+   "op": "list",
+   "table": "erp_vendor_bills",
+   "params": {
+    "status": {
+     "type": "string",
+     "description": "Bill payment status filter: open or paid."
+    },
+    "approval_status": {
+     "type": "string",
+     "description": "Approval routing status filter (approvalStatus): pendingApproval, approved or rejected."
+    },
+    "entity": {
+     "type": "string",
+     "description": "Vendor (entity) internal id, e.g. vendor_005."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return (default 30)."
+    }
+   },
+   "filters": [
+    "status",
+    "approval_status",
+    "entity"
+   ]
+  },
+  {
+   "name": "erp_vendor_bill_get",
+   "description": "Retrieve a single vendor bill by its tranId-style identifier (GET /services/rest/record/v1/vendorBill/{id})",
+   "op": "get",
+   "table": "erp_vendor_bills",
+   "params": {
+    "id": {
+     "type": "string",
+     "description": "Vendor bill document number (tranId), e.g. BILL-3002."
+    }
+   },
+   "required": [
+    "id"
+   ],
+   "id_param": "id"
+  },
+  {
+   "name": "erp_vendor_bill_create",
+   "description": "Enter a vendor bill; new bills are open and route as pendingApproval (POST /services/rest/record/v1/vendorBill)",
+   "op": "create",
+   "table": "erp_vendor_bills",
+   "params": {
+    "entity": {
+     "type": "string",
+     "description": "Vendor (entity) internal id the bill is payable to, e.g. vendor_001."
+    },
+    "entity_name": {
+     "type": "string",
+     "description": "Display name of the vendor."
+    },
+    "trandate": {
+     "type": "string",
+     "description": "Transaction date (trandate), YYYY-MM-DD."
+    },
+    "due_date": {
+     "type": "string",
+     "description": "Payment due date (dueDate), YYYY-MM-DD."
+    },
+    "memo": {
+     "type": "string",
+     "description": "Memo visible on the transaction (memo)."
+    },
+    "subsidiary": {
+     "type": "string",
+     "description": "Subsidiary internal id the transaction posts to (subsidiary, e.g. '3')."
+    },
+    "currency": {
+     "type": "string",
+     "description": "Transaction currency internal id (currency): usd, eur or gbp."
+    },
+    "amount": {
+     "type": "number",
+     "description": "Bill amount in the transaction currency (userTotal)."
+    }
+   },
+   "required": [
+    "entity",
+    "amount"
+   ],
+   "fields": [
+    "entity",
+    "entity_name",
+    "trandate",
+    "due_date",
+    "memo",
+    "subsidiary",
+    "currency",
+    "amount"
+   ],
+   "defaults": {
+    "approval_status": "pendingApproval",
+    "status": "open"
+   },
+   "id_prefix": "BILL-"
+  },
+  {
+   "name": "erp_vendor_bill_approve",
+   "description": "Approve a vendor bill that is pending approval (approvalStatus pendingApproval -> approved); already-approved or rejected bills are refused (PATCH /services/rest/record/v1/vendorBill/{id})",
+   "op": "custom",
+   "type": "write",
+   "table": "erp_vendor_bills",
+   "params": {
+    "id": {
+     "type": "string",
+     "description": "Vendor bill document number (tranId), e.g. BILL-3003."
+    }
+   },
+   "required": [
+    "id"
+   ],
+   "custom_source": "def erp_vendor_bill_approve(db_path='state.db', **kwargs):\n    import sqlite3\n    bill_id = kwargs.get('id')\n    if not bill_id:\n        return {'error': {'status': 400, 'name': 'USER_ERROR', 'message': \"Param 'id' is required.\"}}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    row = conn.execute('SELECT * FROM erp_vendor_bills WHERE id = ?', (bill_id,)).fetchone()\n    if row is None:\n        conn.close()\n        return {'error': {'status': 404, 'name': 'RCRD_DSNT_EXIST', 'message': \"Vendor bill '%s' does not exist.\" % bill_id}}\n    current = row['approval_status']\n    if current == 'approved':\n        conn.close()\n        return {'error': {'status': 400, 'name': 'INVALID_STATUS_TRANSITION', 'message': 'Vendor bill %s is already approved.' % bill_id}}\n    if current == 'rejected':\n        conn.close()\n        return {'error': {'status': 400, 'name': 'INVALID_STATUS_TRANSITION', 'message': 'Vendor bill %s was rejected; it must be corrected and resubmitted before it can be approved.' % bill_id}}\n    conn.execute(\"UPDATE erp_vendor_bills SET approval_status = 'approved' WHERE id = ?\", (bill_id,))\n    conn.commit()\n    updated = dict(conn.execute('SELECT * FROM erp_vendor_bills WHERE id = ?', (bill_id,)).fetchone())\n    conn.close()\n    return updated\n"
+  },
+  {
+   "name": "erp_customer_payments_list",
+   "description": "List customer payment transactions, optionally filtered by customer entity or the invoice they were applied to (GET /services/rest/record/v1/customerPayment)",
+   "op": "list",
+   "table": "erp_customer_payments",
+   "params": {
+    "entity": {
+     "type": "string",
+     "description": "Customer (entity) internal id, e.g. customer_002."
+    },
+    "applied_to": {
+     "type": "string",
+     "description": "Invoice tranId the payment was applied against, e.g. INV-1002; unapplied payments have an empty value."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return (default 30)."
+    }
+   },
+   "filters": [
+    "entity",
+    "applied_to"
+   ]
+  },
+  {
+   "name": "erp_customer_payment_create",
+   "description": "Record a customer payment and apply it to an open invoice; reduces the invoice's amount remaining and marks it paid when it reaches zero. Overpayments, voided invoices and currency mismatches are rejected (POST /services/rest/record/v1/customerPayment)",
+   "op": "custom",
+   "type": "write",
+   "table": "erp_customer_payments",
+   "extra_tables": [
+    "erp_invoices"
+   ],
+   "params": {
+    "applied_to": {
+     "type": "string",
+     "description": "Invoice tranId to apply the payment against, e.g. INV-1004."
+    },
+    "payment": {
+     "type": "number",
+     "description": "Payment amount to apply (payment); must not exceed the invoice's amount remaining."
+    },
+    "entity": {
+     "type": "string",
+     "description": "Customer (entity) internal id; defaults to the invoice's customer."
+    },
+    "trandate": {
+     "type": "string",
+     "description": "Payment date (trandate), YYYY-MM-DD; defaults to today."
+    },
+    "payment_method": {
+     "type": "string",
+     "description": "Payment method: wire, ach, check or card (default wire)."
+    },
+    "memo": {
+     "type": "string",
+     "description": "Memo visible on the transaction (memo)."
+    },
+    "currency": {
+     "type": "string",
+     "description": "Payment currency internal id; must match the invoice currency (defaults to it)."
+    }
+   },
+   "required": [
+    "applied_to",
+    "payment"
+   ],
+   "custom_source": "def erp_customer_payment_create(db_path='state.db', **kwargs):\n    import sqlite3, datetime\n    inv_id = kwargs.get('applied_to')\n    payment = kwargs.get('payment')\n    if not inv_id or payment is None:\n        return {'error': {'status': 400, 'name': 'USER_ERROR', 'message': \"Params 'applied_to' (invoice id) and 'payment' (amount) are required.\"}}\n    try:\n        payment = round(float(payment), 2)\n    except (TypeError, ValueError):\n        return {'error': {'status': 400, 'name': 'USER_ERROR', 'message': \"'payment' must be a number.\"}}\n    if payment <= 0:\n        return {'error': {'status': 400, 'name': 'USER_ERROR', 'message': \"'payment' must be greater than zero.\"}}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    inv = conn.execute('SELECT * FROM erp_invoices WHERE id = ?', (inv_id,)).fetchone()\n    if inv is None:\n        conn.close()\n        return {'error': {'status': 404, 'name': 'RCRD_DSNT_EXIST', 'message': \"Invoice '%s' does not exist.\" % inv_id}}\n    if inv['status'] == 'voided':\n        conn.close()\n        return {'error': {'status': 400, 'name': 'TRANS_VOIDED', 'message': 'Invoice %s is voided and cannot accept payments.' % inv_id}}\n    currency = kwargs.get('currency') or inv['currency']\n    if currency != inv['currency']:\n        conn.close()\n        return {'error': {'status': 400, 'name': 'CURRENCY_MISMATCH', 'message': \"Payment currency '%s' does not match invoice currency '%s'.\" % (currency, inv['currency'])}}\n    remaining = inv['amount_remaining'] if inv['amount_remaining'] is not None else inv['total']\n    if payment > remaining + 1e-09:\n        conn.close()\n        return {'error': {'status': 400, 'name': 'PAYMENT_EXCEEDS_REMAINING', 'message': 'Payment %.2f exceeds amount remaining %.2f on invoice %s.' % (payment, remaining, inv_id)}}\n    n = conn.execute('SELECT COUNT(*) FROM erp_customer_payments').fetchone()[0]\n    pid = 'PMT-%04d' % (5001 + n)\n    while conn.execute('SELECT 1 FROM erp_customer_payments WHERE id = ?', (pid,)).fetchone() is not None:\n        n += 1\n        pid = 'PMT-%04d' % (5001 + n)\n    now = datetime.datetime.utcnow().replace(microsecond=0)\n    trandate = kwargs.get('trandate') or now.strftime('%Y-%m-%d')\n    entity = kwargs.get('entity') or inv['entity']\n    conn.execute(\n        'INSERT INTO erp_customer_payments (id, entity, applied_to, trandate, payment_method, memo, currency, payment_amount, status, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',\n        (pid, entity, inv_id, trandate, kwargs.get('payment_method') or 'wire', kwargs.get('memo') or '', currency, payment, 'undeposited', now.isoformat() + 'Z'))\n    new_remaining = round(remaining - payment, 2)\n    new_status = 'paid' if new_remaining <= 0 else inv['status']\n    conn.execute('UPDATE erp_invoices SET amount_remaining = ?, status = ? WHERE id = ?', (new_remaining, new_status, inv_id))\n    conn.commit()\n    pay_row = dict(conn.execute('SELECT * FROM erp_customer_payments WHERE id = ?', (pid,)).fetchone())\n    inv_row = dict(conn.execute('SELECT * FROM erp_invoices WHERE id = ?', (inv_id,)).fetchone())\n    conn.close()\n    return {'customer_payment': pay_row, 'applied_to_invoice': inv_row}\n"
+  },
+  {
+   "name": "erp_credit_memos_list",
+   "description": "List credit memo transactions, optionally filtered by status or customer entity (GET /services/rest/record/v1/creditMemo)",
+   "op": "list",
+   "table": "erp_credit_memos",
+   "params": {
+    "status": {
+     "type": "string",
+     "description": "Credit memo status filter: open or fullyApplied."
+    },
+    "entity": {
+     "type": "string",
+     "description": "Customer (entity) internal id, e.g. customer_003."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return (default 30)."
+    }
+   },
+   "filters": [
+    "status",
+    "entity"
+   ]
+  },
+  {
+   "name": "erp_credit_memo_create",
+   "description": "Issue a credit memo to a customer, optionally referencing the invoice it credits (POST /services/rest/record/v1/creditMemo)",
+   "op": "create",
+   "table": "erp_credit_memos",
+   "params": {
+    "entity": {
+     "type": "string",
+     "description": "Customer (entity) internal id receiving the credit, e.g. customer_007."
+    },
+    "entity_name": {
+     "type": "string",
+     "description": "Display name of the customer account."
+    },
+    "created_from": {
+     "type": "string",
+     "description": "Invoice tranId this memo credits (createdFrom); omit for standalone credits."
+    },
+    "trandate": {
+     "type": "string",
+     "description": "Transaction date (trandate), YYYY-MM-DD."
+    },
+    "memo": {
+     "type": "string",
+     "description": "Memo visible on the transaction (memo)."
+    },
+    "currency": {
+     "type": "string",
+     "description": "Transaction currency internal id (currency): usd, eur or gbp."
+    },
+    "total": {
+     "type": "number",
+     "description": "Credit total in the transaction currency (total)."
+    }
+   },
+   "required": [
+    "entity",
+    "total"
+   ],
+   "fields": [
+    "entity",
+    "entity_name",
+    "created_from",
+    "trandate",
+    "memo",
+    "currency",
+    "total"
+   ],
+   "defaults": {
+    "status": "open"
+   },
+   "id_prefix": "CM-"
+  },
+  {
+   "name": "erp_currencies_list",
+   "description": "List currency records with ISO symbol and exchange rate to the base currency (GET /services/rest/record/v1/currency)",
+   "op": "list",
+   "table": "erp_currencies",
+   "params": {
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return (default 30)."
+    }
+   },
+   "filters": []
+  },
+  {
+   "name": "erp_subsidiaries_list",
+   "description": "List subsidiaries in the corporate hierarchy, including the consolidation elimination subsidiary (GET /services/rest/record/v1/subsidiary)",
+   "op": "list",
+   "table": "erp_subsidiaries",
+   "params": {
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return (default 30)."
+    }
+   },
+   "filters": []
+  }
+ ]
+}

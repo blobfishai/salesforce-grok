@@ -1,0 +1,1194 @@
+{
+ "vendor": "notion-docs",
+ "namespace": "notion",
+ "tables": [
+  {
+   "name": "notion_users",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "type",
+     "type": "TEXT"
+    },
+    {
+     "name": "email",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "1f2e3d4c-5b6a-4788-9a0b-c1d2e3f4a501",
+     "name": "Mei Huang",
+     "type": "person",
+     "email": "contact77709@morganstanleysimulated.com"
+    },
+    {
+     "id": "2a3b4c5d-6e7f-4890-a1b2-c3d4e5f6a502",
+     "name": "Sarah Kim",
+     "type": "person",
+     "email": "sarah.kim@morganstanleysimulated.com"
+    },
+    {
+     "id": "3b4c5d6e-7f80-4912-b3c4-d5e6f7a8b503",
+     "name": "Priya Patel",
+     "type": "person",
+     "email": "priya.patel@morganstanleysimulated.com"
+    },
+    {
+     "id": "4c5d6e7f-8091-4a23-c4d5-e6f7a8b9c504",
+     "name": "Diego Alvarez",
+     "type": "person",
+     "email": "diego.alvarez@morganstanleysimulated.com"
+    },
+    {
+     "id": "5d6e7f80-91a2-4b34-d5e6-f7a8b9c0d505",
+     "name": "Tom Becker",
+     "type": "person",
+     "email": "tom.becker@morganstanleysimulated.com"
+    },
+    {
+     "id": "6e7f8091-a2b3-4c45-e6f7-a8b9c0d1e506",
+     "name": "Jordan Lee",
+     "type": "person",
+     "email": "jordan.lee@morganstanleysimulated.com"
+    },
+    {
+     "id": "7f8091a2-b3c4-4d56-f708-b9c0d1e2f507",
+     "name": "Ana Souza",
+     "type": "person",
+     "email": "ana.souza@morganstanleysimulated.com"
+    },
+    {
+     "id": "9081a2b3-c4d5-4e67-8192-a3b4c5d6e508",
+     "name": "Blobfish GTM Sync",
+     "type": "bot",
+     "email": ""
+    }
+   ]
+  },
+  {
+   "name": "notion_pages",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "title",
+     "type": "TEXT"
+    },
+    {
+     "name": "parent_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "archived",
+     "type": "INTEGER"
+    },
+    {
+     "name": "created_time",
+     "type": "TEXT"
+    },
+    {
+     "name": "last_edited_time",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_by",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c01",
+     "title": "GTM Wiki",
+     "parent_id": "workspace",
+     "archived": 0,
+     "created_time": "2026-05-04T10:00:00.000Z",
+     "last_edited_time": "2026-08-01T16:20:00.000Z",
+     "created_by": "7f8091a2-b3c4-4d56-f708-b9c0d1e2f507"
+    },
+    {
+     "id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c02",
+     "title": "CPQ Discount Policy (SOP)",
+     "parent_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c01",
+     "archived": 0,
+     "created_time": "2026-05-06T09:15:00.000Z",
+     "last_edited_time": "2026-07-01T11:00:00.000Z",
+     "created_by": "5d6e7f80-91a2-4b34-d5e6-f7a8b9c0d505"
+    },
+    {
+     "id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c03",
+     "title": "Renewal Playbook",
+     "parent_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c01",
+     "archived": 0,
+     "created_time": "2026-05-12T14:30:00.000Z",
+     "last_edited_time": "2026-07-22T10:05:00.000Z",
+     "created_by": "4c5d6e7f-8091-4a23-c4d5-e6f7a8b9c504"
+    },
+    {
+     "id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c04",
+     "title": "Battlecard: Harborview Wealth Suite",
+     "parent_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c01",
+     "archived": 0,
+     "created_time": "2026-06-02T13:00:00.000Z",
+     "last_edited_time": "2026-07-18T15:45:00.000Z",
+     "created_by": "7f8091a2-b3c4-4d56-f708-b9c0d1e2f507"
+    },
+    {
+     "id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c05",
+     "title": "Deal Room: Summit Group Expansion",
+     "parent_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c01",
+     "archived": 0,
+     "created_time": "2026-07-28T08:40:00.000Z",
+     "last_edited_time": "2026-08-05T17:10:00.000Z",
+     "created_by": "3b4c5d6e-7f80-4912-b3c4-d5e6f7a8b503"
+    },
+    {
+     "id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c06",
+     "title": "Meeting Notes: Meridian QBR 2026-07-29",
+     "parent_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c01",
+     "archived": 0,
+     "created_time": "2026-07-29T18:00:00.000Z",
+     "last_edited_time": "2026-07-30T09:30:00.000Z",
+     "created_by": "4c5d6e7f-8091-4a23-c4d5-e6f7a8b9c504"
+    },
+    {
+     "id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c07",
+     "title": "Meeting Notes: Ironwood Renewal Sync 2026-08-05",
+     "parent_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c01",
+     "archived": 0,
+     "created_time": "2026-08-05T16:00:00.000Z",
+     "last_edited_time": "2026-08-06T10:15:00.000Z",
+     "created_by": "4c5d6e7f-8091-4a23-c4d5-e6f7a8b9c504"
+    },
+    {
+     "id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c08",
+     "title": "Lead Routing SOP",
+     "parent_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c01",
+     "archived": 0,
+     "created_time": "2026-05-20T11:45:00.000Z",
+     "last_edited_time": "2026-06-30T14:00:00.000Z",
+     "created_by": "6e7f8091-a2b3-4c45-e6f7-a8b9c0d1e506"
+    },
+    {
+     "id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c09",
+     "title": "FY2026 Pricing One-Pager",
+     "parent_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c01",
+     "archived": 0,
+     "created_time": "2026-06-10T10:00:00.000Z",
+     "last_edited_time": "2026-07-15T09:00:00.000Z",
+     "created_by": "5d6e7f80-91a2-4b34-d5e6-f7a8b9c0d505"
+    },
+    {
+     "id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c10",
+     "title": "Discount Matrix FY2025 (superseded)",
+     "parent_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c01",
+     "archived": 1,
+     "created_time": "2025-07-01T10:00:00.000Z",
+     "last_edited_time": "2026-05-06T09:20:00.000Z",
+     "created_by": "5d6e7f80-91a2-4b34-d5e6-f7a8b9c0d505"
+    }
+   ]
+  },
+  {
+   "name": "notion_databases",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "title",
+     "type": "TEXT"
+    },
+    {
+     "name": "description",
+     "type": "TEXT"
+    },
+    {
+     "name": "parent_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "properties",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_time",
+     "type": "TEXT"
+    },
+    {
+     "name": "last_edited_time",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "d4c3b2a1-f6e5-4b1a-9d2c-3f4e5a6b7c01",
+     "title": "Battlecards",
+     "description": "Competitive battlecards: positioning, win/loss talking points, discount counter-moves.",
+     "parent_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c01",
+     "properties": "{\"Name\": {\"type\": \"title\"}, \"Competitor\": {\"type\": \"select\"}, \"Segment\": {\"type\": \"select\"}, \"Owner\": {\"type\": \"people\"}, \"Last Reviewed\": {\"type\": \"date\"}, \"Positioning\": {\"type\": \"rich_text\"}}",
+     "created_time": "2026-06-02T12:00:00.000Z",
+     "last_edited_time": "2026-07-18T15:45:00.000Z"
+    },
+    {
+     "id": "d4c3b2a1-f6e5-4b1a-9d2c-3f4e5a6b7c02",
+     "title": "Meeting Notes",
+     "description": "Customer-facing meeting notes: QBRs, renewal syncs, deal-room scoping calls.",
+     "parent_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c01",
+     "properties": "{\"Name\": {\"type\": \"title\"}, \"Account\": {\"type\": \"select\"}, \"Date\": {\"type\": \"date\"}, \"Attendees\": {\"type\": \"rich_text\"}, \"Next Steps\": {\"type\": \"rich_text\"}}",
+     "created_time": "2026-05-15T09:00:00.000Z",
+     "last_edited_time": "2026-08-06T10:15:00.000Z"
+    },
+    {
+     "id": "d4c3b2a1-f6e5-4b1a-9d2c-3f4e5a6b7c03",
+     "title": "Renewal Tracker",
+     "description": "FY2026 renewal pipeline: renewal date, ARR, risk color, CSM owner, playbook stage.",
+     "parent_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c01",
+     "properties": "{\"Name\": {\"type\": \"title\"}, \"Account\": {\"type\": \"select\"}, \"Renewal Date\": {\"type\": \"date\"}, \"ARR\": {\"type\": \"number\"}, \"Risk\": {\"type\": \"select\"}, \"CSM\": {\"type\": \"people\"}, \"Playbook Stage\": {\"type\": \"rich_text\"}}",
+     "created_time": "2026-05-12T14:00:00.000Z",
+     "last_edited_time": "2026-08-06T11:00:00.000Z"
+    },
+    {
+     "id": "d4c3b2a1-f6e5-4b1a-9d2c-3f4e5a6b7c04",
+     "title": "SOP Library",
+     "description": "Index of approved standard operating procedures with owner and review date.",
+     "parent_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c01",
+     "properties": "{\"Name\": {\"type\": \"title\"}, \"Status\": {\"type\": \"status\"}, \"Owner\": {\"type\": \"people\"}, \"Category\": {\"type\": \"select\"}, \"Page\": {\"type\": \"rich_text\"}, \"Last Reviewed\": {\"type\": \"date\"}}",
+     "created_time": "2026-05-06T09:00:00.000Z",
+     "last_edited_time": "2026-07-01T11:00:00.000Z"
+    },
+    {
+     "id": "d4c3b2a1-f6e5-4b1a-9d2c-3f4e5a6b7c05",
+     "title": "GTM Playbooks",
+     "description": "Sales and CS playbooks (renewal, expansion, win-back) with stage checklists.",
+     "parent_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c01",
+     "properties": "{\"Name\": {\"type\": \"title\"}, \"Motion\": {\"type\": \"select\"}, \"Owner\": {\"type\": \"people\"}, \"Status\": {\"type\": \"status\"}}",
+     "created_time": "2026-05-18T10:00:00.000Z",
+     "last_edited_time": "2026-07-22T10:05:00.000Z"
+    },
+    {
+     "id": "d4c3b2a1-f6e5-4b1a-9d2c-3f4e5a6b7c06",
+     "title": "Deal Rooms",
+     "description": "Active deal rooms mirroring Slack deal-room channels; one row per pursuit.",
+     "parent_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c01",
+     "properties": "{\"Name\": {\"type\": \"title\"}, \"Account\": {\"type\": \"select\"}, \"Stage\": {\"type\": \"select\"}, \"AE\": {\"type\": \"people\"}, \"Notes Page\": {\"type\": \"rich_text\"}}",
+     "created_time": "2026-07-28T08:30:00.000Z",
+     "last_edited_time": "2026-08-05T17:10:00.000Z"
+    }
+   ]
+  },
+  {
+   "name": "notion_database_rows",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "database_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "properties",
+     "type": "TEXT"
+    },
+    {
+     "name": "archived",
+     "type": "INTEGER"
+    },
+    {
+     "name": "created_time",
+     "type": "TEXT"
+    },
+    {
+     "name": "last_edited_time",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_by",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "e5f6a7b8-c9d0-4e1f-a2b3-c4d5e6f7a801",
+     "database_id": "d4c3b2a1-f6e5-4b1a-9d2c-3f4e5a6b7c01",
+     "properties": "{\"Name\": \"Harborview Wealth Suite\", \"Competitor\": \"Harborview\", \"Segment\": \"Enterprise Wealth\", \"Owner\": \"Ana Souza\", \"Last Reviewed\": \"2026-07-18\", \"Positioning\": \"Lead with advisor productivity plus compliance snapshots and audit trail. Harborview discounts aggressively at renewal; counter with multi-year price lock per Renewal Playbook.\"}",
+     "archived": 0,
+     "created_time": "2026-06-02T13:05:00.000Z",
+     "last_edited_time": "2026-07-18T15:45:00.000Z",
+     "created_by": "7f8091a2-b3c4-4d56-f708-b9c0d1e2f507"
+    },
+    {
+     "id": "e5f6a7b8-c9d0-4e1f-a2b3-c4d5e6f7a802",
+     "database_id": "d4c3b2a1-f6e5-4b1a-9d2c-3f4e5a6b7c01",
+     "properties": "{\"Name\": \"NorthPeak Analytics\", \"Competitor\": \"NorthPeak\", \"Segment\": \"Mid-Market\", \"Owner\": \"Ana Souza\", \"Last Reviewed\": \"2026-06-25\", \"Positioning\": \"NorthPeak wins on dashboards, loses on data residency and desk-level entitlements. Anchor on compliance workflow.\"}",
+     "archived": 0,
+     "created_time": "2026-06-05T09:30:00.000Z",
+     "last_edited_time": "2026-06-25T14:10:00.000Z",
+     "created_by": "7f8091a2-b3c4-4d56-f708-b9c0d1e2f507"
+    },
+    {
+     "id": "e5f6a7b8-c9d0-4e1f-a2b3-c4d5e6f7a803",
+     "database_id": "d4c3b2a1-f6e5-4b1a-9d2c-3f4e5a6b7c01",
+     "properties": "{\"Name\": \"VantagePoint CRM\", \"Competitor\": \"VantagePoint\", \"Segment\": \"SMB Advisory\", \"Owner\": \"Ana Souza\", \"Last Reviewed\": \"2026-07-02\", \"Positioning\": \"Cheaper seat price but no CPQ or approval matrix; sell governed quoting and the 10/20/30 discount bands.\"}",
+     "archived": 0,
+     "created_time": "2026-06-09T11:00:00.000Z",
+     "last_edited_time": "2026-07-02T10:00:00.000Z",
+     "created_by": "7f8091a2-b3c4-4d56-f708-b9c0d1e2f507"
+    },
+    {
+     "id": "e5f6a7b8-c9d0-4e1f-a2b3-c4d5e6f7a804",
+     "database_id": "d4c3b2a1-f6e5-4b1a-9d2c-3f4e5a6b7c02",
+     "properties": "{\"Name\": \"Summit Group - Expansion Scoping Call\", \"Account\": \"Summit Group Account\", \"Date\": \"2026-08-04\", \"Attendees\": \"Mei Huang; Priya Patel\", \"Next Steps\": \"Priya to send 120-seat CPQ quote by 2026-08-12; anything above 10% discount needs Sales Manager approval per CPQ Discount Policy.\"}",
+     "archived": 0,
+     "created_time": "2026-08-04T17:30:00.000Z",
+     "last_edited_time": "2026-08-05T09:00:00.000Z",
+     "created_by": "3b4c5d6e-7f80-4912-b3c4-d5e6f7a8b503"
+    },
+    {
+     "id": "e5f6a7b8-c9d0-4e1f-a2b3-c4d5e6f7a805",
+     "database_id": "d4c3b2a1-f6e5-4b1a-9d2c-3f4e5a6b7c02",
+     "properties": "{\"Name\": \"Meridian QBR\", \"Account\": \"Meridian\", \"Date\": \"2026-07-29\", \"Attendees\": \"Diego Alvarez; Jordan Lee\", \"Next Steps\": \"Confirm co-term of the analytics add-on with the 2026-11-15 renewal; share adoption dashboard.\"}",
+     "archived": 0,
+     "created_time": "2026-07-29T18:05:00.000Z",
+     "last_edited_time": "2026-07-30T09:30:00.000Z",
+     "created_by": "4c5d6e7f-8091-4a23-c4d5-e6f7a8b9c504"
+    },
+    {
+     "id": "e5f6a7b8-c9d0-4e1f-a2b3-c4d5e6f7a806",
+     "database_id": "d4c3b2a1-f6e5-4b1a-9d2c-3f4e5a6b7c02",
+     "properties": "{\"Name\": \"Ironwood Renewal Sync\", \"Account\": \"Ironwood\", \"Date\": \"2026-08-05\", \"Attendees\": \"Diego Alvarez; Priya Patel\", \"Next Steps\": \"Champion dark for 3 weeks; escalate to exec sponsor per Renewal Playbook T-60 step. Draft save-play discount within Deal Desk bands.\"}",
+     "archived": 0,
+     "created_time": "2026-08-05T16:10:00.000Z",
+     "last_edited_time": "2026-08-06T10:15:00.000Z",
+     "created_by": "4c5d6e7f-8091-4a23-c4d5-e6f7a8b9c504"
+    },
+    {
+     "id": "e5f6a7b8-c9d0-4e1f-a2b3-c4d5e6f7a807",
+     "database_id": "d4c3b2a1-f6e5-4b1a-9d2c-3f4e5a6b7c03",
+     "properties": "{\"Name\": \"Ironwood - FY2026 Renewal\", \"Account\": \"Ironwood\", \"Renewal Date\": \"2026-09-30\", \"ARR\": 480000, \"Risk\": \"Yellow\", \"CSM\": \"Diego Alvarez\", \"Playbook Stage\": \"T-60 exec alignment\"}",
+     "archived": 0,
+     "created_time": "2026-05-12T14:10:00.000Z",
+     "last_edited_time": "2026-08-06T11:00:00.000Z",
+     "created_by": "4c5d6e7f-8091-4a23-c4d5-e6f7a8b9c504"
+    },
+    {
+     "id": "e5f6a7b8-c9d0-4e1f-a2b3-c4d5e6f7a808",
+     "database_id": "d4c3b2a1-f6e5-4b1a-9d2c-3f4e5a6b7c03",
+     "properties": "{\"Name\": \"Meridian - FY2026 Renewal\", \"Account\": \"Meridian\", \"Renewal Date\": \"2026-11-15\", \"ARR\": 615000, \"Risk\": \"Green\", \"CSM\": \"Diego Alvarez\", \"Playbook Stage\": \"T-90 notice sent\"}",
+     "archived": 0,
+     "created_time": "2026-05-12T14:12:00.000Z",
+     "last_edited_time": "2026-07-30T09:35:00.000Z",
+     "created_by": "4c5d6e7f-8091-4a23-c4d5-e6f7a8b9c504"
+    },
+    {
+     "id": "e5f6a7b8-c9d0-4e1f-a2b3-c4d5e6f7a809",
+     "database_id": "d4c3b2a1-f6e5-4b1a-9d2c-3f4e5a6b7c03",
+     "properties": "{\"Name\": \"Summit Group - FY2027 Renewal\", \"Account\": \"Summit Group Account\", \"Renewal Date\": \"2027-01-31\", \"ARR\": 890000, \"Risk\": \"Green\", \"CSM\": \"Diego Alvarez\", \"Playbook Stage\": \"Expansion in flight (120 seats)\"}",
+     "archived": 0,
+     "created_time": "2026-05-12T14:14:00.000Z",
+     "last_edited_time": "2026-08-05T17:15:00.000Z",
+     "created_by": "4c5d6e7f-8091-4a23-c4d5-e6f7a8b9c504"
+    },
+    {
+     "id": "e5f6a7b8-c9d0-4e1f-a2b3-c4d5e6f7a810",
+     "database_id": "d4c3b2a1-f6e5-4b1a-9d2c-3f4e5a6b7c03",
+     "properties": "{\"Name\": \"Riverside Group - FY2026 Renewal\", \"Account\": \"Riverside Group Account\", \"Renewal Date\": \"2026-10-01\", \"ARR\": 210000, \"Risk\": \"Red\", \"CSM\": \"Diego Alvarez\", \"Playbook Stage\": \"Champion departed; weekly cadence\"}",
+     "archived": 0,
+     "created_time": "2026-05-12T14:16:00.000Z",
+     "last_edited_time": "2026-08-03T15:00:00.000Z",
+     "created_by": "6e7f8091-a2b3-4c45-e6f7-a8b9c0d1e506"
+    },
+    {
+     "id": "e5f6a7b8-c9d0-4e1f-a2b3-c4d5e6f7a811",
+     "database_id": "d4c3b2a1-f6e5-4b1a-9d2c-3f4e5a6b7c04",
+     "properties": "{\"Name\": \"CPQ Discount Policy\", \"Status\": \"Approved\", \"Owner\": \"Tom Becker\", \"Category\": \"Deal Desk\", \"Page\": \"a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c02\", \"Last Reviewed\": \"2026-07-01\"}",
+     "archived": 0,
+     "created_time": "2026-05-06T09:20:00.000Z",
+     "last_edited_time": "2026-07-01T11:00:00.000Z",
+     "created_by": "5d6e7f80-91a2-4b34-d5e6-f7a8b9c0d505"
+    },
+    {
+     "id": "e5f6a7b8-c9d0-4e1f-a2b3-c4d5e6f7a812",
+     "database_id": "d4c3b2a1-f6e5-4b1a-9d2c-3f4e5a6b7c04",
+     "properties": "{\"Name\": \"Lead Routing SOP\", \"Status\": \"Approved\", \"Owner\": \"Jordan Lee\", \"Category\": \"RevOps\", \"Page\": \"a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c08\", \"Last Reviewed\": \"2026-06-30\"}",
+     "archived": 0,
+     "created_time": "2026-05-20T11:50:00.000Z",
+     "last_edited_time": "2026-06-30T14:00:00.000Z",
+     "created_by": "6e7f8091-a2b3-4c45-e6f7-a8b9c0d1e506"
+    },
+    {
+     "id": "e5f6a7b8-c9d0-4e1f-a2b3-c4d5e6f7a813",
+     "database_id": "d4c3b2a1-f6e5-4b1a-9d2c-3f4e5a6b7c04",
+     "properties": "{\"Name\": \"Renewal Playbook\", \"Status\": \"Approved\", \"Owner\": \"Diego Alvarez\", \"Category\": \"Customer Success\", \"Page\": \"a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c03\", \"Last Reviewed\": \"2026-07-22\"}",
+     "archived": 0,
+     "created_time": "2026-05-12T14:35:00.000Z",
+     "last_edited_time": "2026-07-22T10:05:00.000Z",
+     "created_by": "4c5d6e7f-8091-4a23-c4d5-e6f7a8b9c504"
+    }
+   ]
+  },
+  {
+   "name": "notion_blocks",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "page_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "type",
+     "type": "TEXT"
+    },
+    {
+     "name": "text",
+     "type": "TEXT"
+    },
+    {
+     "name": "checked",
+     "type": "INTEGER"
+    },
+    {
+     "name": "sort_order",
+     "type": "INTEGER"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "f0e1d2c3-b4a5-4968-8776-655443322b01",
+     "page_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c02",
+     "type": "heading_1",
+     "text": "Discount Approval Matrix",
+     "checked": 0,
+     "sort_order": 1
+    },
+    {
+     "id": "f0e1d2c3-b4a5-4968-8776-655443322b02",
+     "page_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c02",
+     "type": "paragraph",
+     "text": "All quotes are built in CPQ against FY2026 list prices. Discounts apply to first-year subscription only unless Deal Desk approves a multi-year ramp.",
+     "checked": 0,
+     "sort_order": 2
+    },
+    {
+     "id": "f0e1d2c3-b4a5-4968-8776-655443322b03",
+     "page_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c02",
+     "type": "bulleted_list_item",
+     "text": "0-10%: AE self-serve in CPQ",
+     "checked": 0,
+     "sort_order": 3
+    },
+    {
+     "id": "f0e1d2c3-b4a5-4968-8776-655443322b04",
+     "page_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c02",
+     "type": "bulleted_list_item",
+     "text": "10-20%: Sales Manager approval required",
+     "checked": 0,
+     "sort_order": 4
+    },
+    {
+     "id": "f0e1d2c3-b4a5-4968-8776-655443322b05",
+     "page_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c02",
+     "type": "bulleted_list_item",
+     "text": "20-30%: Deal Desk + CFO sign-off; attach win/loss justification",
+     "checked": 0,
+     "sort_order": 5
+    },
+    {
+     "id": "f0e1d2c3-b4a5-4968-8776-655443322b06",
+     "page_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c02",
+     "type": "paragraph",
+     "text": "Discounts above 30% are not quotable. Escalate exceptions to the Deal Desk charter.",
+     "checked": 0,
+     "sort_order": 6
+    },
+    {
+     "id": "f0e1d2c3-b4a5-4968-8776-655443322b07",
+     "page_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c03",
+     "type": "heading_1",
+     "text": "Renewal Timeline (T-120 to T-0)",
+     "checked": 0,
+     "sort_order": 1
+    },
+    {
+     "id": "f0e1d2c3-b4a5-4968-8776-655443322b08",
+     "page_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c03",
+     "type": "bulleted_list_item",
+     "text": "T-120: kickoff - pull usage and risk notes, confirm exec sponsor",
+     "checked": 0,
+     "sort_order": 2
+    },
+    {
+     "id": "f0e1d2c3-b4a5-4968-8776-655443322b09",
+     "page_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c03",
+     "type": "bulleted_list_item",
+     "text": "T-90: send renewal notice; review the account row in Renewal Tracker",
+     "checked": 0,
+     "sort_order": 3
+    },
+    {
+     "id": "f0e1d2c3-b4a5-4968-8776-655443322b10",
+     "page_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c03",
+     "type": "to_do",
+     "text": "T-60: exec alignment call scheduled for every Yellow/Red account",
+     "checked": 0,
+     "sort_order": 4
+    },
+    {
+     "id": "f0e1d2c3-b4a5-4968-8776-655443322b11",
+     "page_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c05",
+     "type": "heading_2",
+     "text": "2026-08-04 Expansion Scoping",
+     "checked": 0,
+     "sort_order": 1
+    },
+    {
+     "id": "f0e1d2c3-b4a5-4968-8776-655443322b12",
+     "page_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c05",
+     "type": "bulleted_list_item",
+     "text": "Summit Group evaluating 120 additional seats across two desks",
+     "checked": 0,
+     "sort_order": 2
+    },
+    {
+     "id": "f0e1d2c3-b4a5-4968-8776-655443322b13",
+     "page_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c05",
+     "type": "to_do",
+     "text": "Priya: send CPQ quote by 2026-08-12 (cap discount at 10% self-serve)",
+     "checked": 0,
+     "sort_order": 3
+    },
+    {
+     "id": "f0e1d2c3-b4a5-4968-8776-655443322b14",
+     "page_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c04",
+     "type": "heading_1",
+     "text": "Where we win vs Harborview",
+     "checked": 0,
+     "sort_order": 1
+    },
+    {
+     "id": "f0e1d2c3-b4a5-4968-8776-655443322b15",
+     "page_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c04",
+     "type": "bulleted_list_item",
+     "text": "Compliance snapshots and audit trail out of the box - Harborview requires a third-party add-on",
+     "checked": 0,
+     "sort_order": 2
+    }
+   ]
+  },
+  {
+   "name": "notion_comments",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "discussion_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "parent_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "rich_text",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_by",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_time",
+     "type": "TEXT"
+    },
+    {
+     "name": "resolved",
+     "type": "INTEGER"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e01",
+     "discussion_id": "dd01a2b3-c4d5-4e6f-8091-a2b3c4d5e601",
+     "parent_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c02",
+     "rich_text": "Does the 20-30% band still require CFO sign-off after the July Deal Desk charter update?",
+     "created_by": "3b4c5d6e-7f80-4912-b3c4-d5e6f7a8b503",
+     "created_time": "2026-07-02T10:30:00.000Z",
+     "resolved": 0
+    },
+    {
+     "id": "c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e02",
+     "discussion_id": "dd01a2b3-c4d5-4e6f-8091-a2b3c4d5e601",
+     "parent_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c02",
+     "rich_text": "Yes - CFO sign-off stays for 20-30%. The charter update only changed multi-year ramp handling.",
+     "created_by": "5d6e7f80-91a2-4b34-d5e6-f7a8b9c0d505",
+     "created_time": "2026-07-02T11:05:00.000Z",
+     "resolved": 1
+    },
+    {
+     "id": "c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e03",
+     "discussion_id": "dd01a2b3-c4d5-4e6f-8091-a2b3c4d5e602",
+     "parent_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c07",
+     "rich_text": "Champion has gone dark for 3 weeks - escalating to exec sponsor per Renewal Playbook T-60 step.",
+     "created_by": "4c5d6e7f-8091-4a23-c4d5-e6f7a8b9c504",
+     "created_time": "2026-08-06T10:20:00.000Z",
+     "resolved": 0
+    },
+    {
+     "id": "c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e04",
+     "discussion_id": "dd01a2b3-c4d5-4e6f-8091-a2b3c4d5e603",
+     "parent_id": "f0e1d2c3-b4a5-4968-8776-655443322b13",
+     "rich_text": "Summit procurement also asked for a security summary - adding it to the quote packet.",
+     "created_by": "1f2e3d4c-5b6a-4788-9a0b-c1d2e3f4a501",
+     "created_time": "2026-08-05T14:45:00.000Z",
+     "resolved": 0
+    },
+    {
+     "id": "c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e05",
+     "discussion_id": "dd01a2b3-c4d5-4e6f-8091-a2b3c4d5e604",
+     "parent_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c04",
+     "rich_text": "Refreshed the win/loss talking points after the Crestline win - please re-review before the next Harborview head-to-head.",
+     "created_by": "7f8091a2-b3c4-4d56-f708-b9c0d1e2f507",
+     "created_time": "2026-07-18T15:50:00.000Z",
+     "resolved": 0
+    },
+    {
+     "id": "c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e06",
+     "discussion_id": "dd01a2b3-c4d5-4e6f-8091-a2b3c4d5e605",
+     "parent_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c03",
+     "rich_text": "Riverside Group is Red - champion departed. Moving them to weekly cadence per this playbook.",
+     "created_by": "6e7f8091-a2b3-4c45-e6f7-a8b9c0d1e506",
+     "created_time": "2026-08-03T15:05:00.000Z",
+     "resolved": 0
+    },
+    {
+     "id": "c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e07",
+     "discussion_id": "dd01a2b3-c4d5-4e6f-8091-a2b3c4d5e606",
+     "parent_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c08",
+     "rich_text": "Routing for inbound Atlas leads still points at the old queue - needs an update.",
+     "created_by": "1f2e3d4c-5b6a-4788-9a0b-c1d2e3f4a501",
+     "created_time": "2026-07-25T09:10:00.000Z",
+     "resolved": 0
+    }
+   ]
+  }
+ ],
+ "tools": [
+  {
+   "name": "notion_search",
+   "description": "Search all pages and databases shared with the integration by title; filter by object type and sort by last edited time (POST /v1/search)",
+   "op": "custom",
+   "type": "read",
+   "table": "notion_pages",
+   "extra_tables": [
+    "notion_databases"
+   ],
+   "params": {
+    "query": {
+     "type": "string",
+     "description": "The text that the API compares page and database titles against."
+    },
+    "filter": {
+     "type": "object",
+     "description": "A set of criteria that limits results to either only pages or only databases: {\"value\": \"page\"|\"database\", \"property\": \"object\"}."
+    },
+    "sort": {
+     "type": "object",
+     "description": "Criteria to order results by; only last_edited_time is supported: {\"direction\": \"ascending\"|\"descending\", \"timestamp\": \"last_edited_time\"}."
+    },
+    "start_cursor": {
+     "type": "string",
+     "description": "A cursor value returned in a previous response; results start after the cursor. Defaults to the first page of results."
+    },
+    "page_size": {
+     "type": "integer",
+     "description": "The number of items from the full list to include in the response. Maximum: 100."
+    }
+   },
+   "required": [
+    "query"
+   ],
+   "custom_source": "def notion_search(db_path='state.db', **kwargs):\n    import sqlite3, json\n    query = kwargs.get('query')\n    if query is None:\n        return {\"object\": \"error\", \"status\": 400, \"code\": \"validation_error\",\n                \"message\": \"body failed validation: body.query should be defined.\"}\n    flt = kwargs.get('filter') or {}\n    if isinstance(flt, str):\n        try:\n            flt = json.loads(flt)\n        except Exception:\n            flt = {}\n    value = flt.get('value') if isinstance(flt, dict) else None\n    sort = kwargs.get('sort') or {}\n    if isinstance(sort, str):\n        try:\n            sort = json.loads(sort)\n        except Exception:\n            sort = {}\n    direction = sort.get('direction', 'descending') if isinstance(sort, dict) else 'descending'\n    try:\n        offset = int(kwargs.get('start_cursor') or 0)\n    except (TypeError, ValueError):\n        offset = 0\n    try:\n        page_size = min(int(kwargs.get('page_size') or 30), 100)\n    except (TypeError, ValueError):\n        page_size = 30\n    like = '%' + str(query) + '%'\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    results = []\n    if value in (None, 'page'):\n        for r in conn.execute(\"SELECT * FROM notion_pages WHERE archived = 0 AND title LIKE ?\", (like,)):\n            d = dict(r)\n            d['object'] = 'page'\n            results.append(d)\n    if value in (None, 'database'):\n        for r in conn.execute(\"SELECT * FROM notion_databases WHERE title LIKE ? OR description LIKE ?\", (like, like)):\n            d = dict(r)\n            d['object'] = 'database'\n            results.append(d)\n    conn.close()\n    results.sort(key=lambda d: d.get('last_edited_time') or '', reverse=(direction != 'ascending'))\n    window = results[offset:offset + page_size]\n    has_more = offset + page_size < len(results)\n    return {\"object\": \"list\", \"results\": window, \"has_more\": has_more,\n            \"next_cursor\": str(offset + page_size) if has_more else None,\n            \"type\": \"page_or_database\"}\n"
+  },
+  {
+   "name": "notion_page_get",
+   "description": "Retrieve a Notion page object using the ID specified (GET /v1/pages/{page_id})",
+   "op": "get",
+   "table": "notion_pages",
+   "id_param": "page_id",
+   "id_column": "id",
+   "params": {
+    "page_id": {
+     "type": "string",
+     "description": "Identifier for a Notion page."
+    }
+   },
+   "required": [
+    "page_id"
+   ]
+  },
+  {
+   "name": "notion_page_create",
+   "description": "Create a new page as a child of an existing page (POST /v1/pages)",
+   "op": "create",
+   "table": "notion_pages",
+   "id_prefix": "pg-",
+   "params": {
+    "parent_id": {
+     "type": "string",
+     "description": "The parent page where the new page is inserted (parent.page_id). Defaults to the workspace root when omitted."
+    },
+    "title": {
+     "type": "string",
+     "description": "The title of the page (properties.title, plain text)."
+    }
+   },
+   "required": [
+    "title"
+   ],
+   "fields": [
+    "parent_id",
+    "title"
+   ],
+   "defaults": {
+    "archived": 0,
+    "created_by": "9081a2b3-c4d5-4e67-8192-a3b4c5d6e508",
+    "created_time": "2026-08-10T09:00:00.000Z",
+    "last_edited_time": "2026-08-10T09:00:00.000Z"
+   }
+  },
+  {
+   "name": "notion_page_update",
+   "description": "Update page property values or the archived status for the specified page (PATCH /v1/pages/{page_id})",
+   "op": "update",
+   "table": "notion_pages",
+   "id_param": "page_id",
+   "id_column": "id",
+   "params": {
+    "page_id": {
+     "type": "string",
+     "description": "Identifier for a Notion page."
+    },
+    "title": {
+     "type": "string",
+     "description": "New title for the page (properties.title, plain text). Only written when provided."
+    },
+    "archived": {
+     "type": "boolean",
+     "description": "Whether the page is archived (deleted). Set to true to archive a page, false to un-archive it."
+    }
+   },
+   "required": [
+    "page_id"
+   ],
+   "set_fields": [
+    "title",
+    "archived"
+   ]
+  },
+  {
+   "name": "notion_page_archive",
+   "description": "Archive (move to trash) or restore a page by setting the archived flag (PATCH /v1/pages/{page_id})",
+   "op": "update",
+   "table": "notion_pages",
+   "id_param": "page_id",
+   "id_column": "id",
+   "params": {
+    "page_id": {
+     "type": "string",
+     "description": "Identifier for the Notion page to archive or restore."
+    },
+    "archived": {
+     "type": "boolean",
+     "description": "Set to true to archive (trash) the page; set to false to restore it."
+    }
+   },
+   "required": [
+    "page_id",
+    "archived"
+   ],
+   "set_fields": [
+    "archived"
+   ]
+  },
+  {
+   "name": "notion_databases_list",
+   "description": "List all databases shared with the integration (GET /v1/databases)",
+   "op": "list",
+   "table": "notion_databases",
+   "params": {
+    "limit": {
+     "type": "integer",
+     "description": "The number of databases desired in the response (page_size). Default 30, maximum 100."
+    }
+   }
+  },
+  {
+   "name": "notion_page_properties_get",
+   "description": "Retrieve the property values of a database page (row), or a single property item when property_id is given (GET /v1/pages/{page_id}/properties/{property_id})",
+   "op": "custom",
+   "type": "read",
+   "table": "notion_database_rows",
+   "params": {
+    "page_id": {
+     "type": "string",
+     "description": "Identifier for the database page (row) whose properties you want."
+    },
+    "property_id": {
+     "type": "string",
+     "description": "Identifier (property name) for the specific property to retrieve. When omitted, all property values are returned."
+    }
+   },
+   "required": [
+    "page_id"
+   ],
+   "custom_source": "def notion_page_properties_get(db_path='state.db', **kwargs):\n    import sqlite3, json\n    page_id = kwargs.get('page_id')\n    if not page_id:\n        return {\"object\": \"error\", \"status\": 400, \"code\": \"validation_error\",\n                \"message\": \"path failed validation: path.page_id should be defined.\"}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    row = conn.execute(\"SELECT * FROM notion_database_rows WHERE id = ?\", (page_id,)).fetchone()\n    conn.close()\n    if row is None:\n        return {\"object\": \"error\", \"status\": 404, \"code\": \"object_not_found\",\n                \"message\": \"Could not find page with ID: \" + str(page_id) + \".\"}\n    d = dict(row)\n    try:\n        props = json.loads(d.get('properties') or '{}')\n    except Exception:\n        props = {}\n    property_id = kwargs.get('property_id')\n    if property_id is not None:\n        if property_id not in props:\n            return {\"object\": \"error\", \"status\": 404, \"code\": \"object_not_found\",\n                    \"message\": \"Could not find property with id or name: \" + str(property_id) + \".\"}\n        return {\"object\": \"property_item\", \"id\": property_id, \"page_id\": page_id,\n                \"value\": props[property_id]}\n    return {\"object\": \"page\", \"id\": page_id,\n            \"parent\": {\"type\": \"database_id\", \"database_id\": d.get('database_id')},\n            \"created_time\": d.get('created_time'), \"last_edited_time\": d.get('last_edited_time'),\n            \"archived\": bool(d.get('archived')), \"properties\": props}\n"
+  },
+  {
+   "name": "notion_database_get",
+   "description": "Retrieve a database object, including its property schema, for the provided ID (GET /v1/databases/{database_id})",
+   "op": "get",
+   "table": "notion_databases",
+   "id_param": "database_id",
+   "id_column": "id",
+   "params": {
+    "database_id": {
+     "type": "string",
+     "description": "Identifier for a Notion database."
+    }
+   },
+   "required": [
+    "database_id"
+   ]
+  },
+  {
+   "name": "notion_database_create",
+   "description": "Create a database as a subpage in the specified parent page, with the defined property schema (POST /v1/databases)",
+   "op": "create",
+   "table": "notion_databases",
+   "id_prefix": "db-",
+   "params": {
+    "parent_id": {
+     "type": "string",
+     "description": "The parent page the database is created under (parent.page_id)."
+    },
+    "title": {
+     "type": "string",
+     "description": "Title of the database as it appears in Notion (plain text)."
+    },
+    "description": {
+     "type": "string",
+     "description": "Description of the database as it appears in Notion (plain text)."
+    },
+    "properties": {
+     "type": "string",
+     "description": "JSON-encoded property schema of the database: an object mapping property names to their type definitions, e.g. {\"Name\": {\"type\": \"title\"}, \"Risk\": {\"type\": \"select\"}}."
+    }
+   },
+   "required": [
+    "title",
+    "properties"
+   ],
+   "fields": [
+    "parent_id",
+    "title",
+    "description",
+    "properties"
+   ],
+   "defaults": {
+    "created_time": "2026-08-10T09:00:00.000Z",
+    "last_edited_time": "2026-08-10T09:00:00.000Z"
+   }
+  },
+  {
+   "name": "notion_database_query",
+   "description": "Query a database: get a list of the pages (rows) it contains, filtered and ordered by the property values in the request (POST /v1/databases/{database_id}/query)",
+   "op": "custom",
+   "type": "read",
+   "table": "notion_database_rows",
+   "extra_tables": [
+    "notion_databases"
+   ],
+   "params": {
+    "database_id": {
+     "type": "string",
+     "description": "Identifier for the Notion database to query."
+    },
+    "filter": {
+     "type": "object",
+     "description": "When supplied, limits which pages are returned based on the filter conditions: a leaf condition {\"property\": \"Risk\", \"select\": {\"equals\": \"Yellow\"}} (equals / does_not_equal / contains / does_not_contain), or a compound {\"and\": [...]} / {\"or\": [...]}."
+    },
+    "sorts": {
+     "type": "object",
+     "description": "When supplied, orders the results: an array of sort objects [{\"property\": \"Renewal Date\", \"direction\": \"ascending\"}] or [{\"timestamp\": \"last_edited_time\", \"direction\": \"descending\"}]."
+    },
+    "start_cursor": {
+     "type": "string",
+     "description": "A cursor value returned in a previous response; results start after the cursor. Defaults to the first page of results."
+    },
+    "page_size": {
+     "type": "integer",
+     "description": "The number of items from the full list to include in the response. Maximum: 100."
+    }
+   },
+   "required": [
+    "database_id"
+   ],
+   "custom_source": "def notion_database_query(db_path='state.db', **kwargs):\n    import sqlite3, json\n    database_id = kwargs.get('database_id')\n    if not database_id:\n        return {\"object\": \"error\", \"status\": 400, \"code\": \"validation_error\",\n                \"message\": \"path failed validation: path.database_id should be defined.\"}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    db_row = conn.execute(\"SELECT id FROM notion_databases WHERE id = ?\", (database_id,)).fetchone()\n    if db_row is None:\n        conn.close()\n        return {\"object\": \"error\", \"status\": 404, \"code\": \"object_not_found\",\n                \"message\": \"Could not find database with ID: \" + str(database_id) + \".\"}\n    flt = kwargs.get('filter')\n    if isinstance(flt, str):\n        try:\n            flt = json.loads(flt)\n        except Exception:\n            flt = None\n\n    def leaf_match(props, cond):\n        prop = cond.get('property')\n        if prop is None:\n            return True\n        val = props.get(prop)\n        if isinstance(val, list):\n            sval = ' '.join(str(v) for v in val)\n        else:\n            sval = '' if val is None else str(val)\n        body = None\n        for k, v in cond.items():\n            if k != 'property' and isinstance(v, dict):\n                body = v\n        if body is None:\n            body = dict((k, v) for k, v in cond.items() if k != 'property')\n        for op, target in body.items():\n            t = str(target)\n            if op == 'equals' and sval != t:\n                return False\n            if op == 'does_not_equal' and sval == t:\n                return False\n            if op == 'contains' and t.lower() not in sval.lower():\n                return False\n            if op == 'does_not_contain' and t.lower() in sval.lower():\n                return False\n        return True\n\n    def match(props, f):\n        if not isinstance(f, dict) or not f:\n            return True\n        if 'and' in f:\n            return all(match(props, c) for c in f['and'])\n        if 'or' in f:\n            return any(match(props, c) for c in f['or'])\n        return leaf_match(props, f)\n\n    rows = []\n    for r in conn.execute(\"SELECT * FROM notion_database_rows WHERE database_id = ? AND archived = 0\", (database_id,)):\n        d = dict(r)\n        try:\n            props = json.loads(d.get('properties') or '{}')\n        except Exception:\n            props = {}\n        if match(props, flt):\n            d['object'] = 'page'\n            d['parent'] = {\"type\": \"database_id\", \"database_id\": database_id}\n            rows.append(d)\n    conn.close()\n    sorts = kwargs.get('sorts')\n    if isinstance(sorts, str):\n        try:\n            sorts = json.loads(sorts)\n        except Exception:\n            sorts = None\n    if isinstance(sorts, dict):\n        sorts = [sorts]\n    if isinstance(sorts, list):\n        for s in reversed([s for s in sorts if isinstance(s, dict)]):\n            prop = s.get('property')\n            ts = s.get('timestamp')\n            rev = s.get('direction') == 'descending'\n            if ts in ('created_time', 'last_edited_time'):\n                rows.sort(key=lambda d: d.get(ts) or '', reverse=rev)\n            elif prop:\n                def sort_key(d, prop=prop):\n                    try:\n                        v = json.loads(d.get('properties') or '{}').get(prop)\n                    except Exception:\n                        v = None\n                    return '' if v is None else str(v)\n                rows.sort(key=sort_key, reverse=rev)\n    try:\n        offset = int(kwargs.get('start_cursor') or 0)\n    except (TypeError, ValueError):\n        offset = 0\n    try:\n        page_size = min(int(kwargs.get('page_size') or 30), 100)\n    except (TypeError, ValueError):\n        page_size = 30\n    window = rows[offset:offset + page_size]\n    has_more = offset + page_size < len(rows)\n    return {\"object\": \"list\", \"results\": window, \"has_more\": has_more,\n            \"next_cursor\": str(offset + page_size) if has_more else None, \"type\": \"page\"}\n"
+  },
+  {
+   "name": "notion_database_row_create",
+   "description": "Create a new page (row) in the specified database with the given property values (POST /v1/pages with parent.database_id)",
+   "op": "create",
+   "table": "notion_database_rows",
+   "id_prefix": "row-",
+   "params": {
+    "database_id": {
+     "type": "string",
+     "description": "The database this page belongs to (parent.database_id)."
+    },
+    "properties": {
+     "type": "string",
+     "description": "JSON-encoded property values keyed by property name, matching the database schema, e.g. {\"Name\": \"Atlas - FY2027 Renewal\", \"Risk\": \"Green\", \"ARR\": 320000}."
+    }
+   },
+   "required": [
+    "database_id",
+    "properties"
+   ],
+   "fields": [
+    "database_id",
+    "properties"
+   ],
+   "defaults": {
+    "archived": 0,
+    "created_by": "9081a2b3-c4d5-4e67-8192-a3b4c5d6e508",
+    "created_time": "2026-08-10T09:00:00.000Z",
+    "last_edited_time": "2026-08-10T09:00:00.000Z"
+   }
+  },
+  {
+   "name": "notion_database_row_update",
+   "description": "Update property values or the archived status of a database page (row) (PATCH /v1/pages/{page_id})",
+   "op": "update",
+   "table": "notion_database_rows",
+   "id_param": "page_id",
+   "id_column": "id",
+   "params": {
+    "page_id": {
+     "type": "string",
+     "description": "Identifier for the database page (row) to update."
+    },
+    "properties": {
+     "type": "string",
+     "description": "JSON-encoded property values to write, keyed by property name. Replaces the stored property values when provided."
+    },
+    "archived": {
+     "type": "boolean",
+     "description": "Whether the page is archived (deleted). Set to true to archive the row."
+    }
+   },
+   "required": [
+    "page_id"
+   ],
+   "set_fields": [
+    "properties",
+    "archived"
+   ]
+  },
+  {
+   "name": "notion_blocks_children_list",
+   "description": "Return a paginated array of child block objects contained in the block (page) specified (GET /v1/blocks/{block_id}/children)",
+   "op": "list",
+   "table": "notion_blocks",
+   "params": {
+    "block_id": {
+     "type": "string",
+     "description": "Identifier for a block. Also accepts a page ID, returning the page's top-level blocks."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The number of items from the full list desired in the response (page_size). Default 30, maximum 100."
+    }
+   },
+   "required": [
+    "block_id"
+   ],
+   "filters": [
+    "block_id"
+   ],
+   "filter_map": {
+    "block_id": "page_id"
+   }
+  },
+  {
+   "name": "notion_blocks_append",
+   "description": "Append new child blocks to the block (or page) specified; children are added to the bottom in order (PATCH /v1/blocks/{block_id}/children)",
+   "op": "custom",
+   "type": "write",
+   "table": "notion_blocks",
+   "extra_tables": [
+    "notion_pages"
+   ],
+   "params": {
+    "block_id": {
+     "type": "string",
+     "description": "Identifier for a block. Also accepts a page ID; children are appended to that page."
+    },
+    "children": {
+     "type": "object",
+     "description": "Child content to append: an array of block objects, e.g. [{\"type\": \"paragraph\", \"paragraph\": {\"rich_text\": [{\"text\": {\"content\": \"...\"}}]}}]. A simplified form [{\"type\": \"to_do\", \"text\": \"...\", \"checked\": false}] is also accepted. Supported types: paragraph, heading_1, heading_2, heading_3, bulleted_list_item, numbered_list_item, to_do, quote, callout."
+    }
+   },
+   "required": [
+    "block_id",
+    "children"
+   ],
+   "custom_source": "def notion_blocks_append(db_path='state.db', **kwargs):\n    import sqlite3, json, hashlib, datetime\n    block_id = kwargs.get('block_id')\n    children = kwargs.get('children')\n    if not block_id or children is None:\n        return {\"object\": \"error\", \"status\": 400, \"code\": \"validation_error\",\n                \"message\": \"body failed validation: path.block_id and body.children should be defined.\"}\n    if isinstance(children, str):\n        try:\n            children = json.loads(children)\n        except Exception:\n            return {\"object\": \"error\", \"status\": 400, \"code\": \"validation_error\",\n                    \"message\": \"body.children failed validation: value is not valid JSON.\"}\n    if isinstance(children, dict):\n        children = [children]\n    if not isinstance(children, list):\n        return {\"object\": \"error\", \"status\": 400, \"code\": \"validation_error\",\n                \"message\": \"body.children failed validation: should be an array of block objects.\"}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    parent = conn.execute(\"SELECT id FROM notion_pages WHERE id = ?\", (block_id,)).fetchone()\n    if parent is None:\n        parent = conn.execute(\"SELECT page_id AS id FROM notion_blocks WHERE id = ?\", (block_id,)).fetchone()\n    if parent is None:\n        conn.close()\n        return {\"object\": \"error\", \"status\": 404, \"code\": \"object_not_found\",\n                \"message\": \"Could not find block with ID: \" + str(block_id) + \".\"}\n    page_id = parent['id']\n    row = conn.execute(\"SELECT COALESCE(MAX(sort_order), 0) AS m FROM notion_blocks WHERE page_id = ?\", (page_id,)).fetchone()\n    order = row['m']\n    now = datetime.datetime(2026, 8, 10, 9, 0, 0).isoformat() + '.000Z'\n    supported = ('paragraph', 'heading_1', 'heading_2', 'heading_3',\n                 'bulleted_list_item', 'numbered_list_item', 'to_do', 'quote', 'callout')\n    created = []\n    for child in children:\n        if not isinstance(child, dict):\n            continue\n        btype = child.get('type')\n        if btype is None:\n            for k in child:\n                if k in supported:\n                    btype = k\n                    break\n        if btype not in supported:\n            btype = 'paragraph'\n        body = child.get(btype) if isinstance(child.get(btype), dict) else {}\n        text = child.get('text')\n        if text is None:\n            parts = []\n            for rt in (body.get('rich_text') or []):\n                if isinstance(rt, dict):\n                    parts.append(((rt.get('text') or {}).get('content')) or rt.get('plain_text') or '')\n            text = ''.join(parts)\n        checked = 1 if (body.get('checked') or child.get('checked')) else 0\n        order += 1\n        bid = 'blk-' + hashlib.sha1((str(page_id) + '|' + str(order) + '|' + str(text)).encode('utf-8')).hexdigest()[:12]\n        conn.execute(\"INSERT INTO notion_blocks (id, page_id, type, text, checked, sort_order) VALUES (?, ?, ?, ?, ?, ?)\",\n                     (bid, page_id, btype, text or '', checked, order))\n        created.append({\"object\": \"block\", \"id\": bid, \"type\": btype, \"text\": text or '',\n                        \"checked\": checked, \"sort_order\": order,\n                        \"parent\": {\"type\": \"page_id\", \"page_id\": page_id}})\n    conn.execute(\"UPDATE notion_pages SET last_edited_time = ? WHERE id = ?\", (now, page_id))\n    conn.commit()\n    conn.close()\n    return {\"object\": \"list\", \"results\": created, \"has_more\": False, \"next_cursor\": None, \"type\": \"block\"}\n"
+  },
+  {
+   "name": "notion_block_get",
+   "description": "Retrieve a block object using the ID specified (GET /v1/blocks/{block_id})",
+   "op": "get",
+   "table": "notion_blocks",
+   "id_param": "block_id",
+   "id_column": "id",
+   "params": {
+    "block_id": {
+     "type": "string",
+     "description": "Identifier for a Notion block."
+    }
+   },
+   "required": [
+    "block_id"
+   ]
+  },
+  {
+   "name": "notion_block_delete",
+   "description": "Set a block object to archived: true using the ID specified; the block is moved to trash (DELETE /v1/blocks/{block_id})",
+   "op": "delete",
+   "table": "notion_blocks",
+   "id_param": "block_id",
+   "id_column": "id",
+   "params": {
+    "block_id": {
+     "type": "string",
+     "description": "Identifier for the Notion block to delete."
+    }
+   },
+   "required": [
+    "block_id"
+   ]
+  },
+  {
+   "name": "notion_comments_list",
+   "description": "Retrieve a list of un-resolved comment objects from the specified page or block (GET /v1/comments)",
+   "op": "list",
+   "table": "notion_comments",
+   "params": {
+    "block_id": {
+     "type": "string",
+     "description": "Identifier for the page or block whose comments you want to retrieve."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The number of items from the full list desired in the response (page_size). Default 30, maximum 100."
+    }
+   },
+   "required": [
+    "block_id"
+   ],
+   "filters": [
+    "block_id"
+   ],
+   "filter_map": {
+    "block_id": "parent_id"
+   }
+  },
+  {
+   "name": "notion_comment_create",
+   "description": "Create a comment in a page or existing discussion thread (POST /v1/comments)",
+   "op": "create",
+   "table": "notion_comments",
+   "id_prefix": "cmt-",
+   "params": {
+    "parent_id": {
+     "type": "string",
+     "description": "The page or block the comment is attached to (parent.page_id). Either parent_id or discussion_id must be provided."
+    },
+    "discussion_id": {
+     "type": "string",
+     "description": "The ID of an existing discussion thread to add the comment to."
+    },
+    "rich_text": {
+     "type": "string",
+     "description": "The comment text content (rich_text, flattened to plain text)."
+    }
+   },
+   "required": [
+    "rich_text"
+   ],
+   "fields": [
+    "parent_id",
+    "discussion_id",
+    "rich_text"
+   ],
+   "defaults": {
+    "resolved": 0,
+    "created_by": "9081a2b3-c4d5-4e67-8192-a3b4c5d6e508",
+    "created_time": "2026-08-10T09:00:00.000Z"
+   }
+  },
+  {
+   "name": "notion_users_list",
+   "description": "Return a paginated list of users for the workspace (GET /v1/users)",
+   "op": "list",
+   "table": "notion_users",
+   "params": {
+    "limit": {
+     "type": "integer",
+     "description": "The number of items from the full list desired in the response (page_size). Default 30, maximum 100."
+    }
+   }
+  },
+  {
+   "name": "notion_user_get",
+   "description": "Retrieve a user object using the ID specified (GET /v1/users/{user_id})",
+   "op": "get",
+   "table": "notion_users",
+   "id_param": "user_id",
+   "id_column": "id",
+   "params": {
+    "user_id": {
+     "type": "string",
+     "description": "Identifier for a Notion workspace user."
+    }
+   },
+   "required": [
+    "user_id"
+   ]
+  }
+ ]
+}

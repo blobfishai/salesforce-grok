@@ -1,0 +1,26 @@
+{
+ "name": "sg_global_suppressions_add",
+ "mcp_name": "email.sg_global_suppressions_add",
+ "asset_namespace": "email",
+ "description": "Add one or more email addresses to the global suppressions group. Globally suppressed recipients never receive mail from this account; addresses already suppressed are skipped. (POST /v3/asm/suppressions/global)",
+ "type": "write",
+ "target_tables": [
+  "sg_global_suppressions"
+ ],
+ "parameters": {
+  "recipient_emails": "json"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "recipient_emails": {
+    "type": "object",
+    "description": "An array of email addresses to be added to the global suppressions group. A single address or comma-separated string is also accepted."
+   }
+  },
+  "required": [
+   "recipient_emails"
+  ],
+  "additionalProperties": false
+ }
+}

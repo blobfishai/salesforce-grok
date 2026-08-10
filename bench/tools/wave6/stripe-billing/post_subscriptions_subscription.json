@@ -1,0 +1,56 @@
+{
+ "name": "post_subscriptions_subscription",
+ "mcp_name": "stripe.post_subscriptions_subscription",
+ "asset_namespace": "stripe",
+ "description": "Updates an existing subscription to match the specified parameters; for example, set cancel_at_period_end to schedule a cancellation at the end of the current billing period. (POST /v1/subscriptions/{subscription})",
+ "type": "write",
+ "target_tables": [
+  "subscriptions"
+ ],
+ "parameters": {
+  "subscription": "string",
+  "cancel_at_period_end": "boolean",
+  "price": "string",
+  "quantity": "integer",
+  "collection_method": "string",
+  "default_payment_method": "string",
+  "metadata": "json"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "subscription": {
+    "type": "string",
+    "description": "The identifier of the subscription to update."
+   },
+   "cancel_at_period_end": {
+    "type": "boolean",
+    "description": "Indicate whether this subscription should cancel at the end of the current period (current_period_end). Defaults to false."
+   },
+   "price": {
+    "type": "string",
+    "description": "items[0][price]: The ID of the price object to switch this subscription to."
+   },
+   "quantity": {
+    "type": "integer",
+    "description": "items[0][quantity]: Quantity for this item."
+   },
+   "collection_method": {
+    "type": "string",
+    "description": "Either charge_automatically, or send_invoice. Defaults to charge_automatically."
+   },
+   "default_payment_method": {
+    "type": "string",
+    "description": "ID of the default payment method for the subscription. It must belong to the customer associated with the subscription."
+   },
+   "metadata": {
+    "type": "object",
+    "description": "Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format."
+   }
+  },
+  "required": [
+   "subscription"
+  ],
+  "additionalProperties": false
+ }
+}

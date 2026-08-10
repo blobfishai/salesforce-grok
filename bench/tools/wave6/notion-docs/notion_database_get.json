@@ -1,0 +1,26 @@
+{
+ "name": "notion_database_get",
+ "mcp_name": "notion.notion_database_get",
+ "asset_namespace": "notion",
+ "description": "Retrieve a database object, including its property schema, for the provided ID (GET /v1/databases/{database_id})",
+ "type": "read",
+ "target_tables": [
+  "notion_databases"
+ ],
+ "parameters": {
+  "database_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "database_id": {
+    "type": "string",
+    "description": "Identifier for a Notion database."
+   }
+  },
+  "required": [
+   "database_id"
+  ],
+  "additionalProperties": false
+ }
+}

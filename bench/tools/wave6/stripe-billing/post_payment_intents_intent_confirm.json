@@ -1,0 +1,31 @@
+{
+ "name": "post_payment_intents_intent_confirm",
+ "mcp_name": "stripe.post_payment_intents_intent_confirm",
+ "asset_namespace": "stripe",
+ "description": "Confirm that your customer intends to pay with current or provided payment method; upon confirmation the PaymentIntent transitions to requires_capture (manual capture_method) or succeeded. (POST /v1/payment_intents/{intent}/confirm)",
+ "type": "write",
+ "target_tables": [
+  "payment_intents"
+ ],
+ "parameters": {
+  "intent": "string",
+  "payment_method": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "intent": {
+    "type": "string",
+    "description": "The identifier of the PaymentIntent to confirm."
+   },
+   "payment_method": {
+    "type": "string",
+    "description": "ID of the payment method (a PaymentMethod, Card, or compatible Source object) to attach to this PaymentIntent."
+   }
+  },
+  "required": [
+   "intent"
+  ],
+  "additionalProperties": false
+ }
+}

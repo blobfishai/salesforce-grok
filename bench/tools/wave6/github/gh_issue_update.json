@@ -1,0 +1,57 @@
+{
+ "name": "gh_issue_update",
+ "mcp_name": "github.gh_issue_update",
+ "asset_namespace": "github",
+ "description": "Update an issue's title, body, state, assignee, or labels; closing sets closed_at (PATCH /repos/{owner}/{repo}/issues/{issue_number})",
+ "type": "write",
+ "target_tables": [
+  "gh_issues"
+ ],
+ "parameters": {
+  "repo": "string",
+  "issue_number": "integer",
+  "title": "string",
+  "body": "string",
+  "state": "string",
+  "assignee": "string",
+  "labels": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "repo": {
+    "type": "string",
+    "description": "The repository full name in owner/repo form."
+   },
+   "issue_number": {
+    "type": "integer",
+    "description": "The number that identifies the issue."
+   },
+   "title": {
+    "type": "string",
+    "description": "The title of the issue."
+   },
+   "body": {
+    "type": "string",
+    "description": "The contents of the issue."
+   },
+   "state": {
+    "type": "string",
+    "description": "The open or closed state of the issue. Can be one of: open, closed."
+   },
+   "assignee": {
+    "type": "string",
+    "description": "Username to assign to this issue."
+   },
+   "labels": {
+    "type": "string",
+    "description": "Labels to set on this issue, as a comma separated list or array of label names (replaces existing labels)."
+   }
+  },
+  "required": [
+   "repo",
+   "issue_number"
+  ],
+  "additionalProperties": false
+ }
+}

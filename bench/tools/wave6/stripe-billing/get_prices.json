@@ -1,0 +1,48 @@
+{
+ "name": "get_prices",
+ "mcp_name": "stripe.get_prices",
+ "asset_namespace": "stripe",
+ "description": "Returns a list of your active prices. (GET /v1/prices)",
+ "type": "read",
+ "target_tables": [
+  "prices"
+ ],
+ "parameters": {
+  "active": "boolean",
+  "currency": "string",
+  "product": "string",
+  "type": "string",
+  "lookup_key": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "active": {
+    "type": "boolean",
+    "description": "Only return prices that are active or inactive (e.g., pass false to list all inactive prices)."
+   },
+   "currency": {
+    "type": "string",
+    "description": "Only return prices for the given currency."
+   },
+   "product": {
+    "type": "string",
+    "description": "Only return prices for the given product."
+   },
+   "type": {
+    "type": "string",
+    "description": "Only return prices of type recurring or one_time."
+   },
+   "lookup_key": {
+    "type": "string",
+    "description": "Only return the price with this lookup_key, if it exists."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}

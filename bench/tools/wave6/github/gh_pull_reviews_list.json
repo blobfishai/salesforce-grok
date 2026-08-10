@@ -1,0 +1,37 @@
+{
+ "name": "gh_pull_reviews_list",
+ "mcp_name": "github.gh_pull_reviews_list",
+ "asset_namespace": "github",
+ "description": "List reviews for a pull request (GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews)",
+ "type": "read",
+ "target_tables": [
+  "gh_pull_reviews"
+ ],
+ "parameters": {
+  "repo": "string",
+  "pull_number": "integer",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "repo": {
+    "type": "string",
+    "description": "The repository full name in owner/repo form."
+   },
+   "pull_number": {
+    "type": "integer",
+    "description": "The number that identifies the pull request."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The number of results per page (max 100). GitHub param: per_page. Default: 30."
+   }
+  },
+  "required": [
+   "repo",
+   "pull_number"
+  ],
+  "additionalProperties": false
+ }
+}

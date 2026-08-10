@@ -1,0 +1,26 @@
+{
+ "name": "users_info",
+ "mcp_name": "slack.users_info",
+ "asset_namespace": "slack",
+ "description": "Gets information about a user, including profile, presence, and admin flags (GET /users.info)",
+ "type": "read",
+ "target_tables": [
+  "slack_users"
+ ],
+ "parameters": {
+  "user": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "user": {
+    "type": "string",
+    "description": "User to get info on, for example U0000001."
+   }
+  },
+  "required": [
+   "user"
+  ],
+  "additionalProperties": false
+ }
+}

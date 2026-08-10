@@ -1,0 +1,43 @@
+{
+ "name": "calendar_acl_insert",
+ "mcp_name": "calendar.calendar_acl_insert",
+ "asset_namespace": "calendar",
+ "description": "Creates an access control rule; the rule is appended to the 'items' collection of the calendar's ACL row, matching how calendar_acl_list reads it. (POST /calendars/{calendarId}/acl)",
+ "type": "write",
+ "target_tables": [
+  "acls"
+ ],
+ "parameters": {
+  "calendar_id": "string",
+  "role": "string",
+  "scope": "json",
+  "send_notifications": "boolean"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "calendar_id": {
+    "type": "string",
+    "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method."
+   },
+   "role": {
+    "type": "string",
+    "description": "The role assigned to the scope. Possible values: 'none', 'freeBusyReader', 'reader', 'writer', 'owner'."
+   },
+   "scope": {
+    "type": "object",
+    "description": "The extent to which calendar access is granted by this rule: object with 'type' ('default', 'user', 'group', or 'domain') and 'value' (the email address of a user or group, or the name of a domain; omitted for type 'default')."
+   },
+   "send_notifications": {
+    "type": "boolean",
+    "description": "Whether to send notifications about the calendar sharing change. Optional. The default is True. No mail is delivered in this sandbox."
+   }
+  },
+  "required": [
+   "calendar_id",
+   "role",
+   "scope"
+  ],
+  "additionalProperties": false
+ }
+}

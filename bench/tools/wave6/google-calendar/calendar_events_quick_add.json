@@ -1,0 +1,40 @@
+{
+ "name": "calendar_events_quick_add",
+ "mcp_name": "calendar.calendar_events_quick_add",
+ "asset_namespace": "calendar",
+ "description": "Creates an event based on a simple text string; the sandbox parser recognizes an ISO date (YYYY-MM-DD), a time (HH:MM or 2pm), and the words 'today'/'tomorrow'; the rest becomes the title. (POST /calendars/{calendarId}/events/quickAdd)",
+ "type": "write",
+ "target_tables": [
+  "agent_events",
+  "cal_event_details",
+  "cal_settings",
+  "calendars"
+ ],
+ "parameters": {
+  "calendar_id": "string",
+  "text": "string",
+  "send_updates": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "calendar_id": {
+    "type": "string",
+    "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method."
+   },
+   "text": {
+    "type": "string",
+    "description": "The text describing the event to be created, e.g. 'Deal-desk review with Summit Group 2026-02-03 14:00'."
+   },
+   "send_updates": {
+    "type": "string",
+    "description": "Guests who should receive notifications about the creation of the new event. Acceptable values: 'all', 'externalOnly', 'none'. Validated only; no mail is delivered in this sandbox."
+   }
+  },
+  "required": [
+   "calendar_id",
+   "text"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,45 @@
+{
+ "name": "calendar_events_move",
+ "mcp_name": "calendar.calendar_events_move",
+ "asset_namespace": "calendar",
+ "description": "Moves an event to another calendar, i.e. changes an event's organizer calendar. (POST /calendars/{calendarId}/events/{eventId}/move)",
+ "type": "write",
+ "target_tables": [
+  "cal_event_details",
+  "agent_events",
+  "calendars"
+ ],
+ "parameters": {
+  "calendar_id": "string",
+  "event_id": "integer",
+  "destination": "string",
+  "send_updates": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "calendar_id": {
+    "type": "string",
+    "description": "Calendar identifier of the source calendar where the event currently is on."
+   },
+   "event_id": {
+    "type": "integer",
+    "description": "Event identifier."
+   },
+   "destination": {
+    "type": "string",
+    "description": "Calendar identifier of the target calendar where the event is to be moved to."
+   },
+   "send_updates": {
+    "type": "string",
+    "description": "Guests who should receive notifications about the change of the event's organizer. Acceptable values: 'all', 'externalOnly', 'none'. Validated only; no mail is delivered in this sandbox."
+   }
+  },
+  "required": [
+   "calendar_id",
+   "event_id",
+   "destination"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "name": "jira_comment_add",
+ "mcp_name": "jira.jira_comment_add",
+ "asset_namespace": "jira",
+ "description": "Adds a comment to an issue (POST /rest/api/3/issue/{issueIdOrKey}/comment)",
+ "type": "write",
+ "target_tables": [
+  "jira_comments"
+ ],
+ "parameters": {
+  "issue_key": "string",
+  "body": "string",
+  "author": "string",
+  "author_email": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "issue_key": {
+    "type": "string",
+    "description": "The ID or key of the issue the comment is added to, for example RECON-101."
+   },
+   "body": {
+    "type": "string",
+    "description": "The text of the comment."
+   },
+   "author": {
+    "type": "string",
+    "description": "The display name to record as the comment author."
+   },
+   "author_email": {
+    "type": "string",
+    "description": "The email address of the comment author."
+   }
+  },
+  "required": [
+   "issue_key",
+   "body"
+  ],
+  "additionalProperties": false
+ }
+}

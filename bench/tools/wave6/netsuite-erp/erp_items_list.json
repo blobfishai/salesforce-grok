@@ -1,0 +1,33 @@
+{
+ "name": "erp_items_list",
+ "mcp_name": "erp.erp_items_list",
+ "asset_namespace": "erp",
+ "description": "List items in the GTM catalog (licenses, data feeds, services, appliances), optionally filtered by item type or inactive flag (GET /services/rest/record/v1/serviceItem, also inventoryItem/nonInventoryItem)",
+ "type": "read",
+ "target_tables": [
+  "erp_items"
+ ],
+ "parameters": {
+  "type": "string",
+  "is_inactive": "integer",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "type": {
+    "type": "string",
+    "description": "Item type filter: inventoryItem, nonInventoryItem or serviceItem."
+   },
+   "is_inactive": {
+    "type": "integer",
+    "description": "Set 1 to list only retired items, 0 for active items (isInactive)."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "Maximum number of records to return (default 30)."
+   }
+  },
+  "additionalProperties": false
+ }
+}

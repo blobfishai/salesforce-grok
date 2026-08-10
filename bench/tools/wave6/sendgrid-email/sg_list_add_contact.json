@@ -1,0 +1,34 @@
+{
+ "name": "sg_list_add_contact",
+ "mcp_name": "email.sg_list_add_contact",
+ "asset_namespace": "email",
+ "description": "Add an existing marketing contact to a contact list and update the list's contact count. Returns the membership record; adding a contact that is already a member is a no-op. (PUT /v3/marketing/contacts with list_ids)",
+ "type": "write",
+ "target_tables": [
+  "sg_list_members",
+  "sg_lists",
+  "sg_contacts"
+ ],
+ "parameters": {
+  "list_id": "string",
+  "contact_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "list_id": {
+    "type": "string",
+    "description": "The ID of the list the contact should be added to."
+   },
+   "contact_id": {
+    "type": "string",
+    "description": "The ID of an existing marketing contact to add to the list."
+   }
+  },
+  "required": [
+   "list_id",
+   "contact_id"
+  ],
+  "additionalProperties": false
+ }
+}

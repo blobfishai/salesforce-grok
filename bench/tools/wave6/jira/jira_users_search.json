@@ -1,0 +1,31 @@
+{
+ "name": "jira_users_search",
+ "mcp_name": "jira.jira_users_search",
+ "asset_namespace": "jira",
+ "description": "Returns a list of active users matching a query against display name and email address (GET /rest/api/3/user/search)",
+ "type": "read",
+ "target_tables": [
+  "employees"
+ ],
+ "parameters": {
+  "query": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "query": {
+    "type": "string",
+    "description": "A query string matched against the user's display name or email address, for example Mei."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The maximum number of users to return per page. Default: 30."
+   }
+  },
+  "required": [
+   "query"
+  ],
+  "additionalProperties": false
+ }
+}

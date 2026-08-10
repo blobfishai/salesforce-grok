@@ -1,0 +1,47 @@
+{
+ "name": "notion_database_query",
+ "mcp_name": "notion.notion_database_query",
+ "asset_namespace": "notion",
+ "description": "Query a database: get a list of the pages (rows) it contains, filtered and ordered by the property values in the request (POST /v1/databases/{database_id}/query)",
+ "type": "read",
+ "target_tables": [
+  "notion_database_rows",
+  "notion_databases"
+ ],
+ "parameters": {
+  "database_id": "string",
+  "filter": "json",
+  "sorts": "json",
+  "start_cursor": "string",
+  "page_size": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "database_id": {
+    "type": "string",
+    "description": "Identifier for the Notion database to query."
+   },
+   "filter": {
+    "type": "object",
+    "description": "When supplied, limits which pages are returned based on the filter conditions: a leaf condition {\"property\": \"Risk\", \"select\": {\"equals\": \"Yellow\"}} (equals / does_not_equal / contains / does_not_contain), or a compound {\"and\": [...]} / {\"or\": [...]}."
+   },
+   "sorts": {
+    "type": "object",
+    "description": "When supplied, orders the results: an array of sort objects [{\"property\": \"Renewal Date\", \"direction\": \"ascending\"}] or [{\"timestamp\": \"last_edited_time\", \"direction\": \"descending\"}]."
+   },
+   "start_cursor": {
+    "type": "string",
+    "description": "A cursor value returned in a previous response; results start after the cursor. Defaults to the first page of results."
+   },
+   "page_size": {
+    "type": "integer",
+    "description": "The number of items from the full list to include in the response. Maximum: 100."
+   }
+  },
+  "required": [
+   "database_id"
+  ],
+  "additionalProperties": false
+ }
+}

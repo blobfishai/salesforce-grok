@@ -1,0 +1,26 @@
+{
+ "name": "gh_workflow_run_rerun",
+ "mcp_name": "github.gh_workflow_run_rerun",
+ "asset_namespace": "github",
+ "description": "Re-run a workflow run: resets status to queued, clears the conclusion, and increments run_attempt (POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun)",
+ "type": "write",
+ "target_tables": [
+  "gh_workflow_runs"
+ ],
+ "parameters": {
+  "run_id": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "run_id": {
+    "type": "integer",
+    "description": "The unique identifier of the workflow run."
+   }
+  },
+  "required": [
+   "run_id"
+  ],
+  "additionalProperties": false
+ }
+}

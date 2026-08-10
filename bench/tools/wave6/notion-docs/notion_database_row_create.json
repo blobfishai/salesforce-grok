@@ -1,0 +1,32 @@
+{
+ "name": "notion_database_row_create",
+ "mcp_name": "notion.notion_database_row_create",
+ "asset_namespace": "notion",
+ "description": "Create a new page (row) in the specified database with the given property values (POST /v1/pages with parent.database_id)",
+ "type": "write",
+ "target_tables": [
+  "notion_database_rows"
+ ],
+ "parameters": {
+  "database_id": "string",
+  "properties": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "database_id": {
+    "type": "string",
+    "description": "The database this page belongs to (parent.database_id)."
+   },
+   "properties": {
+    "type": "string",
+    "description": "JSON-encoded property values keyed by property name, matching the database schema, e.g. {\"Name\": \"Atlas - FY2027 Renewal\", \"Risk\": \"Green\", \"ARR\": 320000}."
+   }
+  },
+  "required": [
+   "database_id",
+   "properties"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,32 @@
+{
+ "name": "conversations_set_purpose",
+ "mcp_name": "slack.conversations_set_purpose",
+ "asset_namespace": "slack",
+ "description": "Sets the purpose for a conversation (POST /conversations.setPurpose)",
+ "type": "write",
+ "target_tables": [
+  "channels"
+ ],
+ "parameters": {
+  "channel": "string",
+  "purpose": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "channel": {
+    "type": "string",
+    "description": "Conversation to set the purpose of."
+   },
+   "purpose": {
+    "type": "string",
+    "description": "A new, specialer purpose."
+   }
+  },
+  "required": [
+   "channel",
+   "purpose"
+  ],
+  "additionalProperties": false
+ }
+}

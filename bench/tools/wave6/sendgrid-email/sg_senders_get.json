@@ -1,0 +1,26 @@
+{
+ "name": "sg_senders_get",
+ "mcp_name": "email.sg_senders_get",
+ "asset_namespace": "email",
+ "description": "Retrieve a specific sender identity by ID. (GET /v3/senders/{sender_id})",
+ "type": "read",
+ "target_tables": [
+  "sg_senders"
+ ],
+ "parameters": {
+  "sender_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "sender_id": {
+    "type": "string",
+    "description": "The ID of the sender identity you want to retrieve."
+   }
+  },
+  "required": [
+   "sender_id"
+  ],
+  "additionalProperties": false
+ }
+}

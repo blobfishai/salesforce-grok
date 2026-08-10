@@ -1,0 +1,38 @@
+{
+ "name": "erp_invoices_list",
+ "mcp_name": "erp.erp_invoices_list",
+ "asset_namespace": "erp",
+ "description": "List invoice transactions (AR), optionally filtered by status, customer entity or originating sales order (GET /services/rest/record/v1/invoice)",
+ "type": "read",
+ "target_tables": [
+  "erp_invoices"
+ ],
+ "parameters": {
+  "status": "string",
+  "entity": "string",
+  "created_from": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "description": "Invoice status filter: open, paid or voided."
+   },
+   "entity": {
+    "type": "string",
+    "description": "Customer (entity) internal id, e.g. customer_007."
+   },
+   "created_from": {
+    "type": "string",
+    "description": "Originating sales order tranId (createdFrom), e.g. SO-2026-0105."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "Maximum number of records to return (default 30)."
+   }
+  },
+  "additionalProperties": false
+ }
+}

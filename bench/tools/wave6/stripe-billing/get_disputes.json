@@ -1,0 +1,33 @@
+{
+ "name": "get_disputes",
+ "mcp_name": "stripe.get_disputes",
+ "asset_namespace": "stripe",
+ "description": "Returns a list of your disputes. (GET /v1/disputes)",
+ "type": "read",
+ "target_tables": [
+  "disputes"
+ ],
+ "parameters": {
+  "charge": "string",
+  "payment_intent": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "charge": {
+    "type": "string",
+    "description": "Only return disputes associated to the charge specified by this charge ID."
+   },
+   "payment_intent": {
+    "type": "string",
+    "description": "Only return disputes associated to the PaymentIntent specified by this PaymentIntent ID."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}

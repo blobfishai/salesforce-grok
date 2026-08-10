@@ -1,0 +1,23 @@
+{
+ "name": "sg_unsubscribe_groups_list",
+ "mcp_name": "email.sg_unsubscribe_groups_list",
+ "asset_namespace": "email",
+ "description": "Retrieve all suppression (unsubscribe) groups associated with your account. (GET /v3/asm/groups)",
+ "type": "read",
+ "target_tables": [
+  "suppression_groups"
+ ],
+ "parameters": {
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "limit": {
+    "type": "integer",
+    "description": "Maximum number of unsubscribe groups to return. Defaults to 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}

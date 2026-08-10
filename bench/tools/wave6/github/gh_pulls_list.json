@@ -1,0 +1,46 @@
+{
+ "name": "gh_pulls_list",
+ "mcp_name": "github.gh_pulls_list",
+ "asset_namespace": "github",
+ "description": "List pull requests in a repository with state/base/head filters (GET /repos/{owner}/{repo}/pulls)",
+ "type": "read",
+ "target_tables": [
+  "gh_pull_requests"
+ ],
+ "parameters": {
+  "repo": "string",
+  "state": "string",
+  "head": "string",
+  "base": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "repo": {
+    "type": "string",
+    "description": "The repository full name in owner/repo form."
+   },
+   "state": {
+    "type": "string",
+    "description": "Either open, closed, or all to filter by state. Default: open."
+   },
+   "head": {
+    "type": "string",
+    "description": "Filter pulls by head branch name, e.g. fix/webhook-retry-backoff."
+   },
+   "base": {
+    "type": "string",
+    "description": "Filter pulls by base branch name. Example: main."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The number of results per page (max 100). GitHub param: per_page. Default: 30."
+   }
+  },
+  "required": [
+   "repo"
+  ],
+  "additionalProperties": false
+ }
+}

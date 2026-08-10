@@ -1,0 +1,32 @@
+{
+ "name": "calendar_acl_delete",
+ "mcp_name": "calendar.calendar_acl_delete",
+ "asset_namespace": "calendar",
+ "description": "Deletes an access control rule from the 'items' collection of the calendar's ACL row. (DELETE /calendars/{calendarId}/acl/{ruleId})",
+ "type": "write",
+ "target_tables": [
+  "acls"
+ ],
+ "parameters": {
+  "calendar_id": "string",
+  "rule_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "calendar_id": {
+    "type": "string",
+    "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method."
+   },
+   "rule_id": {
+    "type": "string",
+    "description": "ACL rule identifier, e.g. 'user:deal.desk@morganstanleysimulated.com'."
+   }
+  },
+  "required": [
+   "calendar_id",
+   "rule_id"
+  ],
+  "additionalProperties": false
+ }
+}

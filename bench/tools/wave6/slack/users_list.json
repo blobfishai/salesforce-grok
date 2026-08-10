@@ -1,0 +1,28 @@
+{
+ "name": "users_list",
+ "mcp_name": "slack.users_list",
+ "asset_namespace": "slack",
+ "description": "Lists all users in a Slack team, including bots and deactivated profiles (GET /users.list)",
+ "type": "read",
+ "target_tables": [
+  "slack_users"
+ ],
+ "parameters": {
+  "team_id": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "team_id": {
+    "type": "string",
+    "description": "Encoded team id to list users in, e.g. T0000001."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The maximum number of items to return. Default: 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}

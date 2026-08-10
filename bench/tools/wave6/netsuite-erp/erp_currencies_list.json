@@ -1,0 +1,23 @@
+{
+ "name": "erp_currencies_list",
+ "mcp_name": "erp.erp_currencies_list",
+ "asset_namespace": "erp",
+ "description": "List currency records with ISO symbol and exchange rate to the base currency (GET /services/rest/record/v1/currency)",
+ "type": "read",
+ "target_tables": [
+  "erp_currencies"
+ ],
+ "parameters": {
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "limit": {
+    "type": "integer",
+    "description": "Maximum number of records to return (default 30)."
+   }
+  },
+  "additionalProperties": false
+ }
+}

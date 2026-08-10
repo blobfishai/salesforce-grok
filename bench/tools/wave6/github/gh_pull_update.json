@@ -1,0 +1,52 @@
+{
+ "name": "gh_pull_update",
+ "mcp_name": "github.gh_pull_update",
+ "asset_namespace": "github",
+ "description": "Update a pull request's title, body, state, or base branch (PATCH /repos/{owner}/{repo}/pulls/{pull_number})",
+ "type": "write",
+ "target_tables": [
+  "gh_pull_requests"
+ ],
+ "parameters": {
+  "repo": "string",
+  "pull_number": "integer",
+  "title": "string",
+  "body": "string",
+  "state": "string",
+  "base": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "repo": {
+    "type": "string",
+    "description": "The repository full name in owner/repo form."
+   },
+   "pull_number": {
+    "type": "integer",
+    "description": "The number that identifies the pull request."
+   },
+   "title": {
+    "type": "string",
+    "description": "The title of the pull request."
+   },
+   "body": {
+    "type": "string",
+    "description": "The contents of the pull request."
+   },
+   "state": {
+    "type": "string",
+    "description": "State of this Pull Request. Either open or closed."
+   },
+   "base": {
+    "type": "string",
+    "description": "The name of the branch you want your changes pulled into."
+   }
+  },
+  "required": [
+   "repo",
+   "pull_number"
+  ],
+  "additionalProperties": false
+ }
+}

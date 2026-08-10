@@ -1,0 +1,31 @@
+{
+ "name": "gh_releases_list",
+ "mcp_name": "github.gh_releases_list",
+ "asset_namespace": "github",
+ "description": "List releases for a repository (GET /repos/{owner}/{repo}/releases)",
+ "type": "read",
+ "target_tables": [
+  "gh_releases"
+ ],
+ "parameters": {
+  "repo": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "repo": {
+    "type": "string",
+    "description": "The repository full name in owner/repo form."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The number of results per page (max 100). GitHub param: per_page. Default: 30."
+   }
+  },
+  "required": [
+   "repo"
+  ],
+  "additionalProperties": false
+ }
+}

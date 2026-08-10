@@ -1,0 +1,28 @@
+{
+ "name": "get_payment_intents",
+ "mcp_name": "stripe.get_payment_intents",
+ "asset_namespace": "stripe",
+ "description": "Returns a list of PaymentIntents. (GET /v1/payment_intents)",
+ "type": "read",
+ "target_tables": [
+  "payment_intents"
+ ],
+ "parameters": {
+  "customer": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "customer": {
+    "type": "string",
+    "description": "Only return PaymentIntents for the customer that this customer ID specifies."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}

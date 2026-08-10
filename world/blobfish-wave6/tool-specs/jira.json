@@ -1,0 +1,632 @@
+{
+  "vendor": "jira",
+  "namespace": "jira",
+  "tables": [
+    {
+      "name": "jira_projects",
+      "columns": [
+        {"name": "key", "type": "TEXT", "pk": true},
+        {"name": "name", "type": "TEXT"},
+        {"name": "description", "type": "TEXT"},
+        {"name": "lead", "type": "TEXT"},
+        {"name": "lead_email", "type": "TEXT"},
+        {"name": "project_type_key", "type": "TEXT"},
+        {"name": "category", "type": "TEXT"}
+      ],
+      "sample_rows": [
+        {"key": "RECON", "name": "Revenue Reconciliation", "description": "Billing-to-CRM revenue reconciliation for the Summit Group, Riverside Group, and Meridian books.", "lead": "Aisha Bello", "lead_email": "aisha.bello@morganstanleysimulated.com", "project_type_key": "software", "category": "Finance Systems"},
+        {"key": "GTM", "name": "Go-To-Market Engineering", "description": "Lead routing, MQL scoring, and funnel instrumentation for the FY2026 go-to-market motion.", "lead": "Tom Alvarez", "lead_email": "tom.alvarez@morganstanleysimulated.com", "project_type_key": "software", "category": "Revenue Engineering"},
+        {"key": "SUPP", "name": "Client Support Engineering", "description": "Tooling behind the client support desk: SLA timers, ticket routing, and escalation automation.", "lead": "Marcus Webb", "lead_email": "marcus.webb@morganstanleysimulated.com", "project_type_key": "software", "category": "Support"},
+        {"key": "CRM", "name": "CRM Data Hygiene", "description": "Dedupe, validation rules, and data quality reporting across the CRM account and contact base.", "lead": "Grace Liu", "lead_email": "grace.liu@morganstanleysimulated.com", "project_type_key": "software", "category": "Revenue Engineering"},
+        {"key": "DESK", "name": "Deal Desk Tooling", "description": "Quote generation, CPQ discount approvals, and deal registration workflow for the deal desk.", "lead": "Jordan Reyes", "lead_email": "jordan.reyes@morganstanleysimulated.com", "project_type_key": "software", "category": "Revenue Engineering"},
+        {"key": "BILL", "name": "Billing Platform", "description": "Core invoicing engine, credit notes, and billing webhooks feeding the reconciliation pipeline.", "lead": "Daniel Osei", "lead_email": "daniel.osei@morganstanleysimulated.com", "project_type_key": "software", "category": "Finance Systems"}
+      ]
+    },
+    {
+      "name": "jira_issues",
+      "columns": [
+        {"name": "key", "type": "TEXT", "pk": true},
+        {"name": "summary", "type": "TEXT"},
+        {"name": "description", "type": "TEXT"},
+        {"name": "issue_type", "type": "TEXT"},
+        {"name": "status", "type": "TEXT"},
+        {"name": "priority", "type": "TEXT"},
+        {"name": "assignee", "type": "TEXT"},
+        {"name": "assignee_email", "type": "TEXT"},
+        {"name": "reporter", "type": "TEXT"},
+        {"name": "reporter_email", "type": "TEXT"},
+        {"name": "project_key", "type": "TEXT"},
+        {"name": "sprint_id", "type": "INTEGER"},
+        {"name": "labels", "type": "TEXT"},
+        {"name": "created", "type": "TEXT"},
+        {"name": "updated", "type": "TEXT"}
+      ],
+      "sample_rows": [
+        {"key": "RECON-101", "summary": "Invoice totals mismatch between Stripe charges and NetSuite journal entries for Summit Group", "description": "Nightly reconciliation run flags 14 Summit Group invoices where the Stripe charge total does not match the posted journal entry. Suspected dropped reversal webhook from the 2026-07-28 deploy.", "issue_type": "Bug", "status": "In Progress", "priority": "Highest", "assignee": "Aisha Bello", "assignee_email": "aisha.bello@morganstanleysimulated.com", "reporter": "Daniel Osei", "reporter_email": "daniel.osei@morganstanleysimulated.com", "project_key": "RECON", "sprint_id": 5, "labels": "billing,reconciliation,q3-close", "created": "2026-07-29T09:12:00.000-0400", "updated": "2026-08-07T16:40:00.000-0400"},
+        {"key": "RECON-102", "summary": "Automate the daily reconciliation export for the Riverside Group billing account", "description": "Replace the manual CSV pull with a scheduled export job so the recon dashboard picks up Riverside Group balances before the 09:00 close review.", "issue_type": "Task", "status": "To Do", "priority": "High", "assignee": "Priya Natarajan", "assignee_email": "priya.natarajan@morganstanleysimulated.com", "reporter": "Aisha Bello", "reporter_email": "aisha.bello@morganstanleysimulated.com", "project_key": "RECON", "sprint_id": 5, "labels": "billing,automation", "created": "2026-07-30T11:00:00.000-0400", "updated": "2026-08-04T10:22:00.000-0400"},
+        {"key": "RECON-103", "summary": "Recon dashboard: surface unmatched credit notes older than 30 days", "description": "Finance wants a dedicated panel listing credit notes that have not matched an invoice within 30 days, with account name and amount, so the close review can chase them down.", "issue_type": "Story", "status": "In Review", "priority": "Medium", "assignee": "Daniel Osei", "assignee_email": "daniel.osei@morganstanleysimulated.com", "reporter": "Aisha Bello", "reporter_email": "aisha.bello@morganstanleysimulated.com", "project_key": "RECON", "sprint_id": 5, "labels": "reconciliation,dashboard", "created": "2026-07-21T14:05:00.000-0400", "updated": "2026-08-06T09:47:00.000-0400"},
+        {"key": "RECON-104", "summary": "Duplicate journal entries created when Meridian invoices are voided and reissued", "description": "Voiding and reissuing a Meridian invoice posts a second journal entry without reversing the first, inflating recognized revenue until the manual month-end correction.", "issue_type": "Bug", "status": "To Do", "priority": "High", "assignee": "Daniel Osei", "assignee_email": "daniel.osei@morganstanleysimulated.com", "reporter": "Priya Natarajan", "reporter_email": "priya.natarajan@morganstanleysimulated.com", "project_key": "RECON", "sprint_id": 6, "labels": "billing,data-integrity", "created": "2026-08-05T15:30:00.000-0400", "updated": "2026-08-05T15:30:00.000-0400"},
+        {"key": "RECON-105", "summary": "Backfill July FX rates for Harborview EUR invoices in the reconciliation run", "description": "Harborview EUR invoices reconciled against stale FX rates for the first week of July. Backfill the daily rates and re-run the matching job for the affected window.", "issue_type": "Task", "status": "Done", "priority": "Medium", "assignee": "Aisha Bello", "assignee_email": "aisha.bello@morganstanleysimulated.com", "reporter": "Daniel Osei", "reporter_email": "daniel.osei@morganstanleysimulated.com", "project_key": "RECON", "sprint_id": 4, "labels": "billing,backfill", "created": "2026-07-08T10:15:00.000-0400", "updated": "2026-07-17T17:02:00.000-0400"},
+        {"key": "CRM-21", "summary": "Dedupe merge: 43 duplicate contact records across Summit Group and Atlas accounts", "description": "The weekly dedupe scan found 43 duplicate contacts split across the Summit Group and Atlas account hierarchies. Merge per the dedupe race-handling rules, preserving activity history.", "issue_type": "Task", "status": "In Progress", "priority": "High", "assignee": "Grace Liu", "assignee_email": "grace.liu@morganstanleysimulated.com", "reporter": "Mei Huang", "reporter_email": "contact77709@morganstanleysimulated.com", "project_key": "CRM", "sprint_id": 12, "labels": "data-hygiene,dedupe", "created": "2026-07-31T09:40:00.000-0400", "updated": "2026-08-08T13:15:00.000-0400"},
+        {"key": "CRM-22", "summary": "Lead source field is blanked when an SDR converts a lead to an opportunity", "description": "Converting a lead wipes the lead_source value on the resulting opportunity, breaking campaign attribution. Reproduced on lead L-2214 (source Webinar FY2026).", "issue_type": "Bug", "status": "In Review", "priority": "Highest", "assignee": "Grace Liu", "assignee_email": "grace.liu@morganstanleysimulated.com", "reporter": "Mei Huang", "reporter_email": "contact77709@morganstanleysimulated.com", "project_key": "CRM", "sprint_id": 12, "labels": "data-hygiene,crm", "created": "2026-08-03T08:55:00.000-0400", "updated": "2026-08-09T11:20:00.000-0400"},
+        {"key": "CRM-23", "summary": "Enforce picklist values for the industry field on account create", "description": "Free-text industry values (27 spellings of Asset Management alone) break the data quality report. Enforce the standard picklist at create time and map legacy values.", "issue_type": "Story", "status": "To Do", "priority": "Medium", "assignee": "Elena Petrova", "assignee_email": "elena.petrova@morganstanleysimulated.com", "reporter": "Grace Liu", "reporter_email": "grace.liu@morganstanleysimulated.com", "project_key": "CRM", "sprint_id": 13, "labels": "data-hygiene,validation", "created": "2026-08-06T16:10:00.000-0400", "updated": "2026-08-06T16:10:00.000-0400"},
+        {"key": "CRM-24", "summary": "Weekly data quality report: stale opportunities past the stage-gate SLA", "description": "Ship the weekly report listing opportunities that exceeded the stale-opportunity ladder thresholds, grouped by owner, so sales managers can action them Monday morning.", "issue_type": "Task", "status": "Done", "priority": "Low", "assignee": "Elena Petrova", "assignee_email": "elena.petrova@morganstanleysimulated.com", "reporter": "Grace Liu", "reporter_email": "grace.liu@morganstanleysimulated.com", "project_key": "CRM", "sprint_id": 11, "labels": "data-hygiene,reporting", "created": "2026-07-14T09:00:00.000-0400", "updated": "2026-07-24T15:45:00.000-0400"},
+        {"key": "DESK-7", "summary": "Deal desk approval queue: auto-route discounts over 20% to finance per CPQ policy", "description": "Per the CPQ discount policy, discounts above 20% need finance sign-off. Build the approval queue routing so those quotes land with finance instead of stalling in the deal desk inbox.", "issue_type": "Story", "status": "In Progress", "priority": "High", "assignee": "Jordan Reyes", "assignee_email": "jordan.reyes@morganstanleysimulated.com", "reporter": "Tom Alvarez", "reporter_email": "tom.alvarez@morganstanleysimulated.com", "project_key": "DESK", "sprint_id": 8, "labels": "deal-desk,cpq,approvals", "created": "2026-07-27T10:30:00.000-0400", "updated": "2026-08-08T09:05:00.000-0400"},
+        {"key": "DESK-8", "summary": "Quote PDF generator drops the renewal term on multi-year Crestline deals", "description": "Multi-year Crestline quotes render without the renewal term clause, so legal bounces them. Blocked on a fix from the PDF template vendor; manual workaround in place.", "issue_type": "Bug", "status": "Blocked", "priority": "Highest", "assignee": "Jordan Reyes", "assignee_email": "jordan.reyes@morganstanleysimulated.com", "reporter": "Priya Natarajan", "reporter_email": "priya.natarajan@morganstanleysimulated.com", "project_key": "DESK", "sprint_id": 8, "labels": "deal-desk,quotes", "created": "2026-07-29T13:50:00.000-0400", "updated": "2026-08-05T14:12:00.000-0400"},
+        {"key": "DESK-9", "summary": "Add the Ironwood co-sell overlap check to the deal registration form", "description": "Deal registrations touching Ironwood must be checked against the co-sell and named-account overlap list before approval. Add the automated check to the registration form.", "issue_type": "Task", "status": "To Do", "priority": "Medium", "assignee": "Priya Natarajan", "assignee_email": "priya.natarajan@morganstanleysimulated.com", "reporter": "Jordan Reyes", "reporter_email": "jordan.reyes@morganstanleysimulated.com", "project_key": "DESK", "sprint_id": 9, "labels": "deal-desk,partners", "created": "2026-08-04T11:25:00.000-0400", "updated": "2026-08-04T11:25:00.000-0400"},
+        {"key": "GTM-42", "summary": "Route inbound MQLs to the SDR queue by AUM band", "description": "Inbound MQLs should route to the SDR queue keyed on the account AUM band from the tiering standard, not raw revenue. Mei's queue is currently getting sub-band leads.", "issue_type": "Story", "status": "In Progress", "priority": "High", "assignee": "Priya Natarajan", "assignee_email": "priya.natarajan@morganstanleysimulated.com", "reporter": "Mei Huang", "reporter_email": "contact77709@morganstanleysimulated.com", "project_key": "GTM", "sprint_id": 2, "labels": "routing,mql", "created": "2026-07-22T09:18:00.000-0400", "updated": "2026-08-07T10:33:00.000-0400"},
+        {"key": "GTM-43", "summary": "Instrument funnel conversion events for FY2026 campaigns", "description": "Emit conversion events at each funnel stage for the FY2026 campaign set so the funnel conversion-rate report stops relying on the weekly manual export.", "issue_type": "Task", "status": "To Do", "priority": "Medium", "assignee": "Tom Alvarez", "assignee_email": "tom.alvarez@morganstanleysimulated.com", "reporter": "Elena Petrova", "reporter_email": "elena.petrova@morganstanleysimulated.com", "project_key": "GTM", "sprint_id": 2, "labels": "analytics,campaigns", "created": "2026-08-01T15:00:00.000-0400", "updated": "2026-08-03T09:41:00.000-0400"},
+        {"key": "SUPP-55", "summary": "Support ticket SLA timer keeps running after a ticket moves to Pending Client", "description": "The SLA timer should pause while a ticket sits in Pending Client, but it keeps accruing when the status change comes from automation rather than a manual move. Breaches are being reported incorrectly.", "issue_type": "Bug", "status": "In Review", "priority": "High", "assignee": "Marcus Webb", "assignee_email": "marcus.webb@morganstanleysimulated.com", "reporter": "Sarah Kim", "reporter_email": "sarah.kim@morganstanleysimulated.com", "project_key": "SUPP", "sprint_id": null, "labels": "support,sla", "created": "2026-08-02T12:44:00.000-0400", "updated": "2026-08-08T16:58:00.000-0400"}
+      ]
+    },
+    {
+      "name": "jira_comments",
+      "columns": [
+        {"name": "id", "type": "TEXT", "pk": true},
+        {"name": "issue_key", "type": "TEXT"},
+        {"name": "author", "type": "TEXT"},
+        {"name": "author_email", "type": "TEXT"},
+        {"name": "body", "type": "TEXT"},
+        {"name": "created", "type": "TEXT"}
+      ],
+      "sample_rows": [
+        {"id": "jcm-10001", "issue_key": "RECON-101", "author": "Daniel Osei", "author_email": "daniel.osei@morganstanleysimulated.com", "body": "Traced the mismatch to voided Stripe charges that never reversed in the journal. 14 Summit Group invoices affected.", "created": "2026-08-04T10:12:00.000-0400"},
+        {"id": "jcm-10002", "issue_key": "RECON-101", "author": "Aisha Bello", "author_email": "aisha.bello@morganstanleysimulated.com", "body": "Confirmed - the reversal webhook was dropped during the 2026-07-28 deploy. Drafting the backfill script now.", "created": "2026-08-05T09:30:00.000-0400"},
+        {"id": "jcm-10003", "issue_key": "RECON-103", "author": "Aisha Bello", "author_email": "aisha.bello@morganstanleysimulated.com", "body": "Please add a filter so we can scope the panel to Riverside Group credit notes only during close week.", "created": "2026-08-06T09:45:00.000-0400"},
+        {"id": "jcm-10004", "issue_key": "CRM-21", "author": "Grace Liu", "author_email": "grace.liu@morganstanleysimulated.com", "body": "Merged 12 of 43 duplicates so far. The Atlas pairs need manual review because the owner fields conflict.", "created": "2026-08-08T13:10:00.000-0400"},
+        {"id": "jcm-10005", "issue_key": "CRM-22", "author": "Mei Huang", "author_email": "contact77709@morganstanleysimulated.com", "body": "Reproduced on lead L-2214 - the source Webinar FY2026 is wiped right after conversion completes.", "created": "2026-08-03T09:20:00.000-0400"},
+        {"id": "jcm-10006", "issue_key": "DESK-7", "author": "Jordan Reyes", "author_email": "jordan.reyes@morganstanleysimulated.com", "body": "Routing rule now matches the CPQ discount policy thresholds. Finance queue integration is the remaining piece.", "created": "2026-08-08T09:00:00.000-0400"},
+        {"id": "jcm-10007", "issue_key": "DESK-8", "author": "Jordan Reyes", "author_email": "jordan.reyes@morganstanleysimulated.com", "body": "Blocked on the template vendor fix. The Crestline renewal quote was worked around manually and is with legal.", "created": "2026-08-05T14:10:00.000-0400"},
+        {"id": "jcm-10008", "issue_key": "GTM-42", "author": "Mei Huang", "author_email": "contact77709@morganstanleysimulated.com", "body": "The SDR queue should respect the AUM band boundaries from the tiering standard, not raw revenue - that is what is misrouting my queue.", "created": "2026-08-06T11:05:00.000-0400"},
+        {"id": "jcm-10009", "issue_key": "SUPP-55", "author": "Marcus Webb", "author_email": "marcus.webb@morganstanleysimulated.com", "body": "The timer bug only fires when the status change comes from automation. Manual moves pause the SLA clock correctly.", "created": "2026-08-08T16:55:00.000-0400"},
+        {"id": "jcm-10010", "issue_key": "RECON-105", "author": "Aisha Bello", "author_email": "aisha.bello@morganstanleysimulated.com", "body": "July FX backfill complete. Harborview EUR invoices now reconcile to the cent.", "created": "2026-07-17T17:00:00.000-0400"}
+      ]
+    },
+    {
+      "name": "jira_worklogs",
+      "columns": [
+        {"name": "id", "type": "TEXT", "pk": true},
+        {"name": "issue_key", "type": "TEXT"},
+        {"name": "author", "type": "TEXT"},
+        {"name": "author_email", "type": "TEXT"},
+        {"name": "time_spent", "type": "TEXT"},
+        {"name": "time_spent_seconds", "type": "INTEGER"},
+        {"name": "comment", "type": "TEXT"},
+        {"name": "started", "type": "TEXT"}
+      ],
+      "sample_rows": [
+        {"id": "jwl-30001", "issue_key": "RECON-101", "author": "Aisha Bello", "author_email": "aisha.bello@morganstanleysimulated.com", "time_spent": "3h", "time_spent_seconds": 10800, "comment": "Traced the reversal webhook gap across the deploy window.", "started": "2026-08-05T10:00:00.000-0400"},
+        {"id": "jwl-30002", "issue_key": "RECON-101", "author": "Daniel Osei", "author_email": "daniel.osei@morganstanleysimulated.com", "time_spent": "2h 30m", "time_spent_seconds": 9000, "comment": "Cross-checked the 14 affected journal entries against Stripe.", "started": "2026-08-05T13:30:00.000-0400"},
+        {"id": "jwl-30003", "issue_key": "RECON-105", "author": "Aisha Bello", "author_email": "aisha.bello@morganstanleysimulated.com", "time_spent": "4h", "time_spent_seconds": 14400, "comment": "FX backfill run plus verification against the July window.", "started": "2026-07-16T09:00:00.000-0400"},
+        {"id": "jwl-30004", "issue_key": "CRM-21", "author": "Grace Liu", "author_email": "grace.liu@morganstanleysimulated.com", "time_spent": "5h", "time_spent_seconds": 18000, "comment": "Merged the Summit Group duplicate contact pairs.", "started": "2026-08-07T09:30:00.000-0400"},
+        {"id": "jwl-30005", "issue_key": "CRM-22", "author": "Grace Liu", "author_email": "grace.liu@morganstanleysimulated.com", "time_spent": "1h 30m", "time_spent_seconds": 5400, "comment": "Repro and stack trace for the lead conversion wipe.", "started": "2026-08-04T14:00:00.000-0400"},
+        {"id": "jwl-30006", "issue_key": "DESK-7", "author": "Jordan Reyes", "author_email": "jordan.reyes@morganstanleysimulated.com", "time_spent": "6h", "time_spent_seconds": 21600, "comment": "Built the approval routing rules against the CPQ thresholds.", "started": "2026-08-06T09:00:00.000-0400"},
+        {"id": "jwl-30007", "issue_key": "GTM-42", "author": "Priya Natarajan", "author_email": "priya.natarajan@morganstanleysimulated.com", "time_spent": "3h", "time_spent_seconds": 10800, "comment": "Integrated the AUM band lookup into the router.", "started": "2026-08-06T10:00:00.000-0400"},
+        {"id": "jwl-30008", "issue_key": "SUPP-55", "author": "Marcus Webb", "author_email": "marcus.webb@morganstanleysimulated.com", "time_spent": "2h", "time_spent_seconds": 7200, "comment": "Reproduced the SLA timer leak with automated status moves.", "started": "2026-08-08T11:00:00.000-0400"}
+      ]
+    },
+    {
+      "name": "jira_watchers",
+      "columns": [
+        {"name": "id", "type": "TEXT", "pk": true},
+        {"name": "issue_key", "type": "TEXT"},
+        {"name": "watcher_name", "type": "TEXT"},
+        {"name": "watcher_email", "type": "TEXT"},
+        {"name": "added", "type": "TEXT"}
+      ],
+      "sample_rows": [
+        {"id": "jwa-40001", "issue_key": "RECON-101", "watcher_name": "Aisha Bello", "watcher_email": "aisha.bello@morganstanleysimulated.com", "added": "2026-07-29"},
+        {"id": "jwa-40002", "issue_key": "RECON-101", "watcher_name": "Priya Natarajan", "watcher_email": "priya.natarajan@morganstanleysimulated.com", "added": "2026-07-30"},
+        {"id": "jwa-40003", "issue_key": "RECON-104", "watcher_name": "Aisha Bello", "watcher_email": "aisha.bello@morganstanleysimulated.com", "added": "2026-08-05"},
+        {"id": "jwa-40004", "issue_key": "CRM-21", "watcher_name": "Mei Huang", "watcher_email": "contact77709@morganstanleysimulated.com", "added": "2026-07-31"},
+        {"id": "jwa-40005", "issue_key": "CRM-22", "watcher_name": "Mei Huang", "watcher_email": "contact77709@morganstanleysimulated.com", "added": "2026-08-03"},
+        {"id": "jwa-40006", "issue_key": "CRM-22", "watcher_name": "Elena Petrova", "watcher_email": "elena.petrova@morganstanleysimulated.com", "added": "2026-08-04"},
+        {"id": "jwa-40007", "issue_key": "DESK-8", "watcher_name": "Tom Alvarez", "watcher_email": "tom.alvarez@morganstanleysimulated.com", "added": "2026-07-30"},
+        {"id": "jwa-40008", "issue_key": "DESK-8", "watcher_name": "Jordan Reyes", "watcher_email": "jordan.reyes@morganstanleysimulated.com", "added": "2026-07-29"},
+        {"id": "jwa-40009", "issue_key": "GTM-42", "watcher_name": "Mei Huang", "watcher_email": "contact77709@morganstanleysimulated.com", "added": "2026-07-22"},
+        {"id": "jwa-40010", "issue_key": "SUPP-55", "watcher_name": "Sarah Kim", "watcher_email": "sarah.kim@morganstanleysimulated.com", "added": "2026-08-02"}
+      ]
+    },
+    {
+      "name": "jira_boards",
+      "columns": [
+        {"name": "id", "type": "INTEGER", "pk": true},
+        {"name": "name", "type": "TEXT"},
+        {"name": "type", "type": "TEXT"},
+        {"name": "project_key", "type": "TEXT"}
+      ],
+      "sample_rows": [
+        {"id": 1, "name": "RECON board", "type": "scrum", "project_key": "RECON"},
+        {"id": 2, "name": "GTM board", "type": "scrum", "project_key": "GTM"},
+        {"id": 3, "name": "SUPP support kanban", "type": "kanban", "project_key": "SUPP"},
+        {"id": 4, "name": "CRM Data Hygiene board", "type": "scrum", "project_key": "CRM"},
+        {"id": 5, "name": "Deal Desk Tooling board", "type": "scrum", "project_key": "DESK"},
+        {"id": 6, "name": "Billing Platform kanban", "type": "kanban", "project_key": "BILL"}
+      ]
+    },
+    {
+      "name": "jira_sprints",
+      "columns": [
+        {"name": "id", "type": "INTEGER", "pk": true},
+        {"name": "board_id", "type": "INTEGER"},
+        {"name": "name", "type": "TEXT"},
+        {"name": "state", "type": "TEXT"},
+        {"name": "start_date", "type": "TEXT"},
+        {"name": "end_date", "type": "TEXT"},
+        {"name": "goal", "type": "TEXT"}
+      ],
+      "sample_rows": [
+        {"id": 4, "board_id": 1, "name": "RECON Sprint 4", "state": "closed", "start_date": "2026-07-06", "end_date": "2026-07-17", "goal": "Close the July reconciliation gaps"},
+        {"id": 5, "board_id": 1, "name": "RECON Sprint 5", "state": "active", "start_date": "2026-08-03", "end_date": "2026-08-14", "goal": "Automate the Summit and Riverside daily recon"},
+        {"id": 6, "board_id": 1, "name": "RECON Sprint 6", "state": "future", "start_date": "2026-08-17", "end_date": "2026-08-28", "goal": "Meridian void-and-reissue integrity fixes"},
+        {"id": 2, "board_id": 2, "name": "GTM Sprint 2", "state": "active", "start_date": "2026-08-03", "end_date": "2026-08-14", "goal": "MQL routing by AUM band"},
+        {"id": 11, "board_id": 4, "name": "CRM Hygiene Sprint 11", "state": "closed", "start_date": "2026-07-13", "end_date": "2026-07-24", "goal": "Stale-opportunity reporting live"},
+        {"id": 12, "board_id": 4, "name": "CRM Hygiene Sprint 12", "state": "active", "start_date": "2026-08-03", "end_date": "2026-08-14", "goal": "Dedupe the top-7 account hierarchies"},
+        {"id": 13, "board_id": 4, "name": "CRM Hygiene Sprint 13", "state": "future", "start_date": "2026-08-17", "end_date": "2026-08-28", "goal": "Picklist enforcement on account create"},
+        {"id": 8, "board_id": 5, "name": "Deal Desk Sprint 8", "state": "active", "start_date": "2026-08-03", "end_date": "2026-08-14", "goal": "Approval routing per the CPQ discount policy"},
+        {"id": 9, "board_id": 5, "name": "Deal Desk Sprint 9", "state": "future", "start_date": "2026-08-17", "end_date": "2026-08-28", "goal": "Partner overlap checks in deal registration"}
+      ]
+    },
+    {
+      "name": "jira_transitions",
+      "columns": [
+        {"name": "id", "type": "TEXT", "pk": true},
+        {"name": "name", "type": "TEXT"},
+        {"name": "from_status", "type": "TEXT"},
+        {"name": "to_status", "type": "TEXT"}
+      ],
+      "sample_rows": [
+        {"id": "5", "name": "Ready for Sprint", "from_status": "Backlog", "to_status": "To Do"},
+        {"id": "11", "name": "Start Progress", "from_status": "To Do", "to_status": "In Progress"},
+        {"id": "21", "name": "Submit for Review", "from_status": "In Progress", "to_status": "In Review"},
+        {"id": "31", "name": "Approve and Close", "from_status": "In Review", "to_status": "Done"},
+        {"id": "41", "name": "Request Changes", "from_status": "In Review", "to_status": "In Progress"},
+        {"id": "51", "name": "Mark Blocked", "from_status": "In Progress", "to_status": "Blocked"},
+        {"id": "61", "name": "Unblock", "from_status": "Blocked", "to_status": "In Progress"},
+        {"id": "71", "name": "Reopen", "from_status": "Done", "to_status": "To Do"},
+        {"id": "81", "name": "Send Back to Backlog", "from_status": "To Do", "to_status": "Backlog"}
+      ]
+    },
+    {
+      "name": "jira_priorities",
+      "columns": [
+        {"name": "id", "type": "TEXT", "pk": true},
+        {"name": "name", "type": "TEXT"},
+        {"name": "description", "type": "TEXT"}
+      ],
+      "sample_rows": [
+        {"id": "10000", "name": "Blocker", "description": "Blocks development and/or testing work; production cannot run."},
+        {"id": "1", "name": "Highest", "description": "This problem will block progress."},
+        {"id": "2", "name": "High", "description": "Serious problem that could block progress."},
+        {"id": "3", "name": "Medium", "description": "Has the potential to affect progress."},
+        {"id": "4", "name": "Low", "description": "Minor problem or easily worked around."},
+        {"id": "5", "name": "Lowest", "description": "Trivial problem with little or no impact on progress."}
+      ]
+    },
+    {
+      "name": "jira_statuses",
+      "columns": [
+        {"name": "id", "type": "TEXT", "pk": true},
+        {"name": "name", "type": "TEXT"},
+        {"name": "status_category", "type": "TEXT"},
+        {"name": "description", "type": "TEXT"}
+      ],
+      "sample_rows": [
+        {"id": "10000", "name": "Backlog", "status_category": "To Do", "description": "The issue is in the backlog and not yet scheduled into a sprint."},
+        {"id": "10001", "name": "To Do", "status_category": "To Do", "description": "The issue is scheduled and waiting to be picked up."},
+        {"id": "3", "name": "In Progress", "status_category": "In Progress", "description": "The issue is actively being worked on by the assignee."},
+        {"id": "10002", "name": "In Review", "status_category": "In Progress", "description": "Work is complete and awaiting peer or stakeholder review."},
+        {"id": "10003", "name": "Blocked", "status_category": "In Progress", "description": "Progress is blocked by an external dependency; see the latest comment."},
+        {"id": "10004", "name": "Done", "status_category": "Done", "description": "Work on the issue is complete."}
+      ]
+    },
+    {
+      "name": "jira_components",
+      "columns": [
+        {"name": "id", "type": "TEXT", "pk": true},
+        {"name": "project_key", "type": "TEXT"},
+        {"name": "name", "type": "TEXT"},
+        {"name": "description", "type": "TEXT"},
+        {"name": "lead", "type": "TEXT"}
+      ],
+      "sample_rows": [
+        {"id": "10001", "project_key": "RECON", "name": "Ledger Sync", "description": "Stripe-to-NetSuite journal entry matching jobs.", "lead": "Daniel Osei"},
+        {"id": "10002", "project_key": "RECON", "name": "Recon Dashboard", "description": "Close-week reconciliation dashboard and panels.", "lead": "Aisha Bello"},
+        {"id": "10003", "project_key": "BILL", "name": "Invoice Engine", "description": "Invoice generation, voiding, and reissue flows.", "lead": "Daniel Osei"},
+        {"id": "10004", "project_key": "CRM", "name": "Dedupe Service", "description": "Duplicate detection and merge tooling for accounts and contacts.", "lead": "Grace Liu"},
+        {"id": "10005", "project_key": "CRM", "name": "Validation Rules", "description": "Field-level validation and picklist enforcement.", "lead": "Elena Petrova"},
+        {"id": "10006", "project_key": "DESK", "name": "Approval Workflow", "description": "CPQ discount approval routing for the deal desk.", "lead": "Jordan Reyes"},
+        {"id": "10007", "project_key": "DESK", "name": "Quote Generator", "description": "Quote document rendering including renewal terms.", "lead": "Jordan Reyes"},
+        {"id": "10008", "project_key": "GTM", "name": "Lead Router", "description": "Inbound lead and MQL routing rules.", "lead": "Tom Alvarez"},
+        {"id": "10009", "project_key": "SUPP", "name": "SLA Timers", "description": "Support ticket SLA accrual and pause logic.", "lead": "Marcus Webb"}
+      ]
+    },
+    {
+      "name": "jira_versions",
+      "columns": [
+        {"name": "id", "type": "TEXT", "pk": true},
+        {"name": "project_key", "type": "TEXT"},
+        {"name": "name", "type": "TEXT"},
+        {"name": "description", "type": "TEXT"},
+        {"name": "released", "type": "TEXT"},
+        {"name": "release_date", "type": "TEXT"}
+      ],
+      "sample_rows": [
+        {"id": "20001", "project_key": "RECON", "name": "recon-2026.07", "description": "July close reconciliation release.", "released": "true", "release_date": "2026-07-31"},
+        {"id": "20002", "project_key": "RECON", "name": "recon-2026.08", "description": "August close release: daily export automation.", "released": "false", "release_date": "2026-08-29"},
+        {"id": "20003", "project_key": "CRM", "name": "hygiene-q3", "description": "Q3 data hygiene milestone: dedupe plus picklist enforcement.", "released": "false", "release_date": "2026-09-30"},
+        {"id": "20004", "project_key": "DESK", "name": "deal-desk-v2.1", "description": "Quote generator refresh.", "released": "true", "release_date": "2026-06-30"},
+        {"id": "20005", "project_key": "DESK", "name": "deal-desk-v2.2", "description": "Finance approval routing for CPQ discounts.", "released": "false", "release_date": "2026-08-21"},
+        {"id": "20006", "project_key": "GTM", "name": "router-1.4", "description": "AUM-band MQL routing.", "released": "false", "release_date": "2026-08-28"},
+        {"id": "20007", "project_key": "BILL", "name": "billing-core-3.0", "description": "Void-and-reissue journal integrity rework.", "released": "false", "release_date": "2026-09-15"}
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "name": "jira_search",
+      "description": "Search for issues using a JQL-style text query matched against issue summary and description, with optional project, status, and assignee filters (GET /rest/api/3/search/jql)",
+      "op": "custom",
+      "type": "read",
+      "table": "jira_issues",
+      "params": {
+        "jql": {"type": "string", "description": "The JQL-style search text. Matched case-insensitively as a substring of the issue summary or description."},
+        "project": {"type": "string", "description": "Restrict results to issues in the project with this project key, for example RECON."},
+        "status": {"type": "string", "description": "Restrict results to issues currently in this status, for example In Progress."},
+        "assignee": {"type": "string", "description": "Restrict results to issues assigned to this user. Accepts the display name or the email address."},
+        "max_results": {"type": "integer", "description": "The maximum number of issues to return per page. Default: 50."},
+        "start_at": {"type": "integer", "description": "The index of the first issue to return (0-based). Default: 0."}
+      },
+      "required": ["jql"],
+      "custom_source": "def jira_search(db_path='state.db', **kwargs):\n    import sqlite3\n    jql = kwargs.get('jql')\n    if jql is None or str(jql).strip() == '':\n        return {'error': 'jql is required', 'status': 400}\n    try:\n        max_results = int(kwargs.get('max_results', 50))\n    except (TypeError, ValueError):\n        max_results = 50\n    try:\n        start_at = int(kwargs.get('start_at', 0))\n    except (TypeError, ValueError):\n        start_at = 0\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    sql = 'SELECT * FROM jira_issues WHERE (summary LIKE ? OR description LIKE ?)'\n    params = ['%' + str(jql) + '%', '%' + str(jql) + '%']\n    if kwargs.get('project'):\n        sql += ' AND project_key = ?'\n        params.append(kwargs['project'])\n    if kwargs.get('status'):\n        sql += ' AND status = ?'\n        params.append(kwargs['status'])\n    if kwargs.get('assignee'):\n        sql += ' AND (assignee = ? OR assignee_email = ?)'\n        params.append(kwargs['assignee'])\n        params.append(kwargs['assignee'])\n    sql += ' ORDER BY updated DESC LIMIT ? OFFSET ?'\n    params.append(max_results)\n    params.append(start_at)\n    issues = [dict(r) for r in conn.execute(sql, params).fetchall()]\n    conn.close()\n    return {'startAt': start_at, 'maxResults': max_results, 'total': len(issues), 'issues': issues}\n"
+    },
+    {
+      "name": "jira_issue_get",
+      "description": "Returns the details for an issue, including status, priority, assignee, sprint, and labels (GET /rest/api/3/issue/{issueIdOrKey})",
+      "op": "get",
+      "table": "jira_issues",
+      "id_param": "issue_key",
+      "id_column": "key",
+      "params": {
+        "issue_key": {"type": "string", "description": "The ID or key of the issue, for example RECON-101."}
+      },
+      "required": ["issue_key"]
+    },
+    {
+      "name": "jira_issue_create",
+      "description": "Creates an issue in a project; the issue key is generated from the project key and the next sequence number (POST /rest/api/3/issue)",
+      "op": "custom",
+      "type": "write",
+      "table": "jira_issues",
+      "extra_tables": ["jira_projects"],
+      "params": {
+        "project_key": {"type": "string", "description": "The key of the project the issue is created in, for example RECON. Returns a 404 if the project does not exist."},
+        "summary": {"type": "string", "description": "A brief one-line summary of the issue."},
+        "issue_type": {"type": "string", "description": "The name of the issue type, for example Bug, Task, or Story."},
+        "description": {"type": "string", "description": "A detailed description of the issue."},
+        "priority": {"type": "string", "description": "The name of the priority, for example Highest, High, Medium, Low. Default: Medium."},
+        "assignee": {"type": "string", "description": "The display name of the user the issue is assigned to."},
+        "assignee_email": {"type": "string", "description": "The email address of the assignee."},
+        "reporter": {"type": "string", "description": "The display name of the user reporting the issue."},
+        "reporter_email": {"type": "string", "description": "The email address of the reporter."},
+        "sprint_id": {"type": "integer", "description": "The ID of the sprint to place the issue in, if any."},
+        "labels": {"type": "string", "description": "Comma-separated labels to apply to the issue, for example billing,reconciliation."}
+      },
+      "required": ["project_key", "summary", "issue_type"],
+      "custom_source": "def jira_issue_create(db_path='state.db', **kwargs):\n    import sqlite3, datetime\n    project_key = kwargs.get('project_key')\n    summary = kwargs.get('summary')\n    if not project_key or not summary:\n        return {'error': 'project_key and summary are required', 'status': 400}\n    issue_type = kwargs.get('issue_type') or 'Task'\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    proj = conn.execute('SELECT * FROM jira_projects WHERE key = ?', (project_key,)).fetchone()\n    if proj is None:\n        conn.close()\n        return {'error': 'Project ' + str(project_key) + ' not found', 'status': 404}\n    row = conn.execute('SELECT MAX(CAST(substr(key, length(?) + 2) AS INTEGER)) AS n FROM jira_issues WHERE project_key = ?', (project_key, project_key)).fetchone()\n    next_num = (row['n'] or 100) + 1\n    new_key = str(project_key) + '-' + str(next_num)\n    now = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.000+0000')\n    conn.execute('INSERT INTO jira_issues (key, summary, description, issue_type, status, priority, assignee, assignee_email, reporter, reporter_email, project_key, sprint_id, labels, created, updated) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', (new_key, summary, kwargs.get('description') or '', issue_type, 'To Do', kwargs.get('priority') or 'Medium', kwargs.get('assignee'), kwargs.get('assignee_email'), kwargs.get('reporter'), kwargs.get('reporter_email'), project_key, kwargs.get('sprint_id'), kwargs.get('labels') or '', now, now))\n    conn.commit()\n    created = dict(conn.execute('SELECT * FROM jira_issues WHERE key = ?', (new_key,)).fetchone())\n    conn.close()\n    return created\n"
+    },
+    {
+      "name": "jira_issue_update",
+      "description": "Edits an issue; only the fields provided are updated. Status changes must go through jira_issue_transition (PUT /rest/api/3/issue/{issueIdOrKey})",
+      "op": "update",
+      "table": "jira_issues",
+      "id_param": "issue_key",
+      "id_column": "key",
+      "set_fields": ["summary", "description", "issue_type", "priority", "labels"],
+      "params": {
+        "issue_key": {"type": "string", "description": "The ID or key of the issue to edit, for example RECON-101."},
+        "summary": {"type": "string", "description": "The new one-line summary of the issue."},
+        "description": {"type": "string", "description": "The new detailed description of the issue."},
+        "issue_type": {"type": "string", "description": "The new issue type name, for example Bug, Task, or Story."},
+        "priority": {"type": "string", "description": "The new priority name, for example Highest, High, Medium, Low."},
+        "labels": {"type": "string", "description": "The full replacement comma-separated label list for the issue."}
+      },
+      "required": ["issue_key"]
+    },
+    {
+      "name": "jira_issue_delete",
+      "description": "Deletes an issue; returns a 404 if the issue does not exist (DELETE /rest/api/3/issue/{issueIdOrKey})",
+      "op": "delete",
+      "table": "jira_issues",
+      "id_param": "issue_key",
+      "id_column": "key",
+      "params": {
+        "issue_key": {"type": "string", "description": "The ID or key of the issue to delete, for example CRM-24."}
+      },
+      "required": ["issue_key"]
+    },
+    {
+      "name": "jira_issue_assign",
+      "description": "Assigns an issue to a user (PUT /rest/api/3/issue/{issueIdOrKey}/assignee)",
+      "op": "update",
+      "table": "jira_issues",
+      "id_param": "issue_key",
+      "id_column": "key",
+      "set_fields": ["assignee", "assignee_email"],
+      "params": {
+        "issue_key": {"type": "string", "description": "The ID or key of the issue to assign, for example RECON-102."},
+        "assignee": {"type": "string", "description": "The display name of the user the issue is assigned to, for example Grace Liu."},
+        "assignee_email": {"type": "string", "description": "The email address of the assignee, for example grace.liu@morganstanleysimulated.com."}
+      },
+      "required": ["issue_key", "assignee"]
+    },
+    {
+      "name": "jira_issue_transition",
+      "description": "Performs a workflow transition on an issue; the transition must be valid from the issue's current status per the workflow's transitions table (POST /rest/api/3/issue/{issueIdOrKey}/transitions)",
+      "op": "custom",
+      "type": "write",
+      "table": "jira_issues",
+      "extra_tables": ["jira_transitions", "jira_comments"],
+      "params": {
+        "issue_key": {"type": "string", "description": "The ID or key of the issue to transition, for example RECON-101."},
+        "transition_id": {"type": "string", "description": "The ID of the transition to perform, for example 21. Use jira_transitions_list to find the transitions valid from the issue's current status."},
+        "comment": {"type": "string", "description": "An optional comment to add to the issue when the transition is performed."}
+      },
+      "required": ["issue_key", "transition_id"],
+      "custom_source": "def jira_issue_transition(db_path='state.db', **kwargs):\n    import sqlite3, datetime, hashlib\n    issue_key = kwargs.get('issue_key')\n    transition_id = kwargs.get('transition_id')\n    if not issue_key or transition_id is None:\n        return {'error': 'issue_key and transition_id are required', 'status': 400}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    issue = conn.execute('SELECT * FROM jira_issues WHERE key = ?', (issue_key,)).fetchone()\n    if issue is None:\n        conn.close()\n        return {'error': 'Issue ' + str(issue_key) + ' not found', 'status': 404}\n    tr = conn.execute('SELECT * FROM jira_transitions WHERE id = ?', (str(transition_id),)).fetchone()\n    if tr is None:\n        conn.close()\n        return {'error': 'Transition ' + str(transition_id) + ' not found', 'status': 404}\n    if tr['from_status'] != issue['status']:\n        conn.close()\n        return {'error': 'Transition ' + tr['name'] + ' (' + tr['from_status'] + ' -> ' + tr['to_status'] + ') is not valid for an issue in status ' + issue['status'], 'status': 400}\n    now = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.000+0000')\n    conn.execute('UPDATE jira_issues SET status = ?, updated = ? WHERE key = ?', (tr['to_status'], now, issue_key))\n    comment = kwargs.get('comment')\n    if comment:\n        cid = 'jcm-' + hashlib.sha1((str(issue_key) + now + str(comment)).encode('utf-8')).hexdigest()[:8]\n        conn.execute('INSERT INTO jira_comments (id, issue_key, author, author_email, body, created) VALUES (?, ?, ?, ?, ?, ?)', (cid, issue_key, 'Automation for Jira', 'jira-automation@morganstanleysimulated.com', comment, now))\n    conn.commit()\n    updated = dict(conn.execute('SELECT * FROM jira_issues WHERE key = ?', (issue_key,)).fetchone())\n    conn.close()\n    return {'issue': updated, 'transition': {'id': tr['id'], 'name': tr['name'], 'from_status': tr['from_status'], 'to_status': tr['to_status']}}\n"
+    },
+    {
+      "name": "jira_transitions_list",
+      "description": "Returns the workflow transitions available from the issue's current status (GET /rest/api/3/issue/{issueIdOrKey}/transitions)",
+      "op": "custom",
+      "type": "read",
+      "table": "jira_transitions",
+      "extra_tables": ["jira_issues"],
+      "params": {
+        "issue_key": {"type": "string", "description": "The ID or key of the issue, for example DESK-8."}
+      },
+      "required": ["issue_key"],
+      "custom_source": "def jira_transitions_list(db_path='state.db', **kwargs):\n    import sqlite3\n    issue_key = kwargs.get('issue_key')\n    if not issue_key:\n        return {'error': 'issue_key is required', 'status': 400}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    issue = conn.execute('SELECT * FROM jira_issues WHERE key = ?', (issue_key,)).fetchone()\n    if issue is None:\n        conn.close()\n        return {'error': 'Issue ' + str(issue_key) + ' not found', 'status': 404}\n    transitions = [dict(r) for r in conn.execute('SELECT * FROM jira_transitions WHERE from_status = ? ORDER BY CAST(id AS INTEGER)', (issue['status'],)).fetchall()]\n    conn.close()\n    return {'issue_key': issue_key, 'current_status': issue['status'], 'transitions': transitions}\n"
+    },
+    {
+      "name": "jira_comment_add",
+      "description": "Adds a comment to an issue (POST /rest/api/3/issue/{issueIdOrKey}/comment)",
+      "op": "create",
+      "table": "jira_comments",
+      "id_prefix": "jcm-",
+      "fields": ["issue_key", "body", "author", "author_email"],
+      "defaults": {"created": "2026-08-10T09:00:00.000-0400"},
+      "params": {
+        "issue_key": {"type": "string", "description": "The ID or key of the issue the comment is added to, for example RECON-101."},
+        "body": {"type": "string", "description": "The text of the comment."},
+        "author": {"type": "string", "description": "The display name to record as the comment author."},
+        "author_email": {"type": "string", "description": "The email address of the comment author."}
+      },
+      "required": ["issue_key", "body"]
+    },
+    {
+      "name": "jira_comments_list",
+      "description": "Returns all comments for an issue (GET /rest/api/3/issue/{issueIdOrKey}/comment)",
+      "op": "list",
+      "table": "jira_comments",
+      "filters": ["issue_key"],
+      "params": {
+        "issue_key": {"type": "string", "description": "The ID or key of the issue, for example CRM-22."},
+        "limit": {"type": "integer", "description": "The maximum number of comments to return. Default: 30."}
+      },
+      "required": ["issue_key"]
+    },
+    {
+      "name": "jira_worklog_add",
+      "description": "Adds a worklog entry to an issue (POST /rest/api/3/issue/{issueIdOrKey}/worklog)",
+      "op": "create",
+      "table": "jira_worklogs",
+      "id_prefix": "jwl-",
+      "fields": ["issue_key", "time_spent", "time_spent_seconds", "comment", "started", "author", "author_email"],
+      "params": {
+        "issue_key": {"type": "string", "description": "The ID or key of the issue the worklog is added to, for example CRM-21."},
+        "time_spent": {"type": "string", "description": "The time spent, as days, hours, and minutes in Jira duration format, for example 3h 30m."},
+        "time_spent_seconds": {"type": "integer", "description": "The time spent in seconds, for example 12600 for 3h 30m."},
+        "comment": {"type": "string", "description": "A comment describing the work done."},
+        "started": {"type": "string", "description": "The datetime the work began, for example 2026-08-07T09:30:00.000-0400."},
+        "author": {"type": "string", "description": "The display name to record as the worklog author."},
+        "author_email": {"type": "string", "description": "The email address of the worklog author."}
+      },
+      "required": ["issue_key", "time_spent"]
+    },
+    {
+      "name": "jira_worklogs_list",
+      "description": "Returns the worklogs for an issue (GET /rest/api/3/issue/{issueIdOrKey}/worklog)",
+      "op": "list",
+      "table": "jira_worklogs",
+      "filters": ["issue_key"],
+      "params": {
+        "issue_key": {"type": "string", "description": "The ID or key of the issue, for example RECON-101."},
+        "limit": {"type": "integer", "description": "The maximum number of worklogs to return. Default: 30."}
+      },
+      "required": ["issue_key"]
+    },
+    {
+      "name": "jira_watchers_add",
+      "description": "Adds a user as a watcher of an issue (POST /rest/api/3/issue/{issueIdOrKey}/watchers)",
+      "op": "create",
+      "table": "jira_watchers",
+      "id_prefix": "jwa-",
+      "fields": ["issue_key", "watcher_name", "watcher_email"],
+      "defaults": {"added": "2026-08-10"},
+      "params": {
+        "issue_key": {"type": "string", "description": "The ID or key of the issue to watch, for example DESK-8."},
+        "watcher_name": {"type": "string", "description": "The display name of the user to add as a watcher, for example Tom Alvarez."},
+        "watcher_email": {"type": "string", "description": "The email address of the user to add as a watcher."}
+      },
+      "required": ["issue_key", "watcher_name"]
+    },
+    {
+      "name": "jira_watchers_list",
+      "description": "Returns the watchers for an issue (GET /rest/api/3/issue/{issueIdOrKey}/watchers)",
+      "op": "list",
+      "table": "jira_watchers",
+      "filters": ["issue_key"],
+      "params": {
+        "issue_key": {"type": "string", "description": "The ID or key of the issue, for example CRM-22."},
+        "limit": {"type": "integer", "description": "The maximum number of watchers to return. Default: 30."}
+      },
+      "required": ["issue_key"]
+    },
+    {
+      "name": "jira_labels_list",
+      "description": "Returns the distinct labels in use across all issues, sorted alphabetically (GET /rest/api/3/label)",
+      "op": "custom",
+      "type": "read",
+      "table": "jira_issues",
+      "params": {
+        "max_results": {"type": "integer", "description": "The maximum number of labels to return per page. Default: 100."}
+      },
+      "custom_source": "def jira_labels_list(db_path='state.db', **kwargs):\n    import sqlite3\n    try:\n        max_results = int(kwargs.get('max_results', 100))\n    except (TypeError, ValueError):\n        max_results = 100\n    conn = sqlite3.connect(db_path)\n    labels = set()\n    for row in conn.execute('SELECT labels FROM jira_issues WHERE labels IS NOT NULL').fetchall():\n        for part in str(row[0]).split(','):\n            part = part.strip()\n            if part:\n                labels.add(part)\n    conn.close()\n    values = sorted(labels)[:max_results]\n    return {'maxResults': max_results, 'total': len(values), 'values': values}\n"
+    },
+    {
+      "name": "jira_projects_list",
+      "description": "Returns the projects visible to the user, optionally filtered by project type (GET /rest/api/3/project/search)",
+      "op": "list",
+      "table": "jira_projects",
+      "filters": ["type_key"],
+      "filter_map": {"type_key": "project_type_key"},
+      "params": {
+        "type_key": {"type": "string", "description": "Orders and filters results by project type key, for example software."},
+        "limit": {"type": "integer", "description": "The maximum number of projects to return per page. Default: 30."}
+      }
+    },
+    {
+      "name": "jira_project_get",
+      "description": "Returns the project details for a project, including lead and category (GET /rest/api/3/project/{projectIdOrKey})",
+      "op": "get",
+      "table": "jira_projects",
+      "id_param": "project_key",
+      "id_column": "key",
+      "params": {
+        "project_key": {"type": "string", "description": "The project ID or project key (case sensitive), for example RECON."}
+      },
+      "required": ["project_key"]
+    },
+    {
+      "name": "jira_project_components_list",
+      "description": "Returns all components in a project (GET /rest/api/3/project/{projectIdOrKey}/components)",
+      "op": "list",
+      "table": "jira_components",
+      "filters": ["project_key"],
+      "params": {
+        "project_key": {"type": "string", "description": "The project ID or project key (case sensitive), for example DESK."},
+        "limit": {"type": "integer", "description": "The maximum number of components to return. Default: 30."}
+      },
+      "required": ["project_key"]
+    },
+    {
+      "name": "jira_project_versions_list",
+      "description": "Returns all versions in a project (GET /rest/api/3/project/{projectIdOrKey}/versions)",
+      "op": "list",
+      "table": "jira_versions",
+      "filters": ["project_key"],
+      "params": {
+        "project_key": {"type": "string", "description": "The project ID or project key (case sensitive), for example RECON."},
+        "limit": {"type": "integer", "description": "The maximum number of versions to return. Default: 30."}
+      },
+      "required": ["project_key"]
+    },
+    {
+      "name": "jira_boards_list",
+      "description": "Returns all boards, optionally filtered by project key or board type (GET /rest/agile/1.0/board)",
+      "op": "list",
+      "table": "jira_boards",
+      "filters": ["project_key", "board_type"],
+      "filter_map": {"board_type": "type"},
+      "params": {
+        "project_key": {"type": "string", "description": "Filters results to boards relevant to a project, for example RECON."},
+        "board_type": {"type": "string", "description": "Filters results to boards of the specified type. Valid values: scrum, kanban."},
+        "limit": {"type": "integer", "description": "The maximum number of boards to return per page. Default: 30."}
+      }
+    },
+    {
+      "name": "jira_board_get",
+      "description": "Returns the board for the given board ID (GET /rest/agile/1.0/board/{boardId})",
+      "op": "get",
+      "table": "jira_boards",
+      "id_param": "board_id",
+      "id_column": "id",
+      "params": {
+        "board_id": {"type": "integer", "description": "The ID of the requested board, for example 1."}
+      },
+      "required": ["board_id"]
+    },
+    {
+      "name": "jira_sprints_list",
+      "description": "Returns all sprints from a board, optionally filtered by state (GET /rest/agile/1.0/board/{boardId}/sprint)",
+      "op": "list",
+      "table": "jira_sprints",
+      "filters": ["board_id", "state"],
+      "params": {
+        "board_id": {"type": "integer", "description": "The ID of the board that contains the requested sprints, for example 1."},
+        "state": {"type": "string", "description": "Filters results to sprints in the specified states. Valid values: future, active, closed."},
+        "limit": {"type": "integer", "description": "The maximum number of sprints to return per page. Default: 30."}
+      },
+      "required": ["board_id"]
+    },
+    {
+      "name": "jira_sprint_get",
+      "description": "Returns the sprint for the given sprint ID, including state, dates, and goal (GET /rest/agile/1.0/sprint/{sprintId})",
+      "op": "get",
+      "table": "jira_sprints",
+      "id_param": "sprint_id",
+      "id_column": "id",
+      "params": {
+        "sprint_id": {"type": "integer", "description": "The ID of the requested sprint, for example 5."}
+      },
+      "required": ["sprint_id"]
+    },
+    {
+      "name": "jira_sprint_issues_list",
+      "description": "Returns all issues in a sprint, optionally filtered by status (GET /rest/agile/1.0/sprint/{sprintId}/issue)",
+      "op": "list",
+      "table": "jira_issues",
+      "filters": ["sprint_id", "status"],
+      "params": {
+        "sprint_id": {"type": "integer", "description": "The ID of the sprint that contains the requested issues, for example 5."},
+        "status": {"type": "string", "description": "Filters results to issues currently in this status, for example In Review."},
+        "limit": {"type": "integer", "description": "The maximum number of issues to return per page. Default: 30."}
+      },
+      "required": ["sprint_id"]
+    },
+    {
+      "name": "jira_priorities_list",
+      "description": "Returns the list of issue priorities (GET /rest/api/3/priority/search)",
+      "op": "list",
+      "table": "jira_priorities",
+      "filters": [],
+      "params": {
+        "limit": {"type": "integer", "description": "The maximum number of priorities to return per page. Default: 30."}
+      }
+    },
+    {
+      "name": "jira_statuses_list",
+      "description": "Returns a list of all workflow statuses with their status categories (GET /rest/api/3/status)",
+      "op": "list",
+      "table": "jira_statuses",
+      "filters": [],
+      "params": {
+        "limit": {"type": "integer", "description": "The maximum number of statuses to return per page. Default: 30."}
+      }
+    },
+    {
+      "name": "jira_users_search",
+      "description": "Returns a list of active users matching a query against display name and email address (GET /rest/api/3/user/search)",
+      "op": "search",
+      "table": "employees",
+      "query_param": "query",
+      "search_columns": ["name", "email"],
+      "params": {
+        "query": {"type": "string", "description": "A query string matched against the user's display name or email address, for example Mei."},
+        "limit": {"type": "integer", "description": "The maximum number of users to return per page. Default: 30."}
+      },
+      "required": ["query"]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+ "name": "calendar_calendars_update",
+ "mcp_name": "calendar.calendar_calendars_update",
+ "asset_namespace": "calendar",
+ "description": "Updates metadata for a calendar. (PUT /calendars/{calendarId})",
+ "type": "write",
+ "target_tables": [
+  "calendars"
+ ],
+ "parameters": {
+  "calendar_id": "string",
+  "summary": "string",
+  "description": "string",
+  "location": "string",
+  "time_zone": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "calendar_id": {
+    "type": "string",
+    "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method."
+   },
+   "summary": {
+    "type": "string",
+    "description": "Title of the calendar."
+   },
+   "description": {
+    "type": "string",
+    "description": "Description of the calendar."
+   },
+   "location": {
+    "type": "string",
+    "description": "Geographic location of the calendar as free-form text."
+   },
+   "time_zone": {
+    "type": "string",
+    "description": "The time zone of the calendar, formatted as an IANA Time Zone Database name, e.g. 'Europe/Zurich'."
+   }
+  },
+  "required": [
+   "calendar_id"
+  ],
+  "additionalProperties": false
+ }
+}

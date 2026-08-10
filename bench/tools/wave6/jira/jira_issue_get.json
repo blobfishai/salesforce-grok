@@ -1,0 +1,26 @@
+{
+ "name": "jira_issue_get",
+ "mcp_name": "jira.jira_issue_get",
+ "asset_namespace": "jira",
+ "description": "Returns the details for an issue, including status, priority, assignee, sprint, and labels (GET /rest/api/3/issue/{issueIdOrKey})",
+ "type": "read",
+ "target_tables": [
+  "jira_issues"
+ ],
+ "parameters": {
+  "issue_key": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "issue_key": {
+    "type": "string",
+    "description": "The ID or key of the issue, for example RECON-101."
+   }
+  },
+  "required": [
+   "issue_key"
+  ],
+  "additionalProperties": false
+ }
+}

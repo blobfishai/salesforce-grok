@@ -1,0 +1,62 @@
+{
+ "name": "pd_incident_create",
+ "mcp_name": "pagerduty.pd_incident_create",
+ "asset_namespace": "pagerduty",
+ "description": "Create an incident on a service; auto-assigns the level-1 on-call of the escalation policy when no assignee is given (POST /incidents)",
+ "type": "write",
+ "target_tables": [
+  "pd_incidents",
+  "pd_services",
+  "pd_priorities",
+  "pd_users",
+  "pd_oncalls",
+  "pd_log_entries"
+ ],
+ "parameters": {
+  "title": "string",
+  "service_id": "string",
+  "urgency": "string",
+  "details": "string",
+  "escalation_policy_id": "string",
+  "priority_id": "string",
+  "assignee": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "title": {
+    "type": "string",
+    "description": "A succinct description of the nature, symptoms, cause, or effect of the incident (incident.title)."
+   },
+   "service_id": {
+    "type": "string",
+    "description": "The ID of the service the incident belongs to (incident.service.id)."
+   },
+   "urgency": {
+    "type": "string",
+    "description": "The urgency of the incident: high or low. Defaults to high (incident.urgency)."
+   },
+   "details": {
+    "type": "string",
+    "description": "Additional incident details — the body of the incident (incident.body.details)."
+   },
+   "escalation_policy_id": {
+    "type": "string",
+    "description": "Delegate the incident to this escalation policy instead of the service's default (incident.escalation_policy.id)."
+   },
+   "priority_id": {
+    "type": "string",
+    "description": "The ID of the priority to set on the incident, e.g. PPRI001 for P1 (incident.priority.id)."
+   },
+   "assignee": {
+    "type": "string",
+    "description": "User ID to assign the incident to directly (incident.assignments[].assignee.id). If omitted, the level-1 on-call for the escalation policy is assigned."
+   }
+  },
+  "required": [
+   "title",
+   "service_id"
+  ],
+  "additionalProperties": false
+ }
+}

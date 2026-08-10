@@ -1,0 +1,41 @@
+{
+ "name": "post_invoices",
+ "mcp_name": "stripe.post_invoices",
+ "asset_namespace": "stripe",
+ "description": "This endpoint creates a draft invoice for a given customer; the draft invoice remains a draft until you finalize it. (POST /v1/invoices)",
+ "type": "write",
+ "target_tables": [
+  "invoices"
+ ],
+ "parameters": {
+  "customer": "string",
+  "currency": "string",
+  "collection_method": "string",
+  "auto_advance": "boolean"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "customer": {
+    "type": "string",
+    "description": "The ID of the customer who will be billed."
+   },
+   "currency": {
+    "type": "string",
+    "description": "The currency to create this invoice in. Defaults to that of customer if not specified."
+   },
+   "collection_method": {
+    "type": "string",
+    "description": "Either charge_automatically, or send_invoice. When charging automatically, Stripe will attempt to pay this invoice using the default source attached to the customer. When sending an invoice, Stripe will email this invoice to the customer with payment instructions. Defaults to charge_automatically."
+   },
+   "auto_advance": {
+    "type": "boolean",
+    "description": "Controls whether Stripe performs automatic collection of the invoice. If false, the invoice's state doesn't automatically advance without an explicit action. Defaults to false."
+   }
+  },
+  "required": [
+   "customer"
+  ],
+  "additionalProperties": false
+ }
+}

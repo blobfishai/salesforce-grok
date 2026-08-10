@@ -1,0 +1,26 @@
+{
+ "name": "pd_service_get",
+ "mcp_name": "pagerduty.pd_service_get",
+ "asset_namespace": "pagerduty",
+ "description": "Get details about an existing service (GET /services/{id})",
+ "type": "read",
+ "target_tables": [
+  "pd_services"
+ ],
+ "parameters": {
+  "id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "string",
+    "description": "The ID of the service to retrieve (e.g. PSTRWBH)."
+   }
+  },
+  "required": [
+   "id"
+  ],
+  "additionalProperties": false
+ }
+}

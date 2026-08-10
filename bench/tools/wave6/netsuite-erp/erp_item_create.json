@@ -1,0 +1,48 @@
+{
+ "name": "erp_item_create",
+ "mcp_name": "erp.erp_item_create",
+ "asset_namespace": "erp",
+ "description": "Create a new item in the catalog (POST /services/rest/record/v1/serviceItem)",
+ "type": "write",
+ "target_tables": [
+  "erp_items"
+ ],
+ "parameters": {
+  "display_name": "string",
+  "type": "string",
+  "base_price": "number",
+  "currency": "string",
+  "income_account": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "display_name": {
+    "type": "string",
+    "description": "Item display name shown on transaction lines (displayName)."
+   },
+   "type": {
+    "type": "string",
+    "description": "Item type: inventoryItem, nonInventoryItem or serviceItem."
+   },
+   "base_price": {
+    "type": "number",
+    "description": "List/base price in USD (basePrice)."
+   },
+   "currency": {
+    "type": "string",
+    "description": "Pricing currency internal id; catalog prices are usd."
+   },
+   "income_account": {
+    "type": "string",
+    "description": "Income account posted on sale, e.g. '4030 Services Revenue' (incomeAccount)."
+   }
+  },
+  "required": [
+   "display_name",
+   "type",
+   "base_price"
+  ],
+  "additionalProperties": false
+ }
+}

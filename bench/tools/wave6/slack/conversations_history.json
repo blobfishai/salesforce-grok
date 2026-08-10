@@ -1,0 +1,47 @@
+{
+ "name": "conversations_history",
+ "mcp_name": "slack.conversations_history",
+ "asset_namespace": "slack",
+ "description": "Fetches a conversation's history of messages and events; oldest/latest are Unix-timestamp range bounds, so this cannot use the equality-only list op (GET /conversations.history)",
+ "type": "read",
+ "target_tables": [
+  "messages",
+  "channels"
+ ],
+ "parameters": {
+  "channel": "string",
+  "oldest": "string",
+  "latest": "string",
+  "inclusive": "boolean",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "channel": {
+    "type": "string",
+    "description": "Conversation ID (C…) or a #channel-name to fetch history for."
+   },
+   "oldest": {
+    "type": "string",
+    "description": "Only messages after this Unix timestamp will be included in results. Default: 0."
+   },
+   "latest": {
+    "type": "string",
+    "description": "Only messages before this Unix timestamp will be included in results. Default: now."
+   },
+   "inclusive": {
+    "type": "boolean",
+    "description": "Include messages with oldest or latest timestamps in results. Ignored unless either timestamp is specified. Default: false."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The maximum number of items to return. Default: 100."
+   }
+  },
+  "required": [
+   "channel"
+  ],
+  "additionalProperties": false
+ }
+}

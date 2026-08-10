@@ -1,0 +1,51 @@
+{
+ "name": "sg_domain_authenticate",
+ "mcp_name": "email.sg_domain_authenticate",
+ "asset_namespace": "email",
+ "description": "Authenticate a domain (create a domain whitelabel). Domain authentication signs mail with DKIM and sets the SPF record; the new domain starts unvalidated until its DNS records are verified. (POST /v3/whitelabel/domains)",
+ "type": "write",
+ "target_tables": [
+  "authentication_domains"
+ ],
+ "parameters": {
+  "domain": "string",
+  "subdomain": "string",
+  "username": "string",
+  "custom_spf": "boolean",
+  "default": "boolean",
+  "automatic_security": "boolean"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "domain": {
+    "type": "string",
+    "description": "Domain being authenticated, e.g. morganstanleysimulated.com."
+   },
+   "subdomain": {
+    "type": "string",
+    "description": "The subdomain to use for this authenticated domain, e.g. em1234."
+   },
+   "username": {
+    "type": "string",
+    "description": "The username associated with this domain."
+   },
+   "custom_spf": {
+    "type": "boolean",
+    "description": "Specify whether to use a custom SPF record or the default SPF."
+   },
+   "default": {
+    "type": "boolean",
+    "description": "Whether to use this authenticated domain as the fallback if no authenticated domains match the sender's domain."
+   },
+   "automatic_security": {
+    "type": "boolean",
+    "description": "Whether to allow SendGrid to manage your SPF records, DKIM keys, and DKIM key rotation."
+   }
+  },
+  "required": [
+   "domain"
+  ],
+  "additionalProperties": false
+ }
+}

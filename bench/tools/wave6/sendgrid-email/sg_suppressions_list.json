@@ -1,0 +1,33 @@
+{
+ "name": "sg_suppressions_list",
+ "mcp_name": "email.sg_suppressions_list",
+ "asset_namespace": "email",
+ "description": "Retrieve suppressed (unsubscribed) email addresses, optionally filtered to a single unsubscribe group or email address. (GET /v3/asm/groups/{group_id}/suppressions)",
+ "type": "read",
+ "target_tables": [
+  "sg_suppressions"
+ ],
+ "parameters": {
+  "group_id": "integer",
+  "email": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "group_id": {
+    "type": "integer",
+    "description": "The ID of the unsubscribe group whose suppressed addresses you want to retrieve."
+   },
+   "email": {
+    "type": "string",
+    "description": "Filter suppressions by a specific email address."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "Maximum number of suppressions to return. Defaults to 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}

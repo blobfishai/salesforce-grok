@@ -1,0 +1,54 @@
+{
+ "name": "gh_issue_create",
+ "mcp_name": "github.gh_issue_create",
+ "asset_namespace": "github",
+ "description": "Create an issue; the number is assigned from the repository's shared issue/PR sequence (POST /repos/{owner}/{repo}/issues)",
+ "type": "write",
+ "target_tables": [
+  "gh_issues",
+  "gh_repos",
+  "gh_pull_requests"
+ ],
+ "parameters": {
+  "repo": "string",
+  "title": "string",
+  "body": "string",
+  "assignee": "string",
+  "labels": "string",
+  "user": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "repo": {
+    "type": "string",
+    "description": "The repository full name in owner/repo form."
+   },
+   "title": {
+    "type": "string",
+    "description": "The title of the issue."
+   },
+   "body": {
+    "type": "string",
+    "description": "The contents of the issue."
+   },
+   "assignee": {
+    "type": "string",
+    "description": "Login for the user that this issue should be assigned to."
+   },
+   "labels": {
+    "type": "string",
+    "description": "Labels to associate with this issue, as a comma separated list or array of label names."
+   },
+   "user": {
+    "type": "string",
+    "description": "Login of the issue author (the authenticated user in the real API). Default: revops-bot."
+   }
+  },
+  "required": [
+   "repo",
+   "title"
+  ],
+  "additionalProperties": false
+ }
+}

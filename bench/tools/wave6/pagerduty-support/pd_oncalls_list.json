@@ -1,0 +1,41 @@
+{
+ "name": "pd_oncalls_list",
+ "mcp_name": "pagerduty.pd_oncalls_list",
+ "asset_namespace": "pagerduty",
+ "description": "List the on-call entries during a rotation, joined with user, schedule, and escalation policy details; filterable by schedule, escalation policy, or user (GET /oncalls)",
+ "type": "read",
+ "target_tables": [
+  "pd_oncalls",
+  "pd_users",
+  "pd_schedules",
+  "pd_escalation_policies"
+ ],
+ "parameters": {
+  "schedule_id": "string",
+  "escalation_policy_id": "string",
+  "user_id": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "schedule_id": {
+    "type": "string",
+    "description": "Return only on-calls for this schedule. Scalar form of the API's schedule_ids[] filter."
+   },
+   "escalation_policy_id": {
+    "type": "string",
+    "description": "Return only on-calls for this escalation policy. Scalar form of the API's escalation_policy_ids[] filter."
+   },
+   "user_id": {
+    "type": "string",
+    "description": "Return only on-calls for this user. Scalar form of the API's user_ids[] filter."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The number of results per page. Defaults to 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}

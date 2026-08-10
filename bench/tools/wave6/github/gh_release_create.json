@@ -1,0 +1,57 @@
+{
+ "name": "gh_release_create",
+ "mcp_name": "github.gh_release_create",
+ "asset_namespace": "github",
+ "description": "Create a release (POST /repos/{owner}/{repo}/releases)",
+ "type": "write",
+ "target_tables": [
+  "gh_releases"
+ ],
+ "parameters": {
+  "repo": "string",
+  "tag_name": "string",
+  "name": "string",
+  "body": "string",
+  "target_commitish": "string",
+  "draft": "boolean",
+  "prerelease": "boolean"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "repo": {
+    "type": "string",
+    "description": "The repository full name in owner/repo form."
+   },
+   "tag_name": {
+    "type": "string",
+    "description": "The name of the tag."
+   },
+   "name": {
+    "type": "string",
+    "description": "The name of the release."
+   },
+   "body": {
+    "type": "string",
+    "description": "Text describing the contents of the tag."
+   },
+   "target_commitish": {
+    "type": "string",
+    "description": "Specifies the commitish value that determines where the Git tag is created from. Default: the repository's default branch."
+   },
+   "draft": {
+    "type": "boolean",
+    "description": "true to create a draft (unpublished) release, false to create a published one. Default: false."
+   },
+   "prerelease": {
+    "type": "boolean",
+    "description": "true to identify the release as a prerelease. Default: false."
+   }
+  },
+  "required": [
+   "repo",
+   "tag_name"
+  ],
+  "additionalProperties": false
+ }
+}

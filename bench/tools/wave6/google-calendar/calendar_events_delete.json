@@ -1,0 +1,26 @@
+{
+ "name": "calendar_events_delete",
+ "mcp_name": "calendar.calendar_events_delete",
+ "asset_namespace": "calendar",
+ "description": "Deletes an event. (DELETE /calendars/{calendarId}/events/{eventId})",
+ "type": "write",
+ "target_tables": [
+  "agent_events"
+ ],
+ "parameters": {
+  "event_id": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "event_id": {
+    "type": "integer",
+    "description": "Event identifier."
+   }
+  },
+  "required": [
+   "event_id"
+  ],
+  "additionalProperties": false
+ }
+}

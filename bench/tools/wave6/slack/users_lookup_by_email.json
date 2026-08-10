@@ -1,0 +1,26 @@
+{
+ "name": "users_lookup_by_email",
+ "mcp_name": "slack.users_lookup_by_email",
+ "asset_namespace": "slack",
+ "description": "Find a user with an email address; returns users_not_found-style 404 when no profile matches (GET /users.lookupByEmail)",
+ "type": "read",
+ "target_tables": [
+  "slack_users"
+ ],
+ "parameters": {
+  "email": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "email": {
+    "type": "string",
+    "description": "An email address belonging to a user in the workspace, e.g. contact77709@morganstanleysimulated.com."
+   }
+  },
+  "required": [
+   "email"
+  ],
+  "additionalProperties": false
+ }
+}

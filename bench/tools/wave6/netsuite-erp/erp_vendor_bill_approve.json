@@ -1,0 +1,26 @@
+{
+ "name": "erp_vendor_bill_approve",
+ "mcp_name": "erp.erp_vendor_bill_approve",
+ "asset_namespace": "erp",
+ "description": "Approve a vendor bill that is pending approval (approvalStatus pendingApproval -> approved); already-approved or rejected bills are refused (PATCH /services/rest/record/v1/vendorBill/{id})",
+ "type": "write",
+ "target_tables": [
+  "erp_vendor_bills"
+ ],
+ "parameters": {
+  "id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "string",
+    "description": "Vendor bill document number (tranId), e.g. BILL-3003."
+   }
+  },
+  "required": [
+   "id"
+  ],
+  "additionalProperties": false
+ }
+}

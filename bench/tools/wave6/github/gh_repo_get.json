@@ -1,0 +1,26 @@
+{
+ "name": "gh_repo_get",
+ "mcp_name": "github.gh_repo_get",
+ "asset_namespace": "github",
+ "description": "Get a repository by its full name (GET /repos/{owner}/{repo})",
+ "type": "read",
+ "target_tables": [
+  "gh_repos"
+ ],
+ "parameters": {
+  "full_name": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "full_name": {
+    "type": "string",
+    "description": "The full name of the repository in owner/repo form, e.g. revops/crm-sync."
+   }
+  },
+  "required": [
+   "full_name"
+  ],
+  "additionalProperties": false
+ }
+}

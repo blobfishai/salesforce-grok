@@ -1,0 +1,36 @@
+{
+ "name": "gh_branches_list",
+ "mcp_name": "github.gh_branches_list",
+ "asset_namespace": "github",
+ "description": "List branches in a repository (GET /repos/{owner}/{repo}/branches)",
+ "type": "read",
+ "target_tables": [
+  "gh_branches"
+ ],
+ "parameters": {
+  "repo": "string",
+  "protected": "boolean",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "repo": {
+    "type": "string",
+    "description": "The repository full name in owner/repo form."
+   },
+   "protected": {
+    "type": "boolean",
+    "description": "Setting to true returns only protected branches."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The number of results per page (max 100). GitHub param: per_page. Default: 30."
+   }
+  },
+  "required": [
+   "repo"
+  ],
+  "additionalProperties": false
+ }
+}

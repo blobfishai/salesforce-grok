@@ -1,0 +1,23 @@
+{
+ "name": "erp_subsidiaries_list",
+ "mcp_name": "erp.erp_subsidiaries_list",
+ "asset_namespace": "erp",
+ "description": "List subsidiaries in the corporate hierarchy, including the consolidation elimination subsidiary (GET /services/rest/record/v1/subsidiary)",
+ "type": "read",
+ "target_tables": [
+  "erp_subsidiaries"
+ ],
+ "parameters": {
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "limit": {
+    "type": "integer",
+    "description": "Maximum number of records to return (default 30)."
+   }
+  },
+  "additionalProperties": false
+ }
+}

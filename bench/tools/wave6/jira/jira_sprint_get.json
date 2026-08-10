@@ -1,0 +1,26 @@
+{
+ "name": "jira_sprint_get",
+ "mcp_name": "jira.jira_sprint_get",
+ "asset_namespace": "jira",
+ "description": "Returns the sprint for the given sprint ID, including state, dates, and goal (GET /rest/agile/1.0/sprint/{sprintId})",
+ "type": "read",
+ "target_tables": [
+  "jira_sprints"
+ ],
+ "parameters": {
+  "sprint_id": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "sprint_id": {
+    "type": "integer",
+    "description": "The ID of the requested sprint, for example 5."
+   }
+  },
+  "required": [
+   "sprint_id"
+  ],
+  "additionalProperties": false
+ }
+}

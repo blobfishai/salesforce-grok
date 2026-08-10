@@ -1,0 +1,38 @@
+{
+ "name": "sg_mail_sends_list",
+ "mcp_name": "email.sg_mail_sends_list",
+ "asset_namespace": "email",
+ "description": "Filter all messages sent through the mail send log to search recent email activity. (GET /v3/messages)",
+ "type": "read",
+ "target_tables": [
+  "sg_mail_sends"
+ ],
+ "parameters": {
+  "to_email": "string",
+  "status": "string",
+  "template_id": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "to_email": {
+    "type": "string",
+    "description": "Filter messages by the intended recipient's email address."
+   },
+   "status": {
+    "type": "string",
+    "description": "Filter messages by status: processed, delivered, bounced, blocked, or dropped."
+   },
+   "template_id": {
+    "type": "string",
+    "description": "Filter messages by the email template ID used for the send."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The number of messages returned. Defaults to 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}

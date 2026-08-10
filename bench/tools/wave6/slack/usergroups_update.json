@@ -1,0 +1,41 @@
+{
+ "name": "usergroups_update",
+ "mcp_name": "slack.usergroups_update",
+ "asset_namespace": "slack",
+ "description": "Update an existing User Group; only the fields provided are changed (POST /usergroups.update)",
+ "type": "write",
+ "target_tables": [
+  "slack_usergroups"
+ ],
+ "parameters": {
+  "usergroup": "string",
+  "name": "string",
+  "handle": "string",
+  "description": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "usergroup": {
+    "type": "string",
+    "description": "The encoded ID of the User Group to update, e.g. S0000001."
+   },
+   "name": {
+    "type": "string",
+    "description": "A name for the User Group. Must be unique among User Groups."
+   },
+   "handle": {
+    "type": "string",
+    "description": "A mention handle. Must be unique among channels, users and User Groups."
+   },
+   "description": {
+    "type": "string",
+    "description": "A short description of the User Group."
+   }
+  },
+  "required": [
+   "usergroup"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,2495 @@
+{
+ "vendor": "github",
+ "namespace": "github",
+ "tables": [
+  {
+   "name": "gh_repos",
+   "columns": [
+    {
+     "name": "id",
+     "type": "INTEGER",
+     "pk": true
+    },
+    {
+     "name": "full_name",
+     "type": "TEXT"
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "owner",
+     "type": "TEXT"
+    },
+    {
+     "name": "description",
+     "type": "TEXT"
+    },
+    {
+     "name": "default_branch",
+     "type": "TEXT"
+    },
+    {
+     "name": "private",
+     "type": "INTEGER"
+    },
+    {
+     "name": "language",
+     "type": "TEXT"
+    },
+    {
+     "name": "open_issues_count",
+     "type": "INTEGER"
+    },
+    {
+     "name": "pushed_at",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": 501001,
+     "full_name": "revops/crm-sync",
+     "name": "crm-sync",
+     "owner": "revops",
+     "description": "Bidirectional sync between the CRM and downstream RevOps systems (billing, dashboards, enrichment)",
+     "default_branch": "main",
+     "private": 1,
+     "language": "Python",
+     "open_issues_count": 2,
+     "pushed_at": "2026-08-07T18:42:11Z",
+     "created_at": "2024-11-03T09:12:00Z"
+    },
+    {
+     "id": 501002,
+     "full_name": "revops/billing-reconciliation",
+     "name": "billing-reconciliation",
+     "owner": "revops",
+     "description": "Stripe-to-ledger billing reconciliation jobs and monthly close reports",
+     "default_branch": "main",
+     "private": 1,
+     "language": "Python",
+     "open_issues_count": 3,
+     "pushed_at": "2026-08-06T22:05:40Z",
+     "created_at": "2025-01-21T14:30:00Z"
+    },
+    {
+     "id": 501003,
+     "full_name": "revops/leaderboard-dashboards",
+     "name": "leaderboard-dashboards",
+     "owner": "revops",
+     "description": "Sales leaderboard and pipeline coverage dashboards for the weekly forecast call",
+     "default_branch": "main",
+     "private": 1,
+     "language": "TypeScript",
+     "open_issues_count": 1,
+     "pushed_at": "2026-08-05T16:20:03Z",
+     "created_at": "2025-03-10T11:00:00Z"
+    },
+    {
+     "id": 501004,
+     "full_name": "revops/stripe-webhooks",
+     "name": "stripe-webhooks",
+     "owner": "revops",
+     "description": "Stripe webhook ingestion service with signature verification and retry handling",
+     "default_branch": "main",
+     "private": 1,
+     "language": "Python",
+     "open_issues_count": 2,
+     "pushed_at": "2026-08-08T10:11:52Z",
+     "created_at": "2024-12-15T08:45:00Z"
+    },
+    {
+     "id": 501005,
+     "full_name": "revops/wave6-seeding",
+     "name": "wave6-seeding",
+     "owner": "revops",
+     "description": "Wave-6 simulated-world seeding scripts and benchmark fixtures",
+     "default_branch": "main",
+     "private": 1,
+     "language": "JavaScript",
+     "open_issues_count": 2,
+     "pushed_at": "2026-08-09T07:58:26Z",
+     "created_at": "2026-05-02T13:20:00Z"
+    },
+    {
+     "id": 501006,
+     "full_name": "revops/dedupe-jobs",
+     "name": "dedupe-jobs",
+     "owner": "revops",
+     "description": "Nightly CRM account and contact dedupe jobs with survivor scoring",
+     "default_branch": "main",
+     "private": 1,
+     "language": "Python",
+     "open_issues_count": 2,
+     "pushed_at": "2026-08-04T02:14:09Z",
+     "created_at": "2025-06-18T10:05:00Z"
+    },
+    {
+     "id": 501007,
+     "full_name": "revops/revops-infra",
+     "name": "revops-infra",
+     "owner": "revops",
+     "description": "Terraform modules and deploy workflows for RevOps services",
+     "default_branch": "main",
+     "private": 1,
+     "language": "HCL",
+     "open_issues_count": 0,
+     "pushed_at": "2026-07-30T19:33:47Z",
+     "created_at": "2025-02-05T15:40:00Z"
+    },
+    {
+     "id": 501008,
+     "full_name": "revops/internal-docs",
+     "name": "internal-docs",
+     "owner": "revops",
+     "description": "Runbooks and onboarding docs for the RevOps tooling team",
+     "default_branch": "main",
+     "private": 1,
+     "language": "Markdown",
+     "open_issues_count": 0,
+     "pushed_at": "2026-07-22T12:00:15Z",
+     "created_at": "2025-04-01T09:00:00Z"
+    }
+   ]
+  },
+  {
+   "name": "gh_issues",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "repo",
+     "type": "TEXT"
+    },
+    {
+     "name": "number",
+     "type": "INTEGER"
+    },
+    {
+     "name": "title",
+     "type": "TEXT"
+    },
+    {
+     "name": "body",
+     "type": "TEXT"
+    },
+    {
+     "name": "state",
+     "type": "TEXT"
+    },
+    {
+     "name": "user",
+     "type": "TEXT"
+    },
+    {
+     "name": "assignee",
+     "type": "TEXT"
+    },
+    {
+     "name": "labels",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    },
+    {
+     "name": "updated_at",
+     "type": "TEXT"
+    },
+    {
+     "name": "closed_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "ghi-1001",
+     "repo": "revops/stripe-webhooks",
+     "number": 52,
+     "title": "Fix Stripe webhook retry backoff — invoice.paid events dropped after 3 attempts",
+     "body": "Retries use a fixed 5s interval and give up after 3 attempts. During the 2026-08-03 Stripe degradation we dropped 41 invoice.paid events, which caused reconciliation drift for Harborview and Atlas.",
+     "state": "open",
+     "user": "mei-huang",
+     "assignee": "dana-okafor",
+     "labels": "bug,billing,p1",
+     "created_at": "2026-08-03T15:22:00Z",
+     "updated_at": "2026-08-08T09:10:00Z",
+     "closed_at": null
+    },
+    {
+     "id": "ghi-1002",
+     "repo": "revops/stripe-webhooks",
+     "number": 47,
+     "title": "Webhook signature verification fails for 2026-01 API version",
+     "body": "Events sent with the 2026-01 Stripe API version fail signature verification because we pin the old signing header format.",
+     "state": "closed",
+     "user": "dana-okafor",
+     "assignee": "dana-okafor",
+     "labels": "bug",
+     "created_at": "2026-06-11T10:02:00Z",
+     "updated_at": "2026-06-19T17:44:00Z",
+     "closed_at": "2026-06-19T17:44:00Z"
+    },
+    {
+     "id": "ghi-1003",
+     "repo": "revops/dedupe-jobs",
+     "number": 88,
+     "title": "CRM dedupe job merges Summit Group and Summit Group Account into wrong survivor",
+     "body": "Survivor scoring prefers the newer record, so the nightly job keeps the thin duplicate and archives the account with 3 years of activity history. Riverside Group is at risk of the same merge.",
+     "state": "open",
+     "user": "sarah-kim",
+     "assignee": "priya-natarajan",
+     "labels": "bug,data-quality,p1",
+     "created_at": "2026-07-28T08:15:00Z",
+     "updated_at": "2026-08-06T14:02:00Z",
+     "closed_at": null
+    },
+    {
+     "id": "ghi-1004",
+     "repo": "revops/dedupe-jobs",
+     "number": 83,
+     "title": "Add dry-run mode to nightly dedupe job",
+     "body": "We need a --dry-run flag that reports planned merges without writing, so RevOps can review before enabling auto-merge for the Meridian and Ironwood books.",
+     "state": "open",
+     "user": "priya-natarajan",
+     "assignee": null,
+     "labels": "enhancement",
+     "created_at": "2026-07-14T11:40:00Z",
+     "updated_at": "2026-07-14T11:40:00Z",
+     "closed_at": null
+    },
+    {
+     "id": "ghi-1005",
+     "repo": "revops/wave6-seeding",
+     "number": 19,
+     "title": "wave-6 seeding script ignores per-table baseline override for verifier tables",
+     "body": "When a task defines a per-table baseline override, scripts/seed.mjs still seeds the global baseline, so /verify sees stale rows.",
+     "state": "open",
+     "user": "james-park",
+     "assignee": "james-park",
+     "labels": "bug,benchmark",
+     "created_at": "2026-08-01T09:05:00Z",
+     "updated_at": "2026-08-07T16:30:00Z",
+     "closed_at": null
+    },
+    {
+     "id": "ghi-1006",
+     "repo": "revops/wave6-seeding",
+     "number": 15,
+     "title": "Seed gh_ fixtures for benchmark traces",
+     "body": "Add deterministic gh_ table fixtures so replayed traces get stable issue and PR numbers.",
+     "state": "closed",
+     "user": "james-park",
+     "assignee": "alex-rivera",
+     "labels": "enhancement,benchmark",
+     "created_at": "2026-06-20T13:00:00Z",
+     "updated_at": "2026-07-02T10:12:00Z",
+     "closed_at": "2026-07-02T10:12:00Z"
+    },
+    {
+     "id": "ghi-1007",
+     "repo": "revops/leaderboard-dashboards",
+     "number": 204,
+     "title": "Leaderboard mis-ranks reps when opportunities slip quarters",
+     "body": "Slipped opportunities keep their original close quarter in the ranking query, so reps who pulled deals into Q3 are under-counted on the weekly forecast call.",
+     "state": "open",
+     "user": "mei-huang",
+     "assignee": "alex-rivera",
+     "labels": "bug,forecast",
+     "created_at": "2026-07-30T17:25:00Z",
+     "updated_at": "2026-08-05T15:48:00Z",
+     "closed_at": null
+    },
+    {
+     "id": "ghi-1008",
+     "repo": "revops/leaderboard-dashboards",
+     "number": 198,
+     "title": "Add Meridian and Ironwood accounts to coverage dashboard",
+     "body": "Coverage ratio tiles only include the original five accounts; add Meridian and Ironwood to the pipeline coverage view.",
+     "state": "closed",
+     "user": "sarah-kim",
+     "assignee": "alex-rivera",
+     "labels": "enhancement",
+     "created_at": "2026-06-02T09:30:00Z",
+     "updated_at": "2026-06-10T18:20:00Z",
+     "closed_at": "2026-06-10T18:20:00Z"
+    },
+    {
+     "id": "ghi-1009",
+     "repo": "revops/billing-reconciliation",
+     "number": 121,
+     "title": "Reconciliation report double-counts credit notes for Harborview",
+     "body": "Voided credit notes are summed alongside their replacement notes, inflating the Harborview July variance by $18,400.",
+     "state": "open",
+     "user": "dana-okafor",
+     "assignee": "dana-okafor",
+     "labels": "bug,billing",
+     "created_at": "2026-08-02T12:10:00Z",
+     "updated_at": "2026-08-06T20:01:00Z",
+     "closed_at": null
+    },
+    {
+     "id": "ghi-1010",
+     "repo": "revops/billing-reconciliation",
+     "number": 117,
+     "title": "Backfill FY2026 invoices from Stripe export",
+     "body": "Import the FY2026 invoice export so the monthly close job can reconcile January through July in one pass.",
+     "state": "open",
+     "user": "priya-natarajan",
+     "assignee": null,
+     "labels": "task,billing",
+     "created_at": "2026-07-21T10:55:00Z",
+     "updated_at": "2026-07-21T10:55:00Z",
+     "closed_at": null
+    },
+    {
+     "id": "ghi-1011",
+     "repo": "revops/crm-sync",
+     "number": 339,
+     "title": "Sync drops custom fields on Riverside Group account updates",
+     "body": "Account updates that include tiering custom fields arrive at the CRM with those fields nulled. Repro: update Riverside Group Account tier, watch the sync payload.",
+     "state": "open",
+     "user": "mei-huang",
+     "assignee": "alex-rivera",
+     "labels": "bug,crm,p2",
+     "created_at": "2026-08-04T14:18:00Z",
+     "updated_at": "2026-08-07T11:26:00Z",
+     "closed_at": null
+    },
+    {
+     "id": "ghi-1012",
+     "repo": "revops/crm-sync",
+     "number": 325,
+     "title": "Rate-limit CRM API calls during bulk sync",
+     "body": "Bulk sync bursts past the CRM API quota and gets throttled; add a token bucket around the client.",
+     "state": "closed",
+     "user": "alex-rivera",
+     "assignee": "alex-rivera",
+     "labels": "enhancement,crm",
+     "created_at": "2026-05-19T08:22:00Z",
+     "updated_at": "2026-06-01T16:37:00Z",
+     "closed_at": "2026-06-01T16:37:00Z"
+    }
+   ]
+  },
+  {
+   "name": "gh_issue_comments",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "repo",
+     "type": "TEXT"
+    },
+    {
+     "name": "issue_number",
+     "type": "INTEGER"
+    },
+    {
+     "name": "user",
+     "type": "TEXT"
+    },
+    {
+     "name": "body",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "ghc-2001",
+     "repo": "revops/stripe-webhooks",
+     "issue_number": 52,
+     "user": "dana-okafor",
+     "body": "Confirmed: retry queue caps at 3 attempts in src/retry.py. Proposing exponential backoff with jitter, max 8 attempts over ~2h.",
+     "created_at": "2026-08-04T09:12:00Z"
+    },
+    {
+     "id": "ghc-2002",
+     "repo": "revops/stripe-webhooks",
+     "issue_number": 52,
+     "user": "mei-huang",
+     "body": "Finance flagged 41 missing invoice.paid events for Harborview and Atlas — can we backfill once the fix lands?",
+     "created_at": "2026-08-05T14:47:00Z"
+    },
+    {
+     "id": "ghc-2003",
+     "repo": "revops/stripe-webhooks",
+     "issue_number": 52,
+     "user": "dana-okafor",
+     "body": "Yes — PR #53 adds a replay command; backfill plan documented in internal-docs runbooks/webhook-incident.md.",
+     "created_at": "2026-08-06T10:03:00Z"
+    },
+    {
+     "id": "ghc-2004",
+     "repo": "revops/dedupe-jobs",
+     "issue_number": 88,
+     "user": "priya-natarajan",
+     "body": "Root cause: survivor score weights recency 0.7 vs completeness 0.3. Flipping the weights fixes the Summit Group case in staging.",
+     "created_at": "2026-07-30T16:20:00Z"
+    },
+    {
+     "id": "ghc-2005",
+     "repo": "revops/dedupe-jobs",
+     "issue_number": 88,
+     "user": "sarah-kim",
+     "body": "Please hold auto-merge for Riverside Group until the fix ships — recruiting comp reviews read from that account's activity history.",
+     "created_at": "2026-08-01T11:05:00Z"
+    },
+    {
+     "id": "ghc-2006",
+     "repo": "revops/wave6-seeding",
+     "issue_number": 19,
+     "user": "alex-rivera",
+     "body": "Repro'd with the finance_expense_reports override. The override map is read after the baseline pass, so it never wins. Fix in PR #20.",
+     "created_at": "2026-08-05T13:40:00Z"
+    },
+    {
+     "id": "ghc-2007",
+     "repo": "revops/billing-reconciliation",
+     "issue_number": 121,
+     "user": "dana-okafor",
+     "body": "Filter should exclude credit notes with status=void before aggregation; draft query in PR #122 drops the Harborview variance to $0.",
+     "created_at": "2026-08-04T18:26:00Z"
+    },
+    {
+     "id": "ghc-2008",
+     "repo": "revops/crm-sync",
+     "issue_number": 339,
+     "user": "alex-rivera",
+     "body": "The serializer whitelist misses the account_tiering_standard custom fields. PR #340 preserves unknown custom fields instead of dropping them.",
+     "created_at": "2026-08-06T09:55:00Z"
+    }
+   ]
+  },
+  {
+   "name": "gh_pull_requests",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "repo",
+     "type": "TEXT"
+    },
+    {
+     "name": "number",
+     "type": "INTEGER"
+    },
+    {
+     "name": "title",
+     "type": "TEXT"
+    },
+    {
+     "name": "body",
+     "type": "TEXT"
+    },
+    {
+     "name": "state",
+     "type": "TEXT"
+    },
+    {
+     "name": "user",
+     "type": "TEXT"
+    },
+    {
+     "name": "head",
+     "type": "TEXT"
+    },
+    {
+     "name": "base",
+     "type": "TEXT"
+    },
+    {
+     "name": "draft",
+     "type": "INTEGER"
+    },
+    {
+     "name": "merged",
+     "type": "INTEGER"
+    },
+    {
+     "name": "merged_at",
+     "type": "TEXT"
+    },
+    {
+     "name": "merge_commit_sha",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    },
+    {
+     "name": "updated_at",
+     "type": "TEXT"
+    },
+    {
+     "name": "closed_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "ghpr-3001",
+     "repo": "revops/stripe-webhooks",
+     "number": 53,
+     "title": "Exponential backoff with jitter for webhook retries",
+     "body": "Fixes #52. Replaces the fixed 5s retry interval with exponential backoff + jitter (max 8 attempts) and adds a replay command for dropped events.",
+     "state": "open",
+     "user": "dana-okafor",
+     "head": "fix/webhook-retry-backoff",
+     "base": "main",
+     "draft": 0,
+     "merged": 0,
+     "merged_at": null,
+     "merge_commit_sha": null,
+     "created_at": "2026-08-05T17:30:00Z",
+     "updated_at": "2026-08-08T10:11:00Z",
+     "closed_at": null
+    },
+    {
+     "id": "ghpr-3002",
+     "repo": "revops/stripe-webhooks",
+     "number": 49,
+     "title": "Verify signatures against 2026-01 Stripe API version",
+     "body": "Fixes #47. Accept both signing header formats during the migration window.",
+     "state": "closed",
+     "user": "dana-okafor",
+     "head": "fix/signature-2026-01",
+     "base": "main",
+     "draft": 0,
+     "merged": 1,
+     "merged_at": "2026-06-19T17:40:00Z",
+     "merge_commit_sha": "e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4",
+     "created_at": "2026-06-14T09:20:00Z",
+     "updated_at": "2026-06-19T17:40:00Z",
+     "closed_at": "2026-06-19T17:40:00Z"
+    },
+    {
+     "id": "ghpr-3003",
+     "repo": "revops/crm-sync",
+     "number": 340,
+     "title": "Preserve custom fields in account update payloads",
+     "body": "Fixes #339. The serializer now passes through unknown custom fields instead of dropping them; adds a regression test with the Riverside Group tiering fields.",
+     "state": "open",
+     "user": "alex-rivera",
+     "head": "fix/custom-field-sync",
+     "base": "main",
+     "draft": 0,
+     "merged": 0,
+     "merged_at": null,
+     "merge_commit_sha": null,
+     "created_at": "2026-08-06T10:05:00Z",
+     "updated_at": "2026-08-07T18:42:00Z",
+     "closed_at": null
+    },
+    {
+     "id": "ghpr-3004",
+     "repo": "revops/crm-sync",
+     "number": 338,
+     "title": "Spike: switch sync to CRM bulk API",
+     "body": "Experimental bulk-API path. Closing without merge — throughput win is real but error semantics are too lossy for billing-critical fields.",
+     "state": "closed",
+     "user": "mei-huang",
+     "head": "spike/bulk-api",
+     "base": "main",
+     "draft": 0,
+     "merged": 0,
+     "merged_at": null,
+     "merge_commit_sha": null,
+     "created_at": "2026-07-25T13:11:00Z",
+     "updated_at": "2026-08-02T09:00:00Z",
+     "closed_at": "2026-08-02T09:00:00Z"
+    },
+    {
+     "id": "ghpr-3005",
+     "repo": "revops/dedupe-jobs",
+     "number": 89,
+     "title": "Dry-run mode and completeness-weighted survivor scoring",
+     "body": "Addresses #83 and #88. Adds --dry-run merge reports and flips survivor weights to completeness 0.7 / recency 0.3.",
+     "state": "open",
+     "user": "priya-natarajan",
+     "head": "feat/dedupe-dry-run",
+     "base": "main",
+     "draft": 1,
+     "merged": 0,
+     "merged_at": null,
+     "merge_commit_sha": null,
+     "created_at": "2026-08-03T15:55:00Z",
+     "updated_at": "2026-08-06T14:02:00Z",
+     "closed_at": null
+    },
+    {
+     "id": "ghpr-3006",
+     "repo": "revops/wave6-seeding",
+     "number": 20,
+     "title": "Respect per-table baseline override in verifier seeding",
+     "body": "Fixes #19. Apply the per-table override map before the global baseline pass so /verify sees the task-level rows.",
+     "state": "open",
+     "user": "james-park",
+     "head": "fix/baseline-override",
+     "base": "main",
+     "draft": 0,
+     "merged": 0,
+     "merged_at": null,
+     "merge_commit_sha": null,
+     "created_at": "2026-08-06T08:44:00Z",
+     "updated_at": "2026-08-09T07:58:00Z",
+     "closed_at": null
+    },
+    {
+     "id": "ghpr-3007",
+     "repo": "revops/billing-reconciliation",
+     "number": 122,
+     "title": "Exclude voided credit notes from reconciliation totals",
+     "body": "Fixes #121. Voided credit notes are filtered before aggregation; adds a Harborview July fixture asserting $0 variance.",
+     "state": "open",
+     "user": "dana-okafor",
+     "head": "fix/credit-note-double-count",
+     "base": "main",
+     "draft": 0,
+     "merged": 0,
+     "merged_at": null,
+     "merge_commit_sha": null,
+     "created_at": "2026-08-05T09:31:00Z",
+     "updated_at": "2026-08-06T22:05:00Z",
+     "closed_at": null
+    },
+    {
+     "id": "ghpr-3008",
+     "repo": "revops/leaderboard-dashboards",
+     "number": 205,
+     "title": "Pin quarter boundaries to the fiscal calendar",
+     "body": "Fixes #204. Ranking query now resolves quarters from the fiscal calendar table, so slipped/pulled-in deals rank in the quarter they actually close.",
+     "state": "closed",
+     "user": "alex-rivera",
+     "head": "fix/quarter-boundaries",
+     "base": "main",
+     "draft": 0,
+     "merged": 1,
+     "merged_at": "2026-08-05T16:18:00Z",
+     "merge_commit_sha": "56789abcdef0123456789abcdef0123456789abc",
+     "created_at": "2026-08-01T10:09:00Z",
+     "updated_at": "2026-08-05T16:18:00Z",
+     "closed_at": "2026-08-05T16:18:00Z"
+    }
+   ]
+  },
+  {
+   "name": "gh_pull_files",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "repo",
+     "type": "TEXT"
+    },
+    {
+     "name": "pull_number",
+     "type": "INTEGER"
+    },
+    {
+     "name": "filename",
+     "type": "TEXT"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "additions",
+     "type": "INTEGER"
+    },
+    {
+     "name": "deletions",
+     "type": "INTEGER"
+    },
+    {
+     "name": "changes",
+     "type": "INTEGER"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "ghpf-4001",
+     "repo": "revops/stripe-webhooks",
+     "pull_number": 53,
+     "filename": "src/retry.py",
+     "status": "modified",
+     "additions": 84,
+     "deletions": 21,
+     "changes": 105
+    },
+    {
+     "id": "ghpf-4002",
+     "repo": "revops/stripe-webhooks",
+     "pull_number": 53,
+     "filename": "src/replay.py",
+     "status": "added",
+     "additions": 66,
+     "deletions": 0,
+     "changes": 66
+    },
+    {
+     "id": "ghpf-4003",
+     "repo": "revops/stripe-webhooks",
+     "pull_number": 53,
+     "filename": "tests/test_retry.py",
+     "status": "modified",
+     "additions": 48,
+     "deletions": 6,
+     "changes": 54
+    },
+    {
+     "id": "ghpf-4004",
+     "repo": "revops/crm-sync",
+     "pull_number": 340,
+     "filename": "sync/fields.py",
+     "status": "modified",
+     "additions": 32,
+     "deletions": 11,
+     "changes": 43
+    },
+    {
+     "id": "ghpf-4005",
+     "repo": "revops/crm-sync",
+     "pull_number": 340,
+     "filename": "tests/test_custom_fields.py",
+     "status": "added",
+     "additions": 57,
+     "deletions": 0,
+     "changes": 57
+    },
+    {
+     "id": "ghpf-4006",
+     "repo": "revops/dedupe-jobs",
+     "pull_number": 89,
+     "filename": "dedupe/survivor.py",
+     "status": "modified",
+     "additions": 40,
+     "deletions": 18,
+     "changes": 58
+    },
+    {
+     "id": "ghpf-4007",
+     "repo": "revops/dedupe-jobs",
+     "pull_number": 89,
+     "filename": "dedupe/cli.py",
+     "status": "modified",
+     "additions": 25,
+     "deletions": 3,
+     "changes": 28
+    },
+    {
+     "id": "ghpf-4008",
+     "repo": "revops/wave6-seeding",
+     "pull_number": 20,
+     "filename": "scripts/seed.mjs",
+     "status": "modified",
+     "additions": 29,
+     "deletions": 14,
+     "changes": 43
+    },
+    {
+     "id": "ghpf-4009",
+     "repo": "revops/wave6-seeding",
+     "pull_number": 20,
+     "filename": "scripts/verify-baseline.test.mjs",
+     "status": "added",
+     "additions": 51,
+     "deletions": 0,
+     "changes": 51
+    },
+    {
+     "id": "ghpf-4010",
+     "repo": "revops/billing-reconciliation",
+     "pull_number": 122,
+     "filename": "recon/credit_notes.py",
+     "status": "modified",
+     "additions": 22,
+     "deletions": 9,
+     "changes": 31
+    },
+    {
+     "id": "ghpf-4011",
+     "repo": "revops/billing-reconciliation",
+     "pull_number": 122,
+     "filename": "tests/fixtures/harborview_july.json",
+     "status": "added",
+     "additions": 120,
+     "deletions": 0,
+     "changes": 120
+    },
+    {
+     "id": "ghpf-4012",
+     "repo": "revops/leaderboard-dashboards",
+     "pull_number": 205,
+     "filename": "src/rank.ts",
+     "status": "modified",
+     "additions": 35,
+     "deletions": 27,
+     "changes": 62
+    }
+   ]
+  },
+  {
+   "name": "gh_pull_reviews",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "repo",
+     "type": "TEXT"
+    },
+    {
+     "name": "pull_number",
+     "type": "INTEGER"
+    },
+    {
+     "name": "user",
+     "type": "TEXT"
+    },
+    {
+     "name": "state",
+     "type": "TEXT"
+    },
+    {
+     "name": "body",
+     "type": "TEXT"
+    },
+    {
+     "name": "submitted_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "ghrv-5001",
+     "repo": "revops/stripe-webhooks",
+     "pull_number": 53,
+     "user": "alex-rivera",
+     "state": "CHANGES_REQUESTED",
+     "body": "Backoff cap of 2h looks right, but the replay command should be idempotent — dedupe on event id before re-enqueueing.",
+     "submitted_at": "2026-08-06T15:20:00Z"
+    },
+    {
+     "id": "ghrv-5002",
+     "repo": "revops/stripe-webhooks",
+     "pull_number": 53,
+     "user": "james-park",
+     "state": "COMMENTED",
+     "body": "Can we emit a metric for retry exhaustion so the reconciliation job can alert instead of silently drifting?",
+     "submitted_at": "2026-08-07T09:02:00Z"
+    },
+    {
+     "id": "ghrv-5003",
+     "repo": "revops/stripe-webhooks",
+     "pull_number": 49,
+     "user": "alex-rivera",
+     "state": "APPROVED",
+     "body": "Dual-format verification window is the right call. Ship it.",
+     "submitted_at": "2026-06-19T16:55:00Z"
+    },
+    {
+     "id": "ghrv-5004",
+     "repo": "revops/crm-sync",
+     "pull_number": 340,
+     "user": "dana-okafor",
+     "state": "APPROVED",
+     "body": "Pass-through with the regression test on Riverside tiering fields covers the billing mapping too. LGTM.",
+     "submitted_at": "2026-08-07T14:31:00Z"
+    },
+    {
+     "id": "ghrv-5005",
+     "repo": "revops/dedupe-jobs",
+     "pull_number": 89,
+     "user": "alex-rivera",
+     "state": "COMMENTED",
+     "body": "Draft looks good — please add the Summit Group fixture from #88 as a golden test before marking ready.",
+     "submitted_at": "2026-08-05T10:44:00Z"
+    },
+    {
+     "id": "ghrv-5006",
+     "repo": "revops/wave6-seeding",
+     "pull_number": 20,
+     "user": "priya-natarajan",
+     "state": "APPROVED",
+     "body": "Override-before-baseline ordering matches the verifier contract. Nice test coverage.",
+     "submitted_at": "2026-08-08T11:15:00Z"
+    },
+    {
+     "id": "ghrv-5007",
+     "repo": "revops/billing-reconciliation",
+     "pull_number": 122,
+     "user": "james-park",
+     "state": "CHANGES_REQUESTED",
+     "body": "Filtering on status=void is right, but do it in SQL, not after fetch — the July close pulls 40k credit notes.",
+     "submitted_at": "2026-08-06T18:09:00Z"
+    },
+    {
+     "id": "ghrv-5008",
+     "repo": "revops/leaderboard-dashboards",
+     "pull_number": 205,
+     "user": "mei-huang",
+     "state": "APPROVED",
+     "body": "Checked against last week's forecast call numbers — slipped deals now land in the right quarter.",
+     "submitted_at": "2026-08-05T15:50:00Z"
+    }
+   ]
+  },
+  {
+   "name": "gh_commits",
+   "columns": [
+    {
+     "name": "sha",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "repo",
+     "type": "TEXT"
+    },
+    {
+     "name": "branch",
+     "type": "TEXT"
+    },
+    {
+     "name": "message",
+     "type": "TEXT"
+    },
+    {
+     "name": "author",
+     "type": "TEXT"
+    },
+    {
+     "name": "author_email",
+     "type": "TEXT"
+    },
+    {
+     "name": "date",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "sha": "a3f91c2e77b04d5f8a12c9e6b3d47f0a91825c4e",
+     "repo": "revops/crm-sync",
+     "branch": "main",
+     "message": "Add token bucket rate limiter around CRM client (#325)",
+     "author": "alex-rivera",
+     "author_email": "contact84567@morganstanleysimulated.com",
+     "date": "2026-06-01T16:35:00Z"
+    },
+    {
+     "sha": "b7e2205d9c4f6a1832e0b5d7c9f4a6e2810d3b5f",
+     "repo": "revops/crm-sync",
+     "branch": "fix/custom-field-sync",
+     "message": "Preserve unknown custom fields in account serializer",
+     "author": "alex-rivera",
+     "author_email": "contact84567@morganstanleysimulated.com",
+     "date": "2026-08-07T18:40:00Z"
+    },
+    {
+     "sha": "c9d4e1f2a6b83750c2e9d1f4a7b0c3e6d9f2a5b8",
+     "repo": "revops/stripe-webhooks",
+     "branch": "main",
+     "message": "Log signature header format on verification failure",
+     "author": "dana-okafor",
+     "author_email": "contact81234@morganstanleysimulated.com",
+     "date": "2026-07-29T11:02:00Z"
+    },
+    {
+     "sha": "d1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0",
+     "repo": "revops/stripe-webhooks",
+     "branch": "fix/webhook-retry-backoff",
+     "message": "Exponential backoff with jitter; replay command for dropped events",
+     "author": "dana-okafor",
+     "author_email": "contact81234@morganstanleysimulated.com",
+     "date": "2026-08-08T10:10:00Z"
+    },
+    {
+     "sha": "e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4",
+     "repo": "revops/stripe-webhooks",
+     "branch": "main",
+     "message": "Merge pull request #49 from revops/fix/signature-2026-01",
+     "author": "dana-okafor",
+     "author_email": "contact81234@morganstanleysimulated.com",
+     "date": "2026-06-19T17:40:00Z"
+    },
+    {
+     "sha": "f0e1d2c3b4a5968778695a4b3c2d1e0f9a8b7c6d",
+     "repo": "revops/dedupe-jobs",
+     "branch": "main",
+     "message": "Nightly job: batch account merges per 500 records",
+     "author": "priya-natarajan",
+     "author_email": "contact82345@morganstanleysimulated.com",
+     "date": "2026-07-22T02:10:00Z"
+    },
+    {
+     "sha": "0a1b2c3d4e5f60718293a4b5c6d7e8f901234567",
+     "repo": "revops/dedupe-jobs",
+     "branch": "feat/dedupe-dry-run",
+     "message": "Add --dry-run merge report; flip survivor weights to completeness-first",
+     "author": "priya-natarajan",
+     "author_email": "contact82345@morganstanleysimulated.com",
+     "date": "2026-08-06T14:00:00Z"
+    },
+    {
+     "sha": "123456789abcdef0123456789abcdef012345678",
+     "repo": "revops/wave6-seeding",
+     "branch": "main",
+     "message": "Deterministic gh_ fixtures for benchmark traces (#15)",
+     "author": "james-park",
+     "author_email": "contact83456@morganstanleysimulated.com",
+     "date": "2026-07-02T10:10:00Z"
+    },
+    {
+     "sha": "23456789abcdef0123456789abcdef0123456789",
+     "repo": "revops/wave6-seeding",
+     "branch": "fix/baseline-override",
+     "message": "Apply per-table override map before global baseline pass",
+     "author": "james-park",
+     "author_email": "contact83456@morganstanleysimulated.com",
+     "date": "2026-08-09T07:55:00Z"
+    },
+    {
+     "sha": "3456789abcdef0123456789abcdef0123456789a",
+     "repo": "revops/billing-reconciliation",
+     "branch": "main",
+     "message": "Monthly close: emit variance report per account",
+     "author": "dana-okafor",
+     "author_email": "contact81234@morganstanleysimulated.com",
+     "date": "2026-07-31T21:12:00Z"
+    },
+    {
+     "sha": "456789abcdef0123456789abcdef0123456789ab",
+     "repo": "revops/billing-reconciliation",
+     "branch": "fix/credit-note-double-count",
+     "message": "Exclude voided credit notes in SQL aggregation",
+     "author": "dana-okafor",
+     "author_email": "contact81234@morganstanleysimulated.com",
+     "date": "2026-08-06T22:03:00Z"
+    },
+    {
+     "sha": "56789abcdef0123456789abcdef0123456789abc",
+     "repo": "revops/leaderboard-dashboards",
+     "branch": "main",
+     "message": "Merge pull request #205 from revops/fix/quarter-boundaries",
+     "author": "alex-rivera",
+     "author_email": "contact84567@morganstanleysimulated.com",
+     "date": "2026-08-05T16:18:00Z"
+    }
+   ]
+  },
+  {
+   "name": "gh_branches",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "repo",
+     "type": "TEXT"
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "sha",
+     "type": "TEXT"
+    },
+    {
+     "name": "protected",
+     "type": "INTEGER"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "ghb-01",
+     "repo": "revops/crm-sync",
+     "name": "main",
+     "sha": "a3f91c2e77b04d5f8a12c9e6b3d47f0a91825c4e",
+     "protected": 1
+    },
+    {
+     "id": "ghb-02",
+     "repo": "revops/crm-sync",
+     "name": "fix/custom-field-sync",
+     "sha": "b7e2205d9c4f6a1832e0b5d7c9f4a6e2810d3b5f",
+     "protected": 0
+    },
+    {
+     "id": "ghb-03",
+     "repo": "revops/stripe-webhooks",
+     "name": "main",
+     "sha": "e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4",
+     "protected": 1
+    },
+    {
+     "id": "ghb-04",
+     "repo": "revops/stripe-webhooks",
+     "name": "fix/webhook-retry-backoff",
+     "sha": "d1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0",
+     "protected": 0
+    },
+    {
+     "id": "ghb-05",
+     "repo": "revops/dedupe-jobs",
+     "name": "main",
+     "sha": "f0e1d2c3b4a5968778695a4b3c2d1e0f9a8b7c6d",
+     "protected": 1
+    },
+    {
+     "id": "ghb-06",
+     "repo": "revops/dedupe-jobs",
+     "name": "feat/dedupe-dry-run",
+     "sha": "0a1b2c3d4e5f60718293a4b5c6d7e8f901234567",
+     "protected": 0
+    },
+    {
+     "id": "ghb-07",
+     "repo": "revops/wave6-seeding",
+     "name": "main",
+     "sha": "123456789abcdef0123456789abcdef012345678",
+     "protected": 1
+    },
+    {
+     "id": "ghb-08",
+     "repo": "revops/wave6-seeding",
+     "name": "fix/baseline-override",
+     "sha": "23456789abcdef0123456789abcdef0123456789",
+     "protected": 0
+    },
+    {
+     "id": "ghb-09",
+     "repo": "revops/billing-reconciliation",
+     "name": "main",
+     "sha": "3456789abcdef0123456789abcdef0123456789a",
+     "protected": 1
+    },
+    {
+     "id": "ghb-10",
+     "repo": "revops/billing-reconciliation",
+     "name": "fix/credit-note-double-count",
+     "sha": "456789abcdef0123456789abcdef0123456789ab",
+     "protected": 0
+    },
+    {
+     "id": "ghb-11",
+     "repo": "revops/leaderboard-dashboards",
+     "name": "main",
+     "sha": "56789abcdef0123456789abcdef0123456789abc",
+     "protected": 1
+    },
+    {
+     "id": "ghb-12",
+     "repo": "revops/revops-infra",
+     "name": "main",
+     "sha": "6789abcdef0123456789abcdef0123456789abcd",
+     "protected": 1
+    },
+    {
+     "id": "ghb-13",
+     "repo": "revops/internal-docs",
+     "name": "main",
+     "sha": "789abcdef0123456789abcdef0123456789abcde",
+     "protected": 0
+    }
+   ]
+  },
+  {
+   "name": "gh_workflow_runs",
+   "columns": [
+    {
+     "name": "id",
+     "type": "INTEGER",
+     "pk": true
+    },
+    {
+     "name": "repo",
+     "type": "TEXT"
+    },
+    {
+     "name": "workflow",
+     "type": "TEXT"
+    },
+    {
+     "name": "run_number",
+     "type": "INTEGER"
+    },
+    {
+     "name": "event",
+     "type": "TEXT"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "conclusion",
+     "type": "TEXT"
+    },
+    {
+     "name": "head_branch",
+     "type": "TEXT"
+    },
+    {
+     "name": "head_sha",
+     "type": "TEXT"
+    },
+    {
+     "name": "actor",
+     "type": "TEXT"
+    },
+    {
+     "name": "run_attempt",
+     "type": "INTEGER"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    },
+    {
+     "name": "updated_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": 91277001,
+     "repo": "revops/stripe-webhooks",
+     "workflow": "ci.yml",
+     "run_number": 214,
+     "event": "pull_request",
+     "status": "completed",
+     "conclusion": "failure",
+     "head_branch": "fix/webhook-retry-backoff",
+     "head_sha": "d1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0",
+     "actor": "dana-okafor",
+     "run_attempt": 1,
+     "created_at": "2026-08-08T10:12:00Z",
+     "updated_at": "2026-08-08T10:19:34Z"
+    },
+    {
+     "id": 91277002,
+     "repo": "revops/stripe-webhooks",
+     "workflow": "ci.yml",
+     "run_number": 213,
+     "event": "push",
+     "status": "completed",
+     "conclusion": "success",
+     "head_branch": "main",
+     "head_sha": "c9d4e1f2a6b83750c2e9d1f4a7b0c3e6d9f2a5b8",
+     "actor": "dana-okafor",
+     "run_attempt": 1,
+     "created_at": "2026-07-29T11:03:00Z",
+     "updated_at": "2026-07-29T11:09:41Z"
+    },
+    {
+     "id": 91277003,
+     "repo": "revops/crm-sync",
+     "workflow": "ci.yml",
+     "run_number": 587,
+     "event": "pull_request",
+     "status": "completed",
+     "conclusion": "success",
+     "head_branch": "fix/custom-field-sync",
+     "head_sha": "b7e2205d9c4f6a1832e0b5d7c9f4a6e2810d3b5f",
+     "actor": "alex-rivera",
+     "run_attempt": 1,
+     "created_at": "2026-08-07T18:43:00Z",
+     "updated_at": "2026-08-07T18:51:22Z"
+    },
+    {
+     "id": 91277004,
+     "repo": "revops/crm-sync",
+     "workflow": "deploy.yml",
+     "run_number": 92,
+     "event": "workflow_dispatch",
+     "status": "completed",
+     "conclusion": "success",
+     "head_branch": "main",
+     "head_sha": "a3f91c2e77b04d5f8a12c9e6b3d47f0a91825c4e",
+     "actor": "alex-rivera",
+     "run_attempt": 1,
+     "created_at": "2026-06-02T09:00:00Z",
+     "updated_at": "2026-06-02T09:12:10Z"
+    },
+    {
+     "id": 91277005,
+     "repo": "revops/dedupe-jobs",
+     "workflow": "ci.yml",
+     "run_number": 156,
+     "event": "pull_request",
+     "status": "completed",
+     "conclusion": "failure",
+     "head_branch": "feat/dedupe-dry-run",
+     "head_sha": "0a1b2c3d4e5f60718293a4b5c6d7e8f901234567",
+     "actor": "priya-natarajan",
+     "run_attempt": 2,
+     "created_at": "2026-08-06T14:05:00Z",
+     "updated_at": "2026-08-06T14:13:48Z"
+    },
+    {
+     "id": 91277006,
+     "repo": "revops/wave6-seeding",
+     "workflow": "ci.yml",
+     "run_number": 44,
+     "event": "pull_request",
+     "status": "completed",
+     "conclusion": "success",
+     "head_branch": "fix/baseline-override",
+     "head_sha": "23456789abcdef0123456789abcdef0123456789",
+     "actor": "james-park",
+     "run_attempt": 1,
+     "created_at": "2026-08-09T07:59:00Z",
+     "updated_at": "2026-08-09T08:04:17Z"
+    },
+    {
+     "id": 91277007,
+     "repo": "revops/billing-reconciliation",
+     "workflow": "ci.yml",
+     "run_number": 301,
+     "event": "pull_request",
+     "status": "in_progress",
+     "conclusion": null,
+     "head_branch": "fix/credit-note-double-count",
+     "head_sha": "456789abcdef0123456789abcdef0123456789ab",
+     "actor": "dana-okafor",
+     "run_attempt": 1,
+     "created_at": "2026-08-09T09:41:00Z",
+     "updated_at": "2026-08-09T09:41:00Z"
+    },
+    {
+     "id": 91277008,
+     "repo": "revops/leaderboard-dashboards",
+     "workflow": "deploy.yml",
+     "run_number": 78,
+     "event": "push",
+     "status": "completed",
+     "conclusion": "success",
+     "head_branch": "main",
+     "head_sha": "56789abcdef0123456789abcdef0123456789abc",
+     "actor": "alex-rivera",
+     "run_attempt": 1,
+     "created_at": "2026-08-05T16:20:00Z",
+     "updated_at": "2026-08-05T16:31:05Z"
+    },
+    {
+     "id": 91277009,
+     "repo": "revops/revops-infra",
+     "workflow": "deploy.yml",
+     "run_number": 133,
+     "event": "workflow_dispatch",
+     "status": "queued",
+     "conclusion": null,
+     "head_branch": "main",
+     "head_sha": "6789abcdef0123456789abcdef0123456789abcd",
+     "actor": "james-park",
+     "run_attempt": 1,
+     "created_at": "2026-08-09T11:02:00Z",
+     "updated_at": "2026-08-09T11:02:00Z"
+    },
+    {
+     "id": 91277010,
+     "repo": "revops/leaderboard-dashboards",
+     "workflow": "ci.yml",
+     "run_number": 245,
+     "event": "push",
+     "status": "completed",
+     "conclusion": "failure",
+     "head_branch": "main",
+     "head_sha": "56789abcdef0123456789abcdef0123456789abc",
+     "actor": "mei-huang",
+     "run_attempt": 1,
+     "created_at": "2026-08-05T16:19:00Z",
+     "updated_at": "2026-08-05T16:24:52Z"
+    }
+   ]
+  },
+  {
+   "name": "gh_releases",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "repo",
+     "type": "TEXT"
+    },
+    {
+     "name": "tag_name",
+     "type": "TEXT"
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "body",
+     "type": "TEXT"
+    },
+    {
+     "name": "draft",
+     "type": "INTEGER"
+    },
+    {
+     "name": "prerelease",
+     "type": "INTEGER"
+    },
+    {
+     "name": "target_commitish",
+     "type": "TEXT"
+    },
+    {
+     "name": "author",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    },
+    {
+     "name": "published_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "ghrel-6001",
+     "repo": "revops/crm-sync",
+     "tag_name": "v2.4.0",
+     "name": "v2.4.0 — bulk rate limiting",
+     "body": "Token-bucket rate limiter around the CRM client; bulk sync no longer trips API quotas.",
+     "draft": 0,
+     "prerelease": 0,
+     "target_commitish": "main",
+     "author": "alex-rivera",
+     "created_at": "2026-06-02T08:50:00Z",
+     "published_at": "2026-06-02T09:15:00Z"
+    },
+    {
+     "id": "ghrel-6002",
+     "repo": "revops/crm-sync",
+     "tag_name": "v2.3.1",
+     "name": "v2.3.1",
+     "body": "Hotfix: contact email normalization for morganstanleysimulated.com aliases.",
+     "draft": 0,
+     "prerelease": 0,
+     "target_commitish": "main",
+     "author": "alex-rivera",
+     "created_at": "2026-04-18T12:00:00Z",
+     "published_at": "2026-04-18T12:20:00Z"
+    },
+    {
+     "id": "ghrel-6003",
+     "repo": "revops/stripe-webhooks",
+     "tag_name": "v1.8.0",
+     "name": "v1.8.0 — 2026-01 signature support",
+     "body": "Dual-format signature verification for the 2026-01 Stripe API version migration window.",
+     "draft": 0,
+     "prerelease": 0,
+     "target_commitish": "main",
+     "author": "dana-okafor",
+     "created_at": "2026-06-20T09:00:00Z",
+     "published_at": "2026-06-20T09:30:00Z"
+    },
+    {
+     "id": "ghrel-6004",
+     "repo": "revops/billing-reconciliation",
+     "tag_name": "v0.9.0",
+     "name": "v0.9.0-rc — monthly close",
+     "body": "Release candidate for the FY2026 monthly close pipeline. Known issue: credit-note double counting (#121).",
+     "draft": 0,
+     "prerelease": 1,
+     "target_commitish": "main",
+     "author": "dana-okafor",
+     "created_at": "2026-07-31T22:00:00Z",
+     "published_at": "2026-07-31T22:10:00Z"
+    },
+    {
+     "id": "ghrel-6005",
+     "repo": "revops/leaderboard-dashboards",
+     "tag_name": "v3.1.0",
+     "name": "v3.1.0 — fiscal quarter ranking",
+     "body": "Quarter boundaries pinned to the fiscal calendar; slipped/pulled-in deals rank correctly.",
+     "draft": 0,
+     "prerelease": 0,
+     "target_commitish": "main",
+     "author": "alex-rivera",
+     "created_at": "2026-08-05T16:35:00Z",
+     "published_at": "2026-08-05T16:40:00Z"
+    },
+    {
+     "id": "ghrel-6006",
+     "repo": "revops/wave6-seeding",
+     "tag_name": "v0.6.0",
+     "name": "v0.6.0 — gh fixtures",
+     "body": "Deterministic gh_ table fixtures for benchmark traces.",
+     "draft": 1,
+     "prerelease": 0,
+     "target_commitish": "main",
+     "author": "james-park",
+     "created_at": "2026-07-02T10:20:00Z",
+     "published_at": null
+    }
+   ]
+  },
+  {
+   "name": "gh_code_index",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "repo",
+     "type": "TEXT"
+    },
+    {
+     "name": "path",
+     "type": "TEXT"
+    },
+    {
+     "name": "language",
+     "type": "TEXT"
+    },
+    {
+     "name": "snippet",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "gci-7001",
+     "repo": "revops/stripe-webhooks",
+     "path": "src/retry.py",
+     "language": "Python",
+     "snippet": "def schedule_retry(event_id, attempt):\n    delay = min(BASE_DELAY * (2 ** attempt) + jitter(), MAX_DELAY)\n    queue.enqueue(event_id, eta=now() + delay)"
+    },
+    {
+     "id": "gci-7002",
+     "repo": "revops/stripe-webhooks",
+     "path": "src/verify.py",
+     "language": "Python",
+     "snippet": "def verify_signature(payload, sig_header, secret):\n    # accepts both pre- and post-2026-01 header formats\n    return hmac.compare_digest(expected, provided)"
+    },
+    {
+     "id": "gci-7003",
+     "repo": "revops/crm-sync",
+     "path": "sync/fields.py",
+     "language": "Python",
+     "snippet": "CUSTOM_FIELD_PASSTHROUGH = True  # preserve unknown custom fields (tiering, aum_band)\ndef serialize_account(account):"
+    },
+    {
+     "id": "gci-7004",
+     "repo": "revops/crm-sync",
+     "path": "sync/rate_limit.py",
+     "language": "Python",
+     "snippet": "class TokenBucket:\n    def acquire(self, n=1):\n        # blocks until n tokens available; CRM quota is 100 req/10s"
+    },
+    {
+     "id": "gci-7005",
+     "repo": "revops/dedupe-jobs",
+     "path": "dedupe/survivor.py",
+     "language": "Python",
+     "snippet": "def pick_survivor(records):\n    # completeness 0.7 / recency 0.3 — see issue #88\n    return max(records, key=survivor_score)"
+    },
+    {
+     "id": "gci-7006",
+     "repo": "revops/billing-reconciliation",
+     "path": "recon/credit_notes.py",
+     "language": "Python",
+     "snippet": "SELECT account, SUM(amount) FROM credit_notes WHERE status != 'void' GROUP BY account"
+    },
+    {
+     "id": "gci-7007",
+     "repo": "revops/leaderboard-dashboards",
+     "path": "src/rank.ts",
+     "language": "TypeScript",
+     "snippet": "export function rankReps(opps: Opp[], fiscal: FiscalCalendar) {\n  const byQuarter = groupBy(opps, o => fiscal.quarterOf(o.close_date));"
+    },
+    {
+     "id": "gci-7008",
+     "repo": "revops/wave6-seeding",
+     "path": "scripts/seed.mjs",
+     "language": "JavaScript",
+     "snippet": "for (const table of BASELINE_TABLES) {\n  const rows = overrides[table] ?? baseline[table];  // per-table override wins\n  await seedTable(db, table, rows);\n}"
+    },
+    {
+     "id": "gci-7009",
+     "repo": "revops/revops-infra",
+     "path": "deploy/main.tf",
+     "language": "HCL",
+     "snippet": "module \"stripe_webhooks\" {\n  source = \"./modules/service\"\n  name   = \"stripe-webhooks\"\n  alerts = [\"retry_exhaustion\"]\n}"
+    },
+    {
+     "id": "gci-7010",
+     "repo": "revops/internal-docs",
+     "path": "runbooks/webhook-incident.md",
+     "language": "Markdown",
+     "snippet": "## Backfill dropped webhook events\n1. List dropped event ids from the retry-exhaustion log\n2. Run `python -m src.replay --since <ts>`"
+    }
+   ]
+  }
+ ],
+ "tools": [
+  {
+   "name": "gh_repos_list",
+   "description": "List repositories for the revops organization (GET /orgs/{org}/repos)",
+   "op": "list",
+   "table": "gh_repos",
+   "params": {
+    "limit": {
+     "type": "integer",
+     "description": "The number of results per page (max 100). GitHub param: per_page. Default: 30."
+    }
+   }
+  },
+  {
+   "name": "gh_repo_get",
+   "description": "Get a repository by its full name (GET /repos/{owner}/{repo})",
+   "op": "get",
+   "table": "gh_repos",
+   "id_param": "full_name",
+   "id_column": "full_name",
+   "params": {
+    "full_name": {
+     "type": "string",
+     "description": "The full name of the repository in owner/repo form, e.g. revops/crm-sync."
+    }
+   },
+   "required": [
+    "full_name"
+   ]
+  },
+  {
+   "name": "gh_issues_list",
+   "description": "List issues in a repository with state/assignee/labels filters (GET /repos/{owner}/{repo}/issues)",
+   "op": "custom",
+   "type": "read",
+   "table": "gh_issues",
+   "params": {
+    "repo": {
+     "type": "string",
+     "description": "The repository full name in owner/repo form."
+    },
+    "state": {
+     "type": "string",
+     "description": "Indicates the state of the issues to return. Can be either open, closed, or all. Default: open."
+    },
+    "assignee": {
+     "type": "string",
+     "description": "Can be the name of a user. Only issues assigned to that user are returned."
+    },
+    "creator": {
+     "type": "string",
+     "description": "The user that created the issue."
+    },
+    "labels": {
+     "type": "string",
+     "description": "A list of comma separated label names. Example: bug,ui,@high. Issues must have all of the labels."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The number of results per page (max 100). GitHub param: per_page. Default: 30."
+    }
+   },
+   "required": [
+    "repo"
+   ],
+   "custom_source": "def gh_issues_list(db_path='state.db', **kwargs):\n    import sqlite3\n    repo = kwargs.get('repo')\n    if not repo:\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'repo is required'}\n    state = kwargs.get('state') or 'open'\n    if state not in ('open', 'closed', 'all'):\n        return {'error': 'Validation Failed', 'status': 422, 'message': \"state must be one of: open, closed, all\"}\n    where = ['repo = ?']\n    args = [repo]\n    if state != 'all':\n        where.append('state = ?')\n        args.append(state)\n    if kwargs.get('assignee'):\n        where.append('assignee = ?')\n        args.append(kwargs['assignee'])\n    if kwargs.get('creator'):\n        where.append('\"user\" = ?')\n        args.append(kwargs['creator'])\n    labels = kwargs.get('labels')\n    if labels:\n        if isinstance(labels, list):\n            label_list = [str(l).strip() for l in labels if str(l).strip()]\n        else:\n            label_list = [l.strip() for l in str(labels).split(',') if l.strip()]\n        for label in label_list:\n            where.append(\"(',' || COALESCE(labels, '') || ',') LIKE ?\")\n            args.append('%,' + label + ',%')\n    try:\n        limit = int(kwargs.get('limit') or 30)\n    except (TypeError, ValueError):\n        limit = 30\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    try:\n        rows = conn.execute(\n            'SELECT * FROM gh_issues WHERE ' + ' AND '.join(where) + ' ORDER BY number DESC LIMIT ?',\n            args + [limit]).fetchall()\n        return [dict(r) for r in rows]\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "gh_issue_get",
+   "description": "Get an issue by repository and issue number (GET /repos/{owner}/{repo}/issues/{issue_number})",
+   "op": "custom",
+   "type": "read",
+   "table": "gh_issues",
+   "params": {
+    "repo": {
+     "type": "string",
+     "description": "The repository full name in owner/repo form."
+    },
+    "issue_number": {
+     "type": "integer",
+     "description": "The number that identifies the issue."
+    }
+   },
+   "required": [
+    "repo",
+    "issue_number"
+   ],
+   "custom_source": "def gh_issue_get(db_path='state.db', **kwargs):\n    import sqlite3\n    repo = kwargs.get('repo')\n    number = kwargs.get('issue_number')\n    if not repo or number is None:\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'repo and issue_number are required'}\n    try:\n        number = int(number)\n    except (TypeError, ValueError):\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'issue_number must be an integer'}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    try:\n        row = conn.execute('SELECT * FROM gh_issues WHERE repo = ? AND number = ?', (repo, number)).fetchone()\n        if row is None:\n            return {'error': 'Not Found', 'status': 404, 'message': 'Issue #%s not found in %s' % (number, repo)}\n        return dict(row)\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "gh_issue_create",
+   "description": "Create an issue; the number is assigned from the repository's shared issue/PR sequence (POST /repos/{owner}/{repo}/issues)",
+   "op": "custom",
+   "type": "write",
+   "table": "gh_issues",
+   "extra_tables": [
+    "gh_repos",
+    "gh_pull_requests"
+   ],
+   "params": {
+    "repo": {
+     "type": "string",
+     "description": "The repository full name in owner/repo form."
+    },
+    "title": {
+     "type": "string",
+     "description": "The title of the issue."
+    },
+    "body": {
+     "type": "string",
+     "description": "The contents of the issue."
+    },
+    "assignee": {
+     "type": "string",
+     "description": "Login for the user that this issue should be assigned to."
+    },
+    "labels": {
+     "type": "string",
+     "description": "Labels to associate with this issue, as a comma separated list or array of label names."
+    },
+    "user": {
+     "type": "string",
+     "description": "Login of the issue author (the authenticated user in the real API). Default: revops-bot."
+    }
+   },
+   "required": [
+    "repo",
+    "title"
+   ],
+   "custom_source": "def gh_issue_create(db_path='state.db', **kwargs):\n    import sqlite3, datetime, hashlib\n    repo = kwargs.get('repo')\n    title = kwargs.get('title')\n    if not repo or not title:\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'repo and title are required'}\n    labels = kwargs.get('labels')\n    if isinstance(labels, list):\n        labels = ','.join(str(l).strip() for l in labels if str(l).strip())\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    try:\n        if conn.execute('SELECT 1 FROM gh_repos WHERE full_name = ?', (repo,)).fetchone() is None:\n            return {'error': 'Not Found', 'status': 404, 'message': 'Repository %s not found' % repo}\n        max_issue = conn.execute('SELECT COALESCE(MAX(number), 0) FROM gh_issues WHERE repo = ?', (repo,)).fetchone()[0]\n        max_pull = conn.execute('SELECT COALESCE(MAX(number), 0) FROM gh_pull_requests WHERE repo = ?', (repo,)).fetchone()[0]\n        number = max(max_issue, max_pull) + 1\n        now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')\n        issue_id = 'ghi-' + hashlib.sha1(('%s#%d' % (repo, number)).encode()).hexdigest()[:8]\n        conn.execute(\n            'INSERT INTO gh_issues (id, repo, number, title, body, state, \"user\", assignee, labels, created_at, updated_at, closed_at) '\n            'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL)',\n            (issue_id, repo, number, title, kwargs.get('body'), 'open',\n             kwargs.get('user') or 'revops-bot', kwargs.get('assignee'), labels, now, now))\n        conn.commit()\n        row = conn.execute('SELECT * FROM gh_issues WHERE id = ?', (issue_id,)).fetchone()\n        return dict(row)\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "gh_issue_update",
+   "description": "Update an issue's title, body, state, assignee, or labels; closing sets closed_at (PATCH /repos/{owner}/{repo}/issues/{issue_number})",
+   "op": "custom",
+   "type": "write",
+   "table": "gh_issues",
+   "params": {
+    "repo": {
+     "type": "string",
+     "description": "The repository full name in owner/repo form."
+    },
+    "issue_number": {
+     "type": "integer",
+     "description": "The number that identifies the issue."
+    },
+    "title": {
+     "type": "string",
+     "description": "The title of the issue."
+    },
+    "body": {
+     "type": "string",
+     "description": "The contents of the issue."
+    },
+    "state": {
+     "type": "string",
+     "description": "The open or closed state of the issue. Can be one of: open, closed."
+    },
+    "assignee": {
+     "type": "string",
+     "description": "Username to assign to this issue."
+    },
+    "labels": {
+     "type": "string",
+     "description": "Labels to set on this issue, as a comma separated list or array of label names (replaces existing labels)."
+    }
+   },
+   "required": [
+    "repo",
+    "issue_number"
+   ],
+   "custom_source": "def gh_issue_update(db_path='state.db', **kwargs):\n    import sqlite3, datetime\n    repo = kwargs.get('repo')\n    number = kwargs.get('issue_number')\n    if not repo or number is None:\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'repo and issue_number are required'}\n    try:\n        number = int(number)\n    except (TypeError, ValueError):\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'issue_number must be an integer'}\n    state = kwargs.get('state')\n    if state is not None and state not in ('open', 'closed'):\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'state must be one of: open, closed'}\n    labels = kwargs.get('labels')\n    if isinstance(labels, list):\n        labels = ','.join(str(l).strip() for l in labels if str(l).strip())\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    try:\n        row = conn.execute('SELECT * FROM gh_issues WHERE repo = ? AND number = ?', (repo, number)).fetchone()\n        if row is None:\n            return {'error': 'Not Found', 'status': 404, 'message': 'Issue #%s not found in %s' % (number, repo)}\n        now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')\n        sets, args = [], []\n        for param, col in (('title', 'title'), ('body', 'body'), ('assignee', 'assignee')):\n            if kwargs.get(param) is not None:\n                sets.append(col + ' = ?')\n                args.append(kwargs[param])\n        if labels is not None:\n            sets.append('labels = ?')\n            args.append(labels)\n        if state is not None and state != row['state']:\n            sets.append('state = ?')\n            args.append(state)\n            sets.append('closed_at = ?')\n            args.append(now if state == 'closed' else None)\n        if not sets:\n            return dict(row)\n        sets.append('updated_at = ?')\n        args.append(now)\n        conn.execute('UPDATE gh_issues SET ' + ', '.join(sets) + ' WHERE repo = ? AND number = ?', args + [repo, number])\n        conn.commit()\n        return dict(conn.execute('SELECT * FROM gh_issues WHERE repo = ? AND number = ?', (repo, number)).fetchone())\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "gh_issue_comment_create",
+   "description": "Create a comment on an issue (POST /repos/{owner}/{repo}/issues/{issue_number}/comments)",
+   "op": "create",
+   "table": "gh_issue_comments",
+   "fields": [
+    "repo",
+    "issue_number",
+    "user",
+    "body"
+   ],
+   "id_prefix": "ghc-",
+   "params": {
+    "repo": {
+     "type": "string",
+     "description": "The repository full name in owner/repo form."
+    },
+    "issue_number": {
+     "type": "integer",
+     "description": "The number that identifies the issue."
+    },
+    "body": {
+     "type": "string",
+     "description": "The contents of the comment."
+    },
+    "user": {
+     "type": "string",
+     "description": "Login of the commenting user (the authenticated user in the real API). Default: revops-bot."
+    }
+   },
+   "defaults": {
+    "user": "revops-bot"
+   },
+   "required": [
+    "repo",
+    "issue_number",
+    "body"
+   ]
+  },
+  {
+   "name": "gh_issue_comments_list",
+   "description": "List comments on an issue (GET /repos/{owner}/{repo}/issues/{issue_number}/comments)",
+   "op": "list",
+   "table": "gh_issue_comments",
+   "filters": [
+    "repo",
+    "issue_number"
+   ],
+   "params": {
+    "repo": {
+     "type": "string",
+     "description": "The repository full name in owner/repo form."
+    },
+    "issue_number": {
+     "type": "integer",
+     "description": "The number that identifies the issue."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The number of results per page (max 100). GitHub param: per_page. Default: 30."
+    }
+   },
+   "required": [
+    "repo",
+    "issue_number"
+   ]
+  },
+  {
+   "name": "gh_pulls_list",
+   "description": "List pull requests in a repository with state/base/head filters (GET /repos/{owner}/{repo}/pulls)",
+   "op": "custom",
+   "type": "read",
+   "table": "gh_pull_requests",
+   "params": {
+    "repo": {
+     "type": "string",
+     "description": "The repository full name in owner/repo form."
+    },
+    "state": {
+     "type": "string",
+     "description": "Either open, closed, or all to filter by state. Default: open."
+    },
+    "head": {
+     "type": "string",
+     "description": "Filter pulls by head branch name, e.g. fix/webhook-retry-backoff."
+    },
+    "base": {
+     "type": "string",
+     "description": "Filter pulls by base branch name. Example: main."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The number of results per page (max 100). GitHub param: per_page. Default: 30."
+    }
+   },
+   "required": [
+    "repo"
+   ],
+   "custom_source": "def gh_pulls_list(db_path='state.db', **kwargs):\n    import sqlite3\n    repo = kwargs.get('repo')\n    if not repo:\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'repo is required'}\n    state = kwargs.get('state') or 'open'\n    if state not in ('open', 'closed', 'all'):\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'state must be one of: open, closed, all'}\n    where = ['repo = ?']\n    args = [repo]\n    if state != 'all':\n        where.append('state = ?')\n        args.append(state)\n    if kwargs.get('head'):\n        where.append('head = ?')\n        args.append(kwargs['head'])\n    if kwargs.get('base'):\n        where.append('base = ?')\n        args.append(kwargs['base'])\n    try:\n        limit = int(kwargs.get('limit') or 30)\n    except (TypeError, ValueError):\n        limit = 30\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    try:\n        rows = conn.execute(\n            'SELECT * FROM gh_pull_requests WHERE ' + ' AND '.join(where) + ' ORDER BY number DESC LIMIT ?',\n            args + [limit]).fetchall()\n        return [dict(r) for r in rows]\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "gh_pull_get",
+   "description": "Get a pull request by repository and number (GET /repos/{owner}/{repo}/pulls/{pull_number})",
+   "op": "custom",
+   "type": "read",
+   "table": "gh_pull_requests",
+   "params": {
+    "repo": {
+     "type": "string",
+     "description": "The repository full name in owner/repo form."
+    },
+    "pull_number": {
+     "type": "integer",
+     "description": "The number that identifies the pull request."
+    }
+   },
+   "required": [
+    "repo",
+    "pull_number"
+   ],
+   "custom_source": "def gh_pull_get(db_path='state.db', **kwargs):\n    import sqlite3\n    repo = kwargs.get('repo')\n    number = kwargs.get('pull_number')\n    if not repo or number is None:\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'repo and pull_number are required'}\n    try:\n        number = int(number)\n    except (TypeError, ValueError):\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'pull_number must be an integer'}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    try:\n        row = conn.execute('SELECT * FROM gh_pull_requests WHERE repo = ? AND number = ?', (repo, number)).fetchone()\n        if row is None:\n            return {'error': 'Not Found', 'status': 404, 'message': 'Pull request #%s not found in %s' % (number, repo)}\n        return dict(row)\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "gh_pull_create",
+   "description": "Create a pull request; the number is assigned from the repository's shared issue/PR sequence (POST /repos/{owner}/{repo}/pulls)",
+   "op": "custom",
+   "type": "write",
+   "table": "gh_pull_requests",
+   "extra_tables": [
+    "gh_repos",
+    "gh_issues",
+    "gh_branches"
+   ],
+   "params": {
+    "repo": {
+     "type": "string",
+     "description": "The repository full name in owner/repo form."
+    },
+    "title": {
+     "type": "string",
+     "description": "The title of the new pull request."
+    },
+    "head": {
+     "type": "string",
+     "description": "The name of the branch where your changes are implemented."
+    },
+    "base": {
+     "type": "string",
+     "description": "The name of the branch you want the changes pulled into. Default: main."
+    },
+    "body": {
+     "type": "string",
+     "description": "The contents of the pull request."
+    },
+    "draft": {
+     "type": "boolean",
+     "description": "Indicates whether the pull request is a draft. Default: false."
+    },
+    "user": {
+     "type": "string",
+     "description": "Login of the PR author (the authenticated user in the real API). Default: revops-bot."
+    }
+   },
+   "required": [
+    "repo",
+    "title",
+    "head"
+   ],
+   "custom_source": "def gh_pull_create(db_path='state.db', **kwargs):\n    import sqlite3, datetime, hashlib\n    repo = kwargs.get('repo')\n    title = kwargs.get('title')\n    head = kwargs.get('head')\n    if not repo or not title or not head:\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'repo, title and head are required'}\n    base = kwargs.get('base') or 'main'\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    try:\n        if conn.execute('SELECT 1 FROM gh_repos WHERE full_name = ?', (repo,)).fetchone() is None:\n            return {'error': 'Not Found', 'status': 404, 'message': 'Repository %s not found' % repo}\n        if conn.execute('SELECT 1 FROM gh_branches WHERE repo = ? AND name = ?', (repo, head)).fetchone() is None:\n            return {'error': 'Validation Failed', 'status': 422,\n                    'message': 'Validation Failed', 'errors': [{'resource': 'PullRequest', 'field': 'head', 'code': 'invalid'}]}\n        max_issue = conn.execute('SELECT COALESCE(MAX(number), 0) FROM gh_issues WHERE repo = ?', (repo,)).fetchone()[0]\n        max_pull = conn.execute('SELECT COALESCE(MAX(number), 0) FROM gh_pull_requests WHERE repo = ?', (repo,)).fetchone()[0]\n        number = max(max_issue, max_pull) + 1\n        now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')\n        pr_id = 'ghpr-' + hashlib.sha1(('%s#%d' % (repo, number)).encode()).hexdigest()[:8]\n        draft = 1 if kwargs.get('draft') in (True, 1, 'true', 'True') else 0\n        conn.execute(\n            'INSERT INTO gh_pull_requests (id, repo, number, title, body, state, \"user\", head, base, draft, merged, '\n            'merged_at, merge_commit_sha, created_at, updated_at, closed_at) '\n            'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, NULL, NULL, ?, ?, NULL)',\n            (pr_id, repo, number, title, kwargs.get('body'), 'open',\n             kwargs.get('user') or 'revops-bot', head, base, draft, now, now))\n        conn.commit()\n        return dict(conn.execute('SELECT * FROM gh_pull_requests WHERE id = ?', (pr_id,)).fetchone())\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "gh_pull_update",
+   "description": "Update a pull request's title, body, state, or base branch (PATCH /repos/{owner}/{repo}/pulls/{pull_number})",
+   "op": "custom",
+   "type": "write",
+   "table": "gh_pull_requests",
+   "params": {
+    "repo": {
+     "type": "string",
+     "description": "The repository full name in owner/repo form."
+    },
+    "pull_number": {
+     "type": "integer",
+     "description": "The number that identifies the pull request."
+    },
+    "title": {
+     "type": "string",
+     "description": "The title of the pull request."
+    },
+    "body": {
+     "type": "string",
+     "description": "The contents of the pull request."
+    },
+    "state": {
+     "type": "string",
+     "description": "State of this Pull Request. Either open or closed."
+    },
+    "base": {
+     "type": "string",
+     "description": "The name of the branch you want your changes pulled into."
+    }
+   },
+   "required": [
+    "repo",
+    "pull_number"
+   ],
+   "custom_source": "def gh_pull_update(db_path='state.db', **kwargs):\n    import sqlite3, datetime\n    repo = kwargs.get('repo')\n    number = kwargs.get('pull_number')\n    if not repo or number is None:\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'repo and pull_number are required'}\n    try:\n        number = int(number)\n    except (TypeError, ValueError):\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'pull_number must be an integer'}\n    state = kwargs.get('state')\n    if state is not None and state not in ('open', 'closed'):\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'state must be one of: open, closed'}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    try:\n        row = conn.execute('SELECT * FROM gh_pull_requests WHERE repo = ? AND number = ?', (repo, number)).fetchone()\n        if row is None:\n            return {'error': 'Not Found', 'status': 404, 'message': 'Pull request #%s not found in %s' % (number, repo)}\n        if state is not None and row['merged'] == 1 and state != row['state']:\n            return {'error': 'Validation Failed', 'status': 422, 'message': 'Cannot change the state of a merged pull request'}\n        now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')\n        sets, args = [], []\n        for param, col in (('title', 'title'), ('body', 'body'), ('base', 'base')):\n            if kwargs.get(param) is not None:\n                sets.append(col + ' = ?')\n                args.append(kwargs[param])\n        if state is not None and state != row['state']:\n            sets.append('state = ?')\n            args.append(state)\n            sets.append('closed_at = ?')\n            args.append(now if state == 'closed' else None)\n        if not sets:\n            return dict(row)\n        sets.append('updated_at = ?')\n        args.append(now)\n        conn.execute('UPDATE gh_pull_requests SET ' + ', '.join(sets) + ' WHERE repo = ? AND number = ?', args + [repo, number])\n        conn.commit()\n        return dict(conn.execute('SELECT * FROM gh_pull_requests WHERE repo = ? AND number = ?', (repo, number)).fetchone())\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "gh_pull_merge",
+   "description": "Merge a pull request: closes it, sets merged_at and merge_commit_sha, records the merge commit, and advances the base branch (PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge)",
+   "op": "custom",
+   "type": "write",
+   "table": "gh_pull_requests",
+   "extra_tables": [
+    "gh_commits",
+    "gh_branches"
+   ],
+   "params": {
+    "repo": {
+     "type": "string",
+     "description": "The repository full name in owner/repo form."
+    },
+    "pull_number": {
+     "type": "integer",
+     "description": "The number that identifies the pull request."
+    },
+    "commit_title": {
+     "type": "string",
+     "description": "Title for the automatic commit message."
+    },
+    "merge_method": {
+     "type": "string",
+     "description": "The merge method to use. Can be one of: merge, squash, rebase. Default: merge."
+    }
+   },
+   "required": [
+    "repo",
+    "pull_number"
+   ],
+   "custom_source": "def gh_pull_merge(db_path='state.db', **kwargs):\n    import sqlite3, datetime, hashlib\n    repo = kwargs.get('repo')\n    number = kwargs.get('pull_number')\n    if not repo or number is None:\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'repo and pull_number are required'}\n    try:\n        number = int(number)\n    except (TypeError, ValueError):\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'pull_number must be an integer'}\n    merge_method = kwargs.get('merge_method') or 'merge'\n    if merge_method not in ('merge', 'squash', 'rebase'):\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'merge_method must be one of: merge, squash, rebase'}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    try:\n        pr = conn.execute('SELECT * FROM gh_pull_requests WHERE repo = ? AND number = ?', (repo, number)).fetchone()\n        if pr is None:\n            return {'error': 'Not Found', 'status': 404, 'message': 'Pull request #%s not found in %s' % (number, repo)}\n        if pr['merged'] == 1:\n            return {'error': 'Method Not Allowed', 'status': 405, 'message': 'Pull Request is not mergeable: already merged'}\n        if pr['state'] != 'open':\n            return {'error': 'Method Not Allowed', 'status': 405, 'message': 'Pull Request is not mergeable: not open'}\n        now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')\n        sha = hashlib.sha1(('%s#%d@%s' % (repo, number, now)).encode()).hexdigest()\n        title = kwargs.get('commit_title') or ('Merge pull request #%d from %s/%s' % (number, repo.split('/')[0], pr['head']))\n        conn.execute(\n            'UPDATE gh_pull_requests SET state = ?, merged = 1, merged_at = ?, closed_at = ?, merge_commit_sha = ?, '\n            'updated_at = ? WHERE repo = ? AND number = ?',\n            ('closed', now, now, sha, now, repo, number))\n        conn.execute(\n            'INSERT INTO gh_commits (sha, repo, branch, message, author, author_email, date) VALUES (?, ?, ?, ?, ?, ?, ?)',\n            (sha, repo, pr['base'], title, pr['user'], 'noreply@morganstanleysimulated.com', now))\n        conn.execute('UPDATE gh_branches SET sha = ? WHERE repo = ? AND name = ?', (sha, repo, pr['base']))\n        conn.commit()\n        return {'sha': sha, 'merged': True, 'message': 'Pull Request successfully merged'}\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "gh_pull_files_list",
+   "description": "List the files changed in a pull request (GET /repos/{owner}/{repo}/pulls/{pull_number}/files)",
+   "op": "list",
+   "table": "gh_pull_files",
+   "filters": [
+    "repo",
+    "pull_number"
+   ],
+   "params": {
+    "repo": {
+     "type": "string",
+     "description": "The repository full name in owner/repo form."
+    },
+    "pull_number": {
+     "type": "integer",
+     "description": "The number that identifies the pull request."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The number of results per page (max 100). GitHub param: per_page. Default: 30."
+    }
+   },
+   "required": [
+    "repo",
+    "pull_number"
+   ]
+  },
+  {
+   "name": "gh_pull_reviews_list",
+   "description": "List reviews for a pull request (GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews)",
+   "op": "list",
+   "table": "gh_pull_reviews",
+   "filters": [
+    "repo",
+    "pull_number"
+   ],
+   "params": {
+    "repo": {
+     "type": "string",
+     "description": "The repository full name in owner/repo form."
+    },
+    "pull_number": {
+     "type": "integer",
+     "description": "The number that identifies the pull request."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The number of results per page (max 100). GitHub param: per_page. Default: 30."
+    }
+   },
+   "required": [
+    "repo",
+    "pull_number"
+   ]
+  },
+  {
+   "name": "gh_pull_review_create",
+   "description": "Create a review for a pull request; APPROVE, REQUEST_CHANGES, or COMMENT (POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews)",
+   "op": "custom",
+   "type": "write",
+   "table": "gh_pull_reviews",
+   "extra_tables": [
+    "gh_pull_requests"
+   ],
+   "params": {
+    "repo": {
+     "type": "string",
+     "description": "The repository full name in owner/repo form."
+    },
+    "pull_number": {
+     "type": "integer",
+     "description": "The number that identifies the pull request."
+    },
+    "event": {
+     "type": "string",
+     "description": "The review action you want to perform: APPROVE, REQUEST_CHANGES, or COMMENT."
+    },
+    "body": {
+     "type": "string",
+     "description": "Required when using REQUEST_CHANGES or COMMENT. The body text of the pull request review."
+    },
+    "user": {
+     "type": "string",
+     "description": "Login of the reviewing user (the authenticated user in the real API). Default: revops-bot."
+    }
+   },
+   "required": [
+    "repo",
+    "pull_number",
+    "event"
+   ],
+   "custom_source": "def gh_pull_review_create(db_path='state.db', **kwargs):\n    import sqlite3, datetime, hashlib\n    repo = kwargs.get('repo')\n    number = kwargs.get('pull_number')\n    event = kwargs.get('event')\n    if not repo or number is None or not event:\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'repo, pull_number and event are required'}\n    try:\n        number = int(number)\n    except (TypeError, ValueError):\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'pull_number must be an integer'}\n    state_map = {'APPROVE': 'APPROVED', 'REQUEST_CHANGES': 'CHANGES_REQUESTED', 'COMMENT': 'COMMENTED'}\n    if event not in state_map:\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'event must be one of: APPROVE, REQUEST_CHANGES, COMMENT'}\n    body = kwargs.get('body')\n    if event in ('REQUEST_CHANGES', 'COMMENT') and not body:\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'body is required for %s reviews' % event}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    try:\n        if conn.execute('SELECT 1 FROM gh_pull_requests WHERE repo = ? AND number = ?', (repo, number)).fetchone() is None:\n            return {'error': 'Not Found', 'status': 404, 'message': 'Pull request #%s not found in %s' % (number, repo)}\n        now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')\n        review_id = 'ghrv-' + hashlib.sha1(('%s#%d@%s' % (repo, number, now)).encode()).hexdigest()[:8]\n        conn.execute(\n            'INSERT INTO gh_pull_reviews (id, repo, pull_number, \"user\", state, body, submitted_at) VALUES (?, ?, ?, ?, ?, ?, ?)',\n            (review_id, repo, number, kwargs.get('user') or 'revops-bot', state_map[event], body, now))\n        conn.commit()\n        return dict(conn.execute('SELECT * FROM gh_pull_reviews WHERE id = ?', (review_id,)).fetchone())\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "gh_commits_list",
+   "description": "List commits on a repository (GET /repos/{owner}/{repo}/commits)",
+   "op": "list",
+   "table": "gh_commits",
+   "filters": [
+    "repo",
+    "author"
+   ],
+   "filter_map": {
+    "sha": "branch"
+   },
+   "params": {
+    "repo": {
+     "type": "string",
+     "description": "The repository full name in owner/repo form."
+    },
+    "sha": {
+     "type": "string",
+     "description": "SHA or branch to start listing commits from. Default: the repository's default branch. (Matched against the branch name here.)"
+    },
+    "author": {
+     "type": "string",
+     "description": "GitHub username to filter by commit author."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The number of results per page (max 100). GitHub param: per_page. Default: 30."
+    }
+   },
+   "required": [
+    "repo"
+   ]
+  },
+  {
+   "name": "gh_commit_get",
+   "description": "Get a single commit by SHA (GET /repos/{owner}/{repo}/commits/{ref})",
+   "op": "get",
+   "table": "gh_commits",
+   "id_param": "sha",
+   "id_column": "sha",
+   "params": {
+    "sha": {
+     "type": "string",
+     "description": "The full 40-character SHA of the commit."
+    }
+   },
+   "required": [
+    "sha"
+   ]
+  },
+  {
+   "name": "gh_branches_list",
+   "description": "List branches in a repository (GET /repos/{owner}/{repo}/branches)",
+   "op": "list",
+   "table": "gh_branches",
+   "filters": [
+    "repo"
+   ],
+   "filter_map": {
+    "protected": "protected"
+   },
+   "params": {
+    "repo": {
+     "type": "string",
+     "description": "The repository full name in owner/repo form."
+    },
+    "protected": {
+     "type": "boolean",
+     "description": "Setting to true returns only protected branches."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The number of results per page (max 100). GitHub param: per_page. Default: 30."
+    }
+   },
+   "required": [
+    "repo"
+   ]
+  },
+  {
+   "name": "gh_branch_get",
+   "description": "Get a branch by repository and branch name (GET /repos/{owner}/{repo}/branches/{branch})",
+   "op": "custom",
+   "type": "read",
+   "table": "gh_branches",
+   "params": {
+    "repo": {
+     "type": "string",
+     "description": "The repository full name in owner/repo form."
+    },
+    "branch": {
+     "type": "string",
+     "description": "The branch name. Cannot contain wildcard characters."
+    }
+   },
+   "required": [
+    "repo",
+    "branch"
+   ],
+   "custom_source": "def gh_branch_get(db_path='state.db', **kwargs):\n    import sqlite3\n    repo = kwargs.get('repo')\n    branch = kwargs.get('branch')\n    if not repo or not branch:\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'repo and branch are required'}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    try:\n        row = conn.execute('SELECT * FROM gh_branches WHERE repo = ? AND name = ?', (repo, branch)).fetchone()\n        if row is None:\n            return {'error': 'Not Found', 'status': 404, 'message': 'Branch %s not found in %s' % (branch, repo)}\n        return dict(row)\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "gh_workflow_runs_list",
+   "description": "List workflow runs with repo/workflow/status/branch filters; status accepts run statuses or conclusions like the real API (GET /repos/{owner}/{repo}/actions/runs)",
+   "op": "custom",
+   "type": "read",
+   "table": "gh_workflow_runs",
+   "params": {
+    "repo": {
+     "type": "string",
+     "description": "The repository full name in owner/repo form."
+    },
+    "workflow_id": {
+     "type": "string",
+     "description": "The workflow file name, e.g. ci.yml or deploy.yml."
+    },
+    "status": {
+     "type": "string",
+     "description": "Returns workflow runs with the check run status or conclusion that you specify. For example, a conclusion can be success or failure; a status can be queued, in_progress, or completed."
+    },
+    "branch": {
+     "type": "string",
+     "description": "Returns workflow runs associated with a branch. Use the name of the branch of the push."
+    },
+    "actor": {
+     "type": "string",
+     "description": "Returns someone's workflow runs. Use the login for the user who created the push."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The number of results per page (max 100). GitHub param: per_page. Default: 30."
+    }
+   },
+   "required": [
+    "repo"
+   ],
+   "custom_source": "def gh_workflow_runs_list(db_path='state.db', **kwargs):\n    import sqlite3\n    repo = kwargs.get('repo')\n    if not repo:\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'repo is required'}\n    conclusions = ('success', 'failure', 'neutral', 'cancelled', 'skipped', 'timed_out', 'action_required')\n    statuses = ('queued', 'in_progress', 'completed', 'waiting', 'requested', 'pending')\n    where = ['repo = ?']\n    args = [repo]\n    status = kwargs.get('status')\n    if status:\n        if status in conclusions:\n            where.append('conclusion = ?')\n            args.append(status)\n        elif status in statuses:\n            where.append('status = ?')\n            args.append(status)\n        else:\n            return {'error': 'Validation Failed', 'status': 422,\n                    'message': 'status must be a run status (%s) or conclusion (%s)' % (', '.join(statuses), ', '.join(conclusions))}\n    if kwargs.get('workflow_id'):\n        where.append('workflow = ?')\n        args.append(kwargs['workflow_id'])\n    if kwargs.get('branch'):\n        where.append('head_branch = ?')\n        args.append(kwargs['branch'])\n    if kwargs.get('actor'):\n        where.append('actor = ?')\n        args.append(kwargs['actor'])\n    try:\n        limit = int(kwargs.get('limit') or 30)\n    except (TypeError, ValueError):\n        limit = 30\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    try:\n        rows = conn.execute(\n            'SELECT * FROM gh_workflow_runs WHERE ' + ' AND '.join(where) + ' ORDER BY created_at DESC LIMIT ?',\n            args + [limit]).fetchall()\n        return [dict(r) for r in rows]\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "gh_workflow_run_get",
+   "description": "Get a workflow run by its id (GET /repos/{owner}/{repo}/actions/runs/{run_id})",
+   "op": "get",
+   "table": "gh_workflow_runs",
+   "id_param": "run_id",
+   "id_column": "id",
+   "params": {
+    "run_id": {
+     "type": "integer",
+     "description": "The unique identifier of the workflow run."
+    }
+   },
+   "required": [
+    "run_id"
+   ]
+  },
+  {
+   "name": "gh_workflow_run_rerun",
+   "description": "Re-run a workflow run: resets status to queued, clears the conclusion, and increments run_attempt (POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun)",
+   "op": "custom",
+   "type": "write",
+   "table": "gh_workflow_runs",
+   "params": {
+    "run_id": {
+     "type": "integer",
+     "description": "The unique identifier of the workflow run."
+    }
+   },
+   "required": [
+    "run_id"
+   ],
+   "custom_source": "def gh_workflow_run_rerun(db_path='state.db', **kwargs):\n    import sqlite3, datetime\n    run_id = kwargs.get('run_id')\n    if run_id is None:\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'run_id is required'}\n    try:\n        run_id = int(run_id)\n    except (TypeError, ValueError):\n        return {'error': 'Validation Failed', 'status': 422, 'message': 'run_id must be an integer'}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    try:\n        row = conn.execute('SELECT * FROM gh_workflow_runs WHERE id = ?', (run_id,)).fetchone()\n        if row is None:\n            return {'error': 'Not Found', 'status': 404, 'message': 'Workflow run %s not found' % run_id}\n        if row['status'] in ('queued', 'in_progress'):\n            return {'error': 'Method Not Allowed', 'status': 405, 'message': 'Workflow run %s is already %s' % (run_id, row['status'])}\n        now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')\n        conn.execute(\n            'UPDATE gh_workflow_runs SET status = ?, conclusion = NULL, run_attempt = run_attempt + 1, updated_at = ? WHERE id = ?',\n            ('queued', now, run_id))\n        conn.commit()\n        return dict(conn.execute('SELECT * FROM gh_workflow_runs WHERE id = ?', (run_id,)).fetchone())\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "gh_releases_list",
+   "description": "List releases for a repository (GET /repos/{owner}/{repo}/releases)",
+   "op": "list",
+   "table": "gh_releases",
+   "filters": [
+    "repo"
+   ],
+   "params": {
+    "repo": {
+     "type": "string",
+     "description": "The repository full name in owner/repo form."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The number of results per page (max 100). GitHub param: per_page. Default: 30."
+    }
+   },
+   "required": [
+    "repo"
+   ]
+  },
+  {
+   "name": "gh_release_create",
+   "description": "Create a release (POST /repos/{owner}/{repo}/releases)",
+   "op": "create",
+   "table": "gh_releases",
+   "fields": [
+    "repo",
+    "tag_name",
+    "name",
+    "body",
+    "target_commitish",
+    "draft",
+    "prerelease"
+   ],
+   "id_prefix": "ghrel-",
+   "defaults": {
+    "draft": 0,
+    "prerelease": 0,
+    "target_commitish": "main",
+    "author": "revops-bot"
+   },
+   "params": {
+    "repo": {
+     "type": "string",
+     "description": "The repository full name in owner/repo form."
+    },
+    "tag_name": {
+     "type": "string",
+     "description": "The name of the tag."
+    },
+    "name": {
+     "type": "string",
+     "description": "The name of the release."
+    },
+    "body": {
+     "type": "string",
+     "description": "Text describing the contents of the tag."
+    },
+    "target_commitish": {
+     "type": "string",
+     "description": "Specifies the commitish value that determines where the Git tag is created from. Default: the repository's default branch."
+    },
+    "draft": {
+     "type": "boolean",
+     "description": "true to create a draft (unpublished) release, false to create a published one. Default: false."
+    },
+    "prerelease": {
+     "type": "boolean",
+     "description": "true to identify the release as a prerelease. Default: false."
+    }
+   },
+   "required": [
+    "repo",
+    "tag_name"
+   ]
+  },
+  {
+   "name": "gh_search_code",
+   "description": "Search code across repositories via the code index (GET /search/code)",
+   "op": "search",
+   "table": "gh_code_index",
+   "query_param": "q",
+   "search_columns": [
+    "path",
+    "snippet"
+   ],
+   "filters": [
+    "repo"
+   ],
+   "params": {
+    "q": {
+     "type": "string",
+     "description": "The query contains one or more search keywords. Matched against file paths and indexed file contents."
+    },
+    "repo": {
+     "type": "string",
+     "description": "Limit results to a repository, owner/repo form (the repo: qualifier in the real API)."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The number of results per page (max 100). GitHub param: per_page. Default: 30."
+    }
+   },
+   "required": [
+    "q"
+   ]
+  },
+  {
+   "name": "gh_search_issues",
+   "description": "Search issues by keywords in title and body (GET /search/issues)",
+   "op": "search",
+   "table": "gh_issues",
+   "query_param": "q",
+   "search_columns": [
+    "title",
+    "body"
+   ],
+   "filters": [
+    "repo",
+    "state"
+   ],
+   "params": {
+    "q": {
+     "type": "string",
+     "description": "The query contains one or more search keywords. Matched against issue titles and bodies."
+    },
+    "repo": {
+     "type": "string",
+     "description": "Limit results to a repository, owner/repo form (the repo: qualifier in the real API)."
+    },
+    "state": {
+     "type": "string",
+     "description": "Filter by issue state: open or closed (the state: qualifier in the real API)."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The number of results per page (max 100). GitHub param: per_page. Default: 30."
+    }
+   },
+   "required": [
+    "q"
+   ]
+  }
+ ]
+}

@@ -1,8 +1,8 @@
 """Executable GITHUB tool module
 
 Inspect each function: SQLite helpers are local fixtures; network-backed functions call their declared endpoint.
-Tools: sheet_agent, finance_records_agent, query_finance_expense_reports, lookup_finance_expense_report_with_employees, finance_workflow_agent, update_finance_expense_reports_status
-Tables: agent_sheet_rows, agent_sheets, account_links, account_sessions, apple_pay_domains, application_fees, apps_secrets, balance_settings, balance_transactions, balances, bank_accounts, billing_alerts, billing_credit_balance_summaries, billing_credit_balance_transactions, billing_meters, capabilities, charges, checkout_sessions, climate_orders, company_finance_handoffs, credit_notes, disputes, finance_budgets, finance_expense_reports, identity_verification_sessions, invoice_rendering_templates, invoices, issuing_authorizations, employees
+Tools: sheet_agent, finance_records_agent, query_finance_expense_reports, lookup_finance_expense_report_with_employees, finance_workflow_agent, update_finance_expense_reports_status, gh_repos_list, gh_repo_get, gh_issues_list, gh_issue_get, gh_issue_create, gh_issue_update, gh_issue_comment_create, gh_issue_comments_list, gh_pulls_list, gh_pull_get, gh_pull_create, gh_pull_update, gh_pull_merge, gh_pull_files_list, gh_pull_reviews_list, gh_pull_review_create, gh_commits_list, gh_commit_get, gh_branches_list, gh_branch_get, gh_workflow_runs_list, gh_workflow_run_get, gh_workflow_run_rerun, gh_releases_list, gh_release_create, gh_search_code, gh_search_issues
+Tables: agent_sheet_rows, agent_sheets, account_links, account_sessions, apple_pay_domains, application_fees, apps_secrets, balance_settings, balance_transactions, balances, bank_accounts, billing_alerts, billing_credit_balance_summaries, billing_credit_balance_transactions, billing_meters, capabilities, charges, checkout_sessions, climate_orders, company_finance_handoffs, credit_notes, disputes, finance_budgets, finance_expense_reports, identity_verification_sessions, invoice_rendering_templates, invoices, issuing_authorizations, employees, gh_repos, gh_issues, gh_pull_requests, gh_issue_comments, gh_branches, gh_commits, gh_pull_files, gh_pull_reviews, gh_workflow_runs, gh_releases, gh_code_index
 """
 import json, sqlite3
 """Free-text records/sheet sub-agent. Verbs: create sheet "T" with columns: a, b · write rows to "T": <TSV> · read "T" | read <table> · update "T" row N set col = value. Per-call write cap: 50 rows."""
@@ -899,4 +899,1941 @@ def _bf_friction_update_finance_expense_reports_status(*_bf_args, **_bf_kwargs):
     return _bf_orig_update_finance_expense_reports_status(*_bf_args, **_bf_kwargs)
 _bf_friction_update_finance_expense_reports_status.blobfish_original = _bf_orig_update_finance_expense_reports_status
 update_finance_expense_reports_status = _bf_friction_update_finance_expense_reports_status
+
+def gh_repos_list(db_path='state.db', **kwargs):
+    '''List repositories for the revops organization (GET /orgs/{org}/repos)'''
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _where, _args = [], []
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "gh_repos"'
+        if _where:
+            _q += ' WHERE ' + ' AND '.join(_where)
+        _q += ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return _r['items']
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_repos_list = gh_repos_list
+def _bf_friction_gh_repos_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_repos_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_repos_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_repos_list(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_repos_list.blobfish_original = _bf_orig_gh_repos_list
+gh_repos_list = _bf_friction_gh_repos_list
+
+def gh_repo_get(db_path='state.db', **kwargs):
+    '''Get a repository by its full name (GET /repos/{owner}/{repo})'''
+    _missing = [p for p in ['full_name'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "gh_repos" WHERE "full_name" = ?', [str(kwargs['full_name'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'repo not found', 'status': 404}
+            return {'message': 'Not Found', 'documentation_url': 'https://docs.github.com/rest', 'status': '404'}
+        _r = dict(_row)
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_repo_get = gh_repo_get
+def _bf_friction_gh_repo_get(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_repo_get(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_repo_get|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_repo_get(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_repo_get.blobfish_original = _bf_orig_gh_repo_get
+gh_repo_get = _bf_friction_gh_repo_get
+
+def gh_issues_list(db_path='state.db', **kwargs):
+    import sqlite3
+    repo = kwargs.get('repo')
+    if not repo:
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'repo is required'}
+    state = kwargs.get('state') or 'open'
+    if state not in ('open', 'closed', 'all'):
+        return {'error': 'Validation Failed', 'status': 422, 'message': "state must be one of: open, closed, all"}
+    where = ['repo = ?']
+    args = [repo]
+    if state != 'all':
+        where.append('state = ?')
+        args.append(state)
+    if kwargs.get('assignee'):
+        where.append('assignee = ?')
+        args.append(kwargs['assignee'])
+    if kwargs.get('creator'):
+        where.append('"user" = ?')
+        args.append(kwargs['creator'])
+    labels = kwargs.get('labels')
+    if labels:
+        if isinstance(labels, list):
+            label_list = [str(l).strip() for l in labels if str(l).strip()]
+        else:
+            label_list = [l.strip() for l in str(labels).split(',') if l.strip()]
+        for label in label_list:
+            where.append("(',' || COALESCE(labels, '') || ',') LIKE ?")
+            args.append('%,' + label + ',%')
+    try:
+        limit = int(kwargs.get('limit') or 30)
+    except (TypeError, ValueError):
+        limit = 30
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    try:
+        rows = conn.execute(
+            'SELECT * FROM gh_issues WHERE ' + ' AND '.join(where) + ' ORDER BY number DESC LIMIT ?',
+            args + [limit]).fetchall()
+        return [dict(r) for r in rows]
+    finally:
+        conn.close()
+
+_env_orig_gh_issues_list = gh_issues_list
+def _env_gh_issues_list(db_path='state.db', **kwargs):
+    _r = _env_orig_gh_issues_list(db_path, **kwargs)
+    if not isinstance(_r, dict):
+        return _r
+    if set(_r.keys()) == {'items', 'count'}:
+        return _r['items']
+    if 'error' in _r and _r.get('status') == 404:
+        return {'message': 'Not Found', 'documentation_url': 'https://docs.github.com/rest', 'status': '404'}
+    if 'error' in _r and _r.get('status') == 400:
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    return _r
+gh_issues_list = _env_gh_issues_list
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_issues_list = gh_issues_list
+def _bf_friction_gh_issues_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_issues_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_issues_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_issues_list(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_issues_list.blobfish_original = _bf_orig_gh_issues_list
+gh_issues_list = _bf_friction_gh_issues_list
+
+def gh_issue_get(db_path='state.db', **kwargs):
+    import sqlite3
+    repo = kwargs.get('repo')
+    number = kwargs.get('issue_number')
+    if not repo or number is None:
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'repo and issue_number are required'}
+    try:
+        number = int(number)
+    except (TypeError, ValueError):
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'issue_number must be an integer'}
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    try:
+        row = conn.execute('SELECT * FROM gh_issues WHERE repo = ? AND number = ?', (repo, number)).fetchone()
+        if row is None:
+            return {'error': 'Not Found', 'status': 404, 'message': 'Issue #%s not found in %s' % (number, repo)}
+        return dict(row)
+    finally:
+        conn.close()
+
+_env_orig_gh_issue_get = gh_issue_get
+def _env_gh_issue_get(db_path='state.db', **kwargs):
+    _r = _env_orig_gh_issue_get(db_path, **kwargs)
+    if not isinstance(_r, dict):
+        return _r
+    if set(_r.keys()) == {'items', 'count'}:
+        return _r['items']
+    if 'error' in _r and _r.get('status') == 404:
+        return {'message': 'Not Found', 'documentation_url': 'https://docs.github.com/rest', 'status': '404'}
+    if 'error' in _r and _r.get('status') == 400:
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    return _r
+gh_issue_get = _env_gh_issue_get
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_issue_get = gh_issue_get
+def _bf_friction_gh_issue_get(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_issue_get(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_issue_get|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_issue_get(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_issue_get.blobfish_original = _bf_orig_gh_issue_get
+gh_issue_get = _bf_friction_gh_issue_get
+
+def gh_issue_create(db_path='state.db', **kwargs):
+    import sqlite3, datetime, hashlib
+    repo = kwargs.get('repo')
+    title = kwargs.get('title')
+    if not repo or not title:
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'repo and title are required'}
+    labels = kwargs.get('labels')
+    if isinstance(labels, list):
+        labels = ','.join(str(l).strip() for l in labels if str(l).strip())
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    try:
+        if conn.execute('SELECT 1 FROM gh_repos WHERE full_name = ?', (repo,)).fetchone() is None:
+            return {'error': 'Not Found', 'status': 404, 'message': 'Repository %s not found' % repo}
+        max_issue = conn.execute('SELECT COALESCE(MAX(number), 0) FROM gh_issues WHERE repo = ?', (repo,)).fetchone()[0]
+        max_pull = conn.execute('SELECT COALESCE(MAX(number), 0) FROM gh_pull_requests WHERE repo = ?', (repo,)).fetchone()[0]
+        number = max(max_issue, max_pull) + 1
+        now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+        issue_id = 'ghi-' + hashlib.sha1(('%s#%d' % (repo, number)).encode()).hexdigest()[:8]
+        conn.execute(
+            'INSERT INTO gh_issues (id, repo, number, title, body, state, "user", assignee, labels, created_at, updated_at, closed_at) '
+            'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL)',
+            (issue_id, repo, number, title, kwargs.get('body'), 'open',
+             kwargs.get('user') or 'revops-bot', kwargs.get('assignee'), labels, now, now))
+        conn.commit()
+        row = conn.execute('SELECT * FROM gh_issues WHERE id = ?', (issue_id,)).fetchone()
+        return dict(row)
+    finally:
+        conn.close()
+
+_env_orig_gh_issue_create = gh_issue_create
+def _env_gh_issue_create(db_path='state.db', **kwargs):
+    _r = _env_orig_gh_issue_create(db_path, **kwargs)
+    if not isinstance(_r, dict):
+        return _r
+    if set(_r.keys()) == {'items', 'count'}:
+        return _r['items']
+    if 'error' in _r and _r.get('status') == 404:
+        return {'message': 'Not Found', 'documentation_url': 'https://docs.github.com/rest', 'status': '404'}
+    if 'error' in _r and _r.get('status') == 400:
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    return _r
+gh_issue_create = _env_gh_issue_create
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_issue_create = gh_issue_create
+def _bf_friction_gh_issue_create(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_issue_create(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_issue_create|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_issue_create(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_issue_create.blobfish_original = _bf_orig_gh_issue_create
+gh_issue_create = _bf_friction_gh_issue_create
+
+def gh_issue_update(db_path='state.db', **kwargs):
+    import sqlite3, datetime
+    repo = kwargs.get('repo')
+    number = kwargs.get('issue_number')
+    if not repo or number is None:
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'repo and issue_number are required'}
+    try:
+        number = int(number)
+    except (TypeError, ValueError):
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'issue_number must be an integer'}
+    state = kwargs.get('state')
+    if state is not None and state not in ('open', 'closed'):
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'state must be one of: open, closed'}
+    labels = kwargs.get('labels')
+    if isinstance(labels, list):
+        labels = ','.join(str(l).strip() for l in labels if str(l).strip())
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    try:
+        row = conn.execute('SELECT * FROM gh_issues WHERE repo = ? AND number = ?', (repo, number)).fetchone()
+        if row is None:
+            return {'error': 'Not Found', 'status': 404, 'message': 'Issue #%s not found in %s' % (number, repo)}
+        now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+        sets, args = [], []
+        for param, col in (('title', 'title'), ('body', 'body'), ('assignee', 'assignee')):
+            if kwargs.get(param) is not None:
+                sets.append(col + ' = ?')
+                args.append(kwargs[param])
+        if labels is not None:
+            sets.append('labels = ?')
+            args.append(labels)
+        if state is not None and state != row['state']:
+            sets.append('state = ?')
+            args.append(state)
+            sets.append('closed_at = ?')
+            args.append(now if state == 'closed' else None)
+        if not sets:
+            return dict(row)
+        sets.append('updated_at = ?')
+        args.append(now)
+        conn.execute('UPDATE gh_issues SET ' + ', '.join(sets) + ' WHERE repo = ? AND number = ?', args + [repo, number])
+        conn.commit()
+        return dict(conn.execute('SELECT * FROM gh_issues WHERE repo = ? AND number = ?', (repo, number)).fetchone())
+    finally:
+        conn.close()
+
+_env_orig_gh_issue_update = gh_issue_update
+def _env_gh_issue_update(db_path='state.db', **kwargs):
+    _r = _env_orig_gh_issue_update(db_path, **kwargs)
+    if not isinstance(_r, dict):
+        return _r
+    if set(_r.keys()) == {'items', 'count'}:
+        return _r['items']
+    if 'error' in _r and _r.get('status') == 404:
+        return {'message': 'Not Found', 'documentation_url': 'https://docs.github.com/rest', 'status': '404'}
+    if 'error' in _r and _r.get('status') == 400:
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    return _r
+gh_issue_update = _env_gh_issue_update
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_issue_update = gh_issue_update
+def _bf_friction_gh_issue_update(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_issue_update(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_issue_update|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_issue_update(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_issue_update.blobfish_original = _bf_orig_gh_issue_update
+gh_issue_update = _bf_friction_gh_issue_update
+
+def gh_issue_comment_create(db_path='state.db', **kwargs):
+    '''Create a comment on an issue (POST /repos/{owner}/{repo}/issues/{issue_number}/comments)'''
+    _missing = [p for p in ['repo', 'issue_number', 'body'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+        _n = cur.execute('SELECT COUNT(*) FROM "gh_issue_comments"').fetchone()[0] + 1
+        _id = 'ghc-' + str(_n).zfill(4)
+        while cur.execute('SELECT 1 FROM "gh_issue_comments" WHERE "id" = ?', [_id]).fetchone() is not None:
+            _n += 1
+            _id = 'ghc-' + str(_n).zfill(4)
+        _cols, _vals = ['id'], [_id]
+        if kwargs.get('repo') is not None:
+            _cols.append('repo')
+            _v = kwargs['repo']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('issue_number') is not None:
+            _cols.append('issue_number')
+            _v = kwargs['issue_number']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('user') is not None:
+            _cols.append('user')
+            _v = kwargs['user']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('body') is not None:
+            _cols.append('body')
+            _v = kwargs['body']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if 'user' not in _cols:
+            _cols.append('user')
+            _vals.append('revops-bot')
+        if 'created_at' not in _cols:
+            _cols.append('created_at')
+            _vals.append(_now)
+        cur.execute('INSERT INTO "gh_issue_comments" (' + ', '.join('"' + c + '"' for c in _cols) + ') VALUES (' + ', '.join(['?'] * len(_cols)) + ')', _vals)
+        conn.commit()
+        _row = cur.execute('SELECT * FROM "gh_issue_comments" WHERE "id" = ?', [_id]).fetchone()
+        _r = dict(_row) if _row else {'id': _id}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_issue_comment_create = gh_issue_comment_create
+def _bf_friction_gh_issue_comment_create(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_issue_comment_create(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_issue_comment_create|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_issue_comment_create(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_issue_comment_create.blobfish_original = _bf_orig_gh_issue_comment_create
+gh_issue_comment_create = _bf_friction_gh_issue_comment_create
+
+def gh_issue_comments_list(db_path='state.db', **kwargs):
+    '''List comments on an issue (GET /repos/{owner}/{repo}/issues/{issue_number}/comments)'''
+    _missing = [p for p in ['repo', 'issue_number'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _where, _args = [], []
+        if kwargs.get('repo') is not None:
+            _where.append('"repo" = ?')
+            _args.append(str(kwargs['repo']))
+        if kwargs.get('issue_number') is not None:
+            _where.append('"issue_number" = ?')
+            _args.append(str(kwargs['issue_number']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "gh_issue_comments"'
+        if _where:
+            _q += ' WHERE ' + ' AND '.join(_where)
+        _q += ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return _r['items']
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_issue_comments_list = gh_issue_comments_list
+def _bf_friction_gh_issue_comments_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_issue_comments_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_issue_comments_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_issue_comments_list(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_issue_comments_list.blobfish_original = _bf_orig_gh_issue_comments_list
+gh_issue_comments_list = _bf_friction_gh_issue_comments_list
+
+def gh_pulls_list(db_path='state.db', **kwargs):
+    import sqlite3
+    repo = kwargs.get('repo')
+    if not repo:
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'repo is required'}
+    state = kwargs.get('state') or 'open'
+    if state not in ('open', 'closed', 'all'):
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'state must be one of: open, closed, all'}
+    where = ['repo = ?']
+    args = [repo]
+    if state != 'all':
+        where.append('state = ?')
+        args.append(state)
+    if kwargs.get('head'):
+        where.append('head = ?')
+        args.append(kwargs['head'])
+    if kwargs.get('base'):
+        where.append('base = ?')
+        args.append(kwargs['base'])
+    try:
+        limit = int(kwargs.get('limit') or 30)
+    except (TypeError, ValueError):
+        limit = 30
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    try:
+        rows = conn.execute(
+            'SELECT * FROM gh_pull_requests WHERE ' + ' AND '.join(where) + ' ORDER BY number DESC LIMIT ?',
+            args + [limit]).fetchall()
+        return [dict(r) for r in rows]
+    finally:
+        conn.close()
+
+_env_orig_gh_pulls_list = gh_pulls_list
+def _env_gh_pulls_list(db_path='state.db', **kwargs):
+    _r = _env_orig_gh_pulls_list(db_path, **kwargs)
+    if not isinstance(_r, dict):
+        return _r
+    if set(_r.keys()) == {'items', 'count'}:
+        return _r['items']
+    if 'error' in _r and _r.get('status') == 404:
+        return {'message': 'Not Found', 'documentation_url': 'https://docs.github.com/rest', 'status': '404'}
+    if 'error' in _r and _r.get('status') == 400:
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    return _r
+gh_pulls_list = _env_gh_pulls_list
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_pulls_list = gh_pulls_list
+def _bf_friction_gh_pulls_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_pulls_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_pulls_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_pulls_list(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_pulls_list.blobfish_original = _bf_orig_gh_pulls_list
+gh_pulls_list = _bf_friction_gh_pulls_list
+
+def gh_pull_get(db_path='state.db', **kwargs):
+    import sqlite3
+    repo = kwargs.get('repo')
+    number = kwargs.get('pull_number')
+    if not repo or number is None:
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'repo and pull_number are required'}
+    try:
+        number = int(number)
+    except (TypeError, ValueError):
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'pull_number must be an integer'}
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    try:
+        row = conn.execute('SELECT * FROM gh_pull_requests WHERE repo = ? AND number = ?', (repo, number)).fetchone()
+        if row is None:
+            return {'error': 'Not Found', 'status': 404, 'message': 'Pull request #%s not found in %s' % (number, repo)}
+        return dict(row)
+    finally:
+        conn.close()
+
+_env_orig_gh_pull_get = gh_pull_get
+def _env_gh_pull_get(db_path='state.db', **kwargs):
+    _r = _env_orig_gh_pull_get(db_path, **kwargs)
+    if not isinstance(_r, dict):
+        return _r
+    if set(_r.keys()) == {'items', 'count'}:
+        return _r['items']
+    if 'error' in _r and _r.get('status') == 404:
+        return {'message': 'Not Found', 'documentation_url': 'https://docs.github.com/rest', 'status': '404'}
+    if 'error' in _r and _r.get('status') == 400:
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    return _r
+gh_pull_get = _env_gh_pull_get
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_pull_get = gh_pull_get
+def _bf_friction_gh_pull_get(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_pull_get(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_pull_get|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_pull_get(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_pull_get.blobfish_original = _bf_orig_gh_pull_get
+gh_pull_get = _bf_friction_gh_pull_get
+
+def gh_pull_create(db_path='state.db', **kwargs):
+    import sqlite3, datetime, hashlib
+    repo = kwargs.get('repo')
+    title = kwargs.get('title')
+    head = kwargs.get('head')
+    if not repo or not title or not head:
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'repo, title and head are required'}
+    base = kwargs.get('base') or 'main'
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    try:
+        if conn.execute('SELECT 1 FROM gh_repos WHERE full_name = ?', (repo,)).fetchone() is None:
+            return {'error': 'Not Found', 'status': 404, 'message': 'Repository %s not found' % repo}
+        if conn.execute('SELECT 1 FROM gh_branches WHERE repo = ? AND name = ?', (repo, head)).fetchone() is None:
+            return {'error': 'Validation Failed', 'status': 422,
+                    'message': 'Validation Failed', 'errors': [{'resource': 'PullRequest', 'field': 'head', 'code': 'invalid'}]}
+        max_issue = conn.execute('SELECT COALESCE(MAX(number), 0) FROM gh_issues WHERE repo = ?', (repo,)).fetchone()[0]
+        max_pull = conn.execute('SELECT COALESCE(MAX(number), 0) FROM gh_pull_requests WHERE repo = ?', (repo,)).fetchone()[0]
+        number = max(max_issue, max_pull) + 1
+        now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+        pr_id = 'ghpr-' + hashlib.sha1(('%s#%d' % (repo, number)).encode()).hexdigest()[:8]
+        draft = 1 if kwargs.get('draft') in (True, 1, 'true', 'True') else 0
+        conn.execute(
+            'INSERT INTO gh_pull_requests (id, repo, number, title, body, state, "user", head, base, draft, merged, '
+            'merged_at, merge_commit_sha, created_at, updated_at, closed_at) '
+            'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, NULL, NULL, ?, ?, NULL)',
+            (pr_id, repo, number, title, kwargs.get('body'), 'open',
+             kwargs.get('user') or 'revops-bot', head, base, draft, now, now))
+        conn.commit()
+        return dict(conn.execute('SELECT * FROM gh_pull_requests WHERE id = ?', (pr_id,)).fetchone())
+    finally:
+        conn.close()
+
+_env_orig_gh_pull_create = gh_pull_create
+def _env_gh_pull_create(db_path='state.db', **kwargs):
+    _r = _env_orig_gh_pull_create(db_path, **kwargs)
+    if not isinstance(_r, dict):
+        return _r
+    if set(_r.keys()) == {'items', 'count'}:
+        return _r['items']
+    if 'error' in _r and _r.get('status') == 404:
+        return {'message': 'Not Found', 'documentation_url': 'https://docs.github.com/rest', 'status': '404'}
+    if 'error' in _r and _r.get('status') == 400:
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    return _r
+gh_pull_create = _env_gh_pull_create
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_pull_create = gh_pull_create
+def _bf_friction_gh_pull_create(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_pull_create(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_pull_create|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_pull_create(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_pull_create.blobfish_original = _bf_orig_gh_pull_create
+gh_pull_create = _bf_friction_gh_pull_create
+
+def gh_pull_update(db_path='state.db', **kwargs):
+    import sqlite3, datetime
+    repo = kwargs.get('repo')
+    number = kwargs.get('pull_number')
+    if not repo or number is None:
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'repo and pull_number are required'}
+    try:
+        number = int(number)
+    except (TypeError, ValueError):
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'pull_number must be an integer'}
+    state = kwargs.get('state')
+    if state is not None and state not in ('open', 'closed'):
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'state must be one of: open, closed'}
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    try:
+        row = conn.execute('SELECT * FROM gh_pull_requests WHERE repo = ? AND number = ?', (repo, number)).fetchone()
+        if row is None:
+            return {'error': 'Not Found', 'status': 404, 'message': 'Pull request #%s not found in %s' % (number, repo)}
+        if state is not None and row['merged'] == 1 and state != row['state']:
+            return {'error': 'Validation Failed', 'status': 422, 'message': 'Cannot change the state of a merged pull request'}
+        now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+        sets, args = [], []
+        for param, col in (('title', 'title'), ('body', 'body'), ('base', 'base')):
+            if kwargs.get(param) is not None:
+                sets.append(col + ' = ?')
+                args.append(kwargs[param])
+        if state is not None and state != row['state']:
+            sets.append('state = ?')
+            args.append(state)
+            sets.append('closed_at = ?')
+            args.append(now if state == 'closed' else None)
+        if not sets:
+            return dict(row)
+        sets.append('updated_at = ?')
+        args.append(now)
+        conn.execute('UPDATE gh_pull_requests SET ' + ', '.join(sets) + ' WHERE repo = ? AND number = ?', args + [repo, number])
+        conn.commit()
+        return dict(conn.execute('SELECT * FROM gh_pull_requests WHERE repo = ? AND number = ?', (repo, number)).fetchone())
+    finally:
+        conn.close()
+
+_env_orig_gh_pull_update = gh_pull_update
+def _env_gh_pull_update(db_path='state.db', **kwargs):
+    _r = _env_orig_gh_pull_update(db_path, **kwargs)
+    if not isinstance(_r, dict):
+        return _r
+    if set(_r.keys()) == {'items', 'count'}:
+        return _r['items']
+    if 'error' in _r and _r.get('status') == 404:
+        return {'message': 'Not Found', 'documentation_url': 'https://docs.github.com/rest', 'status': '404'}
+    if 'error' in _r and _r.get('status') == 400:
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    return _r
+gh_pull_update = _env_gh_pull_update
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_pull_update = gh_pull_update
+def _bf_friction_gh_pull_update(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_pull_update(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_pull_update|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_pull_update(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_pull_update.blobfish_original = _bf_orig_gh_pull_update
+gh_pull_update = _bf_friction_gh_pull_update
+
+def gh_pull_merge(db_path='state.db', **kwargs):
+    import sqlite3, datetime, hashlib
+    repo = kwargs.get('repo')
+    number = kwargs.get('pull_number')
+    if not repo or number is None:
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'repo and pull_number are required'}
+    try:
+        number = int(number)
+    except (TypeError, ValueError):
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'pull_number must be an integer'}
+    merge_method = kwargs.get('merge_method') or 'merge'
+    if merge_method not in ('merge', 'squash', 'rebase'):
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'merge_method must be one of: merge, squash, rebase'}
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    try:
+        pr = conn.execute('SELECT * FROM gh_pull_requests WHERE repo = ? AND number = ?', (repo, number)).fetchone()
+        if pr is None:
+            return {'error': 'Not Found', 'status': 404, 'message': 'Pull request #%s not found in %s' % (number, repo)}
+        if pr['merged'] == 1:
+            return {'error': 'Method Not Allowed', 'status': 405, 'message': 'Pull Request is not mergeable: already merged'}
+        if pr['state'] != 'open':
+            return {'error': 'Method Not Allowed', 'status': 405, 'message': 'Pull Request is not mergeable: not open'}
+        now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+        sha = hashlib.sha1(('%s#%d@%s' % (repo, number, now)).encode()).hexdigest()
+        title = kwargs.get('commit_title') or ('Merge pull request #%d from %s/%s' % (number, repo.split('/')[0], pr['head']))
+        conn.execute(
+            'UPDATE gh_pull_requests SET state = ?, merged = 1, merged_at = ?, closed_at = ?, merge_commit_sha = ?, '
+            'updated_at = ? WHERE repo = ? AND number = ?',
+            ('closed', now, now, sha, now, repo, number))
+        conn.execute(
+            'INSERT INTO gh_commits (sha, repo, branch, message, author, author_email, date) VALUES (?, ?, ?, ?, ?, ?, ?)',
+            (sha, repo, pr['base'], title, pr['user'], 'noreply@morganstanleysimulated.com', now))
+        conn.execute('UPDATE gh_branches SET sha = ? WHERE repo = ? AND name = ?', (sha, repo, pr['base']))
+        conn.commit()
+        return {'sha': sha, 'merged': True, 'message': 'Pull Request successfully merged'}
+    finally:
+        conn.close()
+
+_env_orig_gh_pull_merge = gh_pull_merge
+def _env_gh_pull_merge(db_path='state.db', **kwargs):
+    _r = _env_orig_gh_pull_merge(db_path, **kwargs)
+    if not isinstance(_r, dict):
+        return _r
+    if set(_r.keys()) == {'items', 'count'}:
+        return _r['items']
+    if 'error' in _r and _r.get('status') == 404:
+        return {'message': 'Not Found', 'documentation_url': 'https://docs.github.com/rest', 'status': '404'}
+    if 'error' in _r and _r.get('status') == 400:
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    return _r
+gh_pull_merge = _env_gh_pull_merge
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_pull_merge = gh_pull_merge
+def _bf_friction_gh_pull_merge(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_pull_merge(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_pull_merge|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_pull_merge(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_pull_merge.blobfish_original = _bf_orig_gh_pull_merge
+gh_pull_merge = _bf_friction_gh_pull_merge
+
+def gh_pull_files_list(db_path='state.db', **kwargs):
+    '''List the files changed in a pull request (GET /repos/{owner}/{repo}/pulls/{pull_number}/files)'''
+    _missing = [p for p in ['repo', 'pull_number'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _where, _args = [], []
+        if kwargs.get('repo') is not None:
+            _where.append('"repo" = ?')
+            _args.append(str(kwargs['repo']))
+        if kwargs.get('pull_number') is not None:
+            _where.append('"pull_number" = ?')
+            _args.append(str(kwargs['pull_number']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "gh_pull_files"'
+        if _where:
+            _q += ' WHERE ' + ' AND '.join(_where)
+        _q += ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return _r['items']
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_pull_files_list = gh_pull_files_list
+def _bf_friction_gh_pull_files_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_pull_files_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_pull_files_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_pull_files_list(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_pull_files_list.blobfish_original = _bf_orig_gh_pull_files_list
+gh_pull_files_list = _bf_friction_gh_pull_files_list
+
+def gh_pull_reviews_list(db_path='state.db', **kwargs):
+    '''List reviews for a pull request (GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews)'''
+    _missing = [p for p in ['repo', 'pull_number'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _where, _args = [], []
+        if kwargs.get('repo') is not None:
+            _where.append('"repo" = ?')
+            _args.append(str(kwargs['repo']))
+        if kwargs.get('pull_number') is not None:
+            _where.append('"pull_number" = ?')
+            _args.append(str(kwargs['pull_number']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "gh_pull_reviews"'
+        if _where:
+            _q += ' WHERE ' + ' AND '.join(_where)
+        _q += ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return _r['items']
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_pull_reviews_list = gh_pull_reviews_list
+def _bf_friction_gh_pull_reviews_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_pull_reviews_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_pull_reviews_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_pull_reviews_list(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_pull_reviews_list.blobfish_original = _bf_orig_gh_pull_reviews_list
+gh_pull_reviews_list = _bf_friction_gh_pull_reviews_list
+
+def gh_pull_review_create(db_path='state.db', **kwargs):
+    import sqlite3, datetime, hashlib
+    repo = kwargs.get('repo')
+    number = kwargs.get('pull_number')
+    event = kwargs.get('event')
+    if not repo or number is None or not event:
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'repo, pull_number and event are required'}
+    try:
+        number = int(number)
+    except (TypeError, ValueError):
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'pull_number must be an integer'}
+    state_map = {'APPROVE': 'APPROVED', 'REQUEST_CHANGES': 'CHANGES_REQUESTED', 'COMMENT': 'COMMENTED'}
+    if event not in state_map:
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'event must be one of: APPROVE, REQUEST_CHANGES, COMMENT'}
+    body = kwargs.get('body')
+    if event in ('REQUEST_CHANGES', 'COMMENT') and not body:
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'body is required for %s reviews' % event}
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    try:
+        if conn.execute('SELECT 1 FROM gh_pull_requests WHERE repo = ? AND number = ?', (repo, number)).fetchone() is None:
+            return {'error': 'Not Found', 'status': 404, 'message': 'Pull request #%s not found in %s' % (number, repo)}
+        now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+        review_id = 'ghrv-' + hashlib.sha1(('%s#%d@%s' % (repo, number, now)).encode()).hexdigest()[:8]
+        conn.execute(
+            'INSERT INTO gh_pull_reviews (id, repo, pull_number, "user", state, body, submitted_at) VALUES (?, ?, ?, ?, ?, ?, ?)',
+            (review_id, repo, number, kwargs.get('user') or 'revops-bot', state_map[event], body, now))
+        conn.commit()
+        return dict(conn.execute('SELECT * FROM gh_pull_reviews WHERE id = ?', (review_id,)).fetchone())
+    finally:
+        conn.close()
+
+_env_orig_gh_pull_review_create = gh_pull_review_create
+def _env_gh_pull_review_create(db_path='state.db', **kwargs):
+    _r = _env_orig_gh_pull_review_create(db_path, **kwargs)
+    if not isinstance(_r, dict):
+        return _r
+    if set(_r.keys()) == {'items', 'count'}:
+        return _r['items']
+    if 'error' in _r and _r.get('status') == 404:
+        return {'message': 'Not Found', 'documentation_url': 'https://docs.github.com/rest', 'status': '404'}
+    if 'error' in _r and _r.get('status') == 400:
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    return _r
+gh_pull_review_create = _env_gh_pull_review_create
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_pull_review_create = gh_pull_review_create
+def _bf_friction_gh_pull_review_create(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_pull_review_create(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_pull_review_create|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_pull_review_create(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_pull_review_create.blobfish_original = _bf_orig_gh_pull_review_create
+gh_pull_review_create = _bf_friction_gh_pull_review_create
+
+def gh_commits_list(db_path='state.db', **kwargs):
+    '''List commits on a repository (GET /repos/{owner}/{repo}/commits)'''
+    _missing = [p for p in ['repo'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _where, _args = [], []
+        if kwargs.get('repo') is not None:
+            _where.append('"repo" = ?')
+            _args.append(str(kwargs['repo']))
+        if kwargs.get('author') is not None:
+            _where.append('"author" = ?')
+            _args.append(str(kwargs['author']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "gh_commits"'
+        if _where:
+            _q += ' WHERE ' + ' AND '.join(_where)
+        _q += ' ORDER BY rowid LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return _r['items']
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_commits_list = gh_commits_list
+def _bf_friction_gh_commits_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_commits_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_commits_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_commits_list(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_commits_list.blobfish_original = _bf_orig_gh_commits_list
+gh_commits_list = _bf_friction_gh_commits_list
+
+def gh_commit_get(db_path='state.db', **kwargs):
+    '''Get a single commit by SHA (GET /repos/{owner}/{repo}/commits/{ref})'''
+    _missing = [p for p in ['sha'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "gh_commits" WHERE "sha" = ?', [str(kwargs['sha'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'commit not found', 'status': 404}
+            return {'message': 'Not Found', 'documentation_url': 'https://docs.github.com/rest', 'status': '404'}
+        _r = dict(_row)
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_commit_get = gh_commit_get
+def _bf_friction_gh_commit_get(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_commit_get(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_commit_get|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_commit_get(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_commit_get.blobfish_original = _bf_orig_gh_commit_get
+gh_commit_get = _bf_friction_gh_commit_get
+
+def gh_branches_list(db_path='state.db', **kwargs):
+    '''List branches in a repository (GET /repos/{owner}/{repo}/branches)'''
+    _missing = [p for p in ['repo'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _where, _args = [], []
+        if kwargs.get('repo') is not None:
+            _where.append('"repo" = ?')
+            _args.append(str(kwargs['repo']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "gh_branches"'
+        if _where:
+            _q += ' WHERE ' + ' AND '.join(_where)
+        _q += ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return _r['items']
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_branches_list = gh_branches_list
+def _bf_friction_gh_branches_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_branches_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_branches_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_branches_list(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_branches_list.blobfish_original = _bf_orig_gh_branches_list
+gh_branches_list = _bf_friction_gh_branches_list
+
+def gh_branch_get(db_path='state.db', **kwargs):
+    import sqlite3
+    repo = kwargs.get('repo')
+    branch = kwargs.get('branch')
+    if not repo or not branch:
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'repo and branch are required'}
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    try:
+        row = conn.execute('SELECT * FROM gh_branches WHERE repo = ? AND name = ?', (repo, branch)).fetchone()
+        if row is None:
+            return {'error': 'Not Found', 'status': 404, 'message': 'Branch %s not found in %s' % (branch, repo)}
+        return dict(row)
+    finally:
+        conn.close()
+
+_env_orig_gh_branch_get = gh_branch_get
+def _env_gh_branch_get(db_path='state.db', **kwargs):
+    _r = _env_orig_gh_branch_get(db_path, **kwargs)
+    if not isinstance(_r, dict):
+        return _r
+    if set(_r.keys()) == {'items', 'count'}:
+        return _r['items']
+    if 'error' in _r and _r.get('status') == 404:
+        return {'message': 'Not Found', 'documentation_url': 'https://docs.github.com/rest', 'status': '404'}
+    if 'error' in _r and _r.get('status') == 400:
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    return _r
+gh_branch_get = _env_gh_branch_get
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_branch_get = gh_branch_get
+def _bf_friction_gh_branch_get(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_branch_get(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_branch_get|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_branch_get(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_branch_get.blobfish_original = _bf_orig_gh_branch_get
+gh_branch_get = _bf_friction_gh_branch_get
+
+def gh_workflow_runs_list(db_path='state.db', **kwargs):
+    import sqlite3
+    repo = kwargs.get('repo')
+    if not repo:
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'repo is required'}
+    conclusions = ('success', 'failure', 'neutral', 'cancelled', 'skipped', 'timed_out', 'action_required')
+    statuses = ('queued', 'in_progress', 'completed', 'waiting', 'requested', 'pending')
+    where = ['repo = ?']
+    args = [repo]
+    status = kwargs.get('status')
+    if status:
+        if status in conclusions:
+            where.append('conclusion = ?')
+            args.append(status)
+        elif status in statuses:
+            where.append('status = ?')
+            args.append(status)
+        else:
+            return {'error': 'Validation Failed', 'status': 422,
+                    'message': 'status must be a run status (%s) or conclusion (%s)' % (', '.join(statuses), ', '.join(conclusions))}
+    if kwargs.get('workflow_id'):
+        where.append('workflow = ?')
+        args.append(kwargs['workflow_id'])
+    if kwargs.get('branch'):
+        where.append('head_branch = ?')
+        args.append(kwargs['branch'])
+    if kwargs.get('actor'):
+        where.append('actor = ?')
+        args.append(kwargs['actor'])
+    try:
+        limit = int(kwargs.get('limit') or 30)
+    except (TypeError, ValueError):
+        limit = 30
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    try:
+        rows = conn.execute(
+            'SELECT * FROM gh_workflow_runs WHERE ' + ' AND '.join(where) + ' ORDER BY created_at DESC LIMIT ?',
+            args + [limit]).fetchall()
+        return [dict(r) for r in rows]
+    finally:
+        conn.close()
+
+_env_orig_gh_workflow_runs_list = gh_workflow_runs_list
+def _env_gh_workflow_runs_list(db_path='state.db', **kwargs):
+    _r = _env_orig_gh_workflow_runs_list(db_path, **kwargs)
+    if not isinstance(_r, dict):
+        return _r
+    if set(_r.keys()) == {'items', 'count'}:
+        return _r['items']
+    if 'error' in _r and _r.get('status') == 404:
+        return {'message': 'Not Found', 'documentation_url': 'https://docs.github.com/rest', 'status': '404'}
+    if 'error' in _r and _r.get('status') == 400:
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    return _r
+gh_workflow_runs_list = _env_gh_workflow_runs_list
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_workflow_runs_list = gh_workflow_runs_list
+def _bf_friction_gh_workflow_runs_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_workflow_runs_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_workflow_runs_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_workflow_runs_list(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_workflow_runs_list.blobfish_original = _bf_orig_gh_workflow_runs_list
+gh_workflow_runs_list = _bf_friction_gh_workflow_runs_list
+
+def gh_workflow_run_get(db_path='state.db', **kwargs):
+    '''Get a workflow run by its id (GET /repos/{owner}/{repo}/actions/runs/{run_id})'''
+    _missing = [p for p in ['run_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "gh_workflow_runs" WHERE "id" = ?', [str(kwargs['run_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'workflow_run not found', 'status': 404}
+            return {'message': 'Not Found', 'documentation_url': 'https://docs.github.com/rest', 'status': '404'}
+        _r = dict(_row)
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_workflow_run_get = gh_workflow_run_get
+def _bf_friction_gh_workflow_run_get(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_workflow_run_get(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_workflow_run_get|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_workflow_run_get(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_workflow_run_get.blobfish_original = _bf_orig_gh_workflow_run_get
+gh_workflow_run_get = _bf_friction_gh_workflow_run_get
+
+def gh_workflow_run_rerun(db_path='state.db', **kwargs):
+    import sqlite3, datetime
+    run_id = kwargs.get('run_id')
+    if run_id is None:
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'run_id is required'}
+    try:
+        run_id = int(run_id)
+    except (TypeError, ValueError):
+        return {'error': 'Validation Failed', 'status': 422, 'message': 'run_id must be an integer'}
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    try:
+        row = conn.execute('SELECT * FROM gh_workflow_runs WHERE id = ?', (run_id,)).fetchone()
+        if row is None:
+            return {'error': 'Not Found', 'status': 404, 'message': 'Workflow run %s not found' % run_id}
+        if row['status'] in ('queued', 'in_progress'):
+            return {'error': 'Method Not Allowed', 'status': 405, 'message': 'Workflow run %s is already %s' % (run_id, row['status'])}
+        now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+        conn.execute(
+            'UPDATE gh_workflow_runs SET status = ?, conclusion = NULL, run_attempt = run_attempt + 1, updated_at = ? WHERE id = ?',
+            ('queued', now, run_id))
+        conn.commit()
+        return dict(conn.execute('SELECT * FROM gh_workflow_runs WHERE id = ?', (run_id,)).fetchone())
+    finally:
+        conn.close()
+
+_env_orig_gh_workflow_run_rerun = gh_workflow_run_rerun
+def _env_gh_workflow_run_rerun(db_path='state.db', **kwargs):
+    _r = _env_orig_gh_workflow_run_rerun(db_path, **kwargs)
+    if not isinstance(_r, dict):
+        return _r
+    if set(_r.keys()) == {'items', 'count'}:
+        return _r['items']
+    if 'error' in _r and _r.get('status') == 404:
+        return {'message': 'Not Found', 'documentation_url': 'https://docs.github.com/rest', 'status': '404'}
+    if 'error' in _r and _r.get('status') == 400:
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    return _r
+gh_workflow_run_rerun = _env_gh_workflow_run_rerun
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_workflow_run_rerun = gh_workflow_run_rerun
+def _bf_friction_gh_workflow_run_rerun(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_workflow_run_rerun(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_workflow_run_rerun|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_workflow_run_rerun(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_workflow_run_rerun.blobfish_original = _bf_orig_gh_workflow_run_rerun
+gh_workflow_run_rerun = _bf_friction_gh_workflow_run_rerun
+
+def gh_releases_list(db_path='state.db', **kwargs):
+    '''List releases for a repository (GET /repos/{owner}/{repo}/releases)'''
+    _missing = [p for p in ['repo'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _where, _args = [], []
+        if kwargs.get('repo') is not None:
+            _where.append('"repo" = ?')
+            _args.append(str(kwargs['repo']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "gh_releases"'
+        if _where:
+            _q += ' WHERE ' + ' AND '.join(_where)
+        _q += ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return _r['items']
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_releases_list = gh_releases_list
+def _bf_friction_gh_releases_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_releases_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_releases_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_releases_list(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_releases_list.blobfish_original = _bf_orig_gh_releases_list
+gh_releases_list = _bf_friction_gh_releases_list
+
+def gh_release_create(db_path='state.db', **kwargs):
+    '''Create a release (POST /repos/{owner}/{repo}/releases)'''
+    _missing = [p for p in ['repo', 'tag_name'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+        _n = cur.execute('SELECT COUNT(*) FROM "gh_releases"').fetchone()[0] + 1
+        _id = 'ghrel-' + str(_n).zfill(4)
+        while cur.execute('SELECT 1 FROM "gh_releases" WHERE "id" = ?', [_id]).fetchone() is not None:
+            _n += 1
+            _id = 'ghrel-' + str(_n).zfill(4)
+        _cols, _vals = ['id'], [_id]
+        if kwargs.get('repo') is not None:
+            _cols.append('repo')
+            _v = kwargs['repo']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('tag_name') is not None:
+            _cols.append('tag_name')
+            _v = kwargs['tag_name']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('name') is not None:
+            _cols.append('name')
+            _v = kwargs['name']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('body') is not None:
+            _cols.append('body')
+            _v = kwargs['body']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('target_commitish') is not None:
+            _cols.append('target_commitish')
+            _v = kwargs['target_commitish']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('draft') is not None:
+            _cols.append('draft')
+            _v = kwargs['draft']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('prerelease') is not None:
+            _cols.append('prerelease')
+            _v = kwargs['prerelease']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if 'draft' not in _cols:
+            _cols.append('draft')
+            _vals.append(0)
+        if 'prerelease' not in _cols:
+            _cols.append('prerelease')
+            _vals.append(0)
+        if 'target_commitish' not in _cols:
+            _cols.append('target_commitish')
+            _vals.append('main')
+        if 'author' not in _cols:
+            _cols.append('author')
+            _vals.append('revops-bot')
+        if 'created_at' not in _cols:
+            _cols.append('created_at')
+            _vals.append(_now)
+        cur.execute('INSERT INTO "gh_releases" (' + ', '.join('"' + c + '"' for c in _cols) + ') VALUES (' + ', '.join(['?'] * len(_cols)) + ')', _vals)
+        conn.commit()
+        _row = cur.execute('SELECT * FROM "gh_releases" WHERE "id" = ?', [_id]).fetchone()
+        _r = dict(_row) if _row else {'id': _id}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_release_create = gh_release_create
+def _bf_friction_gh_release_create(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_release_create(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_release_create|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_release_create(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_release_create.blobfish_original = _bf_orig_gh_release_create
+gh_release_create = _bf_friction_gh_release_create
+
+def gh_search_code(db_path='state.db', **kwargs):
+    '''Search code across repositories via the code index (GET /search/code)'''
+    _missing = [p for p in ['q'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _qv = '%' + str(kwargs['q']) + '%'
+        _where, _args = ["(\"path\" LIKE ? OR \"snippet\" LIKE ?)"], [_qv] * 2
+        if kwargs.get('repo') is not None:
+            _where.append('"repo" = ?')
+            _args.append(str(kwargs['repo']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "gh_code_index" WHERE ' + ' AND '.join(_where) + ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return _r['items']
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_search_code = gh_search_code
+def _bf_friction_gh_search_code(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_search_code(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_search_code|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_search_code(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_search_code.blobfish_original = _bf_orig_gh_search_code
+gh_search_code = _bf_friction_gh_search_code
+
+def gh_search_issues(db_path='state.db', **kwargs):
+    '''Search issues by keywords in title and body (GET /search/issues)'''
+    _missing = [p for p in ['q'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'message': 'Validation Failed', 'errors': [{'message': str(_r.get('error', ''))}], 'status': '422'}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _qv = '%' + str(kwargs['q']) + '%'
+        _where, _args = ["(\"title\" LIKE ? OR \"body\" LIKE ?)"], [_qv] * 2
+        if kwargs.get('repo') is not None:
+            _where.append('"repo" = ?')
+            _args.append(str(kwargs['repo']))
+        if kwargs.get('state') is not None:
+            _where.append('"state" = ?')
+            _args.append(str(kwargs['state']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "gh_issues" WHERE ' + ' AND '.join(_where) + ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return _r['items']
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_gh_search_issues = gh_search_issues
+def _bf_friction_gh_search_issues(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_gh_search_issues(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "gh_search_issues|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_gh_search_issues(*_bf_args, **_bf_kwargs)
+_bf_friction_gh_search_issues.blobfish_original = _bf_orig_gh_search_issues
+gh_search_issues = _bf_friction_gh_search_issues
 

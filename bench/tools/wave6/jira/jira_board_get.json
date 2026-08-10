@@ -1,0 +1,26 @@
+{
+ "name": "jira_board_get",
+ "mcp_name": "jira.jira_board_get",
+ "asset_namespace": "jira",
+ "description": "Returns the board for the given board ID (GET /rest/agile/1.0/board/{boardId})",
+ "type": "read",
+ "target_tables": [
+  "jira_boards"
+ ],
+ "parameters": {
+  "board_id": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "board_id": {
+    "type": "integer",
+    "description": "The ID of the requested board, for example 1."
+   }
+  },
+  "required": [
+   "board_id"
+  ],
+  "additionalProperties": false
+ }
+}

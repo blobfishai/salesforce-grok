@@ -1,0 +1,26 @@
+{
+ "name": "pins_list",
+ "mcp_name": "slack.pins_list",
+ "asset_namespace": "slack",
+ "description": "Lists items pinned to a channel (GET /pins.list)",
+ "type": "read",
+ "target_tables": [
+  "slack_pins"
+ ],
+ "parameters": {
+  "channel": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "channel": {
+    "type": "string",
+    "description": "Channel to get pinned items for, e.g. C0000001."
+   }
+  },
+  "required": [
+   "channel"
+  ],
+  "additionalProperties": false
+ }
+}

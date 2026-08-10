@@ -1,0 +1,26 @@
+{
+ "name": "sg_templates_get",
+ "mcp_name": "email.sg_templates_get",
+ "asset_namespace": "email",
+ "description": "Retrieve a single transactional email template by ID. (GET /v3/templates/{template_id})",
+ "type": "read",
+ "target_tables": [
+  "sg_templates"
+ ],
+ "parameters": {
+  "template_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "template_id": {
+    "type": "string",
+    "description": "The ID of the transactional template you want to retrieve."
+   }
+  },
+  "required": [
+   "template_id"
+  ],
+  "additionalProperties": false
+ }
+}

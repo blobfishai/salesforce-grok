@@ -1,0 +1,49 @@
+{
+ "name": "gh_pull_review_create",
+ "mcp_name": "github.gh_pull_review_create",
+ "asset_namespace": "github",
+ "description": "Create a review for a pull request; APPROVE, REQUEST_CHANGES, or COMMENT (POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews)",
+ "type": "write",
+ "target_tables": [
+  "gh_pull_reviews",
+  "gh_pull_requests"
+ ],
+ "parameters": {
+  "repo": "string",
+  "pull_number": "integer",
+  "event": "string",
+  "body": "string",
+  "user": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "repo": {
+    "type": "string",
+    "description": "The repository full name in owner/repo form."
+   },
+   "pull_number": {
+    "type": "integer",
+    "description": "The number that identifies the pull request."
+   },
+   "event": {
+    "type": "string",
+    "description": "The review action you want to perform: APPROVE, REQUEST_CHANGES, or COMMENT."
+   },
+   "body": {
+    "type": "string",
+    "description": "Required when using REQUEST_CHANGES or COMMENT. The body text of the pull request review."
+   },
+   "user": {
+    "type": "string",
+    "description": "Login of the reviewing user (the authenticated user in the real API). Default: revops-bot."
+   }
+  },
+  "required": [
+   "repo",
+   "pull_number",
+   "event"
+  ],
+  "additionalProperties": false
+ }
+}

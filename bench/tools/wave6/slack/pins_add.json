@@ -1,0 +1,32 @@
+{
+ "name": "pins_add",
+ "mcp_name": "slack.pins_add",
+ "asset_namespace": "slack",
+ "description": "Pins a message to a channel (POST /pins.add)",
+ "type": "write",
+ "target_tables": [
+  "slack_pins"
+ ],
+ "parameters": {
+  "channel": "string",
+  "timestamp": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "channel": {
+    "type": "string",
+    "description": "Channel to pin the message to, e.g. C0000001."
+   },
+   "timestamp": {
+    "type": "string",
+    "description": "Timestamp of the message to pin."
+   }
+  },
+  "required": [
+   "channel",
+   "timestamp"
+  ],
+  "additionalProperties": false
+ }
+}

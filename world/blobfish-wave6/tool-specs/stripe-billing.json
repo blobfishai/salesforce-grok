@@ -1,0 +1,2724 @@
+{
+ "vendor": "stripe-billing",
+ "namespace": "stripe",
+ "tables": [
+  {
+   "name": "payment_intents",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "object",
+     "type": "TEXT"
+    },
+    {
+     "name": "amount",
+     "type": "INTEGER"
+    },
+    {
+     "name": "amount_capturable",
+     "type": "INTEGER"
+    },
+    {
+     "name": "amount_received",
+     "type": "INTEGER"
+    },
+    {
+     "name": "currency",
+     "type": "TEXT"
+    },
+    {
+     "name": "customer",
+     "type": "TEXT"
+    },
+    {
+     "name": "description",
+     "type": "TEXT"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "capture_method",
+     "type": "TEXT"
+    },
+    {
+     "name": "confirmation_method",
+     "type": "TEXT"
+    },
+    {
+     "name": "payment_method",
+     "type": "TEXT"
+    },
+    {
+     "name": "latest_charge",
+     "type": "TEXT"
+    },
+    {
+     "name": "invoice",
+     "type": "TEXT"
+    },
+    {
+     "name": "receipt_email",
+     "type": "TEXT"
+    },
+    {
+     "name": "statement_descriptor",
+     "type": "TEXT"
+    },
+    {
+     "name": "canceled_at",
+     "type": "TEXT"
+    },
+    {
+     "name": "cancellation_reason",
+     "type": "TEXT"
+    },
+    {
+     "name": "livemode",
+     "type": "INTEGER"
+    },
+    {
+     "name": "metadata",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "pi_00000000000001",
+     "object": "payment_intent",
+     "amount": 1250000,
+     "amount_capturable": 1250000,
+     "amount_received": 0,
+     "currency": "usd",
+     "customer": "cus_00000000000001",
+     "description": "Summit Group Account - Q3 advisory retainer",
+     "status": "requires_capture",
+     "capture_method": "manual",
+     "confirmation_method": "automatic",
+     "payment_method": "pm_00000000000021",
+     "latest_charge": null,
+     "invoice": null,
+     "receipt_email": "ap@summit-group.example",
+     "statement_descriptor": "MS SIM ADVISORY",
+     "canceled_at": null,
+     "cancellation_reason": null,
+     "livemode": 0,
+     "metadata": "{\"account\": \"Summit Group Account\"}",
+     "created_at": "2026-07-28T14:05:00Z"
+    },
+    {
+     "id": "pi_00000000000002",
+     "object": "payment_intent",
+     "amount": 72,
+     "amount_capturable": 0,
+     "amount_received": 72,
+     "currency": "eur",
+     "customer": "cus_00000000000009",
+     "description": "Riverside Group Account - onboarding fee",
+     "status": "succeeded",
+     "capture_method": "automatic",
+     "confirmation_method": "automatic",
+     "payment_method": "pm_00000000000004",
+     "latest_charge": "ch_00000000000009",
+     "invoice": null,
+     "receipt_email": "finance@riverside-group.example",
+     "statement_descriptor": "MS SIM ONBOARD",
+     "canceled_at": null,
+     "cancellation_reason": null,
+     "livemode": 0,
+     "metadata": null,
+     "created_at": "2026-02-11T09:30:00Z"
+    },
+    {
+     "id": "pi_00000000000003",
+     "object": "payment_intent",
+     "amount": 480000,
+     "amount_capturable": 0,
+     "amount_received": 0,
+     "currency": "usd",
+     "customer": "cus_00000000000003",
+     "description": "Meridian - portfolio analytics annual true-up",
+     "status": "requires_payment_method",
+     "capture_method": "manual",
+     "confirmation_method": "automatic",
+     "payment_method": null,
+     "latest_charge": null,
+     "invoice": "in_00000000000003",
+     "receipt_email": "billing@meridian-capital.example",
+     "statement_descriptor": "MS SIM ANALYTICS",
+     "canceled_at": null,
+     "cancellation_reason": null,
+     "livemode": 0,
+     "metadata": "{\"account\": \"Meridian\"}",
+     "created_at": "2026-08-03T16:45:00Z"
+    },
+    {
+     "id": "pi_00000000000004",
+     "object": "payment_intent",
+     "amount": 71,
+     "amount_capturable": 0,
+     "amount_received": 71,
+     "currency": "eur",
+     "customer": "cus_00000000000004",
+     "description": "Ironwood - custody service fee",
+     "status": "succeeded",
+     "capture_method": "automatic",
+     "confirmation_method": "automatic",
+     "payment_method": "pm_00000000000010",
+     "latest_charge": "ch_00000000000007",
+     "invoice": null,
+     "receipt_email": "ops@ironwood-holdings.example",
+     "statement_descriptor": "MS SIM CUSTODY",
+     "canceled_at": null,
+     "cancellation_reason": null,
+     "livemode": 0,
+     "metadata": null,
+     "created_at": "2026-03-19T11:12:00Z"
+    },
+    {
+     "id": "pi_00000000000005",
+     "object": "payment_intent",
+     "amount": 36,
+     "amount_capturable": 0,
+     "amount_received": 0,
+     "currency": "usd",
+     "customer": "cus_00000000000005",
+     "description": "Harborview - research terminal seats",
+     "status": "processing",
+     "capture_method": "automatic",
+     "confirmation_method": "automatic",
+     "payment_method": "pm_00000000000007",
+     "latest_charge": "ch_00000000000012",
+     "invoice": null,
+     "receipt_email": "ap@harborview-partners.example",
+     "statement_descriptor": "MS SIM RESEARCH",
+     "canceled_at": null,
+     "cancellation_reason": null,
+     "livemode": 0,
+     "metadata": null,
+     "created_at": "2026-08-08T08:20:00Z"
+    },
+    {
+     "id": "pi_00000000000006",
+     "object": "payment_intent",
+     "amount": 44,
+     "amount_capturable": 0,
+     "amount_received": 44,
+     "currency": "eur",
+     "customer": "cus_00000000000012",
+     "description": "Atlas - execution services invoice payment",
+     "status": "succeeded",
+     "capture_method": "automatic",
+     "confirmation_method": "automatic",
+     "payment_method": "pm_00000000000004",
+     "latest_charge": "ch_00000000000001",
+     "invoice": "in_00000000000002",
+     "receipt_email": "settlements@atlas-fund.example",
+     "statement_descriptor": "MS SIM EXECUTION",
+     "canceled_at": null,
+     "cancellation_reason": null,
+     "livemode": 0,
+     "metadata": "{\"account\": \"Atlas\"}",
+     "created_at": "2026-01-22T10:02:00Z"
+    },
+    {
+     "id": "pi_00000000000007",
+     "object": "payment_intent",
+     "amount": 74,
+     "amount_capturable": 0,
+     "amount_received": 74,
+     "currency": "eur",
+     "customer": "cus_00000000000002",
+     "description": "Crestline - compliance reporting suite",
+     "status": "succeeded",
+     "capture_method": "automatic",
+     "confirmation_method": "automatic",
+     "payment_method": "pm_00000000000015",
+     "latest_charge": "ch_00000000000019",
+     "invoice": null,
+     "receipt_email": "controller@crestline-adv.example",
+     "statement_descriptor": "MS SIM COMPLIANCE",
+     "canceled_at": null,
+     "cancellation_reason": null,
+     "livemode": 0,
+     "metadata": null,
+     "created_at": "2026-04-07T13:55:00Z"
+    },
+    {
+     "id": "pi_00000000000008",
+     "object": "payment_intent",
+     "amount": 34,
+     "amount_capturable": 0,
+     "amount_received": 34,
+     "currency": "gbp",
+     "customer": "cus_00000000000006",
+     "description": "Summit Group Account - client reporting portal",
+     "status": "succeeded",
+     "capture_method": "automatic",
+     "confirmation_method": "automatic",
+     "payment_method": "pm_00000000000002",
+     "latest_charge": "ch_00000000000005",
+     "invoice": null,
+     "receipt_email": "ap@summit-group.example",
+     "statement_descriptor": "MS SIM REPORTING",
+     "canceled_at": null,
+     "cancellation_reason": null,
+     "livemode": 0,
+     "metadata": null,
+     "created_at": "2026-05-02T09:41:00Z"
+    },
+    {
+     "id": "pi_00000000000009",
+     "object": "payment_intent",
+     "amount": 15,
+     "amount_capturable": 0,
+     "amount_received": 0,
+     "currency": "eur",
+     "customer": "cus_00000000000011",
+     "description": "Riverside Group Account - duplicate payment, canceled",
+     "status": "canceled",
+     "capture_method": "automatic",
+     "confirmation_method": "automatic",
+     "payment_method": "pm_00000000000009",
+     "latest_charge": "ch_00000000000006",
+     "invoice": null,
+     "receipt_email": "finance@riverside-group.example",
+     "statement_descriptor": "MS SIM ADVISORY",
+     "canceled_at": "2026-06-14T17:28:00Z",
+     "cancellation_reason": "duplicate",
+     "livemode": 0,
+     "metadata": null,
+     "created_at": "2026-06-14T16:03:00Z"
+    },
+    {
+     "id": "pi_00000000000010",
+     "object": "payment_intent",
+     "amount": 28,
+     "amount_capturable": 0,
+     "amount_received": 28,
+     "currency": "usd",
+     "customer": "cus_00000000000012",
+     "description": "Atlas - trade execution API overage",
+     "status": "succeeded",
+     "capture_method": "automatic",
+     "confirmation_method": "automatic",
+     "payment_method": "pm_00000000000013",
+     "latest_charge": "ch_00000000000003",
+     "invoice": null,
+     "receipt_email": "settlements@atlas-fund.example",
+     "statement_descriptor": "MS SIM EXECUTION",
+     "canceled_at": null,
+     "cancellation_reason": null,
+     "livemode": 0,
+     "metadata": null,
+     "created_at": "2026-06-30T12:17:00Z"
+    },
+    {
+     "id": "pi_00000000000011",
+     "object": "payment_intent",
+     "amount": 17,
+     "amount_capturable": 0,
+     "amount_received": 0,
+     "currency": "eur",
+     "customer": "cus_00000000000004",
+     "description": "Ironwood - awaiting confirmation on saved card",
+     "status": "requires_confirmation",
+     "capture_method": "automatic",
+     "confirmation_method": "automatic",
+     "payment_method": "pm_00000000000011",
+     "latest_charge": "ch_00000000000016",
+     "invoice": null,
+     "receipt_email": "ops@ironwood-holdings.example",
+     "statement_descriptor": "MS SIM CUSTODY",
+     "canceled_at": null,
+     "cancellation_reason": null,
+     "livemode": 0,
+     "metadata": null,
+     "created_at": "2026-08-09T07:52:00Z"
+    },
+    {
+     "id": "pi_00000000000012",
+     "object": "payment_intent",
+     "amount": 78,
+     "amount_capturable": 0,
+     "amount_received": 78,
+     "currency": "usd",
+     "customer": "cus_00000000000003",
+     "description": "Meridian - wealth platform monthly",
+     "status": "succeeded",
+     "capture_method": "automatic",
+     "confirmation_method": "automatic",
+     "payment_method": "pm_00000000000010",
+     "latest_charge": "ch_00000000000002",
+     "invoice": "in_00000000000002",
+     "receipt_email": "billing@meridian-capital.example",
+     "statement_descriptor": "MS SIM PLATFORM",
+     "canceled_at": null,
+     "cancellation_reason": null,
+     "livemode": 0,
+     "metadata": "{\"account\": \"Meridian\"}",
+     "created_at": "2026-07-01T00:15:00Z"
+    }
+   ]
+  },
+  {
+   "name": "products",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "object",
+     "type": "TEXT"
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "active",
+     "type": "INTEGER"
+    },
+    {
+     "name": "description",
+     "type": "TEXT"
+    },
+    {
+     "name": "default_price",
+     "type": "TEXT"
+    },
+    {
+     "name": "type",
+     "type": "TEXT"
+    },
+    {
+     "name": "url",
+     "type": "TEXT"
+    },
+    {
+     "name": "metadata",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "prod_00000000000001",
+     "object": "product",
+     "name": "Wealth Management Platform",
+     "active": 1,
+     "description": "Core advisory workstation for institutional accounts (SIMULATED).",
+     "default_price": "price_00000000000001",
+     "type": "service",
+     "url": null,
+     "metadata": "{\"line\": \"platform\"}",
+     "created_at": "2026-01-05T09:00:00Z"
+    },
+    {
+     "id": "prod_00000000000002",
+     "object": "product",
+     "name": "Portfolio Analytics Add-on",
+     "active": 1,
+     "description": "Risk and attribution analytics module; requires the Wealth Management Platform.",
+     "default_price": "price_00000000000003",
+     "type": "service",
+     "url": null,
+     "metadata": "{\"line\": \"analytics\"}",
+     "created_at": "2026-01-05T09:05:00Z"
+    },
+    {
+     "id": "prod_00000000000003",
+     "object": "product",
+     "name": "Research Terminal Seat",
+     "active": 1,
+     "description": "Per-seat access to equity and fixed income research (SIMULATED).",
+     "default_price": "price_00000000000004",
+     "type": "service",
+     "url": null,
+     "metadata": "{\"line\": \"research\"}",
+     "created_at": "2026-01-12T10:30:00Z"
+    },
+    {
+     "id": "prod_00000000000004",
+     "object": "product",
+     "name": "Compliance Reporting Suite",
+     "active": 1,
+     "description": "Regulatory reporting bundle used by Crestline and Harborview engagements.",
+     "default_price": "price_00000000000006",
+     "type": "service",
+     "url": null,
+     "metadata": null,
+     "created_at": "2026-02-01T08:45:00Z"
+    },
+    {
+     "id": "prod_00000000000005",
+     "object": "product",
+     "name": "Trade Execution API",
+     "active": 1,
+     "description": "Metered API access for order routing and execution (SIMULATED).",
+     "default_price": "price_00000000000007",
+     "type": "service",
+     "url": null,
+     "metadata": "{\"line\": \"execution\"}",
+     "created_at": "2026-02-18T15:10:00Z"
+    },
+    {
+     "id": "prod_00000000000006",
+     "object": "product",
+     "name": "Client Reporting Portal",
+     "active": 1,
+     "description": "White-label client statements and performance reporting portal.",
+     "default_price": "price_00000000000008",
+     "type": "service",
+     "url": null,
+     "metadata": null,
+     "created_at": "2026-03-04T11:00:00Z"
+    },
+    {
+     "id": "prod_00000000000007",
+     "object": "product",
+     "name": "Onboarding & KYC Package",
+     "active": 1,
+     "description": "One-time implementation, data migration, and KYC setup engagement.",
+     "default_price": "price_00000000000009",
+     "type": "service",
+     "url": null,
+     "metadata": null,
+     "created_at": "2026-03-20T09:25:00Z"
+    },
+    {
+     "id": "prod_00000000000008",
+     "object": "product",
+     "name": "Legacy Advisory Desk (retired)",
+     "active": 0,
+     "description": "Retired 2025 advisory desk product; kept for historical invoices.",
+     "default_price": "price_00000000000010",
+     "type": "service",
+     "url": null,
+     "metadata": "{\"retired\": \"2025-12-31\"}",
+     "created_at": "2026-01-02T08:00:00Z"
+    }
+   ]
+  },
+  {
+   "name": "prices",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "object",
+     "type": "TEXT"
+    },
+    {
+     "name": "product",
+     "type": "TEXT"
+    },
+    {
+     "name": "active",
+     "type": "INTEGER"
+    },
+    {
+     "name": "currency",
+     "type": "TEXT"
+    },
+    {
+     "name": "unit_amount",
+     "type": "INTEGER"
+    },
+    {
+     "name": "type",
+     "type": "TEXT"
+    },
+    {
+     "name": "recurring_interval",
+     "type": "TEXT"
+    },
+    {
+     "name": "billing_scheme",
+     "type": "TEXT"
+    },
+    {
+     "name": "nickname",
+     "type": "TEXT"
+    },
+    {
+     "name": "lookup_key",
+     "type": "TEXT"
+    },
+    {
+     "name": "metadata",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "price_00000000000001",
+     "object": "price",
+     "product": "prod_00000000000001",
+     "active": 1,
+     "currency": "usd",
+     "unit_amount": 250000,
+     "type": "recurring",
+     "recurring_interval": "month",
+     "billing_scheme": "per_unit",
+     "nickname": "Platform Enterprise monthly",
+     "lookup_key": "wm_platform_enterprise_monthly",
+     "metadata": null,
+     "created_at": "2026-01-05T09:01:00Z"
+    },
+    {
+     "id": "price_00000000000002",
+     "object": "price",
+     "product": "prod_00000000000001",
+     "active": 1,
+     "currency": "usd",
+     "unit_amount": 2700000,
+     "type": "recurring",
+     "recurring_interval": "year",
+     "billing_scheme": "per_unit",
+     "nickname": "Platform Enterprise annual (10% off)",
+     "lookup_key": "wm_platform_enterprise_annual",
+     "metadata": null,
+     "created_at": "2026-01-05T09:02:00Z"
+    },
+    {
+     "id": "price_00000000000003",
+     "object": "price",
+     "product": "prod_00000000000002",
+     "active": 1,
+     "currency": "usd",
+     "unit_amount": 60000,
+     "type": "recurring",
+     "recurring_interval": "month",
+     "billing_scheme": "per_unit",
+     "nickname": "Analytics add-on monthly",
+     "lookup_key": "analytics_addon_monthly",
+     "metadata": null,
+     "created_at": "2026-01-05T09:06:00Z"
+    },
+    {
+     "id": "price_00000000000004",
+     "object": "price",
+     "product": "prod_00000000000003",
+     "active": 1,
+     "currency": "usd",
+     "unit_amount": 45000,
+     "type": "recurring",
+     "recurring_interval": "month",
+     "billing_scheme": "per_unit",
+     "nickname": "Research seat monthly",
+     "lookup_key": "research_seat_monthly",
+     "metadata": null,
+     "created_at": "2026-01-12T10:31:00Z"
+    },
+    {
+     "id": "price_00000000000005",
+     "object": "price",
+     "product": "prod_00000000000003",
+     "active": 0,
+     "currency": "usd",
+     "unit_amount": 50000,
+     "type": "recurring",
+     "recurring_interval": "month",
+     "billing_scheme": "per_unit",
+     "nickname": "Research seat monthly (2025 list, retired)",
+     "lookup_key": null,
+     "metadata": null,
+     "created_at": "2026-01-12T10:32:00Z"
+    },
+    {
+     "id": "price_00000000000006",
+     "object": "price",
+     "product": "prod_00000000000004",
+     "active": 1,
+     "currency": "usd",
+     "unit_amount": 120000,
+     "type": "recurring",
+     "recurring_interval": "month",
+     "billing_scheme": "per_unit",
+     "nickname": "Compliance suite monthly",
+     "lookup_key": "compliance_suite_monthly",
+     "metadata": null,
+     "created_at": "2026-02-01T08:46:00Z"
+    },
+    {
+     "id": "price_00000000000007",
+     "object": "price",
+     "product": "prod_00000000000005",
+     "active": 1,
+     "currency": "usd",
+     "unit_amount": 95000,
+     "type": "recurring",
+     "recurring_interval": "month",
+     "billing_scheme": "per_unit",
+     "nickname": "Execution API base monthly",
+     "lookup_key": "execution_api_base",
+     "metadata": null,
+     "created_at": "2026-02-18T15:11:00Z"
+    },
+    {
+     "id": "price_00000000000008",
+     "object": "price",
+     "product": "prod_00000000000006",
+     "active": 1,
+     "currency": "usd",
+     "unit_amount": 35000,
+     "type": "recurring",
+     "recurring_interval": "month",
+     "billing_scheme": "per_unit",
+     "nickname": "Client portal monthly",
+     "lookup_key": "client_portal_monthly",
+     "metadata": null,
+     "created_at": "2026-03-04T11:01:00Z"
+    },
+    {
+     "id": "price_00000000000009",
+     "object": "price",
+     "product": "prod_00000000000007",
+     "active": 1,
+     "currency": "usd",
+     "unit_amount": 1500000,
+     "type": "one_time",
+     "recurring_interval": null,
+     "billing_scheme": "per_unit",
+     "nickname": "Onboarding one-time",
+     "lookup_key": "onboarding_kyc_flat",
+     "metadata": null,
+     "created_at": "2026-03-20T09:26:00Z"
+    },
+    {
+     "id": "price_00000000000010",
+     "object": "price",
+     "product": "prod_00000000000008",
+     "active": 0,
+     "currency": "usd",
+     "unit_amount": 800000,
+     "type": "recurring",
+     "recurring_interval": "month",
+     "billing_scheme": "per_unit",
+     "nickname": "Legacy advisory desk monthly (retired)",
+     "lookup_key": null,
+     "metadata": null,
+     "created_at": "2026-01-02T08:01:00Z"
+    }
+   ]
+  },
+  {
+   "name": "subscriptions",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "object",
+     "type": "TEXT"
+    },
+    {
+     "name": "customer",
+     "type": "TEXT"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "price",
+     "type": "TEXT"
+    },
+    {
+     "name": "quantity",
+     "type": "INTEGER"
+    },
+    {
+     "name": "currency",
+     "type": "TEXT"
+    },
+    {
+     "name": "cancel_at_period_end",
+     "type": "INTEGER"
+    },
+    {
+     "name": "canceled_at",
+     "type": "TEXT"
+    },
+    {
+     "name": "collection_method",
+     "type": "TEXT"
+    },
+    {
+     "name": "current_period_start",
+     "type": "TEXT"
+    },
+    {
+     "name": "current_period_end",
+     "type": "TEXT"
+    },
+    {
+     "name": "start_date",
+     "type": "TEXT"
+    },
+    {
+     "name": "trial_end",
+     "type": "TEXT"
+    },
+    {
+     "name": "default_payment_method",
+     "type": "TEXT"
+    },
+    {
+     "name": "latest_invoice",
+     "type": "TEXT"
+    },
+    {
+     "name": "metadata",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "sub_00000000000001",
+     "object": "subscription",
+     "customer": "cus_00000000000001",
+     "status": "active",
+     "price": "price_00000000000001",
+     "quantity": 1,
+     "currency": "usd",
+     "cancel_at_period_end": 0,
+     "canceled_at": null,
+     "collection_method": "send_invoice",
+     "current_period_start": "2026-08-01T00:00:00Z",
+     "current_period_end": "2026-09-01T00:00:00Z",
+     "start_date": "2026-01-15T00:00:00Z",
+     "trial_end": null,
+     "default_payment_method": "pm_00000000000021",
+     "latest_invoice": "in_00000000000001",
+     "metadata": "{\"account\": \"Summit Group Account\"}",
+     "created_at": "2026-01-15T14:00:00Z"
+    },
+    {
+     "id": "sub_00000000000002",
+     "object": "subscription",
+     "customer": "cus_00000000000003",
+     "status": "active",
+     "price": "price_00000000000002",
+     "quantity": 1,
+     "currency": "usd",
+     "cancel_at_period_end": 0,
+     "canceled_at": null,
+     "collection_method": "charge_automatically",
+     "current_period_start": "2026-02-01T00:00:00Z",
+     "current_period_end": "2027-02-01T00:00:00Z",
+     "start_date": "2026-02-01T00:00:00Z",
+     "trial_end": null,
+     "default_payment_method": "pm_00000000000010",
+     "latest_invoice": "in_00000000000002",
+     "metadata": "{\"account\": \"Meridian\"}",
+     "created_at": "2026-02-01T09:00:00Z"
+    },
+    {
+     "id": "sub_00000000000003",
+     "object": "subscription",
+     "customer": "cus_00000000000005",
+     "status": "active",
+     "price": "price_00000000000004",
+     "quantity": 12,
+     "currency": "usd",
+     "cancel_at_period_end": 0,
+     "canceled_at": null,
+     "collection_method": "charge_automatically",
+     "current_period_start": "2026-08-05T00:00:00Z",
+     "current_period_end": "2026-09-05T00:00:00Z",
+     "start_date": "2026-03-05T00:00:00Z",
+     "trial_end": null,
+     "default_payment_method": "pm_00000000000007",
+     "latest_invoice": "in_00000000000005",
+     "metadata": "{\"account\": \"Harborview\"}",
+     "created_at": "2026-03-05T10:20:00Z"
+    },
+    {
+     "id": "sub_00000000000004",
+     "object": "subscription",
+     "customer": "cus_00000000000002",
+     "status": "trialing",
+     "price": "price_00000000000006",
+     "quantity": 1,
+     "currency": "usd",
+     "cancel_at_period_end": 0,
+     "canceled_at": null,
+     "collection_method": "charge_automatically",
+     "current_period_start": "2026-08-01T00:00:00Z",
+     "current_period_end": "2026-09-01T00:00:00Z",
+     "start_date": "2026-08-01T00:00:00Z",
+     "trial_end": "2026-08-31T00:00:00Z",
+     "default_payment_method": "pm_00000000000015",
+     "latest_invoice": "in_00000000000006",
+     "metadata": "{\"account\": \"Crestline\"}",
+     "created_at": "2026-08-01T12:00:00Z"
+    },
+    {
+     "id": "sub_00000000000005",
+     "object": "subscription",
+     "customer": "cus_00000000000004",
+     "status": "past_due",
+     "price": "price_00000000000006",
+     "quantity": 1,
+     "currency": "usd",
+     "cancel_at_period_end": 0,
+     "canceled_at": null,
+     "collection_method": "charge_automatically",
+     "current_period_start": "2026-07-10T00:00:00Z",
+     "current_period_end": "2026-08-10T00:00:00Z",
+     "start_date": "2026-02-10T00:00:00Z",
+     "trial_end": null,
+     "default_payment_method": "pm_00000000000011",
+     "latest_invoice": "in_00000000000007",
+     "metadata": "{\"account\": \"Ironwood\"}",
+     "created_at": "2026-02-10T16:40:00Z"
+    },
+    {
+     "id": "sub_00000000000006",
+     "object": "subscription",
+     "customer": "cus_00000000000012",
+     "status": "active",
+     "price": "price_00000000000007",
+     "quantity": 1,
+     "currency": "usd",
+     "cancel_at_period_end": 1,
+     "canceled_at": null,
+     "collection_method": "send_invoice",
+     "current_period_start": "2026-08-01T00:00:00Z",
+     "current_period_end": "2026-09-01T00:00:00Z",
+     "start_date": "2026-04-01T00:00:00Z",
+     "trial_end": null,
+     "default_payment_method": null,
+     "latest_invoice": "in_00000000000008",
+     "metadata": "{\"account\": \"Atlas\", \"churn_risk\": \"high\"}",
+     "created_at": "2026-04-01T09:10:00Z"
+    },
+    {
+     "id": "sub_00000000000007",
+     "object": "subscription",
+     "customer": "cus_00000000000006",
+     "status": "active",
+     "price": "price_00000000000008",
+     "quantity": 3,
+     "currency": "usd",
+     "cancel_at_period_end": 0,
+     "canceled_at": null,
+     "collection_method": "charge_automatically",
+     "current_period_start": "2026-08-02T00:00:00Z",
+     "current_period_end": "2026-09-02T00:00:00Z",
+     "start_date": "2026-05-02T00:00:00Z",
+     "trial_end": null,
+     "default_payment_method": "pm_00000000000002",
+     "latest_invoice": "in_00000000000009",
+     "metadata": "{\"account\": \"Summit Group Account\"}",
+     "created_at": "2026-05-02T13:30:00Z"
+    },
+    {
+     "id": "sub_00000000000008",
+     "object": "subscription",
+     "customer": "cus_00000000000011",
+     "status": "canceled",
+     "price": "price_00000000000010",
+     "quantity": 1,
+     "currency": "usd",
+     "cancel_at_period_end": 0,
+     "canceled_at": "2026-06-30T18:00:00Z",
+     "collection_method": "send_invoice",
+     "current_period_start": "2026-06-01T00:00:00Z",
+     "current_period_end": "2026-07-01T00:00:00Z",
+     "start_date": "2026-01-02T00:00:00Z",
+     "trial_end": null,
+     "default_payment_method": null,
+     "latest_invoice": "in_00000000000010",
+     "metadata": "{\"account\": \"Riverside Group Account\", \"cancel_reason\": \"migrated to Wealth Management Platform\"}",
+     "created_at": "2026-01-02T08:30:00Z"
+    }
+   ]
+  },
+  {
+   "name": "refunds",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "object",
+     "type": "TEXT"
+    },
+    {
+     "name": "amount",
+     "type": "INTEGER"
+    },
+    {
+     "name": "charge",
+     "type": "TEXT"
+    },
+    {
+     "name": "payment_intent",
+     "type": "TEXT"
+    },
+    {
+     "name": "currency",
+     "type": "TEXT"
+    },
+    {
+     "name": "reason",
+     "type": "TEXT"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "balance_transaction",
+     "type": "TEXT"
+    },
+    {
+     "name": "receipt_number",
+     "type": "TEXT"
+    },
+    {
+     "name": "metadata",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "re_00000000000001",
+     "object": "refund",
+     "amount": 20,
+     "charge": "ch_00000000000001",
+     "payment_intent": "pi_00000000000006",
+     "currency": "eur",
+     "reason": "requested_by_customer",
+     "status": "succeeded",
+     "balance_transaction": "txn_00000000000004",
+     "receipt_number": "1685-2718",
+     "metadata": "{\"account\": \"Atlas\"}",
+     "created_at": "2026-02-03T10:14:00Z"
+    },
+    {
+     "id": "re_00000000000002",
+     "object": "refund",
+     "amount": 71,
+     "charge": "ch_00000000000002",
+     "payment_intent": "pi_00000000000012",
+     "currency": "usd",
+     "reason": "duplicate",
+     "status": "succeeded",
+     "balance_transaction": "txn_00000000000005",
+     "receipt_number": "1685-3402",
+     "metadata": null,
+     "created_at": "2026-03-11T15:47:00Z"
+    },
+    {
+     "id": "re_00000000000003",
+     "object": "refund",
+     "amount": 16,
+     "charge": "ch_00000000000013",
+     "payment_intent": "pi_00000000000008",
+     "currency": "gbp",
+     "reason": null,
+     "status": "succeeded",
+     "balance_transaction": "txn_00000000000007",
+     "receipt_number": null,
+     "metadata": null,
+     "created_at": "2026-05-19T09:05:00Z"
+    },
+    {
+     "id": "re_00000000000004",
+     "object": "refund",
+     "amount": 4,
+     "charge": "ch_00000000000019",
+     "payment_intent": "pi_00000000000007",
+     "currency": "eur",
+     "reason": "fraudulent",
+     "status": "succeeded",
+     "balance_transaction": "txn_00000000000008",
+     "receipt_number": "1685-5110",
+     "metadata": null,
+     "created_at": "2026-06-22T18:32:00Z"
+    },
+    {
+     "id": "re_00000000000005",
+     "object": "refund",
+     "amount": 13,
+     "charge": "ch_00000000000017",
+     "payment_intent": "pi_00000000000009",
+     "currency": "eur",
+     "reason": "requested_by_customer",
+     "status": "succeeded",
+     "balance_transaction": "txn_00000000000010",
+     "receipt_number": "1685-6081",
+     "metadata": "{\"note\": \"full refund of duplicate advisory charge\"}",
+     "created_at": "2026-07-02T11:23:00Z"
+    },
+    {
+     "id": "re_00000000000006",
+     "object": "refund",
+     "amount": 34,
+     "charge": "ch_00000000000009",
+     "payment_intent": "pi_00000000000002",
+     "currency": "eur",
+     "reason": "requested_by_customer",
+     "status": "pending",
+     "balance_transaction": null,
+     "receipt_number": null,
+     "metadata": null,
+     "created_at": "2026-08-09T14:58:00Z"
+    }
+   ]
+  },
+  {
+   "name": "payment_links",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "object",
+     "type": "TEXT"
+    },
+    {
+     "name": "active",
+     "type": "INTEGER"
+    },
+    {
+     "name": "url",
+     "type": "TEXT"
+    },
+    {
+     "name": "price",
+     "type": "TEXT"
+    },
+    {
+     "name": "quantity",
+     "type": "INTEGER"
+    },
+    {
+     "name": "currency",
+     "type": "TEXT"
+    },
+    {
+     "name": "allow_promotion_codes",
+     "type": "INTEGER"
+    },
+    {
+     "name": "metadata",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "plink_00000000000001",
+     "object": "payment_link",
+     "active": 1,
+     "url": "https://buy.stripe.com/test_4gk3fXaTz01",
+     "price": "price_00000000000009",
+     "quantity": 1,
+     "currency": "usd",
+     "allow_promotion_codes": 0,
+     "metadata": "{\"purpose\": \"onboarding deposits\"}",
+     "created_at": "2026-03-21T09:00:00Z"
+    },
+    {
+     "id": "plink_00000000000002",
+     "object": "payment_link",
+     "active": 1,
+     "url": "https://buy.stripe.com/test_8wM2aB9Rq02",
+     "price": "price_00000000000004",
+     "quantity": 1,
+     "currency": "usd",
+     "allow_promotion_codes": 1,
+     "metadata": "{\"campaign\": \"research-seat-expansion\"}",
+     "created_at": "2026-04-14T10:12:00Z"
+    },
+    {
+     "id": "plink_00000000000003",
+     "object": "payment_link",
+     "active": 0,
+     "url": "https://buy.stripe.com/test_5kA7pRcVd03",
+     "price": "price_00000000000005",
+     "quantity": 1,
+     "currency": "usd",
+     "allow_promotion_codes": 0,
+     "metadata": "{\"note\": \"deactivated with 2025 research list\"}",
+     "created_at": "2026-01-13T08:40:00Z"
+    },
+    {
+     "id": "plink_00000000000004",
+     "object": "payment_link",
+     "active": 1,
+     "url": "https://buy.stripe.com/test_9qC5nHbTk04",
+     "price": "price_00000000000003",
+     "quantity": 1,
+     "currency": "usd",
+     "allow_promotion_codes": 0,
+     "metadata": null,
+     "created_at": "2026-05-27T16:22:00Z"
+    },
+    {
+     "id": "plink_00000000000005",
+     "object": "payment_link",
+     "active": 1,
+     "url": "https://buy.stripe.com/test_2sE9tZdWf05",
+     "price": "price_00000000000008",
+     "quantity": 5,
+     "currency": "usd",
+     "allow_promotion_codes": 1,
+     "metadata": "{\"campaign\": \"portal-bundle-q3\"}",
+     "created_at": "2026-07-08T13:45:00Z"
+    },
+    {
+     "id": "plink_00000000000006",
+     "object": "payment_link",
+     "active": 1,
+     "url": "https://buy.stripe.com/test_7uG1bDfYh06",
+     "price": "price_00000000000006",
+     "quantity": 1,
+     "currency": "usd",
+     "allow_promotion_codes": 0,
+     "metadata": null,
+     "created_at": "2026-08-01T09:30:00Z"
+    }
+   ]
+  },
+  {
+   "name": "coupons",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "object",
+     "type": "TEXT"
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "amount_off",
+     "type": "INTEGER"
+    },
+    {
+     "name": "percent_off",
+     "type": "REAL"
+    },
+    {
+     "name": "currency",
+     "type": "TEXT"
+    },
+    {
+     "name": "duration",
+     "type": "TEXT"
+    },
+    {
+     "name": "duration_in_months",
+     "type": "INTEGER"
+    },
+    {
+     "name": "max_redemptions",
+     "type": "INTEGER"
+    },
+    {
+     "name": "times_redeemed",
+     "type": "INTEGER"
+    },
+    {
+     "name": "valid",
+     "type": "INTEGER"
+    },
+    {
+     "name": "metadata",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "coupon_00000000000001",
+     "object": "coupon",
+     "name": "Annual prepay 10%",
+     "amount_off": null,
+     "percent_off": 10.0,
+     "currency": null,
+     "duration": "forever",
+     "duration_in_months": null,
+     "max_redemptions": null,
+     "times_redeemed": 4,
+     "valid": 1,
+     "metadata": null,
+     "created_at": "2026-01-06T09:00:00Z"
+    },
+    {
+     "id": "coupon_00000000000002",
+     "object": "coupon",
+     "name": "Summit renewal concession",
+     "amount_off": 50000,
+     "percent_off": null,
+     "currency": "usd",
+     "duration": "repeating",
+     "duration_in_months": 6,
+     "max_redemptions": 1,
+     "times_redeemed": 1,
+     "valid": 0,
+     "metadata": "{\"account\": \"Summit Group Account\", \"approved_by\": \"deal-desk\"}",
+     "created_at": "2026-02-14T11:30:00Z"
+    },
+    {
+     "id": "coupon_00000000000003",
+     "object": "coupon",
+     "name": "Research seat pilot 25%",
+     "amount_off": null,
+     "percent_off": 25.0,
+     "currency": null,
+     "duration": "repeating",
+     "duration_in_months": 3,
+     "max_redemptions": 20,
+     "times_redeemed": 7,
+     "valid": 1,
+     "metadata": "{\"campaign\": \"research-seat-expansion\"}",
+     "created_at": "2026-04-14T10:00:00Z"
+    },
+    {
+     "id": "coupon_00000000000004",
+     "object": "coupon",
+     "name": "Onboarding fee waiver",
+     "amount_off": 1500000,
+     "percent_off": null,
+     "currency": "usd",
+     "duration": "once",
+     "duration_in_months": null,
+     "max_redemptions": 5,
+     "times_redeemed": 2,
+     "valid": 1,
+     "metadata": null,
+     "created_at": "2026-03-22T15:05:00Z"
+    },
+    {
+     "id": "coupon_00000000000005",
+     "object": "coupon",
+     "name": "Q3 portal bundle 15%",
+     "amount_off": null,
+     "percent_off": 15.0,
+     "currency": null,
+     "duration": "once",
+     "duration_in_months": null,
+     "max_redemptions": 50,
+     "times_redeemed": 11,
+     "valid": 1,
+     "metadata": "{\"campaign\": \"portal-bundle-q3\"}",
+     "created_at": "2026-07-01T08:15:00Z"
+    },
+    {
+     "id": "coupon_00000000000006",
+     "object": "coupon",
+     "name": "Legacy desk migration credit",
+     "amount_off": 250000,
+     "percent_off": null,
+     "currency": "usd",
+     "duration": "once",
+     "duration_in_months": null,
+     "max_redemptions": null,
+     "times_redeemed": 3,
+     "valid": 1,
+     "metadata": "{\"note\": \"credit for accounts leaving Legacy Advisory Desk\"}",
+     "created_at": "2026-05-10T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "name": "stripe_events",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "object",
+     "type": "TEXT"
+    },
+    {
+     "name": "type",
+     "type": "TEXT"
+    },
+    {
+     "name": "api_version",
+     "type": "TEXT"
+    },
+    {
+     "name": "data",
+     "type": "TEXT"
+    },
+    {
+     "name": "livemode",
+     "type": "INTEGER"
+    },
+    {
+     "name": "pending_webhooks",
+     "type": "INTEGER"
+    },
+    {
+     "name": "request",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "evt_00000000000001",
+     "object": "event",
+     "type": "customer.subscription.created",
+     "api_version": "2026-01-28.basil",
+     "data": "{\"object\": {\"id\": \"sub_00000000000001\", \"object\": \"subscription\", \"customer\": \"cus_00000000000001\"}}",
+     "livemode": 0,
+     "pending_webhooks": 0,
+     "request": "req_00000000000101",
+     "created_at": "2026-01-15T14:00:05Z"
+    },
+    {
+     "id": "evt_00000000000002",
+     "object": "event",
+     "type": "payment_intent.succeeded",
+     "api_version": "2026-01-28.basil",
+     "data": "{\"object\": {\"id\": \"pi_00000000000006\", \"object\": \"payment_intent\", \"amount\": 44}}",
+     "livemode": 0,
+     "pending_webhooks": 0,
+     "request": "req_00000000000102",
+     "created_at": "2026-01-22T10:03:11Z"
+    },
+    {
+     "id": "evt_00000000000003",
+     "object": "event",
+     "type": "invoice.finalized",
+     "api_version": "2026-01-28.basil",
+     "data": "{\"object\": {\"id\": \"in_00000000000002\", \"object\": \"invoice\", \"customer\": \"cus_00000000000006\"}}",
+     "livemode": 0,
+     "pending_webhooks": 0,
+     "request": "req_00000000000103",
+     "created_at": "2026-02-01T09:05:00Z"
+    },
+    {
+     "id": "evt_00000000000004",
+     "object": "event",
+     "type": "charge.refunded",
+     "api_version": "2026-01-28.basil",
+     "data": "{\"object\": {\"id\": \"ch_00000000000001\", \"object\": \"charge\", \"amount_refunded\": 20}}",
+     "livemode": 0,
+     "pending_webhooks": 0,
+     "request": "req_00000000000104",
+     "created_at": "2026-02-03T10:14:09Z"
+    },
+    {
+     "id": "evt_00000000000005",
+     "object": "event",
+     "type": "charge.dispute.created",
+     "api_version": "2026-01-28.basil",
+     "data": "{\"object\": {\"id\": \"dp_00000000000001\", \"object\": \"dispute\", \"charge\": \"ch_00000000000018\"}}",
+     "livemode": 0,
+     "pending_webhooks": 1,
+     "request": null,
+     "created_at": "2026-03-02T17:40:22Z"
+    },
+    {
+     "id": "evt_00000000000006",
+     "object": "event",
+     "type": "invoice.paid",
+     "api_version": "2026-01-28.basil",
+     "data": "{\"object\": {\"id\": \"in_00000000000005\", \"object\": \"invoice\", \"customer\": \"cus_00000000000005\"}}",
+     "livemode": 0,
+     "pending_webhooks": 0,
+     "request": "req_00000000000106",
+     "created_at": "2026-04-05T00:20:31Z"
+    },
+    {
+     "id": "evt_00000000000007",
+     "object": "event",
+     "type": "customer.subscription.updated",
+     "api_version": "2026-01-28.basil",
+     "data": "{\"object\": {\"id\": \"sub_00000000000006\", \"object\": \"subscription\", \"cancel_at_period_end\": true}}",
+     "livemode": 0,
+     "pending_webhooks": 0,
+     "request": "req_00000000000107",
+     "created_at": "2026-07-15T09:12:44Z"
+    },
+    {
+     "id": "evt_00000000000008",
+     "object": "event",
+     "type": "invoice.payment_failed",
+     "api_version": "2026-01-28.basil",
+     "data": "{\"object\": {\"id\": \"in_00000000000007\", \"object\": \"invoice\", \"customer\": \"cus_00000000000004\"}}",
+     "livemode": 0,
+     "pending_webhooks": 2,
+     "request": null,
+     "created_at": "2026-07-10T00:30:15Z"
+    },
+    {
+     "id": "evt_00000000000009",
+     "object": "event",
+     "type": "payment_link.created",
+     "api_version": "2026-01-28.basil",
+     "data": "{\"object\": {\"id\": \"plink_00000000000006\", \"object\": \"payment_link\"}}",
+     "livemode": 0,
+     "pending_webhooks": 0,
+     "request": "req_00000000000109",
+     "created_at": "2026-08-01T09:30:02Z"
+    },
+    {
+     "id": "evt_00000000000010",
+     "object": "event",
+     "type": "checkout.session.completed",
+     "api_version": "2026-01-28.basil",
+     "data": "{\"object\": {\"id\": \"checkout_session_00000000000001\", \"object\": \"checkout.session\"}}",
+     "livemode": 0,
+     "pending_webhooks": 0,
+     "request": null,
+     "created_at": "2026-08-04T15:52:37Z"
+    },
+    {
+     "id": "evt_00000000000011",
+     "object": "event",
+     "type": "customer.subscription.deleted",
+     "api_version": "2026-01-28.basil",
+     "data": "{\"object\": {\"id\": \"sub_00000000000008\", \"object\": \"subscription\", \"customer\": \"cus_00000000000011\"}}",
+     "livemode": 0,
+     "pending_webhooks": 0,
+     "request": "req_00000000000111",
+     "created_at": "2026-06-30T18:00:04Z"
+    },
+    {
+     "id": "evt_00000000000012",
+     "object": "event",
+     "type": "payment_intent.created",
+     "api_version": "2026-01-28.basil",
+     "data": "{\"object\": {\"id\": \"pi_00000000000003\", \"object\": \"payment_intent\", \"amount\": 480000}}",
+     "livemode": 0,
+     "pending_webhooks": 0,
+     "request": "req_00000000000112",
+     "created_at": "2026-08-03T16:45:01Z"
+    }
+   ]
+  },
+  {
+   "name": "invoiceitems",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "object",
+     "type": "TEXT"
+    },
+    {
+     "name": "customer",
+     "type": "TEXT"
+    },
+    {
+     "name": "invoice",
+     "type": "TEXT"
+    },
+    {
+     "name": "amount",
+     "type": "INTEGER"
+    },
+    {
+     "name": "currency",
+     "type": "TEXT"
+    },
+    {
+     "name": "description",
+     "type": "TEXT"
+    },
+    {
+     "name": "price",
+     "type": "TEXT"
+    },
+    {
+     "name": "quantity",
+     "type": "INTEGER"
+    },
+    {
+     "name": "unit_amount",
+     "type": "INTEGER"
+    },
+    {
+     "name": "proration",
+     "type": "INTEGER"
+    },
+    {
+     "name": "period_start",
+     "type": "TEXT"
+    },
+    {
+     "name": "period_end",
+     "type": "TEXT"
+    },
+    {
+     "name": "metadata",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "ii_00000000000001",
+     "object": "invoiceitem",
+     "customer": "cus_00000000000001",
+     "invoice": "in_00000000000001",
+     "amount": 250000,
+     "currency": "usd",
+     "description": "Wealth Management Platform - August 2026",
+     "price": "price_00000000000001",
+     "quantity": 1,
+     "unit_amount": 250000,
+     "proration": 0,
+     "period_start": "2026-08-01T00:00:00Z",
+     "period_end": "2026-09-01T00:00:00Z",
+     "metadata": null,
+     "created_at": "2026-08-01T00:05:00Z"
+    },
+    {
+     "id": "ii_00000000000002",
+     "object": "invoiceitem",
+     "customer": "cus_00000000000001",
+     "invoice": null,
+     "amount": 60000,
+     "currency": "usd",
+     "description": "Portfolio Analytics Add-on - August 2026 (pending)",
+     "price": "price_00000000000003",
+     "quantity": 1,
+     "unit_amount": 60000,
+     "proration": 0,
+     "period_start": "2026-08-01T00:00:00Z",
+     "period_end": "2026-09-01T00:00:00Z",
+     "metadata": null,
+     "created_at": "2026-08-01T00:06:00Z"
+    },
+    {
+     "id": "ii_00000000000003",
+     "object": "invoiceitem",
+     "customer": "cus_00000000000001",
+     "invoice": null,
+     "amount": -12500,
+     "currency": "usd",
+     "description": "Proration credit - analytics add-on mid-cycle start",
+     "price": "price_00000000000003",
+     "quantity": 1,
+     "unit_amount": -12500,
+     "proration": 1,
+     "period_start": "2026-07-18T00:00:00Z",
+     "period_end": "2026-08-01T00:00:00Z",
+     "metadata": null,
+     "created_at": "2026-08-01T00:07:00Z"
+    },
+    {
+     "id": "ii_00000000000004",
+     "object": "invoiceitem",
+     "customer": "cus_00000000000006",
+     "invoice": "in_00000000000002",
+     "amount": 105000,
+     "currency": "usd",
+     "description": "Client Reporting Portal x3 - August 2026",
+     "price": "price_00000000000008",
+     "quantity": 3,
+     "unit_amount": 35000,
+     "proration": 0,
+     "period_start": "2026-08-02T00:00:00Z",
+     "period_end": "2026-09-02T00:00:00Z",
+     "metadata": null,
+     "created_at": "2026-08-02T00:05:00Z"
+    },
+    {
+     "id": "ii_00000000000005",
+     "object": "invoiceitem",
+     "customer": "cus_00000000000005",
+     "invoice": "in_00000000000005",
+     "amount": 540000,
+     "currency": "usd",
+     "description": "Research Terminal Seat x12 - August 2026",
+     "price": "price_00000000000004",
+     "quantity": 12,
+     "unit_amount": 45000,
+     "proration": 0,
+     "period_start": "2026-08-05T00:00:00Z",
+     "period_end": "2026-09-05T00:00:00Z",
+     "metadata": "{\"account\": \"Harborview\"}",
+     "created_at": "2026-08-05T00:05:00Z"
+    },
+    {
+     "id": "ii_00000000000006",
+     "object": "invoiceitem",
+     "customer": "cus_00000000000003",
+     "invoice": null,
+     "amount": 480000,
+     "currency": "usd",
+     "description": "Portfolio analytics annual true-up (pending next invoice)",
+     "price": "price_00000000000003",
+     "quantity": 8,
+     "unit_amount": 60000,
+     "proration": 0,
+     "period_start": "2026-02-01T00:00:00Z",
+     "period_end": "2027-02-01T00:00:00Z",
+     "metadata": "{\"account\": \"Meridian\"}",
+     "created_at": "2026-08-03T16:40:00Z"
+    },
+    {
+     "id": "ii_00000000000007",
+     "object": "invoiceitem",
+     "customer": "cus_00000000000012",
+     "invoice": "in_00000000000008",
+     "amount": 95000,
+     "currency": "usd",
+     "description": "Trade Execution API base - August 2026",
+     "price": "price_00000000000007",
+     "quantity": 1,
+     "unit_amount": 95000,
+     "proration": 0,
+     "period_start": "2026-08-01T00:00:00Z",
+     "period_end": "2026-09-01T00:00:00Z",
+     "metadata": "{\"account\": \"Atlas\"}",
+     "created_at": "2026-08-01T00:08:00Z"
+    },
+    {
+     "id": "ii_00000000000008",
+     "object": "invoiceitem",
+     "customer": "cus_00000000000002",
+     "invoice": null,
+     "amount": 120000,
+     "currency": "usd",
+     "description": "Compliance Reporting Suite - first month post-trial (pending)",
+     "price": "price_00000000000006",
+     "quantity": 1,
+     "unit_amount": 120000,
+     "proration": 0,
+     "period_start": "2026-09-01T00:00:00Z",
+     "period_end": "2026-10-01T00:00:00Z",
+     "metadata": "{\"account\": \"Crestline\"}",
+     "created_at": "2026-08-09T00:05:00Z"
+    }
+   ]
+  }
+ ],
+ "tools": [
+  {
+   "name": "get_customers",
+   "description": "Returns a list of your customers; the customers are returned sorted by creation date, with the most recent customers appearing first. (GET /v1/customers)",
+   "op": "list",
+   "table": "customers",
+   "params": {
+    "email": {
+     "type": "string",
+     "description": "A case-sensitive filter on the list based on the customer's email field. The value must be a string."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 30."
+    }
+   },
+   "filters": [
+    "email"
+   ]
+  },
+  {
+   "name": "get_customers_customer",
+   "description": "Retrieves a Customer object. (GET /v1/customers/{customer})",
+   "op": "get",
+   "table": "customers",
+   "params": {
+    "customer": {
+     "type": "string",
+     "description": "The identifier of the customer to be retrieved."
+    }
+   },
+   "required": [
+    "customer"
+   ],
+   "id_param": "customer",
+   "id_column": "id"
+  },
+  {
+   "name": "post_customers",
+   "description": "Creates a new customer object. (POST /v1/customers)",
+   "op": "create",
+   "table": "customers",
+   "params": {
+    "name": {
+     "type": "string",
+     "description": "The customer's full name or business name."
+    },
+    "email": {
+     "type": "string",
+     "description": "Customer's email address. It's displayed alongside the customer in your dashboard and can be useful for searching and tracking. This may be up to 512 characters."
+    },
+    "balance": {
+     "type": "integer",
+     "description": "An integer amount in cents that represents the customer's current balance, which affect the customer's future invoices. A negative amount represents a credit that decreases the amount due on an invoice; a positive amount increases the amount due on an invoice."
+    }
+   },
+   "fields": [
+    "name",
+    "email",
+    "balance"
+   ],
+   "defaults": {
+    "status": "active",
+    "currency": "usd"
+   },
+   "id_prefix": "cus_"
+  },
+  {
+   "name": "post_customers_customer",
+   "description": "Updates the specified customer by setting the values of the parameters passed; any parameters not provided will be left unchanged. (POST /v1/customers/{customer})",
+   "op": "update",
+   "table": "customers",
+   "params": {
+    "customer": {
+     "type": "string",
+     "description": "The identifier of the customer to update."
+    },
+    "name": {
+     "type": "string",
+     "description": "The customer's full name or business name."
+    },
+    "email": {
+     "type": "string",
+     "description": "Customer's email address. It's displayed alongside the customer in your dashboard and can be useful for searching and tracking. This may be up to 512 characters."
+    },
+    "balance": {
+     "type": "integer",
+     "description": "An integer amount in cents that represents the customer's current balance, which affect the customer's future invoices. A negative amount represents a credit that decreases the amount due on an invoice; a positive amount increases the amount due on an invoice."
+    }
+   },
+   "required": [
+    "customer"
+   ],
+   "id_param": "customer",
+   "id_column": "id",
+   "set_fields": [
+    "name",
+    "email",
+    "balance"
+   ]
+  },
+  {
+   "name": "get_products",
+   "description": "Returns a list of your products; the products are returned sorted by creation date, with the most recently created products appearing first. (GET /v1/products)",
+   "op": "list",
+   "table": "products",
+   "params": {
+    "active": {
+     "type": "boolean",
+     "description": "Only return products that are active or inactive (e.g., pass false to list all inactive products)."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 30."
+    }
+   },
+   "filters": [
+    "active"
+   ]
+  },
+  {
+   "name": "post_products",
+   "description": "Creates a new product object. (POST /v1/products)",
+   "op": "create",
+   "table": "products",
+   "params": {
+    "name": {
+     "type": "string",
+     "description": "The product's name, meant to be displayable to the customer."
+    },
+    "description": {
+     "type": "string",
+     "description": "The product's description, meant to be displayable to the customer. Use this field to optionally store a long form explanation of the product being sold for your own rendering purposes."
+    },
+    "active": {
+     "type": "boolean",
+     "description": "Whether the product is currently available for purchase. Defaults to true."
+    },
+    "url": {
+     "type": "string",
+     "description": "A URL of a publicly-accessible webpage for this product."
+    },
+    "metadata": {
+     "type": "object",
+     "description": "Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format."
+    }
+   },
+   "required": [
+    "name"
+   ],
+   "fields": [
+    "name",
+    "description",
+    "active",
+    "url",
+    "metadata"
+   ],
+   "defaults": {
+    "object": "product",
+    "type": "service"
+   },
+   "id_prefix": "prod_"
+  },
+  {
+   "name": "get_prices",
+   "description": "Returns a list of your active prices. (GET /v1/prices)",
+   "op": "list",
+   "table": "prices",
+   "params": {
+    "active": {
+     "type": "boolean",
+     "description": "Only return prices that are active or inactive (e.g., pass false to list all inactive prices)."
+    },
+    "currency": {
+     "type": "string",
+     "description": "Only return prices for the given currency."
+    },
+    "product": {
+     "type": "string",
+     "description": "Only return prices for the given product."
+    },
+    "type": {
+     "type": "string",
+     "description": "Only return prices of type recurring or one_time."
+    },
+    "lookup_key": {
+     "type": "string",
+     "description": "Only return the price with this lookup_key, if it exists."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 30."
+    }
+   },
+   "filters": [
+    "active",
+    "currency",
+    "product",
+    "type",
+    "lookup_key"
+   ]
+  },
+  {
+   "name": "post_prices",
+   "description": "Creates a new price for an existing product; the price can be recurring or one-time. (POST /v1/prices)",
+   "op": "create",
+   "table": "prices",
+   "params": {
+    "currency": {
+     "type": "string",
+     "description": "Three-letter ISO currency code, in lowercase. Must be a supported currency."
+    },
+    "product": {
+     "type": "string",
+     "description": "The ID of the Product that this Price will belong to."
+    },
+    "unit_amount": {
+     "type": "integer",
+     "description": "A positive integer in cents (or 0 for a free price) representing how much to charge. One of unit_amount or custom_unit_amount is required, unless billing_scheme=tiered."
+    },
+    "nickname": {
+     "type": "string",
+     "description": "A brief description of the price, hidden from customers."
+    },
+    "lookup_key": {
+     "type": "string",
+     "description": "A lookup key used to retrieve prices dynamically from a static string. Can be up to 200 characters."
+    },
+    "recurring_interval": {
+     "type": "string",
+     "description": "recurring[interval]: Specifies billing frequency. Either day, week, month or year. Omit for a one_time price."
+    },
+    "type": {
+     "type": "string",
+     "description": "One of recurring or one_time, matching whether recurring[interval] is set."
+    },
+    "metadata": {
+     "type": "object",
+     "description": "Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format."
+    }
+   },
+   "required": [
+    "currency",
+    "product",
+    "unit_amount"
+   ],
+   "fields": [
+    "currency",
+    "product",
+    "unit_amount",
+    "nickname",
+    "lookup_key",
+    "recurring_interval",
+    "type",
+    "metadata"
+   ],
+   "defaults": {
+    "object": "price",
+    "active": 1,
+    "billing_scheme": "per_unit"
+   },
+   "id_prefix": "price_"
+  },
+  {
+   "name": "get_subscriptions",
+   "description": "By default, returns a list of subscriptions that have not been canceled. (GET /v1/subscriptions)",
+   "op": "list",
+   "table": "subscriptions",
+   "params": {
+    "customer": {
+     "type": "string",
+     "description": "The ID of the customer whose subscriptions will be retrieved."
+    },
+    "price": {
+     "type": "string",
+     "description": "Filter for subscriptions that contain this recurring price."
+    },
+    "status": {
+     "type": "string",
+     "description": "The status of the subscriptions to retrieve. One of incomplete, incomplete_expired, trialing, active, past_due, unpaid, canceled, or paused."
+    },
+    "collection_method": {
+     "type": "string",
+     "description": "The collection method of the subscriptions to retrieve. Either charge_automatically or send_invoice."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 30."
+    }
+   },
+   "filters": [
+    "customer",
+    "price",
+    "status",
+    "collection_method"
+   ]
+  },
+  {
+   "name": "get_subscriptions_subscription",
+   "description": "Retrieves the subscription with the given ID. (GET /v1/subscriptions/{subscription})",
+   "op": "get",
+   "table": "subscriptions",
+   "params": {
+    "subscription": {
+     "type": "string",
+     "description": "The identifier of the subscription to be retrieved."
+    }
+   },
+   "required": [
+    "subscription"
+   ],
+   "id_param": "subscription",
+   "id_column": "id"
+  },
+  {
+   "name": "post_subscriptions",
+   "description": "Creates a new subscription on an existing customer. (POST /v1/subscriptions)",
+   "op": "create",
+   "table": "subscriptions",
+   "params": {
+    "customer": {
+     "type": "string",
+     "description": "The identifier of the customer to subscribe."
+    },
+    "price": {
+     "type": "string",
+     "description": "items[0][price]: The ID of the recurring price to subscribe the customer to."
+    },
+    "quantity": {
+     "type": "integer",
+     "description": "items[0][quantity]: Quantity for this item."
+    },
+    "currency": {
+     "type": "string",
+     "description": "Three-letter ISO currency code, in lowercase. Must be a supported currency."
+    },
+    "collection_method": {
+     "type": "string",
+     "description": "Either charge_automatically, or send_invoice. When charging automatically, Stripe will attempt to pay this subscription at the end of the cycle using the default source attached to the customer. When sending an invoice, Stripe will email your customer an invoice with payment instructions. Defaults to charge_automatically."
+    },
+    "default_payment_method": {
+     "type": "string",
+     "description": "ID of the default payment method for the subscription. It must belong to the customer associated with the subscription."
+    },
+    "metadata": {
+     "type": "object",
+     "description": "Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format."
+    }
+   },
+   "required": [
+    "customer",
+    "price"
+   ],
+   "fields": [
+    "customer",
+    "price",
+    "quantity",
+    "currency",
+    "collection_method",
+    "default_payment_method",
+    "metadata"
+   ],
+   "defaults": {
+    "object": "subscription",
+    "status": "active",
+    "cancel_at_period_end": 0
+   },
+   "id_prefix": "sub_"
+  },
+  {
+   "name": "post_subscriptions_subscription",
+   "description": "Updates an existing subscription to match the specified parameters; for example, set cancel_at_period_end to schedule a cancellation at the end of the current billing period. (POST /v1/subscriptions/{subscription})",
+   "op": "update",
+   "table": "subscriptions",
+   "params": {
+    "subscription": {
+     "type": "string",
+     "description": "The identifier of the subscription to update."
+    },
+    "cancel_at_period_end": {
+     "type": "boolean",
+     "description": "Indicate whether this subscription should cancel at the end of the current period (current_period_end). Defaults to false."
+    },
+    "price": {
+     "type": "string",
+     "description": "items[0][price]: The ID of the price object to switch this subscription to."
+    },
+    "quantity": {
+     "type": "integer",
+     "description": "items[0][quantity]: Quantity for this item."
+    },
+    "collection_method": {
+     "type": "string",
+     "description": "Either charge_automatically, or send_invoice. Defaults to charge_automatically."
+    },
+    "default_payment_method": {
+     "type": "string",
+     "description": "ID of the default payment method for the subscription. It must belong to the customer associated with the subscription."
+    },
+    "metadata": {
+     "type": "object",
+     "description": "Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format."
+    }
+   },
+   "required": [
+    "subscription"
+   ],
+   "id_param": "subscription",
+   "id_column": "id",
+   "set_fields": [
+    "cancel_at_period_end",
+    "price",
+    "quantity",
+    "collection_method",
+    "default_payment_method",
+    "metadata"
+   ]
+  },
+  {
+   "name": "delete_subscriptions_subscription",
+   "description": "Cancels a customer's subscription immediately; the customer will not be charged again for the subscription. (DELETE /v1/subscriptions/{subscription})",
+   "op": "custom",
+   "type": "write",
+   "table": "subscriptions",
+   "params": {
+    "subscription": {
+     "type": "string",
+     "description": "The identifier of the subscription to cancel."
+    }
+   },
+   "required": [
+    "subscription"
+   ],
+   "custom_source": "def delete_subscriptions_subscription(db_path='state.db', **kwargs):\n    import sqlite3, datetime\n    subscription = kwargs.get('subscription')\n    if not subscription:\n        return {\"error\": {\"type\": \"invalid_request_error\", \"message\": \"Missing required param: subscription.\"}}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    row = cur.execute(\"SELECT * FROM subscriptions WHERE id = ?\", (subscription,)).fetchone()\n    if row is None:\n        conn.close()\n        return {\"error\": {\"type\": \"invalid_request_error\", \"code\": \"resource_missing\", \"message\": \"No such subscription: '%s'\" % subscription}}\n    if row[\"status\"] == \"canceled\":\n        conn.close()\n        return {\"error\": {\"type\": \"invalid_request_error\", \"message\": \"Subscription %s is already canceled; a canceled subscription can no longer be canceled.\" % subscription}}\n    now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')\n    cur.execute(\"UPDATE subscriptions SET status = 'canceled', canceled_at = ?, cancel_at_period_end = 0 WHERE id = ?\", (now, subscription))\n    conn.commit()\n    updated = cur.execute(\"SELECT * FROM subscriptions WHERE id = ?\", (subscription,)).fetchone()\n    conn.close()\n    return dict(updated)\n"
+  },
+  {
+   "name": "get_payment_intents",
+   "description": "Returns a list of PaymentIntents. (GET /v1/payment_intents)",
+   "op": "list",
+   "table": "payment_intents",
+   "params": {
+    "customer": {
+     "type": "string",
+     "description": "Only return PaymentIntents for the customer that this customer ID specifies."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 30."
+    }
+   },
+   "filters": [
+    "customer"
+   ]
+  },
+  {
+   "name": "post_payment_intents",
+   "description": "Creates a PaymentIntent object. (POST /v1/payment_intents)",
+   "op": "create",
+   "table": "payment_intents",
+   "params": {
+    "amount": {
+     "type": "integer",
+     "description": "Amount intended to be collected by this PaymentIntent. A positive integer representing how much to charge in the smallest currency unit (e.g., 100 cents to charge $1.00)."
+    },
+    "currency": {
+     "type": "string",
+     "description": "Three-letter ISO currency code, in lowercase. Must be a supported currency."
+    },
+    "customer": {
+     "type": "string",
+     "description": "ID of the Customer this PaymentIntent belongs to, if one exists. Payment methods attached to other Customers cannot be used with this PaymentIntent."
+    },
+    "description": {
+     "type": "string",
+     "description": "An arbitrary string attached to the object. Often useful for displaying to users."
+    },
+    "payment_method": {
+     "type": "string",
+     "description": "ID of the payment method (a PaymentMethod, Card, or compatible Source object) to attach to this PaymentIntent."
+    },
+    "receipt_email": {
+     "type": "string",
+     "description": "Email address to send the receipt to. The receipt will not be sent until the payment is confirmed."
+    },
+    "capture_method": {
+     "type": "string",
+     "description": "Controls when the funds will be captured from the customer's account. Possible values are automatic, automatic_async, or manual. Defaults to automatic."
+    },
+    "statement_descriptor": {
+     "type": "string",
+     "description": "Text that appears on the customer's statement as the statement descriptor for a non-card charge."
+    },
+    "metadata": {
+     "type": "object",
+     "description": "Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format."
+    }
+   },
+   "required": [
+    "amount",
+    "currency"
+   ],
+   "fields": [
+    "amount",
+    "currency",
+    "customer",
+    "description",
+    "payment_method",
+    "receipt_email",
+    "capture_method",
+    "statement_descriptor",
+    "metadata"
+   ],
+   "defaults": {
+    "object": "payment_intent",
+    "status": "requires_payment_method",
+    "amount_capturable": 0,
+    "amount_received": 0,
+    "confirmation_method": "automatic",
+    "livemode": 0
+   },
+   "id_prefix": "pi_"
+  },
+  {
+   "name": "post_payment_intents_intent_confirm",
+   "description": "Confirm that your customer intends to pay with current or provided payment method; upon confirmation the PaymentIntent transitions to requires_capture (manual capture_method) or succeeded. (POST /v1/payment_intents/{intent}/confirm)",
+   "op": "custom",
+   "type": "write",
+   "table": "payment_intents",
+   "params": {
+    "intent": {
+     "type": "string",
+     "description": "The identifier of the PaymentIntent to confirm."
+    },
+    "payment_method": {
+     "type": "string",
+     "description": "ID of the payment method (a PaymentMethod, Card, or compatible Source object) to attach to this PaymentIntent."
+    }
+   },
+   "required": [
+    "intent"
+   ],
+   "custom_source": "def post_payment_intents_intent_confirm(db_path='state.db', **kwargs):\n    import sqlite3\n    intent = kwargs.get('intent')\n    if not intent:\n        return {\"error\": {\"type\": \"invalid_request_error\", \"message\": \"Missing required param: intent.\"}}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    row = cur.execute(\"SELECT * FROM payment_intents WHERE id = ?\", (intent,)).fetchone()\n    if row is None:\n        conn.close()\n        return {\"error\": {\"type\": \"invalid_request_error\", \"code\": \"resource_missing\", \"message\": \"No such payment_intent: '%s'\" % intent}}\n    if row[\"status\"] not in (\"requires_payment_method\", \"requires_confirmation\"):\n        conn.close()\n        return {\"error\": {\"type\": \"invalid_request_error\", \"message\": \"You cannot confirm this PaymentIntent because it has a status of %s; only a PaymentIntent with one of the following statuses may be confirmed: requires_payment_method, requires_confirmation.\" % row[\"status\"]}}\n    payment_method = kwargs.get('payment_method') or row[\"payment_method\"]\n    if not payment_method:\n        conn.close()\n        return {\"error\": {\"type\": \"invalid_request_error\", \"message\": \"You cannot confirm this PaymentIntent because it's missing a payment method. Provide a payment_method or attach one to the PaymentIntent first.\"}}\n    amount = row[\"amount\"] or 0\n    if row[\"capture_method\"] == \"manual\":\n        cur.execute(\"UPDATE payment_intents SET status = 'requires_capture', payment_method = ?, amount_capturable = ?, amount_received = 0 WHERE id = ?\", (payment_method, amount, intent))\n    else:\n        cur.execute(\"UPDATE payment_intents SET status = 'succeeded', payment_method = ?, amount_capturable = 0, amount_received = ? WHERE id = ?\", (payment_method, amount, intent))\n    conn.commit()\n    updated = cur.execute(\"SELECT * FROM payment_intents WHERE id = ?\", (intent,)).fetchone()\n    conn.close()\n    return dict(updated)\n"
+  },
+  {
+   "name": "post_payment_intents_intent_capture",
+   "description": "Capture the funds of an existing uncaptured PaymentIntent when its status is requires_capture; uncaptured PaymentIntents are cancelled a set number of days after they are created (7 by default). (POST /v1/payment_intents/{intent}/capture)",
+   "op": "custom",
+   "type": "write",
+   "table": "payment_intents",
+   "params": {
+    "intent": {
+     "type": "string",
+     "description": "The identifier of the PaymentIntent to capture."
+    },
+    "amount_to_capture": {
+     "type": "integer",
+     "description": "The amount to capture from the PaymentIntent, which must be less than or equal to the original amount. Defaults to the full amount_capturable if it's not provided."
+    }
+   },
+   "required": [
+    "intent"
+   ],
+   "custom_source": "def post_payment_intents_intent_capture(db_path='state.db', **kwargs):\n    import sqlite3\n    intent = kwargs.get('intent')\n    if not intent:\n        return {\"error\": {\"type\": \"invalid_request_error\", \"message\": \"Missing required param: intent.\"}}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    row = cur.execute(\"SELECT * FROM payment_intents WHERE id = ?\", (intent,)).fetchone()\n    if row is None:\n        conn.close()\n        return {\"error\": {\"type\": \"invalid_request_error\", \"code\": \"resource_missing\", \"message\": \"No such payment_intent: '%s'\" % intent}}\n    if row[\"status\"] != \"requires_capture\":\n        conn.close()\n        return {\"error\": {\"type\": \"invalid_request_error\", \"message\": \"PaymentIntent %s could not be captured because it has a status of %s; only a PaymentIntent with status requires_capture may be captured.\" % (intent, row[\"status\"])}}\n    capturable = row[\"amount_capturable\"] if row[\"amount_capturable\"] else (row[\"amount\"] or 0)\n    amount_to_capture = kwargs.get('amount_to_capture')\n    if amount_to_capture is None:\n        amount_to_capture = capturable\n    amount_to_capture = int(amount_to_capture)\n    if amount_to_capture < 1 or amount_to_capture > capturable:\n        conn.close()\n        return {\"error\": {\"type\": \"invalid_request_error\", \"message\": \"amount_to_capture must be a positive integer less than or equal to amount_capturable (%s).\" % capturable}}\n    cur.execute(\"UPDATE payment_intents SET status = 'succeeded', amount_received = ?, amount_capturable = 0 WHERE id = ?\", (amount_to_capture, intent))\n    conn.commit()\n    updated = cur.execute(\"SELECT * FROM payment_intents WHERE id = ?\", (intent,)).fetchone()\n    conn.close()\n    return dict(updated)\n"
+  },
+  {
+   "name": "get_refunds",
+   "description": "Returns a list of all refunds you created; refunds are returned in sorted order, with the most recent refunds appearing first. (GET /v1/refunds)",
+   "op": "list",
+   "table": "refunds",
+   "params": {
+    "charge": {
+     "type": "string",
+     "description": "Only return refunds for the charge specified by this charge ID."
+    },
+    "payment_intent": {
+     "type": "string",
+     "description": "Only return refunds for the PaymentIntent specified by this ID."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 30."
+    }
+   },
+   "filters": [
+    "charge",
+    "payment_intent"
+   ]
+  },
+  {
+   "name": "post_refunds",
+   "description": "When you create a new refund, you must specify a Charge or a PaymentIntent object on which to create it; funds will be refunded to the credit or debit card that was originally charged. (POST /v1/refunds)",
+   "op": "custom",
+   "type": "write",
+   "table": "refunds",
+   "extra_tables": [
+    "charges"
+   ],
+   "params": {
+    "charge": {
+     "type": "string",
+     "description": "The identifier of the charge to refund."
+    },
+    "payment_intent": {
+     "type": "string",
+     "description": "The identifier of the PaymentIntent to refund."
+    },
+    "amount": {
+     "type": "integer",
+     "description": "A positive integer in cents representing how much of this charge to refund. Can refund only up to the remaining, unrefunded amount of the charge."
+    },
+    "reason": {
+     "type": "string",
+     "description": "String indicating the reason for the refund. If set, possible values are duplicate, fraudulent, and requested_by_customer. If you believe the charge to be fraudulent, specifying fraudulent as the reason will add the associated card and email to your block lists, and will also help us improve our fraud detection algorithms."
+    },
+    "metadata": {
+     "type": "object",
+     "description": "Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format."
+    }
+   },
+   "custom_source": "def post_refunds(db_path='state.db', **kwargs):\n    import sqlite3, datetime, hashlib, json\n    charge_id = kwargs.get('charge')\n    payment_intent = kwargs.get('payment_intent')\n    if not charge_id and not payment_intent:\n        return {\"error\": {\"type\": \"invalid_request_error\", \"message\": \"One of the following params must be provided: charge, payment_intent.\"}}\n    reason = kwargs.get('reason')\n    if reason is not None and reason not in (\"duplicate\", \"fraudulent\", \"requested_by_customer\"):\n        return {\"error\": {\"type\": \"invalid_request_error\", \"param\": \"reason\", \"message\": \"Invalid reason: must be one of duplicate, fraudulent, or requested_by_customer.\"}}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    if charge_id:\n        row = cur.execute(\"SELECT * FROM charges WHERE id = ?\", (charge_id,)).fetchone()\n        if row is None:\n            conn.close()\n            return {\"error\": {\"type\": \"invalid_request_error\", \"code\": \"resource_missing\", \"message\": \"No such charge: '%s'\" % charge_id}}\n    else:\n        row = cur.execute(\"SELECT * FROM charges WHERE payment_intent = ? ORDER BY created DESC, id DESC LIMIT 1\", (payment_intent,)).fetchone()\n        if row is None:\n            conn.close()\n            return {\"error\": {\"type\": \"invalid_request_error\", \"code\": \"resource_missing\", \"message\": \"No such payment_intent, or no charge found for PaymentIntent: '%s'\" % payment_intent}}\n    charge_id = row[\"id\"]\n    payment_intent = row[\"payment_intent\"]\n    already = row[\"amount_refunded\"] or 0\n    total = row[\"amount\"] or 0\n    remaining = total - already\n    if remaining <= 0:\n        conn.close()\n        return {\"error\": {\"type\": \"invalid_request_error\", \"code\": \"charge_already_refunded\", \"message\": \"Charge %s has already been refunded.\" % charge_id}}\n    amount = kwargs.get('amount')\n    if amount is None:\n        amount = remaining\n    amount = int(amount)\n    if amount < 1 or amount > remaining:\n        conn.close()\n        return {\"error\": {\"type\": \"invalid_request_error\", \"param\": \"amount\", \"message\": \"Refund amount (%s) is greater than unrefunded amount on charge (%s).\" % (amount, remaining)}}\n    n = cur.execute(\"SELECT COUNT(*) FROM refunds\").fetchone()[0]\n    refund_id = \"re_\" + hashlib.sha1((\"%s|%s|%s\" % (charge_id, amount, n)).encode()).hexdigest()[:14]\n    now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')\n    metadata = kwargs.get('metadata')\n    metadata_json = json.dumps(metadata) if isinstance(metadata, dict) else metadata\n    cur.execute(\n        \"INSERT INTO refunds (id, object, amount, charge, payment_intent, currency, reason, status, balance_transaction, receipt_number, metadata, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)\",\n        (refund_id, \"refund\", amount, charge_id, payment_intent, row[\"currency\"], reason, \"succeeded\", None, None, metadata_json, now),\n    )\n    new_refunded = already + amount\n    fully = 1 if new_refunded >= total else (row[\"refunded\"] or 0)\n    cur.execute(\"UPDATE charges SET amount_refunded = ?, refunded = ? WHERE id = ?\", (new_refunded, fully, charge_id))\n    conn.commit()\n    created = cur.execute(\"SELECT * FROM refunds WHERE id = ?\", (refund_id,)).fetchone()\n    conn.close()\n    return dict(created)\n"
+  },
+  {
+   "name": "get_payment_links",
+   "description": "Returns a list of your payment links. (GET /v1/payment_links)",
+   "op": "list",
+   "table": "payment_links",
+   "params": {
+    "active": {
+     "type": "boolean",
+     "description": "Only return payment links that are active or inactive (e.g., pass false to list all inactive payment links)."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 30."
+    }
+   },
+   "filters": [
+    "active"
+   ]
+  },
+  {
+   "name": "post_payment_links",
+   "description": "Creates a payment link \u2014 a shareable URL that will take your customers to a hosted payment page. (POST /v1/payment_links)",
+   "op": "custom",
+   "type": "write",
+   "table": "payment_links",
+   "extra_tables": [
+    "prices"
+   ],
+   "params": {
+    "price": {
+     "type": "string",
+     "description": "line_items[0][price]: The ID of the Price object. Each price can be a one-time purchase or a recurring price."
+    },
+    "quantity": {
+     "type": "integer",
+     "description": "line_items[0][quantity]: The quantity of the line item being purchased. Defaults to 1."
+    },
+    "allow_promotion_codes": {
+     "type": "boolean",
+     "description": "Enables user redeemable promotion codes. Defaults to false."
+    },
+    "metadata": {
+     "type": "object",
+     "description": "Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format."
+    }
+   },
+   "required": [
+    "price"
+   ],
+   "custom_source": "def post_payment_links(db_path='state.db', **kwargs):\n    import sqlite3, datetime, hashlib, json\n    price = kwargs.get('price')\n    if not price:\n        return {\"error\": {\"type\": \"invalid_request_error\", \"param\": \"line_items[0][price]\", \"message\": \"Missing required param: line_items[0][price].\"}}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    prow = cur.execute(\"SELECT * FROM prices WHERE id = ?\", (price,)).fetchone()\n    if prow is None:\n        conn.close()\n        return {\"error\": {\"type\": \"invalid_request_error\", \"code\": \"resource_missing\", \"message\": \"No such price: '%s'\" % price}}\n    quantity = kwargs.get('quantity')\n    quantity = int(quantity) if quantity is not None else 1\n    if quantity < 1:\n        conn.close()\n        return {\"error\": {\"type\": \"invalid_request_error\", \"param\": \"line_items[0][quantity]\", \"message\": \"quantity must be a positive integer.\"}}\n    allow_promotion_codes = 1 if kwargs.get('allow_promotion_codes') else 0\n    n = cur.execute(\"SELECT COUNT(*) FROM payment_links\").fetchone()[0]\n    digest = hashlib.sha1((\"%s|%s|%s\" % (price, quantity, n)).encode()).hexdigest()[:14]\n    link_id = \"plink_\" + digest\n    url = \"https://buy.stripe.com/test_\" + digest\n    now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')\n    metadata = kwargs.get('metadata')\n    metadata_json = json.dumps(metadata) if isinstance(metadata, dict) else metadata\n    cur.execute(\n        \"INSERT INTO payment_links (id, object, active, url, price, quantity, currency, allow_promotion_codes, metadata, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)\",\n        (link_id, \"payment_link\", 1, url, price, quantity, prow[\"currency\"], allow_promotion_codes, metadata_json, now),\n    )\n    conn.commit()\n    created = cur.execute(\"SELECT * FROM payment_links WHERE id = ?\", (link_id,)).fetchone()\n    conn.close()\n    return dict(created)\n"
+  },
+  {
+   "name": "post_invoices",
+   "description": "This endpoint creates a draft invoice for a given customer; the draft invoice remains a draft until you finalize it. (POST /v1/invoices)",
+   "op": "create",
+   "table": "invoices",
+   "params": {
+    "customer": {
+     "type": "string",
+     "description": "The ID of the customer who will be billed."
+    },
+    "currency": {
+     "type": "string",
+     "description": "The currency to create this invoice in. Defaults to that of customer if not specified."
+    },
+    "collection_method": {
+     "type": "string",
+     "description": "Either charge_automatically, or send_invoice. When charging automatically, Stripe will attempt to pay this invoice using the default source attached to the customer. When sending an invoice, Stripe will email this invoice to the customer with payment instructions. Defaults to charge_automatically."
+    },
+    "auto_advance": {
+     "type": "boolean",
+     "description": "Controls whether Stripe performs automatic collection of the invoice. If false, the invoice's state doesn't automatically advance without an explicit action. Defaults to false."
+    }
+   },
+   "required": [
+    "customer"
+   ],
+   "fields": [
+    "customer",
+    "currency",
+    "collection_method",
+    "auto_advance"
+   ],
+   "defaults": {
+    "object": "invoice",
+    "status": "draft",
+    "billing_reason": "manual",
+    "amount_due": 0,
+    "amount_paid": 0,
+    "amount_remaining": 0,
+    "subtotal": 0,
+    "total": 0,
+    "attempted": 0,
+    "attempt_count": 0,
+    "livemode": 0
+   },
+   "id_prefix": "in_"
+  },
+  {
+   "name": "post_invoices_invoice_finalize",
+   "description": "Stripe automatically finalizes drafts before sending and attempting payment on invoices; however, if you'd like to finalize a draft invoice manually, you can do so using this method \u2014 pending invoice items for the customer are attached and invoice totals are computed. (POST /v1/invoices/{invoice}/finalize)",
+   "op": "custom",
+   "type": "write",
+   "table": "invoices",
+   "extra_tables": [
+    "invoiceitems"
+   ],
+   "params": {
+    "invoice": {
+     "type": "string",
+     "description": "The identifier of the invoice to finalize."
+    },
+    "auto_advance": {
+     "type": "boolean",
+     "description": "Controls whether Stripe performs automatic collection of the invoice. If false, the invoice's state doesn't automatically advance without an explicit action."
+    }
+   },
+   "required": [
+    "invoice"
+   ],
+   "custom_source": "def post_invoices_invoice_finalize(db_path='state.db', **kwargs):\n    import sqlite3\n    invoice = kwargs.get('invoice')\n    if not invoice:\n        return {\"error\": {\"type\": \"invalid_request_error\", \"message\": \"Missing required param: invoice.\"}}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    row = cur.execute(\"SELECT * FROM invoices WHERE id = ?\", (invoice,)).fetchone()\n    if row is None:\n        conn.close()\n        return {\"error\": {\"type\": \"invalid_request_error\", \"code\": \"resource_missing\", \"message\": \"No such invoice: '%s'\" % invoice}}\n    if row[\"status\"] != \"draft\":\n        conn.close()\n        return {\"error\": {\"type\": \"invalid_request_error\", \"message\": \"This invoice can't be finalized because it has a status of %s; only draft invoices can be finalized.\" % row[\"status\"]}}\n    cur.execute(\"UPDATE invoiceitems SET invoice = ? WHERE customer = ? AND (invoice IS NULL OR invoice = '')\", (invoice, row[\"customer\"]))\n    total = cur.execute(\"SELECT COALESCE(SUM(COALESCE(amount, COALESCE(unit_amount, 0) * COALESCE(quantity, 1))), 0) FROM invoiceitems WHERE invoice = ?\", (invoice,)).fetchone()[0]\n    if total == 0:\n        total = row[\"total\"] or 0\n    auto_advance = kwargs.get('auto_advance')\n    if auto_advance is None:\n        cur.execute(\"UPDATE invoices SET status = 'open', subtotal = ?, total = ?, amount_due = ?, amount_remaining = ? WHERE id = ?\", (total, total, total, total, invoice))\n    else:\n        cur.execute(\"UPDATE invoices SET status = 'open', subtotal = ?, total = ?, amount_due = ?, amount_remaining = ?, auto_advance = ? WHERE id = ?\", (total, total, total, total, 1 if auto_advance else 0, invoice))\n    conn.commit()\n    updated = cur.execute(\"SELECT * FROM invoices WHERE id = ?\", (invoice,)).fetchone()\n    conn.close()\n    return dict(updated)\n"
+  },
+  {
+   "name": "post_invoices_invoice_void",
+   "description": "Mark a finalized invoice as void; this cannot be undone. Voiding an invoice is similar to deletion, however it only applies to finalized invoices and maintains a papertrail where the invoice can still be found. (POST /v1/invoices/{invoice}/void)",
+   "op": "custom",
+   "type": "write",
+   "table": "invoices",
+   "params": {
+    "invoice": {
+     "type": "string",
+     "description": "The identifier of the invoice to void."
+    }
+   },
+   "required": [
+    "invoice"
+   ],
+   "custom_source": "def post_invoices_invoice_void(db_path='state.db', **kwargs):\n    import sqlite3\n    invoice = kwargs.get('invoice')\n    if not invoice:\n        return {\"error\": {\"type\": \"invalid_request_error\", \"message\": \"Missing required param: invoice.\"}}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    row = cur.execute(\"SELECT * FROM invoices WHERE id = ?\", (invoice,)).fetchone()\n    if row is None:\n        conn.close()\n        return {\"error\": {\"type\": \"invalid_request_error\", \"code\": \"resource_missing\", \"message\": \"No such invoice: '%s'\" % invoice}}\n    if row[\"status\"] not in (\"open\", \"uncollectible\"):\n        conn.close()\n        return {\"error\": {\"type\": \"invalid_request_error\", \"message\": \"This invoice can't be voided because it has a status of %s; only open or uncollectible invoices can be voided.\" % row[\"status\"]}}\n    cur.execute(\"UPDATE invoices SET status = 'void', amount_remaining = 0, auto_advance = 0 WHERE id = ?\", (invoice,))\n    conn.commit()\n    updated = cur.execute(\"SELECT * FROM invoices WHERE id = ?\", (invoice,)).fetchone()\n    conn.close()\n    return dict(updated)\n"
+  },
+  {
+   "name": "post_invoices_invoice_pay",
+   "description": "Stripe automatically creates and then attempts to collect payment on invoices for customers on subscriptions according to your subscriptions settings; however, if you'd like to attempt payment on an invoice out of the normal collection schedule or for some other reason, you can do so. (POST /v1/invoices/{invoice}/pay)",
+   "op": "custom",
+   "type": "write",
+   "table": "invoices",
+   "params": {
+    "invoice": {
+     "type": "string",
+     "description": "The identifier of the invoice to pay."
+    },
+    "paid_out_of_band": {
+     "type": "boolean",
+     "description": "Boolean representing whether an invoice is paid outside of Stripe. This will result in no charge being made. Defaults to false."
+    }
+   },
+   "required": [
+    "invoice"
+   ],
+   "custom_source": "def post_invoices_invoice_pay(db_path='state.db', **kwargs):\n    import sqlite3\n    invoice = kwargs.get('invoice')\n    if not invoice:\n        return {\"error\": {\"type\": \"invalid_request_error\", \"message\": \"Missing required param: invoice.\"}}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    row = cur.execute(\"SELECT * FROM invoices WHERE id = ?\", (invoice,)).fetchone()\n    if row is None:\n        conn.close()\n        return {\"error\": {\"type\": \"invalid_request_error\", \"code\": \"resource_missing\", \"message\": \"No such invoice: '%s'\" % invoice}}\n    if row[\"status\"] == \"paid\":\n        conn.close()\n        return {\"error\": {\"type\": \"invalid_request_error\", \"code\": \"invoice_already_paid\", \"message\": \"Invoice %s is already paid.\" % invoice}}\n    if row[\"status\"] != \"open\":\n        conn.close()\n        return {\"error\": {\"type\": \"invalid_request_error\", \"message\": \"This invoice can't be paid because it has a status of %s; only open invoices can be paid.\" % row[\"status\"]}}\n    amount_due = row[\"amount_due\"] or 0\n    attempt_count = (row[\"attempt_count\"] or 0) + 1\n    if kwargs.get('paid_out_of_band'):\n        cur.execute(\"UPDATE invoices SET status = 'paid', amount_paid = ?, amount_paid_off_stripe = ?, amount_remaining = 0, attempted = 1, attempt_count = ? WHERE id = ?\", (amount_due, amount_due, attempt_count, invoice))\n    else:\n        cur.execute(\"UPDATE invoices SET status = 'paid', amount_paid = ?, amount_remaining = 0, attempted = 1, attempt_count = ? WHERE id = ?\", (amount_due, attempt_count, invoice))\n    conn.commit()\n    updated = cur.execute(\"SELECT * FROM invoices WHERE id = ?\", (invoice,)).fetchone()\n    conn.close()\n    return dict(updated)\n"
+  },
+  {
+   "name": "post_invoiceitems",
+   "description": "Creates an item to be added to a draft invoice (up to 250 items per invoice); if no invoice is specified, the item will be on the next invoice created for the customer specified. (POST /v1/invoiceitems)",
+   "op": "create",
+   "table": "invoiceitems",
+   "params": {
+    "customer": {
+     "type": "string",
+     "description": "The ID of the customer who will be billed when this invoice item is billed."
+    },
+    "amount": {
+     "type": "integer",
+     "description": "The integer amount in cents of the charge to be applied to the upcoming invoice. Passing in a negative amount will reduce the amount_due on the invoice."
+    },
+    "currency": {
+     "type": "string",
+     "description": "Three-letter ISO currency code, in lowercase. Must be a supported currency."
+    },
+    "description": {
+     "type": "string",
+     "description": "An arbitrary string which you can attach to the invoice item. The description is displayed in the invoice for easy tracking."
+    },
+    "invoice": {
+     "type": "string",
+     "description": "The ID of an existing invoice to add this invoice item to. When left blank, the invoice item will be added to the next upcoming scheduled invoice."
+    },
+    "price": {
+     "type": "string",
+     "description": "The ID of the price object."
+    },
+    "quantity": {
+     "type": "integer",
+     "description": "Non-negative integer. The quantity of units for the invoice item."
+    },
+    "unit_amount": {
+     "type": "integer",
+     "description": "The integer unit amount in cents of the charge to be applied to the upcoming invoice. This unit_amount will be multiplied by the quantity to get the full amount. Passing in a negative unit_amount will reduce the amount_due on the invoice."
+    },
+    "metadata": {
+     "type": "object",
+     "description": "Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format."
+    }
+   },
+   "required": [
+    "customer"
+   ],
+   "fields": [
+    "customer",
+    "amount",
+    "currency",
+    "description",
+    "invoice",
+    "price",
+    "quantity",
+    "unit_amount",
+    "metadata"
+   ],
+   "defaults": {
+    "object": "invoiceitem",
+    "proration": 0
+   },
+   "id_prefix": "ii_"
+  },
+  {
+   "name": "get_coupons",
+   "description": "Returns a list of your coupons. (GET /v1/coupons)",
+   "op": "list",
+   "table": "coupons",
+   "params": {
+    "limit": {
+     "type": "integer",
+     "description": "A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 30."
+    }
+   },
+   "filters": []
+  },
+  {
+   "name": "post_coupons",
+   "description": "You can create coupons easily via the coupon management page of the Stripe dashboard; coupon creation is also available with the API if you need to create coupons on the fly. (POST /v1/coupons)",
+   "op": "create",
+   "table": "coupons",
+   "params": {
+    "duration": {
+     "type": "string",
+     "description": "Specifies how long the discount will be in effect if used on a subscription. Defaults to once. One of forever, once, or repeating."
+    },
+    "amount_off": {
+     "type": "integer",
+     "description": "A positive integer representing the amount to subtract from an invoice total (required if percent_off is not passed)."
+    },
+    "percent_off": {
+     "type": "number",
+     "description": "A positive float larger than 0, and smaller or equal to 100, that represents the discount the coupon will apply (required if amount_off is not passed)."
+    },
+    "currency": {
+     "type": "string",
+     "description": "Three-letter ISO code for the currency of the amount_off parameter (required if amount_off is passed)."
+    },
+    "duration_in_months": {
+     "type": "integer",
+     "description": "Required only if duration is repeating, in which case it must be a positive integer that specifies the number of months the discount will be in effect."
+    },
+    "max_redemptions": {
+     "type": "integer",
+     "description": "A positive integer specifying the number of times the coupon can be redeemed before it's no longer valid. For example, you might have a 50% off coupon that the first 20 readers of your website can use."
+    },
+    "name": {
+     "type": "string",
+     "description": "Name of the coupon displayed to customers on, for instance invoices, or receipts. By default the id is shown if name is not set."
+    },
+    "metadata": {
+     "type": "object",
+     "description": "Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format."
+    }
+   },
+   "fields": [
+    "duration",
+    "amount_off",
+    "percent_off",
+    "currency",
+    "duration_in_months",
+    "max_redemptions",
+    "name",
+    "metadata"
+   ],
+   "defaults": {
+    "object": "coupon",
+    "valid": 1,
+    "times_redeemed": 0
+   },
+   "id_prefix": "coupon_"
+  },
+  {
+   "name": "get_balance",
+   "description": "Retrieves the current account balance, based on the authentication that was used to make the request \u2014 aggregates the net amounts of balance transactions into available and pending buckets per currency. (GET /v1/balance)",
+   "op": "custom",
+   "type": "read",
+   "table": "balance_transactions",
+   "params": {},
+   "custom_source": "def get_balance(db_path='state.db', **kwargs):\n    import sqlite3\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    cur = conn.cursor()\n    available = {}\n    pending = {}\n    for row in cur.execute(\"SELECT currency, status, net FROM balance_transactions\"):\n        currency = (row[\"currency\"] or \"usd\").lower()\n        bucket = pending if row[\"status\"] == \"pending\" else available\n        bucket[currency] = bucket.get(currency, 0) + (row[\"net\"] or 0)\n    conn.close()\n    return {\n        \"object\": \"balance\",\n        \"livemode\": False,\n        \"available\": [{\"amount\": amount, \"currency\": currency, \"source_types\": {\"card\": amount}} for currency, amount in sorted(available.items())],\n        \"pending\": [{\"amount\": amount, \"currency\": currency, \"source_types\": {\"card\": amount}} for currency, amount in sorted(pending.items())],\n    }\n"
+  },
+  {
+   "name": "get_events",
+   "description": "List events, going back up to 30 days; each event data is rendered according to Stripe API version at its creation time. (GET /v1/events)",
+   "op": "list",
+   "table": "stripe_events",
+   "params": {
+    "type": {
+     "type": "string",
+     "description": "A string containing a specific event name. The list will be filtered to include only events with a matching event property."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 30."
+    }
+   },
+   "filters": [
+    "type"
+   ]
+  },
+  {
+   "name": "get_disputes",
+   "description": "Returns a list of your disputes. (GET /v1/disputes)",
+   "op": "list",
+   "table": "disputes",
+   "params": {
+    "charge": {
+     "type": "string",
+     "description": "Only return disputes associated to the charge specified by this charge ID."
+    },
+    "payment_intent": {
+     "type": "string",
+     "description": "Only return disputes associated to the PaymentIntent specified by this PaymentIntent ID."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 30."
+    }
+   },
+   "filters": [
+    "charge",
+    "payment_intent"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,28 @@
+{
+ "name": "pd_escalation_policies_list",
+ "mcp_name": "pagerduty.pd_escalation_policies_list",
+ "asset_namespace": "pagerduty",
+ "description": "List all of the existing escalation policies, optionally filtered by team (GET /escalation_policies)",
+ "type": "read",
+ "target_tables": [
+  "pd_escalation_policies"
+ ],
+ "parameters": {
+  "team_id": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "team_id": {
+    "type": "string",
+    "description": "Return only escalation policies belonging to this team. Scalar form of the API's team_ids[] filter."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The number of results per page. Defaults to 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}

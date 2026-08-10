@@ -1,0 +1,51 @@
+{
+ "name": "gh_issues_list",
+ "mcp_name": "github.gh_issues_list",
+ "asset_namespace": "github",
+ "description": "List issues in a repository with state/assignee/labels filters (GET /repos/{owner}/{repo}/issues)",
+ "type": "read",
+ "target_tables": [
+  "gh_issues"
+ ],
+ "parameters": {
+  "repo": "string",
+  "state": "string",
+  "assignee": "string",
+  "creator": "string",
+  "labels": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "repo": {
+    "type": "string",
+    "description": "The repository full name in owner/repo form."
+   },
+   "state": {
+    "type": "string",
+    "description": "Indicates the state of the issues to return. Can be either open, closed, or all. Default: open."
+   },
+   "assignee": {
+    "type": "string",
+    "description": "Can be the name of a user. Only issues assigned to that user are returned."
+   },
+   "creator": {
+    "type": "string",
+    "description": "The user that created the issue."
+   },
+   "labels": {
+    "type": "string",
+    "description": "A list of comma separated label names. Example: bug,ui,@high. Issues must have all of the labels."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The number of results per page (max 100). GitHub param: per_page. Default: 30."
+   }
+  },
+  "required": [
+   "repo"
+  ],
+  "additionalProperties": false
+ }
+}

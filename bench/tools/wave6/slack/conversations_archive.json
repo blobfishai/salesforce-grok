@@ -1,0 +1,26 @@
+{
+ "name": "conversations_archive",
+ "mcp_name": "slack.conversations_archive",
+ "asset_namespace": "slack",
+ "description": "Archives a conversation; is_archived is set server-side and already_archived is rejected, so this is not a plain column update (POST /conversations.archive)",
+ "type": "write",
+ "target_tables": [
+  "channels"
+ ],
+ "parameters": {
+  "channel": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "channel": {
+    "type": "string",
+    "description": "ID of the conversation to archive."
+   }
+  },
+  "required": [
+   "channel"
+  ],
+  "additionalProperties": false
+ }
+}

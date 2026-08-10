@@ -1,0 +1,96 @@
+{
+ "name": "calendar_events_update",
+ "mcp_name": "calendar.calendar_events_update",
+ "asset_namespace": "calendar",
+ "description": "Updates an event; this method does not support patch semantics — writable fields omitted from the request are cleared. (PUT /calendars/{calendarId}/events/{eventId})",
+ "type": "write",
+ "target_tables": [
+  "agent_events",
+  "cal_event_details",
+  "cal_event_attendees"
+ ],
+ "parameters": {
+  "calendar_id": "string",
+  "event_id": "integer",
+  "summary": "string",
+  "description": "string",
+  "location": "string",
+  "start": "json",
+  "end": "json",
+  "attendees": "json",
+  "recurrence": "json",
+  "status": "string",
+  "color_id": "string",
+  "transparency": "string",
+  "visibility": "string",
+  "send_updates": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "calendar_id": {
+    "type": "string",
+    "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method."
+   },
+   "event_id": {
+    "type": "integer",
+    "description": "Event identifier."
+   },
+   "summary": {
+    "type": "string",
+    "description": "Title of the event."
+   },
+   "description": {
+    "type": "string",
+    "description": "Description of the event. Can contain HTML."
+   },
+   "location": {
+    "type": "string",
+    "description": "Geographic location of the event as free-form text."
+   },
+   "start": {
+    "type": "object",
+    "description": "The (inclusive) start time of the event: object with 'date_time' (RFC3339 timestamp) or 'date' (YYYY-MM-DD), and optional 'time_zone'."
+   },
+   "end": {
+    "type": "object",
+    "description": "The (exclusive) end time of the event: object with 'date_time' (RFC3339 timestamp) or 'date' (YYYY-MM-DD), and optional 'time_zone'."
+   },
+   "attendees": {
+    "type": "object",
+    "description": "The attendees of the event: JSON list of objects, each with 'email' (required), and optional 'display_name', 'optional' (boolean), 'response_status'. Omitting this field clears the attendee list (full-update semantics)."
+   },
+   "recurrence": {
+    "type": "object",
+    "description": "List of RRULE lines for a recurring event, as specified in RFC5545, e.g. [\"RRULE:FREQ=WEEKLY;COUNT=4\"]."
+   },
+   "status": {
+    "type": "string",
+    "description": "Status of the event. 'confirmed' (default), 'tentative', or 'cancelled'."
+   },
+   "color_id": {
+    "type": "string",
+    "description": "The color of the event. This is an ID referring to an entry in the event section of the colors definition."
+   },
+   "transparency": {
+    "type": "string",
+    "description": "Whether the event blocks time on the calendar. 'opaque' (default) or 'transparent'."
+   },
+   "visibility": {
+    "type": "string",
+    "description": "Visibility of the event. 'default', 'public', 'private', or 'confidential'."
+   },
+   "send_updates": {
+    "type": "string",
+    "description": "Guests who should receive notifications about the event update. Acceptable values: 'all', 'externalOnly', 'none'. Validated only; no mail is delivered in this sandbox."
+   }
+  },
+  "required": [
+   "calendar_id",
+   "event_id",
+   "start",
+   "end"
+  ],
+  "additionalProperties": false
+ }
+}

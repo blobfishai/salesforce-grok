@@ -1,0 +1,58 @@
+{
+ "name": "erp_customer_payment_create",
+ "mcp_name": "erp.erp_customer_payment_create",
+ "asset_namespace": "erp",
+ "description": "Record a customer payment and apply it to an open invoice; reduces the invoice's amount remaining and marks it paid when it reaches zero. Overpayments, voided invoices and currency mismatches are rejected (POST /services/rest/record/v1/customerPayment)",
+ "type": "write",
+ "target_tables": [
+  "erp_customer_payments",
+  "erp_invoices"
+ ],
+ "parameters": {
+  "applied_to": "string",
+  "payment": "number",
+  "entity": "string",
+  "trandate": "string",
+  "payment_method": "string",
+  "memo": "string",
+  "currency": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "applied_to": {
+    "type": "string",
+    "description": "Invoice tranId to apply the payment against, e.g. INV-1004."
+   },
+   "payment": {
+    "type": "number",
+    "description": "Payment amount to apply (payment); must not exceed the invoice's amount remaining."
+   },
+   "entity": {
+    "type": "string",
+    "description": "Customer (entity) internal id; defaults to the invoice's customer."
+   },
+   "trandate": {
+    "type": "string",
+    "description": "Payment date (trandate), YYYY-MM-DD; defaults to today."
+   },
+   "payment_method": {
+    "type": "string",
+    "description": "Payment method: wire, ach, check or card (default wire)."
+   },
+   "memo": {
+    "type": "string",
+    "description": "Memo visible on the transaction (memo)."
+   },
+   "currency": {
+    "type": "string",
+    "description": "Payment currency internal id; must match the invoice currency (defaults to it)."
+   }
+  },
+  "required": [
+   "applied_to",
+   "payment"
+  ],
+  "additionalProperties": false
+ }
+}

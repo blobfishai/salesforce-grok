@@ -1,0 +1,26 @@
+{
+ "name": "notion_page_get",
+ "mcp_name": "notion.notion_page_get",
+ "asset_namespace": "notion",
+ "description": "Retrieve a Notion page object using the ID specified (GET /v1/pages/{page_id})",
+ "type": "read",
+ "target_tables": [
+  "notion_pages"
+ ],
+ "parameters": {
+  "page_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "page_id": {
+    "type": "string",
+    "description": "Identifier for a Notion page."
+   }
+  },
+  "required": [
+   "page_id"
+  ],
+  "additionalProperties": false
+ }
+}

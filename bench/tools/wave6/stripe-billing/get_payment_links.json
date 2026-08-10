@@ -1,0 +1,28 @@
+{
+ "name": "get_payment_links",
+ "mcp_name": "stripe.get_payment_links",
+ "asset_namespace": "stripe",
+ "description": "Returns a list of your payment links. (GET /v1/payment_links)",
+ "type": "read",
+ "target_tables": [
+  "payment_links"
+ ],
+ "parameters": {
+  "active": "boolean",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "active": {
+    "type": "boolean",
+    "description": "Only return payment links that are active or inactive (e.g., pass false to list all inactive payment links)."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}

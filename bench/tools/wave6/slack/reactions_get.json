@@ -1,0 +1,32 @@
+{
+ "name": "reactions_get",
+ "mcp_name": "slack.reactions_get",
+ "asset_namespace": "slack",
+ "description": "Gets the reactions on a message identified by channel and timestamp (GET /reactions.get)",
+ "type": "read",
+ "target_tables": [
+  "slack_reactions"
+ ],
+ "parameters": {
+  "channel": "string",
+  "timestamp": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "channel": {
+    "type": "string",
+    "description": "Channel where the message was posted, e.g. C0000001."
+   },
+   "timestamp": {
+    "type": "string",
+    "description": "Timestamp of the message to get reactions for, e.g. 1786312800.000101."
+   }
+  },
+  "required": [
+   "channel",
+   "timestamp"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,23 @@
+{
+ "name": "sg_senders_list",
+ "mcp_name": "email.sg_senders_list",
+ "asset_namespace": "email",
+ "description": "Retrieve a list of all sender identities that have been created for your account. (GET /v3/senders)",
+ "type": "read",
+ "target_tables": [
+  "sg_senders"
+ ],
+ "parameters": {
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "limit": {
+    "type": "integer",
+    "description": "Maximum number of sender identities to return. Defaults to 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,1619 @@
+{
+ "vendor": "slack",
+ "namespace": "slack",
+ "tables": [
+  {
+   "name": "slack_users",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "team_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "real_name",
+     "type": "TEXT"
+    },
+    {
+     "name": "email",
+     "type": "TEXT"
+    },
+    {
+     "name": "title",
+     "type": "TEXT"
+    },
+    {
+     "name": "presence",
+     "type": "TEXT"
+    },
+    {
+     "name": "tz",
+     "type": "TEXT"
+    },
+    {
+     "name": "is_admin",
+     "type": "INTEGER"
+    },
+    {
+     "name": "is_bot",
+     "type": "INTEGER"
+    },
+    {
+     "name": "deleted",
+     "type": "INTEGER"
+    },
+    {
+     "name": "status_text",
+     "type": "TEXT"
+    },
+    {
+     "name": "status_emoji",
+     "type": "TEXT"
+    },
+    {
+     "name": "updated",
+     "type": "INTEGER"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "U0000001",
+     "team_id": "T0000001",
+     "name": "mei.huang",
+     "real_name": "Mei Huang",
+     "email": "contact77709@morganstanleysimulated.com",
+     "title": "Sales Development Rep",
+     "presence": "active",
+     "tz": "America/New_York",
+     "is_admin": 0,
+     "is_bot": 0,
+     "deleted": 0,
+     "status_text": "Prospecting Crestline book",
+     "status_emoji": ":telephone_receiver:",
+     "updated": 1786213800
+    },
+    {
+     "id": "U0000002",
+     "team_id": "T0000001",
+     "name": "ava.martinez",
+     "real_name": "Ava Martinez",
+     "email": "ava.martinez@morganstanleysimulated.com",
+     "title": "Customer Success Manager",
+     "presence": "active",
+     "tz": "America/Chicago",
+     "is_admin": 0,
+     "is_bot": 0,
+     "deleted": 0,
+     "status_text": "Riverside Group QBR prep",
+     "status_emoji": ":bar_chart:",
+     "updated": 1786206600
+    },
+    {
+     "id": "U0000003",
+     "team_id": "T0000001",
+     "name": "sarah.kim",
+     "real_name": "Sarah Kim",
+     "email": "sarah.kim@morganstanleysimulated.com",
+     "title": "Recruiter",
+     "presence": "away",
+     "tz": "America/New_York",
+     "is_admin": 0,
+     "is_bot": 0,
+     "deleted": 0,
+     "status_text": "Interview loop",
+     "status_emoji": ":calendar:",
+     "updated": 1786130400
+    },
+    {
+     "id": "U0000004",
+     "team_id": "T0000001",
+     "name": "aisha.bello",
+     "real_name": "Aisha Bello",
+     "email": "aisha.bello@morganstanleysimulated.com",
+     "title": "Finance Systems Lead",
+     "presence": "active",
+     "tz": "Europe/London",
+     "is_admin": 0,
+     "is_bot": 0,
+     "deleted": 0,
+     "status_text": "Revenue reconciliation",
+     "status_emoji": ":abacus:",
+     "updated": 1786198500
+    },
+    {
+     "id": "U0000005",
+     "team_id": "T0000001",
+     "name": "liam.oconnor",
+     "real_name": "Liam O'Connor",
+     "email": "liam.oconnor@morganstanleysimulated.com",
+     "title": "Account Executive",
+     "presence": "active",
+     "tz": "America/New_York",
+     "is_admin": 0,
+     "is_bot": 0,
+     "deleted": 0,
+     "status_text": "Summit Group renewal",
+     "status_emoji": ":handshake:",
+     "updated": 1786224300
+    },
+    {
+     "id": "U0000006",
+     "team_id": "T0000001",
+     "name": "priya.nair",
+     "real_name": "Priya Nair",
+     "email": "priya.nair@morganstanleysimulated.com",
+     "title": "Deal Desk Analyst",
+     "presence": "away",
+     "tz": "Asia/Kolkata",
+     "is_admin": 0,
+     "is_bot": 0,
+     "deleted": 0,
+     "status_text": "CPQ approvals queue",
+     "status_emoji": ":inbox_tray:",
+     "updated": 1786171200
+    },
+    {
+     "id": "U0000007",
+     "team_id": "T0000001",
+     "name": "daniel.osei",
+     "real_name": "Daniel Osei",
+     "email": "daniel.osei@morganstanleysimulated.com",
+     "title": "Sales Manager",
+     "presence": "active",
+     "tz": "America/New_York",
+     "is_admin": 0,
+     "is_bot": 0,
+     "deleted": 0,
+     "status_text": "Forecast review",
+     "status_emoji": ":chart_with_upwards_trend:",
+     "updated": 1786217700
+    },
+    {
+     "id": "U0000008",
+     "team_id": "T0000001",
+     "name": "elena.petrova",
+     "real_name": "Elena Petrova",
+     "email": "elena.petrova@morganstanleysimulated.com",
+     "title": "Compliance Officer",
+     "presence": "active",
+     "tz": "Europe/Berlin",
+     "is_admin": 0,
+     "is_bot": 0,
+     "deleted": 0,
+     "status_text": "Policy exception review",
+     "status_emoji": ":lock:",
+     "updated": 1786192200
+    },
+    {
+     "id": "U0000009",
+     "team_id": "T0000001",
+     "name": "marcus.webb",
+     "real_name": "Marcus Webb",
+     "email": "marcus.webb@morganstanleysimulated.com",
+     "title": "Solutions Engineer",
+     "presence": "away",
+     "tz": "America/Los_Angeles",
+     "is_admin": 0,
+     "is_bot": 0,
+     "deleted": 0,
+     "status_text": "Ironwood sandbox build",
+     "status_emoji": ":hammer_and_wrench:",
+     "updated": 1786185900
+    },
+    {
+     "id": "U0000010",
+     "team_id": "T0000001",
+     "name": "grace.liu",
+     "real_name": "Grace Liu",
+     "email": "grace.liu@morganstanleysimulated.com",
+     "title": "Revenue Operations Manager",
+     "presence": "active",
+     "tz": "America/New_York",
+     "is_admin": 1,
+     "is_bot": 0,
+     "deleted": 0,
+     "status_text": "Territory carve for Atlas",
+     "status_emoji": ":world_map:",
+     "updated": 1786220100
+    },
+    {
+     "id": "U0000011",
+     "team_id": "T0000001",
+     "name": "tomas.rivera",
+     "real_name": "Tomas Rivera",
+     "email": "tomas.rivera@morganstanleysimulated.com",
+     "title": "Marketing Manager",
+     "presence": "away",
+     "tz": "America/Mexico_City",
+     "is_admin": 0,
+     "is_bot": 0,
+     "deleted": 0,
+     "status_text": "FY2026 campaign launch",
+     "status_emoji": ":mega:",
+     "updated": 1786151700
+    },
+    {
+     "id": "U0000012",
+     "team_id": "T0000001",
+     "name": "nadia.haddad",
+     "real_name": "Nadia Haddad",
+     "email": "nadia.haddad@morganstanleysimulated.com",
+     "title": "Client Onboarding Specialist",
+     "presence": "active",
+     "tz": "America/Toronto",
+     "is_admin": 0,
+     "is_bot": 0,
+     "deleted": 0,
+     "status_text": "Harborview kickoff",
+     "status_emoji": ":rocket:",
+     "updated": 1786209900
+    },
+    {
+     "id": "U0000099",
+     "team_id": "T0000001",
+     "name": "ms-crm-agent",
+     "real_name": "MS CRM Agent",
+     "email": null,
+     "title": "CRM Automation Bot",
+     "presence": "active",
+     "tz": "America/New_York",
+     "is_admin": 0,
+     "is_bot": 1,
+     "deleted": 0,
+     "status_text": null,
+     "status_emoji": null,
+     "updated": 1786060800
+    }
+   ]
+  },
+  {
+   "name": "slack_channel_members",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "channel",
+     "type": "TEXT"
+    },
+    {
+     "name": "user",
+     "type": "TEXT"
+    },
+    {
+     "name": "date_joined",
+     "type": "INTEGER"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "M0000001",
+     "channel": "C0000001",
+     "user": "U0000001",
+     "date_joined": 1767283200
+    },
+    {
+     "id": "M0000002",
+     "channel": "C0000001",
+     "user": "U0000005",
+     "date_joined": 1767283200
+    },
+    {
+     "id": "M0000003",
+     "channel": "C0000001",
+     "user": "U0000007",
+     "date_joined": 1767369600
+    },
+    {
+     "id": "M0000004",
+     "channel": "C0000001",
+     "user": "U0000010",
+     "date_joined": 1768060800
+    },
+    {
+     "id": "M0000005",
+     "channel": "C0000004",
+     "user": "U0000002",
+     "date_joined": 1767196800
+    },
+    {
+     "id": "M0000006",
+     "channel": "C0000004",
+     "user": "U0000003",
+     "date_joined": 1767196800
+    },
+    {
+     "id": "M0000007",
+     "channel": "C0000004",
+     "user": "U0000008",
+     "date_joined": 1769011200
+    },
+    {
+     "id": "M0000008",
+     "channel": "C0000007",
+     "user": "U0000009",
+     "date_joined": 1770048000
+    },
+    {
+     "id": "M0000009",
+     "channel": "C0000007",
+     "user": "U0000010",
+     "date_joined": 1770048000
+    },
+    {
+     "id": "M0000010",
+     "channel": "C0000007",
+     "user": "U0000008",
+     "date_joined": 1771344000
+    },
+    {
+     "id": "M0000011",
+     "channel": "C0000008",
+     "user": "U0000006",
+     "date_joined": 1772553600
+    },
+    {
+     "id": "M0000012",
+     "channel": "C0000008",
+     "user": "U0000007",
+     "date_joined": 1772553600
+    },
+    {
+     "id": "M0000013",
+     "channel": "C0000005",
+     "user": "U0000011",
+     "date_joined": 1773763200
+    },
+    {
+     "id": "M0000014",
+     "channel": "C0000005",
+     "user": "U0000012",
+     "date_joined": 1774972800
+    },
+    {
+     "id": "M0000015",
+     "channel": "C0000002",
+     "user": "U0000004",
+     "date_joined": 1776182400
+    }
+   ]
+  },
+  {
+   "name": "slack_reactions",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "channel",
+     "type": "TEXT"
+    },
+    {
+     "name": "timestamp",
+     "type": "TEXT"
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "user",
+     "type": "TEXT"
+    },
+    {
+     "name": "created",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "R0A1B2C3",
+     "channel": "C0000001",
+     "timestamp": "1786312800.000101",
+     "name": "thumbsup",
+     "user": "U0000007",
+     "created": "2026-08-06T14:05:00Z"
+    },
+    {
+     "id": "R0A1B2C4",
+     "channel": "C0000001",
+     "timestamp": "1786312800.000101",
+     "name": "tada",
+     "user": "U0000010",
+     "created": "2026-08-06T14:11:00Z"
+    },
+    {
+     "id": "R0A1B2C5",
+     "channel": "C0000001",
+     "timestamp": "1786316400.000102",
+     "name": "eyes",
+     "user": "U0000005",
+     "created": "2026-08-06T15:02:00Z"
+    },
+    {
+     "id": "R0A1B2C6",
+     "channel": "C0000004",
+     "timestamp": "1786230000.000201",
+     "name": "white_check_mark",
+     "user": "U0000008",
+     "created": "2026-08-05T16:22:00Z"
+    },
+    {
+     "id": "R0A1B2C7",
+     "channel": "C0000004",
+     "timestamp": "1786230000.000201",
+     "name": "handshake",
+     "user": "U0000002",
+     "created": "2026-08-05T16:40:00Z"
+    },
+    {
+     "id": "R0A1B2C8",
+     "channel": "C0000007",
+     "timestamp": "1786147200.000301",
+     "name": "rotating_light",
+     "user": "U0000009",
+     "created": "2026-08-04T18:03:00Z"
+    },
+    {
+     "id": "R0A1B2C9",
+     "channel": "C0000007",
+     "timestamp": "1786147200.000301",
+     "name": "white_check_mark",
+     "user": "U0000010",
+     "created": "2026-08-04T19:15:00Z"
+    },
+    {
+     "id": "R0A1B2D0",
+     "channel": "C0000008",
+     "timestamp": "1786060800.000401",
+     "name": "chart_with_upwards_trend",
+     "user": "U0000006",
+     "created": "2026-08-03T13:30:00Z"
+    },
+    {
+     "id": "R0A1B2D1",
+     "channel": "C0000005",
+     "timestamp": "1785974400.000501",
+     "name": "rocket",
+     "user": "U0000011",
+     "created": "2026-08-02T11:12:00Z"
+    },
+    {
+     "id": "R0A1B2D2",
+     "channel": "C0000005",
+     "timestamp": "1785974400.000501",
+     "name": "memo",
+     "user": "U0000012",
+     "created": "2026-08-02T11:47:00Z"
+    }
+   ]
+  },
+  {
+   "name": "slack_pins",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "channel",
+     "type": "TEXT"
+    },
+    {
+     "name": "timestamp",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_by",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "Pn000001",
+     "channel": "C0000001",
+     "timestamp": "1786312800.000101",
+     "created_by": "U0000007",
+     "created_at": "2026-08-06T14:20:00Z"
+    },
+    {
+     "id": "Pn000002",
+     "channel": "C0000001",
+     "timestamp": "1785708000.000105",
+     "created_by": "U0000005",
+     "created_at": "2026-07-30T09:45:00Z"
+    },
+    {
+     "id": "Pn000003",
+     "channel": "C0000004",
+     "timestamp": "1786230000.000201",
+     "created_by": "U0000008",
+     "created_at": "2026-08-05T17:00:00Z"
+    },
+    {
+     "id": "Pn000004",
+     "channel": "C0000007",
+     "timestamp": "1786147200.000301",
+     "created_by": "U0000010",
+     "created_at": "2026-08-04T20:00:00Z"
+    },
+    {
+     "id": "Pn000005",
+     "channel": "C0000008",
+     "timestamp": "1786060800.000401",
+     "created_by": "U0000006",
+     "created_at": "2026-08-03T14:10:00Z"
+    },
+    {
+     "id": "Pn000006",
+     "channel": "C0000005",
+     "timestamp": "1785974400.000501",
+     "created_by": "U0000011",
+     "created_at": "2026-08-02T12:00:00Z"
+    },
+    {
+     "id": "Pn000007",
+     "channel": "C0000002",
+     "timestamp": "1785364800.000601",
+     "created_by": "U0000004",
+     "created_at": "2026-07-26T08:30:00Z"
+    }
+   ]
+  },
+  {
+   "name": "slack_usergroups",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "team_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "handle",
+     "type": "TEXT"
+    },
+    {
+     "name": "description",
+     "type": "TEXT"
+    },
+    {
+     "name": "date_create",
+     "type": "INTEGER"
+    },
+    {
+     "name": "date_update",
+     "type": "INTEGER"
+    },
+    {
+     "name": "user_count",
+     "type": "INTEGER"
+    },
+    {
+     "name": "users",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_by",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "S0000001",
+     "team_id": "T0000001",
+     "name": "Deal Desk",
+     "handle": "deal-desk",
+     "description": "Reviews non-standard pricing and CPQ discount exceptions before order forms go out.",
+     "date_create": 1767283200,
+     "date_update": 1786147200,
+     "user_count": 2,
+     "users": "U0000006,U0000010",
+     "created_by": "U0000010"
+    },
+    {
+     "id": "S0000002",
+     "team_id": "T0000001",
+     "name": "Sales Leadership",
+     "handle": "sales-leads",
+     "description": "Managers accountable for the Summit Group, Riverside Group, and Meridian books.",
+     "date_create": 1767283200,
+     "date_update": 1785974400,
+     "user_count": 2,
+     "users": "U0000007,U0000010",
+     "created_by": "U0000010"
+    },
+    {
+     "id": "S0000003",
+     "team_id": "T0000001",
+     "name": "Compliance Review",
+     "handle": "compliance-review",
+     "description": "Escalation point for policy exceptions and the 90-day conflict-check window.",
+     "date_create": 1768060800,
+     "date_update": 1786060800,
+     "user_count": 1,
+     "users": "U0000008",
+     "created_by": "U0000008"
+    },
+    {
+     "id": "S0000004",
+     "team_id": "T0000001",
+     "name": "Customer Success",
+     "handle": "cs-team",
+     "description": "CSMs covering Ironwood, Harborview, Atlas, and Crestline accounts.",
+     "date_create": 1769011200,
+     "date_update": 1785708000,
+     "user_count": 2,
+     "users": "U0000002,U0000012",
+     "created_by": "U0000002"
+    },
+    {
+     "id": "S0000005",
+     "team_id": "T0000001",
+     "name": "Recruiting",
+     "handle": "recruiting",
+     "description": "Talent acquisition group for GTM roles.",
+     "date_create": 1770048000,
+     "date_update": 1784800000,
+     "user_count": 1,
+     "users": "U0000003",
+     "created_by": "U0000003"
+    },
+    {
+     "id": "S0000006",
+     "team_id": "T0000001",
+     "name": "Revenue Operations",
+     "handle": "revops",
+     "description": "Owns forecast methodology, territory design, and billing reconciliation handoffs.",
+     "date_create": 1771344000,
+     "date_update": 1786220100,
+     "user_count": 2,
+     "users": "U0000004,U0000010",
+     "created_by": "U0000010"
+    }
+   ]
+  },
+  {
+   "name": "slack_team",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "domain",
+     "type": "TEXT"
+    },
+    {
+     "name": "email_domain",
+     "type": "TEXT"
+    },
+    {
+     "name": "enterprise_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "enterprise_name",
+     "type": "TEXT"
+    },
+    {
+     "name": "num_members",
+     "type": "INTEGER"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "T0000001",
+     "name": "Morgan Stanley (SIMULATED)",
+     "domain": "morganstanley-simulated",
+     "email_domain": "morganstanleysimulated.com",
+     "enterprise_id": "E0000001",
+     "enterprise_name": "Morgan Stanley Enterprise (SIMULATED)",
+     "num_members": 13
+    },
+    {
+     "id": "T0000007",
+     "name": "MS Wealth Management (SIMULATED)",
+     "domain": "ms-sim-wealth",
+     "email_domain": "morganstanleysimulated.com",
+     "enterprise_id": "E0000001",
+     "enterprise_name": "Morgan Stanley Enterprise (SIMULATED)",
+     "num_members": 42
+    },
+    {
+     "id": "T0000009",
+     "name": "MS Institutional Securities (SIMULATED)",
+     "domain": "ms-sim-institutional",
+     "email_domain": "morganstanleysimulated.com",
+     "enterprise_id": "E0000001",
+     "enterprise_name": "Morgan Stanley Enterprise (SIMULATED)",
+     "num_members": 57
+    },
+    {
+     "id": "T0000011",
+     "name": "MS Research (SIMULATED)",
+     "domain": "ms-sim-research",
+     "email_domain": "morganstanleysimulated.com",
+     "enterprise_id": "E0000001",
+     "enterprise_name": "Morgan Stanley Enterprise (SIMULATED)",
+     "num_members": 19
+    },
+    {
+     "id": "T0000012",
+     "name": "MS Operations (SIMULATED)",
+     "domain": "ms-sim-operations",
+     "email_domain": "morganstanleysimulated.com",
+     "enterprise_id": "E0000001",
+     "enterprise_name": "Morgan Stanley Enterprise (SIMULATED)",
+     "num_members": 31
+    },
+    {
+     "id": "T0000013",
+     "name": "MS Technology (SIMULATED)",
+     "domain": "ms-sim-technology",
+     "email_domain": "morganstanleysimulated.com",
+     "enterprise_id": "E0000001",
+     "enterprise_name": "Morgan Stanley Enterprise (SIMULATED)",
+     "num_members": 48
+    },
+    {
+     "id": "T0000019",
+     "name": "MS Compliance (SIMULATED)",
+     "domain": "ms-sim-compliance",
+     "email_domain": "morganstanleysimulated.com",
+     "enterprise_id": "E0000001",
+     "enterprise_name": "Morgan Stanley Enterprise (SIMULATED)",
+     "num_members": 12
+    }
+   ]
+  },
+  {
+   "name": "slack_scheduled_messages",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "channel",
+     "type": "TEXT"
+    },
+    {
+     "name": "text",
+     "type": "TEXT"
+    },
+    {
+     "name": "post_at",
+     "type": "INTEGER"
+    },
+    {
+     "name": "thread_ts",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "Q0000001",
+     "channel": "C0000001",
+     "text": "Reminder: Summit Group renewal call in 30 minutes. Deck is pinned in this channel.",
+     "post_at": 1786399200,
+     "thread_ts": null,
+     "created_at": "2026-08-06T15:00:00Z"
+    },
+    {
+     "id": "Q0000002",
+     "channel": "C0000001",
+     "text": "EOD: post Summit Group launch-room status to the thread.",
+     "post_at": 1786485600,
+     "thread_ts": "1786312800.000101",
+     "created_at": "2026-08-06T15:05:00Z"
+    },
+    {
+     "id": "Q0000003",
+     "channel": "C0000004",
+     "text": "Weekly digest: open policy exceptions awaiting compliance review.",
+     "post_at": 1786745400,
+     "thread_ts": null,
+     "created_at": "2026-08-05T09:30:00Z"
+    },
+    {
+     "id": "Q0000004",
+     "channel": "C0000007",
+     "text": "Incident retro scheduled for Friday 10:00 ET. Agenda in the incident doc.",
+     "post_at": 1786633200,
+     "thread_ts": null,
+     "created_at": "2026-08-04T21:00:00Z"
+    },
+    {
+     "id": "Q0000005",
+     "channel": "C0000005",
+     "text": "FY2026 campaign brief drops today. Feedback window closes Wednesday.",
+     "post_at": 1786550400,
+     "thread_ts": null,
+     "created_at": "2026-08-02T12:30:00Z"
+    },
+    {
+     "id": "Q0000006",
+     "channel": "C0000008",
+     "text": "Deal desk office hours start in 15 minutes.",
+     "post_at": 1786408200,
+     "thread_ts": null,
+     "created_at": "2026-08-06T16:10:00Z"
+    }
+   ]
+  }
+ ],
+ "tools": [
+  {
+   "name": "conversations_list",
+   "description": "Lists all channels in a Slack team; supports Slack's types mix and exclude_archived filters, which need more than column-equality (GET /conversations.list)",
+   "op": "custom",
+   "type": "read",
+   "table": "channels",
+   "params": {
+    "types": {
+     "type": "string",
+     "description": "Mix and match channel types by providing a comma-separated list of any combination of public_channel, private_channel, mpim. Default: public_channel."
+    },
+    "exclude_archived": {
+     "type": "boolean",
+     "description": "Set to true to exclude archived channels from the list. Default: false."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The maximum number of items to return. Default: 100."
+    }
+   },
+   "custom_source": "def conversations_list(db_path='state.db', **kwargs):\n    import sqlite3\n    try:\n        limit = int(kwargs.get('limit', 100))\n    except (TypeError, ValueError):\n        limit = 100\n    types = str(kwargs.get('types') or 'public_channel')\n    type_conds = []\n    for t in [part.strip() for part in types.split(',') if part.strip()]:\n        if t == 'public_channel':\n            type_conds.append('(is_private = 0 AND is_mpim = 0)')\n        elif t == 'private_channel':\n            type_conds.append('(is_private = 1 AND is_mpim = 0)')\n        elif t == 'mpim':\n            type_conds.append('(is_mpim = 1)')\n        else:\n            return {'ok': False, 'error': 'invalid_types', 'status': 400, 'detail': 'types must be a comma-separated mix of public_channel, private_channel, mpim'}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    sql = 'SELECT id, name, is_channel, is_private, is_archived, is_general, is_mpim, is_shared, is_org_shared, num_members, topic, purpose, created FROM channels WHERE (' + ' OR '.join(type_conds) + ')'\n    if kwargs.get('exclude_archived') in (True, 1, '1', 'true', 'True'):\n        sql += ' AND is_archived = 0'\n    sql += ' ORDER BY id LIMIT ?'\n    rows = [dict(r) for r in conn.execute(sql, (limit,)).fetchall()]\n    conn.close()\n    return {'ok': True, 'channels': rows, 'response_metadata': {'next_cursor': ''}}\n"
+  },
+  {
+   "name": "conversations_info",
+   "description": "Retrieve information about a conversation (GET /conversations.info)",
+   "op": "get",
+   "table": "channels",
+   "id_param": "channel",
+   "id_column": "id",
+   "params": {
+    "channel": {
+     "type": "string",
+     "description": "Conversation ID to learn more about, for example C0000001."
+    }
+   },
+   "required": [
+    "channel"
+   ]
+  },
+  {
+   "name": "conversations_history",
+   "description": "Fetches a conversation's history of messages and events; oldest/latest are Unix-timestamp range bounds, so this cannot use the equality-only list op (GET /conversations.history)",
+   "op": "custom",
+   "type": "read",
+   "table": "messages",
+   "extra_tables": [
+    "channels"
+   ],
+   "params": {
+    "channel": {
+     "type": "string",
+     "description": "Conversation ID (C…) or a #channel-name to fetch history for."
+    },
+    "oldest": {
+     "type": "string",
+     "description": "Only messages after this Unix timestamp will be included in results. Default: 0."
+    },
+    "latest": {
+     "type": "string",
+     "description": "Only messages before this Unix timestamp will be included in results. Default: now."
+    },
+    "inclusive": {
+     "type": "boolean",
+     "description": "Include messages with oldest or latest timestamps in results. Ignored unless either timestamp is specified. Default: false."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The maximum number of items to return. Default: 100."
+    }
+   },
+   "required": [
+    "channel"
+   ],
+   "custom_source": "def conversations_history(db_path='state.db', **kwargs):\n    import sqlite3\n    channel = kwargs.get('channel')\n    if not channel:\n        return {'ok': False, 'error': 'channel is required', 'status': 400}\n    try:\n        limit = int(kwargs.get('limit', 100))\n    except (TypeError, ValueError):\n        limit = 100\n    inclusive = kwargs.get('inclusive') in (True, 1, '1', 'true', 'True')\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    ch = conn.execute('SELECT * FROM channels WHERE id = ?', (str(channel),)).fetchone()\n    if ch is None:\n        ch = conn.execute('SELECT * FROM channels WHERE name = ? ORDER BY id LIMIT 1', (str(channel).lstrip('#'),)).fetchone()\n    if ch is None:\n        conn.close()\n        return {'ok': False, 'error': 'channel_not_found', 'status': 404}\n    sql = 'SELECT type, subtype, ts, thread_ts, user, username, bot_id, text, reply_count, reply_users_count, latest_reply, permalink, team FROM messages WHERE name = ?'\n    args = [ch['name']]\n    for bound, op_inc, op_exc in (('oldest', '>=', '>'), ('latest', '<=', '<')):\n        if kwargs.get(bound) is not None:\n            try:\n                val = float(kwargs[bound])\n            except (TypeError, ValueError):\n                conn.close()\n                return {'ok': False, 'error': 'invalid_ts_' + bound, 'status': 400}\n            sql += ' AND ts IS NOT NULL AND CAST(ts AS REAL) ' + (op_inc if inclusive else op_exc) + ' ?'\n            args.append(val)\n    sql += ' ORDER BY (ts IS NULL) ASC, CAST(ts AS REAL) DESC LIMIT ?'\n    args.append(limit)\n    msgs = [dict(r) for r in conn.execute(sql, args).fetchall()]\n    conn.close()\n    return {'ok': True, 'channel': ch['id'], 'messages': msgs, 'has_more': len(msgs) == limit}\n"
+  },
+  {
+   "name": "conversations_replies",
+   "description": "Retrieve a thread of messages posted to a conversation: the parent identified by ts plus every reply whose thread_ts points at it (GET /conversations.replies)",
+   "op": "custom",
+   "type": "read",
+   "table": "messages",
+   "extra_tables": [
+    "channels"
+   ],
+   "params": {
+    "channel": {
+     "type": "string",
+     "description": "Conversation ID (C…) or a #channel-name to fetch the thread from."
+    },
+    "ts": {
+     "type": "string",
+     "description": "Unique identifier of either a thread's parent message or a message in the thread, e.g. 1786312800.000101."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The maximum number of items to return. Default: 100."
+    }
+   },
+   "required": [
+    "channel",
+    "ts"
+   ],
+   "custom_source": "def conversations_replies(db_path='state.db', **kwargs):\n    import sqlite3\n    channel = kwargs.get('channel')\n    ts = kwargs.get('ts')\n    if not channel or ts is None:\n        return {'ok': False, 'error': 'channel and ts are required', 'status': 400}\n    try:\n        limit = int(kwargs.get('limit', 100))\n    except (TypeError, ValueError):\n        limit = 100\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    ch = conn.execute('SELECT * FROM channels WHERE id = ?', (str(channel),)).fetchone()\n    if ch is None:\n        ch = conn.execute('SELECT * FROM channels WHERE name = ? ORDER BY id LIMIT 1', (str(channel).lstrip('#'),)).fetchone()\n    if ch is None:\n        conn.close()\n        return {'ok': False, 'error': 'channel_not_found', 'status': 404}\n    cols = 'type, subtype, ts, thread_ts, user, username, bot_id, text, reply_count, reply_users_count, latest_reply, permalink, team'\n    parent = conn.execute('SELECT ' + cols + ' FROM messages WHERE name = ? AND ts = ?', (ch['name'], str(ts))).fetchone()\n    if parent is None:\n        conn.close()\n        return {'ok': False, 'error': 'thread_not_found', 'status': 404}\n    replies = [dict(r) for r in conn.execute('SELECT ' + cols + ' FROM messages WHERE name = ? AND thread_ts = ? AND ts <> ? ORDER BY CAST(ts AS REAL) ASC LIMIT ?', (ch['name'], str(ts), str(ts), limit)).fetchall()]\n    conn.close()\n    return {'ok': True, 'channel': ch['id'], 'messages': [dict(parent)] + replies, 'has_more': False}\n"
+  },
+  {
+   "name": "conversations_members",
+   "description": "Retrieve members of a conversation (GET /conversations.members)",
+   "op": "list",
+   "table": "slack_channel_members",
+   "filters": [
+    "channel"
+   ],
+   "params": {
+    "channel": {
+     "type": "string",
+     "description": "ID of the conversation to retrieve members for, for example C0000001."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The maximum number of items to return. Default: 30."
+    }
+   },
+   "required": [
+    "channel"
+   ],
+   "response_key": "members"
+  },
+  {
+   "name": "conversations_join",
+   "description": "Joins an existing conversation as the workspace bot user; membership insert plus channel counters are server-side, not settable params (POST /conversations.join)",
+   "op": "custom",
+   "type": "write",
+   "table": "slack_channel_members",
+   "extra_tables": [
+    "channels"
+   ],
+   "params": {
+    "channel": {
+     "type": "string",
+     "description": "Conversation ID (C…) or a #channel-name to resolve. The bot user U0000099 is added to the member list."
+    }
+   },
+   "required": [
+    "channel"
+   ],
+   "custom_source": "def conversations_join(db_path='state.db', **kwargs):\n    import sqlite3, hashlib, datetime\n    channel = kwargs.get('channel')\n    if not channel:\n        return {'ok': False, 'error': 'channel is required', 'status': 400}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    ch = conn.execute('SELECT * FROM channels WHERE id = ?', (str(channel),)).fetchone()\n    if ch is None:\n        ch = conn.execute('SELECT * FROM channels WHERE name = ? ORDER BY id LIMIT 1', (str(channel).lstrip('#'),)).fetchone()\n    if ch is None:\n        conn.close()\n        return {'ok': False, 'error': 'channel_not_found', 'status': 404}\n    if ch['is_archived']:\n        conn.close()\n        return {'ok': False, 'error': 'is_archived', 'status': 400}\n    bot = 'U0000099'\n    existing = conn.execute('SELECT id FROM slack_channel_members WHERE channel = ? AND user = ?', (ch['id'], bot)).fetchone()\n    summary = {'id': ch['id'], 'name': ch['name'], 'is_private': ch['is_private'], 'is_archived': ch['is_archived'], 'num_members': ch['num_members']}\n    if existing is not None:\n        conn.close()\n        return {'ok': True, 'already_in_channel': True, 'channel': summary}\n    mid = 'M' + hashlib.md5((ch['id'] + ':' + bot).encode('utf-8')).hexdigest()[:7].upper()\n    now = int(datetime.datetime.now(datetime.timezone.utc).timestamp())\n    conn.execute('INSERT INTO slack_channel_members (id, channel, user, date_joined) VALUES (?, ?, ?, ?)', (mid, ch['id'], bot, now))\n    conn.execute('UPDATE channels SET is_member = 1, num_members = COALESCE(num_members, 0) + 1 WHERE id = ?', (ch['id'],))\n    conn.commit()\n    summary['num_members'] = (ch['num_members'] or 0) + 1\n    conn.close()\n    return {'ok': True, 'channel': summary}\n"
+  },
+  {
+   "name": "conversations_invite",
+   "description": "Invites users to a channel; users is a comma-separated list that fans out to one membership row each, with users_not_found validation (POST /conversations.invite)",
+   "op": "custom",
+   "type": "write",
+   "table": "slack_channel_members",
+   "extra_tables": [
+    "channels",
+    "slack_users"
+   ],
+   "params": {
+    "channel": {
+     "type": "string",
+     "description": "The ID of the public or private channel to invite user(s) to."
+    },
+    "users": {
+     "type": "string",
+     "description": "A comma separated list of user IDs. Up to 1000 users may be listed, e.g. U0000001,U0000005."
+    }
+   },
+   "required": [
+    "channel",
+    "users"
+   ],
+   "custom_source": "def conversations_invite(db_path='state.db', **kwargs):\n    import sqlite3, hashlib, datetime\n    channel = kwargs.get('channel')\n    users = kwargs.get('users')\n    if not channel or not users:\n        return {'ok': False, 'error': 'channel and users are required', 'status': 400}\n    ids = [u.strip() for u in str(users).split(',') if u.strip()]\n    if not ids:\n        return {'ok': False, 'error': 'no_users_provided', 'status': 400}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    ch = conn.execute('SELECT * FROM channels WHERE id = ?', (str(channel),)).fetchone()\n    if ch is None:\n        ch = conn.execute('SELECT * FROM channels WHERE name = ? ORDER BY id LIMIT 1', (str(channel).lstrip('#'),)).fetchone()\n    if ch is None:\n        conn.close()\n        return {'ok': False, 'error': 'channel_not_found', 'status': 404}\n    if ch['is_archived']:\n        conn.close()\n        return {'ok': False, 'error': 'is_archived', 'status': 400}\n    missing = [u for u in ids if conn.execute('SELECT 1 FROM slack_users WHERE id = ?', (u,)).fetchone() is None]\n    if missing:\n        conn.close()\n        return {'ok': False, 'error': 'users_not_found', 'users': missing, 'status': 404}\n    now = int(datetime.datetime.now(datetime.timezone.utc).timestamp())\n    invited, already = [], []\n    for u in ids:\n        if conn.execute('SELECT 1 FROM slack_channel_members WHERE channel = ? AND user = ?', (ch['id'], u)).fetchone() is not None:\n            already.append(u)\n            continue\n        mid = 'M' + hashlib.md5((ch['id'] + ':' + u).encode('utf-8')).hexdigest()[:7].upper()\n        conn.execute('INSERT INTO slack_channel_members (id, channel, user, date_joined) VALUES (?, ?, ?, ?)', (mid, ch['id'], u, now))\n        invited.append(u)\n    if invited:\n        conn.execute('UPDATE channels SET num_members = COALESCE(num_members, 0) + ? WHERE id = ?', (len(invited), ch['id']))\n    conn.commit()\n    conn.close()\n    return {'ok': True, 'channel': {'id': ch['id'], 'name': ch['name']}, 'invited': invited, 'already_in_channel': already}\n"
+  },
+  {
+   "name": "conversations_archive",
+   "description": "Archives a conversation; is_archived is set server-side and already_archived is rejected, so this is not a plain column update (POST /conversations.archive)",
+   "op": "custom",
+   "type": "write",
+   "table": "channels",
+   "params": {
+    "channel": {
+     "type": "string",
+     "description": "ID of the conversation to archive."
+    }
+   },
+   "required": [
+    "channel"
+   ],
+   "custom_source": "def conversations_archive(db_path='state.db', **kwargs):\n    import sqlite3\n    channel = kwargs.get('channel')\n    if not channel:\n        return {'ok': False, 'error': 'channel is required', 'status': 400}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    ch = conn.execute('SELECT * FROM channels WHERE id = ?', (str(channel),)).fetchone()\n    if ch is None:\n        ch = conn.execute('SELECT * FROM channels WHERE name = ? ORDER BY id LIMIT 1', (str(channel).lstrip('#'),)).fetchone()\n    if ch is None:\n        conn.close()\n        return {'ok': False, 'error': 'channel_not_found', 'status': 404}\n    if ch['is_archived']:\n        conn.close()\n        return {'ok': False, 'error': 'already_archived', 'status': 400}\n    conn.execute('UPDATE channels SET is_archived = 1 WHERE id = ?', (ch['id'],))\n    conn.commit()\n    conn.close()\n    return {'ok': True}\n"
+  },
+  {
+   "name": "conversations_set_topic",
+   "description": "Sets the topic for a conversation (POST /conversations.setTopic)",
+   "op": "update",
+   "table": "channels",
+   "id_param": "channel",
+   "id_column": "id",
+   "set_fields": [
+    "topic"
+   ],
+   "params": {
+    "channel": {
+     "type": "string",
+     "description": "Conversation to set the topic of."
+    },
+    "topic": {
+     "type": "string",
+     "description": "The new topic string. Does not support formatting or linkification."
+    }
+   },
+   "required": [
+    "channel",
+    "topic"
+   ]
+  },
+  {
+   "name": "conversations_set_purpose",
+   "description": "Sets the purpose for a conversation (POST /conversations.setPurpose)",
+   "op": "update",
+   "table": "channels",
+   "id_param": "channel",
+   "id_column": "id",
+   "set_fields": [
+    "purpose"
+   ],
+   "params": {
+    "channel": {
+     "type": "string",
+     "description": "Conversation to set the purpose of."
+    },
+    "purpose": {
+     "type": "string",
+     "description": "A new, specialer purpose."
+    }
+   },
+   "required": [
+    "channel",
+    "purpose"
+   ]
+  },
+  {
+   "name": "chat_post_message",
+   "description": "Sends a message to a channel as the workspace bot; the message ts is generated server-side and threaded replies bump the parent's reply_count (POST /chat.postMessage)",
+   "op": "custom",
+   "type": "write",
+   "table": "messages",
+   "extra_tables": [
+    "channels"
+   ],
+   "params": {
+    "channel": {
+     "type": "string",
+     "description": "Channel, private group, or IM channel to send message to. Can be an encoded ID (C…), or a name (#launch-room)."
+    },
+    "text": {
+     "type": "string",
+     "description": "The formatted text of the message to be published."
+    },
+    "thread_ts": {
+     "type": "string",
+     "description": "Provide another message's ts value to make this message a reply. Avoid using a reply's ts value; use its parent instead."
+    },
+    "username": {
+     "type": "string",
+     "description": "Set your bot's user name for this message. Defaults to ms-crm-agent."
+    }
+   },
+   "required": [
+    "channel",
+    "text"
+   ],
+   "custom_source": "def chat_post_message(db_path='state.db', **kwargs):\n    import sqlite3, hashlib, datetime\n    channel = kwargs.get('channel')\n    text = kwargs.get('text')\n    if not channel or text is None or str(text) == '':\n        return {'ok': False, 'error': 'channel and text are required', 'status': 400}\n    thread_ts = kwargs.get('thread_ts')\n    username = kwargs.get('username')\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    ch = conn.execute('SELECT * FROM channels WHERE id = ?', (str(channel),)).fetchone()\n    if ch is None:\n        ch = conn.execute('SELECT * FROM channels WHERE name = ? ORDER BY id LIMIT 1', (str(channel).lstrip('#'),)).fetchone()\n    if ch is None:\n        conn.close()\n        return {'ok': False, 'error': 'channel_not_found', 'status': 404}\n    if ch['is_archived']:\n        conn.close()\n        return {'ok': False, 'error': 'is_archived', 'status': 400}\n    if thread_ts is not None:\n        parent = conn.execute('SELECT ts FROM messages WHERE name = ? AND ts = ?', (ch['name'], str(thread_ts))).fetchone()\n        if parent is None:\n            conn.close()\n            return {'ok': False, 'error': 'message_not_found', 'status': 404, 'detail': 'thread_ts does not match any message in the channel'}\n    now = datetime.datetime.now(datetime.timezone.utc)\n    seq = conn.execute('SELECT COUNT(*) FROM messages').fetchone()[0]\n    ts = '%d.%06d' % (int(now.timestamp()), 100000 + seq)\n    permalink = 'https://morganstanleysimulated.slack.com/archives/%s/p%s' % (ch['id'], ts.replace('.', ''))\n    client_msg_id = 'CLI-' + hashlib.md5(ts.encode('utf-8')).hexdigest()[:7].upper()\n    conn.execute('INSERT INTO messages (name, text, ts, thread_ts, user, username, bot_id, type, subtype, team, client_msg_id, permalink, reply_count, reply_users_count, is_starred, upload) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0, 0, 0)',\n                 (ch['name'], str(text), ts, (str(thread_ts) if thread_ts is not None else None), 'U0000099', (str(username) if username else 'ms-crm-agent'), 'B0000099', 'message', 'bot_message', 'T0000001', client_msg_id, permalink))\n    if thread_ts is not None:\n        conn.execute('UPDATE messages SET reply_count = COALESCE(reply_count, 0) + 1, latest_reply = ? WHERE name = ? AND ts = ?', (ts, ch['name'], str(thread_ts)))\n    conn.execute('UPDATE channels SET latest = ? WHERE id = ?', (str(text), ch['id']))\n    conn.commit()\n    conn.close()\n    message = {'type': 'message', 'subtype': 'bot_message', 'text': str(text), 'ts': ts, 'thread_ts': (str(thread_ts) if thread_ts is not None else None), 'user': 'U0000099', 'username': (str(username) if username else 'ms-crm-agent'), 'bot_id': 'B0000099', 'team': 'T0000001', 'permalink': permalink}\n    return {'ok': True, 'channel': ch['id'], 'ts': ts, 'message': message}\n"
+  },
+  {
+   "name": "chat_update",
+   "description": "Updates a message in a channel; the message is addressed by the compound (channel, ts) key rather than a single-column ID (POST /chat.update)",
+   "op": "custom",
+   "type": "write",
+   "table": "messages",
+   "extra_tables": [
+    "channels"
+   ],
+   "params": {
+    "channel": {
+     "type": "string",
+     "description": "Channel containing the message to be updated. Can be an encoded ID, or a name."
+    },
+    "ts": {
+     "type": "string",
+     "description": "Timestamp of the message to be updated, e.g. 1786312800.000101."
+    },
+    "text": {
+     "type": "string",
+     "description": "New text for the message."
+    }
+   },
+   "required": [
+    "channel",
+    "ts",
+    "text"
+   ],
+   "custom_source": "def chat_update(db_path='state.db', **kwargs):\n    import sqlite3\n    channel = kwargs.get('channel')\n    ts = kwargs.get('ts')\n    text = kwargs.get('text')\n    if not channel or ts is None or text is None:\n        return {'ok': False, 'error': 'channel, ts and text are required', 'status': 400}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    ch = conn.execute('SELECT * FROM channels WHERE id = ?', (str(channel),)).fetchone()\n    if ch is None:\n        ch = conn.execute('SELECT * FROM channels WHERE name = ? ORDER BY id LIMIT 1', (str(channel).lstrip('#'),)).fetchone()\n    if ch is None:\n        conn.close()\n        return {'ok': False, 'error': 'channel_not_found', 'status': 404}\n    cur = conn.execute('UPDATE messages SET text = ? WHERE name = ? AND ts = ?', (str(text), ch['name'], str(ts)))\n    if cur.rowcount == 0:\n        conn.close()\n        return {'ok': False, 'error': 'message_not_found', 'status': 404}\n    conn.commit()\n    conn.close()\n    return {'ok': True, 'channel': ch['id'], 'ts': str(ts), 'text': str(text)}\n"
+  },
+  {
+   "name": "chat_delete",
+   "description": "Deletes a message from a channel, addressed by the compound (channel, ts) key (POST /chat.delete)",
+   "op": "custom",
+   "type": "write",
+   "table": "messages",
+   "extra_tables": [
+    "channels"
+   ],
+   "params": {
+    "channel": {
+     "type": "string",
+     "description": "Channel containing the message to be deleted. Can be an encoded ID, or a name."
+    },
+    "ts": {
+     "type": "string",
+     "description": "Timestamp of the message to be deleted."
+    }
+   },
+   "required": [
+    "channel",
+    "ts"
+   ],
+   "custom_source": "def chat_delete(db_path='state.db', **kwargs):\n    import sqlite3\n    channel = kwargs.get('channel')\n    ts = kwargs.get('ts')\n    if not channel or ts is None:\n        return {'ok': False, 'error': 'channel and ts are required', 'status': 400}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    ch = conn.execute('SELECT * FROM channels WHERE id = ?', (str(channel),)).fetchone()\n    if ch is None:\n        ch = conn.execute('SELECT * FROM channels WHERE name = ? ORDER BY id LIMIT 1', (str(channel).lstrip('#'),)).fetchone()\n    if ch is None:\n        conn.close()\n        return {'ok': False, 'error': 'channel_not_found', 'status': 404}\n    cur = conn.execute('DELETE FROM messages WHERE name = ? AND ts = ?', (ch['name'], str(ts)))\n    if cur.rowcount == 0:\n        conn.close()\n        return {'ok': False, 'error': 'message_not_found', 'status': 404}\n    conn.commit()\n    conn.close()\n    return {'ok': True, 'channel': ch['id'], 'ts': str(ts)}\n"
+  },
+  {
+   "name": "chat_schedule_message",
+   "description": "Schedules a message to be sent to a channel at a future Unix timestamp; returns the scheduled_message_id (POST /chat.scheduleMessage)",
+   "op": "create",
+   "table": "slack_scheduled_messages",
+   "fields": [
+    "channel",
+    "text",
+    "post_at",
+    "thread_ts"
+   ],
+   "id_prefix": "Q0",
+   "params": {
+    "channel": {
+     "type": "string",
+     "description": "Channel to send the message to, e.g. C0000001."
+    },
+    "text": {
+     "type": "string",
+     "description": "The formatted text of the message to be published."
+    },
+    "post_at": {
+     "type": "integer",
+     "description": "Unix timestamp representing the future time the message should post to Slack."
+    },
+    "thread_ts": {
+     "type": "string",
+     "description": "Provide another message's ts value to make this message a reply."
+    }
+   },
+   "required": [
+    "channel",
+    "text",
+    "post_at"
+   ]
+  },
+  {
+   "name": "users_list",
+   "description": "Lists all users in a Slack team, including bots and deactivated profiles (GET /users.list)",
+   "op": "list",
+   "table": "slack_users",
+   "filters": [
+    "team_id"
+   ],
+   "params": {
+    "team_id": {
+     "type": "string",
+     "description": "Encoded team id to list users in, e.g. T0000001."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The maximum number of items to return. Default: 30."
+    }
+   },
+   "response_key": "members"
+  },
+  {
+   "name": "users_info",
+   "description": "Gets information about a user, including profile, presence, and admin flags (GET /users.info)",
+   "op": "get",
+   "table": "slack_users",
+   "id_param": "user",
+   "id_column": "id",
+   "params": {
+    "user": {
+     "type": "string",
+     "description": "User to get info on, for example U0000001."
+    }
+   },
+   "required": [
+    "user"
+   ]
+  },
+  {
+   "name": "users_lookup_by_email",
+   "description": "Find a user with an email address; returns users_not_found-style 404 when no profile matches (GET /users.lookupByEmail)",
+   "op": "get",
+   "table": "slack_users",
+   "id_param": "email",
+   "id_column": "email",
+   "params": {
+    "email": {
+     "type": "string",
+     "description": "An email address belonging to a user in the workspace, e.g. contact77709@morganstanleysimulated.com."
+    }
+   },
+   "required": [
+    "email"
+   ]
+  },
+  {
+   "name": "users_set_presence",
+   "description": "Manually sets user presence to auto, active, or away; targets the given workspace user (the real API acts on the authed user) (POST /users.setPresence)",
+   "op": "update",
+   "table": "slack_users",
+   "id_param": "user",
+   "id_column": "id",
+   "set_fields": [
+    "presence"
+   ],
+   "params": {
+    "user": {
+     "type": "string",
+     "description": "User to set presence for, e.g. U0000003."
+    },
+    "presence": {
+     "type": "string",
+     "description": "Either auto, active, or away."
+    }
+   },
+   "required": [
+    "user",
+    "presence"
+   ]
+  },
+  {
+   "name": "reactions_add",
+   "description": "Adds a reaction (emoji) to a message; validates the (channel, timestamp) message exists and rejects already_reacted duplicates (POST /reactions.add)",
+   "op": "custom",
+   "type": "write",
+   "table": "slack_reactions",
+   "extra_tables": [
+    "channels",
+    "messages"
+   ],
+   "params": {
+    "channel": {
+     "type": "string",
+     "description": "Channel where the message to add reaction to was posted."
+    },
+    "timestamp": {
+     "type": "string",
+     "description": "Timestamp of the message to add reaction to."
+    },
+    "name": {
+     "type": "string",
+     "description": "Reaction (emoji) name, without colons, e.g. thumbsup."
+    }
+   },
+   "required": [
+    "channel",
+    "timestamp",
+    "name"
+   ],
+   "custom_source": "def reactions_add(db_path='state.db', **kwargs):\n    import sqlite3, hashlib, datetime\n    channel = kwargs.get('channel')\n    timestamp = kwargs.get('timestamp')\n    name = kwargs.get('name')\n    if not channel or timestamp is None or not name:\n        return {'ok': False, 'error': 'channel, timestamp and name are required', 'status': 400}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    ch = conn.execute('SELECT * FROM channels WHERE id = ?', (str(channel),)).fetchone()\n    if ch is None:\n        ch = conn.execute('SELECT * FROM channels WHERE name = ? ORDER BY id LIMIT 1', (str(channel).lstrip('#'),)).fetchone()\n    if ch is None:\n        conn.close()\n        return {'ok': False, 'error': 'channel_not_found', 'status': 404}\n    msg = conn.execute('SELECT 1 FROM messages WHERE name = ? AND ts = ?', (ch['name'], str(timestamp))).fetchone()\n    if msg is None:\n        conn.close()\n        return {'ok': False, 'error': 'message_not_found', 'status': 404}\n    emoji = str(name).strip(':')\n    bot = 'U0000099'\n    dup = conn.execute('SELECT 1 FROM slack_reactions WHERE channel = ? AND timestamp = ? AND name = ? AND user = ?', (ch['id'], str(timestamp), emoji, bot)).fetchone()\n    if dup is not None:\n        conn.close()\n        return {'ok': False, 'error': 'already_reacted', 'status': 400}\n    rid = 'R' + hashlib.md5((ch['id'] + ':' + str(timestamp) + ':' + emoji + ':' + bot).encode('utf-8')).hexdigest()[:8].upper()\n    created = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')\n    conn.execute('INSERT INTO slack_reactions (id, channel, timestamp, name, user, created) VALUES (?, ?, ?, ?, ?, ?)', (rid, ch['id'], str(timestamp), emoji, bot, created))\n    conn.commit()\n    conn.close()\n    return {'ok': True}\n"
+  },
+  {
+   "name": "reactions_remove",
+   "description": "Removes a reaction (emoji) from a message, addressed by the compound (channel, timestamp, name) key (POST /reactions.remove)",
+   "op": "custom",
+   "type": "write",
+   "table": "slack_reactions",
+   "extra_tables": [
+    "channels"
+   ],
+   "params": {
+    "channel": {
+     "type": "string",
+     "description": "Channel where the message to remove reaction from was posted."
+    },
+    "timestamp": {
+     "type": "string",
+     "description": "Timestamp of the message to remove reaction from."
+    },
+    "name": {
+     "type": "string",
+     "description": "Reaction (emoji) name, without colons, e.g. thumbsup."
+    }
+   },
+   "required": [
+    "channel",
+    "timestamp",
+    "name"
+   ],
+   "custom_source": "def reactions_remove(db_path='state.db', **kwargs):\n    import sqlite3\n    channel = kwargs.get('channel')\n    timestamp = kwargs.get('timestamp')\n    name = kwargs.get('name')\n    if not channel or timestamp is None or not name:\n        return {'ok': False, 'error': 'channel, timestamp and name are required', 'status': 400}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    ch = conn.execute('SELECT * FROM channels WHERE id = ?', (str(channel),)).fetchone()\n    if ch is None:\n        ch = conn.execute('SELECT * FROM channels WHERE name = ? ORDER BY id LIMIT 1', (str(channel).lstrip('#'),)).fetchone()\n    if ch is None:\n        conn.close()\n        return {'ok': False, 'error': 'channel_not_found', 'status': 404}\n    emoji = str(name).strip(':')\n    cur = conn.execute('DELETE FROM slack_reactions WHERE channel = ? AND timestamp = ? AND name = ?', (ch['id'], str(timestamp), emoji))\n    if cur.rowcount == 0:\n        conn.close()\n        return {'ok': False, 'error': 'no_reaction', 'status': 404}\n    conn.commit()\n    conn.close()\n    return {'ok': True}\n"
+  },
+  {
+   "name": "reactions_get",
+   "description": "Gets the reactions on a message identified by channel and timestamp (GET /reactions.get)",
+   "op": "list",
+   "table": "slack_reactions",
+   "filters": [
+    "channel",
+    "timestamp"
+   ],
+   "params": {
+    "channel": {
+     "type": "string",
+     "description": "Channel where the message was posted, e.g. C0000001."
+    },
+    "timestamp": {
+     "type": "string",
+     "description": "Timestamp of the message to get reactions for, e.g. 1786312800.000101."
+    }
+   },
+   "required": [
+    "channel",
+    "timestamp"
+   ]
+  },
+  {
+   "name": "pins_add",
+   "description": "Pins a message to a channel (POST /pins.add)",
+   "op": "create",
+   "table": "slack_pins",
+   "fields": [
+    "channel",
+    "timestamp"
+   ],
+   "defaults": {
+    "created_by": "U0000099"
+   },
+   "id_prefix": "Pn",
+   "params": {
+    "channel": {
+     "type": "string",
+     "description": "Channel to pin the message to, e.g. C0000001."
+    },
+    "timestamp": {
+     "type": "string",
+     "description": "Timestamp of the message to pin."
+    }
+   },
+   "required": [
+    "channel",
+    "timestamp"
+   ]
+  },
+  {
+   "name": "pins_list",
+   "description": "Lists items pinned to a channel (GET /pins.list)",
+   "op": "list",
+   "table": "slack_pins",
+   "filters": [
+    "channel"
+   ],
+   "params": {
+    "channel": {
+     "type": "string",
+     "description": "Channel to get pinned items for, e.g. C0000001."
+    }
+   },
+   "required": [
+    "channel"
+   ],
+   "response_key": "items"
+  },
+  {
+   "name": "pins_remove",
+   "description": "Un-pins an item from a channel, addressed by the compound (channel, timestamp) key (POST /pins.remove)",
+   "op": "custom",
+   "type": "write",
+   "table": "slack_pins",
+   "extra_tables": [
+    "channels"
+   ],
+   "params": {
+    "channel": {
+     "type": "string",
+     "description": "Channel where the item is pinned to."
+    },
+    "timestamp": {
+     "type": "string",
+     "description": "Timestamp of the pinned message to un-pin."
+    }
+   },
+   "required": [
+    "channel",
+    "timestamp"
+   ],
+   "custom_source": "def pins_remove(db_path='state.db', **kwargs):\n    import sqlite3\n    channel = kwargs.get('channel')\n    timestamp = kwargs.get('timestamp')\n    if not channel or timestamp is None:\n        return {'ok': False, 'error': 'channel and timestamp are required', 'status': 400}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    ch = conn.execute('SELECT * FROM channels WHERE id = ?', (str(channel),)).fetchone()\n    if ch is None:\n        ch = conn.execute('SELECT * FROM channels WHERE name = ? ORDER BY id LIMIT 1', (str(channel).lstrip('#'),)).fetchone()\n    if ch is None:\n        conn.close()\n        return {'ok': False, 'error': 'channel_not_found', 'status': 404}\n    cur = conn.execute('DELETE FROM slack_pins WHERE channel = ? AND timestamp = ?', (ch['id'], str(timestamp)))\n    if cur.rowcount == 0:\n        conn.close()\n        return {'ok': False, 'error': 'no_pin', 'status': 404}\n    conn.commit()\n    conn.close()\n    return {'ok': True}\n"
+  },
+  {
+   "name": "search_messages",
+   "description": "Searches for messages matching a query across message text in the workspace (GET /search.messages)",
+   "op": "search",
+   "table": "messages",
+   "query_param": "query",
+   "search_columns": [
+    "text"
+   ],
+   "params": {
+    "query": {
+     "type": "string",
+     "description": "Search query. Matched case-insensitively as a substring of message text."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The maximum number of matching messages to return. Default: 30."
+    }
+   },
+   "required": [
+    "query"
+   ]
+  },
+  {
+   "name": "usergroups_list",
+   "description": "Lists all User Groups for a team, including handles, descriptions, and member counts (GET /usergroups.list)",
+   "op": "list",
+   "table": "slack_usergroups",
+   "filters": [
+    "team_id"
+   ],
+   "params": {
+    "team_id": {
+     "type": "string",
+     "description": "Encoded team id to list user groups in, e.g. T0000001."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The maximum number of items to return. Default: 30."
+    }
+   }
+  },
+  {
+   "name": "usergroups_create",
+   "description": "Create a User Group; the S0-prefixed usergroup id is generated server-side (POST /usergroups.create)",
+   "op": "create",
+   "table": "slack_usergroups",
+   "fields": [
+    "name",
+    "handle",
+    "description"
+   ],
+   "defaults": {
+    "team_id": "T0000001",
+    "created_by": "U0000099",
+    "user_count": 0,
+    "users": ""
+   },
+   "id_prefix": "S0",
+   "params": {
+    "name": {
+     "type": "string",
+     "description": "A name for the User Group. Must be unique among User Groups."
+    },
+    "handle": {
+     "type": "string",
+     "description": "A mention handle. Must be unique among channels, users and User Groups."
+    },
+    "description": {
+     "type": "string",
+     "description": "A short description of the User Group."
+    }
+   },
+   "required": [
+    "name"
+   ]
+  },
+  {
+   "name": "usergroups_update",
+   "description": "Update an existing User Group; only the fields provided are changed (POST /usergroups.update)",
+   "op": "update",
+   "table": "slack_usergroups",
+   "id_param": "usergroup",
+   "id_column": "id",
+   "set_fields": [
+    "name",
+    "handle",
+    "description"
+   ],
+   "params": {
+    "usergroup": {
+     "type": "string",
+     "description": "The encoded ID of the User Group to update, e.g. S0000001."
+    },
+    "name": {
+     "type": "string",
+     "description": "A name for the User Group. Must be unique among User Groups."
+    },
+    "handle": {
+     "type": "string",
+     "description": "A mention handle. Must be unique among channels, users and User Groups."
+    },
+    "description": {
+     "type": "string",
+     "description": "A short description of the User Group."
+    }
+   },
+   "required": [
+    "usergroup"
+   ]
+  },
+  {
+   "name": "team_info",
+   "description": "Gets information about the current team, or another team on the same Enterprise Grid when team is given; the optional-id default is real API semantics, not a fallback row (GET /team.info)",
+   "op": "custom",
+   "type": "read",
+   "table": "slack_team",
+   "params": {
+    "team": {
+     "type": "string",
+     "description": "Team to get info about; if omitted, will return information about the current (authed) team, T0000001."
+    }
+   },
+   "custom_source": "def team_info(db_path='state.db', **kwargs):\n    import sqlite3\n    team = kwargs.get('team')\n    tid = str(team) if team else 'T0000001'\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    row = conn.execute('SELECT * FROM slack_team WHERE id = ?', (tid,)).fetchone()\n    conn.close()\n    if row is None:\n        return {'ok': False, 'error': 'team_not_found', 'status': 404}\n    return {'ok': True, 'team': dict(row)}\n"
+  },
+  {
+   "name": "emoji_list",
+   "description": "Lists custom emoji for a team, including aliases and image URLs (GET /emoji.list)",
+   "op": "list",
+   "table": "admin_emojis",
+   "params": {
+    "limit": {
+     "type": "integer",
+     "description": "The maximum number of items to return. Default: 30."
+    }
+   }
+  }
+ ]
+}

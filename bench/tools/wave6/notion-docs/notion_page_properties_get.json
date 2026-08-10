@@ -1,0 +1,31 @@
+{
+ "name": "notion_page_properties_get",
+ "mcp_name": "notion.notion_page_properties_get",
+ "asset_namespace": "notion",
+ "description": "Retrieve the property values of a database page (row), or a single property item when property_id is given (GET /v1/pages/{page_id}/properties/{property_id})",
+ "type": "read",
+ "target_tables": [
+  "notion_database_rows"
+ ],
+ "parameters": {
+  "page_id": "string",
+  "property_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "page_id": {
+    "type": "string",
+    "description": "Identifier for the database page (row) whose properties you want."
+   },
+   "property_id": {
+    "type": "string",
+    "description": "Identifier (property name) for the specific property to retrieve. When omitted, all property values are returned."
+   }
+  },
+  "required": [
+   "page_id"
+  ],
+  "additionalProperties": false
+ }
+}

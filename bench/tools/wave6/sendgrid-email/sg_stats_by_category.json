@@ -1,0 +1,38 @@
+{
+ "name": "sg_stats_by_category",
+ "mcp_name": "email.sg_stats_by_category",
+ "asset_namespace": "email",
+ "description": "Retrieve email statistics for one or more categories between two dates, computed from the mail send log's category tags; matching historical category_stats records for the range are included. (GET /v3/categories/stats)",
+ "type": "read",
+ "target_tables": [
+  "sg_mail_sends",
+  "category_stats"
+ ],
+ "parameters": {
+  "categories": "string",
+  "start_date": "string",
+  "end_date": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "categories": {
+    "type": "string",
+    "description": "The individual categories that you want retrieve statistics for. A comma-separated list or an array of category names."
+   },
+   "start_date": {
+    "type": "string",
+    "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD."
+   },
+   "end_date": {
+    "type": "string",
+    "description": "The end date of the statistics to retrieve. Defaults to today. Must follow format YYYY-MM-DD."
+   }
+  },
+  "required": [
+   "categories",
+   "start_date"
+  ],
+  "additionalProperties": false
+ }
+}

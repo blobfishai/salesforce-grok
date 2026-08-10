@@ -1,0 +1,32 @@
+{
+ "name": "post_invoices_invoice_finalize",
+ "mcp_name": "stripe.post_invoices_invoice_finalize",
+ "asset_namespace": "stripe",
+ "description": "Stripe automatically finalizes drafts before sending and attempting payment on invoices; however, if you'd like to finalize a draft invoice manually, you can do so using this method — pending invoice items for the customer are attached and invoice totals are computed. (POST /v1/invoices/{invoice}/finalize)",
+ "type": "write",
+ "target_tables": [
+  "invoices",
+  "invoiceitems"
+ ],
+ "parameters": {
+  "invoice": "string",
+  "auto_advance": "boolean"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "invoice": {
+    "type": "string",
+    "description": "The identifier of the invoice to finalize."
+   },
+   "auto_advance": {
+    "type": "boolean",
+    "description": "Controls whether Stripe performs automatic collection of the invoice. If false, the invoice's state doesn't automatically advance without an explicit action."
+   }
+  },
+  "required": [
+   "invoice"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,36 @@
+{
+ "name": "gh_search_code",
+ "mcp_name": "github.gh_search_code",
+ "asset_namespace": "github",
+ "description": "Search code across repositories via the code index (GET /search/code)",
+ "type": "read",
+ "target_tables": [
+  "gh_code_index"
+ ],
+ "parameters": {
+  "q": "string",
+  "repo": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "q": {
+    "type": "string",
+    "description": "The query contains one or more search keywords. Matched against file paths and indexed file contents."
+   },
+   "repo": {
+    "type": "string",
+    "description": "Limit results to a repository, owner/repo form (the repo: qualifier in the real API)."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The number of results per page (max 100). GitHub param: per_page. Default: 30."
+   }
+  },
+  "required": [
+   "q"
+  ],
+  "additionalProperties": false
+ }
+}

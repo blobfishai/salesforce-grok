@@ -1,0 +1,63 @@
+{
+ "name": "post_prices",
+ "mcp_name": "stripe.post_prices",
+ "asset_namespace": "stripe",
+ "description": "Creates a new price for an existing product; the price can be recurring or one-time. (POST /v1/prices)",
+ "type": "write",
+ "target_tables": [
+  "prices"
+ ],
+ "parameters": {
+  "currency": "string",
+  "product": "string",
+  "unit_amount": "integer",
+  "nickname": "string",
+  "lookup_key": "string",
+  "recurring_interval": "string",
+  "type": "string",
+  "metadata": "json"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "currency": {
+    "type": "string",
+    "description": "Three-letter ISO currency code, in lowercase. Must be a supported currency."
+   },
+   "product": {
+    "type": "string",
+    "description": "The ID of the Product that this Price will belong to."
+   },
+   "unit_amount": {
+    "type": "integer",
+    "description": "A positive integer in cents (or 0 for a free price) representing how much to charge. One of unit_amount or custom_unit_amount is required, unless billing_scheme=tiered."
+   },
+   "nickname": {
+    "type": "string",
+    "description": "A brief description of the price, hidden from customers."
+   },
+   "lookup_key": {
+    "type": "string",
+    "description": "A lookup key used to retrieve prices dynamically from a static string. Can be up to 200 characters."
+   },
+   "recurring_interval": {
+    "type": "string",
+    "description": "recurring[interval]: Specifies billing frequency. Either day, week, month or year. Omit for a one_time price."
+   },
+   "type": {
+    "type": "string",
+    "description": "One of recurring or one_time, matching whether recurring[interval] is set."
+   },
+   "metadata": {
+    "type": "object",
+    "description": "Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format."
+   }
+  },
+  "required": [
+   "currency",
+   "product",
+   "unit_amount"
+  ],
+  "additionalProperties": false
+ }
+}

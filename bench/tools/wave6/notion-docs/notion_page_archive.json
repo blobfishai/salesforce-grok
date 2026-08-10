@@ -1,0 +1,32 @@
+{
+ "name": "notion_page_archive",
+ "mcp_name": "notion.notion_page_archive",
+ "asset_namespace": "notion",
+ "description": "Archive (move to trash) or restore a page by setting the archived flag (PATCH /v1/pages/{page_id})",
+ "type": "write",
+ "target_tables": [
+  "notion_pages"
+ ],
+ "parameters": {
+  "page_id": "string",
+  "archived": "boolean"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "page_id": {
+    "type": "string",
+    "description": "Identifier for the Notion page to archive or restore."
+   },
+   "archived": {
+    "type": "boolean",
+    "description": "Set to true to archive (trash) the page; set to false to restore it."
+   }
+  },
+  "required": [
+   "page_id",
+   "archived"
+  ],
+  "additionalProperties": false
+ }
+}

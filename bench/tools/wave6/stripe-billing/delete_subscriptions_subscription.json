@@ -1,0 +1,26 @@
+{
+ "name": "delete_subscriptions_subscription",
+ "mcp_name": "stripe.delete_subscriptions_subscription",
+ "asset_namespace": "stripe",
+ "description": "Cancels a customer's subscription immediately; the customer will not be charged again for the subscription. (DELETE /v1/subscriptions/{subscription})",
+ "type": "write",
+ "target_tables": [
+  "subscriptions"
+ ],
+ "parameters": {
+  "subscription": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "subscription": {
+    "type": "string",
+    "description": "The identifier of the subscription to cancel."
+   }
+  },
+  "required": [
+   "subscription"
+  ],
+  "additionalProperties": false
+ }
+}

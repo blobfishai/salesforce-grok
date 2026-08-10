@@ -1,0 +1,23 @@
+{
+ "name": "team_info",
+ "mcp_name": "slack.team_info",
+ "asset_namespace": "slack",
+ "description": "Gets information about the current team, or another team on the same Enterprise Grid when team is given; the optional-id default is real API semantics, not a fallback row (GET /team.info)",
+ "type": "read",
+ "target_tables": [
+  "slack_team"
+ ],
+ "parameters": {
+  "team": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "team": {
+    "type": "string",
+    "description": "Team to get info about; if omitted, will return information about the current (authed) team, T0000001."
+   }
+  },
+  "additionalProperties": false
+ }
+}

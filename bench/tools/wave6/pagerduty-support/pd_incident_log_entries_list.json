@@ -1,0 +1,31 @@
+{
+ "name": "pd_incident_log_entries_list",
+ "mcp_name": "pagerduty.pd_incident_log_entries_list",
+ "asset_namespace": "pagerduty",
+ "description": "List log entries (trigger, acknowledge, escalate, resolve, annotate) for the specified incident (GET /incidents/{id}/log_entries)",
+ "type": "read",
+ "target_tables": [
+  "pd_log_entries"
+ ],
+ "parameters": {
+  "incident_id": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "incident_id": {
+    "type": "string",
+    "description": "The ID of the incident whose log entries to list (path {id} of GET /incidents/{id}/log_entries)."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The number of results per page. Defaults to 30."
+   }
+  },
+  "required": [
+   "incident_id"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,23 @@
+{
+ "name": "notion_users_list",
+ "mcp_name": "notion.notion_users_list",
+ "asset_namespace": "notion",
+ "description": "Return a paginated list of users for the workspace (GET /v1/users)",
+ "type": "read",
+ "target_tables": [
+  "notion_users"
+ ],
+ "parameters": {
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "limit": {
+    "type": "integer",
+    "description": "The number of items from the full list desired in the response (page_size). Default 30, maximum 100."
+   }
+  },
+  "additionalProperties": false
+ }
+}

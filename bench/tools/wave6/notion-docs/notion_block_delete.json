@@ -1,0 +1,26 @@
+{
+ "name": "notion_block_delete",
+ "mcp_name": "notion.notion_block_delete",
+ "asset_namespace": "notion",
+ "description": "Set a block object to archived: true using the ID specified; the block is moved to trash (DELETE /v1/blocks/{block_id})",
+ "type": "write",
+ "target_tables": [
+  "notion_blocks"
+ ],
+ "parameters": {
+  "block_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "block_id": {
+    "type": "string",
+    "description": "Identifier for the Notion block to delete."
+   }
+  },
+  "required": [
+   "block_id"
+  ],
+  "additionalProperties": false
+ }
+}

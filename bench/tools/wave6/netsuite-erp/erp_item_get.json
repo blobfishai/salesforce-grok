@@ -1,0 +1,26 @@
+{
+ "name": "erp_item_get",
+ "mcp_name": "erp.erp_item_get",
+ "asset_namespace": "erp",
+ "description": "Retrieve a single item record by its itemId/SKU (GET /services/rest/record/v1/serviceItem/{id})",
+ "type": "read",
+ "target_tables": [
+  "erp_items"
+ ],
+ "parameters": {
+  "id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "string",
+    "description": "Item id / SKU (itemId), e.g. FEED-MKT-L2 or HW-DFA-100."
+   }
+  },
+  "required": [
+   "id"
+  ],
+  "additionalProperties": false
+ }
+}

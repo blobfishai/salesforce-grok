@@ -1,0 +1,57 @@
+{
+ "name": "jira_worklog_add",
+ "mcp_name": "jira.jira_worklog_add",
+ "asset_namespace": "jira",
+ "description": "Adds a worklog entry to an issue (POST /rest/api/3/issue/{issueIdOrKey}/worklog)",
+ "type": "write",
+ "target_tables": [
+  "jira_worklogs"
+ ],
+ "parameters": {
+  "issue_key": "string",
+  "time_spent": "string",
+  "time_spent_seconds": "integer",
+  "comment": "string",
+  "started": "string",
+  "author": "string",
+  "author_email": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "issue_key": {
+    "type": "string",
+    "description": "The ID or key of the issue the worklog is added to, for example CRM-21."
+   },
+   "time_spent": {
+    "type": "string",
+    "description": "The time spent, as days, hours, and minutes in Jira duration format, for example 3h 30m."
+   },
+   "time_spent_seconds": {
+    "type": "integer",
+    "description": "The time spent in seconds, for example 12600 for 3h 30m."
+   },
+   "comment": {
+    "type": "string",
+    "description": "A comment describing the work done."
+   },
+   "started": {
+    "type": "string",
+    "description": "The datetime the work began, for example 2026-08-07T09:30:00.000-0400."
+   },
+   "author": {
+    "type": "string",
+    "description": "The display name to record as the worklog author."
+   },
+   "author_email": {
+    "type": "string",
+    "description": "The email address of the worklog author."
+   }
+  },
+  "required": [
+   "issue_key",
+   "time_spent"
+  ],
+  "additionalProperties": false
+ }
+}

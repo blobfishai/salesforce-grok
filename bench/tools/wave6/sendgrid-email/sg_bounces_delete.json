@@ -1,0 +1,26 @@
+{
+ "name": "sg_bounces_delete",
+ "mcp_name": "email.sg_bounces_delete",
+ "asset_namespace": "email",
+ "description": "Delete a specific email address from your bounce list. Once removed, mail to that address will be attempted again on future sends. (DELETE /v3/suppression/bounces/{email})",
+ "type": "write",
+ "target_tables": [
+  "bounces"
+ ],
+ "parameters": {
+  "email": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "email": {
+    "type": "string",
+    "description": "The specific email address of the bounced recipient you want to remove from the bounce list."
+   }
+  },
+  "required": [
+   "email"
+  ],
+  "additionalProperties": false
+ }
+}

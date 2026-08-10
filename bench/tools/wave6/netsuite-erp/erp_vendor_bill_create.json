@@ -1,0 +1,62 @@
+{
+ "name": "erp_vendor_bill_create",
+ "mcp_name": "erp.erp_vendor_bill_create",
+ "asset_namespace": "erp",
+ "description": "Enter a vendor bill; new bills are open and route as pendingApproval (POST /services/rest/record/v1/vendorBill)",
+ "type": "write",
+ "target_tables": [
+  "erp_vendor_bills"
+ ],
+ "parameters": {
+  "entity": "string",
+  "entity_name": "string",
+  "trandate": "string",
+  "due_date": "string",
+  "memo": "string",
+  "subsidiary": "string",
+  "currency": "string",
+  "amount": "number"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "entity": {
+    "type": "string",
+    "description": "Vendor (entity) internal id the bill is payable to, e.g. vendor_001."
+   },
+   "entity_name": {
+    "type": "string",
+    "description": "Display name of the vendor."
+   },
+   "trandate": {
+    "type": "string",
+    "description": "Transaction date (trandate), YYYY-MM-DD."
+   },
+   "due_date": {
+    "type": "string",
+    "description": "Payment due date (dueDate), YYYY-MM-DD."
+   },
+   "memo": {
+    "type": "string",
+    "description": "Memo visible on the transaction (memo)."
+   },
+   "subsidiary": {
+    "type": "string",
+    "description": "Subsidiary internal id the transaction posts to (subsidiary, e.g. '3')."
+   },
+   "currency": {
+    "type": "string",
+    "description": "Transaction currency internal id (currency): usd, eur or gbp."
+   },
+   "amount": {
+    "type": "number",
+    "description": "Bill amount in the transaction currency (userTotal)."
+   }
+  },
+  "required": [
+   "entity",
+   "amount"
+  ],
+  "additionalProperties": false
+ }
+}

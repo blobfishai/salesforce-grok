@@ -1,0 +1,32 @@
+{
+ "name": "gh_branch_get",
+ "mcp_name": "github.gh_branch_get",
+ "asset_namespace": "github",
+ "description": "Get a branch by repository and branch name (GET /repos/{owner}/{repo}/branches/{branch})",
+ "type": "read",
+ "target_tables": [
+  "gh_branches"
+ ],
+ "parameters": {
+  "repo": "string",
+  "branch": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "repo": {
+    "type": "string",
+    "description": "The repository full name in owner/repo form."
+   },
+   "branch": {
+    "type": "string",
+    "description": "The branch name. Cannot contain wildcard characters."
+   }
+  },
+  "required": [
+   "repo",
+   "branch"
+  ],
+  "additionalProperties": false
+ }
+}

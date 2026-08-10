@@ -1,0 +1,41 @@
+{
+ "name": "post_customers_customer",
+ "mcp_name": "stripe.post_customers_customer",
+ "asset_namespace": "stripe",
+ "description": "Updates the specified customer by setting the values of the parameters passed; any parameters not provided will be left unchanged. (POST /v1/customers/{customer})",
+ "type": "write",
+ "target_tables": [
+  "customers"
+ ],
+ "parameters": {
+  "customer": "string",
+  "name": "string",
+  "email": "string",
+  "balance": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "customer": {
+    "type": "string",
+    "description": "The identifier of the customer to update."
+   },
+   "name": {
+    "type": "string",
+    "description": "The customer's full name or business name."
+   },
+   "email": {
+    "type": "string",
+    "description": "Customer's email address. It's displayed alongside the customer in your dashboard and can be useful for searching and tracking. This may be up to 512 characters."
+   },
+   "balance": {
+    "type": "integer",
+    "description": "An integer amount in cents that represents the customer's current balance, which affect the customer's future invoices. A negative amount represents a credit that decreases the amount due on an invoice; a positive amount increases the amount due on an invoice."
+   }
+  },
+  "required": [
+   "customer"
+  ],
+  "additionalProperties": false
+ }
+}

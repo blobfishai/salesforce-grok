@@ -1,0 +1,58 @@
+{
+ "name": "sg_template_version_create",
+ "mcp_name": "email.sg_template_version_create",
+ "asset_namespace": "email",
+ "description": "Create a new version of a transactional template. A version is the body/subject content of a template; only one version per template can be active. (POST /v3/templates/{template_id}/versions)",
+ "type": "write",
+ "target_tables": [
+  "sg_template_versions"
+ ],
+ "parameters": {
+  "template_id": "string",
+  "name": "string",
+  "subject": "string",
+  "html_content": "string",
+  "plain_content": "string",
+  "active": "integer",
+  "editor": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "template_id": {
+    "type": "string",
+    "description": "The ID of the transactional template for which the new version is created."
+   },
+   "name": {
+    "type": "string",
+    "description": "Name of the transactional template version. Max length 100 characters."
+   },
+   "subject": {
+    "type": "string",
+    "description": "Subject of the new transactional template version. Max length 255 characters."
+   },
+   "html_content": {
+    "type": "string",
+    "description": "The HTML content of the version. Maximum of 1048576 bytes allowed."
+   },
+   "plain_content": {
+    "type": "string",
+    "description": "Text/plain content of the transactional template version. Maximum of 1048576 bytes allowed."
+   },
+   "active": {
+    "type": "integer",
+    "description": "Set the version as the active version associated with the template (0 is inactive, 1 is active). Only one version of a template can be active."
+   },
+   "editor": {
+    "type": "string",
+    "description": "The editor used in the UI: code or design."
+   }
+  },
+  "required": [
+   "template_id",
+   "name",
+   "subject"
+  ],
+  "additionalProperties": false
+ }
+}

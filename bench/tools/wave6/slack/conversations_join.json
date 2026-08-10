@@ -1,0 +1,27 @@
+{
+ "name": "conversations_join",
+ "mcp_name": "slack.conversations_join",
+ "asset_namespace": "slack",
+ "description": "Joins an existing conversation as the workspace bot user; membership insert plus channel counters are server-side, not settable params (POST /conversations.join)",
+ "type": "write",
+ "target_tables": [
+  "slack_channel_members",
+  "channels"
+ ],
+ "parameters": {
+  "channel": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "channel": {
+    "type": "string",
+    "description": "Conversation ID (C…) or a #channel-name to resolve. The bot user U0000099 is added to the member list."
+   }
+  },
+  "required": [
+   "channel"
+  ],
+  "additionalProperties": false
+ }
+}

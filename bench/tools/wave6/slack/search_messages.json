@@ -1,0 +1,31 @@
+{
+ "name": "search_messages",
+ "mcp_name": "slack.search_messages",
+ "asset_namespace": "slack",
+ "description": "Searches for messages matching a query across message text in the workspace (GET /search.messages)",
+ "type": "read",
+ "target_tables": [
+  "messages"
+ ],
+ "parameters": {
+  "query": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "query": {
+    "type": "string",
+    "description": "Search query. Matched case-insensitively as a substring of message text."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The maximum number of matching messages to return. Default: 30."
+   }
+  },
+  "required": [
+   "query"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -6,7 +6,7 @@ world/*/world.json, data/flake/.trials/, sim/logs/).
 | folder | contents | files |
 |---|---|---|
 | tasks/ | every task definition by world (wave5, wave6, wave1, arena) + per-task `*.seed.json` fixture bundles (rows, documents, input documents, per-vendor MCP seeding) | 166 |
-| tools/ | every MCP tool by world → vendor server: schema (.json) + generated Python implementation (.py) + INDEX.md | 963 |
+| tools/ | every MCP tool by world → vendor server: schema (.json) + generated Python implementation (.py) + INDEX.md | 1367 |
 | verifiers/ | VCode verifier source (.py) + assertions metadata (.meta.json) | 160 |
 | traces/ | every full run transcript, grouped world → model | 783 |
 | failed-traces/ | the failing subset, same layout | 215 |

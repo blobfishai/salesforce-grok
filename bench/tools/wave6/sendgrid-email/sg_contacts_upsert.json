@@ -1,0 +1,46 @@
+{
+ "name": "sg_contacts_upsert",
+ "mcp_name": "email.sg_contacts_upsert",
+ "asset_namespace": "email",
+ "description": "Add or update a marketing contact. Contacts are matched by email address: if the email exists the contact is updated, otherwise a new contact is created. Returns a job_id like the asynchronous SendGrid import. (PUT /v3/marketing/contacts)",
+ "type": "write",
+ "target_tables": [
+  "sg_contacts"
+ ],
+ "parameters": {
+  "email": "string",
+  "first_name": "string",
+  "last_name": "string",
+  "company": "string",
+  "phone_number": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "email": {
+    "type": "string",
+    "description": "The contact's primary email address. Required and used as the upsert key."
+   },
+   "first_name": {
+    "type": "string",
+    "description": "The contact's personal name."
+   },
+   "last_name": {
+    "type": "string",
+    "description": "The contact's family name."
+   },
+   "company": {
+    "type": "string",
+    "description": "The name of the contact's employer or account."
+   },
+   "phone_number": {
+    "type": "string",
+    "description": "The contact's phone number, including country code."
+   }
+  },
+  "required": [
+   "email"
+  ],
+  "additionalProperties": false
+ }
+}

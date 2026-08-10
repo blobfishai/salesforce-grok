@@ -1,0 +1,32 @@
+{
+ "name": "erp_sales_order_update_status",
+ "mcp_name": "erp.erp_sales_order_update_status",
+ "asset_namespace": "erp",
+ "description": "Transition a sales order along its lifecycle: pendingApproval -> pendingFulfillment -> billed (cancel allowed before billing); invalid jumps are rejected (PATCH /services/rest/record/v1/salesOrder/{id})",
+ "type": "write",
+ "target_tables": [
+  "erp_sales_orders"
+ ],
+ "parameters": {
+  "id": "string",
+  "status": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "string",
+    "description": "Sales order document number (tranId), e.g. SO-2026-0103."
+   },
+   "status": {
+    "type": "string",
+    "description": "Target status: pendingFulfillment, billed or cancelled. Must be a valid next step from the order's current status."
+   }
+  },
+  "required": [
+   "id",
+   "status"
+  ],
+  "additionalProperties": false
+ }
+}

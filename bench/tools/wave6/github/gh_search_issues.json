@@ -1,0 +1,41 @@
+{
+ "name": "gh_search_issues",
+ "mcp_name": "github.gh_search_issues",
+ "asset_namespace": "github",
+ "description": "Search issues by keywords in title and body (GET /search/issues)",
+ "type": "read",
+ "target_tables": [
+  "gh_issues"
+ ],
+ "parameters": {
+  "q": "string",
+  "repo": "string",
+  "state": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "q": {
+    "type": "string",
+    "description": "The query contains one or more search keywords. Matched against issue titles and bodies."
+   },
+   "repo": {
+    "type": "string",
+    "description": "Limit results to a repository, owner/repo form (the repo: qualifier in the real API)."
+   },
+   "state": {
+    "type": "string",
+    "description": "Filter by issue state: open or closed (the state: qualifier in the real API)."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The number of results per page (max 100). GitHub param: per_page. Default: 30."
+   }
+  },
+  "required": [
+   "q"
+  ],
+  "additionalProperties": false
+ }
+}

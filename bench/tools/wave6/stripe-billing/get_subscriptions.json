@@ -1,0 +1,43 @@
+{
+ "name": "get_subscriptions",
+ "mcp_name": "stripe.get_subscriptions",
+ "asset_namespace": "stripe",
+ "description": "By default, returns a list of subscriptions that have not been canceled. (GET /v1/subscriptions)",
+ "type": "read",
+ "target_tables": [
+  "subscriptions"
+ ],
+ "parameters": {
+  "customer": "string",
+  "price": "string",
+  "status": "string",
+  "collection_method": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "customer": {
+    "type": "string",
+    "description": "The ID of the customer whose subscriptions will be retrieved."
+   },
+   "price": {
+    "type": "string",
+    "description": "Filter for subscriptions that contain this recurring price."
+   },
+   "status": {
+    "type": "string",
+    "description": "The status of the subscriptions to retrieve. One of incomplete, incomplete_expired, trialing, active, past_due, unpaid, canceled, or paused."
+   },
+   "collection_method": {
+    "type": "string",
+    "description": "The collection method of the subscriptions to retrieve. Either charge_automatically or send_invoice."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}

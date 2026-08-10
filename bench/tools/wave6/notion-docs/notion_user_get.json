@@ -1,0 +1,26 @@
+{
+ "name": "notion_user_get",
+ "mcp_name": "notion.notion_user_get",
+ "asset_namespace": "notion",
+ "description": "Retrieve a user object using the ID specified (GET /v1/users/{user_id})",
+ "type": "read",
+ "target_tables": [
+  "notion_users"
+ ],
+ "parameters": {
+  "user_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "user_id": {
+    "type": "string",
+    "description": "Identifier for a Notion workspace user."
+   }
+  },
+  "required": [
+   "user_id"
+  ],
+  "additionalProperties": false
+ }
+}

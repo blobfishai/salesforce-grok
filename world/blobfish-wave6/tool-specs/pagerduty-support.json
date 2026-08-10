@@ -1,0 +1,1834 @@
+{
+ "vendor": "pagerduty-support",
+ "namespace": "pagerduty",
+ "tables": [
+  {
+   "name": "pd_incidents",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "incident_number",
+     "type": "INTEGER"
+    },
+    {
+     "name": "title",
+     "type": "TEXT"
+    },
+    {
+     "name": "description",
+     "type": "TEXT"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "urgency",
+     "type": "TEXT"
+    },
+    {
+     "name": "priority_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "service_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "escalation_policy_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "assignee",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    },
+    {
+     "name": "resolved_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "PT4KHLK",
+     "incident_number": 4231,
+     "title": "Stripe webhook delivery failures spiking on invoice.payment_failed events",
+     "description": "Webhook gateway rejecting ~18% of Stripe invoice.payment_failed deliveries with 502; retries queueing. Billing alerts for Summit Group Account and Atlas are delayed.",
+     "status": "triggered",
+     "urgency": "high",
+     "priority_id": "PPRI001",
+     "service_id": "PSTRWBH",
+     "escalation_policy_id": "PEPBILL",
+     "assignee": "PNAKAT1",
+     "created_at": "2026-08-10T06:42:11Z",
+     "resolved_at": null
+    },
+    {
+     "id": "PQR2M8N",
+     "incident_number": 4230,
+     "title": "Billing reconciliation mismatch: 47 Stripe charges unmatched for Summit Group Account",
+     "description": "Nightly reconciliation flagged 47 charges from the 02:00 Stripe payout batch with no matching revenue-ledger entries for Summit Group Account.",
+     "status": "acknowledged",
+     "urgency": "high",
+     "priority_id": "PPRI002",
+     "service_id": "PBILREC",
+     "escalation_policy_id": "PEPBILL",
+     "assignee": "PRODRI1",
+     "created_at": "2026-08-10T02:15:33Z",
+     "resolved_at": null
+    },
+    {
+     "id": "PW9XJ3D",
+     "incident_number": 4229,
+     "title": "CRM sync lag exceeding 45 minutes for Meridian and Ironwood account records",
+     "description": "CRM-to-warehouse sync latency monitor breached the 30-minute SLO; Meridian and Ironwood account and opportunity updates are arriving stale.",
+     "status": "acknowledged",
+     "urgency": "high",
+     "priority_id": "PPRI002",
+     "service_id": "PCRMSYN",
+     "escalation_policy_id": "PEPCRM1",
+     "assignee": "PWEBBM1",
+     "created_at": "2026-08-09T14:05:47Z",
+     "resolved_at": null
+    },
+    {
+     "id": "PA7MK2Q",
+     "incident_number": 4228,
+     "title": "Revenue dashboard showing stale ARR figures for Riverside Group Account",
+     "description": "ARR materialized view for Riverside Group Account skipped its refresh after Friday's ETL retry; exec dashboard tiles were a day behind.",
+     "status": "resolved",
+     "urgency": "low",
+     "priority_id": "PPRI004",
+     "service_id": "PREVDSH",
+     "escalation_policy_id": "PEPREV1",
+     "assignee": "PBELLO1",
+     "created_at": "2026-08-08T16:20:05Z",
+     "resolved_at": "2026-08-09T10:02:41Z"
+    },
+    {
+     "id": "PE3NV8R",
+     "incident_number": 4227,
+     "title": "SendGrid bounce rate alert: renewal notices to Harborview contacts bouncing",
+     "description": "Bounce rate on the renewal-notice send to Harborview contacts exceeded 8%; traced to a stale contact segment.",
+     "status": "resolved",
+     "urgency": "low",
+     "priority_id": "PPRI003",
+     "service_id": "PSGMAIL",
+     "escalation_policy_id": "PEPPLAT",
+     "assignee": "PNATAR1",
+     "created_at": "2026-08-07T11:34:29Z",
+     "resolved_at": "2026-08-07T15:48:10Z"
+    },
+    {
+     "id": "PD6TQ4W",
+     "incident_number": 4226,
+     "title": "Data warehouse ETL nightly run failed at opportunities load step",
+     "description": "Nightly ETL aborted on the sales_opportunities load after upstream schema drift (new stage_gate column).",
+     "status": "resolved",
+     "urgency": "high",
+     "priority_id": "PPRI002",
+     "service_id": "PDWHETL",
+     "escalation_policy_id": "PEPDATA",
+     "assignee": "PWEBBM1",
+     "created_at": "2026-08-06T03:12:54Z",
+     "resolved_at": "2026-08-06T07:45:02Z"
+    },
+    {
+     "id": "PB2LH9S",
+     "incident_number": 4225,
+     "title": "Billing alerts pipeline consumer lag above 10k messages",
+     "description": "Billing-alerts consumer group fell more than 10k messages behind after a burst of Stripe usage-threshold alerts.",
+     "status": "resolved",
+     "urgency": "high",
+     "priority_id": "PPRI002",
+     "service_id": "PBILLAP",
+     "escalation_policy_id": "PEPBILL",
+     "assignee": "PNAKAT1",
+     "created_at": "2026-08-05T09:58:16Z",
+     "resolved_at": "2026-08-05T12:31:44Z"
+    },
+    {
+     "id": "PS8RC5M",
+     "incident_number": 4224,
+     "title": "Support portal 5xx errors on case attachment uploads",
+     "description": "Attachment uploads on the customer support portal returning 502/503 for files over 5 MB.",
+     "status": "resolved",
+     "urgency": "low",
+     "priority_id": "PPRI003",
+     "service_id": "PSUPPRT",
+     "escalation_policy_id": "PEPSUP1",
+     "assignee": "PFITZO1",
+     "created_at": "2026-08-04T13:27:38Z",
+     "resolved_at": "2026-08-04T18:09:55Z"
+    },
+    {
+     "id": "PF4WY7N",
+     "incident_number": 4223,
+     "title": "Duplicate billing alerts created for Atlas subscription renewal",
+     "description": "Webhook retry storm during Sunday's deploy created duplicate billing alerts for the Atlas renewal; dedupe missing an idempotency key.",
+     "status": "resolved",
+     "urgency": "low",
+     "priority_id": "PPRI003",
+     "service_id": "PBILLAP",
+     "escalation_policy_id": "PEPBILL",
+     "assignee": "PNAKAT1",
+     "created_at": "2026-08-03T08:44:21Z",
+     "resolved_at": "2026-08-03T11:12:37Z"
+    },
+    {
+     "id": "PK1ZD6T",
+     "incident_number": 4222,
+     "title": "Stripe webhook signature verification errors after API key rotation",
+     "description": "All Stripe webhook deliveries failing signature verification following the scheduled API key rotation; endpoint secret was not updated.",
+     "status": "resolved",
+     "urgency": "high",
+     "priority_id": "PPRI001",
+     "service_id": "PSTRWBH",
+     "escalation_policy_id": "PEPBILL",
+     "assignee": "PRODRI1",
+     "created_at": "2026-08-01T22:07:49Z",
+     "resolved_at": "2026-08-02T01:55:23Z"
+    },
+    {
+     "id": "PM5GB3X",
+     "incident_number": 4221,
+     "title": "CRM sync dropped 12 contact updates for Crestline",
+     "description": "Sync worker crashed mid-batch and skipped 12 Crestline contact updates; replayed from the change log after the fix.",
+     "status": "resolved",
+     "urgency": "high",
+     "priority_id": "PPRI002",
+     "service_id": "PCRMSYN",
+     "escalation_policy_id": "PEPCRM1",
+     "assignee": "PWEBBM1",
+     "created_at": "2026-07-29T17:41:12Z",
+     "resolved_at": "2026-07-30T09:26:48Z"
+    },
+    {
+     "id": "PH9JN2V",
+     "incident_number": 4220,
+     "title": "Revenue dashboard timeout on quarterly rollup for Summit Group Account",
+     "description": "Quarterly ARR rollup query for Summit Group Account timing out at 30s; needed an index on the rollup join.",
+     "status": "resolved",
+     "urgency": "low",
+     "priority_id": "PPRI004",
+     "service_id": "PREVDSH",
+     "escalation_policy_id": "PEPREV1",
+     "assignee": "PBELLO1",
+     "created_at": "2026-07-25T10:19:36Z",
+     "resolved_at": "2026-07-25T14:53:20Z"
+    }
+   ]
+  },
+  {
+   "name": "pd_services",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "description",
+     "type": "TEXT"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "escalation_policy_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "team_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "PBILLAP",
+     "name": "Billing Alerts Pipeline",
+     "description": "Consumes Stripe billing alerts and threshold events and routes them into support cases.",
+     "status": "active",
+     "escalation_policy_id": "PEPBILL",
+     "team_id": "PTBILL1",
+     "created_at": "2024-03-11T14:22:00Z"
+    },
+    {
+     "id": "PSTRWBH",
+     "name": "Stripe Webhook Gateway",
+     "description": "Ingests and verifies Stripe webhook events (invoices, charges, disputes) for downstream billing systems.",
+     "status": "critical",
+     "escalation_policy_id": "PEPBILL",
+     "team_id": "PTBILL1",
+     "created_at": "2024-03-11T14:25:00Z"
+    },
+    {
+     "id": "PBILREC",
+     "name": "Billing Reconciliation",
+     "description": "Nightly job reconciling Stripe charges and payouts against the revenue ledger.",
+     "status": "warning",
+     "escalation_policy_id": "PEPBILL",
+     "team_id": "PTBILL1",
+     "created_at": "2024-05-02T09:10:00Z"
+    },
+    {
+     "id": "PCRMSYN",
+     "name": "CRM Sync",
+     "description": "Bi-directional sync between the CRM (accounts, contacts, opportunities) and the data warehouse.",
+     "status": "warning",
+     "escalation_policy_id": "PEPCRM1",
+     "team_id": "PTCRM01",
+     "created_at": "2024-06-18T11:40:00Z"
+    },
+    {
+     "id": "PREVDSH",
+     "name": "Revenue Dashboard",
+     "description": "Executive revenue dashboard: ARR, pipeline coverage, and forecast rollups for named accounts.",
+     "status": "active",
+     "escalation_policy_id": "PEPREV1",
+     "team_id": "PTREV01",
+     "created_at": "2024-09-07T16:05:00Z"
+    },
+    {
+     "id": "PDWHETL",
+     "name": "Data Warehouse ETL",
+     "description": "Nightly extract-transform-load pipelines feeding the analytics warehouse.",
+     "status": "active",
+     "escalation_policy_id": "PEPDATA",
+     "team_id": "PTDATA1",
+     "created_at": "2024-04-25T08:30:00Z"
+    },
+    {
+     "id": "PSGMAIL",
+     "name": "Email Delivery (SendGrid)",
+     "description": "Transactional and campaign email delivery through SendGrid, including renewal notices.",
+     "status": "active",
+     "escalation_policy_id": "PEPPLAT",
+     "team_id": "PTOPS01",
+     "created_at": "2024-07-14T13:55:00Z"
+    },
+    {
+     "id": "PSUPPRT",
+     "name": "Support Portal",
+     "description": "Customer-facing support portal: case creation, attachments, and knowledge base.",
+     "status": "active",
+     "escalation_policy_id": "PEPSUP1",
+     "team_id": "PTSUP01",
+     "created_at": "2025-01-20T10:15:00Z"
+    }
+   ]
+  },
+  {
+   "name": "pd_escalation_policies",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "description",
+     "type": "TEXT"
+    },
+    {
+     "name": "num_loops",
+     "type": "INTEGER"
+    },
+    {
+     "name": "team_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "on_call_handoff_notifications",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "PEPBILL",
+     "name": "Billing Pipeline Escalation",
+     "description": "Level 1: billing engineering on-call; level 2: billing systems lead. Covers alerts pipeline, webhook gateway, and reconciliation.",
+     "num_loops": 2,
+     "team_id": "PTBILL1",
+     "on_call_handoff_notifications": "if_has_services"
+    },
+    {
+     "id": "PEPCRM1",
+     "name": "CRM Integrations Escalation",
+     "description": "Level 1: CRM integrations on-call; level 2: payments engineering manager.",
+     "num_loops": 2,
+     "team_id": "PTCRM01",
+     "on_call_handoff_notifications": "if_has_services"
+    },
+    {
+     "id": "PEPDATA",
+     "name": "Data & Analytics Escalation",
+     "description": "Single-level policy for warehouse ETL and analytics job failures.",
+     "num_loops": 1,
+     "team_id": "PTDATA1",
+     "on_call_handoff_notifications": "if_has_services"
+    },
+    {
+     "id": "PEPPLAT",
+     "name": "Platform Default Escalation",
+     "description": "Default policy for shared platform services; primary then secondary platform rotation.",
+     "num_loops": 3,
+     "team_id": "PTOPS01",
+     "on_call_handoff_notifications": "always"
+    },
+    {
+     "id": "PEPSUP1",
+     "name": "Support Portal Escalation",
+     "description": "Support engineering on-call for the customer support portal.",
+     "num_loops": 2,
+     "team_id": "PTSUP01",
+     "on_call_handoff_notifications": "if_has_services"
+    },
+    {
+     "id": "PEPREV1",
+     "name": "Revenue Dashboard Escalation",
+     "description": "Revenue operations analyst on-call for dashboard data-quality incidents.",
+     "num_loops": 1,
+     "team_id": "PTREV01",
+     "on_call_handoff_notifications": "if_has_services"
+    }
+   ]
+  },
+  {
+   "name": "pd_schedules",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "description",
+     "type": "TEXT"
+    },
+    {
+     "name": "time_zone",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "PSCBILL",
+     "name": "Billing Engineering On-Call",
+     "description": "Weekly primary rotation for the billing alerts pipeline, reconciliation, and Stripe webhook services.",
+     "time_zone": "America/New_York"
+    },
+    {
+     "id": "PSCCRM1",
+     "name": "CRM Integrations On-Call",
+     "description": "Weekly rotation covering CRM sync and integration services.",
+     "time_zone": "America/New_York"
+    },
+    {
+     "id": "PSCDATA",
+     "name": "Data & Analytics On-Call",
+     "description": "Weekly rotation for warehouse ETL and analytics jobs.",
+     "time_zone": "America/Chicago"
+    },
+    {
+     "id": "PSCPLAT",
+     "name": "Platform Ops Primary",
+     "description": "Primary rotation for shared platform services (email delivery, infrastructure).",
+     "time_zone": "America/New_York"
+    },
+    {
+     "id": "PSCPLT2",
+     "name": "Platform Ops Secondary",
+     "description": "Secondary escalation rotation backing the platform primary.",
+     "time_zone": "America/Los_Angeles"
+    },
+    {
+     "id": "PSCSUPP",
+     "name": "Support Engineering Weekend Rotation",
+     "description": "Weekend coverage for the customer support portal.",
+     "time_zone": "America/New_York"
+    }
+   ]
+  },
+  {
+   "name": "pd_schedule_overrides",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "schedule_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "user_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "start",
+     "type": "TEXT"
+    },
+    {
+     "name": "end_time",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "POVR001",
+     "schedule_id": "PSCPLAT",
+     "user_id": "POSEID1",
+     "start": "2026-08-14T09:00:00Z",
+     "end_time": "2026-08-17T09:00:00Z",
+     "created_at": "2026-08-05T15:12:40Z"
+    },
+    {
+     "id": "POVR002",
+     "schedule_id": "PSCBILL",
+     "user_id": "PLIUGR1",
+     "start": "2026-08-15T00:00:00Z",
+     "end_time": "2026-08-16T00:00:00Z",
+     "created_at": "2026-08-07T18:30:12Z"
+    },
+    {
+     "id": "POVR003",
+     "schedule_id": "PSCCRM1",
+     "user_id": "PLIUGR1",
+     "start": "2026-07-28T09:00:00Z",
+     "end_time": "2026-07-29T09:00:00Z",
+     "created_at": "2026-07-24T10:05:55Z"
+    },
+    {
+     "id": "POVR004",
+     "schedule_id": "PSCDATA",
+     "user_id": "PBELLO1",
+     "start": "2026-08-20T09:00:00Z",
+     "end_time": "2026-08-21T09:00:00Z",
+     "created_at": "2026-08-08T09:44:03Z"
+    },
+    {
+     "id": "POVR005",
+     "schedule_id": "PSCSUPP",
+     "user_id": "PNATAR1",
+     "start": "2026-08-22T17:00:00Z",
+     "end_time": "2026-08-25T09:00:00Z",
+     "created_at": "2026-08-09T12:20:31Z"
+    },
+    {
+     "id": "POVR006",
+     "schedule_id": "PSCPLT2",
+     "user_id": "PNATAR1",
+     "start": "2026-08-30T09:00:00Z",
+     "end_time": "2026-08-31T09:00:00Z",
+     "created_at": "2026-08-09T16:58:27Z"
+    }
+   ]
+  },
+  {
+   "name": "pd_oncalls",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "escalation_policy_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "schedule_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "user_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "escalation_level",
+     "type": "INTEGER"
+    },
+    {
+     "name": "start",
+     "type": "TEXT"
+    },
+    {
+     "name": "end_time",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "PONC001",
+     "escalation_policy_id": "PEPBILL",
+     "schedule_id": "PSCBILL",
+     "user_id": "PNAKAT1",
+     "escalation_level": 1,
+     "start": "2026-08-04T09:00:00Z",
+     "end_time": "2026-08-11T09:00:00Z"
+    },
+    {
+     "id": "PONC002",
+     "escalation_policy_id": "PEPBILL",
+     "schedule_id": null,
+     "user_id": "PRODRI1",
+     "escalation_level": 2,
+     "start": null,
+     "end_time": null
+    },
+    {
+     "id": "PONC003",
+     "escalation_policy_id": "PEPCRM1",
+     "schedule_id": "PSCCRM1",
+     "user_id": "PWEBBM1",
+     "escalation_level": 1,
+     "start": "2026-08-04T09:00:00Z",
+     "end_time": "2026-08-11T09:00:00Z"
+    },
+    {
+     "id": "PONC004",
+     "escalation_policy_id": "PEPCRM1",
+     "schedule_id": null,
+     "user_id": "PLIUGR1",
+     "escalation_level": 2,
+     "start": null,
+     "end_time": null
+    },
+    {
+     "id": "PONC005",
+     "escalation_policy_id": "PEPPLAT",
+     "schedule_id": "PSCPLAT",
+     "user_id": "PNATAR1",
+     "escalation_level": 1,
+     "start": "2026-08-04T09:00:00Z",
+     "end_time": "2026-08-11T09:00:00Z"
+    },
+    {
+     "id": "PONC006",
+     "escalation_policy_id": "PEPPLAT",
+     "schedule_id": "PSCPLT2",
+     "user_id": "POSEID1",
+     "escalation_level": 2,
+     "start": "2026-08-04T09:00:00Z",
+     "end_time": "2026-08-11T09:00:00Z"
+    },
+    {
+     "id": "PONC007",
+     "escalation_policy_id": "PEPDATA",
+     "schedule_id": "PSCDATA",
+     "user_id": "PWEBBM1",
+     "escalation_level": 1,
+     "start": "2026-08-04T09:00:00Z",
+     "end_time": "2026-08-11T09:00:00Z"
+    },
+    {
+     "id": "PONC008",
+     "escalation_policy_id": "PEPSUP1",
+     "schedule_id": "PSCSUPP",
+     "user_id": "PFITZO1",
+     "escalation_level": 1,
+     "start": "2026-08-08T17:00:00Z",
+     "end_time": "2026-08-11T09:00:00Z"
+    },
+    {
+     "id": "PONC009",
+     "escalation_policy_id": "PEPREV1",
+     "schedule_id": null,
+     "user_id": "PBELLO1",
+     "escalation_level": 1,
+     "start": null,
+     "end_time": null
+    }
+   ]
+  },
+  {
+   "name": "pd_users",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "email",
+     "type": "TEXT"
+    },
+    {
+     "name": "role",
+     "type": "TEXT"
+    },
+    {
+     "name": "job_title",
+     "type": "TEXT"
+    },
+    {
+     "name": "time_zone",
+     "type": "TEXT"
+    },
+    {
+     "name": "team_id",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "PHUANG1",
+     "name": "Mei Huang",
+     "email": "contact77709@morganstanleysimulated.com",
+     "role": "limited_user",
+     "job_title": "Sales Development Rep",
+     "time_zone": "America/New_York",
+     "team_id": "PTREV01"
+    },
+    {
+     "id": "PKIMSA1",
+     "name": "Sarah Kim",
+     "email": "sarah.kim@morganstanleysimulated.com",
+     "role": "observer",
+     "job_title": "Recruiter",
+     "time_zone": "America/New_York",
+     "team_id": null
+    },
+    {
+     "id": "PNATAR1",
+     "name": "Priya Natarajan",
+     "email": "priya.natarajan@morganstanleysimulated.com",
+     "role": "user",
+     "job_title": "Site Reliability Engineer",
+     "time_zone": "America/New_York",
+     "team_id": "PTOPS01"
+    },
+    {
+     "id": "POSEID1",
+     "name": "Daniel Osei",
+     "email": "daniel.osei@morganstanleysimulated.com",
+     "role": "user",
+     "job_title": "Platform Engineer",
+     "time_zone": "America/Los_Angeles",
+     "team_id": "PTOPS01"
+    },
+    {
+     "id": "PRODRI1",
+     "name": "Elena Rodriguez",
+     "email": "elena.rodriguez@morganstanleysimulated.com",
+     "role": "admin",
+     "job_title": "Billing Systems Lead",
+     "time_zone": "America/New_York",
+     "team_id": "PTBILL1"
+    },
+    {
+     "id": "PWEBBM1",
+     "name": "Marcus Webb",
+     "email": "marcus.webb@morganstanleysimulated.com",
+     "role": "user",
+     "job_title": "Data Engineer",
+     "time_zone": "America/Chicago",
+     "team_id": "PTCRM01"
+    },
+    {
+     "id": "PBELLO1",
+     "name": "Aisha Bello",
+     "email": "aisha.bello@morganstanleysimulated.com",
+     "role": "user",
+     "job_title": "Revenue Operations Analyst",
+     "time_zone": "America/New_York",
+     "team_id": "PTREV01"
+    },
+    {
+     "id": "PNAKAT1",
+     "name": "Tom Nakamura",
+     "email": "tom.nakamura@morganstanleysimulated.com",
+     "role": "user",
+     "job_title": "Integrations Engineer",
+     "time_zone": "America/New_York",
+     "team_id": "PTBILL1"
+    },
+    {
+     "id": "PLIUGR1",
+     "name": "Grace Liu",
+     "email": "grace.liu@morganstanleysimulated.com",
+     "role": "admin",
+     "job_title": "Engineering Manager, Payments",
+     "time_zone": "America/New_York",
+     "team_id": "PTBILL1"
+    },
+    {
+     "id": "PFITZO1",
+     "name": "Owen Fitzgerald",
+     "email": "owen.fitzgerald@morganstanleysimulated.com",
+     "role": "user",
+     "job_title": "Support Engineer",
+     "time_zone": "America/New_York",
+     "team_id": "PTSUP01"
+    }
+   ]
+  },
+  {
+   "name": "pd_teams",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "description",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "PTOPS01",
+     "name": "Platform Operations",
+     "description": "Owns shared infrastructure and the email delivery pipeline.",
+     "created_at": "2024-02-01T09:00:00Z"
+    },
+    {
+     "id": "PTBILL1",
+     "name": "Billing Engineering",
+     "description": "Owns Stripe integration, billing alerts, and revenue reconciliation.",
+     "created_at": "2024-02-01T09:05:00Z"
+    },
+    {
+     "id": "PTCRM01",
+     "name": "CRM Integrations",
+     "description": "Owns CRM sync and CRM-adjacent integrations.",
+     "created_at": "2024-05-12T10:30:00Z"
+    },
+    {
+     "id": "PTDATA1",
+     "name": "Data & Analytics",
+     "description": "Owns the warehouse, ETL pipelines, and analytics jobs.",
+     "created_at": "2024-04-03T11:45:00Z"
+    },
+    {
+     "id": "PTSUP01",
+     "name": "Support Engineering",
+     "description": "Owns the customer support portal and case tooling.",
+     "created_at": "2025-01-06T14:20:00Z"
+    },
+    {
+     "id": "PTREV01",
+     "name": "Revenue Operations",
+     "description": "Owns the revenue dashboard and forecast data quality.",
+     "created_at": "2024-09-01T08:50:00Z"
+    }
+   ]
+  },
+  {
+   "name": "pd_incident_notes",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "incident_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "user_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "content",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "PNTA001",
+     "incident_id": "PQR2M8N",
+     "user_id": "PRODRI1",
+     "content": "Pulled the reconciliation report — all 47 unmatched charges are from the 02:00 Stripe payout batch for Summit Group Account. Comparing charge ids against the ledger now.",
+     "created_at": "2026-08-10T02:38:12Z"
+    },
+    {
+     "id": "PNTA002",
+     "incident_id": "PW9XJ3D",
+     "user_id": "PWEBBM1",
+     "content": "Sync worker pool exhausted; Meridian and Ironwood bulk updates are queued behind a 60k-row backfill. Scaling workers from 4 to 8.",
+     "created_at": "2026-08-09T14:31:02Z"
+    },
+    {
+     "id": "PNTA003",
+     "incident_id": "PA7MK2Q",
+     "user_id": "PBELLO1",
+     "content": "Root cause: ARR materialized view for Riverside Group Account skipped refresh after Friday's ETL retry. Manual refresh completed; figures verified against the ledger.",
+     "created_at": "2026-08-09T09:58:33Z"
+    },
+    {
+     "id": "PNTA004",
+     "incident_id": "PD6TQ4W",
+     "user_id": "PWEBBM1",
+     "content": "opportunities load step failed on schema drift — new stage_gate column upstream. Patched the mapping and re-ran the load; row counts match.",
+     "created_at": "2026-08-06T07:40:11Z"
+    },
+    {
+     "id": "PNTA005",
+     "incident_id": "PK1ZD6T",
+     "user_id": "PRODRI1",
+     "content": "Signature failures started right after the scheduled Stripe API key rotation window. Webhook endpoint secret was not updated; rotated the endpoint secret and replayed failed events.",
+     "created_at": "2026-08-02T01:12:58Z"
+    },
+    {
+     "id": "PNTA006",
+     "incident_id": "PK1ZD6T",
+     "user_id": "PLIUGR1",
+     "content": "Post-incident action: add endpoint secret update to the key rotation runbook checklist.",
+     "created_at": "2026-08-02T02:05:19Z"
+    },
+    {
+     "id": "PNTA007",
+     "incident_id": "PE3NV8R",
+     "user_id": "PNATAR1",
+     "content": "Bounces traced to a stale Harborview contact segment; suppressed hard bounces and re-queued renewal notices to the refreshed list.",
+     "created_at": "2026-08-07T15:20:46Z"
+    },
+    {
+     "id": "PNTA008",
+     "incident_id": "PF4WY7N",
+     "user_id": "PNAKAT1",
+     "content": "Duplicate alerts caused by webhook retry storm during Sunday's deploy; added idempotency key check on billing alert creation.",
+     "created_at": "2026-08-03T10:47:25Z"
+    }
+   ]
+  },
+  {
+   "name": "pd_log_entries",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "incident_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "type",
+     "type": "TEXT"
+    },
+    {
+     "name": "agent_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "channel",
+     "type": "TEXT"
+    },
+    {
+     "name": "summary",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "RLE0001",
+     "incident_id": "PT4KHLK",
+     "type": "trigger_log_entry",
+     "agent_id": null,
+     "channel": "integration",
+     "summary": "Triggered through the Stripe webhook delivery monitor integration.",
+     "created_at": "2026-08-10T06:42:11Z"
+    },
+    {
+     "id": "RLE0002",
+     "incident_id": "PQR2M8N",
+     "type": "trigger_log_entry",
+     "agent_id": null,
+     "channel": "integration",
+     "summary": "Triggered through the reconciliation job monitor.",
+     "created_at": "2026-08-10T02:15:33Z"
+    },
+    {
+     "id": "RLE0003",
+     "incident_id": "PQR2M8N",
+     "type": "acknowledge_log_entry",
+     "agent_id": "PRODRI1",
+     "channel": "web",
+     "summary": "Acknowledged by Elena Rodriguez.",
+     "created_at": "2026-08-10T02:31:57Z"
+    },
+    {
+     "id": "RLE0004",
+     "incident_id": "PW9XJ3D",
+     "type": "trigger_log_entry",
+     "agent_id": null,
+     "channel": "integration",
+     "summary": "Triggered through the CRM sync latency monitor.",
+     "created_at": "2026-08-09T14:05:47Z"
+    },
+    {
+     "id": "RLE0005",
+     "incident_id": "PW9XJ3D",
+     "type": "acknowledge_log_entry",
+     "agent_id": "PWEBBM1",
+     "channel": "mobile",
+     "summary": "Acknowledged by Marcus Webb.",
+     "created_at": "2026-08-09T14:22:10Z"
+    },
+    {
+     "id": "RLE0006",
+     "incident_id": "PA7MK2Q",
+     "type": "trigger_log_entry",
+     "agent_id": null,
+     "channel": "integration",
+     "summary": "Triggered through the dashboard freshness monitor.",
+     "created_at": "2026-08-08T16:20:05Z"
+    },
+    {
+     "id": "RLE0007",
+     "incident_id": "PA7MK2Q",
+     "type": "resolve_log_entry",
+     "agent_id": "PBELLO1",
+     "channel": "web",
+     "summary": "Resolved by Aisha Bello: materialized view refreshed and verified.",
+     "created_at": "2026-08-09T10:02:41Z"
+    },
+    {
+     "id": "RLE0008",
+     "incident_id": "PD6TQ4W",
+     "type": "trigger_log_entry",
+     "agent_id": null,
+     "channel": "integration",
+     "summary": "Triggered through the ETL job monitor.",
+     "created_at": "2026-08-06T03:12:54Z"
+    },
+    {
+     "id": "RLE0009",
+     "incident_id": "PD6TQ4W",
+     "type": "escalate_log_entry",
+     "agent_id": null,
+     "channel": "auto",
+     "summary": "Escalated to level 1 target Marcus Webb after acknowledgement timeout.",
+     "created_at": "2026-08-06T03:27:54Z"
+    },
+    {
+     "id": "RLE0010",
+     "incident_id": "PD6TQ4W",
+     "type": "resolve_log_entry",
+     "agent_id": "PWEBBM1",
+     "channel": "web",
+     "summary": "Resolved by Marcus Webb: mapping patched, load re-run.",
+     "created_at": "2026-08-06T07:45:02Z"
+    },
+    {
+     "id": "RLE0011",
+     "incident_id": "PK1ZD6T",
+     "type": "trigger_log_entry",
+     "agent_id": null,
+     "channel": "integration",
+     "summary": "Triggered through the webhook signature verification monitor.",
+     "created_at": "2026-08-01T22:07:49Z"
+    },
+    {
+     "id": "RLE0012",
+     "incident_id": "PK1ZD6T",
+     "type": "acknowledge_log_entry",
+     "agent_id": "PRODRI1",
+     "channel": "web",
+     "summary": "Acknowledged by Elena Rodriguez.",
+     "created_at": "2026-08-01T22:19:33Z"
+    },
+    {
+     "id": "RLE0013",
+     "incident_id": "PK1ZD6T",
+     "type": "resolve_log_entry",
+     "agent_id": "PRODRI1",
+     "channel": "web",
+     "summary": "Resolved by Elena Rodriguez: endpoint secret rotated, failed events replayed.",
+     "created_at": "2026-08-02T01:55:23Z"
+    },
+    {
+     "id": "RLE0014",
+     "incident_id": "PB2LH9S",
+     "type": "trigger_log_entry",
+     "agent_id": null,
+     "channel": "integration",
+     "summary": "Triggered through the consumer lag monitor.",
+     "created_at": "2026-08-05T09:58:16Z"
+    }
+   ]
+  },
+  {
+   "name": "pd_maintenance_windows",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "service_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "start_time",
+     "type": "TEXT"
+    },
+    {
+     "name": "end_time",
+     "type": "TEXT"
+    },
+    {
+     "name": "description",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_by",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "PMWA001",
+     "service_id": "PSTRWBH",
+     "start_time": "2026-08-01T21:00:00Z",
+     "end_time": "2026-08-01T23:00:00Z",
+     "description": "Scheduled Stripe API key rotation for the webhook gateway.",
+     "created_by": "PRODRI1",
+     "created_at": "2026-07-28T15:04:22Z"
+    },
+    {
+     "id": "PMWA002",
+     "service_id": "PDWHETL",
+     "start_time": "2026-07-19T02:00:00Z",
+     "end_time": "2026-07-19T06:00:00Z",
+     "description": "Warehouse ETL engine upgrade to v5.2; nightly loads paused.",
+     "created_by": "PWEBBM1",
+     "created_at": "2026-07-14T11:20:05Z"
+    },
+    {
+     "id": "PMWA003",
+     "service_id": "PCRMSYN",
+     "start_time": "2026-07-26T01:00:00Z",
+     "end_time": "2026-07-26T04:00:00Z",
+     "description": "CRM sync schema migration for the new opportunity stage-gate fields.",
+     "created_by": "PLIUGR1",
+     "created_at": "2026-07-21T09:45:18Z"
+    },
+    {
+     "id": "PMWA004",
+     "service_id": "PBILLAP",
+     "start_time": "2026-08-12T02:00:00Z",
+     "end_time": "2026-08-12T05:00:00Z",
+     "description": "Billing alerts pipeline message broker upgrade; alert delivery delayed up to 30 minutes.",
+     "created_by": "PNAKAT1",
+     "created_at": "2026-08-06T16:30:41Z"
+    },
+    {
+     "id": "PMWA005",
+     "service_id": "PREVDSH",
+     "start_time": "2026-08-16T06:00:00Z",
+     "end_time": "2026-08-16T08:00:00Z",
+     "description": "Revenue dashboard search reindex ahead of quarter-close reporting.",
+     "created_by": "PBELLO1",
+     "created_at": "2026-08-08T10:12:59Z"
+    },
+    {
+     "id": "PMWA006",
+     "service_id": "PSUPPRT",
+     "start_time": "2026-08-23T03:00:00Z",
+     "end_time": "2026-08-23T07:00:00Z",
+     "description": "Support portal attachment storage migration to the new object store.",
+     "created_by": "PFITZO1",
+     "created_at": "2026-08-09T14:55:07Z"
+    }
+   ]
+  },
+  {
+   "name": "pd_priorities",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "description",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "PPRI001",
+     "name": "P1",
+     "description": "Critical: revenue-impacting outage or data loss; all-hands response, exec notification."
+    },
+    {
+     "id": "PPRI002",
+     "name": "P2",
+     "description": "High: major degradation of a billing, CRM, or reporting pipeline; on-call responds immediately."
+    },
+    {
+     "id": "PPRI003",
+     "name": "P3",
+     "description": "Moderate: partial degradation with a workaround; handled within the business day."
+    },
+    {
+     "id": "PPRI004",
+     "name": "P4",
+     "description": "Low: minor issue or data-quality nit; scheduled into normal work."
+    },
+    {
+     "id": "PPRI005",
+     "name": "P5",
+     "description": "Informational: no customer or revenue impact; tracked for trend analysis."
+    }
+   ]
+  }
+ ],
+ "tools": [
+  {
+   "name": "pd_incidents_list",
+   "description": "List incidents, filterable by status, service, urgency, and created-at date range (GET /incidents)",
+   "op": "custom",
+   "type": "read",
+   "table": "pd_incidents",
+   "params": {
+    "status": {
+     "type": "string",
+     "description": "Return only incidents with this status. One of: triggered, acknowledged, resolved. Scalar form of the API's statuses[] filter."
+    },
+    "service_id": {
+     "type": "string",
+     "description": "Return only incidents associated with this service. Scalar form of the API's service_ids[] filter."
+    },
+    "urgency": {
+     "type": "string",
+     "description": "Return only incidents with this urgency. One of: high, low. Scalar form of the API's urgencies[] filter."
+    },
+    "since": {
+     "type": "string",
+     "description": "The start of the date range over which you want to search, ISO 8601 (e.g. 2026-08-01T00:00:00Z). Compared against created_at."
+    },
+    "until": {
+     "type": "string",
+     "description": "The end of the date range over which you want to search, ISO 8601. Compared against created_at."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The number of results per page. Defaults to 30."
+    }
+   },
+   "custom_source": "def pd_incidents_list(db_path='state.db', **kwargs):\n    import sqlite3\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    where = []\n    args = []\n    status = kwargs.get('status')\n    if status:\n        if status not in ('triggered', 'acknowledged', 'resolved'):\n            conn.close()\n            return {'error': {'status': 400, 'message': \"Invalid status '%s'. Must be one of: triggered, acknowledged, resolved.\" % status}}\n        where.append('status = ?')\n        args.append(status)\n    service_id = kwargs.get('service_id')\n    if service_id:\n        where.append('service_id = ?')\n        args.append(service_id)\n    urgency = kwargs.get('urgency')\n    if urgency:\n        if urgency not in ('high', 'low'):\n            conn.close()\n            return {'error': {'status': 400, 'message': \"Invalid urgency '%s'. Must be one of: high, low.\" % urgency}}\n        where.append('urgency = ?')\n        args.append(urgency)\n    since = kwargs.get('since')\n    if since:\n        where.append('created_at >= ?')\n        args.append(since)\n    until = kwargs.get('until')\n    if until:\n        where.append('created_at <= ?')\n        args.append(until)\n    try:\n        limit = int(kwargs.get('limit') or 30)\n    except (TypeError, ValueError):\n        limit = 30\n    sql = 'SELECT * FROM pd_incidents'\n    if where:\n        sql += ' WHERE ' + ' AND '.join(where)\n    sql += ' ORDER BY created_at DESC LIMIT ?'\n    args.append(limit)\n    rows = [dict(r) for r in conn.execute(sql, args).fetchall()]\n    conn.close()\n    return {'incidents': rows, 'total': len(rows)}\n"
+  },
+  {
+   "name": "pd_incident_get",
+   "description": "Show detailed information about an incident (GET /incidents/{id})",
+   "op": "get",
+   "table": "pd_incidents",
+   "id_param": "id",
+   "params": {
+    "id": {
+     "type": "string",
+     "description": "The ID of the incident to retrieve (e.g. PT4KHLK)."
+    }
+   },
+   "required": [
+    "id"
+   ]
+  },
+  {
+   "name": "pd_incident_create",
+   "description": "Create an incident on a service; auto-assigns the level-1 on-call of the escalation policy when no assignee is given (POST /incidents)",
+   "op": "custom",
+   "type": "write",
+   "table": "pd_incidents",
+   "extra_tables": [
+    "pd_services",
+    "pd_priorities",
+    "pd_users",
+    "pd_oncalls",
+    "pd_log_entries"
+   ],
+   "params": {
+    "title": {
+     "type": "string",
+     "description": "A succinct description of the nature, symptoms, cause, or effect of the incident (incident.title)."
+    },
+    "service_id": {
+     "type": "string",
+     "description": "The ID of the service the incident belongs to (incident.service.id)."
+    },
+    "urgency": {
+     "type": "string",
+     "description": "The urgency of the incident: high or low. Defaults to high (incident.urgency)."
+    },
+    "details": {
+     "type": "string",
+     "description": "Additional incident details — the body of the incident (incident.body.details)."
+    },
+    "escalation_policy_id": {
+     "type": "string",
+     "description": "Delegate the incident to this escalation policy instead of the service's default (incident.escalation_policy.id)."
+    },
+    "priority_id": {
+     "type": "string",
+     "description": "The ID of the priority to set on the incident, e.g. PPRI001 for P1 (incident.priority.id)."
+    },
+    "assignee": {
+     "type": "string",
+     "description": "User ID to assign the incident to directly (incident.assignments[].assignee.id). If omitted, the level-1 on-call for the escalation policy is assigned."
+    }
+   },
+   "required": [
+    "title",
+    "service_id"
+   ],
+   "custom_source": "def pd_incident_create(db_path='state.db', **kwargs):\n    import sqlite3\n    import datetime\n    import hashlib\n    title = kwargs.get('title')\n    if not title:\n        return {'error': {'status': 400, 'message': \"Missing required parameter 'title'.\"}}\n    service_id = kwargs.get('service_id')\n    if not service_id:\n        return {'error': {'status': 400, 'message': \"Missing required parameter 'service_id'.\"}}\n    urgency = kwargs.get('urgency') or 'high'\n    if urgency not in ('high', 'low'):\n        return {'error': {'status': 400, 'message': \"Invalid urgency '%s'. Must be one of: high, low.\" % urgency}}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    svc = conn.execute('SELECT * FROM pd_services WHERE id = ?', (service_id,)).fetchone()\n    if svc is None:\n        conn.close()\n        return {'error': {'status': 404, 'message': \"Service '%s' not found.\" % service_id}}\n    escalation_policy_id = kwargs.get('escalation_policy_id') or svc['escalation_policy_id']\n    priority_id = kwargs.get('priority_id')\n    if priority_id:\n        if conn.execute('SELECT id FROM pd_priorities WHERE id = ?', (priority_id,)).fetchone() is None:\n            conn.close()\n            return {'error': {'status': 404, 'message': \"Priority '%s' not found.\" % priority_id}}\n    assignee = kwargs.get('assignee')\n    if assignee:\n        if conn.execute('SELECT id FROM pd_users WHERE id = ?', (assignee,)).fetchone() is None:\n            conn.close()\n            return {'error': {'status': 404, 'message': \"User '%s' not found.\" % assignee}}\n    else:\n        oncall = conn.execute('SELECT user_id FROM pd_oncalls WHERE escalation_policy_id = ? AND escalation_level = 1 ORDER BY id LIMIT 1', (escalation_policy_id,)).fetchone()\n        assignee = oncall['user_id'] if oncall else None\n    now = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')\n    number = conn.execute('SELECT COALESCE(MAX(incident_number), 0) + 1 AS n FROM pd_incidents').fetchone()['n']\n    new_id = 'P' + hashlib.sha1((title + str(number) + str(datetime.datetime.utcnow().timestamp())).encode('utf-8')).hexdigest()[:6].upper()\n    conn.execute('INSERT INTO pd_incidents (id, incident_number, title, description, status, urgency, priority_id, service_id, escalation_policy_id, assignee, created_at, resolved_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',\n                 (new_id, number, title, kwargs.get('details'), 'triggered', urgency, priority_id, service_id, escalation_policy_id, assignee, now, None))\n    log_id = 'R' + hashlib.sha1((new_id + 'trigger' + str(datetime.datetime.utcnow().timestamp())).encode('utf-8')).hexdigest()[:6].upper()\n    conn.execute('INSERT INTO pd_log_entries (id, incident_id, type, agent_id, channel, summary, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)',\n                 (log_id, new_id, 'trigger_log_entry', None, 'api', 'Triggered through the API.', now))\n    conn.commit()\n    row = dict(conn.execute('SELECT * FROM pd_incidents WHERE id = ?', (new_id,)).fetchone())\n    conn.close()\n    return {'incident': row}\n"
+  },
+  {
+   "name": "pd_incident_manage",
+   "description": "Acknowledge, resolve, or escalate an incident; resolving stamps resolved_at, escalating reassigns to the on-call at the given level and re-triggers (PUT /incidents/{id})",
+   "op": "custom",
+   "type": "write",
+   "table": "pd_incidents",
+   "extra_tables": [
+    "pd_log_entries",
+    "pd_oncalls",
+    "pd_users",
+    "pd_incident_notes"
+   ],
+   "params": {
+    "id": {
+     "type": "string",
+     "description": "The ID of the incident to manage."
+    },
+    "status": {
+     "type": "string",
+     "description": "The new status of the incident: acknowledged or resolved (incident.status). Resolving stamps resolved_at; resolved incidents cannot be modified further."
+    },
+    "escalation_level": {
+     "type": "integer",
+     "description": "Escalate the incident to the on-call target at this level of its escalation policy; the incident returns to the triggered state (escalation_level)."
+    },
+    "resolution": {
+     "type": "string",
+     "description": "The resolution message for the incident; recorded as an incident note when status is resolved (incident.resolution)."
+    },
+    "from": {
+     "type": "string",
+     "description": "The email address of a valid PagerDuty user making the request; maps to the API's required From header and is recorded on log entries."
+    }
+   },
+   "required": [
+    "id"
+   ],
+   "custom_source": "def pd_incident_manage(db_path='state.db', **kwargs):\n    import sqlite3\n    import datetime\n    import hashlib\n    incident_id = kwargs.get('id')\n    if not incident_id:\n        return {'error': {'status': 400, 'message': \"Missing required parameter 'id'.\"}}\n    status = kwargs.get('status')\n    escalation_level = kwargs.get('escalation_level')\n    if status is None and escalation_level is None:\n        return {'error': {'status': 400, 'message': \"Nothing to update: provide 'status' (acknowledged or resolved) and/or 'escalation_level'.\"}}\n    if status is not None and status not in ('acknowledged', 'resolved'):\n        return {'error': {'status': 400, 'message': \"Invalid status '%s'. Must be one of: acknowledged, resolved.\" % status}}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    row = conn.execute('SELECT * FROM pd_incidents WHERE id = ?', (incident_id,)).fetchone()\n    if row is None:\n        conn.close()\n        return {'error': {'status': 404, 'message': \"Incident '%s' not found.\" % incident_id}}\n    if row['status'] == 'resolved':\n        conn.close()\n        return {'error': {'status': 400, 'message': \"Incident '%s' is already resolved; resolved incidents cannot be modified.\" % incident_id}}\n    agent_id = None\n    from_email = kwargs.get('from')\n    if from_email:\n        user = conn.execute('SELECT id FROM pd_users WHERE email = ?', (from_email,)).fetchone()\n        if user is None:\n            conn.close()\n            return {'error': {'status': 404, 'message': \"No user found with email '%s' (From header).\" % from_email}}\n        agent_id = user['id']\n    now = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')\n\n    def _log(entry_type, summary):\n        log_id = 'R' + hashlib.sha1((incident_id + entry_type + str(datetime.datetime.utcnow().timestamp())).encode('utf-8')).hexdigest()[:6].upper()\n        conn.execute('INSERT INTO pd_log_entries (id, incident_id, type, agent_id, channel, summary, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)',\n                     (log_id, incident_id, entry_type, agent_id, 'api', summary, now))\n\n    if escalation_level is not None:\n        try:\n            level = int(escalation_level)\n        except (TypeError, ValueError):\n            conn.close()\n            return {'error': {'status': 400, 'message': \"Invalid escalation_level '%s': must be an integer.\" % escalation_level}}\n        oncall = conn.execute('SELECT user_id FROM pd_oncalls WHERE escalation_policy_id = ? AND escalation_level = ? ORDER BY id LIMIT 1', (row['escalation_policy_id'], level)).fetchone()\n        if oncall is None:\n            conn.close()\n            return {'error': {'status': 400, 'message': \"No on-call target at escalation level %d on escalation policy '%s'.\" % (level, row['escalation_policy_id'])}}\n        conn.execute('UPDATE pd_incidents SET status = ?, assignee = ? WHERE id = ?', ('triggered', oncall['user_id'], incident_id))\n        _log('escalate_log_entry', 'Escalated to level %d of escalation policy %s; assigned to %s.' % (level, row['escalation_policy_id'], oncall['user_id']))\n    if status == 'acknowledged':\n        conn.execute('UPDATE pd_incidents SET status = ? WHERE id = ?', ('acknowledged', incident_id))\n        _log('acknowledge_log_entry', 'Acknowledged by %s.' % (agent_id or 'API'))\n    elif status == 'resolved':\n        conn.execute('UPDATE pd_incidents SET status = ?, resolved_at = ? WHERE id = ?', ('resolved', now, incident_id))\n        _log('resolve_log_entry', 'Resolved by %s.' % (agent_id or 'API'))\n        resolution = kwargs.get('resolution')\n        if resolution:\n            note_id = 'P' + hashlib.sha1((incident_id + resolution + str(datetime.datetime.utcnow().timestamp())).encode('utf-8')).hexdigest()[:6].upper()\n            conn.execute('INSERT INTO pd_incident_notes (id, incident_id, user_id, content, created_at) VALUES (?, ?, ?, ?, ?)',\n                         (note_id, incident_id, agent_id, resolution, now))\n    conn.commit()\n    updated = dict(conn.execute('SELECT * FROM pd_incidents WHERE id = ?', (incident_id,)).fetchone())\n    conn.close()\n    return {'incident': updated}\n"
+  },
+  {
+   "name": "pd_incident_notes_list",
+   "description": "List existing notes for the specified incident (GET /incidents/{id}/notes)",
+   "op": "list",
+   "table": "pd_incident_notes",
+   "filters": [
+    "incident_id"
+   ],
+   "params": {
+    "incident_id": {
+     "type": "string",
+     "description": "The ID of the incident whose notes to list (path {id} of GET /incidents/{id}/notes)."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The number of results per page. Defaults to 30."
+    }
+   },
+   "required": [
+    "incident_id"
+   ]
+  },
+  {
+   "name": "pd_incident_note_create",
+   "description": "Create a note on the specified incident and record an annotate log entry (POST /incidents/{id}/notes)",
+   "op": "custom",
+   "type": "write",
+   "table": "pd_incident_notes",
+   "extra_tables": [
+    "pd_incidents",
+    "pd_users",
+    "pd_log_entries"
+   ],
+   "params": {
+    "incident_id": {
+     "type": "string",
+     "description": "The ID of the incident to add the note to (path {id} of POST /incidents/{id}/notes)."
+    },
+    "content": {
+     "type": "string",
+     "description": "The note content (note.content)."
+    },
+    "from": {
+     "type": "string",
+     "description": "The email address of a valid PagerDuty user adding the note; maps to the API's required From header."
+    }
+   },
+   "required": [
+    "incident_id",
+    "content"
+   ],
+   "custom_source": "def pd_incident_note_create(db_path='state.db', **kwargs):\n    import sqlite3\n    import datetime\n    import hashlib\n    incident_id = kwargs.get('incident_id')\n    if not incident_id:\n        return {'error': {'status': 400, 'message': \"Missing required parameter 'incident_id'.\"}}\n    content = kwargs.get('content')\n    if not content:\n        return {'error': {'status': 400, 'message': \"Missing required parameter 'content'.\"}}\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    if conn.execute('SELECT id FROM pd_incidents WHERE id = ?', (incident_id,)).fetchone() is None:\n        conn.close()\n        return {'error': {'status': 404, 'message': \"Incident '%s' not found.\" % incident_id}}\n    user_id = None\n    from_email = kwargs.get('from')\n    if from_email:\n        user = conn.execute('SELECT id FROM pd_users WHERE email = ?', (from_email,)).fetchone()\n        if user is None:\n            conn.close()\n            return {'error': {'status': 404, 'message': \"No user found with email '%s' (From header).\" % from_email}}\n        user_id = user['id']\n    now = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')\n    note_id = 'P' + hashlib.sha1((incident_id + content + str(datetime.datetime.utcnow().timestamp())).encode('utf-8')).hexdigest()[:6].upper()\n    conn.execute('INSERT INTO pd_incident_notes (id, incident_id, user_id, content, created_at) VALUES (?, ?, ?, ?, ?)',\n                 (note_id, incident_id, user_id, content, now))\n    log_id = 'R' + hashlib.sha1((incident_id + 'annotate' + str(datetime.datetime.utcnow().timestamp())).encode('utf-8')).hexdigest()[:6].upper()\n    conn.execute('INSERT INTO pd_log_entries (id, incident_id, type, agent_id, channel, summary, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)',\n                 (log_id, incident_id, 'annotate_log_entry', user_id, 'api', 'Note added to the incident.', now))\n    conn.commit()\n    row = dict(conn.execute('SELECT * FROM pd_incident_notes WHERE id = ?', (note_id,)).fetchone())\n    conn.close()\n    return {'note': row}\n"
+  },
+  {
+   "name": "pd_incident_log_entries_list",
+   "description": "List log entries (trigger, acknowledge, escalate, resolve, annotate) for the specified incident (GET /incidents/{id}/log_entries)",
+   "op": "list",
+   "table": "pd_log_entries",
+   "filters": [
+    "incident_id"
+   ],
+   "params": {
+    "incident_id": {
+     "type": "string",
+     "description": "The ID of the incident whose log entries to list (path {id} of GET /incidents/{id}/log_entries)."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The number of results per page. Defaults to 30."
+    }
+   },
+   "required": [
+    "incident_id"
+   ]
+  },
+  {
+   "name": "pd_services_list",
+   "description": "List existing services, optionally filtered by team (GET /services)",
+   "op": "list",
+   "table": "pd_services",
+   "filters": [
+    "team_id"
+   ],
+   "params": {
+    "team_id": {
+     "type": "string",
+     "description": "Return only services belonging to this team. Scalar form of the API's team_ids[] filter."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The number of results per page. Defaults to 30."
+    }
+   }
+  },
+  {
+   "name": "pd_service_get",
+   "description": "Get details about an existing service (GET /services/{id})",
+   "op": "get",
+   "table": "pd_services",
+   "id_param": "id",
+   "params": {
+    "id": {
+     "type": "string",
+     "description": "The ID of the service to retrieve (e.g. PSTRWBH)."
+    }
+   },
+   "required": [
+    "id"
+   ]
+  },
+  {
+   "name": "pd_service_create",
+   "description": "Create a new service tied to an escalation policy (POST /services)",
+   "op": "create",
+   "table": "pd_services",
+   "fields": [
+    "name",
+    "description",
+    "escalation_policy_id",
+    "team_id"
+   ],
+   "defaults": {
+    "status": "active"
+   },
+   "id_prefix": "P",
+   "params": {
+    "name": {
+     "type": "string",
+     "description": "The name of the service."
+    },
+    "description": {
+     "type": "string",
+     "description": "The user-provided description of the service."
+    },
+    "escalation_policy_id": {
+     "type": "string",
+     "description": "The ID of the escalation policy used by this service (service.escalation_policy.id)."
+    },
+    "team_id": {
+     "type": "string",
+     "description": "The ID of the team associated with the service."
+    }
+   },
+   "required": [
+    "name",
+    "escalation_policy_id"
+   ]
+  },
+  {
+   "name": "pd_service_update",
+   "description": "Update an existing service's name, description, state, or escalation policy (PUT /services/{id})",
+   "op": "update",
+   "table": "pd_services",
+   "id_param": "id",
+   "set_fields": [
+    "name",
+    "description",
+    "status",
+    "escalation_policy_id"
+   ],
+   "params": {
+    "id": {
+     "type": "string",
+     "description": "The ID of the service to update."
+    },
+    "name": {
+     "type": "string",
+     "description": "The name of the service."
+    },
+    "description": {
+     "type": "string",
+     "description": "The user-provided description of the service."
+    },
+    "status": {
+     "type": "string",
+     "description": "The current state of the service. One of: active, warning, critical, maintenance, disabled."
+    },
+    "escalation_policy_id": {
+     "type": "string",
+     "description": "The ID of the escalation policy used by this service (service.escalation_policy.id)."
+    }
+   },
+   "required": [
+    "id"
+   ]
+  },
+  {
+   "name": "pd_escalation_policies_list",
+   "description": "List all of the existing escalation policies, optionally filtered by team (GET /escalation_policies)",
+   "op": "list",
+   "table": "pd_escalation_policies",
+   "filters": [
+    "team_id"
+   ],
+   "params": {
+    "team_id": {
+     "type": "string",
+     "description": "Return only escalation policies belonging to this team. Scalar form of the API's team_ids[] filter."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The number of results per page. Defaults to 30."
+    }
+   }
+  },
+  {
+   "name": "pd_escalation_policy_get",
+   "description": "Get information about an existing escalation policy and its rules (GET /escalation_policies/{id})",
+   "op": "get",
+   "table": "pd_escalation_policies",
+   "id_param": "id",
+   "params": {
+    "id": {
+     "type": "string",
+     "description": "The ID of the escalation policy to retrieve (e.g. PEPBILL)."
+    }
+   },
+   "required": [
+    "id"
+   ]
+  },
+  {
+   "name": "pd_schedules_list",
+   "description": "List the on-call schedules configured in the account (GET /schedules)",
+   "op": "list",
+   "table": "pd_schedules",
+   "params": {
+    "limit": {
+     "type": "integer",
+     "description": "The number of results per page. Defaults to 30."
+    }
+   }
+  },
+  {
+   "name": "pd_schedule_get",
+   "description": "Show detailed information about a schedule, including its time zone (GET /schedules/{id})",
+   "op": "get",
+   "table": "pd_schedules",
+   "id_param": "id",
+   "params": {
+    "id": {
+     "type": "string",
+     "description": "The ID of the schedule to retrieve (e.g. PSCBILL)."
+    }
+   },
+   "required": [
+    "id"
+   ]
+  },
+  {
+   "name": "pd_schedule_overrides_create",
+   "description": "Create an override for a specific user covering the specified time range on a schedule (POST /schedules/{id}/overrides)",
+   "op": "create",
+   "table": "pd_schedule_overrides",
+   "fields": [
+    "schedule_id",
+    "user_id",
+    "start",
+    "end_time"
+   ],
+   "id_prefix": "P",
+   "params": {
+    "schedule_id": {
+     "type": "string",
+     "description": "The ID of the schedule to create the override on (path {id} of POST /schedules/{id}/overrides)."
+    },
+    "user_id": {
+     "type": "string",
+     "description": "The ID of the user who will be on call during the override (override.user.id)."
+    },
+    "start": {
+     "type": "string",
+     "description": "The start date and time for the override, ISO 8601 (override.start)."
+    },
+    "end_time": {
+     "type": "string",
+     "description": "The end date and time for the override, ISO 8601 (the API's override.end field)."
+    }
+   },
+   "required": [
+    "schedule_id",
+    "user_id",
+    "start",
+    "end_time"
+   ]
+  },
+  {
+   "name": "pd_oncalls_list",
+   "description": "List the on-call entries during a rotation, joined with user, schedule, and escalation policy details; filterable by schedule, escalation policy, or user (GET /oncalls)",
+   "op": "custom",
+   "type": "read",
+   "table": "pd_oncalls",
+   "extra_tables": [
+    "pd_users",
+    "pd_schedules",
+    "pd_escalation_policies"
+   ],
+   "params": {
+    "schedule_id": {
+     "type": "string",
+     "description": "Return only on-calls for this schedule. Scalar form of the API's schedule_ids[] filter."
+    },
+    "escalation_policy_id": {
+     "type": "string",
+     "description": "Return only on-calls for this escalation policy. Scalar form of the API's escalation_policy_ids[] filter."
+    },
+    "user_id": {
+     "type": "string",
+     "description": "Return only on-calls for this user. Scalar form of the API's user_ids[] filter."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The number of results per page. Defaults to 30."
+    }
+   },
+   "custom_source": "def pd_oncalls_list(db_path='state.db', **kwargs):\n    import sqlite3\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    where = []\n    args = []\n    for param, column in (('schedule_id', 'o.schedule_id'), ('escalation_policy_id', 'o.escalation_policy_id'), ('user_id', 'o.user_id')):\n        value = kwargs.get(param)\n        if value:\n            where.append(column + ' = ?')\n            args.append(value)\n    try:\n        limit = int(kwargs.get('limit') or 30)\n    except (TypeError, ValueError):\n        limit = 30\n    sql = ('SELECT o.id, o.escalation_policy_id, ep.name AS escalation_policy_name, '\n           'o.schedule_id, s.name AS schedule_name, o.user_id, u.name AS user_name, '\n           'u.email AS user_email, o.escalation_level, o.start, o.end_time AS \"end\" '\n           'FROM pd_oncalls o '\n           'LEFT JOIN pd_users u ON u.id = o.user_id '\n           'LEFT JOIN pd_schedules s ON s.id = o.schedule_id '\n           'LEFT JOIN pd_escalation_policies ep ON ep.id = o.escalation_policy_id')\n    if where:\n        sql += ' WHERE ' + ' AND '.join(where)\n    sql += ' ORDER BY o.escalation_policy_id, o.escalation_level LIMIT ?'\n    args.append(limit)\n    rows = [dict(r) for r in conn.execute(sql, args).fetchall()]\n    conn.close()\n    return {'oncalls': rows, 'total': len(rows)}\n"
+  },
+  {
+   "name": "pd_users_list",
+   "description": "List users of the PagerDuty account, optionally filtered by team (GET /users)",
+   "op": "list",
+   "table": "pd_users",
+   "filters": [
+    "team_id"
+   ],
+   "params": {
+    "team_id": {
+     "type": "string",
+     "description": "Return only users belonging to this team. Scalar form of the API's team_ids[] filter."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The number of results per page. Defaults to 30."
+    }
+   }
+  },
+  {
+   "name": "pd_user_get",
+   "description": "Get details about an existing user (GET /users/{id})",
+   "op": "get",
+   "table": "pd_users",
+   "id_param": "id",
+   "params": {
+    "id": {
+     "type": "string",
+     "description": "The ID of the user to retrieve (e.g. PHUANG1)."
+    }
+   },
+   "required": [
+    "id"
+   ]
+  },
+  {
+   "name": "pd_teams_list",
+   "description": "List teams of the PagerDuty account (GET /teams)",
+   "op": "list",
+   "table": "pd_teams",
+   "params": {
+    "limit": {
+     "type": "integer",
+     "description": "The number of results per page. Defaults to 30."
+    }
+   }
+  },
+  {
+   "name": "pd_team_get",
+   "description": "Get details about an existing team (GET /teams/{id})",
+   "op": "get",
+   "table": "pd_teams",
+   "id_param": "id",
+   "params": {
+    "id": {
+     "type": "string",
+     "description": "The ID of the team to retrieve (e.g. PTBILL1)."
+    }
+   },
+   "required": [
+    "id"
+   ]
+  },
+  {
+   "name": "pd_maintenance_windows_list",
+   "description": "List existing maintenance windows, optionally filtered by service (GET /maintenance_windows)",
+   "op": "list",
+   "table": "pd_maintenance_windows",
+   "filters": [
+    "service_id"
+   ],
+   "params": {
+    "service_id": {
+     "type": "string",
+     "description": "Return only maintenance windows for this service. Scalar form of the API's service_ids[] filter."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "The number of results per page. Defaults to 30."
+    }
+   }
+  },
+  {
+   "name": "pd_maintenance_window_create",
+   "description": "Create a new maintenance window for a service; alerts are suppressed while the window is active (POST /maintenance_windows)",
+   "op": "create",
+   "table": "pd_maintenance_windows",
+   "fields": [
+    "service_id",
+    "start_time",
+    "end_time",
+    "description",
+    "created_by"
+   ],
+   "id_prefix": "P",
+   "params": {
+    "service_id": {
+     "type": "string",
+     "description": "The ID of the service the maintenance window applies to (maintenance_window.services[].id)."
+    },
+    "start_time": {
+     "type": "string",
+     "description": "The time at which the maintenance window will start, ISO 8601 (maintenance_window.start_time)."
+    },
+    "end_time": {
+     "type": "string",
+     "description": "The time at which the maintenance window will end, ISO 8601 (maintenance_window.end_time)."
+    },
+    "description": {
+     "type": "string",
+     "description": "A description for this maintenance window."
+    },
+    "created_by": {
+     "type": "string",
+     "description": "User ID of the requester recorded on the maintenance window."
+    }
+   },
+   "required": [
+    "service_id",
+    "start_time",
+    "end_time"
+   ]
+  },
+  {
+   "name": "pd_priorities_list",
+   "description": "List existing priority levels (P1 through P5) configured for the account (GET /priorities)",
+   "op": "list",
+   "table": "pd_priorities",
+   "params": {
+    "limit": {
+     "type": "integer",
+     "description": "The number of results per page. Defaults to 30."
+    }
+   }
+  }
+ ]
+}

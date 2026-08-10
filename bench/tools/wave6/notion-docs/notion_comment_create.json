@@ -1,0 +1,36 @@
+{
+ "name": "notion_comment_create",
+ "mcp_name": "notion.notion_comment_create",
+ "asset_namespace": "notion",
+ "description": "Create a comment in a page or existing discussion thread (POST /v1/comments)",
+ "type": "write",
+ "target_tables": [
+  "notion_comments"
+ ],
+ "parameters": {
+  "parent_id": "string",
+  "discussion_id": "string",
+  "rich_text": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "parent_id": {
+    "type": "string",
+    "description": "The page or block the comment is attached to (parent.page_id). Either parent_id or discussion_id must be provided."
+   },
+   "discussion_id": {
+    "type": "string",
+    "description": "The ID of an existing discussion thread to add the comment to."
+   },
+   "rich_text": {
+    "type": "string",
+    "description": "The comment text content (rich_text, flattened to plain text)."
+   }
+  },
+  "required": [
+   "rich_text"
+  ],
+  "additionalProperties": false
+ }
+}

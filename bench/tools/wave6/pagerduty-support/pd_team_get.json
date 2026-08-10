@@ -1,0 +1,26 @@
+{
+ "name": "pd_team_get",
+ "mcp_name": "pagerduty.pd_team_get",
+ "asset_namespace": "pagerduty",
+ "description": "Get details about an existing team (GET /teams/{id})",
+ "type": "read",
+ "target_tables": [
+  "pd_teams"
+ ],
+ "parameters": {
+  "id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "string",
+    "description": "The ID of the team to retrieve (e.g. PTBILL1)."
+   }
+  },
+  "required": [
+   "id"
+  ],
+  "additionalProperties": false
+ }
+}

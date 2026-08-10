@@ -1,0 +1,23 @@
+{
+ "name": "notion_databases_list",
+ "mcp_name": "notion.notion_databases_list",
+ "asset_namespace": "notion",
+ "description": "List all databases shared with the integration (GET /v1/databases)",
+ "type": "read",
+ "target_tables": [
+  "notion_databases"
+ ],
+ "parameters": {
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "limit": {
+    "type": "integer",
+    "description": "The number of databases desired in the response (page_size). Default 30, maximum 100."
+   }
+  },
+  "additionalProperties": false
+ }
+}

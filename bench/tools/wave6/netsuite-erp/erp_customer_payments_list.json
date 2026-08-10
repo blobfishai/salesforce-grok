@@ -1,0 +1,33 @@
+{
+ "name": "erp_customer_payments_list",
+ "mcp_name": "erp.erp_customer_payments_list",
+ "asset_namespace": "erp",
+ "description": "List customer payment transactions, optionally filtered by customer entity or the invoice they were applied to (GET /services/rest/record/v1/customerPayment)",
+ "type": "read",
+ "target_tables": [
+  "erp_customer_payments"
+ ],
+ "parameters": {
+  "entity": "string",
+  "applied_to": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "entity": {
+    "type": "string",
+    "description": "Customer (entity) internal id, e.g. customer_002."
+   },
+   "applied_to": {
+    "type": "string",
+    "description": "Invoice tranId the payment was applied against, e.g. INV-1002; unapplied payments have an empty value."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "Maximum number of records to return (default 30)."
+   }
+  },
+  "additionalProperties": false
+ }
+}

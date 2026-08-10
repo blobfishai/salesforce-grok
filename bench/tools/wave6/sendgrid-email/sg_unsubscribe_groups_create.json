@@ -1,0 +1,37 @@
+{
+ "name": "sg_unsubscribe_groups_create",
+ "mcp_name": "email.sg_unsubscribe_groups_create",
+ "asset_namespace": "email",
+ "description": "Create a new suppression (unsubscribe) group. Unsubscribe groups let recipients opt out of specific categories of email such as marketing or alerts. (POST /v3/asm/groups)",
+ "type": "write",
+ "target_tables": [
+  "suppression_groups"
+ ],
+ "parameters": {
+  "name": "string",
+  "description": "string",
+  "is_default": "boolean"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "name": {
+    "type": "string",
+    "description": "The name of the new suppression group. Each group name must be unique; max length 30 characters."
+   },
+   "description": {
+    "type": "string",
+    "description": "A brief description of the suppression group's purpose, shown to recipients on the unsubscribe preferences page. Max length 100 characters."
+   },
+   "is_default": {
+    "type": "boolean",
+    "description": "Indicates whether the unsubscribe group is the default group used when no group is specified on a send."
+   }
+  },
+  "required": [
+   "name",
+   "description"
+  ],
+  "additionalProperties": false
+ }
+}

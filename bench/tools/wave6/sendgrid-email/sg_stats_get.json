@@ -1,0 +1,38 @@
+{
+ "name": "sg_stats_get",
+ "mcp_name": "email.sg_stats_get",
+ "asset_namespace": "email",
+ "description": "Retrieve email statistics aggregated from the mail send log, blocks, and bounces between two dates, aggregated by day, week, or month. (GET /v3/stats)",
+ "type": "read",
+ "target_tables": [
+  "sg_mail_sends",
+  "blocks",
+  "bounces"
+ ],
+ "parameters": {
+  "start_date": "string",
+  "end_date": "string",
+  "aggregated_by": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "start_date": {
+    "type": "string",
+    "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD."
+   },
+   "end_date": {
+    "type": "string",
+    "description": "The end date of the statistics to retrieve. Defaults to today. Must follow format YYYY-MM-DD."
+   },
+   "aggregated_by": {
+    "type": "string",
+    "description": "How to group the statistics. Must be either day, week, or month. Defaults to day."
+   }
+  },
+  "required": [
+   "start_date"
+  ],
+  "additionalProperties": false
+ }
+}

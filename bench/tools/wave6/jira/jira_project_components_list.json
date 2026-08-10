@@ -1,0 +1,31 @@
+{
+ "name": "jira_project_components_list",
+ "mcp_name": "jira.jira_project_components_list",
+ "asset_namespace": "jira",
+ "description": "Returns all components in a project (GET /rest/api/3/project/{projectIdOrKey}/components)",
+ "type": "read",
+ "target_tables": [
+  "jira_components"
+ ],
+ "parameters": {
+  "project_key": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "project_key": {
+    "type": "string",
+    "description": "The project ID or project key (case sensitive), for example DESK."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The maximum number of components to return. Default: 30."
+   }
+  },
+  "required": [
+   "project_key"
+  ],
+  "additionalProperties": false
+ }
+}

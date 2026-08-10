@@ -1,0 +1,43 @@
+{
+ "name": "gh_issue_comment_create",
+ "mcp_name": "github.gh_issue_comment_create",
+ "asset_namespace": "github",
+ "description": "Create a comment on an issue (POST /repos/{owner}/{repo}/issues/{issue_number}/comments)",
+ "type": "write",
+ "target_tables": [
+  "gh_issue_comments"
+ ],
+ "parameters": {
+  "repo": "string",
+  "issue_number": "integer",
+  "body": "string",
+  "user": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "repo": {
+    "type": "string",
+    "description": "The repository full name in owner/repo form."
+   },
+   "issue_number": {
+    "type": "integer",
+    "description": "The number that identifies the issue."
+   },
+   "body": {
+    "type": "string",
+    "description": "The contents of the comment."
+   },
+   "user": {
+    "type": "string",
+    "description": "Login of the commenting user (the authenticated user in the real API). Default: revops-bot."
+   }
+  },
+  "required": [
+   "repo",
+   "issue_number",
+   "body"
+  ],
+  "additionalProperties": false
+ }
+}

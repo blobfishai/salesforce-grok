@@ -1,0 +1,48 @@
+{
+ "name": "pd_maintenance_window_create",
+ "mcp_name": "pagerduty.pd_maintenance_window_create",
+ "asset_namespace": "pagerduty",
+ "description": "Create a new maintenance window for a service; alerts are suppressed while the window is active (POST /maintenance_windows)",
+ "type": "write",
+ "target_tables": [
+  "pd_maintenance_windows"
+ ],
+ "parameters": {
+  "service_id": "string",
+  "start_time": "string",
+  "end_time": "string",
+  "description": "string",
+  "created_by": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "service_id": {
+    "type": "string",
+    "description": "The ID of the service the maintenance window applies to (maintenance_window.services[].id)."
+   },
+   "start_time": {
+    "type": "string",
+    "description": "The time at which the maintenance window will start, ISO 8601 (maintenance_window.start_time)."
+   },
+   "end_time": {
+    "type": "string",
+    "description": "The time at which the maintenance window will end, ISO 8601 (maintenance_window.end_time)."
+   },
+   "description": {
+    "type": "string",
+    "description": "A description for this maintenance window."
+   },
+   "created_by": {
+    "type": "string",
+    "description": "User ID of the requester recorded on the maintenance window."
+   }
+  },
+  "required": [
+   "service_id",
+   "start_time",
+   "end_time"
+  ],
+  "additionalProperties": false
+ }
+}

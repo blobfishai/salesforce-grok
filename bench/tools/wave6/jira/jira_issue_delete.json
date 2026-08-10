@@ -1,0 +1,26 @@
+{
+ "name": "jira_issue_delete",
+ "mcp_name": "jira.jira_issue_delete",
+ "asset_namespace": "jira",
+ "description": "Deletes an issue; returns a 404 if the issue does not exist (DELETE /rest/api/3/issue/{issueIdOrKey})",
+ "type": "write",
+ "target_tables": [
+  "jira_issues"
+ ],
+ "parameters": {
+  "issue_key": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "issue_key": {
+    "type": "string",
+    "description": "The ID or key of the issue to delete, for example CRM-24."
+   }
+  },
+  "required": [
+   "issue_key"
+  ],
+  "additionalProperties": false
+ }
+}

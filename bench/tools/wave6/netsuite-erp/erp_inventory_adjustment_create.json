@@ -1,0 +1,43 @@
+{
+ "name": "erp_inventory_adjustment_create",
+ "mcp_name": "erp.erp_inventory_adjustment_create",
+ "asset_namespace": "erp",
+ "description": "Post an inventory adjustment that changes quantity on hand by adjustQtyBy for one item at one location; adjustments that would drive stock negative are rejected (POST /services/rest/record/v1/inventoryAdjustment)",
+ "type": "write",
+ "target_tables": [
+  "erp_inventory_levels"
+ ],
+ "parameters": {
+  "item": "string",
+  "location": "string",
+  "adjust_qty_by": "integer",
+  "memo": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "item": {
+    "type": "string",
+    "description": "Item id / SKU being adjusted, e.g. HW-DFA-200."
+   },
+   "location": {
+    "type": "string",
+    "description": "Adjustment location (adjLocation): Newark DC, London DC or Frankfurt DC."
+   },
+   "adjust_qty_by": {
+    "type": "integer",
+    "description": "Signed quantity delta (adjustQtyBy); negative decreases stock."
+   },
+   "memo": {
+    "type": "string",
+    "description": "Memo visible on the transaction (memo)."
+   }
+  },
+  "required": [
+   "item",
+   "location",
+   "adjust_qty_by"
+  ],
+  "additionalProperties": false
+ }
+}

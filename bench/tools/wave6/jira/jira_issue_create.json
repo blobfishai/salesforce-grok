@@ -1,0 +1,79 @@
+{
+ "name": "jira_issue_create",
+ "mcp_name": "jira.jira_issue_create",
+ "asset_namespace": "jira",
+ "description": "Creates an issue in a project; the issue key is generated from the project key and the next sequence number (POST /rest/api/3/issue)",
+ "type": "write",
+ "target_tables": [
+  "jira_issues",
+  "jira_projects"
+ ],
+ "parameters": {
+  "project_key": "string",
+  "summary": "string",
+  "issue_type": "string",
+  "description": "string",
+  "priority": "string",
+  "assignee": "string",
+  "assignee_email": "string",
+  "reporter": "string",
+  "reporter_email": "string",
+  "sprint_id": "integer",
+  "labels": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "project_key": {
+    "type": "string",
+    "description": "The key of the project the issue is created in, for example RECON. Returns a 404 if the project does not exist."
+   },
+   "summary": {
+    "type": "string",
+    "description": "A brief one-line summary of the issue."
+   },
+   "issue_type": {
+    "type": "string",
+    "description": "The name of the issue type, for example Bug, Task, or Story."
+   },
+   "description": {
+    "type": "string",
+    "description": "A detailed description of the issue."
+   },
+   "priority": {
+    "type": "string",
+    "description": "The name of the priority, for example Highest, High, Medium, Low. Default: Medium."
+   },
+   "assignee": {
+    "type": "string",
+    "description": "The display name of the user the issue is assigned to."
+   },
+   "assignee_email": {
+    "type": "string",
+    "description": "The email address of the assignee."
+   },
+   "reporter": {
+    "type": "string",
+    "description": "The display name of the user reporting the issue."
+   },
+   "reporter_email": {
+    "type": "string",
+    "description": "The email address of the reporter."
+   },
+   "sprint_id": {
+    "type": "integer",
+    "description": "The ID of the sprint to place the issue in, if any."
+   },
+   "labels": {
+    "type": "string",
+    "description": "Comma-separated labels to apply to the issue, for example billing,reconciliation."
+   }
+  },
+  "required": [
+   "project_key",
+   "summary",
+   "issue_type"
+  ],
+  "additionalProperties": false
+ }
+}

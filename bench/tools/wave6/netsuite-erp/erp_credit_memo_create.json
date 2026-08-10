@@ -1,0 +1,57 @@
+{
+ "name": "erp_credit_memo_create",
+ "mcp_name": "erp.erp_credit_memo_create",
+ "asset_namespace": "erp",
+ "description": "Issue a credit memo to a customer, optionally referencing the invoice it credits (POST /services/rest/record/v1/creditMemo)",
+ "type": "write",
+ "target_tables": [
+  "erp_credit_memos"
+ ],
+ "parameters": {
+  "entity": "string",
+  "entity_name": "string",
+  "created_from": "string",
+  "trandate": "string",
+  "memo": "string",
+  "currency": "string",
+  "total": "number"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "entity": {
+    "type": "string",
+    "description": "Customer (entity) internal id receiving the credit, e.g. customer_007."
+   },
+   "entity_name": {
+    "type": "string",
+    "description": "Display name of the customer account."
+   },
+   "created_from": {
+    "type": "string",
+    "description": "Invoice tranId this memo credits (createdFrom); omit for standalone credits."
+   },
+   "trandate": {
+    "type": "string",
+    "description": "Transaction date (trandate), YYYY-MM-DD."
+   },
+   "memo": {
+    "type": "string",
+    "description": "Memo visible on the transaction (memo)."
+   },
+   "currency": {
+    "type": "string",
+    "description": "Transaction currency internal id (currency): usd, eur or gbp."
+   },
+   "total": {
+    "type": "number",
+    "description": "Credit total in the transaction currency (total)."
+   }
+  },
+  "required": [
+   "entity",
+   "total"
+  ],
+  "additionalProperties": false
+ }
+}

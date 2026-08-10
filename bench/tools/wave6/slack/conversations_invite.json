@@ -1,0 +1,34 @@
+{
+ "name": "conversations_invite",
+ "mcp_name": "slack.conversations_invite",
+ "asset_namespace": "slack",
+ "description": "Invites users to a channel; users is a comma-separated list that fans out to one membership row each, with users_not_found validation (POST /conversations.invite)",
+ "type": "write",
+ "target_tables": [
+  "slack_channel_members",
+  "channels",
+  "slack_users"
+ ],
+ "parameters": {
+  "channel": "string",
+  "users": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "channel": {
+    "type": "string",
+    "description": "The ID of the public or private channel to invite user(s) to."
+   },
+   "users": {
+    "type": "string",
+    "description": "A comma separated list of user IDs. Up to 1000 users may be listed, e.g. U0000001,U0000005."
+   }
+  },
+  "required": [
+   "channel",
+   "users"
+  ],
+  "additionalProperties": false
+ }
+}

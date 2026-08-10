@@ -1,0 +1,39 @@
+{
+ "name": "reactions_remove",
+ "mcp_name": "slack.reactions_remove",
+ "asset_namespace": "slack",
+ "description": "Removes a reaction (emoji) from a message, addressed by the compound (channel, timestamp, name) key (POST /reactions.remove)",
+ "type": "write",
+ "target_tables": [
+  "slack_reactions",
+  "channels"
+ ],
+ "parameters": {
+  "channel": "string",
+  "timestamp": "string",
+  "name": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "channel": {
+    "type": "string",
+    "description": "Channel where the message to remove reaction from was posted."
+   },
+   "timestamp": {
+    "type": "string",
+    "description": "Timestamp of the message to remove reaction from."
+   },
+   "name": {
+    "type": "string",
+    "description": "Reaction (emoji) name, without colons, e.g. thumbsup."
+   }
+  },
+  "required": [
+   "channel",
+   "timestamp",
+   "name"
+  ],
+  "additionalProperties": false
+ }
+}

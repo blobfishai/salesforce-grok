@@ -1,8 +1,8 @@
 """Executable JIRA tool module
 
 Inspect each function: SQLite helpers are local fixtures; network-backed functions call their declared endpoint.
-Tools: customer_support_records_agent, query_support_tickets, lookup_support_ticket_with_employees, customer_support_workflow_agent, update_support_tickets_status
-Tables: activity_log_lists, admin_lists, admin_with_apps, admins, ai_call_responses, article_lists, articles, away_status_reason_lists, collections, content_import_sources, conversations, data_exports, help_centers, news_items, support_tickets, employees
+Tools: customer_support_records_agent, query_support_tickets, lookup_support_ticket_with_employees, customer_support_workflow_agent, update_support_tickets_status, jira_search, jira_issue_get, jira_issue_create, jira_issue_update, jira_issue_delete, jira_issue_assign, jira_issue_transition, jira_transitions_list, jira_comment_add, jira_comments_list, jira_worklog_add, jira_worklogs_list, jira_watchers_add, jira_watchers_list, jira_labels_list, jira_projects_list, jira_project_get, jira_project_components_list, jira_project_versions_list, jira_boards_list, jira_board_get, jira_sprints_list, jira_sprint_get, jira_sprint_issues_list, jira_priorities_list, jira_statuses_list, jira_users_search
+Tables: activity_log_lists, admin_lists, admin_with_apps, admins, ai_call_responses, article_lists, articles, away_status_reason_lists, collections, content_import_sources, conversations, data_exports, help_centers, news_items, support_tickets, employees, jira_issues, jira_projects, jira_transitions, jira_comments, jira_worklogs, jira_watchers, jira_components, jira_versions, jira_boards, jira_sprints, jira_priorities, jira_statuses
 """
 import json, sqlite3
 """Department records sub-agent: resolve one unique business handle from a free-text request without mutating state."""
@@ -747,4 +747,1729 @@ def _bf_friction_update_support_tickets_status(*_bf_args, **_bf_kwargs):
     return _bf_orig_update_support_tickets_status(*_bf_args, **_bf_kwargs)
 _bf_friction_update_support_tickets_status.blobfish_original = _bf_orig_update_support_tickets_status
 update_support_tickets_status = _bf_friction_update_support_tickets_status
+
+def jira_search(db_path='state.db', **kwargs):
+    import sqlite3
+    jql = kwargs.get('jql')
+    if jql is None or str(jql).strip() == '':
+        return {'error': 'jql is required', 'status': 400}
+    try:
+        max_results = int(kwargs.get('max_results', 50))
+    except (TypeError, ValueError):
+        max_results = 50
+    try:
+        start_at = int(kwargs.get('start_at', 0))
+    except (TypeError, ValueError):
+        start_at = 0
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    sql = 'SELECT * FROM jira_issues WHERE (summary LIKE ? OR description LIKE ?)'
+    params = ['%' + str(jql) + '%', '%' + str(jql) + '%']
+    if kwargs.get('project'):
+        sql += ' AND project_key = ?'
+        params.append(kwargs['project'])
+    if kwargs.get('status'):
+        sql += ' AND status = ?'
+        params.append(kwargs['status'])
+    if kwargs.get('assignee'):
+        sql += ' AND (assignee = ? OR assignee_email = ?)'
+        params.append(kwargs['assignee'])
+        params.append(kwargs['assignee'])
+    sql += ' ORDER BY updated DESC LIMIT ? OFFSET ?'
+    params.append(max_results)
+    params.append(start_at)
+    issues = [dict(r) for r in conn.execute(sql, params).fetchall()]
+    conn.close()
+    return {'startAt': start_at, 'maxResults': max_results, 'total': len(issues), 'issues': issues}
+
+_env_orig_jira_search = jira_search
+def _env_jira_search(db_path='state.db', **kwargs):
+    _r = _env_orig_jira_search(db_path, **kwargs)
+    if not isinstance(_r, dict):
+        return _r
+    if set(_r.keys()) == {'items', 'count'}:
+        return {'issues': _r['items'], 'total': _r['count'], 'startAt': 0, 'maxResults': _r['count']}
+    if 'error' in _r and _r.get('status') == 404:
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    if 'error' in _r and _r.get('status') == 400:
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    return _r
+jira_search = _env_jira_search
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_search = jira_search
+def _bf_friction_jira_search(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_search(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_search|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_search(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_search.blobfish_original = _bf_orig_jira_search
+jira_search = _bf_friction_jira_search
+
+def jira_issue_get(db_path='state.db', **kwargs):
+    '''Returns the details for an issue, including status, priority, assignee, sprint, and labels (GET /rest/api/3/issue/{issueIdOrKey})'''
+    _missing = [p for p in ['issue_key'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "jira_issues" WHERE "key" = ?', [str(kwargs['issue_key'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'issue not found', 'status': 404}
+            return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+        _r = dict(_row)
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_issue_get = jira_issue_get
+def _bf_friction_jira_issue_get(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_issue_get(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_issue_get|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_issue_get(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_issue_get.blobfish_original = _bf_orig_jira_issue_get
+jira_issue_get = _bf_friction_jira_issue_get
+
+def jira_issue_create(db_path='state.db', **kwargs):
+    import sqlite3, datetime
+    project_key = kwargs.get('project_key')
+    summary = kwargs.get('summary')
+    if not project_key or not summary:
+        return {'error': 'project_key and summary are required', 'status': 400}
+    issue_type = kwargs.get('issue_type') or 'Task'
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    proj = conn.execute('SELECT * FROM jira_projects WHERE key = ?', (project_key,)).fetchone()
+    if proj is None:
+        conn.close()
+        return {'error': 'Project ' + str(project_key) + ' not found', 'status': 404}
+    row = conn.execute('SELECT MAX(CAST(substr(key, length(?) + 2) AS INTEGER)) AS n FROM jira_issues WHERE project_key = ?', (project_key, project_key)).fetchone()
+    next_num = (row['n'] or 100) + 1
+    new_key = str(project_key) + '-' + str(next_num)
+    now = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.000+0000')
+    conn.execute('INSERT INTO jira_issues (key, summary, description, issue_type, status, priority, assignee, assignee_email, reporter, reporter_email, project_key, sprint_id, labels, created, updated) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', (new_key, summary, kwargs.get('description') or '', issue_type, 'To Do', kwargs.get('priority') or 'Medium', kwargs.get('assignee'), kwargs.get('assignee_email'), kwargs.get('reporter'), kwargs.get('reporter_email'), project_key, kwargs.get('sprint_id'), kwargs.get('labels') or '', now, now))
+    conn.commit()
+    created = dict(conn.execute('SELECT * FROM jira_issues WHERE key = ?', (new_key,)).fetchone())
+    conn.close()
+    return created
+
+_env_orig_jira_issue_create = jira_issue_create
+def _env_jira_issue_create(db_path='state.db', **kwargs):
+    _r = _env_orig_jira_issue_create(db_path, **kwargs)
+    if not isinstance(_r, dict):
+        return _r
+    if set(_r.keys()) == {'items', 'count'}:
+        return {'issues': _r['items'], 'total': _r['count'], 'startAt': 0, 'maxResults': _r['count']}
+    if 'error' in _r and _r.get('status') == 404:
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    if 'error' in _r and _r.get('status') == 400:
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    return _r
+jira_issue_create = _env_jira_issue_create
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_issue_create = jira_issue_create
+def _bf_friction_jira_issue_create(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_issue_create(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_issue_create|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_issue_create(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_issue_create.blobfish_original = _bf_orig_jira_issue_create
+jira_issue_create = _bf_friction_jira_issue_create
+
+def jira_issue_update(db_path='state.db', **kwargs):
+    '''Edits an issue; only the fields provided are updated. Status changes must go through jira_issue_transition (PUT /rest/api/3/issue/{issueIdOrKey})'''
+    _missing = [p for p in ['issue_key'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "jira_issues" WHERE "key" = ?', [str(kwargs['issue_key'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'issue not found', 'status': 404}
+            return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+        _sets, _args = [], []
+        if kwargs.get('summary') is not None:
+            _sets.append('"summary" = ?')
+            _v = kwargs['summary']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('description') is not None:
+            _sets.append('"description" = ?')
+            _v = kwargs['description']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('issue_type') is not None:
+            _sets.append('"issue_type" = ?')
+            _v = kwargs['issue_type']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('priority') is not None:
+            _sets.append('"priority" = ?')
+            _v = kwargs['priority']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('labels') is not None:
+            _sets.append('"labels" = ?')
+            _v = kwargs['labels']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        _sets.append('"updated" = ?')
+        _args.append(datetime.datetime.now(datetime.timezone.utc).isoformat())
+        if _sets:
+            cur.execute('UPDATE "jira_issues" SET ' + ', '.join(_sets) + ' WHERE "key" = ?', _args + [str(kwargs['issue_key'])])
+            conn.commit()
+        _row = cur.execute('SELECT * FROM "jira_issues" WHERE "key" = ?', [str(kwargs['issue_key'])]).fetchone()
+        _r = dict(_row)
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_issue_update = jira_issue_update
+def _bf_friction_jira_issue_update(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_issue_update(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_issue_update|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_issue_update(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_issue_update.blobfish_original = _bf_orig_jira_issue_update
+jira_issue_update = _bf_friction_jira_issue_update
+
+def jira_issue_delete(db_path='state.db', **kwargs):
+    '''Deletes an issue; returns a 404 if the issue does not exist (DELETE /rest/api/3/issue/{issueIdOrKey})'''
+    _missing = [p for p in ['issue_key'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "jira_issues" WHERE "key" = ?', [str(kwargs['issue_key'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'issue not found', 'status': 404}
+            return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+        cur.execute('DELETE FROM "jira_issues" WHERE "key" = ?', [str(kwargs['issue_key'])])
+        conn.commit()
+        _r = {'deleted': True, 'key': str(kwargs['issue_key'])}
+        return {}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_issue_delete = jira_issue_delete
+def _bf_friction_jira_issue_delete(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_issue_delete(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_issue_delete|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_issue_delete(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_issue_delete.blobfish_original = _bf_orig_jira_issue_delete
+jira_issue_delete = _bf_friction_jira_issue_delete
+
+def jira_issue_assign(db_path='state.db', **kwargs):
+    '''Assigns an issue to a user (PUT /rest/api/3/issue/{issueIdOrKey}/assignee)'''
+    _missing = [p for p in ['issue_key', 'assignee'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "jira_issues" WHERE "key" = ?', [str(kwargs['issue_key'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'issue not found', 'status': 404}
+            return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+        _sets, _args = [], []
+        if kwargs.get('assignee') is not None:
+            _sets.append('"assignee" = ?')
+            _v = kwargs['assignee']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('assignee_email') is not None:
+            _sets.append('"assignee_email" = ?')
+            _v = kwargs['assignee_email']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        _sets.append('"updated" = ?')
+        _args.append(datetime.datetime.now(datetime.timezone.utc).isoformat())
+        if _sets:
+            cur.execute('UPDATE "jira_issues" SET ' + ', '.join(_sets) + ' WHERE "key" = ?', _args + [str(kwargs['issue_key'])])
+            conn.commit()
+        _row = cur.execute('SELECT * FROM "jira_issues" WHERE "key" = ?', [str(kwargs['issue_key'])]).fetchone()
+        _r = dict(_row)
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_issue_assign = jira_issue_assign
+def _bf_friction_jira_issue_assign(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_issue_assign(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_issue_assign|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_issue_assign(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_issue_assign.blobfish_original = _bf_orig_jira_issue_assign
+jira_issue_assign = _bf_friction_jira_issue_assign
+
+def jira_issue_transition(db_path='state.db', **kwargs):
+    import sqlite3, datetime, hashlib
+    issue_key = kwargs.get('issue_key')
+    transition_id = kwargs.get('transition_id')
+    if not issue_key or transition_id is None:
+        return {'error': 'issue_key and transition_id are required', 'status': 400}
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    issue = conn.execute('SELECT * FROM jira_issues WHERE key = ?', (issue_key,)).fetchone()
+    if issue is None:
+        conn.close()
+        return {'error': 'Issue ' + str(issue_key) + ' not found', 'status': 404}
+    tr = conn.execute('SELECT * FROM jira_transitions WHERE id = ?', (str(transition_id),)).fetchone()
+    if tr is None:
+        conn.close()
+        return {'error': 'Transition ' + str(transition_id) + ' not found', 'status': 404}
+    if tr['from_status'] != issue['status']:
+        conn.close()
+        return {'error': 'Transition ' + tr['name'] + ' (' + tr['from_status'] + ' -> ' + tr['to_status'] + ') is not valid for an issue in status ' + issue['status'], 'status': 400}
+    now = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.000+0000')
+    conn.execute('UPDATE jira_issues SET status = ?, updated = ? WHERE key = ?', (tr['to_status'], now, issue_key))
+    comment = kwargs.get('comment')
+    if comment:
+        cid = 'jcm-' + hashlib.sha1((str(issue_key) + now + str(comment)).encode('utf-8')).hexdigest()[:8]
+        conn.execute('INSERT INTO jira_comments (id, issue_key, author, author_email, body, created) VALUES (?, ?, ?, ?, ?, ?)', (cid, issue_key, 'Automation for Jira', 'jira-automation@morganstanleysimulated.com', comment, now))
+    conn.commit()
+    updated = dict(conn.execute('SELECT * FROM jira_issues WHERE key = ?', (issue_key,)).fetchone())
+    conn.close()
+    return {'issue': updated, 'transition': {'id': tr['id'], 'name': tr['name'], 'from_status': tr['from_status'], 'to_status': tr['to_status']}}
+
+_env_orig_jira_issue_transition = jira_issue_transition
+def _env_jira_issue_transition(db_path='state.db', **kwargs):
+    _r = _env_orig_jira_issue_transition(db_path, **kwargs)
+    if not isinstance(_r, dict):
+        return _r
+    if set(_r.keys()) == {'items', 'count'}:
+        return {'issues': _r['items'], 'total': _r['count'], 'startAt': 0, 'maxResults': _r['count']}
+    if 'error' in _r and _r.get('status') == 404:
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    if 'error' in _r and _r.get('status') == 400:
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    return _r
+jira_issue_transition = _env_jira_issue_transition
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_issue_transition = jira_issue_transition
+def _bf_friction_jira_issue_transition(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_issue_transition(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_issue_transition|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_issue_transition(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_issue_transition.blobfish_original = _bf_orig_jira_issue_transition
+jira_issue_transition = _bf_friction_jira_issue_transition
+
+def jira_transitions_list(db_path='state.db', **kwargs):
+    import sqlite3
+    issue_key = kwargs.get('issue_key')
+    if not issue_key:
+        return {'error': 'issue_key is required', 'status': 400}
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    issue = conn.execute('SELECT * FROM jira_issues WHERE key = ?', (issue_key,)).fetchone()
+    if issue is None:
+        conn.close()
+        return {'error': 'Issue ' + str(issue_key) + ' not found', 'status': 404}
+    transitions = [dict(r) for r in conn.execute('SELECT * FROM jira_transitions WHERE from_status = ? ORDER BY CAST(id AS INTEGER)', (issue['status'],)).fetchall()]
+    conn.close()
+    return {'issue_key': issue_key, 'current_status': issue['status'], 'transitions': transitions}
+
+_env_orig_jira_transitions_list = jira_transitions_list
+def _env_jira_transitions_list(db_path='state.db', **kwargs):
+    _r = _env_orig_jira_transitions_list(db_path, **kwargs)
+    if not isinstance(_r, dict):
+        return _r
+    if set(_r.keys()) == {'items', 'count'}:
+        return {'values': _r['items'], 'total': _r['count'], 'startAt': 0, 'maxResults': _r['count'], 'isLast': True}
+    if 'error' in _r and _r.get('status') == 404:
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    if 'error' in _r and _r.get('status') == 400:
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    return _r
+jira_transitions_list = _env_jira_transitions_list
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_transitions_list = jira_transitions_list
+def _bf_friction_jira_transitions_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_transitions_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_transitions_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_transitions_list(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_transitions_list.blobfish_original = _bf_orig_jira_transitions_list
+jira_transitions_list = _bf_friction_jira_transitions_list
+
+def jira_comment_add(db_path='state.db', **kwargs):
+    '''Adds a comment to an issue (POST /rest/api/3/issue/{issueIdOrKey}/comment)'''
+    _missing = [p for p in ['issue_key', 'body'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+        _n = cur.execute('SELECT COUNT(*) FROM "jira_comments"').fetchone()[0] + 1
+        _id = 'jcm-' + str(_n).zfill(4)
+        while cur.execute('SELECT 1 FROM "jira_comments" WHERE "id" = ?', [_id]).fetchone() is not None:
+            _n += 1
+            _id = 'jcm-' + str(_n).zfill(4)
+        _cols, _vals = ['id'], [_id]
+        if kwargs.get('issue_key') is not None:
+            _cols.append('issue_key')
+            _v = kwargs['issue_key']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('body') is not None:
+            _cols.append('body')
+            _v = kwargs['body']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('author') is not None:
+            _cols.append('author')
+            _v = kwargs['author']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('author_email') is not None:
+            _cols.append('author_email')
+            _v = kwargs['author_email']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if 'created' not in _cols:
+            _cols.append('created')
+            _vals.append('2026-08-10T09:00:00.000-0400')
+        cur.execute('INSERT INTO "jira_comments" (' + ', '.join('"' + c + '"' for c in _cols) + ') VALUES (' + ', '.join(['?'] * len(_cols)) + ')', _vals)
+        conn.commit()
+        _row = cur.execute('SELECT * FROM "jira_comments" WHERE "id" = ?', [_id]).fetchone()
+        _r = dict(_row) if _row else {'id': _id}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_comment_add = jira_comment_add
+def _bf_friction_jira_comment_add(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_comment_add(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_comment_add|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_comment_add(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_comment_add.blobfish_original = _bf_orig_jira_comment_add
+jira_comment_add = _bf_friction_jira_comment_add
+
+def jira_comments_list(db_path='state.db', **kwargs):
+    '''Returns all comments for an issue (GET /rest/api/3/issue/{issueIdOrKey}/comment)'''
+    _missing = [p for p in ['issue_key'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _where, _args = [], []
+        if kwargs.get('issue_key') is not None:
+            _where.append('"issue_key" = ?')
+            _args.append(str(kwargs['issue_key']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "jira_comments"'
+        if _where:
+            _q += ' WHERE ' + ' AND '.join(_where)
+        _q += ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return {'values': _r['items'], 'total': _r['count'], 'startAt': 0, 'maxResults': _r['count'], 'isLast': True}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_comments_list = jira_comments_list
+def _bf_friction_jira_comments_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_comments_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_comments_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_comments_list(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_comments_list.blobfish_original = _bf_orig_jira_comments_list
+jira_comments_list = _bf_friction_jira_comments_list
+
+def jira_worklog_add(db_path='state.db', **kwargs):
+    '''Adds a worklog entry to an issue (POST /rest/api/3/issue/{issueIdOrKey}/worklog)'''
+    _missing = [p for p in ['issue_key', 'time_spent'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+        _n = cur.execute('SELECT COUNT(*) FROM "jira_worklogs"').fetchone()[0] + 1
+        _id = 'jwl-' + str(_n).zfill(4)
+        while cur.execute('SELECT 1 FROM "jira_worklogs" WHERE "id" = ?', [_id]).fetchone() is not None:
+            _n += 1
+            _id = 'jwl-' + str(_n).zfill(4)
+        _cols, _vals = ['id'], [_id]
+        if kwargs.get('issue_key') is not None:
+            _cols.append('issue_key')
+            _v = kwargs['issue_key']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('time_spent') is not None:
+            _cols.append('time_spent')
+            _v = kwargs['time_spent']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('time_spent_seconds') is not None:
+            _cols.append('time_spent_seconds')
+            _v = kwargs['time_spent_seconds']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('comment') is not None:
+            _cols.append('comment')
+            _v = kwargs['comment']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('started') is not None:
+            _cols.append('started')
+            _v = kwargs['started']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('author') is not None:
+            _cols.append('author')
+            _v = kwargs['author']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('author_email') is not None:
+            _cols.append('author_email')
+            _v = kwargs['author_email']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        cur.execute('INSERT INTO "jira_worklogs" (' + ', '.join('"' + c + '"' for c in _cols) + ') VALUES (' + ', '.join(['?'] * len(_cols)) + ')', _vals)
+        conn.commit()
+        _row = cur.execute('SELECT * FROM "jira_worklogs" WHERE "id" = ?', [_id]).fetchone()
+        _r = dict(_row) if _row else {'id': _id}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_worklog_add = jira_worklog_add
+def _bf_friction_jira_worklog_add(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_worklog_add(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_worklog_add|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_worklog_add(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_worklog_add.blobfish_original = _bf_orig_jira_worklog_add
+jira_worklog_add = _bf_friction_jira_worklog_add
+
+def jira_worklogs_list(db_path='state.db', **kwargs):
+    '''Returns the worklogs for an issue (GET /rest/api/3/issue/{issueIdOrKey}/worklog)'''
+    _missing = [p for p in ['issue_key'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _where, _args = [], []
+        if kwargs.get('issue_key') is not None:
+            _where.append('"issue_key" = ?')
+            _args.append(str(kwargs['issue_key']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "jira_worklogs"'
+        if _where:
+            _q += ' WHERE ' + ' AND '.join(_where)
+        _q += ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return {'values': _r['items'], 'total': _r['count'], 'startAt': 0, 'maxResults': _r['count'], 'isLast': True}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_worklogs_list = jira_worklogs_list
+def _bf_friction_jira_worklogs_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_worklogs_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_worklogs_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_worklogs_list(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_worklogs_list.blobfish_original = _bf_orig_jira_worklogs_list
+jira_worklogs_list = _bf_friction_jira_worklogs_list
+
+def jira_watchers_add(db_path='state.db', **kwargs):
+    '''Adds a user as a watcher of an issue (POST /rest/api/3/issue/{issueIdOrKey}/watchers)'''
+    _missing = [p for p in ['issue_key', 'watcher_name'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+        _n = cur.execute('SELECT COUNT(*) FROM "jira_watchers"').fetchone()[0] + 1
+        _id = 'jwa-' + str(_n).zfill(4)
+        while cur.execute('SELECT 1 FROM "jira_watchers" WHERE "id" = ?', [_id]).fetchone() is not None:
+            _n += 1
+            _id = 'jwa-' + str(_n).zfill(4)
+        _cols, _vals = ['id'], [_id]
+        if kwargs.get('issue_key') is not None:
+            _cols.append('issue_key')
+            _v = kwargs['issue_key']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('watcher_name') is not None:
+            _cols.append('watcher_name')
+            _v = kwargs['watcher_name']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('watcher_email') is not None:
+            _cols.append('watcher_email')
+            _v = kwargs['watcher_email']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if 'added' not in _cols:
+            _cols.append('added')
+            _vals.append('2026-08-10')
+        cur.execute('INSERT INTO "jira_watchers" (' + ', '.join('"' + c + '"' for c in _cols) + ') VALUES (' + ', '.join(['?'] * len(_cols)) + ')', _vals)
+        conn.commit()
+        _row = cur.execute('SELECT * FROM "jira_watchers" WHERE "id" = ?', [_id]).fetchone()
+        _r = dict(_row) if _row else {'id': _id}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_watchers_add = jira_watchers_add
+def _bf_friction_jira_watchers_add(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_watchers_add(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_watchers_add|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_watchers_add(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_watchers_add.blobfish_original = _bf_orig_jira_watchers_add
+jira_watchers_add = _bf_friction_jira_watchers_add
+
+def jira_watchers_list(db_path='state.db', **kwargs):
+    '''Returns the watchers for an issue (GET /rest/api/3/issue/{issueIdOrKey}/watchers)'''
+    _missing = [p for p in ['issue_key'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _where, _args = [], []
+        if kwargs.get('issue_key') is not None:
+            _where.append('"issue_key" = ?')
+            _args.append(str(kwargs['issue_key']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "jira_watchers"'
+        if _where:
+            _q += ' WHERE ' + ' AND '.join(_where)
+        _q += ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return {'values': _r['items'], 'total': _r['count'], 'startAt': 0, 'maxResults': _r['count'], 'isLast': True}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_watchers_list = jira_watchers_list
+def _bf_friction_jira_watchers_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_watchers_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_watchers_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_watchers_list(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_watchers_list.blobfish_original = _bf_orig_jira_watchers_list
+jira_watchers_list = _bf_friction_jira_watchers_list
+
+def jira_labels_list(db_path='state.db', **kwargs):
+    import sqlite3
+    try:
+        max_results = int(kwargs.get('max_results', 100))
+    except (TypeError, ValueError):
+        max_results = 100
+    conn = sqlite3.connect(db_path)
+    labels = set()
+    for row in conn.execute('SELECT labels FROM jira_issues WHERE labels IS NOT NULL').fetchall():
+        for part in str(row[0]).split(','):
+            part = part.strip()
+            if part:
+                labels.add(part)
+    conn.close()
+    values = sorted(labels)[:max_results]
+    return {'maxResults': max_results, 'total': len(values), 'values': values}
+
+_env_orig_jira_labels_list = jira_labels_list
+def _env_jira_labels_list(db_path='state.db', **kwargs):
+    _r = _env_orig_jira_labels_list(db_path, **kwargs)
+    if not isinstance(_r, dict):
+        return _r
+    if set(_r.keys()) == {'items', 'count'}:
+        return {'issues': _r['items'], 'total': _r['count'], 'startAt': 0, 'maxResults': _r['count']}
+    if 'error' in _r and _r.get('status') == 404:
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    if 'error' in _r and _r.get('status') == 400:
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    return _r
+jira_labels_list = _env_jira_labels_list
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_labels_list = jira_labels_list
+def _bf_friction_jira_labels_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_labels_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_labels_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_labels_list(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_labels_list.blobfish_original = _bf_orig_jira_labels_list
+jira_labels_list = _bf_friction_jira_labels_list
+
+def jira_projects_list(db_path='state.db', **kwargs):
+    '''Returns the projects visible to the user, optionally filtered by project type (GET /rest/api/3/project/search)'''
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _where, _args = [], []
+        if kwargs.get('type_key') is not None:
+            _where.append('"project_type_key" = ?')
+            _args.append(str(kwargs['type_key']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "jira_projects"'
+        if _where:
+            _q += ' WHERE ' + ' AND '.join(_where)
+        _q += ' ORDER BY rowid LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return {'values': _r['items'], 'total': _r['count'], 'startAt': 0, 'maxResults': _r['count'], 'isLast': True}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_projects_list = jira_projects_list
+def _bf_friction_jira_projects_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_projects_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_projects_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_projects_list(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_projects_list.blobfish_original = _bf_orig_jira_projects_list
+jira_projects_list = _bf_friction_jira_projects_list
+
+def jira_project_get(db_path='state.db', **kwargs):
+    '''Returns the project details for a project, including lead and category (GET /rest/api/3/project/{projectIdOrKey})'''
+    _missing = [p for p in ['project_key'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "jira_projects" WHERE "key" = ?', [str(kwargs['project_key'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'project not found', 'status': 404}
+            return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+        _r = dict(_row)
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_project_get = jira_project_get
+def _bf_friction_jira_project_get(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_project_get(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_project_get|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_project_get(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_project_get.blobfish_original = _bf_orig_jira_project_get
+jira_project_get = _bf_friction_jira_project_get
+
+def jira_project_components_list(db_path='state.db', **kwargs):
+    '''Returns all components in a project (GET /rest/api/3/project/{projectIdOrKey}/components)'''
+    _missing = [p for p in ['project_key'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _where, _args = [], []
+        if kwargs.get('project_key') is not None:
+            _where.append('"project_key" = ?')
+            _args.append(str(kwargs['project_key']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "jira_components"'
+        if _where:
+            _q += ' WHERE ' + ' AND '.join(_where)
+        _q += ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return {'values': _r['items'], 'total': _r['count'], 'startAt': 0, 'maxResults': _r['count'], 'isLast': True}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_project_components_list = jira_project_components_list
+def _bf_friction_jira_project_components_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_project_components_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_project_components_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_project_components_list(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_project_components_list.blobfish_original = _bf_orig_jira_project_components_list
+jira_project_components_list = _bf_friction_jira_project_components_list
+
+def jira_project_versions_list(db_path='state.db', **kwargs):
+    '''Returns all versions in a project (GET /rest/api/3/project/{projectIdOrKey}/versions)'''
+    _missing = [p for p in ['project_key'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _where, _args = [], []
+        if kwargs.get('project_key') is not None:
+            _where.append('"project_key" = ?')
+            _args.append(str(kwargs['project_key']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "jira_versions"'
+        if _where:
+            _q += ' WHERE ' + ' AND '.join(_where)
+        _q += ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return {'values': _r['items'], 'total': _r['count'], 'startAt': 0, 'maxResults': _r['count'], 'isLast': True}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_project_versions_list = jira_project_versions_list
+def _bf_friction_jira_project_versions_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_project_versions_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_project_versions_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_project_versions_list(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_project_versions_list.blobfish_original = _bf_orig_jira_project_versions_list
+jira_project_versions_list = _bf_friction_jira_project_versions_list
+
+def jira_boards_list(db_path='state.db', **kwargs):
+    '''Returns all boards, optionally filtered by project key or board type (GET /rest/agile/1.0/board)'''
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _where, _args = [], []
+        if kwargs.get('project_key') is not None:
+            _where.append('"project_key" = ?')
+            _args.append(str(kwargs['project_key']))
+        if kwargs.get('board_type') is not None:
+            _where.append('"type" = ?')
+            _args.append(str(kwargs['board_type']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "jira_boards"'
+        if _where:
+            _q += ' WHERE ' + ' AND '.join(_where)
+        _q += ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return {'values': _r['items'], 'total': _r['count'], 'startAt': 0, 'maxResults': _r['count'], 'isLast': True}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_boards_list = jira_boards_list
+def _bf_friction_jira_boards_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_boards_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_boards_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_boards_list(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_boards_list.blobfish_original = _bf_orig_jira_boards_list
+jira_boards_list = _bf_friction_jira_boards_list
+
+def jira_board_get(db_path='state.db', **kwargs):
+    '''Returns the board for the given board ID (GET /rest/agile/1.0/board/{boardId})'''
+    _missing = [p for p in ['board_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "jira_boards" WHERE "id" = ?', [str(kwargs['board_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'board not found', 'status': 404}
+            return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+        _r = dict(_row)
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_board_get = jira_board_get
+def _bf_friction_jira_board_get(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_board_get(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_board_get|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_board_get(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_board_get.blobfish_original = _bf_orig_jira_board_get
+jira_board_get = _bf_friction_jira_board_get
+
+def jira_sprints_list(db_path='state.db', **kwargs):
+    '''Returns all sprints from a board, optionally filtered by state (GET /rest/agile/1.0/board/{boardId}/sprint)'''
+    _missing = [p for p in ['board_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _where, _args = [], []
+        if kwargs.get('board_id') is not None:
+            _where.append('"board_id" = ?')
+            _args.append(str(kwargs['board_id']))
+        if kwargs.get('state') is not None:
+            _where.append('"state" = ?')
+            _args.append(str(kwargs['state']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "jira_sprints"'
+        if _where:
+            _q += ' WHERE ' + ' AND '.join(_where)
+        _q += ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return {'values': _r['items'], 'total': _r['count'], 'startAt': 0, 'maxResults': _r['count'], 'isLast': True}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_sprints_list = jira_sprints_list
+def _bf_friction_jira_sprints_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_sprints_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_sprints_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_sprints_list(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_sprints_list.blobfish_original = _bf_orig_jira_sprints_list
+jira_sprints_list = _bf_friction_jira_sprints_list
+
+def jira_sprint_get(db_path='state.db', **kwargs):
+    '''Returns the sprint for the given sprint ID, including state, dates, and goal (GET /rest/agile/1.0/sprint/{sprintId})'''
+    _missing = [p for p in ['sprint_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "jira_sprints" WHERE "id" = ?', [str(kwargs['sprint_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'sprint not found', 'status': 404}
+            return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+        _r = dict(_row)
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_sprint_get = jira_sprint_get
+def _bf_friction_jira_sprint_get(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_sprint_get(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_sprint_get|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_sprint_get(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_sprint_get.blobfish_original = _bf_orig_jira_sprint_get
+jira_sprint_get = _bf_friction_jira_sprint_get
+
+def jira_sprint_issues_list(db_path='state.db', **kwargs):
+    '''Returns all issues in a sprint, optionally filtered by status (GET /rest/agile/1.0/sprint/{sprintId}/issue)'''
+    _missing = [p for p in ['sprint_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _where, _args = [], []
+        if kwargs.get('sprint_id') is not None:
+            _where.append('"sprint_id" = ?')
+            _args.append(str(kwargs['sprint_id']))
+        if kwargs.get('status') is not None:
+            _where.append('"status" = ?')
+            _args.append(str(kwargs['status']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "jira_issues"'
+        if _where:
+            _q += ' WHERE ' + ' AND '.join(_where)
+        _q += ' ORDER BY rowid LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return {'issues': _r['items'], 'total': _r['count'], 'startAt': 0, 'maxResults': _r['count']}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_sprint_issues_list = jira_sprint_issues_list
+def _bf_friction_jira_sprint_issues_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_sprint_issues_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_sprint_issues_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_sprint_issues_list(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_sprint_issues_list.blobfish_original = _bf_orig_jira_sprint_issues_list
+jira_sprint_issues_list = _bf_friction_jira_sprint_issues_list
+
+def jira_priorities_list(db_path='state.db', **kwargs):
+    '''Returns the list of issue priorities (GET /rest/api/3/priority/search)'''
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _where, _args = [], []
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "jira_priorities"'
+        if _where:
+            _q += ' WHERE ' + ' AND '.join(_where)
+        _q += ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return {'values': _r['items'], 'total': _r['count'], 'startAt': 0, 'maxResults': _r['count'], 'isLast': True}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_priorities_list = jira_priorities_list
+def _bf_friction_jira_priorities_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_priorities_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_priorities_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_priorities_list(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_priorities_list.blobfish_original = _bf_orig_jira_priorities_list
+jira_priorities_list = _bf_friction_jira_priorities_list
+
+def jira_statuses_list(db_path='state.db', **kwargs):
+    '''Returns a list of all workflow statuses with their status categories (GET /rest/api/3/status)'''
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _where, _args = [], []
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "jira_statuses"'
+        if _where:
+            _q += ' WHERE ' + ' AND '.join(_where)
+        _q += ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return {'values': _r['items'], 'total': _r['count'], 'startAt': 0, 'maxResults': _r['count'], 'isLast': True}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_statuses_list = jira_statuses_list
+def _bf_friction_jira_statuses_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_statuses_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_statuses_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_statuses_list(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_statuses_list.blobfish_original = _bf_orig_jira_statuses_list
+jira_statuses_list = _bf_friction_jira_statuses_list
+
+def jira_users_search(db_path='state.db', **kwargs):
+    '''Returns a list of active users matching a query against display name and email address (GET /rest/api/3/user/search)'''
+    _missing = [p for p in ['query'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return {'errorMessages': [str(_r.get('error', ''))], 'errors': {}}
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _qv = '%' + str(kwargs['query']) + '%'
+        _where, _args = ["(\"name\" LIKE ? OR \"email\" LIKE ?)"], [_qv] * 2
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "employees" WHERE ' + ' AND '.join(_where) + ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return {'values': _r['items'], 'total': _r['count'], 'startAt': 0, 'maxResults': _r['count'], 'isLast': True}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_jira_users_search = jira_users_search
+def _bf_friction_jira_users_search(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_jira_users_search(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "jira_users_search|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_jira_users_search(*_bf_args, **_bf_kwargs)
+_bf_friction_jira_users_search.blobfish_original = _bf_orig_jira_users_search
+jira_users_search = _bf_friction_jira_users_search
 

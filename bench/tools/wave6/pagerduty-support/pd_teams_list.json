@@ -1,0 +1,23 @@
+{
+ "name": "pd_teams_list",
+ "mcp_name": "pagerduty.pd_teams_list",
+ "asset_namespace": "pagerduty",
+ "description": "List teams of the PagerDuty account (GET /teams)",
+ "type": "read",
+ "target_tables": [
+  "pd_teams"
+ ],
+ "parameters": {
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "limit": {
+    "type": "integer",
+    "description": "The number of results per page. Defaults to 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}

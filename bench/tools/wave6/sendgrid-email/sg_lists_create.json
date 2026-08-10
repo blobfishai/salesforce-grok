@@ -1,0 +1,26 @@
+{
+ "name": "sg_lists_create",
+ "mcp_name": "email.sg_lists_create",
+ "asset_namespace": "email",
+ "description": "Create a new marketing contact list. (POST /v3/marketing/lists)",
+ "type": "write",
+ "target_tables": [
+  "sg_lists"
+ ],
+ "parameters": {
+  "name": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "name": {
+    "type": "string",
+    "description": "Your name for the list. Must be unique across all lists; max length 100 characters."
+   }
+  },
+  "required": [
+   "name"
+  ],
+  "additionalProperties": false
+ }
+}

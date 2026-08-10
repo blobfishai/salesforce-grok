@@ -1,0 +1,33 @@
+{
+ "name": "chat_delete",
+ "mcp_name": "slack.chat_delete",
+ "asset_namespace": "slack",
+ "description": "Deletes a message from a channel, addressed by the compound (channel, ts) key (POST /chat.delete)",
+ "type": "write",
+ "target_tables": [
+  "messages",
+  "channels"
+ ],
+ "parameters": {
+  "channel": "string",
+  "ts": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "channel": {
+    "type": "string",
+    "description": "Channel containing the message to be deleted. Can be an encoded ID, or a name."
+   },
+   "ts": {
+    "type": "string",
+    "description": "Timestamp of the message to be deleted."
+   }
+  },
+  "required": [
+   "channel",
+   "ts"
+  ],
+  "additionalProperties": false
+ }
+}

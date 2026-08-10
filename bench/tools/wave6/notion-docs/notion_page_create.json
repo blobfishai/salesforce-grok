@@ -1,0 +1,31 @@
+{
+ "name": "notion_page_create",
+ "mcp_name": "notion.notion_page_create",
+ "asset_namespace": "notion",
+ "description": "Create a new page as a child of an existing page (POST /v1/pages)",
+ "type": "write",
+ "target_tables": [
+  "notion_pages"
+ ],
+ "parameters": {
+  "parent_id": "string",
+  "title": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "parent_id": {
+    "type": "string",
+    "description": "The parent page where the new page is inserted (parent.page_id). Defaults to the workspace root when omitted."
+   },
+   "title": {
+    "type": "string",
+    "description": "The title of the page (properties.title, plain text)."
+   }
+  },
+  "required": [
+   "title"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "name": "conversations_members",
+ "mcp_name": "slack.conversations_members",
+ "asset_namespace": "slack",
+ "description": "Retrieve members of a conversation (GET /conversations.members)",
+ "type": "read",
+ "target_tables": [
+  "slack_channel_members"
+ ],
+ "parameters": {
+  "channel": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "channel": {
+    "type": "string",
+    "description": "ID of the conversation to retrieve members for, for example C0000001."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The maximum number of items to return. Default: 30."
+   }
+  },
+  "required": [
+   "channel"
+  ],
+  "additionalProperties": false
+ }
+}

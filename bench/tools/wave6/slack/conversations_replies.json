@@ -1,0 +1,38 @@
+{
+ "name": "conversations_replies",
+ "mcp_name": "slack.conversations_replies",
+ "asset_namespace": "slack",
+ "description": "Retrieve a thread of messages posted to a conversation: the parent identified by ts plus every reply whose thread_ts points at it (GET /conversations.replies)",
+ "type": "read",
+ "target_tables": [
+  "messages",
+  "channels"
+ ],
+ "parameters": {
+  "channel": "string",
+  "ts": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "channel": {
+    "type": "string",
+    "description": "Conversation ID (C…) or a #channel-name to fetch the thread from."
+   },
+   "ts": {
+    "type": "string",
+    "description": "Unique identifier of either a thread's parent message or a message in the thread, e.g. 1786312800.000101."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The maximum number of items to return. Default: 100."
+   }
+  },
+  "required": [
+   "channel",
+   "ts"
+  ],
+  "additionalProperties": false
+ }
+}

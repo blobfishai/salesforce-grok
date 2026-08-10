@@ -1,0 +1,26 @@
+{
+ "name": "get_customers_customer",
+ "mcp_name": "stripe.get_customers_customer",
+ "asset_namespace": "stripe",
+ "description": "Retrieves a Customer object. (GET /v1/customers/{customer})",
+ "type": "read",
+ "target_tables": [
+  "customers"
+ ],
+ "parameters": {
+  "customer": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "customer": {
+    "type": "string",
+    "description": "The identifier of the customer to be retrieved."
+   }
+  },
+  "required": [
+   "customer"
+  ],
+  "additionalProperties": false
+ }
+}

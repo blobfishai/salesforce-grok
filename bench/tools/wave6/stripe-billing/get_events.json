@@ -1,0 +1,28 @@
+{
+ "name": "get_events",
+ "mcp_name": "stripe.get_events",
+ "asset_namespace": "stripe",
+ "description": "List events, going back up to 30 days; each event data is rendered according to Stripe API version at its creation time. (GET /v1/events)",
+ "type": "read",
+ "target_tables": [
+  "stripe_events"
+ ],
+ "parameters": {
+  "type": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "type": {
+    "type": "string",
+    "description": "A string containing a specific event name. The list will be filtered to include only events with a matching event property."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 30."
+   }
+  },
+  "additionalProperties": false
+ }
+}
