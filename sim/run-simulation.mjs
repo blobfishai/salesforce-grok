@@ -15,7 +15,7 @@ import { dirname, join } from "node:path";
 import { McpClient } from "./lib/mcp-client.mjs";
 import { resolveModel, costUsd, ToolNameCodec, mangleTools, chat as llmChat } from "./lib/llm-client.mjs";
 import { WorldUpstream } from "../mcp/lib/world-upstream.mjs";
-import { resolveTaskSeedPath, sessionDbPath, applyTaskSeed } from "./lib/task-seed.mjs";
+import { resolveTaskSeedPath, sessionDbPath, applyTaskSeed, dumpInitialState, bundleTables } from "./lib/task-seed.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(readFileSync(join(ROOT, "config", "world.config.json"), "utf8"));
@@ -177,6 +177,7 @@ async function mainBlobfish() {
     writeFileSync(sessionFile, JSON.stringify({ session_id: up.session }));
     writeFileSync(traceFile, "");
     const childEnv = { BLOBFISH_SESSION_FILE: sessionFile, BLOBFISH_TRACE_FILE: traceFile };
+    if (APPLY_SEED) childEnv.BLOBFISH_INITIAL_STATE_FILE = join(epDir, "initial-state.json");
 
     const clients = {};
     await Promise.all(vendors.map(async (v) => {
@@ -195,6 +196,10 @@ async function mainBlobfish() {
         try {
           const dbPath = sessionDbPath(ROOT, worldPath.startsWith(ROOT) ? worldPath.slice(ROOT.length + 1) : worldPath, world.world_id, up.session);
           const applied = applyTaskSeed(seedPath, dbPath);
+          // Post-seed snapshot of the seed-touched tables = the per-table
+          // verification baseline (fixtures are initial state, not agent
+          // writes). Harness reads this path at verify time.
+          dumpInitialState(dbPath, join(epDir, "initial-state.json"), bundleTables(seedPath));
           console.log(`Task seed applied: ${JSON.stringify(applied)} from ${seedPath.split("/").slice(-3).join("/")}`);
           log({ type: "task_seed", taskId, seedPath, applied });
         } catch (e) {

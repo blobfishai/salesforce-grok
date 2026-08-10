@@ -6,7 +6,7 @@
  *   reset_session — fresh session + truncated trace (multi-server mode: rewrites
  *                   the shared session file so every vendor server follows)
  */
-import { writeFileSync, truncateSync, existsSync } from "node:fs";
+import { writeFileSync, truncateSync, existsSync, readFileSync } from "node:fs";
 import { WorldUpstream, stdioServe } from "./lib/world-upstream.mjs";
 
 const up = new WorldUpstream({ clientName: "mcp-harness" });
@@ -27,6 +27,12 @@ stdioServe({
       const trace = up.readTrace().map(({ vendor, ts, ...rest }) => rest); // verifier shape
       const path = up.LOCAL ? `/verify/${encodeURIComponent(args.task_id)}` : "/verify";
       const body = up.LOCAL ? { trace } : { task_id: args.task_id, trace };
+      // Task-seeded episodes: the post-seed pre-agent snapshot is the true
+      // verification baseline (requires the BF_TASK_SEED_PATCH server patch).
+      const initFile = process.env.BLOBFISH_INITIAL_STATE_FILE;
+      if (up.LOCAL && initFile && existsSync(initFile)) {
+        try { body.initial_state = JSON.parse(readFileSync(initFile, "utf8")); } catch { /* fall back to SEED_DB baseline */ }
+      }
       const r = await up.rest(path, { method: "POST", body: JSON.stringify(body) });
       return { ok: r.ok, text: r.json ? JSON.stringify(r.json, null, 2) : r.text };
     }

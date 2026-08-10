@@ -103,6 +103,12 @@ Global seeded data alone is not realistic. Every task carries its own fixture bu
 Runtime: `run-simulation --multi-server --apply-task-seed` applies the bundle to the
 episode's copy-on-write session DB *before* the agent starts (verified: fixtures are
 instantly visible through every vendor MCP server, and vanish with the session).
+**Verifier safety**: the stock server diffs against the static SEED_DB, so fixtures
+would read as undeclared agent writes — `scripts/patch-server-verify.mjs` (v2) lets
+`/verify` accept per-table post-seed baselines, and the harness sends the snapshot the
+applier dumps. Proven: with the override, seeded rows/docs pass
+`no_undeclared_rows_created` and `no_offtask_table_changes`; without it they fail.
+Re-apply the patch after re-downloading any world package.
 Extraction: `scripts/build-bench-folders.mjs` derives baseline bundles from each task's
 pinned rows, prompt-referenced documents, and walk namespaces — hand-enrich them with
 realistic bodies instead of relying on generator filler.

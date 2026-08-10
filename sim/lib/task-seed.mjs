@@ -71,3 +71,37 @@ export function applyTaskSeed(bundlePath, dbPath) {
   if (r.status !== 0) throw new Error(`task-seed apply failed: ${r.stderr?.slice(0, 400)}`);
   return JSON.parse(r.stdout.trim().split("\n").pop());
 }
+
+const SNAP_PY = `
+import json, sqlite3, sys
+conn = sqlite3.connect(sys.argv[1]); conn.row_factory = sqlite3.Row
+only = set(json.loads(sys.argv[3])) if len(sys.argv) > 3 and sys.argv[3] else None
+out = {}
+for (name,) in conn.execute("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'").fetchall():
+    if only is not None and name not in only: continue
+    rows = {}
+    for row in conn.execute(f'SELECT rowid AS _r_, * FROM "{name}"'):
+        d = dict(row); rid = d.pop("_r_"); rows[rid] = d
+    out[name] = rows
+json.dump(out, open(sys.argv[2], "w"), default=str)
+print("ok")
+`;
+
+/** Tables a bundle touches (rows tables + document stores with bodies). */
+export function bundleTables(bundlePath) {
+  const b = JSON.parse(readFileSync(bundlePath, "utf8"));
+  const t = new Set(Object.keys(b.rows ?? {}));
+  for (const key of ["documents", "input_documents"]) {
+    for (const d of b[key] ?? []) if (d.body) t.add(d.store ?? "agent_documents");
+  }
+  return [...t];
+}
+
+/** Snapshot the post-seed session DB (optionally only the seed-touched tables) —
+ *  the per-table verification baseline. Shape matches server snapshot(). */
+export function dumpInitialState(dbPath, outPath, onlyTables = null) {
+  const args = ["-c", SNAP_PY, dbPath, outPath];
+  if (onlyTables) args.push(JSON.stringify(onlyTables));
+  const r = spawnSync("python3", args, { encoding: "utf8", timeout: 60000 });
+  if (r.status !== 0) throw new Error(`initial-state dump failed: ${r.stderr?.slice(0, 300)}`);
+}

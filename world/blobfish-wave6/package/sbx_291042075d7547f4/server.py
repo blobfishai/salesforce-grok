@@ -1465,6 +1465,16 @@ class Handler(BaseHTTPRequestHandler):
             if body is None:
                 return
             initial = snapshot(SEED_DB) if os.path.exists(SEED_DB) else {}
+            # BF_TASK_SEED_PATCH_V2: harness may supply per-table post-task-seed
+            # baselines ("initial_state": {table: {rowid -> row}} — only the
+            # tables the seed touched, keeping the body small). Each supplied
+            # table REPLACES that table's SEED_DB view, so fixtures are initial
+            # state, not agent writes. JSON string keys coerce back to int.
+            _override = body.get("initial_state") if isinstance(body, dict) else None
+            if isinstance(_override, dict) and _override:
+                for _t, _rows in _override.items():
+                    if isinstance(_rows, dict):
+                        initial[_t] = {int(_k): _v for _k, _v in _rows.items()}
             final = snapshot(current_state_db())
             trace = body.get("trace", []) if isinstance(body, dict) else []
             if not trace:
