@@ -28,16 +28,22 @@ for (const [id, m] of Object.entries(roster.models)) {
     row.worldTasks = w.totals.tasks;
     row.worldStrict = w.totals.solidPass / w.totals.tasks;
     row.worldTrial = trials.length ? trials.filter((t) => t.passed).length / trials.length : 0;
-    // Audited strict (2026-08-10): required_workflow_path demands a tool order
-    // documented nowhere the agent can read — trials whose ONLY failure is that
-    // assertion count as passes. End-state and collateral assertions still bind.
+    // Audited strict (2026-08-10 audit):
+    // - required_workflow_path demands a tool order documented nowhere the agent
+    //   can read — trials whose ONLY failure is that assertion count as passes.
+    // - task_008 is excluded outright: transcript forensics showed all 7 models
+    //   executed the prompt's plain meaning ("update THAT [new] entry") while the
+    //   verifier pins the OLD row — a prompt defect, not a capability signal.
+    const AUDIT_EXCLUDED = new Set(["task_008"]);
     const exPath = {};
     for (const t of trials) {
+      if (AUDIT_EXCLUDED.has(t.taskId)) continue;
       const fc = new Set(t.failedConditions ?? []);
       const ok = t.passed || (fc.size > 0 && [...fc].every((c) => c === "required_workflow_path"));
       (exPath[t.taskId] ??= []).push(ok);
     }
-    row.worldAudited = Object.values(exPath).filter((v) => v.every(Boolean)).length / w.totals.tasks;
+    const auditedTasks = Object.keys(exPath).length;
+    row.worldAudited = auditedTasks ? Object.values(exPath).filter((v) => v.every(Boolean)).length / auditedTasks : null;
     row.flaky = w.totals.flaky;
     row.infraErrors = w.totals.infraErrors;
     row.worldCost = w.totals.costUsd;
