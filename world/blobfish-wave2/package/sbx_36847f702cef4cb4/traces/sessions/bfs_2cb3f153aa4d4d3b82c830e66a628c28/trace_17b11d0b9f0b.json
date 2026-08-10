@@ -1,0 +1,78 @@
+{
+  "id": "trace_17b11d0b9f0b",
+  "type": "verify",
+  "task_id": "task_015",
+  "result": {
+    "task_id": "task_015",
+    "passed": false,
+    "reward": 0.0,
+    "explanation": "Failed: required_workflow_path",
+    "assertions": [
+      {
+        "name": "state_changed",
+        "passed": true,
+        "details": "world state changed"
+      },
+      {
+        "name": "reads_before_writes",
+        "passed": true,
+        "details": "reads=1, writes=0, read_first=True"
+      },
+      {
+        "name": "no_shortcut_direct_update",
+        "passed": true,
+        "details": "inspected data before writing"
+      },
+      {
+        "name": "required_workflow_path",
+        "passed": false,
+        "details": "INCOMPLETE WORKFLOW: missing ordered checkpoints query_support_tickets -> lookup_support_ticket_with_employees -> update_support_tickets_status"
+      },
+      {
+        "name": "support_tickets_159_status_is_waiting_customer",
+        "passed": true,
+        "details": "support_tickets[159].status = waiting_customer, expected waiting_customer"
+      },
+      {
+        "name": "support_tickets_159_status_was_in_progress",
+        "passed": true,
+        "details": "support_tickets[159].status was in_progress, expected in_progress (confirms correct row targeted)"
+      },
+      {
+        "name": "no_collateral_support_tickets",
+        "passed": true,
+        "details": "only target rows modified"
+      },
+      {
+        "name": "no_offtask_table_changes",
+        "passed": true,
+        "details": "no off-task tables were modified"
+      },
+      {
+        "name": "no_rows_destroyed",
+        "passed": true,
+        "details": "no rows were destroyed in any table"
+      },
+      {
+        "name": "no_undeclared_rows_created",
+        "passed": true,
+        "details": "all created rows were declared by task insert effects"
+      },
+      {
+        "name": "audit_logs_append_only",
+        "passed": true,
+        "details": "audit_logs append-only invariant holds"
+      },
+      {
+        "name": "all_tools_succeeded",
+        "passed": true,
+        "details": "2/2 tool calls succeeded"
+      }
+    ],
+    "failed_conditions": [
+      "required_workflow_path"
+    ],
+    "advisory_conditions": []
+  },
+  "timestamp": 1786322283.3204422
+}

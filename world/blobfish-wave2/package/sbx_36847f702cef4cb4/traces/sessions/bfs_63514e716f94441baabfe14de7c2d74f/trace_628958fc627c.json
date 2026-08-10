@@ -1,0 +1,35 @@
+{
+  "id": "trace_628958fc627c",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.create_lead_scoring_policy",
+  "args": {
+    "name": "Fairview Group",
+    "status": "active",
+    "created_at": "2026-04-08"
+  },
+  "result": {
+    "ok": true,
+    "tool": "create_lead_scoring_policy",
+    "requested_tool": "create_lead_scoring_policy",
+    "result": {
+      "id": 13
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "lead_scoring_policy",
+        "row_id": "13",
+        "operation": "insert",
+        "before": null,
+        "after": {
+          "id": 13,
+          "name": "Fairview Group",
+          "status": "active",
+          "created_at": "2026-04-08"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786322691.723495
+}

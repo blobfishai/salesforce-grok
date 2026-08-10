@@ -1,0 +1,119 @@
+{
+  "id": "trace_68d5ed5efb61",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.sales_workflow_agent",
+  "args": {
+    "request": "in table company_sales_handoffs, find handoff_ref \"HND-SALES-0001\" and set status to the next declared lifecycle stage"
+  },
+  "result": {
+    "ok": true,
+    "tool": "sales_workflow_agent",
+    "requested_tool": "sales_workflow_agent",
+    "result": {
+      "status": "updated",
+      "table": "company_sales_handoffs",
+      "business_handle": {
+        "handoff_ref": "HND-SALES-0001"
+      },
+      "field": "status",
+      "before": "queued",
+      "after": "linked",
+      "record": {
+        "id": 1,
+        "handoff_ref": "HND-SALES-0001",
+        "core_record_id": 1,
+        "system_record_id": "account_001",
+        "source_system": "salesforce",
+        "source_table": "accounts",
+        "requested_action": "qualify_engagement_for_core_record",
+        "status": "linked",
+        "contract_id": "blobfish.company-system-handoff.v1"
+      },
+      "resolution_receipt": {
+        "request": "in table company_sales_handoffs, find handoff_ref \"HND-SALES-0001\" and set status to the next declared lifecycle stage",
+        "strategy": "unique_business_handle",
+        "candidate_limit": 3,
+        "match_count": 1,
+        "matched_field": "handoff_ref",
+        "available_business_handle_fields": [
+          "handoff_ref"
+        ],
+        "available_resolution_fields": [
+          "handoff_ref",
+          "core_record_id",
+          "system_record_id",
+          "source_system",
+          "source_table",
+          "requested_action",
+          "contract_id"
+        ],
+        "returned_fields": [
+          "contract_id",
+          "core_record_id",
+          "handoff_ref",
+          "id",
+          "requested_action",
+          "source_system",
+          "source_table",
+          "status",
+          "system_record_id"
+        ]
+      },
+      "transition_receipt": {
+        "declared_lifecycle": [
+          "queued",
+          "linked",
+          "verified",
+          "completed"
+        ],
+        "before": "queued",
+        "after": "linked",
+        "mutation_applied": true,
+        "changed_primary_key": 1
+      },
+      "policy_receipt": {
+        "scope": "single_resolved_record",
+        "mutable_fields": [
+          "handoff_ref",
+          "source_system",
+          "source_table",
+          "requested_action",
+          "status"
+        ],
+        "collateral_rows_changed": 0
+      }
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "company_sales_handoffs",
+        "row_id": "1",
+        "operation": "update",
+        "before": {
+          "id": 1,
+          "handoff_ref": "HND-SALES-0001",
+          "core_record_id": 1,
+          "system_record_id": "account_001",
+          "source_system": "salesforce",
+          "source_table": "accounts",
+          "requested_action": "qualify_engagement_for_core_record",
+          "status": "queued",
+          "contract_id": "blobfish.company-system-handoff.v1"
+        },
+        "after": {
+          "id": 1,
+          "handoff_ref": "HND-SALES-0001",
+          "core_record_id": 1,
+          "system_record_id": "account_001",
+          "source_system": "salesforce",
+          "source_table": "accounts",
+          "requested_action": "qualify_engagement_for_core_record",
+          "status": "linked",
+          "contract_id": "blobfish.company-system-handoff.v1"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786322248.913641
+}

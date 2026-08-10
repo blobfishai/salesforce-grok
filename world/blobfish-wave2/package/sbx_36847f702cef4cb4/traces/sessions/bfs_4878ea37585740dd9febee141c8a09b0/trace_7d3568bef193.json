@@ -1,0 +1,83 @@
+{
+  "id": "trace_7d3568bef193",
+  "type": "mcp_tool_call",
+  "tool": "github.finance_records_agent",
+  "args": {
+    "request": "in table finance_budgets, find budget_number \"BUD-468603\" and return the complete record"
+  },
+  "result": {
+    "ok": true,
+    "tool": "finance_records_agent",
+    "requested_tool": "finance_records_agent",
+    "result": {
+      "status": "found",
+      "table": "finance_budgets",
+      "business_handle": {
+        "budget_number": "BUD-468603"
+      },
+      "record": {
+        "id": 145,
+        "budget_number": "BUD-468603",
+        "department_id": 5,
+        "fiscal_quarter": "2026-Q3",
+        "allocated_amount": 49274.51,
+        "spent_amount": 30545.29,
+        "status": "draft"
+      },
+      "declared_lifecycles": {
+        "status": [
+          "draft",
+          "active",
+          "closed"
+        ]
+      },
+      "next_valid_values": {
+        "status": "active"
+      },
+      "resolution_receipt": {
+        "request": "in table finance_budgets, find budget_number \"BUD-468603\" and return the complete record",
+        "strategy": "unique_business_handle",
+        "candidate_limit": 3,
+        "match_count": 1,
+        "matched_field": "budget_number",
+        "available_business_handle_fields": [
+          "budget_number"
+        ],
+        "available_resolution_fields": [
+          "budget_number",
+          "department_id",
+          "fiscal_quarter",
+          "allocated_amount",
+          "spent_amount"
+        ],
+        "returned_fields": [
+          "allocated_amount",
+          "budget_number",
+          "department_id",
+          "fiscal_quarter",
+          "id",
+          "spent_amount",
+          "status"
+        ],
+        "read_only": true,
+        "mutation_applied": false
+      },
+      "workflow_context": {
+        "mutable_fields": [
+          "budget_number",
+          "fiscal_quarter",
+          "allocated_amount",
+          "spent_amount",
+          "status"
+        ],
+        "declared_lifecycle_fields": [
+          "status"
+        ]
+      }
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786322270.0460532
+}

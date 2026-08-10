@@ -1,0 +1,35 @@
+{
+  "id": "trace_dafae104124d",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.create_account_tiering_standard",
+  "args": {
+    "name": "Summit Supply Co",
+    "status": "active",
+    "created_at": "2025-08-13"
+  },
+  "result": {
+    "ok": true,
+    "tool": "create_account_tiering_standard",
+    "requested_tool": "create_account_tiering_standard",
+    "result": {
+      "id": 10
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "account_tiering_standard",
+        "row_id": "10",
+        "operation": "insert",
+        "before": null,
+        "after": {
+          "id": 10,
+          "name": "Summit Supply Co",
+          "status": "active",
+          "created_at": "2025-08-13"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786322699.5225759
+}

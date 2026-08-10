@@ -1,0 +1,71 @@
+{
+  "id": "trace_eb4387e6cf95",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.core_records_agent",
+  "args": {
+    "request": "in table opportunity_stage_gates, find name \"Summit Holdings\" and return the complete record."
+  },
+  "result": {
+    "ok": true,
+    "tool": "core_records_agent",
+    "requested_tool": "core_records_agent",
+    "result": {
+      "status": "found",
+      "table": "opportunity_stage_gates",
+      "business_handle": {
+        "name": "Summit Holdings"
+      },
+      "record": {
+        "id": 2,
+        "name": "Summit Holdings",
+        "status": "inactive",
+        "created_at": "2025-06-12"
+      },
+      "declared_lifecycles": {
+        "status": [
+          "active",
+          "inactive",
+          "pending"
+        ]
+      },
+      "next_valid_values": {
+        "status": "pending"
+      },
+      "resolution_receipt": {
+        "request": "in table opportunity_stage_gates, find name \"Summit Holdings\" and return the complete record.",
+        "strategy": "unique_business_handle",
+        "candidate_limit": 3,
+        "match_count": 1,
+        "matched_field": "name",
+        "available_business_handle_fields": [
+          "name"
+        ],
+        "available_resolution_fields": [
+          "name",
+          "created_at"
+        ],
+        "returned_fields": [
+          "created_at",
+          "id",
+          "name",
+          "status"
+        ],
+        "read_only": true,
+        "mutation_applied": false
+      },
+      "workflow_context": {
+        "mutable_fields": [
+          "name",
+          "status"
+        ],
+        "declared_lifecycle_fields": [
+          "status"
+        ]
+      }
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786322421.285973
+}

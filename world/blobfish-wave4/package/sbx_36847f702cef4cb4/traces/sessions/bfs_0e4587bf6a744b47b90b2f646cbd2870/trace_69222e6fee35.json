@@ -1,0 +1,87 @@
+{
+  "id": "trace_69222e6fee35",
+  "type": "mcp_tool_call",
+  "tool": "github.finance_records_agent",
+  "args": {
+    "request": "in table finance_expense_reports, find report_number \"EXP-413432\" and return the complete record"
+  },
+  "result": {
+    "ok": true,
+    "tool": "finance_records_agent",
+    "requested_tool": "finance_records_agent",
+    "result": {
+      "status": "found",
+      "table": "finance_expense_reports",
+      "business_handle": {
+        "report_number": "EXP-413432"
+      },
+      "record": {
+        "id": 136,
+        "report_number": "EXP-413432",
+        "employee_id": 10,
+        "category": "software",
+        "amount": 104.8,
+        "submitted_at": "2026-06-07",
+        "approver_employee_id": 6,
+        "status": "approved"
+      },
+      "declared_lifecycles": {
+        "status": [
+          "submitted",
+          "approved",
+          "reimbursed",
+          "rejected"
+        ]
+      },
+      "next_valid_values": {
+        "status": "reimbursed"
+      },
+      "resolution_receipt": {
+        "request": "in table finance_expense_reports, find report_number \"EXP-413432\" and return the complete record",
+        "strategy": "unique_business_handle",
+        "candidate_limit": 3,
+        "match_count": 1,
+        "matched_field": "report_number",
+        "available_business_handle_fields": [
+          "report_number"
+        ],
+        "available_resolution_fields": [
+          "report_number",
+          "employee_id",
+          "category",
+          "amount",
+          "submitted_at",
+          "approver_employee_id"
+        ],
+        "returned_fields": [
+          "amount",
+          "approver_employee_id",
+          "category",
+          "employee_id",
+          "id",
+          "report_number",
+          "status",
+          "submitted_at"
+        ],
+        "read_only": true,
+        "mutation_applied": false
+      },
+      "workflow_context": {
+        "mutable_fields": [
+          "report_number",
+          "category",
+          "amount",
+          "submitted_at",
+          "status"
+        ],
+        "declared_lifecycle_fields": [
+          "status"
+        ]
+      }
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786322665.923713
+}

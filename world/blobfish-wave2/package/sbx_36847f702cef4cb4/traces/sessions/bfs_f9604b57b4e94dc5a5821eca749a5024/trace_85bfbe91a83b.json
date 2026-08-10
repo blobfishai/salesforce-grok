@@ -1,0 +1,114 @@
+{
+  "id": "trace_85bfbe91a83b",
+  "type": "mcp_tool_call",
+  "tool": "core.human_resources_workflow_agent",
+  "args": {
+    "request": "in table hr_leave_requests, find request_number \"LEAVE-403634\" and set status to \"approved\""
+  },
+  "result": {
+    "ok": true,
+    "tool": "human_resources_workflow_agent",
+    "requested_tool": "human_resources_workflow_agent",
+    "result": {
+      "status": "updated",
+      "table": "hr_leave_requests",
+      "business_handle": {
+        "request_number": "LEAVE-403634"
+      },
+      "field": "status",
+      "before": "submitted",
+      "after": "approved",
+      "record": {
+        "id": 1,
+        "request_number": "LEAVE-403634",
+        "employee_id": 1,
+        "leave_type": "bereavement",
+        "start_date": "2026-04-16",
+        "days_requested": 7,
+        "approver_employee_id": 8,
+        "status": "approved"
+      },
+      "resolution_receipt": {
+        "request": "in table hr_leave_requests, find request_number \"LEAVE-403634\" and set status to \"approved\"",
+        "strategy": "unique_business_handle",
+        "candidate_limit": 3,
+        "match_count": 1,
+        "matched_field": "request_number",
+        "available_business_handle_fields": [
+          "request_number"
+        ],
+        "available_resolution_fields": [
+          "request_number",
+          "employee_id",
+          "leave_type",
+          "start_date",
+          "days_requested",
+          "approver_employee_id"
+        ],
+        "returned_fields": [
+          "approver_employee_id",
+          "days_requested",
+          "employee_id",
+          "id",
+          "leave_type",
+          "request_number",
+          "start_date",
+          "status"
+        ]
+      },
+      "transition_receipt": {
+        "declared_lifecycle": [
+          "submitted",
+          "approved",
+          "rejected",
+          "cancelled"
+        ],
+        "before": "submitted",
+        "after": "approved",
+        "mutation_applied": true,
+        "changed_primary_key": 1
+      },
+      "policy_receipt": {
+        "scope": "single_resolved_record",
+        "mutable_fields": [
+          "request_number",
+          "leave_type",
+          "start_date",
+          "days_requested",
+          "status"
+        ],
+        "collateral_rows_changed": 0
+      }
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "hr_leave_requests",
+        "row_id": "1",
+        "operation": "update",
+        "before": {
+          "id": 1,
+          "request_number": "LEAVE-403634",
+          "employee_id": 1,
+          "leave_type": "bereavement",
+          "start_date": "2026-04-16",
+          "days_requested": 7,
+          "approver_employee_id": 8,
+          "status": "submitted"
+        },
+        "after": {
+          "id": 1,
+          "request_number": "LEAVE-403634",
+          "employee_id": 1,
+          "leave_type": "bereavement",
+          "start_date": "2026-04-16",
+          "days_requested": 7,
+          "approver_employee_id": 8,
+          "status": "approved"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786322100.626453
+}

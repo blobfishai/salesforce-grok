@@ -1,0 +1,49 @@
+{
+  "id": "trace_4d5a87a723cb",
+  "type": "mcp_tool_call",
+  "tool": "core.task_create",
+  "args": {
+    "account_id": "account_008",
+    "subject": "Task follow-up requires attention",
+    "status": "open",
+    "priority": "normal",
+    "assigned_to": "OWN-0D05643",
+    "description": "Follow-up task after case_014 closure: document policy exception decision and complete residual handoff."
+  },
+  "result": {
+    "ok": true,
+    "tool": "task_create",
+    "requested_tool": "task_create",
+    "result": {
+      "id": "task_118",
+      "account_id": "account_008",
+      "subject": "Task follow-up requires attention",
+      "status": "open",
+      "priority": "normal",
+      "assigned_to": "OWN-0D05643",
+      "due_at": null,
+      "description": "Follow-up task after case_014 closure: document policy exception decision and complete residual handoff."
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "tasks",
+        "row_id": "task_118",
+        "operation": "insert",
+        "before": null,
+        "after": {
+          "id": "task_118",
+          "account_id": "account_008",
+          "subject": "Task follow-up requires attention",
+          "status": "open",
+          "priority": "normal",
+          "assigned_to": "OWN-0D05643",
+          "due_at": null,
+          "description": "Follow-up task after case_014 closure: document policy exception decision and complete residual handoff."
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786322153.1604202
+}

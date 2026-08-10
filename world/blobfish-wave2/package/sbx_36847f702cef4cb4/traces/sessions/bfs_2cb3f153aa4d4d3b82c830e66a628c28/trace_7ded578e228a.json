@@ -1,0 +1,123 @@
+{
+  "id": "trace_7ded578e228a",
+  "type": "mcp_tool_call",
+  "tool": "jira.customer_support_workflow_agent",
+  "args": {
+    "request": "in table support_tickets, find ticket_number \"TKT-685233\" and set status to the next declared lifecycle stage"
+  },
+  "result": {
+    "ok": true,
+    "tool": "customer_support_workflow_agent",
+    "requested_tool": "customer_support_workflow_agent",
+    "result": {
+      "status": "updated",
+      "table": "support_tickets",
+      "business_handle": {
+        "ticket_number": "TKT-685233"
+      },
+      "field": "status",
+      "before": "in_progress",
+      "after": "waiting_customer",
+      "record": {
+        "id": 159,
+        "ticket_number": "TKT-685233",
+        "subject": "Problem updating lead management sop",
+        "customer_name": "Brian Murphy 159",
+        "priority": "high",
+        "assignee_employee_id": 9,
+        "opened_at": "2026-04-17",
+        "lead_management_sop_id": 8,
+        "status": "waiting_customer"
+      },
+      "resolution_receipt": {
+        "request": "in table support_tickets, find ticket_number \"TKT-685233\" and set status to the next declared lifecycle stage",
+        "strategy": "unique_business_handle",
+        "candidate_limit": 3,
+        "match_count": 1,
+        "matched_field": "ticket_number",
+        "available_business_handle_fields": [
+          "ticket_number",
+          "subject",
+          "customer_name"
+        ],
+        "available_resolution_fields": [
+          "ticket_number",
+          "subject",
+          "customer_name",
+          "priority",
+          "assignee_employee_id",
+          "opened_at",
+          "lead_management_sop_id"
+        ],
+        "returned_fields": [
+          "assignee_employee_id",
+          "customer_name",
+          "id",
+          "lead_management_sop_id",
+          "opened_at",
+          "priority",
+          "status",
+          "subject",
+          "ticket_number"
+        ]
+      },
+      "transition_receipt": {
+        "declared_lifecycle": [
+          "open",
+          "in_progress",
+          "waiting_customer",
+          "resolved",
+          "closed"
+        ],
+        "before": "in_progress",
+        "after": "waiting_customer",
+        "mutation_applied": true,
+        "changed_primary_key": 159
+      },
+      "policy_receipt": {
+        "scope": "single_resolved_record",
+        "mutable_fields": [
+          "ticket_number",
+          "subject",
+          "customer_name",
+          "priority",
+          "opened_at",
+          "status"
+        ],
+        "collateral_rows_changed": 0
+      }
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "support_tickets",
+        "row_id": "159",
+        "operation": "update",
+        "before": {
+          "id": 159,
+          "ticket_number": "TKT-685233",
+          "subject": "Problem updating lead management sop",
+          "customer_name": "Brian Murphy 159",
+          "priority": "high",
+          "assignee_employee_id": 9,
+          "opened_at": "2026-04-17",
+          "lead_management_sop_id": 8,
+          "status": "in_progress"
+        },
+        "after": {
+          "id": 159,
+          "ticket_number": "TKT-685233",
+          "subject": "Problem updating lead management sop",
+          "customer_name": "Brian Murphy 159",
+          "priority": "high",
+          "assignee_employee_id": 9,
+          "opened_at": "2026-04-17",
+          "lead_management_sop_id": 8,
+          "status": "waiting_customer"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786322280.2134411
+}

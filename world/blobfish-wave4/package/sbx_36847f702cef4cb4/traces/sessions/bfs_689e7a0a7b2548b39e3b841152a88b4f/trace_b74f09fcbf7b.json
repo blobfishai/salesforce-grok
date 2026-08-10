@@ -1,0 +1,27 @@
+{
+  "id": "trace_b74f09fcbf7b",
+  "type": "mcp_tool_call",
+  "tool": "core.human_resources_workflow_agent",
+  "args": {
+    "request": "in table hr_leave_requests, find request_number \"LEAVE-403634\" and set status to the next declared lifecycle stage"
+  },
+  "result": {
+    "ok": false,
+    "tool": "human_resources_workflow_agent",
+    "requested_tool": "human_resources_workflow_agent",
+    "result": {
+      "error": "ambiguous_next_lifecycle",
+      "message": "the next lifecycle stage branches; request an exact business outcome",
+      "field": "status",
+      "before": "submitted",
+      "allowed": [
+        "approved",
+        "rejected"
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": "ambiguous_next_lifecycle"
+  },
+  "timestamp": 1786322634.425889
+}

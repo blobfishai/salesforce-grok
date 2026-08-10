@@ -1,0 +1,24 @@
+{
+  "id": "trace_e45836c659e2",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.core_records_agent",
+  "args": {
+    "request": "in table lead_management_sop, find name \"Fairview Systems\" and return the complete record"
+  },
+  "result": {
+    "ok": false,
+    "tool": "core_records_agent",
+    "requested_tool": "core_records_agent",
+    "result": {
+      "error": "not_found",
+      "message": "no record matched the business handle",
+      "table": "lead_management_sop",
+      "field": "name",
+      "value": "Fairview Systems"
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": "not_found"
+  },
+  "timestamp": 1786322229.954881
+}

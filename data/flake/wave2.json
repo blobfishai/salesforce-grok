@@ -1,0 +1,1601 @@
+{
+  "label": "wave2",
+  "worldFile": "/Users/samuelchien/dev/salesforce-grok/world/blobfish-wave2/world.json",
+  "worldId": "sbx_36847f702cef4cb4",
+  "model": "grok-4.5",
+  "finishedAt": "2026-08-10T00:40:30.052Z",
+  "trialsPerTask": 2,
+  "totals": {
+    "tasks": 28,
+    "solidPass": 15,
+    "flaky": 0,
+    "solidFail": 13,
+    "trialsRun": 56,
+    "infraErrors": 0,
+    "costUsd": 15.45
+  },
+  "depthCurve": [
+    {
+      "bucket": "1-5",
+      "trials": 50,
+      "passRate": 0.6
+    },
+    {
+      "bucket": "6-10",
+      "trials": 0,
+      "passRate": null
+    },
+    {
+      "bucket": "11-20",
+      "trials": 0,
+      "passRate": null
+    },
+    {
+      "bucket": "21+",
+      "trials": 6,
+      "passRate": 0
+    }
+  ],
+  "tasks": [
+    {
+      "taskId": "task_004",
+      "difficulty": "hard",
+      "tables": [
+        "cases",
+        "opportunities",
+        "tasks"
+      ],
+      "trials": 2,
+      "passes": 0,
+      "passRate": 0,
+      "class": "fail",
+      "avgToolCalls": 50.5,
+      "failedConditions": {
+        "required_workflow_path": 2,
+        "no_offtask_table_changes": 2,
+        "no_undeclared_rows_created": 2
+      },
+      "costUsd": 2.005,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_012",
+      "difficulty": "hard",
+      "tables": [
+        "accounts",
+        "opportunities",
+        "tasks"
+      ],
+      "trials": 2,
+      "passes": 0,
+      "passRate": 0,
+      "class": "fail",
+      "avgToolCalls": 34,
+      "failedConditions": {
+        "required_workflow_path": 2,
+        "no_offtask_table_changes": 2
+      },
+      "costUsd": 1.449,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_011",
+      "difficulty": "hard",
+      "tables": [
+        "cases",
+        "contacts",
+        "tasks"
+      ],
+      "trials": 2,
+      "passes": 0,
+      "passRate": 0,
+      "class": "fail",
+      "avgToolCalls": 29.5,
+      "failedConditions": {
+        "required_workflow_path": 2,
+        "no_offtask_table_changes": 1
+      },
+      "costUsd": 1.363,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_008",
+      "difficulty": "medium",
+      "tables": [
+        "account_tiering_standard"
+      ],
+      "trials": 2,
+      "passes": 0,
+      "passRate": 0,
+      "class": "fail",
+      "avgToolCalls": 4.5,
+      "failedConditions": {
+        "required_workflow_path": 2,
+        "account_tiering_standard_4_status_is_pending": 2
+      },
+      "costUsd": 0.549,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_001",
+      "difficulty": "medium",
+      "tables": [
+        "lead_management_sop",
+        "support_tickets"
+      ],
+      "trials": 2,
+      "passes": 0,
+      "passRate": 0,
+      "class": "fail",
+      "avgToolCalls": 4,
+      "failedConditions": {
+        "required_workflow_path": 2
+      },
+      "costUsd": 0.369,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_006",
+      "difficulty": "medium",
+      "tables": [
+        "lead_scoring_policy"
+      ],
+      "trials": 2,
+      "passes": 0,
+      "passRate": 0,
+      "class": "fail",
+      "avgToolCalls": 4,
+      "failedConditions": {
+        "required_workflow_path": 2
+      },
+      "costUsd": 0.483,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_007",
+      "difficulty": "medium",
+      "tables": [
+        "account_tiering_standard"
+      ],
+      "trials": 2,
+      "passes": 0,
+      "passRate": 0,
+      "class": "fail",
+      "avgToolCalls": 4,
+      "failedConditions": {
+        "required_workflow_path": 2
+      },
+      "costUsd": 0.485,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_009",
+      "difficulty": "medium",
+      "tables": [
+        "lead_management_sop",
+        "sales_opportunities"
+      ],
+      "trials": 2,
+      "passes": 0,
+      "passRate": 0,
+      "class": "fail",
+      "avgToolCalls": 4,
+      "failedConditions": {
+        "required_workflow_path": 2
+      },
+      "costUsd": 0.368,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_010",
+      "difficulty": "easy",
+      "tables": [
+        "opportunity_stage_gates"
+      ],
+      "trials": 2,
+      "passes": 0,
+      "passRate": 0,
+      "class": "fail",
+      "avgToolCalls": 2,
+      "failedConditions": {
+        "required_workflow_path": 2,
+        "opportunity_stage_gates_1_status_is_inactive": 2,
+        "no_collateral_opportunity_stage_gates": 2
+      },
+      "costUsd": 0.36,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_014",
+      "difficulty": "easy",
+      "tables": [
+        "finance_budgets"
+      ],
+      "trials": 2,
+      "passes": 0,
+      "passRate": 0,
+      "class": "fail",
+      "avgToolCalls": 2,
+      "failedConditions": {
+        "required_workflow_path": 2,
+        "finance_budgets_1_status_is_active": 2,
+        "no_collateral_finance_budgets": 2
+      },
+      "costUsd": 0.361,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_015",
+      "difficulty": "easy",
+      "tables": [
+        "support_tickets"
+      ],
+      "trials": 2,
+      "passes": 0,
+      "passRate": 0,
+      "class": "fail",
+      "avgToolCalls": 2,
+      "failedConditions": {
+        "required_workflow_path": 2
+      },
+      "costUsd": 0.362,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_002",
+      "difficulty": "easy",
+      "tables": [
+        "finance_budgets"
+      ],
+      "trials": 2,
+      "passes": 0,
+      "passRate": 0,
+      "class": "fail",
+      "avgToolCalls": 1,
+      "failedConditions": {
+        "reads_before_writes": 2,
+        "required_workflow_path": 2,
+        "finance_budgets_1_status_is_active": 2,
+        "no_collateral_finance_budgets": 2
+      },
+      "costUsd": 0.24,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_013",
+      "difficulty": "medium",
+      "tables": [
+        "hr_leave_requests"
+      ],
+      "trials": 2,
+      "passes": 0,
+      "passRate": 0,
+      "class": "fail",
+      "avgToolCalls": 1,
+      "failedConditions": {
+        "reads_before_writes": 2,
+        "required_workflow_path": 2,
+        "hr_leave_requests_5_status_is_cancelled": 2,
+        "no_collateral_hr_leave_requests": 2
+      },
+      "costUsd": 0.24,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_019",
+      "difficulty": null,
+      "tables": [
+        "hr_performance_reviews"
+      ],
+      "trials": 2,
+      "passes": 2,
+      "passRate": 1,
+      "class": "pass",
+      "avgToolCalls": 5,
+      "failedConditions": {},
+      "costUsd": 0.727,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_020",
+      "difficulty": null,
+      "tables": [
+        "sourcing_purchase_orders"
+      ],
+      "trials": 2,
+      "passes": 2,
+      "passRate": 1,
+      "class": "pass",
+      "avgToolCalls": 5,
+      "failedConditions": {},
+      "costUsd": 0.542,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_017",
+      "difficulty": null,
+      "tables": [
+        "finance_expense_reports"
+      ],
+      "trials": 2,
+      "passes": 2,
+      "passRate": 1,
+      "class": "pass",
+      "avgToolCalls": 4.5,
+      "failedConditions": {},
+      "costUsd": 0.603,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_018",
+      "difficulty": null,
+      "tables": [
+        "hr_leave_requests"
+      ],
+      "trials": 2,
+      "passes": 2,
+      "passRate": 1,
+      "class": "pass",
+      "avgToolCalls": 4.5,
+      "failedConditions": {},
+      "costUsd": 0.666,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_016",
+      "difficulty": null,
+      "tables": [
+        "employee_work_assignments"
+      ],
+      "trials": 2,
+      "passes": 2,
+      "passRate": 1,
+      "class": "pass",
+      "avgToolCalls": 3.5,
+      "failedConditions": {},
+      "costUsd": 0.541,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_021",
+      "difficulty": null,
+      "tables": [
+        "marketing_campaigns"
+      ],
+      "trials": 2,
+      "passes": 2,
+      "passRate": 1,
+      "class": "pass",
+      "avgToolCalls": 3.5,
+      "failedConditions": {},
+      "costUsd": 0.482,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_003",
+      "difficulty": "hard",
+      "tables": [
+        "hr_leave_requests"
+      ],
+      "trials": 2,
+      "passes": 2,
+      "passRate": 1,
+      "class": "pass",
+      "avgToolCalls": 2,
+      "failedConditions": {},
+      "costUsd": 0.362,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_005",
+      "difficulty": "easy",
+      "tables": [
+        "lead_management_sop"
+      ],
+      "trials": 2,
+      "passes": 2,
+      "passRate": 1,
+      "class": "pass",
+      "avgToolCalls": 2,
+      "failedConditions": {},
+      "costUsd": 0.361,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_022",
+      "difficulty": null,
+      "tables": [
+        "lead_management_sop"
+      ],
+      "trials": 2,
+      "passes": 2,
+      "passRate": 1,
+      "class": "pass",
+      "avgToolCalls": 2,
+      "failedConditions": {},
+      "costUsd": 0.361,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_024",
+      "difficulty": null,
+      "tables": [
+        "lead_scoring_policy"
+      ],
+      "trials": 2,
+      "passes": 2,
+      "passRate": 1,
+      "class": "pass",
+      "avgToolCalls": 2,
+      "failedConditions": {},
+      "costUsd": 0.361,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_023",
+      "difficulty": null,
+      "tables": [
+        "lead_scoring_policy"
+      ],
+      "trials": 2,
+      "passes": 2,
+      "passRate": 1,
+      "class": "pass",
+      "avgToolCalls": 2,
+      "failedConditions": {},
+      "costUsd": 0.361,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_025",
+      "difficulty": null,
+      "tables": [
+        "account_tiering_standard"
+      ],
+      "trials": 2,
+      "passes": 2,
+      "passRate": 1,
+      "class": "pass",
+      "avgToolCalls": 2,
+      "failedConditions": {},
+      "costUsd": 0.361,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_026",
+      "difficulty": null,
+      "tables": [
+        "account_tiering_standard"
+      ],
+      "trials": 2,
+      "passes": 2,
+      "passRate": 1,
+      "class": "pass",
+      "avgToolCalls": 2,
+      "failedConditions": {},
+      "costUsd": 0.361,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_027",
+      "difficulty": null,
+      "tables": [
+        "opportunity_stage_gates"
+      ],
+      "trials": 2,
+      "passes": 2,
+      "passRate": 1,
+      "class": "pass",
+      "avgToolCalls": 2,
+      "failedConditions": {},
+      "costUsd": 0.361,
+      "infraErrors": 0
+    },
+    {
+      "taskId": "task_028",
+      "difficulty": null,
+      "tables": [
+        "cpq_discount_policy"
+      ],
+      "trials": 2,
+      "passes": 2,
+      "passRate": 1,
+      "class": "pass",
+      "avgToolCalls": 2,
+      "failedConditions": {},
+      "costUsd": 0.361,
+      "infraErrors": 0
+    }
+  ],
+  "trialsRaw": [
+    {
+      "taskId": "task_002",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "reads_before_writes",
+        "required_workflow_path",
+        "finance_budgets_1_status_is_active",
+        "no_collateral_finance_budgets"
+      ],
+      "toolCalls": 1,
+      "usage": {
+        "prompt": 59658,
+        "completion": 90,
+        "total": 59778
+      },
+      "costUsd": 0.1199,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-34-46-850Z.jsonl",
+      "finishedAt": "2026-08-10T00:34:52.198Z"
+    },
+    {
+      "taskId": "task_001",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "required_workflow_path"
+      ],
+      "toolCalls": 4,
+      "usage": {
+        "prompt": 91435,
+        "completion": 255,
+        "total": 91826
+      },
+      "costUsd": 0.1844,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-34-43-843Z.jsonl",
+      "finishedAt": "2026-08-10T00:34:54.351Z"
+    },
+    {
+      "taskId": "task_001",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "required_workflow_path"
+      ],
+      "toolCalls": 4,
+      "usage": {
+        "prompt": 91430,
+        "completion": 249,
+        "total": 91823
+      },
+      "costUsd": 0.1844,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-34-45-343Z.jsonl",
+      "finishedAt": "2026-08-10T00:34:55.322Z"
+    },
+    {
+      "taskId": "task_002",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "reads_before_writes",
+        "required_workflow_path",
+        "finance_budgets_1_status_is_active",
+        "no_collateral_finance_budgets"
+      ],
+      "toolCalls": 1,
+      "usage": {
+        "prompt": 59658,
+        "completion": 92,
+        "total": 59780
+      },
+      "costUsd": 0.1199,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-34-52-230Z.jsonl",
+      "finishedAt": "2026-08-10T00:34:56.891Z"
+    },
+    {
+      "taskId": "task_003",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 2,
+      "usage": {
+        "prompt": 90161,
+        "completion": 145,
+        "total": 90396
+      },
+      "costUsd": 0.1812,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-34-55-353Z.jsonl",
+      "finishedAt": "2026-08-10T00:35:02.486Z"
+    },
+    {
+      "taskId": "task_003",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 2,
+      "usage": {
+        "prompt": 90144,
+        "completion": 136,
+        "total": 90400
+      },
+      "costUsd": 0.1811,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-34-54-381Z.jsonl",
+      "finishedAt": "2026-08-10T00:35:02.585Z"
+    },
+    {
+      "taskId": "task_005",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 2,
+      "usage": {
+        "prompt": 89775,
+        "completion": 149,
+        "total": 90041
+      },
+      "costUsd": 0.1804,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-35-02-617Z.jsonl",
+      "finishedAt": "2026-08-10T00:35:11.409Z"
+    },
+    {
+      "taskId": "task_005",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 2,
+      "usage": {
+        "prompt": 89759,
+        "completion": 138,
+        "total": 90040
+      },
+      "costUsd": 0.1803,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-35-11-440Z.jsonl",
+      "finishedAt": "2026-08-10T00:35:21.919Z"
+    },
+    {
+      "taskId": "task_006",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "required_workflow_path"
+      ],
+      "toolCalls": 4,
+      "usage": {
+        "prompt": 120102,
+        "completion": 218,
+        "total": 121007
+      },
+      "costUsd": 0.2415,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-35-21-951Z.jsonl",
+      "finishedAt": "2026-08-10T00:35:41.242Z"
+    },
+    {
+      "taskId": "task_006",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "required_workflow_path"
+      ],
+      "toolCalls": 4,
+      "usage": {
+        "prompt": 120114,
+        "completion": 223,
+        "total": 121209
+      },
+      "costUsd": 0.2416,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-35-41-274Z.jsonl",
+      "finishedAt": "2026-08-10T00:36:02.192Z"
+    },
+    {
+      "taskId": "task_004",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "required_workflow_path",
+        "no_offtask_table_changes",
+        "no_undeclared_rows_created"
+      ],
+      "toolCalls": 55,
+      "usage": {
+        "prompt": 532098,
+        "completion": 1793,
+        "total": 535514
+      },
+      "costUsd": 1.075,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-34-56-922Z.jsonl",
+      "finishedAt": "2026-08-10T00:36:12.578Z"
+    },
+    {
+      "taskId": "task_007",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "required_workflow_path"
+      ],
+      "toolCalls": 4,
+      "usage": {
+        "prompt": 120590,
+        "completion": 236,
+        "total": 121006
+      },
+      "costUsd": 0.2426,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-36-02-225Z.jsonl",
+      "finishedAt": "2026-08-10T00:36:12.776Z"
+    },
+    {
+      "taskId": "task_004",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "required_workflow_path",
+        "no_offtask_table_changes",
+        "no_undeclared_rows_created"
+      ],
+      "toolCalls": 46,
+      "usage": {
+        "prompt": 460193,
+        "completion": 1628,
+        "total": 463853
+      },
+      "costUsd": 0.9302,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-35-02-520Z.jsonl",
+      "finishedAt": "2026-08-10T00:36:23.318Z"
+    },
+    {
+      "taskId": "task_007",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "required_workflow_path"
+      ],
+      "toolCalls": 4,
+      "usage": {
+        "prompt": 120587,
+        "completion": 232,
+        "total": 121001
+      },
+      "costUsd": 0.2426,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-36-12-612Z.jsonl",
+      "finishedAt": "2026-08-10T00:36:24.013Z"
+    },
+    {
+      "taskId": "task_009",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "required_workflow_path"
+      ],
+      "toolCalls": 4,
+      "usage": {
+        "prompt": 91376,
+        "completion": 241,
+        "total": 91752
+      },
+      "costUsd": 0.1842,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-36-24-045Z.jsonl",
+      "finishedAt": "2026-08-10T00:36:35.949Z"
+    },
+    {
+      "taskId": "task_008",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "required_workflow_path",
+        "account_tiering_standard_4_status_is_pending"
+      ],
+      "toolCalls": 5,
+      "usage": {
+        "prompt": 123298,
+        "completion": 226,
+        "total": 124502
+      },
+      "costUsd": 0.248,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-36-12-808Z.jsonl",
+      "finishedAt": "2026-08-10T00:36:39.679Z"
+    },
+    {
+      "taskId": "task_008",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "required_workflow_path",
+        "account_tiering_standard_4_status_is_pending"
+      ],
+      "toolCalls": 4,
+      "usage": {
+        "prompt": 149993,
+        "completion": 202,
+        "total": 150663
+      },
+      "costUsd": 0.3012,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-36-23-350Z.jsonl",
+      "finishedAt": "2026-08-10T00:36:39.973Z"
+    },
+    {
+      "taskId": "task_009",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "required_workflow_path"
+      ],
+      "toolCalls": 4,
+      "usage": {
+        "prompt": 91392,
+        "completion": 258,
+        "total": 91777
+      },
+      "costUsd": 0.1843,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-36-35-979Z.jsonl",
+      "finishedAt": "2026-08-10T00:36:45.195Z"
+    },
+    {
+      "taskId": "task_010",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "required_workflow_path",
+        "opportunity_stage_gates_1_status_is_inactive",
+        "no_collateral_opportunity_stage_gates"
+      ],
+      "toolCalls": 2,
+      "usage": {
+        "prompt": 89742,
+        "completion": 120,
+        "total": 89925
+      },
+      "costUsd": 0.1802,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-36-39-713Z.jsonl",
+      "finishedAt": "2026-08-10T00:36:47.791Z"
+    },
+    {
+      "taskId": "task_010",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "required_workflow_path",
+        "opportunity_stage_gates_1_status_is_inactive",
+        "no_collateral_opportunity_stage_gates"
+      ],
+      "toolCalls": 2,
+      "usage": {
+        "prompt": 89746,
+        "completion": 122,
+        "total": 89942
+      },
+      "costUsd": 0.1802,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-36-40-005Z.jsonl",
+      "finishedAt": "2026-08-10T00:36:48.672Z"
+    },
+    {
+      "taskId": "task_012",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "required_workflow_path",
+        "no_offtask_table_changes"
+      ],
+      "toolCalls": 27,
+      "usage": {
+        "prompt": 260434,
+        "completion": 954,
+        "total": 262770
+      },
+      "costUsd": 0.5266,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-36-48-703Z.jsonl",
+      "finishedAt": "2026-08-10T00:37:34.389Z"
+    },
+    {
+      "taskId": "task_011",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "required_workflow_path"
+      ],
+      "toolCalls": 29,
+      "usage": {
+        "prompt": 395647,
+        "completion": 1091,
+        "total": 398026
+      },
+      "costUsd": 0.7978,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-36-45-231Z.jsonl",
+      "finishedAt": "2026-08-10T00:37:38.806Z"
+    },
+    {
+      "taskId": "task_011",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "required_workflow_path",
+        "no_offtask_table_changes"
+      ],
+      "toolCalls": 30,
+      "usage": {
+        "prompt": 279299,
+        "completion": 1103,
+        "total": 281958
+      },
+      "costUsd": 0.5652,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-36-47-820Z.jsonl",
+      "finishedAt": "2026-08-10T00:37:39.362Z"
+    },
+    {
+      "taskId": "task_013",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "reads_before_writes",
+        "required_workflow_path",
+        "hr_leave_requests_5_status_is_cancelled",
+        "no_collateral_hr_leave_requests"
+      ],
+      "toolCalls": 1,
+      "usage": {
+        "prompt": 59684,
+        "completion": 73,
+        "total": 59814
+      },
+      "costUsd": 0.1198,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-37-38-838Z.jsonl",
+      "finishedAt": "2026-08-10T00:37:45.970Z"
+    },
+    {
+      "taskId": "task_013",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "reads_before_writes",
+        "required_workflow_path",
+        "hr_leave_requests_5_status_is_cancelled",
+        "no_collateral_hr_leave_requests"
+      ],
+      "toolCalls": 1,
+      "usage": {
+        "prompt": 59684,
+        "completion": 73,
+        "total": 59819
+      },
+      "costUsd": 0.1198,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-37-39-399Z.jsonl",
+      "finishedAt": "2026-08-10T00:37:46.505Z"
+    },
+    {
+      "taskId": "task_014",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "required_workflow_path",
+        "finance_budgets_1_status_is_active",
+        "no_collateral_finance_budgets"
+      ],
+      "toolCalls": 2,
+      "usage": {
+        "prompt": 90016,
+        "completion": 111,
+        "total": 90193
+      },
+      "costUsd": 0.1807,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-37-46-537Z.jsonl",
+      "finishedAt": "2026-08-10T00:37:53.541Z"
+    },
+    {
+      "taskId": "task_014",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "required_workflow_path",
+        "finance_budgets_1_status_is_active",
+        "no_collateral_finance_budgets"
+      ],
+      "toolCalls": 2,
+      "usage": {
+        "prompt": 90014,
+        "completion": 110,
+        "total": 90199
+      },
+      "costUsd": 0.1807,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-37-46-001Z.jsonl",
+      "finishedAt": "2026-08-10T00:37:53.826Z"
+    },
+    {
+      "taskId": "task_015",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "required_workflow_path"
+      ],
+      "toolCalls": 2,
+      "usage": {
+        "prompt": 90250,
+        "completion": 120,
+        "total": 90462
+      },
+      "costUsd": 0.1812,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-37-53-857Z.jsonl",
+      "finishedAt": "2026-08-10T00:38:03.224Z"
+    },
+    {
+      "taskId": "task_015",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "required_workflow_path"
+      ],
+      "toolCalls": 2,
+      "usage": {
+        "prompt": 90250,
+        "completion": 120,
+        "total": 90463
+      },
+      "costUsd": 0.1812,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-37-53-570Z.jsonl",
+      "finishedAt": "2026-08-10T00:38:03.323Z"
+    },
+    {
+      "taskId": "task_016",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 3,
+      "usage": {
+        "prompt": 119463,
+        "completion": 212,
+        "total": 119858
+      },
+      "costUsd": 0.2402,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-38-03-255Z.jsonl",
+      "finishedAt": "2026-08-10T00:38:15.407Z"
+    },
+    {
+      "taskId": "task_016",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 4,
+      "usage": {
+        "prompt": 149615,
+        "completion": 217,
+        "total": 150031
+      },
+      "costUsd": 0.3005,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-38-03-355Z.jsonl",
+      "finishedAt": "2026-08-10T00:38:16.348Z"
+    },
+    {
+      "taskId": "task_017",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 4,
+      "usage": {
+        "prompt": 149618,
+        "completion": 220,
+        "total": 150139
+      },
+      "costUsd": 0.3006,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-38-26-135Z.jsonl",
+      "finishedAt": "2026-08-10T00:38:54.804Z"
+    },
+    {
+      "taskId": "task_018",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 5,
+      "usage": {
+        "prompt": 181795,
+        "completion": 328,
+        "total": 182355
+      },
+      "costUsd": 0.3656,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-38-54-834Z.jsonl",
+      "finishedAt": "2026-08-10T00:39:09.834Z"
+    },
+    {
+      "taskId": "task_017",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 5,
+      "usage": {
+        "prompt": 150361,
+        "completion": 316,
+        "total": 150877
+      },
+      "costUsd": 0.3026,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-38-16-381Z.jsonl",
+      "finishedAt": "2026-08-10T00:39:10.525Z"
+    },
+    {
+      "taskId": "task_012",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": false,
+      "reward": 0,
+      "failedConditions": [
+        "required_workflow_path",
+        "no_offtask_table_changes"
+      ],
+      "toolCalls": 41,
+      "usage": {
+        "prompt": 457536,
+        "completion": 1209,
+        "total": 462468
+      },
+      "costUsd": 0.9223,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-37-34-425Z.jsonl",
+      "finishedAt": "2026-08-10T00:39:10.833Z"
+    },
+    {
+      "taskId": "task_018",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 4,
+      "usage": {
+        "prompt": 149617,
+        "completion": 213,
+        "total": 150045
+      },
+      "costUsd": 0.3005,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-39-09-865Z.jsonl",
+      "finishedAt": "2026-08-10T00:39:21.575Z"
+    },
+    {
+      "taskId": "task_019",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 5,
+      "usage": {
+        "prompt": 180236,
+        "completion": 281,
+        "total": 180775
+      },
+      "costUsd": 0.3622,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-39-10-556Z.jsonl",
+      "finishedAt": "2026-08-10T00:39:27.050Z"
+    },
+    {
+      "taskId": "task_019",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 5,
+      "usage": {
+        "prompt": 181297,
+        "completion": 324,
+        "total": 181905
+      },
+      "costUsd": 0.3645,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-39-10-864Z.jsonl",
+      "finishedAt": "2026-08-10T00:39:27.351Z"
+    },
+    {
+      "taskId": "task_020",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 5,
+      "usage": {
+        "prompt": 119960,
+        "completion": 247,
+        "total": 120581
+      },
+      "costUsd": 0.2414,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-39-21-607Z.jsonl",
+      "finishedAt": "2026-08-10T00:39:36.659Z"
+    },
+    {
+      "taskId": "task_020",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 5,
+      "usage": {
+        "prompt": 149888,
+        "completion": 226,
+        "total": 150514
+      },
+      "costUsd": 0.3011,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-39-27-079Z.jsonl",
+      "finishedAt": "2026-08-10T00:39:43.981Z"
+    },
+    {
+      "taskId": "task_021",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 3,
+      "usage": {
+        "prompt": 119866,
+        "completion": 228,
+        "total": 120322
+      },
+      "costUsd": 0.2411,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-39-27-384Z.jsonl",
+      "finishedAt": "2026-08-10T00:39:44.594Z"
+    },
+    {
+      "taskId": "task_022",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 2,
+      "usage": {
+        "prompt": 89763,
+        "completion": 140,
+        "total": 89999
+      },
+      "costUsd": 0.1804,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-39-44-012Z.jsonl",
+      "finishedAt": "2026-08-10T00:39:50.438Z"
+    },
+    {
+      "taskId": "task_022",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 2,
+      "usage": {
+        "prompt": 89765,
+        "completion": 141,
+        "total": 90002
+      },
+      "costUsd": 0.1804,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-39-44-624Z.jsonl",
+      "finishedAt": "2026-08-10T00:39:50.732Z"
+    },
+    {
+      "taskId": "task_021",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 4,
+      "usage": {
+        "prompt": 119801,
+        "completion": 230,
+        "total": 120230
+      },
+      "costUsd": 0.241,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-39-36-690Z.jsonl",
+      "finishedAt": "2026-08-10T00:39:52.072Z"
+    },
+    {
+      "taskId": "task_024",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 2,
+      "usage": {
+        "prompt": 89767,
+        "completion": 140,
+        "total": 90003
+      },
+      "costUsd": 0.1804,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-39-52-105Z.jsonl",
+      "finishedAt": "2026-08-10T00:40:02.195Z"
+    },
+    {
+      "taskId": "task_023",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 2,
+      "usage": {
+        "prompt": 89742,
+        "completion": 134,
+        "total": 90073
+      },
+      "costUsd": 0.1803,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-39-50-469Z.jsonl",
+      "finishedAt": "2026-08-10T00:40:04.585Z"
+    },
+    {
+      "taskId": "task_023",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 2,
+      "usage": {
+        "prompt": 89754,
+        "completion": 140,
+        "total": 90015
+      },
+      "costUsd": 0.1803,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-39-50-764Z.jsonl",
+      "finishedAt": "2026-08-10T00:40:04.690Z"
+    },
+    {
+      "taskId": "task_025",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 2,
+      "usage": {
+        "prompt": 89776,
+        "completion": 143,
+        "total": 89998
+      },
+      "costUsd": 0.1804,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-40-04-722Z.jsonl",
+      "finishedAt": "2026-08-10T00:40:10.672Z"
+    },
+    {
+      "taskId": "task_024",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 2,
+      "usage": {
+        "prompt": 89769,
+        "completion": 143,
+        "total": 90022
+      },
+      "costUsd": 0.1804,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-40-02-224Z.jsonl",
+      "finishedAt": "2026-08-10T00:40:10.772Z"
+    },
+    {
+      "taskId": "task_025",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 2,
+      "usage": {
+        "prompt": 89772,
+        "completion": 141,
+        "total": 90039
+      },
+      "costUsd": 0.1804,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-40-04-617Z.jsonl",
+      "finishedAt": "2026-08-10T00:40:11.723Z"
+    },
+    {
+      "taskId": "task_026",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 2,
+      "usage": {
+        "prompt": 89811,
+        "completion": 140,
+        "total": 90073
+      },
+      "costUsd": 0.1805,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-40-10-706Z.jsonl",
+      "finishedAt": "2026-08-10T00:40:18.659Z"
+    },
+    {
+      "taskId": "task_027",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 2,
+      "usage": {
+        "prompt": 89740,
+        "completion": 133,
+        "total": 89981
+      },
+      "costUsd": 0.1803,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-40-11-753Z.jsonl",
+      "finishedAt": "2026-08-10T00:40:20.129Z"
+    },
+    {
+      "taskId": "task_026",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 2,
+      "usage": {
+        "prompt": 89811,
+        "completion": 153,
+        "total": 90080
+      },
+      "costUsd": 0.1805,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-40-10-805Z.jsonl",
+      "finishedAt": "2026-08-10T00:40:20.240Z"
+    },
+    {
+      "taskId": "task_027",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 2,
+      "usage": {
+        "prompt": 89759,
+        "completion": 148,
+        "total": 90017
+      },
+      "costUsd": 0.1804,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-40-18-689Z.jsonl",
+      "finishedAt": "2026-08-10T00:40:25.571Z"
+    },
+    {
+      "taskId": "task_028",
+      "trial": 2,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 2,
+      "usage": {
+        "prompt": 89859,
+        "completion": 150,
+        "total": 90176
+      },
+      "costUsd": 0.1806,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-40-20-272Z.jsonl",
+      "finishedAt": "2026-08-10T00:40:28.809Z"
+    },
+    {
+      "taskId": "task_028",
+      "trial": 1,
+      "infraError": false,
+      "mode": "blobfish",
+      "passed": true,
+      "reward": 1,
+      "failedConditions": [],
+      "toolCalls": 2,
+      "usage": {
+        "prompt": 89860,
+        "completion": 151,
+        "total": 90182
+      },
+      "costUsd": 0.1806,
+      "log": "/Users/samuelchien/dev/salesforce-grok/sim/logs/run-2026-08-10T00-40-20-166Z.jsonl",
+      "finishedAt": "2026-08-10T00:40:30.048Z"
+    }
+  ]
+}

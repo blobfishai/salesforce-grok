@@ -1,0 +1,92 @@
+{
+  "id": "trace_07f48940a0a4",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.sales_records_agent",
+  "args": {
+    "request": "in table sales_opportunities, find opportunity_number \"OPP-902092\" and return the complete record"
+  },
+  "result": {
+    "ok": true,
+    "tool": "sales_records_agent",
+    "requested_tool": "sales_records_agent",
+    "result": {
+      "status": "found",
+      "table": "sales_opportunities",
+      "business_handle": {
+        "opportunity_number": "OPP-902092"
+      },
+      "record": {
+        "id": 1,
+        "opportunity_number": "OPP-902092",
+        "title": "Riverside Group",
+        "lead_id": 73,
+        "amount": 320772.55,
+        "owner_employee_id": 7,
+        "expected_close_date": "2026-01-13",
+        "lead_management_sop_id": 1,
+        "status": "discovery"
+      },
+      "declared_lifecycles": {
+        "status": [
+          "discovery",
+          "proposal",
+          "negotiation",
+          "closed_won",
+          "closed_lost"
+        ]
+      },
+      "next_valid_values": {
+        "status": "proposal"
+      },
+      "resolution_receipt": {
+        "request": "in table sales_opportunities, find opportunity_number \"OPP-902092\" and return the complete record",
+        "strategy": "unique_business_handle",
+        "candidate_limit": 3,
+        "match_count": 1,
+        "matched_field": "opportunity_number",
+        "available_business_handle_fields": [
+          "opportunity_number",
+          "title"
+        ],
+        "available_resolution_fields": [
+          "opportunity_number",
+          "title",
+          "lead_id",
+          "amount",
+          "owner_employee_id",
+          "expected_close_date",
+          "lead_management_sop_id"
+        ],
+        "returned_fields": [
+          "amount",
+          "expected_close_date",
+          "id",
+          "lead_id",
+          "lead_management_sop_id",
+          "opportunity_number",
+          "owner_employee_id",
+          "status",
+          "title"
+        ],
+        "read_only": true,
+        "mutation_applied": false
+      },
+      "workflow_context": {
+        "mutable_fields": [
+          "opportunity_number",
+          "title",
+          "amount",
+          "expected_close_date",
+          "status"
+        ],
+        "declared_lifecycle_fields": [
+          "status"
+        ]
+      }
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786322708.658061
+}

@@ -1,0 +1,39 @@
+{
+  "id": "trace_957f35b1798c",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.update_status_lead_scoring_policy",
+  "args": {
+    "id": 9,
+    "status": "pending"
+  },
+  "result": {
+    "ok": true,
+    "tool": "update_status_lead_scoring_policy",
+    "requested_tool": "update_status_lead_scoring_policy",
+    "result": {
+      "updated": 1
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "lead_scoring_policy",
+        "row_id": "9",
+        "operation": "update",
+        "before": {
+          "id": 9,
+          "name": "Fairview Group",
+          "status": "inactive",
+          "created_at": "2025-01-16"
+        },
+        "after": {
+          "id": 9,
+          "name": "Fairview Group",
+          "status": "pending",
+          "created_at": "2025-01-16"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786322685.754563
+}

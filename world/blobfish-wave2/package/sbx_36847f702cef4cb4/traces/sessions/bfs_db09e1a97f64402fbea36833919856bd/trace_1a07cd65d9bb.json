@@ -1,0 +1,53 @@
+{
+  "id": "trace_1a07cd65d9bb",
+  "type": "mcp_tool_call",
+  "tool": "core.tasks_list",
+  "args": {
+    "status": "blocked",
+    "limit": 50
+  },
+  "result": {
+    "ok": true,
+    "tool": "tasks_list",
+    "requested_tool": "tasks_list",
+    "result": {
+      "items": [
+        {
+          "id": "task_003",
+          "account_id": "account_010",
+          "subject": "Task review requires attention",
+          "status": "blocked",
+          "priority": "low",
+          "assigned_to": "Task assigned to pending reconciliation",
+          "due_at": "2026-01-07T21:07:00Z",
+          "description": "Task reconciliation documents that linked evidence is incomplete."
+        },
+        {
+          "id": "task_008",
+          "account_id": "account_001",
+          "subject": "Task approval requires attention",
+          "status": "blocked",
+          "priority": "high",
+          "assigned_to": "Task assigned to ready for handoff",
+          "due_at": "2026-01-08T06:55:00Z",
+          "description": "Task handoff documents that the source record conflicts with the latest update."
+        },
+        {
+          "id": "task_013",
+          "account_id": "account_007",
+          "subject": "Task handoff requires attention",
+          "status": "blocked",
+          "priority": "high",
+          "assigned_to": "Task assigned to under review",
+          "due_at": "2026-01-07T12:47:00Z",
+          "description": "Task handoff documents that the source record conflicts with the latest update."
+        }
+      ],
+      "count": 3
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786322131.247458
+}

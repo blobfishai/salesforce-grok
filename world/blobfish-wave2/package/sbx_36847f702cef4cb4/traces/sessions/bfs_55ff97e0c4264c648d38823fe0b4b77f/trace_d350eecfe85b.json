@@ -1,0 +1,108 @@
+{
+  "id": "trace_d350eecfe85b",
+  "type": "mcp_tool_call",
+  "tool": "core.human_resources_workflow_agent",
+  "args": {
+    "request": "in table hr_performance_reviews, find review_number \"REVIEW-492173\" and set status to the next declared lifecycle stage"
+  },
+  "result": {
+    "ok": true,
+    "tool": "human_resources_workflow_agent",
+    "requested_tool": "human_resources_workflow_agent",
+    "result": {
+      "status": "updated",
+      "table": "hr_performance_reviews",
+      "business_handle": {
+        "review_number": "REVIEW-492173"
+      },
+      "field": "status",
+      "before": "submitted",
+      "after": "acknowledged",
+      "record": {
+        "id": 99,
+        "review_number": "REVIEW-492173",
+        "employee_id": 15,
+        "reviewer_employee_id": 16,
+        "review_period": "2025-H2",
+        "overall_rating": 5,
+        "status": "acknowledged"
+      },
+      "resolution_receipt": {
+        "request": "in table hr_performance_reviews, find review_number \"REVIEW-492173\" and set status to the next declared lifecycle stage",
+        "strategy": "unique_business_handle",
+        "candidate_limit": 3,
+        "match_count": 1,
+        "matched_field": "review_number",
+        "available_business_handle_fields": [
+          "review_number"
+        ],
+        "available_resolution_fields": [
+          "review_number",
+          "employee_id",
+          "reviewer_employee_id",
+          "review_period",
+          "overall_rating"
+        ],
+        "returned_fields": [
+          "employee_id",
+          "id",
+          "overall_rating",
+          "review_number",
+          "review_period",
+          "reviewer_employee_id",
+          "status"
+        ]
+      },
+      "transition_receipt": {
+        "declared_lifecycle": [
+          "draft",
+          "submitted",
+          "acknowledged",
+          "finalized"
+        ],
+        "before": "submitted",
+        "after": "acknowledged",
+        "mutation_applied": true,
+        "changed_primary_key": 99
+      },
+      "policy_receipt": {
+        "scope": "single_resolved_record",
+        "mutable_fields": [
+          "review_number",
+          "review_period",
+          "overall_rating",
+          "status"
+        ],
+        "collateral_rows_changed": 0
+      }
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "hr_performance_reviews",
+        "row_id": "99",
+        "operation": "update",
+        "before": {
+          "id": 99,
+          "review_number": "REVIEW-492173",
+          "employee_id": 15,
+          "reviewer_employee_id": 16,
+          "review_period": "2025-H2",
+          "overall_rating": 5,
+          "status": "submitted"
+        },
+        "after": {
+          "id": 99,
+          "review_number": "REVIEW-492173",
+          "employee_id": 15,
+          "reviewer_employee_id": 16,
+          "review_period": "2025-H2",
+          "overall_rating": 5,
+          "status": "acknowledged"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786322363.4300458
+}

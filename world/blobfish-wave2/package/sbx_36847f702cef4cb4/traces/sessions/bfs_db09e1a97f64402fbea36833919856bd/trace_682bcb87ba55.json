@@ -1,0 +1,36 @@
+{
+  "id": "trace_682bcb87ba55",
+  "type": "mcp_tool_call",
+  "tool": "core.add_to_knowledge",
+  "args": {
+    "content": "Escalated case_014 on account_008 was resolved by advancing status to closed. Follow-up case_118, opportunity_111, and task_118 were created under owner OWN-0D05643 and advanced one lifecycle stage.",
+    "source": "case escalation resolution workflow"
+  },
+  "result": {
+    "ok": true,
+    "tool": "add_to_knowledge",
+    "requested_tool": "add_to_knowledge",
+    "result": {
+      "status": "saved",
+      "table": "agent_knowledge",
+      "id": 3
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "agent_knowledge",
+        "row_id": "3",
+        "operation": "insert",
+        "before": null,
+        "after": {
+          "id": 3,
+          "content": "Escalated case_014 on account_008 was resolved by advancing status to closed. Follow-up case_118, opportunity_111, and task_118 were created under owner OWN-0D05643 and advanced one lifecycle stage.",
+          "source": "case escalation resolution workflow",
+          "created_at": "2026-08-10 00:36:05"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786322165.07438
+}
