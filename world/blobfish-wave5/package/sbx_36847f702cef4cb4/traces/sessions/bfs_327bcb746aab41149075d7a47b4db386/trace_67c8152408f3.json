@@ -1,0 +1,36 @@
+{
+  "id": "trace_67c8152408f3",
+  "type": "mcp_tool_call",
+  "tool": "notion.document_agent",
+  "args": {
+    "request": "list all documents with title containing \"hr leave\" and show full bodies"
+  },
+  "result": {
+    "ok": true,
+    "tool": "document_agent",
+    "requested_tool": "document_agent",
+    "result": {
+      "status": "created",
+      "doc": "list all documents with title containing \"hr leave\" and show full bodies",
+      "doc_id": 40,
+      "hint": "verbs: create doc \"T\": <body> \u00b7 append to \"T\": <text> \u00b7 read \"T\""
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "agent_documents",
+        "row_id": "40",
+        "operation": "insert",
+        "before": null,
+        "after": {
+          "id": 40,
+          "title": "list all documents with title containing \"hr leave\" and show full bodies",
+          "body": "list all documents with title containing \"hr leave\" and show full bodies",
+          "updated_at": "2026-08-10 00:56:44"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786323404.2220109
+}

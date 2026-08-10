@@ -1,0 +1,34 @@
+{
+  "id": "trace_62b0fd7b5b9b",
+  "type": "mcp_tool_call",
+  "tool": "core.query_hr_leave_requests",
+  "args": {
+    "request_number": "LEAVE-797240",
+    "employee_id": 13
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_hr_leave_requests",
+    "requested_tool": "query_hr_leave_requests",
+    "result": {
+      "table": "hr_leave_requests",
+      "count": 1,
+      "rows": [
+        {
+          "id": 67,
+          "request_number": "LEAVE-797240",
+          "employee_id": 13,
+          "leave_type": "parental",
+          "start_date": "2026-01-23",
+          "days_requested": 14,
+          "approver_employee_id": 18,
+          "status": "submitted"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786323246.6024718
+}

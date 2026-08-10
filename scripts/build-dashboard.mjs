@@ -16,6 +16,7 @@ const WAVES = [
   { key: "w3l", name: "wave 3-local · distractor escalation", files: ["wave3-local.json"], world: "world/blobfish-wave3local/package/sbx_7d7d8fedcecb4458/world.json" },
   { key: "w2", name: "wave 2 · API-evolved (171 tools · 5-13 hop walks · f=0.58)", files: ["wave2.json", "wave2-nearmiss.json"], world: "world/blobfish-wave2/world.json" },
   { key: "w4", name: "wave 4 · targeted hardening (SOP docs · ambiguous refs)", files: ["wave4.json"], world: "world/blobfish-wave4/world.json" },
+  { key: "w5", name: "wave 5 · conflicting SOP versions · conditional rules · collisions", files: ["wave5.json", "wave5b.json"], world: "world/blobfish-wave5/world.json" },
 ];
 
 const flakeDir = join(ROOT, "data", "flake");
@@ -58,19 +59,24 @@ const totalCost = +waves.reduce((a, w) => a + w.cost, 0).toFixed(2);
 // frontier trajectory across the wave-2 family (w2 baseline -> w4 hardened)
 const w2 = waves.find((w) => w.key === "w2");
 const w4 = waves.find((w) => w.key === "w4");
-const taskIds = [...new Set([...(Object.keys(w2?.by ?? {})), ...(Object.keys(w4?.by ?? {}))])].sort();
+const w5 = waves.find((w) => w.key === "w5");
+const taskIds = [...new Set([...(Object.keys(w2?.by ?? {})), ...(Object.keys(w4?.by ?? {})), ...(Object.keys(w5?.by ?? {}))])].sort();
 const chip = (c, b) => c === null ? `<span class="chip mut">—</span>`
   : c === "pass" ? `<span class="chip good">✓ ${b.p}/${b.n}</span>`
   : c === "flaky" ? `<span class="chip warn">≈ ${b.p}/${b.n}</span>`
   : `<span class="chip crit">✗ ${b.p}/${b.n}</span>`;
 const trajRows = taskIds.map((id) => {
-  const b2 = w2?.by[id], b4 = w4?.by[id];
-  const c2 = cls(b2), c4 = cls(b4);
-  const moved = c4 && c2 && c2 !== c4;
-  const frontier = c4 === "flaky" || c2 === "flaky";
-  return { id, b2, b4, c2, c4, moved, frontier,
-    note: c4 === null ? (c2 === "fail" ? "kept as-is (beyond frontier: required_workflow_path)" : "") : c2 === "pass" && c4 === "pass" ? "still passing — next ratchet: conditional/conflicting SOPs" : c2 === "pass" && c4 === "flaky" ? "FRONTIER FOUND by hardening" : c2 === "pass" && c4 === "fail" ? "hardening overshot — pull back one notch" : "" };
-}).sort((a, b) => (b.frontier ? 1 : 0) - (a.frontier ? 1 : 0) || (a.c4 === "fail" ? 0 : 1) - (b.c4 === "fail" ? 0 : 1));
+  const b2 = w2?.by[id], b4 = w4?.by[id], b5 = w5?.by[id];
+  const c2 = cls(b2), c4 = cls(b4), c5 = cls(b5);
+  const frontier = c5 === "flaky" || c4 === "flaky" || c2 === "flaky";
+  const avg5 = b5 ? (b5.calls.reduce((a, c) => a + c, 0) / b5.calls.length).toFixed(1) : null;
+  const note = c5 === "flaky" ? `FRONTIER FOUND — ${Math.round((b5.p / b5.n) * 100)}% pass at ~${avg5} calls`
+    : c5 === "fail" && c2 === "pass" ? `overshot at ~${avg5} calls (wrong SOP branch + off-task writes) — one notch past the limit`
+    : c5 === "pass" && c2 === "pass" ? `survives all ratchets (now ~${avg5} calls) — next: interactive drip-feed + procedure mandates`
+    : c2 === "fail" ? "kept as-is — beyond frontier (required_workflow_path: mandated tool procedure)"
+    : "";
+  return { id, b2, b4, b5, c2, c4, c5, frontier, note };
+}).sort((a, b) => (b.frontier ? 1 : 0) - (a.frontier ? 1 : 0) || (a.c5 === "fail" || a.c2 === "fail" ? 0 : 1) - (b.c5 === "fail" || b.c2 === "fail" ? 0 : 1));
 
 const sparkbar = (depth) => depth.map((d) => {
   const h = d.rate === null ? 2 : Math.max(2, Math.round(26 * d.rate));
@@ -79,7 +85,7 @@ const sparkbar = (depth) => depth.map((d) => {
 }).join("");
 
 // merged wave-2-family depth + taxonomy
-const famTrials = [...(w2?.trials ?? []), ...(w4?.trials ?? [])];
+const famTrials = [...(w2?.trials ?? []), ...(w4?.trials ?? []), ...(w5?.trials ?? [])];
 const famDepth = depthBuckets(famTrials);
 const tax = {};
 for (const t of famTrials) for (const c of t.failedConditions ?? []) tax[c] = (tax[c] ?? 0) + 1;
@@ -138,7 +144,7 @@ const waveRows = waves.map((w) => `
   <td><div class="sbrow">${sparkbar(w.depth)}</div></td></tr>`).join("");
 
 const trajHtml = trajRows.map((r) => `
-  <tr class="${r.frontier ? "hot" : ""}"><td class="mono">${esc(r.id)}</td><td>${chip(r.c2, r.b2)}</td><td>${chip(r.c4, r.b4)}</td>
+  <tr class="${r.frontier ? "hot" : ""}"><td class="mono">${esc(r.id)}</td><td>${chip(r.c2, r.b2)}</td><td>${chip(r.c4, r.b4)}</td><td>${chip(r.c5, r.b5)}</td>
   <td class="cond">${esc(r.note)}</td></tr>`).join("");
 
 const html = `<!doctype html>
@@ -212,7 +218,7 @@ const html = `<!doctype html>
   <div class="panel">
     <h2>Per-task frontier trajectory (wave-2 world: baseline → hardened)</h2>
     <div class="note">Flaky rows (highlighted) are the frontier — grok-4.5 sometimes passes, sometimes fails the same task.</div>
-    <table><thead><tr><th>task</th><th>wave 2 baseline</th><th>wave 4 hardened</th><th>reading</th></tr></thead><tbody>${trajHtml}</tbody></table>
+    <table><thead><tr><th>task</th><th>wave 2 baseline</th><th>wave 4 hardened</th><th>wave 5 sharpened</th><th>reading</th></tr></thead><tbody>${trajHtml}</tbody></table>
   </div>
 
   <div class="grid2">

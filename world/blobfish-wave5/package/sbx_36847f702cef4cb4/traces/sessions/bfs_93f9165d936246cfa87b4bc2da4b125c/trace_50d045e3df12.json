@@ -1,0 +1,39 @@
+{
+  "id": "trace_50d045e3df12",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.update_status_lead_scoring_policy",
+  "args": {
+    "id": 1,
+    "status": "inactive"
+  },
+  "result": {
+    "ok": true,
+    "tool": "update_status_lead_scoring_policy",
+    "requested_tool": "update_status_lead_scoring_policy",
+    "result": {
+      "updated": 1
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "lead_scoring_policy",
+        "row_id": "1",
+        "operation": "update",
+        "before": {
+          "id": 1,
+          "name": "Summit Services",
+          "status": "active",
+          "created_at": "2024-09-12"
+        },
+        "after": {
+          "id": 1,
+          "name": "Summit Services",
+          "status": "inactive",
+          "created_at": "2024-09-12"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786323088.093651
+}

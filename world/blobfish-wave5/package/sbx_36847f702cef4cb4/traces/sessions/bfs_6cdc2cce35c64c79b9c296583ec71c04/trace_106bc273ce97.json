@@ -1,0 +1,53 @@
+{
+  "id": "trace_106bc273ce97",
+  "type": "mcp_tool_call",
+  "tool": "core.update_marketing_campaigns_status",
+  "args": {
+    "id": 109,
+    "new_status": "active"
+  },
+  "result": {
+    "ok": true,
+    "tool": "update_marketing_campaigns_status",
+    "requested_tool": "update_marketing_campaigns_status",
+    "result": {
+      "updated": true,
+      "id": 109,
+      "table": "marketing_campaigns",
+      "old_status": "planned",
+      "new_status": "active"
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "marketing_campaigns",
+        "row_id": "109",
+        "operation": "update",
+        "before": {
+          "id": 109,
+          "campaign_code": "CAM-992680",
+          "name": "Harbor Industries 109",
+          "channel": "paid_search",
+          "budget": 29315.88,
+          "owner_employee_id": 5,
+          "start_date": "2026-05-25",
+          "end_date": "2026-08-25",
+          "status": "planned"
+        },
+        "after": {
+          "id": 109,
+          "campaign_code": "CAM-992680",
+          "name": "Harbor Industries 109",
+          "channel": "paid_search",
+          "budget": 29315.88,
+          "owner_employee_id": 5,
+          "start_date": "2026-05-25",
+          "end_date": "2026-08-25",
+          "status": "active"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786323053.252268
+}

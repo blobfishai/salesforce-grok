@@ -1,0 +1,36 @@
+{
+  "id": "trace_9a5b2f64a6ca",
+  "type": "mcp_tool_call",
+  "tool": "notion.document_agent",
+  "args": {
+    "request": "read document id 4"
+  },
+  "result": {
+    "ok": true,
+    "tool": "document_agent",
+    "requested_tool": "document_agent",
+    "result": {
+      "status": "created",
+      "doc": "read document id 4",
+      "doc_id": 39,
+      "hint": "verbs: create doc \"T\": <body> \u00b7 append to \"T\": <text> \u00b7 read \"T\""
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "agent_documents",
+        "row_id": "39",
+        "operation": "insert",
+        "before": null,
+        "after": {
+          "id": 39,
+          "title": "read document id 4",
+          "body": "read document id 4",
+          "updated_at": "2026-08-10 00:49:51"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786322991.498893
+}

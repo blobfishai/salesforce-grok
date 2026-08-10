@@ -1,0 +1,49 @@
+{
+  "id": "trace_7ebadef92b3b",
+  "type": "mcp_tool_call",
+  "tool": "notion.query_documents",
+  "args": {
+    "query": "account tiering standard handling procedure",
+    "limit": 50
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_documents",
+    "requested_tool": "query_documents",
+    "result": {
+      "table": "agent_documents",
+      "query": "account tiering standard handling procedure",
+      "count": 4,
+      "rows": [
+        {
+          "id": 25,
+          "title": "account tiering standard handling procedure",
+          "body": "[SUPERSEDED 2025] account tiering standard records verified in status \"active\" must be moved to status \"pending\". This document may be outdated.",
+          "updated_at": "2025-02-11"
+        },
+        {
+          "id": 26,
+          "title": "account tiering standard handling procedure (rev. 2)",
+          "body": "[CURRENT \u2014 effective 2026-06-01, supersedes all prior versions] For account tiering standard records verified in status \"active\": if the record's created_at is \"2024-04-04\", move it to status \"inactive\"; otherwise move it to status \"pending\". Apply exactly one transition.",
+          "updated_at": "2026-06-01"
+        },
+        {
+          "id": 27,
+          "title": "account tiering standard handling procedure",
+          "body": "[SUPERSEDED 2025] account tiering standard records verified in status \"inactive\" must be moved to status \"active\". This document may be outdated.",
+          "updated_at": "2025-02-11"
+        },
+        {
+          "id": 28,
+          "title": "account tiering standard handling procedure (rev. 2)",
+          "body": "[CURRENT \u2014 effective 2026-06-01, supersedes all prior versions] For account tiering standard records verified in status \"inactive\": if the record's created_at is \"2025-11-14\", move it to status \"pending\"; otherwise move it to status \"active\". Apply exactly one transition.",
+          "updated_at": "2026-06-01"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786323125.825972
+}

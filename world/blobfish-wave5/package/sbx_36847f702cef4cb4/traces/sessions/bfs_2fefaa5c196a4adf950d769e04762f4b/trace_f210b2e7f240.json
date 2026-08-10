@@ -1,0 +1,49 @@
+{
+  "id": "trace_f210b2e7f240",
+  "type": "mcp_tool_call",
+  "tool": "core.update_hr_performance_reviews_status",
+  "args": {
+    "id": 99,
+    "new_status": "acknowledged"
+  },
+  "result": {
+    "ok": true,
+    "tool": "update_hr_performance_reviews_status",
+    "requested_tool": "update_hr_performance_reviews_status",
+    "result": {
+      "updated": true,
+      "id": 99,
+      "table": "hr_performance_reviews",
+      "old_status": "submitted",
+      "new_status": "acknowledged"
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "hr_performance_reviews",
+        "row_id": "99",
+        "operation": "update",
+        "before": {
+          "id": 99,
+          "review_number": "REVIEW-492173",
+          "employee_id": 15,
+          "reviewer_employee_id": 16,
+          "review_period": "2025-H2",
+          "overall_rating": 5,
+          "status": "submitted"
+        },
+        "after": {
+          "id": 99,
+          "review_number": "REVIEW-492173",
+          "employee_id": 15,
+          "reviewer_employee_id": 16,
+          "review_period": "2025-H2",
+          "overall_rating": 5,
+          "status": "acknowledged"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786323018.60018
+}

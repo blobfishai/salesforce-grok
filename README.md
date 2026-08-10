@@ -152,10 +152,38 @@ scanner: `sim/run-flake-scan.mjs`.
 - Same `company_instance_key` + `fresh: true` **evolves** the same company
   (expansion directives, prior-task carry-forward) rather than regenerating.
 
-**Wave 2:** launched with that recipe (`scripts/run-deep-wave.sh`,
-anchors `docs/anchors/wave2/`, salesforce+stripe+slack mock services,
-`target_failure_rate 0.7`, no task count) — results land in
-`world/blobfish-wave2/` + `data/flake/wave2*.json`.
+**Wave 2 (API-evolved world `sbx_36847f702cef4cb4`):** 49 tables · 171 tools ·
+28 tasks with 5–13-hop walks, built in 15.6 min from 18 seeded anchor docs
+(salesforce+stripe forge; `target_failure_rate 0.58`; no task count — the
+budget/eval traps from waves 2a/2b documented above). Scan: 15 pass (≤5 calls)
+/ 13 deterministic fails — `required_workflow_path` verifiers mandate an exact
+tool procedure (`list → create → get → update_status`); grok-4.5 reaches
+outcomes but will not follow procedure mandates (0/26 trials, stable across
+retrials). `/regenerate` (walk bounds 5–9) applied via API on the owned world.
+
+**Wave 4 (targeted hardening, passing tasks only):** seeded SOP documents
+carrying the target transition + attribute-based record references. Result:
+**15/15 still pass** — naming the SOP in the prompt made retrieval a one-hop
+giveaway. Negative result, kept: it separates *retrieval difficulty* from
+*decision difficulty*.
+
+**Wave 5 (the sharper ratchet):** conflicting SOP versions (an outdated
+procedure prescribing a plausible wrong target), conditional rules (the correct
+transition depends on the record's own attributes), identification collisions,
+decoy documents. Result: **frontier found** —
+- `task_003` **flaky at 50%** (3/6, ~10–15 calls) — the model's limit, embodied;
+- `task_018` one notch past it (0/6 at 17–25 calls, wrong branch + off-task writes);
+- the 13 survivors stretched from 3–4 to 6–9.3-call chains, all still passing;
+- depth curve across the wave-2 family: **~100% ≤10 calls → 0% at 11+** — the
+  degradation cliff, sharply localized. Failure signature at the cliff:
+  `no_offtask_table_changes` / `no_undeclared_rows_created` — the model starts
+  writing where it shouldn't once the chain exceeds its horizon.
+
+Interactive episodes (`sim/run-interactive.mjs`) make traces CRMArena-comparable:
+a simulated stakeholder opens with a problem prompt and reveals details only on
+request; grok works it conversationally (`<thought>` → clarify → tools → report);
+VCode scores the end state. See `dashboard/traces.html` for the side-by-side with
+CRMArena's published GPT-4o ReAct trajectories.
 
 ## UI evidence (`screenshots/`)
 

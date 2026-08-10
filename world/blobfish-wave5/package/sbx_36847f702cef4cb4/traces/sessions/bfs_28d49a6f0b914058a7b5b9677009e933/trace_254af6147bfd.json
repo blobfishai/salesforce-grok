@@ -1,0 +1,51 @@
+{
+  "id": "trace_254af6147bfd",
+  "type": "mcp_tool_call",
+  "tool": "core.update_hr_leave_requests_status",
+  "args": {
+    "id": 67,
+    "new_status": "rejected"
+  },
+  "result": {
+    "ok": true,
+    "tool": "update_hr_leave_requests_status",
+    "requested_tool": "update_hr_leave_requests_status",
+    "result": {
+      "updated": true,
+      "id": 67,
+      "table": "hr_leave_requests",
+      "old_status": "submitted",
+      "new_status": "rejected"
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "hr_leave_requests",
+        "row_id": "67",
+        "operation": "update",
+        "before": {
+          "id": 67,
+          "request_number": "LEAVE-797240",
+          "employee_id": 13,
+          "leave_type": "parental",
+          "start_date": "2026-01-23",
+          "days_requested": 14,
+          "approver_employee_id": 18,
+          "status": "submitted"
+        },
+        "after": {
+          "id": 67,
+          "request_number": "LEAVE-797240",
+          "employee_id": 13,
+          "leave_type": "parental",
+          "start_date": "2026-01-23",
+          "days_requested": 14,
+          "approver_employee_id": 18,
+          "status": "rejected"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786323335.897535
+}
