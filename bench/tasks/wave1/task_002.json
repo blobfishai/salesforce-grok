@@ -1,0 +1,167 @@
+{
+ "task_id": "task_002",
+ "prompt": "In the morgan_stanley_simulated world, follow the anchored workflow \"workbench: analytics outcome-centric tool workflow\". For the department DEPT-556113, complete the \"query sandbox databases for referenced entities\" step: verify department_code is \"DEPT-556113\", then set its department code to \"verified\".",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.researched_row_update@1",
+  "template_key": "workbench analytics outcome centric tool workflow|parse the natural language request|query sandbox databases for referenced entities|execute the side effecting tool call s|review resulting database state equals the gold outcome state",
+  "template_signature": "template:96192c63db8b28c8",
+  "prompt_class": "resolution"
+ },
+ "goal": "Research-anchored workbench: analytics outcome-centric tool workflow: departments[1].department_code from \"DEPT-556113\" to \"verified\"",
+ "required_tools": [],
+ "complexity": "high",
+ "method": "programmatic",
+ "steps": [
+  "Use anchored workflow: workbench: analytics outcome-centric tool workflow",
+  "Read the department DEPT-556113",
+  "Confirm department_code is \"DEPT-556113\"",
+  "Complete \"query sandbox databases for referenced entities\" by setting department_code to \"verified\"",
+  "Confirm no unrelated departments rows changed"
+ ],
+ "relevant_data": [
+  {
+   "table": "departments",
+   "id": "1",
+   "field": "department_code",
+   "value": "DEPT-556113"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "departments",
+   "id": "1",
+   "field": "department_code",
+   "from": "DEPT-556113",
+   "to": "verified"
+  }
+ ],
+ "tables_affected": [
+  "departments"
+ ],
+ "effects": [
+  {
+   "table": "departments",
+   "op": "update",
+   "field": "department_code",
+   "value": "verified"
+  }
+ ],
+ "walk": [
+  "query_departments",
+  "update_departments_department_code"
+ ],
+ "anchor_refs": [
+  "anc_c8a09ecf7df3",
+  "anc_d8a563fae1ee",
+  "anc_a3211c45910d",
+  "anc_b875054efd13"
+ ],
+ "_reference_tools": [
+  "query_departments",
+  "update_departments_department_code"
+ ],
+ "acceptance_label": "in_band",
+ "difficulty_tier": "easy",
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_002",
+  "measured": true,
+  "provider": "deepseek",
+  "model": null,
+  "runs": 5,
+  "passes": 5,
+  "pass_rate": 1,
+  "retained": true,
+  "band": "trivial",
+  "outcomes": [
+   {
+    "run": 1,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   },
+   {
+    "run": 2,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   },
+   {
+    "run": 3,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   },
+   {
+    "run": 4,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   },
+   {
+    "run": 5,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   }
+  ],
+  "measured_at": "2026-08-09T20:55:06.897Z"
+ },
+ "provenance": {
+  "evidence_ids": [
+   "anc_c8a09ecf7df3",
+   "anc_d8a563fae1ee",
+   "anc_a3211c45910d",
+   "anc_b875054efd13"
+  ],
+  "tool_graph_path": [
+   "query_departments",
+   "update_departments_department_code"
+  ],
+  "tool_graph_edges": [
+   "query_departments\u0000update_departments_department_code"
+  ],
+  "verifier_id": "task_002",
+  "difficulty_reason": "easy: walk length 2"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_human_resources"
+  ],
+  "employee_ids": [],
+  "workflow_ids": [
+   "workflow_human_resources"
+  ],
+  "cross_department": false
+ },
+ "session": [
+  {
+   "turn": 2,
+   "kind": "fragment",
+   "user_text": "yes"
+  },
+  {
+   "turn": 3,
+   "kind": "followup",
+   "user_text": "Also double-check the record afterwards and tell me what it now shows."
+  }
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "checked_at": "2026-08-09T21:12:06.663Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_a61fcb39998542e172bb2b6bc35e47575817ece037f5ac5ed06190ad06d6498b",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ }
+}

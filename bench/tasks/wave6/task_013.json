@@ -1,0 +1,117 @@
+{
+ "task_id": "task_013",
+ "prompt": "In the morgan_stanley_simulated world, process hr performance reviews record \"REVIEW-925959\", which is assigned to Brian Murphy and Nina Kowalski. Use the employee-aware lookup to verify the assignment and confirm status is \"acknowledged\", then update its status to the next stage in the hr performance reviews lifecycle, changing only that workflow record.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.employee_grounded_workflow@1",
+  "template_key": "hr_performance_reviews:status:employee_assignment",
+  "template_signature": "template:fce37d5c50d801b3",
+  "prompt_class": "resolution"
+ },
+ "goal": "Employee-grounded workflow: hr performance reviews \"REVIEW-925959\".status from \"acknowledged\" to \"finalized\"",
+ "required_tools": [
+  "human_resources_records_agent",
+  "human_resources_workflow_agent"
+ ],
+ "complexity": "high",
+ "method": "programmatic",
+ "steps": [
+  "Look up hr_performance_reviews record \"REVIEW-925959\" with its employee assignments",
+  "Verify the assigned employees: Brian Murphy, Nina Kowalski",
+  "Confirm status is \"acknowledged\"",
+  "Update status to \"finalized\"",
+  "Confirm no employee record or unrelated workflow row changed"
+ ],
+ "relevant_data": [
+  {
+   "table": "hr_performance_reviews",
+   "id": "11",
+   "field": "status",
+   "value": "acknowledged"
+  },
+  {
+   "table": "hr_performance_reviews",
+   "id": "11",
+   "field": "employee_id",
+   "value": 8
+  },
+  {
+   "table": "hr_performance_reviews",
+   "id": "11",
+   "field": "reviewer_employee_id",
+   "value": 11
+  },
+  {
+   "table": "hr_performance_reviews",
+   "id": 11,
+   "field": "review_number",
+   "value": "REVIEW-925959"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "hr_performance_reviews",
+   "id": "11",
+   "field": "status",
+   "from": "acknowledged",
+   "to": "finalized"
+  }
+ ],
+ "tables_affected": [
+  "hr_performance_reviews"
+ ],
+ "effects": [
+  {
+   "table": "hr_performance_reviews",
+   "op": "update",
+   "field": "status",
+   "value": "finalized"
+  }
+ ],
+ "walk": [
+  "human_resources_records_agent",
+  "human_resources_workflow_agent"
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"tasks.assigned_to\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"employee_work_assignments\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"meddic_extraction_scorecard.next\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"opportunity_stage_gates\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-10T07:58:47.425Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_a1f2d711a6f2a4d7a0dd9c7f1ff823ede9116d3cc55073ad1f3b0d2a1af538c0",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_human_resources",
+   "dept_sales",
+   "dept_customer_support"
+  ],
+  "employee_ids": [
+   "emp_8",
+   "emp_11"
+  ],
+  "workflow_ids": [
+   "workflow_sales",
+   "workflow_human_resources",
+   "workflow_customer_support",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff"
+  ],
+  "cross_department": true
+ }
+}

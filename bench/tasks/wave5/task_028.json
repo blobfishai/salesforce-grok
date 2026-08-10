@@ -1,0 +1,88 @@
+{
+ "task_id": "task_028",
+ "prompt": "In the morgan_stanley_simulated world: locate the cpq discount policy record whose name is \"Lakeshore Logistics\" and whose created_at is exactly \"2024-03-24\" and process it according to the CURRENT cpq discount policy handling procedure in the document store. Be careful: multiple versions of the procedure exist and some are outdated, and the current procedure's outcome depends on the record's own attributes. Verify the record first, apply exactly one correct transition, change nothing else, and report what you did.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.row_pinned_update@1",
+  "template_signature": "template:1fecd0aaa4394913",
+  "prompt_class": "resolution"
+ },
+ "goal": "Row-pinned update: cpq discount policy \"Lakeshore Logistics\".status from \"active\" to \"inactive\"",
+ "required_tools": [
+  "get_cpq_discount_policy",
+  "update_status_cpq_discount_policy",
+  "core_records_agent"
+ ],
+ "complexity": "medium",
+ "method": "programmatic",
+ "steps": [
+  "Read the cpq discount policy Lakeshore Logistics (\"Lakeshore Logistics\")",
+  "Confirm status is \"active\"",
+  "Update status to \"inactive\"",
+  "Confirm no other row was modified"
+ ],
+ "relevant_data": [
+  {
+   "table": "cpq_discount_policy",
+   "id": 1,
+   "field": "name",
+   "value": "Lakeshore Logistics"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "cpq_discount_policy",
+   "id": "1",
+   "field": "status",
+   "from": "active",
+   "to": "inactive"
+  }
+ ],
+ "tables_affected": [
+  "cpq_discount_policy"
+ ],
+ "effects": [
+  {
+   "table": "cpq_discount_policy",
+   "op": "update",
+   "field": "status",
+   "value": "inactive"
+  }
+ ],
+ "walk": [
+  "get_cpq_discount_policy",
+  "update_status_cpq_discount_policy"
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"opportunity_stage_gates\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-10T00:29:50.145Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_a091c08082a0af352acdedb2520475bf547fac184966386d579349959edc0034",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_core_operations"
+  ],
+  "employee_ids": [],
+  "workflow_ids": [
+   "workflow_crm_operations",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff"
+  ],
+  "cross_department": false
+ }
+}

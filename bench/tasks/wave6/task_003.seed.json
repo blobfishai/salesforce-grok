@@ -1,0 +1,52 @@
+{
+ "schema": "task-seed.v1",
+ "task_id": "task_003",
+ "rows": {
+  "opportunities": [
+   {
+    "id": "opportunity_006",
+    "account_id": "account_004",
+    "name": "Summit Partners Opportunity",
+    "status": "discovery",
+    "amount": 50.66,
+    "close_date": "2026-01-07T17:55:00Z",
+    "owner_id": "OWN-8E89756",
+    "created_at": "2026-01-07T18:03:00Z"
+   }
+  ]
+ },
+ "documents": [
+  {
+   "store": "agent_documents",
+   "id": 43,
+   "title": "39 — ARTIFACT: Discovery Call Transcript — Summit Operations (Treasury Settlement Suite)"
+  },
+  {
+   "store": "matter_documents",
+   "id": 1,
+   "title": "Deal materials — project_management: Move all of {name}'s tasks that are in progress to in review"
+  }
+ ],
+ "input_documents": [],
+ "mcp_seeding": {
+  "core": [
+   "opportunities_list",
+   "case_get",
+   "tasks_list",
+   "task_create",
+   "task_get"
+  ],
+  "salesforce": [
+   "opportunity_create",
+   "accounts_list",
+   "contact_get",
+   "contacts_list",
+   "account_get"
+  ],
+  "pagerduty": [
+   "cases_list",
+   "case_create",
+   "cases_list"
+  ]
+ }
+}

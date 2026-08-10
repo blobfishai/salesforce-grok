@@ -1,0 +1,108 @@
+{
+ "task_id": "task_021",
+ "prompt": "In the morgan_stanley_simulated world, process sourcing purchase orders record \"PO-846852\", which is assigned to Elena Volkov. Use the employee-aware lookup to verify the assignment and confirm status is \"approved\", then update its status to the next stage in the sourcing purchase orders lifecycle, changing only that workflow record.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.employee_grounded_workflow@1",
+  "template_key": "sourcing_purchase_orders:status:employee_assignment",
+  "template_signature": "template:470028880258899c",
+  "prompt_class": "resolution"
+ },
+ "goal": "Employee-grounded workflow: sourcing purchase orders \"PO-846852\".status from \"approved\" to \"received\"",
+ "required_tools": [
+  "sourcing_records_agent",
+  "sourcing_workflow_agent"
+ ],
+ "complexity": "medium",
+ "method": "programmatic",
+ "steps": [
+  "Look up sourcing_purchase_orders record \"PO-846852\" with its employee assignments",
+  "Verify the assigned employee: Elena Volkov",
+  "Confirm status is \"approved\"",
+  "Update status to \"received\"",
+  "Confirm no employee record or unrelated workflow row changed"
+ ],
+ "relevant_data": [
+  {
+   "table": "sourcing_purchase_orders",
+   "id": "102",
+   "field": "status",
+   "value": "approved"
+  },
+  {
+   "table": "sourcing_purchase_orders",
+   "id": "102",
+   "field": "requested_by_employee_id",
+   "value": 18
+  },
+  {
+   "table": "sourcing_purchase_orders",
+   "id": 102,
+   "field": "po_number",
+   "value": "PO-846852"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "sourcing_purchase_orders",
+   "id": "102",
+   "field": "status",
+   "from": "approved",
+   "to": "received"
+  }
+ ],
+ "tables_affected": [
+  "sourcing_purchase_orders"
+ ],
+ "effects": [
+  {
+   "table": "sourcing_purchase_orders",
+   "op": "update",
+   "field": "status",
+   "value": "received"
+  }
+ ],
+ "walk": [
+  "sourcing_records_agent",
+  "sourcing_workflow_agent"
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"employee_work_assignments\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"opportunity.stage\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-09T21:10:50.651Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_89ee478ac2e7ce16a6f1c85f48d076b6e8c511b0f2984d97750534a2a38e8ae8",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_sourcing",
+   "dept_customer_support",
+   "dept_human_resources"
+  ],
+  "employee_ids": [
+   "emp_18",
+   "emp_2"
+  ],
+  "workflow_ids": [
+   "workflow_human_resources",
+   "workflow_customer_support",
+   "workflow_sourcing",
+   "workflow_customer_support_crm_operations_handoff"
+  ],
+  "cross_department": true
+ }
+}

@@ -1,0 +1,448 @@
+{
+ "task_id": "task_003",
+ "prompt": "At morgan_stanley_simulated: There's a pending item (Summit Partners Opportunity (discovery)) in opportunities that needs processing. Handle it end to end. This workflow also updates cases and tasks. Create the required new opportunities record. Create the required new cases record. Create the required new tasks record.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "graph.mutation.high.anchored@1",
+  "template_signature": "template:7258b7bed5eacef0"
+ },
+ "goal": "Drive opportunities through the workflow, applying 3 verified state changes.",
+ "required_tools": [],
+ "complexity": "high",
+ "method": "graph_walk",
+ "steps": [
+  "Read opportunity state (list) without mutating the world. (opportunities)",
+  "Apply a create write to opportunity. (opportunities)",
+  "Read account state (list) without mutating the world. (accounts)",
+  "Read case state (list) without mutating the world. (cases)",
+  "Apply a create write to case. (cases)",
+  "Read contact state (item) without mutating the world. (contacts)",
+  "Read case state (list) without mutating the world. (cases)",
+  "Read case state (item) without mutating the world. (cases)",
+  "Read contact state (list) without mutating the world. (contacts)",
+  "Read account state (item) without mutating the world. (accounts)",
+  "Read task state (list) without mutating the world. (tasks)",
+  "Apply a create write to task. (tasks)",
+  "Read task state (item) without mutating the world. (tasks)"
+ ],
+ "relevant_data": [
+  {
+   "table": "opportunities",
+   "id": "opportunity_006",
+   "field": "name",
+   "value": "Summit Partners Opportunity"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "cases",
+   "id": "case_118",
+   "field": "(new row)",
+   "from": "17 rows",
+   "to": "18 rows"
+  },
+  {
+   "table": "opportunities",
+   "id": "opportunity_111",
+   "field": "(new row)",
+   "from": "10 rows",
+   "to": "11 rows"
+  },
+  {
+   "table": "tasks",
+   "id": "task_118",
+   "field": "(new row)",
+   "from": "17 rows",
+   "to": "18 rows"
+  }
+ ],
+ "tables_affected": [
+  "cases",
+  "opportunities",
+  "tasks"
+ ],
+ "walk": [
+  "opportunities_list",
+  "opportunity_create",
+  "accounts_list",
+  "cases_list",
+  "case_create",
+  "contact_get",
+  "cases_list",
+  "case_get",
+  "contacts_list",
+  "account_get",
+  "tasks_list",
+  "task_create",
+  "task_get"
+ ],
+ "effects": [
+  {
+   "table": "cases",
+   "op": "insert"
+  },
+  {
+   "table": "opportunities",
+   "op": "insert"
+  },
+  {
+   "table": "tasks",
+   "op": "insert"
+  }
+ ],
+ "difficulty_tier": "hard",
+ "sequence_integrity": {
+  "schemaVersion": 1,
+  "passed": true,
+  "pathLength": 13,
+  "uniqueTools": 12,
+  "rules": [
+   "every transition has an evidence-backed edge",
+   "no tool immediately repeats itself, and no tool is used more than 4 times",
+   "terminal actions cannot restart the same entity lifecycle",
+   "the same mutating action cannot repeat on the same entity"
+  ],
+  "transitions": [
+   {
+    "source": "opportunities_list",
+    "target": "opportunity_create",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "list",
+    "targetAction": "create",
+    "sharedEntities": [
+     "opportunity"
+    ],
+    "stepIndex": 1,
+    "edgeSupported": true
+   },
+   {
+    "source": "opportunity_create",
+    "target": "accounts_list",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "create",
+    "targetAction": "list",
+    "sharedEntities": [],
+    "stepIndex": 2,
+    "edgeSupported": true
+   },
+   {
+    "source": "accounts_list",
+    "target": "cases_list",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "list",
+    "targetAction": "list",
+    "sharedEntities": [],
+    "stepIndex": 3,
+    "edgeSupported": true
+   },
+   {
+    "source": "cases_list",
+    "target": "case_create",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "list",
+    "targetAction": "create",
+    "sharedEntities": [
+     "case"
+    ],
+    "stepIndex": 4,
+    "edgeSupported": true
+   },
+   {
+    "source": "case_create",
+    "target": "contact_get",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "create",
+    "targetAction": "get",
+    "sharedEntities": [],
+    "stepIndex": 5,
+    "edgeSupported": true
+   },
+   {
+    "source": "contact_get",
+    "target": "cases_list",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "get",
+    "targetAction": "list",
+    "sharedEntities": [],
+    "stepIndex": 6,
+    "edgeSupported": true
+   },
+   {
+    "source": "cases_list",
+    "target": "case_get",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "list",
+    "targetAction": "get",
+    "sharedEntities": [
+     "case"
+    ],
+    "stepIndex": 7,
+    "edgeSupported": true
+   },
+   {
+    "source": "case_get",
+    "target": "contacts_list",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "get",
+    "targetAction": "list",
+    "sharedEntities": [],
+    "stepIndex": 8,
+    "edgeSupported": true
+   },
+   {
+    "source": "contacts_list",
+    "target": "account_get",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "list",
+    "targetAction": "get",
+    "sharedEntities": [],
+    "stepIndex": 9,
+    "edgeSupported": true
+   },
+   {
+    "source": "account_get",
+    "target": "tasks_list",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "get",
+    "targetAction": "list",
+    "sharedEntities": [],
+    "stepIndex": 10,
+    "edgeSupported": true
+   },
+   {
+    "source": "tasks_list",
+    "target": "task_create",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "list",
+    "targetAction": "create",
+    "sharedEntities": [
+     "task"
+    ],
+    "stepIndex": 11,
+    "edgeSupported": true
+   },
+   {
+    "source": "task_create",
+    "target": "task_get",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "create",
+    "targetAction": "get",
+    "sharedEntities": [
+     "task"
+    ],
+    "stepIndex": 12,
+    "edgeSupported": true
+   }
+  ],
+  "issues": []
+ },
+ "provenance": {
+  "evidence_ids": [
+   "anc_4c9e994e503c",
+   "anc_457217fb5070",
+   "anc_16fec4c8f151",
+   "anc_cae2bd6f9b42",
+   "anc_ec0e90e20a9a",
+   "anc_67cb0dcb0649",
+   "anc_ed4d76632a7e",
+   "anc_9af9f3c97949",
+   "anc_56824f3f27ee",
+   "anc_fbee43295eac",
+   "anc_470a6ea97a81",
+   "anc_2f3b862a5267",
+   "anc_b649acf5b955",
+   "anc_56c458d2596f",
+   "anc_e87725dbc65d",
+   "anc_6a5df2ac5fcd",
+   "anc_f579bf7a8df3",
+   "anc_ca68c756edfc",
+   "anc_31cdb21cd0d6",
+   "anc_1a04b24baacf",
+   "anc_62c7abde12e0",
+   "anc_3b6cb2c5eb08",
+   "anc_74c82ee4d94a",
+   "anc_c8eb63d4901c",
+   "anc_3ec276c0f7c8",
+   "anc_2550bfc5e432",
+   "anc_2af28e598b25",
+   "anc_ceb895045356",
+   "anc_cc6e7ce5be6b",
+   "anc_cdbf964baedd",
+   "anc_ec61a96f5bba",
+   "anc_b90d23d6b333",
+   "anc_771670830b0b",
+   "anc_b662d058f010",
+   "anc_57de2719dbdc",
+   "anc_0daee4d4722f",
+   "anc_61e55f925164",
+   "anc_7a62aa93c827",
+   "anc_f4570807d9ec",
+   "anc_d2225e49ffd3",
+   "anc_761bcbc64a91",
+   "anc_953b80838d38",
+   "anc_40fb3503bc07",
+   "anc_a63adecd84c4",
+   "anc_9efd83e1c9e0",
+   "anc_cf88321f3890",
+   "anc_9f87a685836f",
+   "anc_d7d26ab3bb70",
+   "anc_ee974644ba6f",
+   "anc_bcc1f73ffd1b",
+   "anc_5a4667bc9fb2",
+   "anc_5c851856ef1a",
+   "anc_8c705c78d1d9"
+  ],
+  "tool_graph_path": [
+   "opportunities_list",
+   "opportunity_create",
+   "accounts_list",
+   "cases_list",
+   "case_create",
+   "contact_get",
+   "cases_list",
+   "case_get",
+   "contacts_list",
+   "account_get",
+   "tasks_list",
+   "task_create",
+   "task_get"
+  ],
+  "tool_graph_edges": [
+   "opportunities_list\u0000opportunity_create",
+   "opportunity_create\u0000accounts_list",
+   "accounts_list\u0000cases_list",
+   "cases_list\u0000case_create",
+   "case_create\u0000contact_get",
+   "contact_get\u0000cases_list",
+   "cases_list\u0000case_get",
+   "case_get\u0000contacts_list",
+   "contacts_list\u0000account_get",
+   "account_get\u0000tasks_list",
+   "tasks_list\u0000task_create",
+   "task_create\u0000task_get"
+  ],
+  "verifier_id": "task_003",
+  "difficulty_reason": "hard: walk length 13"
+ },
+ "anchor_refs": [
+  "anc_4c9e994e503c",
+  "anc_457217fb5070",
+  "anc_16fec4c8f151",
+  "anc_cae2bd6f9b42",
+  "anc_ec0e90e20a9a",
+  "anc_67cb0dcb0649",
+  "anc_ed4d76632a7e",
+  "anc_9af9f3c97949",
+  "anc_56824f3f27ee",
+  "anc_fbee43295eac",
+  "anc_470a6ea97a81",
+  "anc_2f3b862a5267"
+ ],
+ "departments": [
+  "sales"
+ ],
+ "_reference_tools": [
+  "opportunities_list",
+  "opportunity_create",
+  "accounts_list",
+  "cases_list",
+  "case_create",
+  "contact_get",
+  "case_get",
+  "contacts_list",
+  "account_get",
+  "tasks_list",
+  "task_create",
+  "task_get"
+ ],
+ "session": [
+  {
+   "turn": 2,
+   "kind": "fragment",
+   "user_text": "yes"
+  },
+  {
+   "turn": 3,
+   "kind": "followup",
+   "user_text": "現在呢？"
+  }
+ ],
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_242e5fe6fa8caff772900ec343b76f874167a1913a1e96f7c57b2dfce1f0b719",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "acceptance_label": "in_band",
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"line_items_list_prices_per_13_product_catalogmd\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"marketing_campaigns.end_date\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-10T07:55:24.622Z"
+ },
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_003",
+  "measured": false,
+  "reason": "budget_exhausted",
+  "detail": "run 5 could not be graded: solvability census budget expired mid-episode",
+  "partial_outcomes": [
+   {
+    "run": 1,
+    "passed": false,
+    "reward": 0,
+    "steps": 13
+   },
+   {
+    "run": 2,
+    "passed": false,
+    "reward": 0,
+    "steps": 15
+   },
+   {
+    "run": 3,
+    "passed": false,
+    "reward": 0,
+    "steps": 12
+   },
+   {
+    "run": 4,
+    "passed": false,
+    "reward": 0,
+    "steps": 13
+   }
+  ]
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_sales"
+  ],
+  "employee_ids": [],
+  "workflow_ids": [
+   "workflow_sales",
+   "workflow_sales_crm_operations_handoff"
+  ],
+  "cross_department": false
+ }
+}

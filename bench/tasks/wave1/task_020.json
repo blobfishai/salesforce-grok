@@ -1,0 +1,106 @@
+{
+ "task_id": "task_020",
+ "prompt": "In the morgan_stanley_simulated world, process sales leads record \"LEAD-211559\", which is assigned to Maria Garcia. Use the employee-aware lookup to verify the assignment and confirm status is \"contacted\", then update its status to the next stage in the sales leads lifecycle, changing only that workflow record.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.employee_grounded_workflow@1",
+  "template_key": "sales_leads:status:employee_assignment",
+  "template_signature": "template:91872b1e7a850ce3",
+  "prompt_class": "resolution"
+ },
+ "goal": "Employee-grounded workflow: sales leads \"LEAD-211559\".status from \"contacted\" to \"qualified\"",
+ "required_tools": [
+  "lookup_sales_lead_with_employees",
+  "sales_workflow_agent",
+  "sales_records_agent"
+ ],
+ "complexity": "medium",
+ "method": "programmatic",
+ "steps": [
+  "Look up sales_leads record \"LEAD-211559\" with its employee assignments",
+  "Verify the assigned employee: Maria Garcia",
+  "Confirm status is \"contacted\"",
+  "Update status to \"qualified\"",
+  "Confirm no employee record or unrelated workflow row changed"
+ ],
+ "relevant_data": [
+  {
+   "table": "sales_leads",
+   "id": "144",
+   "field": "status",
+   "value": "contacted"
+  },
+  {
+   "table": "sales_leads",
+   "id": "144",
+   "field": "owner_employee_id",
+   "value": 14
+  },
+  {
+   "table": "sales_leads",
+   "id": 144,
+   "field": "lead_number",
+   "value": "LEAD-211559"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "sales_leads",
+   "id": "144",
+   "field": "status",
+   "from": "contacted",
+   "to": "qualified"
+  }
+ ],
+ "tables_affected": [
+  "sales_leads"
+ ],
+ "effects": [
+  {
+   "table": "sales_leads",
+   "op": "update",
+   "field": "status",
+   "value": "qualified"
+  }
+ ],
+ "walk": [
+  "lookup_sales_lead_with_employees",
+  "sales_workflow_agent"
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"opportunity.stage\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-09T21:10:47.108Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_a8528cfa85986c883264ce9b167f499c451aa929cf98c3f03eb4f92d24b96dd1",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_sales",
+   "dept_core_operations"
+  ],
+  "employee_ids": [
+   "emp_14"
+  ],
+  "workflow_ids": [
+   "workflow_sales",
+   "workflow_crm_operations",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff"
+  ],
+  "cross_department": true
+ }
+}

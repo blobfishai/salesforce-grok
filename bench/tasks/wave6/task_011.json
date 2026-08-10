@@ -1,0 +1,118 @@
+{
+ "task_id": "task_011",
+ "prompt": "In the morgan_stanley_simulated world, process finance expense reports record \"EXP-249471\", which is assigned to Mei Huang and Aisha Ahmad. Use the employee-aware lookup to verify the assignment and confirm status is \"approved\", then update its status to the next stage in the finance expense reports lifecycle, changing only that workflow record.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.employee_grounded_workflow@1",
+  "template_key": "finance_expense_reports:status:employee_assignment",
+  "template_signature": "template:65ad121aa0cbc7c1",
+  "prompt_class": "resolution"
+ },
+ "goal": "Employee-grounded workflow: finance expense reports \"EXP-249471\".status from \"approved\" to \"reimbursed\"",
+ "required_tools": [
+  "lookup_finance_expense_report_with_employees",
+  "finance_workflow_agent",
+  "finance_records_agent"
+ ],
+ "complexity": "high",
+ "method": "programmatic",
+ "steps": [
+  "Look up finance_expense_reports record \"EXP-249471\" with its employee assignments",
+  "Verify the assigned employees: Mei Huang, Aisha Ahmad",
+  "Confirm status is \"approved\"",
+  "Update status to \"reimbursed\"",
+  "Confirm no employee record or unrelated workflow row changed"
+ ],
+ "relevant_data": [
+  {
+   "table": "finance_expense_reports",
+   "id": "103",
+   "field": "status",
+   "value": "approved"
+  },
+  {
+   "table": "finance_expense_reports",
+   "id": "103",
+   "field": "employee_id",
+   "value": 1
+  },
+  {
+   "table": "finance_expense_reports",
+   "id": "103",
+   "field": "approver_employee_id",
+   "value": 12
+  },
+  {
+   "table": "finance_expense_reports",
+   "id": 103,
+   "field": "report_number",
+   "value": "EXP-249471"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "finance_expense_reports",
+   "id": "103",
+   "field": "status",
+   "from": "approved",
+   "to": "reimbursed"
+  }
+ ],
+ "tables_affected": [
+  "finance_expense_reports"
+ ],
+ "effects": [
+  {
+   "table": "finance_expense_reports",
+   "op": "update",
+   "field": "status",
+   "value": "reimbursed"
+  }
+ ],
+ "walk": [
+  "lookup_finance_expense_report_with_employees",
+  "finance_workflow_agent"
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"tasks.assigned_to\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"meddic_extraction_scorecard.next\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"opportunity_stage_gates\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-10T07:58:42.742Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_75e6cc1a07db3f6fc2c8c63b21a5fe78fb88d255bbb479bf8cdafe3cea866d22",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_finance",
+   "dept_sales",
+   "dept_marketing"
+  ],
+  "employee_ids": [
+   "emp_1",
+   "emp_12"
+  ],
+  "workflow_ids": [
+   "workflow_sales",
+   "workflow_finance",
+   "workflow_marketing",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_marketing_crm_operations_handoff",
+   "workflow_finance_crm_operations_handoff"
+  ],
+  "cross_department": true
+ }
+}

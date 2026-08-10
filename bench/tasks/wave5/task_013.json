@@ -1,0 +1,195 @@
+{
+ "task_id": "task_013",
+ "prompt": "The HR operations team at Morgan Stanley has flagged leave request LEAVE-259899, which was previously approved but now requires a status change based on the latest handoff review. Please update this specific request to reflect the new decision, marking it as cancelled.",
+ "prompt_generation": {
+  "source": "llm",
+  "template_family": "graph.mutation.medium.anchored@1",
+  "template_signature": "template:e8c2ddd7981fb23c",
+  "prompt_class": "resolution"
+ },
+ "goal": "Drive hr leave requests through the workflow, applying 1 verified state change.",
+ "required_tools": [
+  "query_hr_leave_requests",
+  "update_hr_leave_requests_status",
+  "lookup_hr_leave_request_with_employees",
+  "lookup_hr_performance_review_with_employees"
+ ],
+ "complexity": "medium",
+ "method": "graph_walk",
+ "steps": [
+  "Search and filter hr_leave_requests. Returns matching rows. (hr_leave_requests)",
+  "Update status of a hr leave requests record. Valid statuses: submitted, approved, rejected, cancelled. (hr_leave_requests)",
+  "Look up a hr leave request record with its parent employees data joined. (hr_leave_requests, employees)",
+  "Look up a hr performance review record with its parent employees data joined. (hr_performance_reviews, employees)"
+ ],
+ "relevant_data": [
+  {
+   "table": "hr_leave_requests",
+   "id": 181,
+   "field": "request_number",
+   "value": "LEAVE-259899"
+  },
+  {
+   "table": "hr_leave_requests",
+   "id": 5,
+   "field": "request_number",
+   "value": "LEAVE-590122"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "hr_leave_requests",
+   "id": "5",
+   "field": "status",
+   "from": "approved",
+   "to": "cancelled"
+  }
+ ],
+ "tables_affected": [
+  "hr_leave_requests"
+ ],
+ "walk": [
+  "query_hr_leave_requests",
+  "update_hr_leave_requests_status",
+  "lookup_hr_leave_request_with_employees",
+  "lookup_hr_performance_review_with_employees"
+ ],
+ "effects": [
+  {
+   "table": "hr_leave_requests",
+   "op": "update",
+   "field": "status",
+   "value": "cancelled"
+  }
+ ],
+ "difficulty_tier": "medium",
+ "sequence_integrity": {
+  "schemaVersion": 1,
+  "passed": true,
+  "pathLength": 4,
+  "uniqueTools": 4,
+  "rules": [
+   "every transition has an evidence-backed edge",
+   "no tool immediately repeats itself, and no tool is used more than 4 times",
+   "terminal actions cannot restart the same entity lifecycle",
+   "the same mutating action cannot repeat on the same entity"
+  ],
+  "transitions": [
+   {
+    "source": "query_hr_leave_requests",
+    "target": "update_hr_leave_requests_status",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "query",
+    "targetAction": "update",
+    "sharedEntities": [],
+    "stepIndex": 1,
+    "edgeSupported": true
+   },
+   {
+    "source": "update_hr_leave_requests_status",
+    "target": "lookup_hr_leave_request_with_employees",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "update",
+    "targetAction": "lookup",
+    "sharedEntities": [],
+    "stepIndex": 2,
+    "edgeSupported": true
+   },
+   {
+    "source": "lookup_hr_leave_request_with_employees",
+    "target": "lookup_hr_performance_review_with_employees",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "lookup",
+    "targetAction": "lookup",
+    "sharedEntities": [
+     "employee"
+    ],
+    "stepIndex": 3,
+    "edgeSupported": true
+   }
+  ],
+  "issues": []
+ },
+ "provenance": {
+  "evidence_ids": [],
+  "tool_graph_path": [
+   "query_hr_leave_requests",
+   "update_hr_leave_requests_status",
+   "lookup_hr_leave_request_with_employees",
+   "lookup_hr_performance_review_with_employees"
+  ],
+  "tool_graph_edges": [
+   "query_hr_leave_requests\u0000update_hr_leave_requests_status",
+   "update_hr_leave_requests_status\u0000lookup_hr_leave_request_with_employees",
+   "lookup_hr_leave_request_with_employees\u0000lookup_hr_performance_review_with_employees"
+  ],
+  "verifier_id": "task_013",
+  "difficulty_reason": "medium: walk length 4"
+ },
+ "departments": [
+  "human_resources",
+  "organization"
+ ],
+ "session": [
+  {
+   "turn": 1,
+   "kind": "correction",
+   "user_text": "不是「LEAVE-259899」，是「LEAVE-590122」。只改後者。"
+  }
+ ],
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_4703f439c87600b2c4ecd7f27a79580052eda20121f994b6b36c3fc51623bd62",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "acceptance_label": "in_band",
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"company_sales_handoffs\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-10T00:25:23.372Z"
+ },
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_013",
+  "measured": false,
+  "reason": "not_sampled",
+  "detail": "outside the stratified solvability sample; deterministic acceptance evidence stands"
+ },
+ "anchor_refs": [],
+ "coverage": {
+  "department_ids": [
+   "dept_human_resources",
+   "dept_finance",
+   "dept_customer_support",
+   "dept_sales"
+  ],
+  "employee_ids": [
+   "emp_17",
+   "emp_4",
+   "emp_1",
+   "emp_2"
+  ],
+  "workflow_ids": [
+   "workflow_sales",
+   "workflow_human_resources",
+   "workflow_finance",
+   "workflow_customer_support",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff"
+  ],
+  "cross_department": true
+ }
+}

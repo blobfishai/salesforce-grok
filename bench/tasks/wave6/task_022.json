@@ -1,0 +1,87 @@
+{
+ "task_id": "task_022",
+ "prompt": "In the morgan_stanley_simulated world: Find the account tiering standard Meridian Works, verify status is \"active\", then set its status to \"inactive\". Do not modify any other account tiering standard record.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.row_pinned_update@1",
+  "template_signature": "template:1fecd0aaa4394913",
+  "prompt_class": "resolution"
+ },
+ "goal": "Row-pinned update: account_tiering_standard[1].status from \"active\" to \"inactive\"",
+ "required_tools": [
+  "core_records_agent",
+  "core_workflow_agent"
+ ],
+ "complexity": "medium",
+ "method": "programmatic",
+ "steps": [
+  "Read the account tiering standard Meridian Works",
+  "Confirm status is \"active\"",
+  "Update status to \"inactive\"",
+  "Confirm no other row was modified"
+ ],
+ "relevant_data": [
+  {
+   "table": "account_tiering_standard",
+   "id": "1",
+   "field": "name",
+   "value": "Meridian Works"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "account_tiering_standard",
+   "id": "1",
+   "field": "status",
+   "from": "active",
+   "to": "inactive"
+  }
+ ],
+ "tables_affected": [
+  "account_tiering_standard"
+ ],
+ "effects": [
+  {
+   "table": "account_tiering_standard",
+   "op": "update",
+   "field": "status",
+   "value": "inactive"
+  }
+ ],
+ "walk": [
+  "core_records_agent",
+  "core_workflow_agent"
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "checked_at": "2026-08-10T07:59:06.684Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_17e6886be06db779cd159c4097b5b92da6d410f41ff51f54dce8bb085d865aff",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_core_operations"
+  ],
+  "employee_ids": [],
+  "workflow_ids": [
+   "workflow_crm_operations",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff",
+   "workflow_marketing_crm_operations_handoff",
+   "workflow_finance_crm_operations_handoff",
+   "workflow_sourcing_crm_operations_handoff"
+  ],
+  "cross_department": false
+ }
+}

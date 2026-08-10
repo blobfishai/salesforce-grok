@@ -1,0 +1,47 @@
+{
+ "schema": "task-seed.v1",
+ "task_id": "task_002",
+ "rows": {
+  "hr_leave_requests": [
+   {
+    "id": 224,
+    "employee_id": 10,
+    "leave_type": "sick",
+    "start_date": "2026-03-10",
+    "days_requested": 10,
+    "approver_employee_id": 7,
+    "status": "approved",
+    "request_number": "LEAVE-243410"
+   },
+   {
+    "id": 8,
+    "employee_id": 4,
+    "leave_type": "bereavement",
+    "start_date": "2026-04-19",
+    "days_requested": 6,
+    "approver_employee_id": 2,
+    "status": "approved",
+    "request_number": "LEAVE-857947"
+   },
+   {
+    "id": 8,
+    "employee_id": 4,
+    "leave_type": "bereavement",
+    "start_date": "2026-04-19",
+    "days_requested": 6,
+    "approver_employee_id": 2,
+    "status": "approved",
+    "request_number": "LEAVE-857947"
+   }
+  ]
+ },
+ "documents": [],
+ "input_documents": [],
+ "mcp_seeding": {
+  "core": [
+   "lookup_hr_leave_request_with_employees",
+   "query_hr_leave_requests",
+   "update_hr_leave_requests_status"
+  ]
+ }
+}

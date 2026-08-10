@@ -1,0 +1,177 @@
+{
+ "task_id": "task_001",
+ "prompt": "In the morgan_stanley_simulated world: Find the support ticket TKT-703339, verify status is \"open\", then set its status to \"in_progress\". Do not modify any other support tickets record. Then, in the same pass: In the morgan_stanley_simulated world: Find the lead management sop Northgate Associates, verify status is \"active\", then set its status to \"inactive\". Do not modify any other lead management sop record. Required outcomes: set support_tickets.status to \"in_progress\" for ticket number \"TKT-703339\"; set lead_management_sop.status to \"inactive\" for name \"Northgate Associates\".",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.row_pinned_update@1",
+  "template_signature": "template:1fecd0aaa4394913",
+  "prompt_class": "resolution"
+ },
+ "goal": "Cross-department hand-off on the shared lead management sop whose name is \"Northgate Associates\": Row-pinned update: support_tickets[1].status from \"open\" to \"in_progress\" Also: Row-pinned update: lead_management_sop[1].status from \"active\" to \"inactive\"",
+ "required_tools": [
+  "query_support_tickets",
+  "update_support_tickets_status",
+  "list_lead_management_sop",
+  "update_status_lead_management_sop"
+ ],
+ "complexity": "medium",
+ "method": "programmatic",
+ "steps": [
+  "Read the support ticket TKT-703339",
+  "Confirm status is \"open\"",
+  "Update status to \"in_progress\"",
+  "Confirm no other row was modified",
+  "Read the lead management sop Northgate Associates",
+  "Confirm status is \"active\"",
+  "Update status to \"inactive\"",
+  "Confirm no other row was modified"
+ ],
+ "relevant_data": [
+  {
+   "table": "support_tickets",
+   "id": "1",
+   "field": "ticket_number",
+   "value": "TKT-703339"
+  },
+  {
+   "table": "lead_management_sop",
+   "id": "1",
+   "field": "name",
+   "value": "Northgate Associates"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "lead_management_sop",
+   "id": "1",
+   "field": "status",
+   "from": "active",
+   "to": "inactive"
+  },
+  {
+   "table": "support_tickets",
+   "id": "1",
+   "field": "status",
+   "from": "open",
+   "to": "in_progress"
+  }
+ ],
+ "tables_affected": [
+  "lead_management_sop",
+  "support_tickets"
+ ],
+ "effects": [
+  {
+   "table": "lead_management_sop",
+   "op": "update",
+   "field": "status",
+   "value": "inactive"
+  },
+  {
+   "table": "support_tickets",
+   "op": "update",
+   "field": "status",
+   "value": "in_progress"
+  }
+ ],
+ "walk": [
+  "query_support_tickets",
+  "update_support_tickets_status",
+  "list_lead_management_sop",
+  "update_status_lead_management_sop"
+ ],
+ "_cross_core": true,
+ "anchor_refs": [
+  "anc_3983fe9e5ae5",
+  "anc_16fec4c8f151",
+  "anc_470a6ea97a81",
+  "anc_2f3b862a5267",
+  "anc_2e59d45743fc",
+  "anc_421a807fae1a",
+  "anc_c0c1c3f7a263",
+  "anc_608e9c5415fb"
+ ],
+ "departments": [
+  "core",
+  "customer_support"
+ ],
+ "acceptance_label": "in_band",
+ "difficulty_tier": "medium",
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_001",
+  "measured": false,
+  "reason": "budget_exhausted",
+  "detail": "solvability budget expired before this sampled task ran"
+ },
+ "provenance": {
+  "evidence_ids": [
+   "anc_3983fe9e5ae5",
+   "anc_16fec4c8f151",
+   "anc_470a6ea97a81",
+   "anc_2f3b862a5267",
+   "anc_2e59d45743fc",
+   "anc_421a807fae1a",
+   "anc_c0c1c3f7a263",
+   "anc_608e9c5415fb"
+  ],
+  "tool_graph_path": [
+   "query_support_tickets",
+   "update_support_tickets_status",
+   "list_lead_management_sop",
+   "update_status_lead_management_sop"
+  ],
+  "tool_graph_edges": [
+   "query_support_tickets\u0000update_support_tickets_status",
+   "update_support_tickets_status\u0000list_lead_management_sop",
+   "list_lead_management_sop\u0000update_status_lead_management_sop"
+  ],
+  "verifier_id": "task_001",
+  "difficulty_reason": "medium: walk length 4"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_core_operations",
+   "dept_customer_support"
+  ],
+  "employee_ids": [
+   "emp_7"
+  ],
+  "workflow_ids": [
+   "workflow_customer_support",
+   "workflow_crm_operations",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff"
+  ],
+  "cross_department": true
+ },
+ "session": [
+  {
+   "turn": 2,
+   "kind": "fragment",
+   "user_text": "繼續"
+  },
+  {
+   "turn": 3,
+   "kind": "followup",
+   "user_text": "And what does it show now?"
+  }
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "checked_at": "2026-08-10T00:30:53.852Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_960148546e62b09e9afbeb00fc9dfb74490a6d36aa184cebd45db030d8e439af",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ }
+}

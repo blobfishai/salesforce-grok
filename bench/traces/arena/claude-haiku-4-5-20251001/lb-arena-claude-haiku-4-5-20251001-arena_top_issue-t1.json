@@ -1,0 +1,52 @@
+{
+ "label": "lb-arena-claude-haiku-4-5-20251001",
+ "level": 2,
+ "taskId": "arena_top_issue",
+ "type": "top_issue_identification",
+ "trial": 1,
+ "prompt": "Identify the most common issue category among support tickets that are still active (status open, in_progress, or waiting_customer). The issue category is the ticket subject's leading phrase. Return only the category name.",
+ "gt": "Billing discrepancy",
+ "metric": "fuzzy",
+ "docs": [],
+ "steps": [
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "status": "open",
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 21, \"rows\": [{\"id\": 1, \"ticket_number\": \"TKT-703339\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Lisa Park\", \"priority\": \"urgent\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-05-13\", \"business_unit_id\": 6, \"status\": \"open\"}, {\"id\": 15, \"ticket_number\": \"TKT-658990\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Kevin Wright\", \"priority\": \"high\", \"assignee_employee_id\": 4, \"opened_at\": \"2026-05-26\", \"business_unit_id\": 2, \"status\": \"open\"}, {\"id\": 16, \"ticket_number\": \"TKT-687027\", \"subject\": \"Question about business unit status\", \"customer_name\": \"Elena Volkov\", \"priority\": \"low\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-03-07\", \"business_unit_id\": 4, \"status\": \"open\"}, {\"id\": 30, \"ticket_number\": \"TKT-517277\", \"subject\": \"Question about business unit status\", \"customer_name\": \"David Brown 30\""
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "status": "in_progress",
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 56, \"rows\": [{\"id\": 3, \"ticket_number\": \"TKT-995387\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Yuki Tanaka\", \"priority\": \"low\", \"assignee_employee_id\": 6, \"opened_at\": \"2026-05-18\", \"business_unit_id\": 10, \"status\": \"in_progress\"}, {\"id\": 5, \"ticket_number\": \"TKT-975596\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Alex Chen\", \"priority\": \"high\", \"assignee_employee_id\": 2, \"opened_at\": \"2026-01-06\", \"business_unit_id\": 4, \"status\": \"in_progress\"}, {\"id\": 8, \"ticket_number\": \"TKT-739074\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Sarah Kim\", \"priority\": \"low\", \"assignee_employee_id\": 14, \"opened_at\": \"2026-02-22\", \"business_unit_id\": 1, \"status\": \"in_progress\"}, {\"id\": 11, \"ticket_number\": \"TKT-997692\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"Nina Kowalski\""
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "status": "waiting_customer",
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 49, \"rows\": [{\"id\": 6, \"ticket_number\": \"TKT-487758\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Thomas Lee\", \"priority\": \"medium\", \"assignee_employee_id\": 18, \"opened_at\": \"2026-04-16\", \"business_unit_id\": 1, \"status\": \"waiting_customer\"}, {\"id\": 14, \"ticket_number\": \"TKT-614849\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Carlos Rivera\", \"priority\": \"high\", \"assignee_employee_id\": 4, \"opened_at\": \"2026-06-22\", \"business_unit_id\": 1, \"status\": \"waiting_customer\"}, {\"id\": 21, \"ticket_number\": \"TKT-376151\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Robert Martinez 21\", \"priority\": \"medium\", \"assignee_employee_id\": 13, \"opened_at\": \"2026-01-13\", \"business_unit_id\": 7, \"status\": \"waiting_customer\"}, {\"id\": 27, \"ticket_number\": \"TKT-492915\", \"subject\": \"Billing discrepancy on business uni"
+  },
+  {
+   "k": "answer",
+   "text": "Billing discrepancy"
+  }
+ ],
+ "usage": {
+  "prompt": 48567,
+  "completion": 599
+ },
+ "answer": "Billing discrepancy",
+ "passed": true,
+ "model": "claude-haiku-4-5-20251001",
+ "costUsd": 0.0516
+}

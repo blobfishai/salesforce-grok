@@ -1,0 +1,84 @@
+{
+ "task_id": "task_022",
+ "prompt": "In the morgan_stanley_simulated world: locate the lead management sop record whose name is \"Meridian Logistics\" and whose created_at is exactly \"2025-04-03\" and process it according to the CURRENT lead management sop handling procedure in the document store. Be careful: multiple versions of the procedure exist and some are outdated, and the current procedure's outcome depends on the record's own attributes. Verify the record first, apply exactly one correct transition, change nothing else, and report what you did.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.row_pinned_update@1",
+  "template_signature": "template:1fecd0aaa4394913",
+  "prompt_class": "resolution"
+ },
+ "goal": "Row-pinned update: lead_management_sop[2].status from \"inactive\" to \"pending\"",
+ "required_tools": [
+  "list_lead_management_sop",
+  "update_status_lead_management_sop"
+ ],
+ "complexity": "medium",
+ "method": "programmatic",
+ "steps": [
+  "Read the lead management sop Meridian Logistics",
+  "Confirm status is \"inactive\"",
+  "Update status to \"pending\"",
+  "Confirm no other row was modified"
+ ],
+ "relevant_data": [
+  {
+   "table": "lead_management_sop",
+   "id": "2",
+   "field": "name",
+   "value": "Meridian Logistics"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "lead_management_sop",
+   "id": "2",
+   "field": "status",
+   "from": "inactive",
+   "to": "pending"
+  }
+ ],
+ "tables_affected": [
+  "lead_management_sop"
+ ],
+ "effects": [
+  {
+   "table": "lead_management_sop",
+   "op": "update",
+   "field": "status",
+   "value": "pending"
+  }
+ ],
+ "walk": [
+  "list_lead_management_sop",
+  "update_status_lead_management_sop"
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "checked_at": "2026-08-10T00:29:42.336Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_bfb1de94eb5f0ada3e14be121cfd9e5f35e4b2ea503aedbbc77a8ba3c6a47798",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_core_operations"
+  ],
+  "employee_ids": [],
+  "workflow_ids": [
+   "workflow_crm_operations",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff"
+  ],
+  "cross_department": false
+ }
+}

@@ -1,0 +1,54 @@
+{
+ "label": "lb-arena-deepseek-v4-flash",
+ "level": 2,
+ "taskId": "arena_lead_qualification",
+ "type": "lead_qualification",
+ "trial": 2,
+ "prompt": "Based on the latest discussion notes for the lead \"Riverside Contact\" in the document store, can this lead be qualified? If the answer is no, which factors—'Budget', 'Authority', 'Need', or 'Timeline'—are responsible? Return only one or several of the four BANT factors, or 'None' if the lead qualifies.",
+ "gt": [
+  "Budget"
+ ],
+ "metric": "set",
+ "docs": [
+  "Lead Discussion Notes — Riverside Contact",
+  "Lead Discussion Notes — Riverside Contact (update)"
+ ],
+ "steps": [
+  {
+   "k": "thinking",
+   "text": "The user wants me to look at the latest discussion notes for the lead \"Riverside Contact\" in the document store, and determine if this lead can be qualified based on BANT factors (Budget, Authority, Need, Timeline).\n\nLet me search the document store for relevant documents."
+  },
+  {
+   "k": "tool",
+   "name": "core.query_files",
+   "args": {
+    "query": "Riverside"
+   },
+   "result": "{\"table\": \"agent_files\", \"query\": \"Riverside\", \"count\": 1, \"rows\": [{\"id\": 2, \"filename\": \"lead_import.tsv\", \"content_type\": \"text/tab-separated-values\", \"content\": \"id\\tcompany\\tcontactname\\tsegment\\tstatus\\tinterestproductid\\tcreated_at\\n1\\tunder review\\tRiverside Contact\\tdeferred\\tWorking\\ton hold\\t2024-08-23\\n2\\tunder review\\tCedar Contact\\tescalated\\tConverted\\texpedited\\t2025-06-27\\n3\\tconfirmed\\tMeridian Contact\\troutine\\tConverted\\troutine\\t2025-03-27\\n4\\texpedited\\tLakeshore Contact\\ton hold\\tConverted\\tstandard\\t2025-08-27\\n5\\tclosed out\\tCedar Contact\\tstandard\\tWorking\\tunder review\\t2024-10-08\\n6\\tunder review\\tFairview Contact\\tconfirmed\\tWorking\\tprovisional\\t2025-02-27\\n7\\tstandard\\tHarbor Contact\\tclosed out\\tWorking\\tclosed out\\t2025-05-06\\n8\\troutine\\tHarbor Contact\\tconfirmed\\tWorking\\tconfirmed\\t2025-05-23\\n9\\tclosed out\\tNorthgate Contact\\tconfirmed\\tWorking\\tstand"
+  },
+  {
+   "k": "tool",
+   "name": "notion.query_documents",
+   "args": {
+    "query": "Riverside"
+   },
+   "result": "{\"table\": \"agent_documents\", \"query\": \"Riverside\", \"count\": 2, \"rows\": [{\"id\": 9, \"title\": \"Lead Discussion Notes \\u2014 Riverside Contact\", \"body\": \"Call 1 (2026-05-02): Riverside operations lead confirmed a approved budget envelope of $120k for this initiative; procurement has the PO template ready. Call 2 (2026-05-16): Clear need \\u2014 their manual reconciliation runs 11 hours/week and misses SLAs; they want go-live inside Q4, and the project plan shows a committed timeline. Call 3 (2026-06-03): Our champion is an operations manager who cannot sign; the CFO (economic buyer) has not joined any call and deferred twice. No signature authority has been established.\", \"updated_at\": \"2026-06-03T17:00:00Z\"}, {\"id\": 10, \"title\": \"Lead Discussion Notes \\u2014 Riverside Contact (update)\", \"body\": \"Update (2026-07-21, supersedes earlier notes where they conflict): The CFO joined the last call a"
+  },
+  {
+   "k": "thinking",
+   "text": "Let me analyze the discussion notes for the lead \"Riverside Contact\".\n\nDocument 9 (Lead Discussion Notes — Riverside Contact, updated 2026-06-03):\n- Call 1 (2026-05-02): approved budget envelope of $120k confirmed; procurement PO template ready. → Budget OK\n- Call 2 (2026-05-16): Clear need — manual reconciliation runs 11 hours/week and misses SLAs; want go-live inside Q4, committed timeline. → Need OK, Timeline OK\n- Call 3 (2026-06-03): Champion is an operations manager who cannot sign; CFO (economic buyer) has not joined and deferred twice. No signature authority. → Authority NOT OK\n\nDocument 10 (Lead Discussion Notes — Riverside Contact (update), updated 2026-07-21, supersedes earlier notes where they conflict):\n- CFO joined last call and confirmed signing authority is resolved. → Authority OK now\n- However, group finance froze the initiative budget pending the H2 review — the $120k envelope is no longer approved. → Budget NOT OK now\n- Need and timeline are unchanged. → Need OK, Timeline OK\n\nSo the latest notes (07-21, which supersede earlier notes where they conflict) say:\n- Budget: NOT OK (frozen, no longer approved)\n- Authority: OK (resolved)\n- Need: OK (unchanged)\n- Timeline: OK (unchanged)\n\nTherefore the lead cannot be qualified due to 'Budget'.\n\nAnswer: Budget"
+  },
+  {
+   "k": "answer",
+   "text": "Budget"
+  }
+ ],
+ "usage": {
+  "prompt": 37216,
+  "completion": 462
+ },
+ "answer": "Budget",
+ "passed": true,
+ "model": "deepseek-v4-flash",
+ "costUsd": 0.0053
+}

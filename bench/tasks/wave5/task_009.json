@@ -1,0 +1,165 @@
+{
+ "task_id": "task_009",
+ "prompt": "In the morgan_stanley_simulated world: Find the sales opportunity OPP-902092, verify status is \"discovery\", then set its status to \"proposal\". Do not modify any other sales opportunities record. Then, in the same pass: In the morgan_stanley_simulated world: Find the lead management sop Northgate Associates, verify status is \"active\", then set its status to \"inactive\". Do not modify any other lead management sop record. Required outcomes: set sales_opportunities.status to \"proposal\" for opportunity number \"OPP-902092\"; set lead_management_sop.status to \"inactive\" for name \"Northgate Associates\".",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.row_pinned_update@1",
+  "template_signature": "template:1fecd0aaa4394913",
+  "prompt_class": "resolution"
+ },
+ "goal": "Cross-department hand-off on the shared lead management sop whose name is \"Northgate Associates\": Row-pinned update: sales_opportunities[1].status from \"discovery\" to \"proposal\" Also: Row-pinned update: lead_management_sop[1].status from \"active\" to \"inactive\"",
+ "required_tools": [
+  "query_sales_opportunities",
+  "update_sales_opportunities_status",
+  "list_lead_management_sop",
+  "update_status_lead_management_sop"
+ ],
+ "complexity": "medium",
+ "method": "programmatic",
+ "steps": [
+  "Read the sales opportunity OPP-902092",
+  "Confirm status is \"discovery\"",
+  "Update status to \"proposal\"",
+  "Confirm no other row was modified",
+  "Read the lead management sop Northgate Associates",
+  "Confirm status is \"active\"",
+  "Update status to \"inactive\"",
+  "Confirm no other row was modified"
+ ],
+ "relevant_data": [
+  {
+   "table": "sales_opportunities",
+   "id": "1",
+   "field": "opportunity_number",
+   "value": "OPP-902092"
+  },
+  {
+   "table": "lead_management_sop",
+   "id": "1",
+   "field": "name",
+   "value": "Northgate Associates"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "lead_management_sop",
+   "id": "1",
+   "field": "status",
+   "from": "active",
+   "to": "inactive"
+  },
+  {
+   "table": "sales_opportunities",
+   "id": "1",
+   "field": "status",
+   "from": "discovery",
+   "to": "proposal"
+  }
+ ],
+ "tables_affected": [
+  "lead_management_sop",
+  "sales_opportunities"
+ ],
+ "effects": [
+  {
+   "table": "lead_management_sop",
+   "op": "update",
+   "field": "status",
+   "value": "inactive"
+  },
+  {
+   "table": "sales_opportunities",
+   "op": "update",
+   "field": "status",
+   "value": "proposal"
+  }
+ ],
+ "walk": [
+  "query_sales_opportunities",
+  "update_sales_opportunities_status",
+  "list_lead_management_sop",
+  "update_status_lead_management_sop"
+ ],
+ "_cross_core": true,
+ "anchor_refs": [
+  "anc_3983fe9e5ae5",
+  "anc_16fec4c8f151",
+  "anc_470a6ea97a81",
+  "anc_2f3b862a5267",
+  "anc_2e59d45743fc",
+  "anc_421a807fae1a",
+  "anc_c0c1c3f7a263",
+  "anc_608e9c5415fb"
+ ],
+ "departments": [
+  "core",
+  "sales"
+ ],
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_b02b947f4c4a8404446b1b1412764c7314bf0f1cba227fe8b98b6e558d30de72",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "acceptance_label": "in_band",
+ "difficulty_tier": "medium",
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "checked_at": "2026-08-10T00:25:17.653Z"
+ },
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_009",
+  "measured": false,
+  "reason": "not_sampled",
+  "detail": "outside the stratified solvability sample; deterministic acceptance evidence stands"
+ },
+ "provenance": {
+  "evidence_ids": [
+   "anc_3983fe9e5ae5",
+   "anc_16fec4c8f151",
+   "anc_470a6ea97a81",
+   "anc_2f3b862a5267",
+   "anc_2e59d45743fc",
+   "anc_421a807fae1a",
+   "anc_c0c1c3f7a263",
+   "anc_608e9c5415fb"
+  ],
+  "tool_graph_path": [
+   "query_sales_opportunities",
+   "update_sales_opportunities_status",
+   "list_lead_management_sop",
+   "update_status_lead_management_sop"
+  ],
+  "tool_graph_edges": [
+   "query_sales_opportunities\u0000update_sales_opportunities_status",
+   "update_sales_opportunities_status\u0000list_lead_management_sop",
+   "list_lead_management_sop\u0000update_status_lead_management_sop"
+  ],
+  "verifier_id": "task_009",
+  "difficulty_reason": "medium: walk length 4"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_core_operations",
+   "dept_sales"
+  ],
+  "employee_ids": [
+   "emp_7"
+  ],
+  "workflow_ids": [
+   "workflow_sales",
+   "workflow_crm_operations",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff"
+  ],
+  "cross_department": true
+ }
+}

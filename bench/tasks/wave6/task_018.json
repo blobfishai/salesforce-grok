@@ -1,0 +1,87 @@
+{
+ "task_id": "task_018",
+ "prompt": "In the morgan_stanley_simulated world: Find the lead management sop Northgate Associates, verify status is \"active\", then set its status to \"inactive\". Do not modify any other lead management sop record.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.row_pinned_update@1",
+  "template_signature": "template:1fecd0aaa4394913",
+  "prompt_class": "resolution"
+ },
+ "goal": "Row-pinned update: lead_management_sop[1].status from \"active\" to \"inactive\"",
+ "required_tools": [
+  "core_records_agent",
+  "core_workflow_agent"
+ ],
+ "complexity": "medium",
+ "method": "programmatic",
+ "steps": [
+  "Read the lead management sop Northgate Associates",
+  "Confirm status is \"active\"",
+  "Update status to \"inactive\"",
+  "Confirm no other row was modified"
+ ],
+ "relevant_data": [
+  {
+   "table": "lead_management_sop",
+   "id": "1",
+   "field": "name",
+   "value": "Northgate Associates"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "lead_management_sop",
+   "id": "1",
+   "field": "status",
+   "from": "active",
+   "to": "inactive"
+  }
+ ],
+ "tables_affected": [
+  "lead_management_sop"
+ ],
+ "effects": [
+  {
+   "table": "lead_management_sop",
+   "op": "update",
+   "field": "status",
+   "value": "inactive"
+  }
+ ],
+ "walk": [
+  "core_records_agent",
+  "core_workflow_agent"
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "checked_at": "2026-08-10T07:59:00.004Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_c8ed6c4a7d9b6da5c1ec435b82c5fe2392b3f1c159a972dfb2cea470810b6207",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_core_operations"
+  ],
+  "employee_ids": [],
+  "workflow_ids": [
+   "workflow_crm_operations",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff",
+   "workflow_marketing_crm_operations_handoff",
+   "workflow_finance_crm_operations_handoff",
+   "workflow_sourcing_crm_operations_handoff"
+  ],
+  "cross_department": false
+ }
+}

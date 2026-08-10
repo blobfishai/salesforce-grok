@@ -1,0 +1,56 @@
+{
+ "schema": "task-seed.v1",
+ "task_id": "task_014",
+ "rows": {
+  "finance_expense_reports": [
+   {
+    "id": 43,
+    "employee_id": 1,
+    "category": "travel",
+    "amount": 754.44,
+    "submitted_at": "2026-03-09",
+    "approver_employee_id": 13,
+    "status": "approved",
+    "report_number": "EXP-300961"
+   }
+  ],
+  "employees": [
+   {
+    "id": 3,
+    "name": "James Wilson",
+    "email": "contact79271@morganstanleysimulated.com",
+    "job_title": "Financial Analyst",
+    "department_id": 3,
+    "hire_date": "2023-06-15",
+    "status": "active",
+    "employee_number": "EMP-137846"
+   },
+   {
+    "id": 3,
+    "name": "James Wilson",
+    "email": "contact79271@morganstanleysimulated.com",
+    "job_title": "Financial Analyst",
+    "department_id": 3,
+    "hire_date": "2023-06-15",
+    "status": "active",
+    "employee_number": "EMP-137846"
+   }
+  ]
+ },
+ "documents": [],
+ "input_documents": [],
+ "mcp_seeding": {
+  "github": [
+   "query_finance_expense_reports",
+   "lookup_finance_expense_report_with_employees"
+  ],
+  "salesforce": [
+   "query_sales_leads"
+  ],
+  "core": [
+   "lookup_employee_work_assignment_with_employees",
+   "lookup_finance_budget_with_departments",
+   "update_employees_status"
+  ]
+ }
+}

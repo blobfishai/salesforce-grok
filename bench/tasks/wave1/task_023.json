@@ -1,0 +1,109 @@
+{
+ "task_id": "task_023",
+ "prompt": "In the morgan_stanley_simulated world, process finance expense reports record \"EXP-779082\", which is assigned to Brian Murphy. Use the employee-aware lookup to verify the assignment and confirm status is \"approved\", then update its status to the next stage in the finance expense reports lifecycle, changing only that workflow record.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.employee_grounded_workflow@1",
+  "template_key": "finance_expense_reports:status:employee_assignment",
+  "template_signature": "template:65ad121aa0cbc7c1",
+  "prompt_class": "resolution"
+ },
+ "goal": "Employee-grounded workflow: finance expense reports \"EXP-779082\".status from \"approved\" to \"reimbursed\"",
+ "required_tools": [
+  "lookup_finance_expense_report_with_employees",
+  "finance_workflow_agent",
+  "finance_records_agent"
+ ],
+ "complexity": "medium",
+ "method": "programmatic",
+ "steps": [
+  "Look up finance_expense_reports record \"EXP-779082\" with its employee assignments",
+  "Verify the assigned employee: Brian Murphy",
+  "Confirm status is \"approved\"",
+  "Update status to \"reimbursed\"",
+  "Confirm no employee record or unrelated workflow row changed"
+ ],
+ "relevant_data": [
+  {
+   "table": "finance_expense_reports",
+   "id": "131",
+   "field": "status",
+   "value": "approved"
+  },
+  {
+   "table": "finance_expense_reports",
+   "id": "131",
+   "field": "approver_employee_id",
+   "value": 7
+  },
+  {
+   "table": "finance_expense_reports",
+   "id": 131,
+   "field": "report_number",
+   "value": "EXP-779082"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "finance_expense_reports",
+   "id": "131",
+   "field": "status",
+   "from": "approved",
+   "to": "reimbursed"
+  }
+ ],
+ "tables_affected": [
+  "finance_expense_reports"
+ ],
+ "effects": [
+  {
+   "table": "finance_expense_reports",
+   "op": "update",
+   "field": "status",
+   "value": "reimbursed"
+  }
+ ],
+ "walk": [
+  "lookup_finance_expense_report_with_employees",
+  "finance_workflow_agent"
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"opportunity.stage\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-09T21:10:53.122Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_f724dab7051a233c21614e431dffd00edd126c77c3f7e03e06ae07249a9f09a7",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_finance",
+   "dept_core_operations",
+   "dept_customer_support"
+  ],
+  "employee_ids": [
+   "emp_7",
+   "emp_4"
+  ],
+  "workflow_ids": [
+   "workflow_finance",
+   "workflow_customer_support",
+   "workflow_crm_operations",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff"
+  ],
+  "cross_department": true
+ }
+}

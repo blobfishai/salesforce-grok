@@ -1,0 +1,311 @@
+{
+ "label": "arena-l2",
+ "level": 2,
+ "taskId": "arena_case_routing",
+ "type": "case_routing",
+ "trial": 3,
+ "prompt": "Use the case routing policy in the document store to determine the most suitable agent for the given case. Return only the employee number of the agent.\n## Given Case\n- Case Subject: Billing discrepancy on Q3 custody statement\n- Case Description: The client reports fee lines on the Q3 custody statement that do not match the agreed schedule and requests correction.",
+ "gt": "EMP-698636",
+ "metric": "exact",
+ "docs": [
+  "Case Routing Policy (rev. 2 — CURRENT)"
+ ],
+ "steps": [
+  {
+   "k": "thinking",
+   "text": "The user wants me to use the case routing policy in the document store to determine the most suitable agent for the given case and return only the employee number of the agent.\n"
+  },
+  {
+   "k": "tool",
+   "name": "notion.query_documents",
+   "args": {
+    "query": "case routing policy",
+    "limit": 50
+   },
+   "result": "{\"table\": \"agent_documents\", \"query\": \"case routing policy\", \"count\": 2, \"rows\": [{\"id\": 3, \"title\": \"Case Routing Policy (rev. 2 \\u2014 CURRENT)\", \"body\": \"Effective 2026-06-01, supersedes rev. 1. Issue categories are determined by the ticket subject prefix: \\\"Billing discrepancy\\\", \\\"Problem updating\\\", \\\"Cannot access\\\", \\\"Question about\\\". A new case routes to the ELIGIBLE agent who has completed (status resolved or closed) the most support tickets in the case's category. Eligibility: employees with status \\\"active\\\" only \\u2014 agents on leave or terminated are never routed. Tie-break 1: fewer currently active tickets (open, in_progress, waiting_customer). Tie-break 2: earlier hire_date. Answer with the agent's employee_number.\", \"updated_at\": \"2026-06-01T09:00:00Z\"}, {\"id\": 4, \"title\": \"Case Routing Policy (rev. 1)\", \"body\": \"[SUPERSEDED] Route new cases to the agent with the most "
+  },
+  {
+   "k": "tool",
+   "name": "core.query_files",
+   "args": {
+    "query": "case routing policy",
+    "limit": 50
+   },
+   "result": "{\"table\": \"agent_files\", \"query\": \"case routing policy\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "thinking",
+   "text": "The current policy is clear. The case subject is \"Billing discrepancy on Q3 custody statement\", so the category is \"Billing discrepancy\" based on the subject prefix.\n"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 200, \"rows\": [{\"id\": 1, \"ticket_number\": \"TKT-703339\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Lisa Park\", \"priority\": \"urgent\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-05-13\", \"business_unit_id\": 6, \"status\": \"open\"}, {\"id\": 2, \"ticket_number\": \"TKT-979617\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Omar Hassan\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-06-16\", \"business_unit_id\": 2, \"status\": \"resolved\"}, {\"id\": 3, \"ticket_number\": \"TKT-995387\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Yuki Tanaka\", \"priority\": \"low\", \"assignee_employee_id\": 6, \"opened_at\": \"2026-05-18\", \"business_unit_id\": 10, \"status\": \"in_progress\"}, {\"id\": 4, \"ticket_number\": \"TKT-412766\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Mich"
+  },
+  {
+   "k": "tool",
+   "name": "core.query_employees",
+   "args": {
+    "limit": 200
+   },
+   "result": "{\"table\": \"employees\", \"count\": 20, \"rows\": [{\"id\": 1, \"employee_number\": \"EMP-698636\", \"name\": \"David Brown\", \"email\": \"contact87222@morganstanleysimulated.com\", \"job_title\": \"Sales Manager\", \"department_id\": 1, \"hire_date\": \"2025-05-15\", \"status\": \"active\"}, {\"id\": 2, \"employee_number\": \"EMP-180062\", \"name\": \"Priya Patel\", \"email\": \"contact18693@morganstanleysimulated.com\", \"job_title\": \"Recruiter\", \"department_id\": 2, \"hire_date\": \"2023-02-15\", \"status\": \"on_leave\"}, {\"id\": 3, \"employee_number\": \"EMP-137846\", \"name\": \"James Wilson\", \"email\": \"contact79271@morganstanleysimulated.com\", \"job_title\": \"Financial Analyst\", \"department_id\": 3, \"hire_date\": \"2023-06-15\", \"status\": \"active\"}, {\"id\": 4, \"employee_number\": \"EMP-272682\", \"name\": \"Mei Huang\", \"email\": \"contact4101@morganstanleysimulated.com\", \"job_title\": \"Support Specialist\", \"department_id\": 4, \"hire_date\": \"2024-02-15\", \"status"
+  },
+  {
+   "k": "thinking",
+   "text": "The ticket list was truncated. I need all billing discrepancy tickets. Let me query specifically for billing discrepancy subjects."
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "subject": "Billing discrepancy",
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "thinking",
+   "text": "The subject filter might need exact match. Let me try different approaches."
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 200, \"rows\": [{\"id\": 1, \"ticket_number\": \"TKT-703339\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Lisa Park\", \"priority\": \"urgent\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-05-13\", \"business_unit_id\": 6, \"status\": \"open\"}, {\"id\": 2, \"ticket_number\": \"TKT-979617\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Omar Hassan\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-06-16\", \"business_unit_id\": 2, \"status\": \"resolved\"}, {\"id\": 3, \"ticket_number\": \"TKT-995387\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Yuki Tanaka\", \"priority\": \"low\", \"assignee_employee_id\": 6, \"opened_at\": \"2026-05-18\", \"business_unit_id\": 10, \"status\": \"in_progress\"}, {\"id\": 4, \"ticket_number\": \"TKT-412766\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Mich"
+  },
+  {
+   "k": "thinking",
+   "text": "The response is truncated at ticket 33. I need to get more tickets. Let me try querying by status for resolved and closed billing tickets, or get tickets in batches somehow. The query tool might not s..."
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "status": "resolved",
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 61, \"rows\": [{\"id\": 2, \"ticket_number\": \"TKT-979617\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Omar Hassan\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-06-16\", \"business_unit_id\": 2, \"status\": \"resolved\"}, {\"id\": 4, \"ticket_number\": \"TKT-412766\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Michael Johnson\", \"priority\": \"low\", \"assignee_employee_id\": 3, \"opened_at\": \"2026-02-23\", \"business_unit_id\": 1, \"status\": \"resolved\"}, {\"id\": 7, \"ticket_number\": \"TKT-643495\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Aisha Ahmad\", \"priority\": \"high\", \"assignee_employee_id\": 5, \"opened_at\": \"2026-03-17\", \"business_unit_id\": 1, \"status\": \"resolved\"}, {\"id\": 13, \"ticket_number\": \"TKT-970573\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"Brian Mu"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "status": "closed",
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 15, \"rows\": [{\"id\": 9, \"ticket_number\": \"TKT-541371\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"David Brown\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-04-14\", \"business_unit_id\": 1, \"status\": \"closed\"}, {\"id\": 10, \"ticket_number\": \"TKT-497067\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"Fatima Ali\", \"priority\": \"medium\", \"assignee_employee_id\": 5, \"opened_at\": \"2026-02-01\", \"business_unit_id\": 7, \"status\": \"closed\"}, {\"id\": 18, \"ticket_number\": \"TKT-551832\", \"subject\": \"Question about business unit status\", \"customer_name\": \"Maria Garcia\", \"priority\": \"urgent\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-05-09\", \"business_unit_id\": 10, \"status\": \"closed\"}, {\"id\": 24, \"ticket_number\": \"TKT-386861\", \"subject\": \"Question about business unit status\", \"customer_name\": \"Omar H"
+  },
+  {
+   "k": "thinking",
+   "text": "I need to get the full list of resolved tickets that were truncated. Let me continue querying."
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "status": "resolved",
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 61, \"rows\": [{\"id\": 2, \"ticket_number\": \"TKT-979617\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Omar Hassan\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-06-16\", \"business_unit_id\": 2, \"status\": \"resolved\"}, {\"id\": 4, \"ticket_number\": \"TKT-412766\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Michael Johnson\", \"priority\": \"low\", \"assignee_employee_id\": 3, \"opened_at\": \"2026-02-23\", \"business_unit_id\": 1, \"status\": \"resolved\"}, {\"id\": 7, \"ticket_number\": \"TKT-643495\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Aisha Ahmad\", \"priority\": \"high\", \"assignee_employee_id\": 5, \"opened_at\": \"2026-03-17\", \"business_unit_id\": 1, \"status\": \"resolved\"}, {\"id\": 13, \"ticket_number\": \"TKT-970573\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"Brian Mu"
+  },
+  {
+   "k": "thinking",
+   "text": "The resolved tickets list is truncated at id 110. Let me try to get more by querying with different approaches - maybe use the sheet agent or get tickets by assignee for active employees.\n"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "status": "resolved",
+    "limit": 100
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 61, \"rows\": [{\"id\": 2, \"ticket_number\": \"TKT-979617\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Omar Hassan\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-06-16\", \"business_unit_id\": 2, \"status\": \"resolved\"}, {\"id\": 4, \"ticket_number\": \"TKT-412766\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Michael Johnson\", \"priority\": \"low\", \"assignee_employee_id\": 3, \"opened_at\": \"2026-02-23\", \"business_unit_id\": 1, \"status\": \"resolved\"}, {\"id\": 7, \"ticket_number\": \"TKT-643495\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Aisha Ahmad\", \"priority\": \"high\", \"assignee_employee_id\": 5, \"opened_at\": \"2026-03-17\", \"business_unit_id\": 1, \"status\": \"resolved\"}, {\"id\": 13, \"ticket_number\": \"TKT-970573\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"Brian Mu"
+  },
+  {
+   "k": "tool",
+   "name": "jira.customer_support_records_agent",
+   "args": {
+    "request": "in table support_tickets, find ticket_number \"TKT-531451\" and return the complete record"
+   },
+   "result": "{\"status\": \"found\", \"table\": \"support_tickets\", \"business_handle\": {\"ticket_number\": \"TKT-531451\"}, \"record\": {\"id\": 110, \"ticket_number\": \"TKT-531451\", \"subject\": \"Question about business unit status\", \"customer_name\": \"Brian Murphy 110\", \"priority\": \"high\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-02-21\", \"business_unit_id\": 1, \"status\": \"resolved\"}, \"declared_lifecycles\": {\"status\": [\"open\", \"in_progress\", \"waiting_customer\", \"resolved\", \"closed\"]}, \"next_valid_values\": {\"status\": \"closed\"}, \"resolution_receipt\": {\"request\": \"in table support_tickets, find ticket_number \\\"TKT-531451\\\" and return the complete record\", \"strategy\": \"unique_business_handle\", \"candidate_limit\": 3, \"match_count\": 1, \"matched_field\": \"ticket_number\", \"available_business_handle_fields\": [\"ticket_number\", \"subject\", \"customer_name\"], \"available_resolution_fields\": [\"ticket_number\", \"subject\", \"customer_na"
+  },
+  {
+   "k": "tool",
+   "name": "github.sheet_agent",
+   "args": {
+    "request": "read support_tickets"
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 50, \"rows\": [{\"id\": 1, \"ticket_number\": \"TKT-703339\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Lisa Park\", \"priority\": \"urgent\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-05-13\", \"business_unit_id\": 6, \"status\": \"open\"}, {\"id\": 2, \"ticket_number\": \"TKT-979617\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Omar Hassan\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-06-16\", \"business_unit_id\": 2, \"status\": \"resolved\"}, {\"id\": 3, \"ticket_number\": \"TKT-995387\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Yuki Tanaka\", \"priority\": \"low\", \"assignee_employee_id\": 6, \"opened_at\": \"2026-05-18\", \"business_unit_id\": 10, \"status\": \"in_progress\"}, {\"id\": 4, \"ticket_number\": \"TKT-412766\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Micha"
+  },
+  {
+   "k": "thinking",
+   "text": "I need a complete view of all billing discrepancy tickets. Let me use the sheet agent more carefully to get all tickets, or query by assignee for active employees."
+  },
+  {
+   "k": "tool",
+   "name": "github.sheet_agent",
+   "args": {
+    "request": "create sheet \"AllTickets\" with columns: id, ticket_number, subject, assignee_employee_id, status"
+   },
+   "result": "{\"status\": \"created\", \"sheet\": \"AllTickets\", \"sheet_id\": 1, \"columns\": [\"id\", \"ticket_number\", \"subject\", \"assignee_employee_id\", \"status\"]}"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "status": "open",
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 21, \"rows\": [{\"id\": 1, \"ticket_number\": \"TKT-703339\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Lisa Park\", \"priority\": \"urgent\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-05-13\", \"business_unit_id\": 6, \"status\": \"open\"}, {\"id\": 15, \"ticket_number\": \"TKT-658990\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Kevin Wright\", \"priority\": \"high\", \"assignee_employee_id\": 4, \"opened_at\": \"2026-05-26\", \"business_unit_id\": 2, \"status\": \"open\"}, {\"id\": 16, \"ticket_number\": \"TKT-687027\", \"subject\": \"Question about business unit status\", \"customer_name\": \"Elena Volkov\", \"priority\": \"low\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-03-07\", \"business_unit_id\": 4, \"status\": \"open\"}, {\"id\": 30, \"ticket_number\": \"TKT-517277\", \"subject\": \"Question about business unit status\", \"customer_name\": \"David Brown 30\""
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "status": "in_progress",
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 56, \"rows\": [{\"id\": 3, \"ticket_number\": \"TKT-995387\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Yuki Tanaka\", \"priority\": \"low\", \"assignee_employee_id\": 6, \"opened_at\": \"2026-05-18\", \"business_unit_id\": 10, \"status\": \"in_progress\"}, {\"id\": 5, \"ticket_number\": \"TKT-975596\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Alex Chen\", \"priority\": \"high\", \"assignee_employee_id\": 2, \"opened_at\": \"2026-01-06\", \"business_unit_id\": 4, \"status\": \"in_progress\"}, {\"id\": 8, \"ticket_number\": \"TKT-739074\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Sarah Kim\", \"priority\": \"low\", \"assignee_employee_id\": 14, \"opened_at\": \"2026-02-22\", \"business_unit_id\": 1, \"status\": \"in_progress\"}, {\"id\": 11, \"ticket_number\": \"TKT-997692\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"Nina Kowalski\""
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "status": "waiting_customer",
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 49, \"rows\": [{\"id\": 6, \"ticket_number\": \"TKT-487758\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Thomas Lee\", \"priority\": \"medium\", \"assignee_employee_id\": 18, \"opened_at\": \"2026-04-16\", \"business_unit_id\": 1, \"status\": \"waiting_customer\"}, {\"id\": 14, \"ticket_number\": \"TKT-614849\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Carlos Rivera\", \"priority\": \"high\", \"assignee_employee_id\": 4, \"opened_at\": \"2026-06-22\", \"business_unit_id\": 1, \"status\": \"waiting_customer\"}, {\"id\": 21, \"ticket_number\": \"TKT-376151\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Robert Martinez 21\", \"priority\": \"medium\", \"assignee_employee_id\": 13, \"opened_at\": \"2026-01-13\", \"business_unit_id\": 7, \"status\": \"waiting_customer\"}, {\"id\": 27, \"ticket_number\": \"TKT-492915\", \"subject\": \"Billing discrepancy on business uni"
+  },
+  {
+   "k": "thinking",
+   "text": "I need a complete count of Billing discrepancy tickets that are resolved/closed by assignee. Let me use the sheet agent more carefully and also query by assignee for active employees.\n"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "assignee_employee_id": 1,
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 49, \"rows\": [{\"id\": 2, \"ticket_number\": \"TKT-979617\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Omar Hassan\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-06-16\", \"business_unit_id\": 2, \"status\": \"resolved\"}, {\"id\": 9, \"ticket_number\": \"TKT-541371\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"David Brown\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-04-14\", \"business_unit_id\": 1, \"status\": \"closed\"}, {\"id\": 23, \"ticket_number\": \"TKT-759830\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Michael Johnson 23\", \"priority\": \"high\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-03-23\", \"business_unit_id\": 4, \"status\": \"in_progress\"}, {\"id\": 24, \"ticket_number\": \"TKT-386861\", \"subject\": \"Question about business unit status\", \"customer_nam"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "assignee_employee_id": 3,
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 18, \"rows\": [{\"id\": 4, \"ticket_number\": \"TKT-412766\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Michael Johnson\", \"priority\": \"low\", \"assignee_employee_id\": 3, \"opened_at\": \"2026-02-23\", \"business_unit_id\": 1, \"status\": \"resolved\"}, {\"id\": 17, \"ticket_number\": \"TKT-671273\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Robert Martinez\", \"priority\": \"high\", \"assignee_employee_id\": 3, \"opened_at\": \"2026-01-17\", \"business_unit_id\": 11, \"status\": \"resolved\"}, {\"id\": 32, \"ticket_number\": \"TKT-105894\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Thomas Lee 32\", \"priority\": \"medium\", \"assignee_employee_id\": 3, \"opened_at\": \"2026-06-08\", \"business_unit_id\": 4, \"status\": \"resolved\"}, {\"id\": 36, \"ticket_number\": \"TKT-654043\", \"subject\": \"Cannot access business unit records\", \"customer_n"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "assignee_employee_id": 10,
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 9, \"rows\": [{\"id\": 1, \"ticket_number\": \"TKT-703339\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Lisa Park\", \"priority\": \"urgent\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-05-13\", \"business_unit_id\": 6, \"status\": \"open\"}, {\"id\": 16, \"ticket_number\": \"TKT-687027\", \"subject\": \"Question about business unit status\", \"customer_name\": \"Elena Volkov\", \"priority\": \"low\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-03-07\", \"business_unit_id\": 4, \"status\": \"open\"}, {\"id\": 18, \"ticket_number\": \"TKT-551832\", \"subject\": \"Question about business unit status\", \"customer_name\": \"Maria Garcia\", \"priority\": \"urgent\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-05-09\", \"business_unit_id\": 10, \"status\": \"closed\"}, {\"id\": 26, \"ticket_number\": \"TKT-837776\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"James Wils"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "assignee_employee_id": 11,
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 7, \"rows\": [{\"id\": 50, \"ticket_number\": \"TKT-283495\", \"subject\": \"Question about business unit status\", \"customer_name\": \"Carlos Rivera 50\", \"priority\": \"low\", \"assignee_employee_id\": 11, \"opened_at\": \"2026-01-10\", \"business_unit_id\": 1, \"status\": \"open\"}, {\"id\": 55, \"ticket_number\": \"TKT-558106\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"James Wilson 55\", \"priority\": \"medium\", \"assignee_employee_id\": 11, \"opened_at\": \"2026-01-07\", \"business_unit_id\": 9, \"status\": \"resolved\"}, {\"id\": 108, \"ticket_number\": \"TKT-307414\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Elena Volkov 108\", \"priority\": \"low\", \"assignee_employee_id\": 11, \"opened_at\": \"2026-03-07\", \"business_unit_id\": 2, \"status\": \"waiting_customer\"}, {\"id\": 152, \"ticket_number\": \"TKT-175195\", \"subject\": \"Billing discrepancy on business unit\", \"customer_na"
+  },
+  {
+   "k": "thinking",
+   "text": "Let me continue gathering data for remaining active employees and complete the count of emp 1's tickets since it was truncated."
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "assignee_employee_id": 9,
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 6, \"rows\": [{\"id\": 46, \"ticket_number\": \"TKT-812645\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"James Wilson 46\", \"priority\": \"low\", \"assignee_employee_id\": 9, \"opened_at\": \"2026-05-03\", \"business_unit_id\": 13, \"status\": \"resolved\"}, {\"id\": 79, \"ticket_number\": \"TKT-536766\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"Nina Kowalski 79\", \"priority\": \"medium\", \"assignee_employee_id\": 9, \"opened_at\": \"2026-06-28\", \"business_unit_id\": 3, \"status\": \"waiting_customer\"}, {\"id\": 165, \"ticket_number\": \"TKT-176864\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Alex Chen 165\", \"priority\": \"urgent\", \"assignee_employee_id\": 9, \"opened_at\": \"2026-01-10\", \"business_unit_id\": 5, \"status\": \"in_progress\"}, {\"id\": 167, \"ticket_number\": \"TKT-277477\", \"subject\": \"Cannot access business unit records\", \"cu"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "assignee_employee_id": 13,
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 8, \"rows\": [{\"id\": 21, \"ticket_number\": \"TKT-376151\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Robert Martinez 21\", \"priority\": \"medium\", \"assignee_employee_id\": 13, \"opened_at\": \"2026-01-13\", \"business_unit_id\": 7, \"status\": \"waiting_customer\"}, {\"id\": 95, \"ticket_number\": \"TKT-247244\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"Maria Garcia 95\", \"priority\": \"high\", \"assignee_employee_id\": 13, \"opened_at\": \"2026-02-07\", \"business_unit_id\": 1, \"status\": \"open\"}, {\"id\": 128, \"ticket_number\": \"TKT-169560\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Mei Huang 128\", \"priority\": \"low\", \"assignee_employee_id\": 13, \"opened_at\": \"2026-01-17\", \"business_unit_id\": 9, \"status\": \"in_progress\"}, {\"id\": 145, \"ticket_number\": \"TKT-858025\", \"subject\": \"Cannot access business unit records\", \"customer_"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "assignee_employee_id": 19,
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "tool",
+   "name": "github.sheet_agent",
+   "args": {
+    "request": "read AllTickets"
+   },
+   "result": "{\"error\": \"not_found\", \"message\": \"unknown world table 'AllTickets'; no state was changed\"}"
+  },
+  {
+   "k": "thinking",
+   "text": "Let me carefully count completed Billing discrepancy tickets for active employees.\n"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "assignee_employee_id": 1,
+    "status": "resolved",
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 14, \"rows\": [{\"id\": 2, \"ticket_number\": \"TKT-979617\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Omar Hassan\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-06-16\", \"business_unit_id\": 2, \"status\": \"resolved\"}, {\"id\": 28, \"ticket_number\": \"TKT-639170\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Thomas Lee 28\", \"priority\": \"low\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-01-03\", \"business_unit_id\": 10, \"status\": \"resolved\"}, {\"id\": 40, \"ticket_number\": \"TKT-122991\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Fatima Ali 40\", \"priority\": \"low\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-04-20\", \"business_unit_id\": 2, \"status\": \"resolved\"}, {\"id\": 41, \"ticket_number\": \"TKT-382039\", \"subject\": \"Question about business unit status\", \"customer_name\": \"Lisa P"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "assignee_employee_id": 1,
+    "status": "closed",
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 7, \"rows\": [{\"id\": 9, \"ticket_number\": \"TKT-541371\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"David Brown\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-04-14\", \"business_unit_id\": 1, \"status\": \"closed\"}, {\"id\": 24, \"ticket_number\": \"TKT-386861\", \"subject\": \"Question about business unit status\", \"customer_name\": \"Omar Hassan 24\", \"priority\": \"low\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-04-09\", \"business_unit_id\": 7, \"status\": \"closed\"}, {\"id\": 25, \"ticket_number\": \"TKT-703049\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"Alex Chen 25\", \"priority\": \"high\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-01-10\", \"business_unit_id\": 8, \"status\": \"closed\"}, {\"id\": 123, \"ticket_number\": \"TKT-985260\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Omar Hassan 12"
+  },
+  {
+   "k": "tool",
+   "name": "notion.read_file",
+   "args": {
+    "filename": "Case Routing Policy (rev. 2 — CURRENT)"
+   },
+   "result": "{\"error\": \"not_found\", \"message\": \"no file named 'Case Routing Policy (rev. 2 \\u2014 CURRENT)'; available files: ['business_units_import.tsv', 'lead_import.tsv', 'account_import.tsv']\"}"
+  },
+  {
+   "k": "thinking",
+   "text": "Let me carefully count completed Billing discrepancy tickets for each active employee.\nThe most suitable agent for this case is employee 3 (James Wilson) with 5 completed billing discrepancy tickets."
+  },
+  {
+   "k": "answer",
+   "text": "EMP-698636"
+  }
+ ],
+ "usage": {
+  "prompt": 420230,
+  "completion": 815
+ },
+ "answer": "EMP-698636",
+ "passed": true,
+ "costUsd": 0.8453
+}

@@ -1,0 +1,71 @@
+{
+ "label": "lb-arena-claude-haiku-4-5-20251001",
+ "level": 2,
+ "taskId": "arena_policy_violation",
+ "type": "policy_violation_identification",
+ "trial": 1,
+ "prompt": "Does the price and configuration of quote id 1 comply with company policy as written in the knowledge base? If it does not, return only the Id of the knowledge article being violated (e.g. KB-102). If no violation is found, return None.",
+ "gt": "KB-101",
+ "metric": "exact",
+ "docs": [
+  "KB-101 — Discount Authority Policy",
+  "KB-102 — Regulated Product Approval Chain",
+  "KB-103 — Payment Terms Standard"
+ ],
+ "steps": [
+  {
+   "k": "tool",
+   "name": "core.get_quote",
+   "args": {
+    "id": 1
+   },
+   "result": "{\"rows\": [{\"id\": 1, \"discountpct\": 24, \"status\": \"Approved\", \"approvalsteps\": \"confirmed\", \"created_at\": \"2025-08-01\"}]}"
+  },
+  {
+   "k": "tool",
+   "name": "core.search_knowledge",
+   "args": {
+    "limit": 200,
+    "query": "pricing configuration policy compliance discount"
+   },
+   "result": "{\"table\": \"agent_knowledge\", \"query\": \"pricing configuration policy compliance discount\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "tool",
+   "name": "core.search_knowledge",
+   "args": {
+    "limit": 200
+   },
+   "result": "{\"table\": \"agent_knowledge\", \"query\": null, \"count\": 2, \"rows\": [{\"id\": 1, \"content\": \"Large sheet imports must be split into bounded chunks and verified by written-row count.\", \"source\": \"uploaded operations SOP\", \"created_at\": \"2026-01-15T09:00:00Z\"}, {\"id\": 2, \"content\": \"A lifecycle change may advance only to the next declared stage unless an approved branch is explicitly selected.\", \"source\": \"uploaded lifecycle model\", \"created_at\": \"2026-01-15T09:00:00Z\"}]}"
+  },
+  {
+   "k": "tool",
+   "name": "notion.query_documents",
+   "args": {
+    "limit": 200,
+    "query": "quote pricing discount policy compliance configuration"
+   },
+   "result": "{\"table\": \"agent_documents\", \"query\": \"quote pricing discount policy compliance configuration\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "tool",
+   "name": "notion.query_documents",
+   "args": {
+    "limit": 200
+   },
+   "result": "{\"table\": \"agent_documents\", \"query\": null, \"count\": 10, \"rows\": [{\"id\": 1, \"title\": \"Meridian Supply Co\", \"body\": \"Review unresolved business units exceptions before the next operating handoff. Record the decision, owner, and evidence used.\", \"updated_at\": \"2026-01-15T09:00:00Z\"}, {\"id\": 2, \"title\": \"Cedar Partners\", \"body\": \"Confirm the business handle, compare the current lifecycle state, apply one scoped action, and verify no collateral rows changed.\", \"updated_at\": \"2026-01-15T09:00:00Z\"}, {\"id\": 3, \"title\": \"Case Routing Policy (rev. 2 \\u2014 CURRENT)\", \"body\": \"Effective 2026-06-01, supersedes rev. 1. Issue categories are determined by the ticket subject prefix: \\\"Billing discrepancy\\\", \\\"Problem updating\\\", \\\"Cannot access\\\", \\\"Question about\\\". A new case routes to the ELIGIBLE agent who has completed (status resolved or closed) the most support tickets in the case's category. E"
+  },
+  {
+   "k": "answer",
+   "text": "KB-101"
+  }
+ ],
+ "usage": {
+  "prompt": 104993,
+  "completion": 577
+ },
+ "answer": "KB-101",
+ "passed": true,
+ "model": "claude-haiku-4-5-20251001",
+ "costUsd": 0.1079
+}

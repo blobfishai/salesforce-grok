@@ -1,0 +1,121 @@
+{
+ "task_id": "task_017",
+ "prompt": "In the morgan_stanley_simulated world: Find the sales opportunity OPP-902092, verify status is \"discovery\", then set its status to \"proposal\". Do not modify any other sales opportunities record. Then, in the same pass: In the morgan_stanley_simulated world: Find the lead management sop Summit Logistics, verify status is \"active\", then set its status to \"inactive\". Do not modify any other lead management sop record. Required outcomes: set sales_opportunities.status to \"proposal\" for opportunity number \"OPP-902092\"; set lead_management_sop.status to \"inactive\" for name \"Summit Logistics\".",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.row_pinned_update@1",
+  "template_signature": "template:1fecd0aaa4394913",
+  "prompt_class": "resolution"
+ },
+ "goal": "Cross-department hand-off on the shared lead management sop whose name is \"Summit Logistics\": Row-pinned update: sales_opportunities[1].status from \"discovery\" to \"proposal\" Also: Row-pinned update: lead_management_sop[9].status from \"active\" to \"inactive\"",
+ "required_tools": [
+  "query_sales_opportunities",
+  "update_sales_opportunities_status",
+  "core_records_agent",
+  "core_workflow_agent"
+ ],
+ "complexity": "medium",
+ "method": "programmatic",
+ "steps": [
+  "Read the sales opportunity OPP-902092",
+  "Confirm status is \"discovery\"",
+  "Update status to \"proposal\"",
+  "Confirm no other row was modified",
+  "Read the lead management sop Summit Logistics",
+  "Confirm status is \"active\"",
+  "Update status to \"inactive\"",
+  "Confirm no other row was modified"
+ ],
+ "relevant_data": [
+  {
+   "table": "sales_opportunities",
+   "id": "1",
+   "field": "opportunity_number",
+   "value": "OPP-902092"
+  },
+  {
+   "table": "lead_management_sop",
+   "id": "9",
+   "field": "name",
+   "value": "Summit Logistics"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "sales_opportunities",
+   "id": "1",
+   "field": "status",
+   "from": "discovery",
+   "to": "proposal"
+  },
+  {
+   "table": "lead_management_sop",
+   "id": "9",
+   "field": "status",
+   "from": "active",
+   "to": "inactive"
+  }
+ ],
+ "tables_affected": [
+  "sales_opportunities",
+  "lead_management_sop"
+ ],
+ "effects": [
+  {
+   "table": "sales_opportunities",
+   "op": "update",
+   "field": "status",
+   "value": "proposal"
+  },
+  {
+   "table": "lead_management_sop",
+   "op": "update",
+   "field": "status",
+   "value": "inactive"
+  }
+ ],
+ "walk": [
+  "query_sales_opportunities",
+  "update_sales_opportunities_status",
+  "core_records_agent",
+  "core_workflow_agent"
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "checked_at": "2026-08-10T07:58:57.949Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_35b1d2425f82e744b14d28e9de429ca6bc35f18e5b82217aa027549a84abd662",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_sales",
+   "dept_core_operations",
+   "dept_customer_support"
+  ],
+  "employee_ids": [
+   "emp_18"
+  ],
+  "workflow_ids": [
+   "workflow_sales",
+   "workflow_customer_support",
+   "workflow_crm_operations",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff",
+   "workflow_marketing_crm_operations_handoff",
+   "workflow_finance_crm_operations_handoff",
+   "workflow_sourcing_crm_operations_handoff"
+  ],
+  "cross_department": true
+ }
+}

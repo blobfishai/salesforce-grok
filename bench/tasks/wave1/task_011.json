@@ -1,0 +1,140 @@
+{
+ "task_id": "task_011",
+ "prompt": "In the morgan_stanley_simulated world: Find the sales lead LEAD-521568, verify status is \"converted\", then set its status to \"lost\". Do not modify any other sales leads record.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.row_pinned_update@1",
+  "template_signature": "template:1fecd0aaa4394913",
+  "prompt_class": "resolution"
+ },
+ "goal": "Row-pinned update: sales_leads[2].status from \"converted\" to \"lost\"",
+ "required_tools": [
+  "query_sales_leads",
+  "update_sales_leads_status"
+ ],
+ "complexity": "medium",
+ "method": "programmatic",
+ "steps": [
+  "Read the sales lead LEAD-521568",
+  "Confirm status is \"converted\"",
+  "Update status to \"lost\"",
+  "Confirm no other row was modified"
+ ],
+ "relevant_data": [
+  {
+   "table": "sales_leads",
+   "id": "2",
+   "field": "lead_number",
+   "value": "LEAD-521568"
+  },
+  {
+   "table": "sales_leads",
+   "id": 4,
+   "field": "lead_number",
+   "value": "LEAD-274912"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "sales_leads",
+   "id": "4",
+   "field": "status",
+   "from": "converted",
+   "to": "lost"
+  }
+ ],
+ "tables_affected": [
+  "sales_leads"
+ ],
+ "effects": [
+  {
+   "table": "sales_leads",
+   "op": "update",
+   "field": "status",
+   "value": "lost"
+  }
+ ],
+ "walk": [
+  "query_sales_leads",
+  "update_sales_leads_status"
+ ],
+ "session": [
+  {
+   "turn": 1,
+   "kind": "correction",
+   "user_text": "Wait—use \"LEAD-274912\", not \"LEAD-521568\". Make the same change there only."
+  }
+ ],
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_4654f831e5e3857967b6b7f42b4dcdf8c1e38a7ea5e2ee292b3fbf225fa5ef23",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "acceptance_label": "in_band",
+ "difficulty_tier": "easy",
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "checked_at": "2026-08-09T20:54:23.581Z"
+ },
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_011",
+  "measured": false,
+  "reason": "budget_exhausted",
+  "detail": "solvability budget expired after 3/5 runs",
+  "partial_outcomes": [
+   {
+    "run": 1,
+    "passed": true,
+    "reward": 1,
+    "steps": 3
+   },
+   {
+    "run": 2,
+    "passed": true,
+    "reward": 1,
+    "steps": 3
+   },
+   {
+    "run": 3,
+    "passed": true,
+    "reward": 1,
+    "steps": 3
+   }
+  ]
+ },
+ "anchor_refs": [],
+ "provenance": {
+  "evidence_ids": [],
+  "tool_graph_path": [
+   "query_sales_leads",
+   "update_sales_leads_status"
+  ],
+  "tool_graph_edges": [
+   "query_sales_leads\u0000update_sales_leads_status"
+  ],
+  "verifier_id": "task_011",
+  "difficulty_reason": "easy: walk length 2"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_sales"
+  ],
+  "employee_ids": [
+   "emp_1"
+  ],
+  "workflow_ids": [
+   "workflow_sales",
+   "workflow_sales_crm_operations_handoff"
+  ],
+  "cross_department": false
+ }
+}

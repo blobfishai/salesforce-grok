@@ -1,0 +1,78 @@
+{
+ "label": "lb-arena-deepseek-v4-pro",
+ "level": 2,
+ "taskId": "arena_lead_qualification",
+ "type": "lead_qualification",
+ "trial": 2,
+ "prompt": "Based on the latest discussion notes for the lead \"Riverside Contact\" in the document store, can this lead be qualified? If the answer is no, which factors—'Budget', 'Authority', 'Need', or 'Timeline'—are responsible? Return only one or several of the four BANT factors, or 'None' if the lead qualifies.",
+ "gt": [
+  "Budget"
+ ],
+ "metric": "set",
+ "docs": [
+  "Lead Discussion Notes — Riverside Contact",
+  "Lead Discussion Notes — Riverside Contact (update)"
+ ],
+ "steps": [
+  {
+   "k": "thinking",
+   "text": "The user is asking about a lead called \"Riverside Contact\" and wants to know if it can be qualified based on BANT (Budget, Authority, Need, Timeline) criteria. They want me to look at discussion notes in the document store.\n\nLet me start by searching for the lead \"Riverside Contact\" in the sales leads, and also search for relevant documents in the document store."
+  },
+  {
+   "k": "tool",
+   "name": "salesforce.sales_records_agent",
+   "args": {
+    "request": "in table sales_leads, find company_name \"Riverside Contact\" and return the complete record."
+   },
+   "result": "{\"error\": \"not_found\", \"message\": \"no record matched the business handle\", \"table\": \"sales_leads\", \"field\": \"company_name\", \"value\": \"Riverside Contact\"}"
+  },
+  {
+   "k": "tool",
+   "name": "notion.query_documents",
+   "args": {
+    "query": "Riverside Contact"
+   },
+   "result": "{\"table\": \"agent_documents\", \"query\": \"Riverside Contact\", \"count\": 2, \"rows\": [{\"id\": 9, \"title\": \"Lead Discussion Notes \\u2014 Riverside Contact\", \"body\": \"Call 1 (2026-05-02): Riverside operations lead confirmed a approved budget envelope of $120k for this initiative; procurement has the PO template ready. Call 2 (2026-05-16): Clear need \\u2014 their manual reconciliation runs 11 hours/week and misses SLAs; they want go-live inside Q4, and the project plan shows a committed timeline. Call 3 (2026-06-03): Our champion is an operations manager who cannot sign; the CFO (economic buyer) has not joined any call and deferred twice. No signature authority has been established.\", \"updated_at\": \"2026-06-03T17:00:00Z\"}, {\"id\": 10, \"title\": \"Lead Discussion Notes \\u2014 Riverside Contact (update)\", \"body\": \"Update (2026-07-21, supersedes earlier notes where they conflict): The CFO joined the las"
+  },
+  {
+   "k": "thinking",
+   "text": "Let me analyze the BANT factors from the discussion notes:\n\n1. **Budget**: The update (2026-07-21) says: \"group finance froze the initiative budget pending the H2 review — the $120k envelope is no longer approved.\" So Budget is NOT met.\n\n2. **Authority**: The update (2026-07-21) says: \"The CFO joined the last call and confirmed signing authority is resolved.\" So Authority IS met.\n\n3. **Need**: \"Clear need — their manual reconciliation runs 11 hours/week and misses SLAs\" - Need IS met and unchanged per the update.\n\n4. **Timeline**: \"they want go-live inside Q4, and the project plan shows a committed timeline.\" Timeline IS met and unchanged per the update.\n\nSo the BANT factors that are NOT met are: Budget. The lead cannot be qualified because of Budget.\n\nThe question asks: \"If the answer is no, which factors—'Budget', 'Authority', 'Need', or 'Timeline'—are responsible?\"\n\nThe answer should be: Budget"
+  },
+  {
+   "k": "tool",
+   "name": "salesforce.query_sales_leads",
+   "args": {
+    "contact_name": "Riverside"
+   },
+   "result": "{\"table\": \"sales_leads\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "thinking",
+   "text": "The lead might not be in the sales_leads table under \"Riverside\" in the contact_name. Let me try searching differently - maybe the company name is different. Let me also try searching for \"Riverside\" in company_name."
+  },
+  {
+   "k": "tool",
+   "name": "salesforce.query_sales_leads",
+   "args": {
+    "company_name": "Riverside"
+   },
+   "result": "{\"table\": \"sales_leads\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "thinking",
+   "text": "The lead may not exist in the sales_leads table — it may only exist as discussion notes in the document store. But the user's question is about whether the lead can be qualified based on the discussion notes. Let me go ahead and analyze based on the documents I have.\n\nFrom the documents:\n\nDocument 9 (original notes):\n- Budget: $120k approved envelope - MET\n- Authority: CFO hasn't joined, no signature authority - NOT MET\n- Need: Clear need - MET\n- Timeline: Committed timeline, go-live Q4 - MET\n\nDocument 10 (update, supersedes earlier):\n- Budget: \"group finance froze the initiative budget pending the H2 review — the $120k envelope is no longer approved\" - NOT MET\n- Authority: \"The CFO joined the last call and confirmed signing authority is resolved\" - MET\n- Need: unchanged - MET\n- Timeline: unchanged - MET\n\nSo based on the latest update (doc 10), the only factor preventing qualification is Budget."
+  },
+  {
+   "k": "answer",
+   "text": "Budget"
+  }
+ ],
+ "usage": {
+  "prompt": 74599,
+  "completion": 905
+ },
+ "answer": "Budget",
+ "passed": true,
+ "model": "deepseek-v4-pro",
+ "costUsd": 0.0332
+}

@@ -1,0 +1,108 @@
+{
+ "label": "lb-arena-claude-sonnet-5",
+ "level": 2,
+ "taskId": "arena_case_routing",
+ "type": "case_routing",
+ "trial": 2,
+ "prompt": "Use the case routing policy in the document store to determine the most suitable agent for the given case. Return only the employee number of the agent.\n## Given Case\n- Case Subject: Billing discrepancy on Q3 custody statement\n- Case Description: The client reports fee lines on the Q3 custody statement that do not match the agreed schedule and requests correction.",
+ "gt": "EMP-698636",
+ "metric": "exact",
+ "docs": [
+  "Case Routing Policy (rev. 2 — CURRENT)"
+ ],
+ "steps": [
+  {
+   "k": "tool",
+   "name": "notion.query_documents",
+   "args": {
+    "query": "case routing policy"
+   },
+   "result": "{\"table\": \"agent_documents\", \"query\": \"case routing policy\", \"count\": 2, \"rows\": [{\"id\": 3, \"title\": \"Case Routing Policy (rev. 2 \\u2014 CURRENT)\", \"body\": \"Effective 2026-06-01, supersedes rev. 1. Issue categories are determined by the ticket subject prefix: \\\"Billing discrepancy\\\", \\\"Problem updating\\\", \\\"Cannot access\\\", \\\"Question about\\\". A new case routes to the ELIGIBLE agent who has completed (status resolved or closed) the most support tickets in the case's category. Eligibility: employees with status \\\"active\\\" only \\u2014 agents on leave or terminated are never routed. Tie-break 1: fewer currently active tickets (open, in_progress, waiting_customer). Tie-break 2: earlier hire_date. Answer with the agent's employee_number.\", \"updated_at\": \"2026-06-01T09:00:00Z\"}, {\"id\": 4, \"title\": \"Case Routing Policy (rev. 1)\", \"body\": \"[SUPERSEDED] Route new cases to the agent with the most "
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "subject": "Billing discrepancy",
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 200, \"rows\": [{\"id\": 1, \"ticket_number\": \"TKT-703339\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Lisa Park\", \"priority\": \"urgent\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-05-13\", \"business_unit_id\": 6, \"status\": \"open\"}, {\"id\": 2, \"ticket_number\": \"TKT-979617\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Omar Hassan\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-06-16\", \"business_unit_id\": 2, \"status\": \"resolved\"}, {\"id\": 3, \"ticket_number\": \"TKT-995387\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Yuki Tanaka\", \"priority\": \"low\", \"assignee_employee_id\": 6, \"opened_at\": \"2026-05-18\", \"business_unit_id\": 10, \"status\": \"in_progress\"}, {\"id\": 4, \"ticket_number\": \"TKT-412766\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Mich"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "subject": "Billing discrepancy on business unit",
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 59, \"rows\": [{\"id\": 1, \"ticket_number\": \"TKT-703339\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Lisa Park\", \"priority\": \"urgent\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-05-13\", \"business_unit_id\": 6, \"status\": \"open\"}, {\"id\": 2, \"ticket_number\": \"TKT-979617\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Omar Hassan\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-06-16\", \"business_unit_id\": 2, \"status\": \"resolved\"}, {\"id\": 3, \"ticket_number\": \"TKT-995387\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Yuki Tanaka\", \"priority\": \"low\", \"assignee_employee_id\": 6, \"opened_at\": \"2026-05-18\", \"business_unit_id\": 10, \"status\": \"in_progress\"}, {\"id\": 4, \"ticket_number\": \"TKT-412766\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Micha"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "subject": "Billing discrepancy on business unit",
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 59, \"rows\": [{\"id\": 1, \"ticket_number\": \"TKT-703339\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Lisa Park\", \"priority\": \"urgent\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-05-13\", \"business_unit_id\": 6, \"status\": \"open\"}, {\"id\": 2, \"ticket_number\": \"TKT-979617\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Omar Hassan\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-06-16\", \"business_unit_id\": 2, \"status\": \"resolved\"}, {\"id\": 3, \"ticket_number\": \"TKT-995387\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Yuki Tanaka\", \"priority\": \"low\", \"assignee_employee_id\": 6, \"opened_at\": \"2026-05-18\", \"business_unit_id\": 10, \"status\": \"in_progress\"}, {\"id\": 4, \"ticket_number\": \"TKT-412766\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Micha"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "subject": "Billing discrepancy on business unit",
+    "status": "resolved",
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 21, \"rows\": [{\"id\": 2, \"ticket_number\": \"TKT-979617\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Omar Hassan\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-06-16\", \"business_unit_id\": 2, \"status\": \"resolved\"}, {\"id\": 4, \"ticket_number\": \"TKT-412766\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Michael Johnson\", \"priority\": \"low\", \"assignee_employee_id\": 3, \"opened_at\": \"2026-02-23\", \"business_unit_id\": 1, \"status\": \"resolved\"}, {\"id\": 17, \"ticket_number\": \"TKT-671273\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Robert Martinez\", \"priority\": \"high\", \"assignee_employee_id\": 3, \"opened_at\": \"2026-01-17\", \"business_unit_id\": 11, \"status\": \"resolved\"}, {\"id\": 20, \"ticket_number\": \"TKT-278570\", \"subject\": \"Billing discrepancy on business unit\", \"customer_nam"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "subject": "Billing discrepancy on business unit",
+    "status": "closed",
+    "limit": 200
+   },
+   "result": "{\"error\": \"stale_reference\", \"success\": false, \"message\": \"The referenced record could not be loaded \\u2014 the reference may be stale or recently changed. Re-fetch the latest data and retry.\", \"retryable\": true}"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "subject": "Billing discrepancy on business unit",
+    "status": "closed",
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "tool",
+   "name": "core.query_employees",
+   "args": {
+    "id": 1
+   },
+   "result": "{\"table\": \"employees\", \"count\": 1, \"rows\": [{\"id\": 1, \"employee_number\": \"EMP-698636\", \"name\": \"David Brown\", \"email\": \"contact87222@morganstanleysimulated.com\", \"job_title\": \"Sales Manager\", \"department_id\": 1, \"hire_date\": \"2025-05-15\", \"status\": \"active\"}]}"
+  },
+  {
+   "k": "answer",
+   "text": "EMP-698636"
+  }
+ ],
+ "usage": {
+  "prompt": 309372,
+  "completion": 2181
+ },
+ "answer": "EMP-698636",
+ "passed": true,
+ "model": "claude-sonnet-5",
+ "costUsd": 0.6406
+}

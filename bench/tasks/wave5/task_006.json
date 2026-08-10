@@ -1,0 +1,249 @@
+{
+ "task_id": "task_006",
+ "prompt": "A teammate flagged the inactive lead scoring policy for Fairview Group, marking its status as pending for follow-up. After reviewing the situation, create a new lead scoring policy entry for the account and update the existing Fairview Group policy to reflect the current state. Apply only these requested changes.",
+ "prompt_generation": {
+  "source": "llm",
+  "template_family": "graph.mutation.medium.anchored@1",
+  "template_signature": "template:e8c2ddd7981fb23c",
+  "prompt_class": "resolution"
+ },
+ "goal": "Drive lead scoring policy through the workflow, applying 2 verified state changes.",
+ "required_tools": [
+  "list_lead_scoring_policy",
+  "create_lead_scoring_policy",
+  "get_lead_scoring_policy",
+  "update_status_lead_scoring_policy"
+ ],
+ "complexity": "medium",
+ "method": "graph_walk",
+ "steps": [
+  "list operation on lead_scoring_policy (lead_scoring_policy)",
+  "create operation on lead_scoring_policy (lead_scoring_policy)",
+  "get operation on lead_scoring_policy (lead_scoring_policy)",
+  "update status operation on lead_scoring_policy (lead_scoring_policy)"
+ ],
+ "relevant_data": [
+  {
+   "table": "lead_scoring_policy",
+   "id": 9,
+   "field": "name",
+   "value": "Fairview Group"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "lead_scoring_policy",
+   "id": "13",
+   "field": "(new row)",
+   "from": "12 rows",
+   "to": "13 rows"
+  },
+  {
+   "table": "lead_scoring_policy",
+   "id": "9",
+   "field": "status",
+   "from": "inactive",
+   "to": "pending"
+  }
+ ],
+ "tables_affected": [
+  "lead_scoring_policy"
+ ],
+ "walk": [
+  "list_lead_scoring_policy",
+  "create_lead_scoring_policy",
+  "get_lead_scoring_policy",
+  "update_status_lead_scoring_policy"
+ ],
+ "effects": [
+  {
+   "table": "lead_scoring_policy",
+   "op": "insert"
+  },
+  {
+   "table": "lead_scoring_policy",
+   "op": "update",
+   "field": "status",
+   "value": "pending"
+  }
+ ],
+ "difficulty_tier": "medium",
+ "sequence_integrity": {
+  "schemaVersion": 1,
+  "passed": true,
+  "pathLength": 4,
+  "uniqueTools": 4,
+  "rules": [
+   "every transition has an evidence-backed edge",
+   "no tool immediately repeats itself, and no tool is used more than 4 times",
+   "terminal actions cannot restart the same entity lifecycle",
+   "the same mutating action cannot repeat on the same entity"
+  ],
+  "transitions": [
+   {
+    "source": "list_lead_scoring_policy",
+    "target": "create_lead_scoring_policy",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "list",
+    "targetAction": "create",
+    "sharedEntities": [
+     "policy"
+    ],
+    "stepIndex": 1,
+    "edgeSupported": true
+   },
+   {
+    "source": "create_lead_scoring_policy",
+    "target": "get_lead_scoring_policy",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "create",
+    "targetAction": "get",
+    "sharedEntities": [
+     "policy"
+    ],
+    "stepIndex": 2,
+    "edgeSupported": true
+   },
+   {
+    "source": "get_lead_scoring_policy",
+    "target": "update_status_lead_scoring_policy",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "get",
+    "targetAction": "update",
+    "sharedEntities": [
+     "policy"
+    ],
+    "stepIndex": 3,
+    "edgeSupported": true
+   }
+  ],
+  "issues": []
+ },
+ "provenance": {
+  "evidence_ids": [
+   "anc_3983fe9e5ae5",
+   "anc_16fec4c8f151",
+   "anc_31cdb21cd0d6",
+   "anc_ceb778a54e8b",
+   "anc_fbee43295eac",
+   "anc_172c9c8f62ea",
+   "anc_421a807fae1a",
+   "anc_a5301f058070",
+   "anc_af78099ead41",
+   "anc_100625ce7ac9"
+  ],
+  "tool_graph_path": [
+   "list_lead_scoring_policy",
+   "create_lead_scoring_policy",
+   "get_lead_scoring_policy",
+   "update_status_lead_scoring_policy"
+  ],
+  "tool_graph_edges": [
+   "list_lead_scoring_policy\u0000create_lead_scoring_policy",
+   "create_lead_scoring_policy\u0000get_lead_scoring_policy",
+   "get_lead_scoring_policy\u0000update_status_lead_scoring_policy"
+  ],
+  "verifier_id": "task_006",
+  "difficulty_reason": "medium: walk length 4"
+ },
+ "anchor_refs": [
+  "anc_3983fe9e5ae5",
+  "anc_16fec4c8f151",
+  "anc_31cdb21cd0d6",
+  "anc_ceb778a54e8b",
+  "anc_fbee43295eac",
+  "anc_172c9c8f62ea",
+  "anc_421a807fae1a",
+  "anc_a5301f058070",
+  "anc_af78099ead41",
+  "anc_100625ce7ac9"
+ ],
+ "departments": [
+  "core"
+ ],
+ "session": [
+  {
+   "turn": 2,
+   "kind": "fragment",
+   "user_text": "y"
+  },
+  {
+   "turn": 3,
+   "kind": "followup",
+   "user_text": "現在呢？"
+  },
+  {
+   "turn": 4,
+   "kind": "fragment",
+   "user_text": "try again"
+  },
+  {
+   "turn": 5,
+   "kind": "followup",
+   "user_text": "Also double-check the record afterwards and tell me what it now shows."
+  },
+  {
+   "turn": 6,
+   "kind": "fragment",
+   "user_text": "ok"
+  },
+  {
+   "turn": 7,
+   "kind": "followup",
+   "user_text": "status akhirnya?"
+  },
+  {
+   "turn": 8,
+   "kind": "fragment",
+   "user_text": "go"
+  },
+  {
+   "turn": 9,
+   "kind": "followup",
+   "user_text": "And what does it show now?"
+  }
+ ],
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_201f472ba60d96070136a88c86811327e10eb31dc40b0165922c27a30c828838",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "acceptance_label": "in_band",
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"account_tiering_standard\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-10T00:25:15.941Z"
+ },
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_006",
+  "measured": false,
+  "reason": "not_sampled",
+  "detail": "outside the stratified solvability sample; deterministic acceptance evidence stands"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_core_operations"
+  ],
+  "employee_ids": [],
+  "workflow_ids": [
+   "workflow_crm_operations",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff"
+  ],
+  "cross_department": false
+ }
+}

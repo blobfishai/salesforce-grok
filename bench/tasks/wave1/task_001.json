@@ -1,0 +1,155 @@
+{
+ "task_id": "task_001",
+ "prompt": "Move all of kofi's tasks that are in progress to in review The input materials are in matter document(s) \"Deal materials — project_management: Move all of {name}'s tasks that are in progress to in review\". Create a new matter documents record titled \"deliverable-memo.docx\" containing the full deliverable text in its body. The specific matter document record \"Deal materials — project_management: Move all of {name}'s tasks that are in progress to in review\".",
+ "goal": "Produce deliverable-memo.docx grounded in the matter materials",
+ "required_tools": [
+  "read_matter_document",
+  "draft_matter_document",
+  "operations_records_agent"
+ ],
+ "complexity": "high",
+ "method": "graph_walk",
+ "steps": [
+  "Read every input file for the matter in full",
+  "Analyze them per the engagement instruction",
+  "Draft and file the deliverable deliverable-memo.docx"
+ ],
+ "relevant_data": [
+  {
+   "table": "matter_documents",
+   "id": 1,
+   "field": "title",
+   "value": "Deal materials — project_management: Move all of {name}'s tasks that are in progress to in review"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "matter_documents",
+   "id": "2",
+   "field": "(new row)",
+   "from": "1 rows",
+   "to": "2 rows"
+  }
+ ],
+ "tables_affected": [
+  "matter_documents"
+ ],
+ "walk": [
+  "read_matter_document",
+  "draft_matter_document"
+ ],
+ "effects": [
+  {
+   "table": "matter_documents",
+   "op": "insert"
+  }
+ ],
+ "provenance": {
+  "source_workflow": "workbench: project_management/0",
+  "evidence_ids": [],
+  "tool_graph_path": [
+   "read_matter_document",
+   "draft_matter_document"
+  ],
+  "tool_graph_edges": [
+   "read_matter_document\u0000draft_matter_document"
+  ],
+  "verifier_id": "task_001",
+  "difficulty_reason": "easy: walk length 2"
+ },
+ "acceptance_label": "in_band",
+ "difficulty_tier": "easy",
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_001",
+  "measured": true,
+  "provider": "deepseek",
+  "model": null,
+  "runs": 5,
+  "passes": 2,
+  "pass_rate": 0.4,
+  "retained": true,
+  "band": "hard",
+  "outcomes": [
+   {
+    "run": 1,
+    "passed": false,
+    "reward": 0,
+    "steps": 8,
+    "error": "max_steps_exhausted"
+   },
+   {
+    "run": 2,
+    "passed": false,
+    "reward": 0,
+    "steps": 8,
+    "error": "max_steps_exhausted"
+   },
+   {
+    "run": 3,
+    "passed": true,
+    "reward": 1,
+    "steps": 6
+   },
+   {
+    "run": 4,
+    "passed": false,
+    "reward": 0,
+    "steps": 8,
+    "error": "max_steps_exhausted"
+   },
+   {
+    "run": 5,
+    "passed": true,
+    "reward": 1,
+    "steps": 5
+   }
+  ],
+  "measured_at": "2026-08-09T21:01:19.469Z"
+ },
+ "anchor_refs": [],
+ "coverage": {
+  "department_ids": [
+   "dept_core_operations"
+  ],
+  "employee_ids": [],
+  "workflow_ids": [
+   "workflow_crm_operations",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff"
+  ],
+  "cross_department": false
+ },
+ "session": [
+  {
+   "turn": 2,
+   "kind": "fragment",
+   "user_text": "ok"
+  },
+  {
+   "turn": 3,
+   "kind": "followup",
+   "user_text": "final status?"
+  }
+ ],
+ "prompt_generation": {
+  "source": "deterministic"
+ },
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "checked_at": "2026-08-09T21:12:05.923Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_998f1063f1079cfbd5ef148e206f8d441f56bac67546bcce69329ddb336eb16b",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ }
+}

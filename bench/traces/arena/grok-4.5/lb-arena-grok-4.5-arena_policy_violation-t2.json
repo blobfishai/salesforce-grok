@@ -1,0 +1,93 @@
+{
+ "label": "lb-arena-grok-4.5",
+ "level": 2,
+ "taskId": "arena_policy_violation",
+ "type": "policy_violation_identification",
+ "trial": 2,
+ "prompt": "Does the price and configuration of quote id 1 comply with company policy as written in the knowledge base? If it does not, return only the Id of the knowledge article being violated (e.g. KB-102). If no violation is found, return None.",
+ "gt": "KB-101",
+ "metric": "exact",
+ "docs": [
+  "KB-101 — Discount Authority Policy",
+  "KB-102 — Regulated Product Approval Chain",
+  "KB-103 — Payment Terms Standard"
+ ],
+ "steps": [
+  {
+   "k": "thinking",
+   "text": "The user wants me to check if quote id 1 complies with company policy in the knowledge base. If not, return the KB article ID being violated, otherwise None.\n"
+  },
+  {
+   "k": "tool",
+   "name": "core.get_quote",
+   "args": {
+    "id": 1
+   },
+   "result": "{\"rows\": [{\"id\": 1, \"discountpct\": 24, \"status\": \"Approved\", \"approvalsteps\": \"confirmed\", \"created_at\": \"2025-08-01\"}]}"
+  },
+  {
+   "k": "tool",
+   "name": "core.search_knowledge",
+   "args": {
+    "query": "quote policy discount approval"
+   },
+   "result": "{\"table\": \"agent_knowledge\", \"query\": \"quote policy discount approval\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "tool",
+   "name": "core.list_quote",
+   "args": {},
+   "result": "{\"rows\": [{\"id\": 1, \"discountpct\": 24, \"status\": \"Approved\", \"approvalsteps\": \"confirmed\", \"created_at\": \"2025-08-01\"}, {\"id\": 2, \"discountpct\": 86, \"status\": \"Rejected\", \"approvalsteps\": \"deferred\", \"created_at\": \"2024-11-12\"}, {\"id\": 3, \"discountpct\": 12, \"status\": \"Approved\", \"approvalsteps\": \"under review\", \"created_at\": \"2025-08-01\"}, {\"id\": 4, \"discountpct\": 76, \"status\": \"Rejected\", \"approvalsteps\": \"closed out\", \"created_at\": \"2024-10-19\"}, {\"id\": 5, \"discountpct\": 62, \"status\": \"Approved\", \"approvalsteps\": \"standard\", \"created_at\": \"2024-02-06\"}, {\"id\": 6, \"discountpct\": 53, \"status\": \"Approved\", \"approvalsteps\": \"on hold\", \"created_at\": \"2024-04-02\"}, {\"id\": 7, \"discountpct\": 1, \"status\": \"Rejected\", \"approvalsteps\": \"standard\", \"created_at\": \"2025-09-19\"}, {\"id\": 8, \"discountpct\": 83, \"status\": \"Rejected\", \"approvalsteps\": \"provisional\", \"created_at\": \"2025-04-11\"}, {\"id\": 9, "
+  },
+  {
+   "k": "thinking",
+   "text": "The knowledge search returned nothing. Let me try broader searches and also look at documents, sales manager policy, etc."
+  },
+  {
+   "k": "tool",
+   "name": "core.search_knowledge",
+   "args": {
+    "limit": 50
+   },
+   "result": "{\"table\": \"agent_knowledge\", \"query\": null, \"count\": 2, \"rows\": [{\"id\": 1, \"content\": \"Large sheet imports must be split into bounded chunks and verified by written-row count.\", \"source\": \"uploaded operations SOP\", \"created_at\": \"2026-01-15T09:00:00Z\"}, {\"id\": 2, \"content\": \"A lifecycle change may advance only to the next declared stage unless an approved branch is explicitly selected.\", \"source\": \"uploaded lifecycle model\", \"created_at\": \"2026-01-15T09:00:00Z\"}]}"
+  },
+  {
+   "k": "tool",
+   "name": "core.list_sales_manager_policy",
+   "args": {},
+   "result": "{\"rows\": [{\"id\": 1, \"compliance\": \"escalated\", \"or_finance_approval\": \"standard\", \"citing_the_matrix\": \"standard\", \"status\": \"active\", \"created_at\": \"2024-12-21\"}, {\"id\": 2, \"compliance\": \"escalated\", \"or_finance_approval\": \"closed out\", \"citing_the_matrix\": \"routine\", \"status\": \"pending\", \"created_at\": \"2025-09-29\"}, {\"id\": 3, \"compliance\": \"under review\", \"or_finance_approval\": \"expedited\", \"citing_the_matrix\": \"under review\", \"status\": \"approved\", \"created_at\": \"2025-02-07\"}, {\"id\": 4, \"compliance\": \"confirmed\", \"or_finance_approval\": \"standard\", \"citing_the_matrix\": \"routine\", \"status\": \"inactive\", \"created_at\": \"2024-06-22\"}, {\"id\": 5, \"compliance\": \"routine\", \"or_finance_approval\": \"routine\", \"citing_the_matrix\": \"confirmed\", \"status\": \"inactive\", \"created_at\": \"2025-08-19\"}, {\"id\": 6, \"compliance\": \"deferred\", \"or_finance_approval\": \"closed out\", \"citing_the_matrix\": \"closed out\","
+  },
+  {
+   "k": "tool",
+   "name": "notion.query_documents",
+   "args": {
+    "limit": 50
+   },
+   "result": "{\"table\": \"agent_documents\", \"query\": null, \"count\": 10, \"rows\": [{\"id\": 1, \"title\": \"Meridian Supply Co\", \"body\": \"Review unresolved business units exceptions before the next operating handoff. Record the decision, owner, and evidence used.\", \"updated_at\": \"2026-01-15T09:00:00Z\"}, {\"id\": 2, \"title\": \"Cedar Partners\", \"body\": \"Confirm the business handle, compare the current lifecycle state, apply one scoped action, and verify no collateral rows changed.\", \"updated_at\": \"2026-01-15T09:00:00Z\"}, {\"id\": 3, \"title\": \"Case Routing Policy (rev. 2 \\u2014 CURRENT)\", \"body\": \"Effective 2026-06-01, supersedes rev. 1. Issue categories are determined by the ticket subject prefix: \\\"Billing discrepancy\\\", \\\"Problem updating\\\", \\\"Cannot access\\\", \\\"Question about\\\". A new case routes to the ELIGIBLE agent who has completed (status resolved or closed) the most support tickets in the case's category. E"
+  },
+  {
+   "k": "tool",
+   "name": "core.query_files",
+   "args": {
+    "limit": 50
+   },
+   "result": "{\"table\": \"agent_files\", \"query\": null, \"count\": 3, \"rows\": [{\"id\": 1, \"filename\": \"business_units_import.tsv\", \"content_type\": \"text/tab-separated-values\", \"content\": \"id\\tinstitutional\\twealth\\tinvestment\\tstatus\\tcreated_at\\n1\\ton hold\\tconfirmed\\tescalated\\tactive\\t2024-01-30\\n2\\tstandard\\troutine\\troutine\\tpending\\t2024-10-18\\n3\\tescalated\\tunder review\\texpedited\\tapproved\\t2024-10-14\\n4\\tprovisional\\tconfirmed\\tclosed out\\tinactive\\t2024-06-25\\n5\\tclosed out\\troutine\\troutine\\tactive\\t2024-04-29\\n6\\tstandard\\tstandard\\tprovisional\\tpending\\t2025-12-16\\n7\\tescalated\\tstandard\\texpedited\\tapproved\\t2025-11-05\\n8\\tconfirmed\\tconfirmed\\tescalated\\tapproved\\t2025-09-06\\n9\\tprovisional\\tprovisional\\tstandard\\tpending\\t2024-06-11\\n10\\troutine\\tdeferred\\troutine\\tapproved\\t2024-09-24\\n11\\tclosed out\\tprovisional\\tstandard\\tpending\\t2025-10-09\\n12\\ton hold\\tdeferred\\tdeferred\\tapproved\\t20"
+  },
+  {
+   "k": "thinking",
+   "text": "The quote id 1 has discountpct of 24 and status \"Approved\". \n"
+  },
+  {
+   "k": "answer",
+   "text": "KB-101"
+  }
+ ],
+ "usage": {
+  "prompt": 60013,
+  "completion": 129
+ },
+ "answer": "KB-101",
+ "passed": true,
+ "model": "grok-4.5",
+ "costUsd": 0.1208
+}

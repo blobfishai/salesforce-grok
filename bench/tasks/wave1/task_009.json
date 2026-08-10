@@ -1,0 +1,152 @@
+{
+ "task_id": "task_009",
+ "prompt": "In the morgan_stanley_simulated world: Find the employee work assignment sendgrid:work-item:0001, verify status is \"assigned\", then set its status to \"in_progress\". Do not modify any other employee work assignments record.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.row_pinned_update@1",
+  "template_signature": "template:1fecd0aaa4394913",
+  "prompt_class": "resolution"
+ },
+ "goal": "Row-pinned update: employee_work_assignments[1].status from \"assigned\" to \"in_progress\"",
+ "required_tools": [],
+ "complexity": "high",
+ "method": "programmatic",
+ "steps": [
+  "Read the employee work assignment sendgrid:work-item:0001",
+  "Confirm status is \"assigned\"",
+  "Update status to \"in_progress\"",
+  "Confirm no other row was modified"
+ ],
+ "relevant_data": [
+  {
+   "table": "employee_work_assignments",
+   "id": "1",
+   "field": "work_item_ref",
+   "value": "sendgrid:work-item:0001"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "employee_work_assignments",
+   "id": "1",
+   "field": "status",
+   "from": "assigned",
+   "to": "in_progress"
+  }
+ ],
+ "tables_affected": [
+  "employee_work_assignments"
+ ],
+ "effects": [
+  {
+   "table": "employee_work_assignments",
+   "op": "update",
+   "field": "status",
+   "value": "in_progress"
+  }
+ ],
+ "walk": [
+  "query_employee_work_assignments",
+  "update_employee_work_assignments_status"
+ ],
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_d209630b31c1f818fd92dacc9b5c25af1adce9159d28541c85eb0c522021165d",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "acceptance_label": "in_band",
+ "difficulty_tier": "hard",
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "checked_at": "2026-08-09T20:54:23.579Z"
+ },
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_009",
+  "measured": true,
+  "provider": "deepseek",
+  "model": null,
+  "runs": 5,
+  "passes": 5,
+  "pass_rate": 1,
+  "retained": true,
+  "band": "trivial",
+  "outcomes": [
+   {
+    "run": 1,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   },
+   {
+    "run": 2,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   },
+   {
+    "run": 3,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   },
+   {
+    "run": 4,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   },
+   {
+    "run": 5,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   }
+  ],
+  "measured_at": "2026-08-09T21:08:07.981Z",
+  "superseded_by_escalation": [
+   "scrub_tool_names"
+  ]
+ },
+ "_reference_tools": [
+  "query_employee_work_assignments",
+  "update_employee_work_assignments_status"
+ ],
+ "anchor_refs": [],
+ "provenance": {
+  "evidence_ids": [],
+  "tool_graph_path": [
+   "query_employee_work_assignments",
+   "update_employee_work_assignments_status"
+  ],
+  "tool_graph_edges": [
+   "query_employee_work_assignments\u0000update_employee_work_assignments_status"
+  ],
+  "verifier_id": "task_009",
+  "difficulty_reason": "hard: walk length 2"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_human_resources",
+   "dept_sales"
+  ],
+  "employee_ids": [
+   "emp_1",
+   "emp_2"
+  ],
+  "workflow_ids": [
+   "workflow_sales",
+   "workflow_human_resources",
+   "workflow_sales_crm_operations_handoff"
+  ],
+  "cross_department": true
+ }
+}

@@ -1,0 +1,165 @@
+{
+ "task_id": "task_008",
+ "prompt": "In the morgan_stanley_simulated world: Find the employee EMP-180062, verify status is \"on_leave\", then set its status to \"terminated\". Do not modify any other employees record.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.row_pinned_update@1",
+  "template_signature": "template:1fecd0aaa4394913",
+  "prompt_class": "resolution"
+ },
+ "goal": "Row-pinned update: employees[2].status from \"on_leave\" to \"terminated\"",
+ "required_tools": [],
+ "complexity": "high",
+ "method": "programmatic",
+ "steps": [
+  "Read the employee EMP-180062",
+  "Confirm status is \"on_leave\"",
+  "Update status to \"terminated\"",
+  "Confirm no other row was modified"
+ ],
+ "relevant_data": [
+  {
+   "table": "employees",
+   "id": "2",
+   "field": "employee_number",
+   "value": "EMP-180062"
+  },
+  {
+   "table": "employees",
+   "id": 4,
+   "field": "employee_number",
+   "value": "EMP-272682"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "employees",
+   "id": "4",
+   "field": "status",
+   "from": "on_leave",
+   "to": "terminated"
+  }
+ ],
+ "tables_affected": [
+  "employees"
+ ],
+ "effects": [
+  {
+   "table": "employees",
+   "op": "update",
+   "field": "status",
+   "value": "terminated"
+  }
+ ],
+ "walk": [
+  "query_employees",
+  "update_employees_status"
+ ],
+ "session": [
+  {
+   "turn": 1,
+   "kind": "correction",
+   "user_text": "Không phải \"EMP-180062\"; tôi muốn \"EMP-272682\". Chỉ cập nhật mục đó."
+  }
+ ],
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_7f83cc4f330958e5131ab916a6d3f266be6020cbf77d0a34a042d42684023d0a",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "acceptance_label": "in_band",
+ "difficulty_tier": "hard",
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "checked_at": "2026-08-09T20:54:23.578Z"
+ },
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_008",
+  "measured": true,
+  "provider": "deepseek",
+  "model": null,
+  "runs": 5,
+  "passes": 5,
+  "pass_rate": 1,
+  "retained": true,
+  "band": "trivial",
+  "outcomes": [
+   {
+    "run": 1,
+    "passed": true,
+    "reward": 1,
+    "steps": 3
+   },
+   {
+    "run": 2,
+    "passed": true,
+    "reward": 1,
+    "steps": 3
+   },
+   {
+    "run": 3,
+    "passed": true,
+    "reward": 1,
+    "steps": 3
+   },
+   {
+    "run": 4,
+    "passed": true,
+    "reward": 1,
+    "steps": 3
+   },
+   {
+    "run": 5,
+    "passed": true,
+    "reward": 1,
+    "steps": 3
+   }
+  ],
+  "measured_at": "2026-08-09T21:07:29.722Z",
+  "superseded_by_escalation": [
+   "scrub_tool_names"
+  ]
+ },
+ "_reference_tools": [
+  "query_employees",
+  "update_employees_status"
+ ],
+ "anchor_refs": [],
+ "provenance": {
+  "evidence_ids": [],
+  "tool_graph_path": [
+   "query_employees",
+   "update_employees_status"
+  ],
+  "tool_graph_edges": [
+   "query_employees\u0000update_employees_status"
+  ],
+  "verifier_id": "task_008",
+  "difficulty_reason": "hard: walk length 2"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_human_resources",
+   "dept_customer_support"
+  ],
+  "employee_ids": [
+   "emp_2",
+   "emp_4"
+  ],
+  "workflow_ids": [
+   "workflow_human_resources",
+   "workflow_customer_support",
+   "workflow_customer_support_crm_operations_handoff"
+  ],
+  "cross_department": true
+ }
+}

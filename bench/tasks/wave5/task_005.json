@@ -1,0 +1,129 @@
+{
+ "task_id": "task_005",
+ "prompt": "In the morgan_stanley_simulated world: locate the lead management sop record whose name is \"Northgate Associates\" and whose created_at is exactly \"2024-02-25\" and process it according to the CURRENT lead management sop handling procedure in the document store. Be careful: multiple versions of the procedure exist and some are outdated, and the current procedure's outcome depends on the record's own attributes. Verify the record first, apply exactly one correct transition, change nothing else, and report what you did.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.row_pinned_update@1",
+  "template_signature": "template:1fecd0aaa4394913",
+  "prompt_class": "resolution"
+ },
+ "goal": "Row-pinned update: lead_management_sop[1].status from \"active\" to \"inactive\"",
+ "required_tools": [
+  "list_lead_management_sop",
+  "update_status_lead_management_sop"
+ ],
+ "complexity": "medium",
+ "method": "programmatic",
+ "steps": [
+  "Read the lead management sop Northgate Associates",
+  "Confirm status is \"active\"",
+  "Update status to \"inactive\"",
+  "Confirm no other row was modified"
+ ],
+ "relevant_data": [
+  {
+   "table": "lead_management_sop",
+   "id": "1",
+   "field": "name",
+   "value": "Northgate Associates"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "lead_management_sop",
+   "id": "1",
+   "field": "status",
+   "from": "active",
+   "to": "inactive"
+  }
+ ],
+ "tables_affected": [
+  "lead_management_sop"
+ ],
+ "effects": [
+  {
+   "table": "lead_management_sop",
+   "op": "update",
+   "field": "status",
+   "value": "inactive"
+  }
+ ],
+ "walk": [
+  "list_lead_management_sop",
+  "update_status_lead_management_sop"
+ ],
+ "anchor_refs": [
+  "anc_3983fe9e5ae5",
+  "anc_16fec4c8f151",
+  "anc_470a6ea97a81",
+  "anc_2f3b862a5267",
+  "anc_2e59d45743fc",
+  "anc_421a807fae1a",
+  "anc_c0c1c3f7a263",
+  "anc_608e9c5415fb"
+ ],
+ "_core_acceptance_reserve": true,
+ "_vertical_core": true,
+ "departments": [
+  "core"
+ ],
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_25c93805b4eeaa62e89bc7892e0fa9647d8ca4526087385d4f55153ba54ab895",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "acceptance_label": "in_band",
+ "difficulty_tier": "easy",
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "checked_at": "2026-08-10T00:25:15.939Z"
+ },
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_005",
+  "measured": false,
+  "reason": "not_sampled",
+  "detail": "outside the stratified solvability sample; deterministic acceptance evidence stands"
+ },
+ "provenance": {
+  "evidence_ids": [
+   "anc_3983fe9e5ae5",
+   "anc_16fec4c8f151",
+   "anc_470a6ea97a81",
+   "anc_2f3b862a5267",
+   "anc_2e59d45743fc",
+   "anc_421a807fae1a",
+   "anc_c0c1c3f7a263",
+   "anc_608e9c5415fb"
+  ],
+  "tool_graph_path": [
+   "list_lead_management_sop",
+   "update_status_lead_management_sop"
+  ],
+  "tool_graph_edges": [
+   "list_lead_management_sop\u0000update_status_lead_management_sop"
+  ],
+  "verifier_id": "task_005",
+  "difficulty_reason": "easy: walk length 2"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_core_operations"
+  ],
+  "employee_ids": [],
+  "workflow_ids": [
+   "workflow_crm_operations",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff"
+  ],
+  "cross_department": false
+ }
+}

@@ -1,0 +1,116 @@
+{
+ "task_id": "task_020",
+ "prompt": "In the morgan_stanley_simulated world: locate the sourcing purchase orders record whose po_number is \"PO-639182\" and whose vendor_id is exactly \"132\" and process it according to the CURRENT sourcing purchase orders handling procedure in the document store. Be careful: multiple versions of the procedure exist and some are outdated, and the current procedure's outcome depends on the record's own attributes. Verify the record first, apply exactly one correct transition, change nothing else, and report what you did.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.employee_grounded_workflow@1",
+  "template_key": "sourcing_purchase_orders:status:employee_assignment",
+  "template_signature": "template:470028880258899c",
+  "prompt_class": "resolution"
+ },
+ "goal": "Employee-grounded workflow: sourcing purchase orders \"PO-639182\".status from \"received\" to \"closed\"",
+ "required_tools": [
+  "sourcing_records_agent",
+  "sourcing_workflow_agent"
+ ],
+ "complexity": "high",
+ "method": "programmatic",
+ "steps": [
+  "Look up sourcing_purchase_orders record \"PO-639182\" with its employee assignments",
+  "Verify the assigned employees: Aisha Ahmad, Thomas Lee",
+  "Confirm status is \"received\"",
+  "Update status to \"closed\"",
+  "Confirm no employee record or unrelated workflow row changed"
+ ],
+ "relevant_data": [
+  {
+   "table": "sourcing_purchase_orders",
+   "id": "113",
+   "field": "status",
+   "value": "received"
+  },
+  {
+   "table": "sourcing_purchase_orders",
+   "id": "113",
+   "field": "requested_by_employee_id",
+   "value": 12
+  },
+  {
+   "table": "sourcing_purchase_orders",
+   "id": "113",
+   "field": "approver_employee_id",
+   "value": 14
+  },
+  {
+   "table": "sourcing_purchase_orders",
+   "id": 113,
+   "field": "po_number",
+   "value": "PO-639182"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "sourcing_purchase_orders",
+   "id": "113",
+   "field": "status",
+   "from": "received",
+   "to": "closed"
+  }
+ ],
+ "tables_affected": [
+  "sourcing_purchase_orders"
+ ],
+ "effects": [
+  {
+   "table": "sourcing_purchase_orders",
+   "op": "update",
+   "field": "status",
+   "value": "closed"
+  }
+ ],
+ "walk": [
+  "sourcing_records_agent",
+  "sourcing_workflow_agent"
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"tasks.assigned_to\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"employee_work_assignments\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"opportunity_stage_gates\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-10T00:29:32.480Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_becbe9684ba339f832e6cfc5c08a60226752c17c2c70a208927afd10d928aa01",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_sourcing",
+   "dept_marketing",
+   "dept_core_operations"
+  ],
+  "employee_ids": [
+   "emp_12",
+   "emp_14"
+  ],
+  "workflow_ids": [
+   "workflow_marketing",
+   "workflow_sourcing",
+   "workflow_crm_operations",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff"
+  ],
+  "cross_department": true
+ }
+}

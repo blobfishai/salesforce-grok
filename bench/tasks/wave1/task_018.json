@@ -1,0 +1,104 @@
+{
+ "task_id": "task_018",
+ "prompt": "In the morgan_stanley_simulated world, process marketing campaigns record \"CAM-724760\", which is assigned to Lisa Park. Use the employee-aware lookup to verify the assignment and confirm status is \"active\", then update its status to the next stage in the marketing campaigns lifecycle, changing only that workflow record.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.employee_grounded_workflow@1",
+  "template_key": "marketing_campaigns:status:employee_assignment",
+  "template_signature": "template:e712240d215110f8",
+  "prompt_class": "resolution"
+ },
+ "goal": "Employee-grounded workflow: marketing campaigns \"CAM-724760\".status from \"active\" to \"paused\"",
+ "required_tools": [
+  "lookup_marketing_campaign_with_employees",
+  "marketing_workflow_agent",
+  "marketing_records_agent"
+ ],
+ "complexity": "medium",
+ "method": "programmatic",
+ "steps": [
+  "Look up marketing_campaigns record \"CAM-724760\" with its employee assignments",
+  "Verify the assigned employee: Lisa Park",
+  "Confirm status is \"active\"",
+  "Update status to \"paused\"",
+  "Confirm no employee record or unrelated workflow row changed"
+ ],
+ "relevant_data": [
+  {
+   "table": "marketing_campaigns",
+   "id": "115",
+   "field": "status",
+   "value": "active"
+  },
+  {
+   "table": "marketing_campaigns",
+   "id": "115",
+   "field": "owner_employee_id",
+   "value": 17
+  },
+  {
+   "table": "marketing_campaigns",
+   "id": 115,
+   "field": "campaign_code",
+   "value": "CAM-724760"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "marketing_campaigns",
+   "id": "115",
+   "field": "status",
+   "from": "active",
+   "to": "paused"
+  }
+ ],
+ "tables_affected": [
+  "marketing_campaigns"
+ ],
+ "effects": [
+  {
+   "table": "marketing_campaigns",
+   "op": "update",
+   "field": "status",
+   "value": "paused"
+  }
+ ],
+ "walk": [
+  "lookup_marketing_campaign_with_employees",
+  "marketing_workflow_agent"
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"opportunity.stage\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-09T21:10:44.984Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_50536c09ffe1fba36f0317661641989e1d2af79e20df3c8d471afc0f9e6dc42e",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_marketing",
+   "dept_finance"
+  ],
+  "employee_ids": [
+   "emp_17"
+  ],
+  "workflow_ids": [
+   "workflow_finance",
+   "workflow_marketing"
+  ],
+  "cross_department": true
+ }
+}

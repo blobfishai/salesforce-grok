@@ -1,0 +1,190 @@
+{
+ "task_id": "task_007",
+ "prompt": "The account tiering standard currently lists Summit Supply Co as active, but the operations queue flags this record for immediate attention. Create a new account tiering standard entry for Summit Supply Co, then update the existing Summit Supply Co record to inactive.",
+ "prompt_generation": {
+  "source": "llm",
+  "template_family": "graph.mutation.medium.anchored@1",
+  "template_signature": "template:e8c2ddd7981fb23c",
+  "prompt_class": "resolution"
+ },
+ "goal": "Drive account tiering standard through the workflow, applying 2 verified state changes.",
+ "required_tools": [
+  "list_account_tiering_standard",
+  "create_account_tiering_standard",
+  "get_account_tiering_standard",
+  "update_status_account_tiering_standard"
+ ],
+ "complexity": "medium",
+ "method": "graph_walk",
+ "steps": [
+  "list operation on account_tiering_standard (account_tiering_standard)",
+  "create operation on account_tiering_standard (account_tiering_standard)",
+  "get operation on account_tiering_standard (account_tiering_standard)",
+  "update status operation on account_tiering_standard (account_tiering_standard)"
+ ],
+ "relevant_data": [
+  {
+   "table": "account_tiering_standard",
+   "id": 7,
+   "field": "name",
+   "value": "Summit Supply Co"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "account_tiering_standard",
+   "id": "10",
+   "field": "(new row)",
+   "from": "9 rows",
+   "to": "10 rows"
+  },
+  {
+   "table": "account_tiering_standard",
+   "id": "7",
+   "field": "status",
+   "from": "active",
+   "to": "inactive"
+  }
+ ],
+ "tables_affected": [
+  "account_tiering_standard"
+ ],
+ "walk": [
+  "list_account_tiering_standard",
+  "create_account_tiering_standard",
+  "get_account_tiering_standard",
+  "update_status_account_tiering_standard"
+ ],
+ "effects": [
+  {
+   "table": "account_tiering_standard",
+   "op": "insert"
+  },
+  {
+   "table": "account_tiering_standard",
+   "op": "update",
+   "field": "status",
+   "value": "inactive"
+  }
+ ],
+ "difficulty_tier": "medium",
+ "sequence_integrity": {
+  "schemaVersion": 1,
+  "passed": true,
+  "pathLength": 4,
+  "uniqueTools": 4,
+  "rules": [
+   "every transition has an evidence-backed edge",
+   "no tool immediately repeats itself, and no tool is used more than 4 times",
+   "terminal actions cannot restart the same entity lifecycle",
+   "the same mutating action cannot repeat on the same entity"
+  ],
+  "transitions": [
+   {
+    "source": "list_account_tiering_standard",
+    "target": "create_account_tiering_standard",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "list",
+    "targetAction": "create",
+    "sharedEntities": [
+     "standard"
+    ],
+    "stepIndex": 1,
+    "edgeSupported": true
+   },
+   {
+    "source": "create_account_tiering_standard",
+    "target": "get_account_tiering_standard",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "create",
+    "targetAction": "get",
+    "sharedEntities": [
+     "standard"
+    ],
+    "stepIndex": 2,
+    "edgeSupported": true
+   },
+   {
+    "source": "get_account_tiering_standard",
+    "target": "update_status_account_tiering_standard",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "get",
+    "targetAction": "update",
+    "sharedEntities": [
+     "standard"
+    ],
+    "stepIndex": 3,
+    "edgeSupported": true
+   }
+  ],
+  "issues": []
+ },
+ "provenance": {
+  "evidence_ids": [
+   "anc_3983fe9e5ae5",
+   "anc_1a04b24baacf",
+   "anc_24012528020b"
+  ],
+  "tool_graph_path": [
+   "list_account_tiering_standard",
+   "create_account_tiering_standard",
+   "get_account_tiering_standard",
+   "update_status_account_tiering_standard"
+  ],
+  "tool_graph_edges": [
+   "list_account_tiering_standard\u0000create_account_tiering_standard",
+   "create_account_tiering_standard\u0000get_account_tiering_standard",
+   "get_account_tiering_standard\u0000update_status_account_tiering_standard"
+  ],
+  "verifier_id": "task_007",
+  "difficulty_reason": "medium: walk length 4"
+ },
+ "anchor_refs": [
+  "anc_3983fe9e5ae5",
+  "anc_1a04b24baacf",
+  "anc_24012528020b"
+ ],
+ "departments": [
+  "core"
+ ],
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_5862e3e7b6e0c95fc4f7065ea4d89de905224dd3ddcdaf5190fda655cfc1956b",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "acceptance_label": "in_band",
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "checked_at": "2026-08-10T00:25:16.749Z"
+ },
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_007",
+  "measured": false,
+  "reason": "not_sampled",
+  "detail": "outside the stratified solvability sample; deterministic acceptance evidence stands"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_core_operations"
+  ],
+  "employee_ids": [],
+  "workflow_ids": [
+   "workflow_crm_operations",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff"
+  ],
+  "cross_department": false
+ }
+}

@@ -1,0 +1,76 @@
+{
+ "label": "lb-arena-deepseek-v4-pro",
+ "level": 2,
+ "taskId": "arena_lead_qualification",
+ "type": "lead_qualification",
+ "trial": 1,
+ "prompt": "Based on the latest discussion notes for the lead \"Riverside Contact\" in the document store, can this lead be qualified? If the answer is no, which factors—'Budget', 'Authority', 'Need', or 'Timeline'—are responsible? Return only one or several of the four BANT factors, or 'None' if the lead qualifies.",
+ "gt": [
+  "Budget"
+ ],
+ "metric": "set",
+ "docs": [
+  "Lead Discussion Notes — Riverside Contact",
+  "Lead Discussion Notes — Riverside Contact (update)"
+ ],
+ "steps": [
+  {
+   "k": "thinking",
+   "text": "The user is asking about a lead called \"Riverside Contact\" and wants to know if it can be qualified based on discussion notes in the document store. I need to:\n\n1. First, find the lead \"Riverside Contact\" in the sales leads\n2. Find any discussion notes in the document store related to this lead\n3. Analyze the BANT (Budget, Authority, Need, Timeline) factors\n\nLet me start by searching for the lead and any relevant documents."
+  },
+  {
+   "k": "tool",
+   "name": "salesforce.query_sales_leads",
+   "args": {
+    "contact_name": "Riverside Contact"
+   },
+   "result": "{\"table\": \"sales_leads\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "tool",
+   "name": "notion.query_documents",
+   "args": {
+    "query": "Riverside Contact"
+   },
+   "result": "{\"table\": \"agent_documents\", \"query\": \"Riverside Contact\", \"count\": 2, \"rows\": [{\"id\": 9, \"title\": \"Lead Discussion Notes \\u2014 Riverside Contact\", \"body\": \"Call 1 (2026-05-02): Riverside operations lead confirmed a approved budget envelope of $120k for this initiative; procurement has the PO template ready. Call 2 (2026-05-16): Clear need \\u2014 their manual reconciliation runs 11 hours/week and misses SLAs; they want go-live inside Q4, and the project plan shows a committed timeline. Call 3 (2026-06-03): Our champion is an operations manager who cannot sign; the CFO (economic buyer) has not joined any call and deferred twice. No signature authority has been established.\", \"updated_at\": \"2026-06-03T17:00:00Z\"}, {\"id\": 10, \"title\": \"Lead Discussion Notes \\u2014 Riverside Contact (update)\", \"body\": \"Update (2026-07-21, supersedes earlier notes where they conflict): The CFO joined the las"
+  },
+  {
+   "k": "thinking",
+   "text": "The lead \"Riverside Contact\" didn't show up directly in sales_leads query by contact_name. But the documents reference it. Let me also search by company name \"Riverside\" or check all leads."
+  },
+  {
+   "k": "tool",
+   "name": "salesforce.query_sales_leads",
+   "args": {
+    "company_name": "Riverside"
+   },
+   "result": "{\"table\": \"sales_leads\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "thinking",
+   "text": "No lead with company \"Riverside\" either. Let me list all leads to find it."
+  },
+  {
+   "k": "tool",
+   "name": "salesforce.list_lead",
+   "args": {},
+   "result": "{\"rows\": [{\"id\": 1, \"company\": \"under review\", \"contactname\": \"Riverside Contact\", \"segment\": \"deferred\", \"status\": \"Working\", \"interestproductid\": \"on hold\", \"created_at\": \"2024-08-23\"}, {\"id\": 2, \"company\": \"under review\", \"contactname\": \"Cedar Contact\", \"segment\": \"escalated\", \"status\": \"Converted\", \"interestproductid\": \"expedited\", \"created_at\": \"2025-06-27\"}, {\"id\": 3, \"company\": \"confirmed\", \"contactname\": \"Meridian Contact\", \"segment\": \"routine\", \"status\": \"Converted\", \"interestproductid\": \"routine\", \"created_at\": \"2025-03-27\"}, {\"id\": 4, \"company\": \"expedited\", \"contactname\": \"Lakeshore Contact\", \"segment\": \"on hold\", \"status\": \"Converted\", \"interestproductid\": \"standard\", \"created_at\": \"2025-08-27\"}, {\"id\": 5, \"company\": \"closed out\", \"contactname\": \"Cedar Contact\", \"segment\": \"standard\", \"status\": \"Working\", \"interestproductid\": \"under review\", \"created_at\": \"2024-10-08\"}, {\"id"
+  },
+  {
+   "k": "thinking",
+   "text": "I found the lead: id=1, \"Riverside Contact\". It's in \"Working\" status. Now let me analyze the BANT factors from the discussion notes.\n\nThe latest discussion notes (id=10, 2026-07-21) supersede the earlier ones. Let me analyze:\n\n**Budget**: The update says \"group finance froze the initiative budget pending the H2 review — the $120k envelope is no longer approved.\" So Budget is NO.\n\n**Authority**: \"The CFO joined the last call and confirmed signing authority is resolved.\" So Authority is YES.\n\n**Need**: The notes say \"Clear need — their manual reconciliation runs 11 hours/week and misses SLAs\" and the update says \"Need and timeline are unchanged.\" So Need is YES.\n\n**Timeline**: \"they want go-live inside Q4, and the project plan shows a committed timeline\" and the update says \"Need and timeline are unchanged.\" So Timeline is YES.\n\nSo the lead cannot be qualified because of Budget. The BANT factor responsible is \"Budget\".\n\nThe question asks: \"can this lead be qualified? If the answer is no, which factors—'Budget', 'Authority', 'Need', or 'Timeline'—are responsible?\"\n\nThe answer is: Budget (since budget is the only factor that is not met)."
+  },
+  {
+   "k": "answer",
+   "text": "Budget"
+  }
+ ],
+ "usage": {
+  "prompt": 74833,
+  "completion": 743
+ },
+ "answer": "Budget",
+ "passed": true,
+ "model": "deepseek-v4-pro",
+ "costUsd": 0.0332
+}

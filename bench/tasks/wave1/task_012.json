@@ -1,0 +1,186 @@
+{
+ "task_id": "task_012",
+ "prompt": "In the morgan_stanley_simulated world: Work through the employee work assignments queue: every record currently \"in_progress\" needs to move forward. Review each record, then update its status to the next stage in the employee work assignments lifecycle. The specific employee work assignment work item ref is salesforce:work-item:0004. The specific employee work assignment work item ref is workday:work-item:0006. The specific employee work assignment work item ref is netsuite:work-item:0012.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "programmatic.conditional_update@1",
+  "template_signature": "template:4157806ef350925d",
+  "prompt_class": "queue"
+ },
+ "goal": "Queue update: 3 employee_work_assignments from \"in_progress\" to \"completed\"",
+ "required_tools": [],
+ "complexity": "high",
+ "method": "programmatic",
+ "steps": [
+  "Query employee_work_assignments where status = \"in_progress\"",
+  "For each matching record, evaluate the condition",
+  "Update qualifying records to status \"completed\"",
+  "Verify all updates took effect"
+ ],
+ "relevant_data": [
+  {
+   "table": "employee_work_assignments",
+   "id": 4,
+   "field": "work_item_ref",
+   "value": "salesforce:work-item:0004"
+  },
+  {
+   "table": "employee_work_assignments",
+   "id": 6,
+   "field": "work_item_ref",
+   "value": "workday:work-item:0006"
+  },
+  {
+   "table": "employee_work_assignments",
+   "id": 12,
+   "field": "work_item_ref",
+   "value": "netsuite:work-item:0012"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "employee_work_assignments",
+   "id": "4",
+   "field": "status",
+   "from": "in_progress",
+   "to": "completed"
+  },
+  {
+   "table": "employee_work_assignments",
+   "id": "6",
+   "field": "status",
+   "from": "in_progress",
+   "to": "completed"
+  },
+  {
+   "table": "employee_work_assignments",
+   "id": "12",
+   "field": "status",
+   "from": "in_progress",
+   "to": "completed"
+  }
+ ],
+ "tables_affected": [
+  "employee_work_assignments"
+ ],
+ "effects": [
+  {
+   "table": "employee_work_assignments",
+   "op": "update",
+   "field": "status",
+   "value": "completed"
+  }
+ ],
+ "departments": [
+  "organization"
+ ],
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_d8515a76e5c30908ddcb982e635a9c200ba27fa3165eb09bb651644a5dc28830",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "acceptance_label": "in_band",
+ "difficulty_tier": "hard",
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"hr_performance_reviews\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"opportunity.stage\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-09T20:54:23.582Z"
+ },
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_012",
+  "measured": true,
+  "provider": "deepseek",
+  "model": null,
+  "runs": 5,
+  "passes": 5,
+  "pass_rate": 1,
+  "retained": true,
+  "band": "trivial",
+  "outcomes": [
+   {
+    "run": 1,
+    "passed": true,
+    "reward": 1,
+    "steps": 7
+   },
+   {
+    "run": 2,
+    "passed": true,
+    "reward": 1,
+    "steps": 6
+   },
+   {
+    "run": 3,
+    "passed": true,
+    "reward": 1,
+    "steps": 7
+   },
+   {
+    "run": 4,
+    "passed": true,
+    "reward": 1,
+    "steps": 7
+   },
+   {
+    "run": 5,
+    "passed": true,
+    "reward": 1,
+    "steps": 4
+   }
+  ],
+  "measured_at": "2026-08-09T20:59:31.845Z",
+  "superseded_by_escalation": [
+   "scrub_tool_names"
+  ]
+ },
+ "_reference_tools": [
+  "organization_records_agent",
+  "update_employee_work_assignments_status"
+ ],
+ "anchor_refs": [],
+ "provenance": {
+  "evidence_ids": [],
+  "tool_graph_path": [],
+  "verifier_id": "task_012",
+  "difficulty_reason": "hard: walk length 0"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_human_resources",
+   "dept_customer_support",
+   "dept_sales",
+   "dept_sourcing",
+   "dept_marketing"
+  ],
+  "employee_ids": [
+   "emp_4",
+   "emp_1",
+   "emp_6",
+   "emp_8",
+   "emp_12",
+   "emp_11"
+  ],
+  "workflow_ids": [
+   "workflow_sales",
+   "workflow_human_resources",
+   "workflow_customer_support",
+   "workflow_marketing",
+   "workflow_sourcing",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff"
+  ],
+  "cross_department": true
+ }
+}

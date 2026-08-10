@@ -1,0 +1,173 @@
+{
+ "task_id": "task_014",
+ "prompt": "At morgan_stanley_simulated: There's a pending item (BUD-468603 (draft)) in finance budgets that needs processing. Then change the status. Apply only those requested changes.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "graph.mutation.medium.anchored@1",
+  "template_signature": "template:e8c2ddd7981fb23c"
+ },
+ "goal": "Drive finance budgets through the workflow, applying 1 verified state change.",
+ "required_tools": [
+  "lookup_finance_budget_with_departments",
+  "update_finance_budgets_status",
+  "query_finance_budgets"
+ ],
+ "complexity": "medium",
+ "method": "graph_walk",
+ "steps": [
+  "Look up a finance budget record with its parent departments data joined. (finance_budgets, departments)",
+  "Update status of a finance budgets record. Valid statuses: draft, active, closed. (finance_budgets)",
+  "Search and filter finance_budgets. Returns matching rows. (finance_budgets)"
+ ],
+ "relevant_data": [
+  {
+   "table": "finance_budgets",
+   "id": 145,
+   "field": "budget_number",
+   "value": "BUD-468603"
+  },
+  {
+   "table": "finance_budgets",
+   "id": 1,
+   "field": "budget_number",
+   "value": "BUD-299900"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "finance_budgets",
+   "id": "1",
+   "field": "status",
+   "from": "draft",
+   "to": "active"
+  }
+ ],
+ "tables_affected": [
+  "finance_budgets"
+ ],
+ "walk": [
+  "lookup_finance_budget_with_departments",
+  "update_finance_budgets_status",
+  "query_finance_budgets"
+ ],
+ "effects": [
+  {
+   "table": "finance_budgets",
+   "op": "update",
+   "field": "status",
+   "value": "active"
+  }
+ ],
+ "difficulty_tier": "easy",
+ "sequence_integrity": {
+  "schemaVersion": 1,
+  "passed": true,
+  "pathLength": 3,
+  "uniqueTools": 3,
+  "rules": [
+   "every transition has an evidence-backed edge",
+   "no tool immediately repeats itself, and no tool is used more than 4 times",
+   "terminal actions cannot restart the same entity lifecycle",
+   "the same mutating action cannot repeat on the same entity"
+  ],
+  "transitions": [
+   {
+    "source": "lookup_finance_budget_with_departments",
+    "target": "update_finance_budgets_status",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "lookup",
+    "targetAction": "update",
+    "sharedEntities": [],
+    "stepIndex": 1,
+    "edgeSupported": true
+   },
+   {
+    "source": "update_finance_budgets_status",
+    "target": "query_finance_budgets",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "update",
+    "targetAction": "query",
+    "sharedEntities": [],
+    "stepIndex": 2,
+    "edgeSupported": true
+   }
+  ],
+  "issues": []
+ },
+ "provenance": {
+  "evidence_ids": [
+   "anc_b2a29f754bcf",
+   "anc_adce5df340ef",
+   "anc_13a082b690b3",
+   "anc_ffb5c8e96a65"
+  ],
+  "tool_graph_path": [
+   "lookup_finance_budget_with_departments",
+   "update_finance_budgets_status",
+   "query_finance_budgets"
+  ],
+  "tool_graph_edges": [
+   "lookup_finance_budget_with_departments\u0000update_finance_budgets_status",
+   "update_finance_budgets_status\u0000query_finance_budgets"
+  ],
+  "verifier_id": "task_014",
+  "difficulty_reason": "easy: walk length 3"
+ },
+ "departments": [
+  "finance",
+  "organization"
+ ],
+ "session": [
+  {
+   "turn": 1,
+   "kind": "correction",
+   "user_text": "Không phải \"BUD-468603\"; tôi muốn \"BUD-299900\". Chỉ cập nhật mục đó."
+  }
+ ],
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_a0571c2aa2cc49c11d2363a76fe7040f34967bef27216e35942e09ae446c6371",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "acceptance_label": "in_band",
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"employee_work_assignments.work_item_ref\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-10T00:25:24.187Z"
+ },
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_014",
+  "measured": false,
+  "reason": "not_sampled",
+  "detail": "outside the stratified solvability sample; deterministic acceptance evidence stands"
+ },
+ "anchor_refs": [
+  "anc_b2a29f754bcf",
+  "anc_adce5df340ef",
+  "anc_13a082b690b3",
+  "anc_ffb5c8e96a65"
+ ],
+ "coverage": {
+  "department_ids": [
+   "dept_finance"
+  ],
+  "employee_ids": [],
+  "workflow_ids": [
+   "workflow_finance"
+  ],
+  "cross_department": false
+ }
+}

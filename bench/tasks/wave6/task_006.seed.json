@@ -1,0 +1,44 @@
+{
+ "schema": "task-seed.v1",
+ "task_id": "task_006",
+ "rows": {
+  "accounts": [
+   {
+    "id": "account_010",
+    "name": "Ironwood Group Account",
+    "industry": "Account industry ready for handoff",
+    "status": "active",
+    "owner_id": "OWN-77DBD7D",
+    "annual_revenue": 65.17,
+    "created_at": "2026-01-07T19:47:00Z"
+   }
+  ]
+ },
+ "documents": [
+  {
+   "store": "agent_documents",
+   "id": 45,
+   "title": "41 — ARTIFACT: Executed MSA Summary Sheet — Ironwood Group"
+  }
+ ],
+ "input_documents": [],
+ "mcp_seeding": {
+  "salesforce": [
+   "accounts_list",
+   "account_get",
+   "contacts_list",
+   "contact_create",
+   "contact_get",
+   "contacts_list"
+  ],
+  "core": [
+   "opportunities_list",
+   "case_get"
+  ],
+  "pagerduty": [
+   "cases_list",
+   "case_create",
+   "cases_list"
+  ]
+ }
+}

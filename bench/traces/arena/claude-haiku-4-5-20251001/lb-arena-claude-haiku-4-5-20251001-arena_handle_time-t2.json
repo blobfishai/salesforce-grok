@@ -1,0 +1,88 @@
+{
+ "label": "lb-arena-claude-haiku-4-5-20251001",
+ "level": 2,
+ "taskId": "arena_handle_time",
+ "type": "handle_time",
+ "trial": 2,
+ "prompt": "Per the routing policy's definitions of completed tickets and eligibility, identify the agent who completed the most support tickets opened between 2025-10-01 and 2025-12-31. Return only the employee number of the agent.",
+ "gt": "EMP-468862",
+ "metric": "exact",
+ "docs": [
+  "Case Routing Policy (rev. 2 — CURRENT)"
+ ],
+ "steps": [
+  {
+   "k": "tool",
+   "name": "notion.query_documents",
+   "args": {
+    "query": "routing policy"
+   },
+   "result": "{\"table\": \"agent_documents\", \"query\": \"routing policy\", \"count\": 2, \"rows\": [{\"id\": 3, \"title\": \"Case Routing Policy (rev. 2 \\u2014 CURRENT)\", \"body\": \"Effective 2026-06-01, supersedes rev. 1. Issue categories are determined by the ticket subject prefix: \\\"Billing discrepancy\\\", \\\"Problem updating\\\", \\\"Cannot access\\\", \\\"Question about\\\". A new case routes to the ELIGIBLE agent who has completed (status resolved or closed) the most support tickets in the case's category. Eligibility: employees with status \\\"active\\\" only \\u2014 agents on leave or terminated are never routed. Tie-break 1: fewer currently active tickets (open, in_progress, waiting_customer). Tie-break 2: earlier hire_date. Answer with the agent's employee_number.\", \"updated_at\": \"2026-06-01T09:00:00Z\"}, {\"id\": 4, \"title\": \"Case Routing Policy (rev. 1)\", \"body\": \"[SUPERSEDED] Route new cases to the agent with the most total"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "opened_at": "2025-10-01",
+    "status": "closed",
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "status": "closed",
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 15, \"rows\": [{\"id\": 9, \"ticket_number\": \"TKT-541371\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"David Brown\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-04-14\", \"business_unit_id\": 1, \"status\": \"closed\"}, {\"id\": 10, \"ticket_number\": \"TKT-497067\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"Fatima Ali\", \"priority\": \"medium\", \"assignee_employee_id\": 5, \"opened_at\": \"2026-02-01\", \"business_unit_id\": 7, \"status\": \"closed\"}, {\"id\": 18, \"ticket_number\": \"TKT-551832\", \"subject\": \"Question about business unit status\", \"customer_name\": \"Maria Garcia\", \"priority\": \"urgent\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-05-09\", \"business_unit_id\": 10, \"status\": \"closed\"}, {\"id\": 24, \"ticket_number\": \"TKT-386861\", \"subject\": \"Question about business unit status\", \"customer_name\": \"Omar H"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "status": "resolved",
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 61, \"rows\": [{\"id\": 2, \"ticket_number\": \"TKT-979617\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Omar Hassan\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-06-16\", \"business_unit_id\": 2, \"status\": \"resolved\"}, {\"id\": 4, \"ticket_number\": \"TKT-412766\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Michael Johnson\", \"priority\": \"low\", \"assignee_employee_id\": 3, \"opened_at\": \"2026-02-23\", \"business_unit_id\": 1, \"status\": \"resolved\"}, {\"id\": 7, \"ticket_number\": \"TKT-643495\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Aisha Ahmad\", \"priority\": \"high\", \"assignee_employee_id\": 5, \"opened_at\": \"2026-03-17\", \"business_unit_id\": 1, \"status\": \"resolved\"}, {\"id\": 13, \"ticket_number\": \"TKT-970573\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"Brian Mu"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 200, \"rows\": [{\"id\": 1, \"ticket_number\": \"TKT-703339\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Lisa Park\", \"priority\": \"urgent\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-05-13\", \"business_unit_id\": 6, \"status\": \"open\"}, {\"id\": 2, \"ticket_number\": \"TKT-979617\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Omar Hassan\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-06-16\", \"business_unit_id\": 2, \"status\": \"resolved\"}, {\"id\": 3, \"ticket_number\": \"TKT-995387\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Yuki Tanaka\", \"priority\": \"low\", \"assignee_employee_id\": 6, \"opened_at\": \"2026-05-18\", \"business_unit_id\": 10, \"status\": \"in_progress\"}, {\"id\": 4, \"ticket_number\": \"TKT-412766\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Mich"
+  },
+  {
+   "k": "tool",
+   "name": "core.query_files",
+   "args": {
+    "query": "2025 support tickets",
+    "limit": 50
+   },
+   "result": "{\"table\": \"agent_files\", \"query\": \"2025 support tickets\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "tool",
+   "name": "core.query_files",
+   "args": {
+    "limit": 50
+   },
+   "result": "{\"table\": \"agent_files\", \"query\": null, \"count\": 3, \"rows\": [{\"id\": 1, \"filename\": \"business_units_import.tsv\", \"content_type\": \"text/tab-separated-values\", \"content\": \"id\\tinstitutional\\twealth\\tinvestment\\tstatus\\tcreated_at\\n1\\ton hold\\tconfirmed\\tescalated\\tactive\\t2024-01-30\\n2\\tstandard\\troutine\\troutine\\tpending\\t2024-10-18\\n3\\tescalated\\tunder review\\texpedited\\tapproved\\t2024-10-14\\n4\\tprovisional\\tconfirmed\\tclosed out\\tinactive\\t2024-06-25\\n5\\tclosed out\\troutine\\troutine\\tactive\\t2024-04-29\\n6\\tstandard\\tstandard\\tprovisional\\tpending\\t2025-12-16\\n7\\tescalated\\tstandard\\texpedited\\tapproved\\t2025-11-05\\n8\\tconfirmed\\tconfirmed\\tescalated\\tapproved\\t2025-09-06\\n9\\tprovisional\\tprovisional\\tstandard\\tpending\\t2024-06-11\\n10\\troutine\\tdeferred\\troutine\\tapproved\\t2024-09-24\\n11\\tclosed out\\tprovisional\\tstandard\\tpending\\t2025-10-09\\n12\\ton hold\\tdeferred\\tdeferred\\tapproved\\t20"
+  },
+  {
+   "k": "answer",
+   "text": "No support tickets exist in the system with opening dates between 2025-10-01 and 2025-12-31. All tickets in the database have 2026 opening dates. Therefore, no agent can be identified as having completed tickets during the requested period."
+  }
+ ],
+ "usage": {
+  "prompt": 175663,
+  "completion": 860
+ },
+ "answer": "No support tickets exist in the system with opening dates between 2025-10-01 and 2025-12-31. All tickets in the database have 2026 opening dates. Therefore, no agent can be identified as having completed tickets during the requested period.",
+ "passed": false,
+ "model": "claude-haiku-4-5-20251001",
+ "costUsd": 0.18
+}

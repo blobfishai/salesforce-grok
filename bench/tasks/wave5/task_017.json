@@ -1,0 +1,112 @@
+{
+ "task_id": "task_017",
+ "prompt": "In the morgan_stanley_simulated world: locate the finance expense reports record whose report_number is \"EXP-413432\" and whose category is exactly \"software\" and process it according to the CURRENT finance expense reports handling procedure in the document store. Be careful: multiple versions of the procedure exist and some are outdated, and the current procedure's outcome depends on the record's own attributes. Verify the record first, apply exactly one correct transition, change nothing else, and report what you did.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.employee_grounded_workflow@1",
+  "template_key": "finance_expense_reports:status:employee_assignment",
+  "template_signature": "template:65ad121aa0cbc7c1",
+  "prompt_class": "resolution"
+ },
+ "goal": "Employee-grounded workflow: finance expense reports \"EXP-413432\".status from \"approved\" to \"reimbursed\"",
+ "required_tools": [
+  "lookup_finance_expense_report_with_employees",
+  "finance_workflow_agent",
+  "finance_records_agent"
+ ],
+ "complexity": "high",
+ "method": "programmatic",
+ "steps": [
+  "Look up finance_expense_reports record \"EXP-413432\" with its employee assignments",
+  "Verify the assigned employees: Omar Hassan, David Brown",
+  "Confirm status is \"approved\"",
+  "Update status to \"reimbursed\"",
+  "Confirm no employee record or unrelated workflow row changed"
+ ],
+ "relevant_data": [
+  {
+   "table": "finance_expense_reports",
+   "id": "136",
+   "field": "status",
+   "value": "approved"
+  },
+  {
+   "table": "finance_expense_reports",
+   "id": "136",
+   "field": "employee_id",
+   "value": 10
+  },
+  {
+   "table": "finance_expense_reports",
+   "id": "136",
+   "field": "approver_employee_id",
+   "value": 6
+  },
+  {
+   "table": "finance_expense_reports",
+   "id": 136,
+   "field": "report_number",
+   "value": "EXP-413432"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "finance_expense_reports",
+   "id": "136",
+   "field": "status",
+   "from": "approved",
+   "to": "reimbursed"
+  }
+ ],
+ "tables_affected": [
+  "finance_expense_reports"
+ ],
+ "effects": [
+  {
+   "table": "finance_expense_reports",
+   "op": "update",
+   "field": "status",
+   "value": "reimbursed"
+  }
+ ],
+ "walk": [
+  "lookup_finance_expense_report_with_employees",
+  "finance_workflow_agent"
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"tasks.assigned_to\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"opportunity_stage_gates\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-10T00:29:22.162Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_b23bb7d504e8aec3ca6eb0755c8e5f1a7a038015887b60841a2d2fa043a6fb2e",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_finance",
+   "dept_sourcing"
+  ],
+  "employee_ids": [
+   "emp_10",
+   "emp_6"
+  ],
+  "workflow_ids": [
+   "workflow_finance",
+   "workflow_sourcing"
+  ],
+  "cross_department": true
+ }
+}

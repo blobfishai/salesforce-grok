@@ -15,6 +15,7 @@ import { dirname, join } from "node:path";
 import { McpClient } from "./lib/mcp-client.mjs";
 import { resolveModel, costUsd, ToolNameCodec, mangleTools, chat as llmChat } from "./lib/llm-client.mjs";
 import { WorldUpstream } from "../mcp/lib/world-upstream.mjs";
+import { resolveTaskSeedPath, sessionDbPath, applyTaskSeed } from "./lib/task-seed.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(readFileSync(join(ROOT, "config", "world.config.json"), "utf8"));
@@ -26,6 +27,7 @@ const jsonOutFlag = argv.includes("--json-out") ? argv[argv.indexOf("--json-out"
 const worldFileFlag = argv.includes("--world-file") ? argv[argv.indexOf("--world-file") + 1] : null;
 const modelFlag = argv.includes("--model") ? argv[argv.indexOf("--model") + 1] : null;
 const MULTI = argv.includes("--multi-server") || process.env.SIM_MULTI_SERVER === "1";
+const APPLY_SEED = argv.includes("--apply-task-seed") || process.env.SIM_APPLY_TASK_SEED === "1";
 
 function loadEnv() {
   const env = { ...process.env };
@@ -184,6 +186,24 @@ async function mainBlobfish() {
     }));
     harnessClient = new McpClient("node", ["mcp/harness-server.mjs"], { cwd: ROOT, env: childEnv, verbose: true });
     await harnessClient.start();
+
+    // Task-level fixtures: layer this task's seed bundle (rows, documents with
+    // bodies) into the episode's copy-on-write session DB before the agent runs.
+    if (APPLY_SEED) {
+      const seedPath = resolveTaskSeedPath(ROOT, worldPath, taskId);
+      if (seedPath && up.LOCAL) {
+        try {
+          const dbPath = sessionDbPath(ROOT, worldPath.startsWith(ROOT) ? worldPath.slice(ROOT.length + 1) : worldPath, world.world_id, up.session);
+          const applied = applyTaskSeed(seedPath, dbPath);
+          console.log(`Task seed applied: ${JSON.stringify(applied)} from ${seedPath.split("/").slice(-3).join("/")}`);
+          log({ type: "task_seed", taskId, seedPath, applied });
+        } catch (e) {
+          console.warn(`! task seed skipped: ${e.message}`);
+        }
+      } else if (!seedPath) {
+        console.warn(`! no seed bundle for ${taskId} (bench/tasks/*)`);
+      }
+    }
 
     const routing = new Map();
     llmTools = [];

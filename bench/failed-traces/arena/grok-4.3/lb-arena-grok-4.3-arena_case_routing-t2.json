@@ -1,0 +1,76 @@
+{
+ "label": "lb-arena-grok-4.3",
+ "level": 2,
+ "taskId": "arena_case_routing",
+ "type": "case_routing",
+ "trial": 2,
+ "prompt": "Use the case routing policy in the document store to determine the most suitable agent for the given case. Return only the employee number of the agent.\n## Given Case\n- Case Subject: Billing discrepancy on Q3 custody statement\n- Case Description: The client reports fee lines on the Q3 custody statement that do not match the agreed schedule and requests correction.",
+ "gt": "EMP-698636",
+ "metric": "exact",
+ "docs": [
+  "Case Routing Policy (rev. 2 — CURRENT)"
+ ],
+ "steps": [
+  {
+   "k": "thinking",
+   "text": "The task is: Use the case routing policy in the document store to determine the most suitable agent for the given case. Return only the employee number of the agent.\n"
+  },
+  {
+   "k": "tool",
+   "name": "notion.query_documents",
+   "args": {
+    "query": "case routing policy",
+    "limit": 5
+   },
+   "result": "{\"table\": \"agent_documents\", \"query\": \"case routing policy\", \"count\": 2, \"rows\": [{\"id\": 3, \"title\": \"Case Routing Policy (rev. 2 \\u2014 CURRENT)\", \"body\": \"Effective 2026-06-01, supersedes rev. 1. Issue categories are determined by the ticket subject prefix: \\\"Billing discrepancy\\\", \\\"Problem updating\\\", \\\"Cannot access\\\", \\\"Question about\\\". A new case routes to the ELIGIBLE agent who has completed (status resolved or closed) the most support tickets in the case's category. Eligibility: employees with status \\\"active\\\" only \\u2014 agents on leave or terminated are never routed. Tie-break 1: fewer currently active tickets (open, in_progress, waiting_customer). Tie-break 2: earlier hire_date. Answer with the agent's employee_number.\", \"updated_at\": \"2026-06-01T09:00:00Z\"}, {\"id\": 4, \"title\": \"Case Routing Policy (rev. 1)\", \"body\": \"[SUPERSEDED] Route new cases to the agent with the most "
+  },
+  {
+   "k": "thinking",
+   "text": "The policy is in the document titled \"Case Routing Policy (rev. 2 — CURRENT)\". It says: Issue categories are determined by the ticket subject prefix: \"Billing discrepancy\", \"Problem updating\", \"Cannot..."
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 200, \"rows\": [{\"id\": 1, \"ticket_number\": \"TKT-703339\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Lisa Park\", \"priority\": \"urgent\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-05-13\", \"business_unit_id\": 6, \"status\": \"open\"}, {\"id\": 2, \"ticket_number\": \"TKT-979617\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Omar Hassan\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-06-16\", \"business_unit_id\": 2, \"status\": \"resolved\"}, {\"id\": 3, \"ticket_number\": \"TKT-995387\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Yuki Tanaka\", \"priority\": \"low\", \"assignee_employee_id\": 6, \"opened_at\": \"2026-05-18\", \"business_unit_id\": 10, \"status\": \"in_progress\"}, {\"id\": 4, \"ticket_number\": \"TKT-412766\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Mich"
+  },
+  {
+   "k": "thinking",
+   "text": "The policy is the current one: \"Case Routing Policy (rev. 2 — CURRENT)\". For \"Billing discrepancy\", route to the ELIGIBLE agent (active only) who has completed the most support tickets in the \"Billing..."
+  },
+  {
+   "k": "tool",
+   "name": "core.query_employees",
+   "args": {
+    "limit": 50
+   },
+   "result": "{\"table\": \"employees\", \"count\": 20, \"rows\": [{\"id\": 1, \"employee_number\": \"EMP-698636\", \"name\": \"David Brown\", \"email\": \"contact87222@morganstanleysimulated.com\", \"job_title\": \"Sales Manager\", \"department_id\": 1, \"hire_date\": \"2025-05-15\", \"status\": \"active\"}, {\"id\": 2, \"employee_number\": \"EMP-180062\", \"name\": \"Priya Patel\", \"email\": \"contact18693@morganstanleysimulated.com\", \"job_title\": \"Recruiter\", \"department_id\": 2, \"hire_date\": \"2023-02-15\", \"status\": \"on_leave\"}, {\"id\": 3, \"employee_number\": \"EMP-137846\", \"name\": \"James Wilson\", \"email\": \"contact79271@morganstanleysimulated.com\", \"job_title\": \"Financial Analyst\", \"department_id\": 3, \"hire_date\": \"2023-06-15\", \"status\": \"active\"}, {\"id\": 4, \"employee_number\": \"EMP-272682\", \"name\": \"Mei Huang\", \"email\": \"contact4101@morganstanleysimulated.com\", \"job_title\": \"Support Specialist\", \"department_id\": 4, \"hire_date\": \"2024-02-15\", \"status"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 200, \"rows\": [{\"id\": 1, \"ticket_number\": \"TKT-703339\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Lisa Park\", \"priority\": \"urgent\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-05-13\", \"business_unit_id\": 6, \"status\": \"open\"}, {\"id\": 2, \"ticket_number\": \"TKT-979617\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Omar Hassan\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-06-16\", \"business_unit_id\": 2, \"status\": \"resolved\"}, {\"id\": 3, \"ticket_number\": \"TKT-995387\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Yuki Tanaka\", \"priority\": \"low\", \"assignee_employee_id\": 6, \"opened_at\": \"2026-05-18\", \"business_unit_id\": 10, \"status\": \"in_progress\"}, {\"id\": 4, \"ticket_number\": \"TKT-412766\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Mich"
+  },
+  {
+   "k": "thinking",
+   "text": "The policy requires routing to the eligible (active) agent with the most resolved/closed \"Billing discrepancy\" tickets. From employees, active ones are: EMP-698636 (1), EMP-137846 (3), EMP-237209 (9),..."
+  },
+  {
+   "k": "answer",
+   "text": "EMP-137846"
+  }
+ ],
+ "usage": {
+  "prompt": 79139,
+  "completion": 71
+ },
+ "answer": "EMP-137846",
+ "passed": false,
+ "model": "grok-4.3",
+ "costUsd": 0.0991
+}

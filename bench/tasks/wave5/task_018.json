@@ -1,0 +1,114 @@
+{
+ "task_id": "task_018",
+ "prompt": "In the morgan_stanley_simulated world: locate the hr leave requests record whose request_number is \"LEAVE-797240\" and whose employee_id is exactly \"13\" and process it according to the CURRENT hr leave requests handling procedure in the document store. Be careful: multiple versions of the procedure exist and some are outdated, and the current procedure's outcome depends on the record's own attributes. Verify the record first, apply exactly one correct transition, change nothing else, and report what you did.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.employee_grounded_workflow@1",
+  "template_key": "hr_leave_requests:status:employee_assignment",
+  "template_signature": "template:e506e459ef5ebefc",
+  "prompt_class": "resolution"
+ },
+ "goal": "Employee-grounded workflow: hr leave requests \"LEAVE-797240\".status from \"submitted\" to \"approved\"",
+ "required_tools": [
+  "lookup_hr_leave_request_with_employees",
+  "human_resources_workflow_agent",
+  "human_resources_records_agent"
+ ],
+ "complexity": "high",
+ "method": "programmatic",
+ "steps": [
+  "Look up hr_leave_requests record \"LEAVE-797240\" with its employee assignments",
+  "Verify the assigned employees: Michael Johnson, Elena Volkov",
+  "Confirm status is \"submitted\"",
+  "Update status to \"approved\"",
+  "Confirm no employee record or unrelated workflow row changed"
+ ],
+ "relevant_data": [
+  {
+   "table": "hr_leave_requests",
+   "id": "67",
+   "field": "status",
+   "value": "submitted"
+  },
+  {
+   "table": "hr_leave_requests",
+   "id": "67",
+   "field": "employee_id",
+   "value": 13
+  },
+  {
+   "table": "hr_leave_requests",
+   "id": "67",
+   "field": "approver_employee_id",
+   "value": 18
+  },
+  {
+   "table": "hr_leave_requests",
+   "id": 67,
+   "field": "request_number",
+   "value": "LEAVE-797240"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "hr_leave_requests",
+   "id": "67",
+   "field": "status",
+   "from": "submitted",
+   "to": "approved"
+  }
+ ],
+ "tables_affected": [
+  "hr_leave_requests"
+ ],
+ "effects": [
+  {
+   "table": "hr_leave_requests",
+   "op": "update",
+   "field": "status",
+   "value": "approved"
+  }
+ ],
+ "walk": [
+  "lookup_hr_leave_request_with_employees",
+  "human_resources_workflow_agent"
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"tasks.assigned_to\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-10T00:29:29.342Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_fbb17a49e979bac627cfe96dbfa82e3282c2cf317549744df86c4fbc509a2e2c",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_human_resources",
+   "dept_sourcing",
+   "dept_customer_support"
+  ],
+  "employee_ids": [
+   "emp_13",
+   "emp_18"
+  ],
+  "workflow_ids": [
+   "workflow_human_resources",
+   "workflow_customer_support",
+   "workflow_sourcing",
+   "workflow_customer_support_crm_operations_handoff"
+  ],
+  "cross_department": true
+ }
+}

@@ -1,0 +1,114 @@
+{
+ "task_id": "task_016",
+ "prompt": "In the morgan_stanley_simulated world, process hr leave requests record \"LEAVE-428918\", which is assigned to Elena Volkov and Michael Johnson. Use the employee-aware lookup to verify the assignment and confirm status is \"approved\", then update its status to the next stage in the hr leave requests lifecycle, changing only that workflow record.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.employee_grounded_workflow@1",
+  "template_key": "hr_leave_requests:status:employee_assignment",
+  "template_signature": "template:e506e459ef5ebefc",
+  "prompt_class": "resolution"
+ },
+ "goal": "Employee-grounded workflow: hr leave requests \"LEAVE-428918\".status from \"approved\" to \"cancelled\"",
+ "required_tools": [
+  "lookup_hr_leave_request_with_employees",
+  "human_resources_workflow_agent",
+  "human_resources_records_agent"
+ ],
+ "complexity": "high",
+ "method": "programmatic",
+ "steps": [
+  "Look up hr_leave_requests record \"LEAVE-428918\" with its employee assignments",
+  "Verify the assigned employees: Elena Volkov, Michael Johnson",
+  "Confirm status is \"approved\"",
+  "Update status to \"cancelled\"",
+  "Confirm no employee record or unrelated workflow row changed"
+ ],
+ "relevant_data": [
+  {
+   "table": "hr_leave_requests",
+   "id": "123",
+   "field": "status",
+   "value": "approved"
+  },
+  {
+   "table": "hr_leave_requests",
+   "id": "123",
+   "field": "employee_id",
+   "value": 18
+  },
+  {
+   "table": "hr_leave_requests",
+   "id": "123",
+   "field": "approver_employee_id",
+   "value": 5
+  },
+  {
+   "table": "hr_leave_requests",
+   "id": 123,
+   "field": "request_number",
+   "value": "LEAVE-428918"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "hr_leave_requests",
+   "id": "123",
+   "field": "status",
+   "from": "approved",
+   "to": "cancelled"
+  }
+ ],
+ "tables_affected": [
+  "hr_leave_requests"
+ ],
+ "effects": [
+  {
+   "table": "hr_leave_requests",
+   "op": "update",
+   "field": "status",
+   "value": "cancelled"
+  }
+ ],
+ "walk": [
+  "lookup_hr_leave_request_with_employees",
+  "human_resources_workflow_agent"
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"opportunity.stage\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-09T21:10:42.828Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_8a897fd86b94291647fc749f7c2f8ed84ae0a73b22aed3a99f9de0429fd668ed",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_human_resources",
+   "dept_customer_support",
+   "dept_marketing"
+  ],
+  "employee_ids": [
+   "emp_18",
+   "emp_5"
+  ],
+  "workflow_ids": [
+   "workflow_human_resources",
+   "workflow_customer_support",
+   "workflow_marketing",
+   "workflow_customer_support_crm_operations_handoff"
+  ],
+  "cross_department": true
+ }
+}

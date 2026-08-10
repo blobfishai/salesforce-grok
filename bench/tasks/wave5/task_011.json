@@ -1,0 +1,390 @@
+{
+ "task_id": "task_011",
+ "prompt": "At morgan_stanley_simulated: There's a pending item (open) in tasks that needs processing. Handle it end to end. This workflow also updates cases and contacts. Create the required new tasks record. Create the required new cases record. Create the required new contacts record. The specific task record ID task_001.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "graph.mutation.high.anchored@1",
+  "template_signature": "template:7258b7bed5eacef0"
+ },
+ "goal": "Drive tasks through the workflow, applying 3 verified state changes.",
+ "required_tools": [],
+ "complexity": "high",
+ "method": "graph_walk",
+ "steps": [
+  "Read task state (list) without mutating the world. (tasks)",
+  "Read task state (item) without mutating the world. (tasks)",
+  "Read account state (list) without mutating the world. (accounts)",
+  "Apply a create write to task. (tasks)",
+  "Read account state (item) without mutating the world. (accounts)",
+  "Read case state (list) without mutating the world. (cases)",
+  "Apply a create write to case. (cases)",
+  "Read contact state (item) without mutating the world. (contacts)",
+  "Read case state (list) without mutating the world. (cases)",
+  "Read contact state (list) without mutating the world. (contacts)",
+  "Apply a create write to contact. (contacts)"
+ ],
+ "relevant_data": [
+  {
+   "table": "tasks",
+   "id": "task_001",
+   "field": "id",
+   "value": "task_001"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "cases",
+   "id": "case_118",
+   "field": "(new row)",
+   "from": "17 rows",
+   "to": "18 rows"
+  },
+  {
+   "table": "contacts",
+   "id": "contact_112",
+   "field": "(new row)",
+   "from": "11 rows",
+   "to": "12 rows"
+  },
+  {
+   "table": "tasks",
+   "id": "task_118",
+   "field": "(new row)",
+   "from": "17 rows",
+   "to": "18 rows"
+  }
+ ],
+ "tables_affected": [
+  "cases",
+  "contacts",
+  "tasks"
+ ],
+ "walk": [
+  "tasks_list",
+  "task_get",
+  "accounts_list",
+  "task_create",
+  "account_get",
+  "cases_list",
+  "case_create",
+  "contact_get",
+  "cases_list",
+  "contacts_list",
+  "contact_create"
+ ],
+ "effects": [
+  {
+   "table": "cases",
+   "op": "insert"
+  },
+  {
+   "table": "contacts",
+   "op": "insert"
+  },
+  {
+   "table": "tasks",
+   "op": "insert"
+  }
+ ],
+ "difficulty_tier": "hard",
+ "sequence_integrity": {
+  "schemaVersion": 1,
+  "passed": true,
+  "pathLength": 11,
+  "uniqueTools": 10,
+  "rules": [
+   "every transition has an evidence-backed edge",
+   "no tool immediately repeats itself, and no tool is used more than 4 times",
+   "terminal actions cannot restart the same entity lifecycle",
+   "the same mutating action cannot repeat on the same entity"
+  ],
+  "transitions": [
+   {
+    "source": "tasks_list",
+    "target": "task_get",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "list",
+    "targetAction": "get",
+    "sharedEntities": [
+     "task"
+    ],
+    "stepIndex": 1,
+    "edgeSupported": true
+   },
+   {
+    "source": "task_get",
+    "target": "accounts_list",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "get",
+    "targetAction": "list",
+    "sharedEntities": [],
+    "stepIndex": 2,
+    "edgeSupported": true
+   },
+   {
+    "source": "accounts_list",
+    "target": "task_create",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "list",
+    "targetAction": "create",
+    "sharedEntities": [],
+    "stepIndex": 3,
+    "edgeSupported": true
+   },
+   {
+    "source": "task_create",
+    "target": "account_get",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "create",
+    "targetAction": "get",
+    "sharedEntities": [],
+    "stepIndex": 4,
+    "edgeSupported": true
+   },
+   {
+    "source": "account_get",
+    "target": "cases_list",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "get",
+    "targetAction": "list",
+    "sharedEntities": [],
+    "stepIndex": 5,
+    "edgeSupported": true
+   },
+   {
+    "source": "cases_list",
+    "target": "case_create",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "list",
+    "targetAction": "create",
+    "sharedEntities": [
+     "case"
+    ],
+    "stepIndex": 6,
+    "edgeSupported": true
+   },
+   {
+    "source": "case_create",
+    "target": "contact_get",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "create",
+    "targetAction": "get",
+    "sharedEntities": [],
+    "stepIndex": 7,
+    "edgeSupported": true
+   },
+   {
+    "source": "contact_get",
+    "target": "cases_list",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "get",
+    "targetAction": "list",
+    "sharedEntities": [],
+    "stepIndex": 8,
+    "edgeSupported": true
+   },
+   {
+    "source": "cases_list",
+    "target": "contacts_list",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "list",
+    "targetAction": "list",
+    "sharedEntities": [],
+    "stepIndex": 9,
+    "edgeSupported": true
+   },
+   {
+    "source": "contacts_list",
+    "target": "contact_create",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "list",
+    "targetAction": "create",
+    "sharedEntities": [
+     "contact"
+    ],
+    "stepIndex": 10,
+    "edgeSupported": true
+   }
+  ],
+  "issues": []
+ },
+ "provenance": {
+  "evidence_ids": [
+   "anc_953b80838d38",
+   "anc_40fb3503bc07",
+   "anc_a63adecd84c4",
+   "anc_9efd83e1c9e0",
+   "anc_cae2bd6f9b42",
+   "anc_ed4d76632a7e",
+   "anc_63fbb482761b",
+   "anc_aa9c1cea28ff",
+   "anc_64d2ab194218",
+   "anc_c04ba4c0b4dd",
+   "anc_8c705c78d1d9",
+   "anc_56c458d2596f",
+   "anc_e87725dbc65d",
+   "anc_6a5df2ac5fcd",
+   "anc_f579bf7a8df3",
+   "anc_ca68c756edfc",
+   "anc_16fec4c8f151",
+   "anc_31cdb21cd0d6",
+   "anc_1a04b24baacf",
+   "anc_62c7abde12e0",
+   "anc_3b6cb2c5eb08",
+   "anc_ec0e90e20a9a",
+   "anc_5c851856ef1a",
+   "anc_761bcbc64a91",
+   "anc_74c82ee4d94a",
+   "anc_c8eb63d4901c",
+   "anc_67cb0dcb0649",
+   "anc_3ec276c0f7c8",
+   "anc_56824f3f27ee",
+   "anc_fbee43295eac",
+   "anc_470a6ea97a81",
+   "anc_2f3b862a5267",
+   "anc_2550bfc5e432",
+   "anc_2af28e598b25",
+   "anc_ceb895045356",
+   "anc_cc6e7ce5be6b",
+   "anc_cdbf964baedd",
+   "anc_421a807fae1a",
+   "anc_c0c1c3f7a263",
+   "anc_d2225e49ffd3",
+   "anc_21c8966c11da"
+  ],
+  "tool_graph_path": [
+   "tasks_list",
+   "task_get",
+   "accounts_list",
+   "task_create",
+   "account_get",
+   "cases_list",
+   "case_create",
+   "contact_get",
+   "cases_list",
+   "contacts_list",
+   "contact_create"
+  ],
+  "tool_graph_edges": [
+   "tasks_list\u0000task_get",
+   "task_get\u0000accounts_list",
+   "accounts_list\u0000task_create",
+   "task_create\u0000account_get",
+   "account_get\u0000cases_list",
+   "cases_list\u0000case_create",
+   "case_create\u0000contact_get",
+   "contact_get\u0000cases_list",
+   "cases_list\u0000contacts_list",
+   "contacts_list\u0000contact_create"
+  ],
+  "verifier_id": "task_011",
+  "difficulty_reason": "hard: walk length 11"
+ },
+ "anchor_refs": [
+  "anc_953b80838d38",
+  "anc_40fb3503bc07",
+  "anc_a63adecd84c4",
+  "anc_9efd83e1c9e0",
+  "anc_cae2bd6f9b42",
+  "anc_ed4d76632a7e",
+  "anc_63fbb482761b",
+  "anc_aa9c1cea28ff",
+  "anc_64d2ab194218",
+  "anc_c04ba4c0b4dd",
+  "anc_8c705c78d1d9",
+  "anc_56c458d2596f"
+ ],
+ "is_default": true,
+ "departments": [
+  "sales"
+ ],
+ "_reference_tools": [
+  "tasks_list",
+  "task_get",
+  "accounts_list",
+  "task_create",
+  "account_get",
+  "cases_list",
+  "case_create",
+  "contact_get",
+  "contacts_list",
+  "contact_create"
+ ],
+ "session": [
+  {
+   "turn": 2,
+   "kind": "fragment",
+   "user_text": "lanjut"
+  },
+  {
+   "turn": 3,
+   "kind": "followup",
+   "user_text": "status akhirnya?"
+  },
+  {
+   "turn": 4,
+   "kind": "fragment",
+   "user_text": "try again"
+  },
+  {
+   "turn": 5,
+   "kind": "followup",
+   "user_text": "Also double-check the record afterwards and tell me what it now shows."
+  },
+  {
+   "turn": 6,
+   "kind": "fragment",
+   "user_text": "that one"
+  }
+ ],
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_6d834bb6dc39ded3b6f31cdf110b5e02a8d83eea06eaf5d605e5e67a07cdd5f2",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "acceptance_label": "in_band",
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"employee_work_assignments.work_item_ref\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"marketing_campaigns.end_date\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-10T00:25:17.655Z"
+ },
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_011",
+  "measured": false,
+  "reason": "not_sampled",
+  "detail": "outside the stratified solvability sample; deterministic acceptance evidence stands"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_sales"
+  ],
+  "employee_ids": [],
+  "workflow_ids": [
+   "workflow_sales",
+   "workflow_sales_crm_operations_handoff"
+  ],
+  "cross_department": false
+ }
+}

@@ -1,0 +1,192 @@
+{
+ "task_id": "task_010",
+ "prompt": "A teammate flagged the opportunity stage gate for Cedar Supply Co as active and in need of follow-up. Please update the status of that specific gate to inactive. Apply only this requested change.",
+ "prompt_generation": {
+  "source": "llm",
+  "template_family": "graph.mutation.medium.anchored@1",
+  "template_signature": "template:e8c2ddd7981fb23c",
+  "prompt_class": "resolution"
+ },
+ "goal": "Drive opportunity stage gates through the workflow, applying 1 verified state change.",
+ "required_tools": [
+  "list_opportunity_stage_gates",
+  "get_opportunity_stage_gates",
+  "update_status_opportunity_stage_gates"
+ ],
+ "complexity": "medium",
+ "method": "graph_walk",
+ "steps": [
+  "list operation on opportunity_stage_gates (opportunity_stage_gates)",
+  "get operation on opportunity_stage_gates (opportunity_stage_gates)",
+  "update status operation on opportunity_stage_gates (opportunity_stage_gates)"
+ ],
+ "relevant_data": [
+  {
+   "table": "opportunity_stage_gates",
+   "id": 4,
+   "field": "name",
+   "value": "Cedar Supply Co"
+  },
+  {
+   "table": "opportunity_stage_gates",
+   "id": 1,
+   "field": "name",
+   "value": "Harbor Partners"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "opportunity_stage_gates",
+   "id": "1",
+   "field": "status",
+   "from": "active",
+   "to": "inactive"
+  }
+ ],
+ "tables_affected": [
+  "opportunity_stage_gates"
+ ],
+ "walk": [
+  "list_opportunity_stage_gates",
+  "get_opportunity_stage_gates",
+  "update_status_opportunity_stage_gates"
+ ],
+ "effects": [
+  {
+   "table": "opportunity_stage_gates",
+   "op": "update",
+   "field": "status",
+   "value": "inactive"
+  }
+ ],
+ "difficulty_tier": "easy",
+ "sequence_integrity": {
+  "schemaVersion": 1,
+  "passed": true,
+  "pathLength": 3,
+  "uniqueTools": 3,
+  "rules": [
+   "every transition has an evidence-backed edge",
+   "no tool immediately repeats itself, and no tool is used more than 4 times",
+   "terminal actions cannot restart the same entity lifecycle",
+   "the same mutating action cannot repeat on the same entity"
+  ],
+  "transitions": [
+   {
+    "source": "list_opportunity_stage_gates",
+    "target": "get_opportunity_stage_gates",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "list",
+    "targetAction": "get",
+    "sharedEntities": [
+     "gate"
+    ],
+    "stepIndex": 1,
+    "edgeSupported": true
+   },
+   {
+    "source": "get_opportunity_stage_gates",
+    "target": "update_status_opportunity_stage_gates",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "get",
+    "targetAction": "update",
+    "sharedEntities": [
+     "gate"
+    ],
+    "stepIndex": 2,
+    "edgeSupported": true
+   }
+  ],
+  "issues": []
+ },
+ "provenance": {
+  "evidence_ids": [
+   "anc_3983fe9e5ae5",
+   "anc_16fec4c8f151",
+   "anc_cae2bd6f9b42",
+   "anc_ec0e90e20a9a",
+   "anc_67cb0dcb0649",
+   "anc_ed4d76632a7e",
+   "anc_fbee43295eac",
+   "anc_470a6ea97a81",
+   "anc_2f3b862a5267",
+   "anc_396e81f9a9e7",
+   "anc_421a807fae1a",
+   "anc_63fbb482761b"
+  ],
+  "tool_graph_path": [
+   "list_opportunity_stage_gates",
+   "get_opportunity_stage_gates",
+   "update_status_opportunity_stage_gates"
+  ],
+  "tool_graph_edges": [
+   "list_opportunity_stage_gates\u0000get_opportunity_stage_gates",
+   "get_opportunity_stage_gates\u0000update_status_opportunity_stage_gates"
+  ],
+  "verifier_id": "task_010",
+  "difficulty_reason": "easy: walk length 3"
+ },
+ "anchor_refs": [
+  "anc_3983fe9e5ae5",
+  "anc_16fec4c8f151",
+  "anc_cae2bd6f9b42",
+  "anc_ec0e90e20a9a",
+  "anc_67cb0dcb0649",
+  "anc_ed4d76632a7e",
+  "anc_fbee43295eac",
+  "anc_470a6ea97a81",
+  "anc_2f3b862a5267",
+  "anc_396e81f9a9e7",
+  "anc_421a807fae1a",
+  "anc_63fbb482761b"
+ ],
+ "departments": [
+  "core"
+ ],
+ "session": [
+  {
+   "turn": 1,
+   "kind": "correction",
+   "user_text": "Target switch: apply it to \"Harbor Partners\" and keep \"Cedar Supply Co\" as-is."
+  }
+ ],
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_35b677a616a32bf7a482ddc1be896f0922181942c5a589ab737534005d7baea8",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "acceptance_label": "in_band",
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "checked_at": "2026-08-10T00:25:17.654Z"
+ },
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_010",
+  "measured": false,
+  "reason": "not_sampled",
+  "detail": "outside the stratified solvability sample; deterministic acceptance evidence stands"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_core_operations"
+  ],
+  "employee_ids": [],
+  "workflow_ids": [
+   "workflow_crm_operations",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff"
+  ],
+  "cross_department": false
+ }
+}

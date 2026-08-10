@@ -1,0 +1,101 @@
+{
+ "label": "lb-arena-claude-sonnet-5",
+ "level": 2,
+ "taskId": "arena_policy_violation",
+ "type": "policy_violation_identification",
+ "trial": 1,
+ "prompt": "Does the price and configuration of quote id 1 comply with company policy as written in the knowledge base? If it does not, return only the Id of the knowledge article being violated (e.g. KB-102). If no violation is found, return None.",
+ "gt": "KB-101",
+ "metric": "exact",
+ "docs": [
+  "KB-101 — Discount Authority Policy",
+  "KB-102 — Regulated Product Approval Chain",
+  "KB-103 — Payment Terms Standard"
+ ],
+ "steps": [
+  {
+   "k": "tool",
+   "name": "core.get_quote",
+   "args": {
+    "id": 1
+   },
+   "result": "{\"rows\": [{\"id\": 1, \"discountpct\": 24, \"status\": \"Approved\", \"approvalsteps\": \"confirmed\", \"created_at\": \"2025-08-01\"}]}"
+  },
+  {
+   "k": "tool",
+   "name": "core.search_knowledge",
+   "args": {
+    "query": "quote discount policy"
+   },
+   "result": "{\"table\": \"agent_knowledge\", \"query\": \"quote discount policy\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "tool",
+   "name": "core.search_knowledge",
+   "args": {
+    "query": "quote"
+   },
+   "result": "{\"table\": \"agent_knowledge\", \"query\": \"quote\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "tool",
+   "name": "core.search_knowledge",
+   "args": {
+    "query": "discount"
+   },
+   "result": "{\"table\": \"agent_knowledge\", \"query\": \"discount\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "tool",
+   "name": "core.search_knowledge",
+   "args": {
+    "query": "approval"
+   },
+   "result": "{\"table\": \"agent_knowledge\", \"query\": \"approval\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "tool",
+   "name": "core.search_knowledge",
+   "args": {
+    "query": "KB-"
+   },
+   "result": "{\"table\": \"agent_knowledge\", \"query\": \"KB-\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "tool",
+   "name": "core.search_knowledge",
+   "args": {
+    "query": ""
+   },
+   "result": "{\"table\": \"agent_knowledge\", \"query\": \"\", \"count\": 2, \"rows\": [{\"id\": 1, \"content\": \"Large sheet imports must be split into bounded chunks and verified by written-row count.\", \"source\": \"uploaded operations SOP\", \"created_at\": \"2026-01-15T09:00:00Z\"}, {\"id\": 2, \"content\": \"A lifecycle change may advance only to the next declared stage unless an approved branch is explicitly selected.\", \"source\": \"uploaded lifecycle model\", \"created_at\": \"2026-01-15T09:00:00Z\"}]}"
+  },
+  {
+   "k": "tool",
+   "name": "notion.query_documents",
+   "args": {
+    "query": "KB-"
+   },
+   "result": "{\"table\": \"agent_documents\", \"query\": \"KB-\", \"count\": 4, \"rows\": [{\"id\": 5, \"title\": \"KB-101 \\u2014 Discount Authority Policy\", \"body\": \"Quotes may carry at most 15% discount without Deal Desk approval, and never more than 20% in an Approved state under any authority. Any Approved quote above 20% is out of policy.\", \"updated_at\": \"2026-06-01T09:00:00Z\"}, {\"id\": 6, \"title\": \"KB-102 \\u2014 Regulated Product Approval Chain\", \"body\": \"Quotes containing regulated products require the Compliance step recorded before approval.\", \"updated_at\": \"2026-06-01T09:00:00Z\"}, {\"id\": 7, \"title\": \"KB-103 \\u2014 Payment Terms Standard\", \"body\": \"Net-30 is standard; anything longer than Net-60 requires Finance sign-off.\", \"updated_at\": \"2026-06-01T09:00:00Z\"}, {\"id\": 8, \"title\": \"KB-104 \\u2014 Promotional Discount Windows\", \"body\": \"During declared promotional windows, list prices may be reduced at the cata"
+  },
+  {
+   "k": "tool",
+   "name": "notion.query_documents",
+   "args": {
+    "query": "policy"
+   },
+   "result": "{\"table\": \"agent_documents\", \"query\": \"policy\", \"count\": 4, \"rows\": [{\"id\": 3, \"title\": \"Case Routing Policy (rev. 2 \\u2014 CURRENT)\", \"body\": \"Effective 2026-06-01, supersedes rev. 1. Issue categories are determined by the ticket subject prefix: \\\"Billing discrepancy\\\", \\\"Problem updating\\\", \\\"Cannot access\\\", \\\"Question about\\\". A new case routes to the ELIGIBLE agent who has completed (status resolved or closed) the most support tickets in the case's category. Eligibility: employees with status \\\"active\\\" only \\u2014 agents on leave or terminated are never routed. Tie-break 1: fewer currently active tickets (open, in_progress, waiting_customer). Tie-break 2: earlier hire_date. Answer with the agent's employee_number.\", \"updated_at\": \"2026-06-01T09:00:00Z\"}, {\"id\": 4, \"title\": \"Case Routing Policy (rev. 1)\", \"body\": \"[SUPERSEDED] Route new cases to the agent with the most total complet"
+  },
+  {
+   "k": "answer",
+   "text": "KB-101"
+  }
+ ],
+ "usage": {
+  "prompt": 110313,
+  "completion": 580
+ },
+ "answer": "KB-101",
+ "passed": true,
+ "model": "claude-sonnet-5",
+ "costUsd": 0.2264
+}

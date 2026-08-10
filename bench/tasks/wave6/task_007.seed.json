@@ -1,0 +1,41 @@
+{
+ "schema": "task-seed.v1",
+ "task_id": "task_007",
+ "rows": {
+  "contacts": [
+   {
+    "id": "contact_003",
+    "account_id": "account_009",
+    "name": "Nina Iyer",
+    "email": "felix.moreau@harborline.example",
+    "status": "active",
+    "owner_id": "OWN-872637A",
+    "created_at": "2026-01-06T01:13:00Z"
+   }
+  ]
+ },
+ "documents": [
+  {
+   "store": "matter_documents",
+   "id": 1,
+   "title": "Deal materials — project_management: Move all of {name}'s tasks that are in progress to in review"
+  }
+ ],
+ "input_documents": [],
+ "mcp_seeding": {
+  "salesforce": [
+   "contacts_list",
+   "contact_get",
+   "accounts_list",
+   "opportunity_create",
+   "opportunity_get",
+   "account_get"
+  ],
+  "core": [
+   "opportunities_list",
+   "tasks_list",
+   "task_get",
+   "task_create"
+  ]
+ }
+}

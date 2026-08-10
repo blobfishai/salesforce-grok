@@ -1,0 +1,169 @@
+{
+ "task_id": "task_004",
+ "prompt": "In the morgan_stanley_simulated world: Find the lead \"Riverside Contact\", verify status is \"Working\", then update its status to the next stage in the lead lifecycle. Do not modify any other lead record.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.row_pinned_update@1",
+  "template_signature": "template:1fecd0aaa4394913",
+  "prompt_class": "resolution"
+ },
+ "goal": "Row-pinned update: lead \"Riverside Contact\".status from \"Working\" to \"Converted\"",
+ "required_tools": [],
+ "complexity": "high",
+ "method": "programmatic",
+ "steps": [
+  "Read the lead \"Riverside Contact\"",
+  "Confirm status is \"Working\"",
+  "Update status to \"Converted\"",
+  "Confirm no other row was modified"
+ ],
+ "relevant_data": [
+  {
+   "table": "lead",
+   "id": 1,
+   "field": "contactname",
+   "value": "Riverside Contact"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "lead",
+   "id": "1",
+   "field": "status",
+   "from": "Working",
+   "to": "Converted"
+  }
+ ],
+ "tables_affected": [
+  "lead"
+ ],
+ "effects": [
+  {
+   "table": "lead",
+   "op": "update",
+   "field": "status",
+   "value": "Converted"
+  }
+ ],
+ "walk": [
+  "list_lead",
+  "update_status_lead"
+ ],
+ "anchor_refs": [
+  "anc_29ddc09d19ea",
+  "anc_ab9e1f40db4c"
+ ],
+ "_core_acceptance_reserve": true,
+ "_vertical_core": true,
+ "departments": [
+  "core"
+ ],
+ "acceptance_label": "in_band",
+ "difficulty_tier": "hard",
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_004",
+  "measured": true,
+  "provider": "deepseek",
+  "model": null,
+  "runs": 5,
+  "passes": 5,
+  "pass_rate": 1,
+  "retained": true,
+  "band": "trivial",
+  "outcomes": [
+   {
+    "run": 1,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   },
+   {
+    "run": 2,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   },
+   {
+    "run": 3,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   },
+   {
+    "run": 4,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   },
+   {
+    "run": 5,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   }
+  ],
+  "measured_at": "2026-08-09T21:01:51.646Z",
+  "superseded_by_escalation": [
+   "scrub_tool_names"
+  ]
+ },
+ "_reference_tools": [
+  "list_lead",
+  "update_status_lead"
+ ],
+ "provenance": {
+  "evidence_ids": [
+   "anc_29ddc09d19ea",
+   "anc_ab9e1f40db4c"
+  ],
+  "tool_graph_path": [
+   "list_lead",
+   "update_status_lead"
+  ],
+  "tool_graph_edges": [
+   "list_lead\u0000update_status_lead"
+  ],
+  "verifier_id": "task_004",
+  "difficulty_reason": "hard: walk length 2"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_core_operations"
+  ],
+  "employee_ids": [],
+  "workflow_ids": [
+   "workflow_crm_operations",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff"
+  ],
+  "cross_department": false
+ },
+ "session": [
+  {
+   "turn": 2,
+   "kind": "fragment",
+   "user_text": "ok go ahead"
+  }
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"opportunity.stage\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-09T21:12:10.125Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_042430094214288f70a2eb0d6cf76b89002cfe503fd6f7b83458e6dfd1192ea8",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ }
+}

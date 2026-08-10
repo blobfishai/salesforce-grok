@@ -1,0 +1,65 @@
+{
+ "label": "lb-arena-claude-opus-5",
+ "level": 2,
+ "taskId": "arena_policy_violation",
+ "type": "policy_violation_identification",
+ "trial": 1,
+ "prompt": "Does the price and configuration of quote id 1 comply with company policy as written in the knowledge base? If it does not, return only the Id of the knowledge article being violated (e.g. KB-102). If no violation is found, return None.",
+ "gt": "KB-101",
+ "metric": "exact",
+ "docs": [
+  "KB-101 — Discount Authority Policy",
+  "KB-102 — Regulated Product Approval Chain",
+  "KB-103 — Payment Terms Standard"
+ ],
+ "steps": [
+  {
+   "k": "tool",
+   "name": "core.get_quote",
+   "args": {
+    "id": 1
+   },
+   "result": "{\"rows\": [{\"id\": 1, \"discountpct\": 24, \"status\": \"Approved\", \"approvalsteps\": \"confirmed\", \"created_at\": \"2025-08-01\"}]}"
+  },
+  {
+   "k": "tool",
+   "name": "core.search_knowledge",
+   "args": {
+    "limit": 100
+   },
+   "result": "{\"table\": \"agent_knowledge\", \"query\": null, \"count\": 2, \"rows\": [{\"id\": 1, \"content\": \"Large sheet imports must be split into bounded chunks and verified by written-row count.\", \"source\": \"uploaded operations SOP\", \"created_at\": \"2026-01-15T09:00:00Z\"}, {\"id\": 2, \"content\": \"A lifecycle change may advance only to the next declared stage unless an approved branch is explicitly selected.\", \"source\": \"uploaded lifecycle model\", \"created_at\": \"2026-01-15T09:00:00Z\"}]}"
+  },
+  {
+   "k": "tool",
+   "name": "notion.query_documents",
+   "args": {
+    "limit": 100
+   },
+   "result": "{\"table\": \"agent_documents\", \"query\": null, \"count\": 10, \"rows\": [{\"id\": 1, \"title\": \"Meridian Supply Co\", \"body\": \"Review unresolved business units exceptions before the next operating handoff. Record the decision, owner, and evidence used.\", \"updated_at\": \"2026-01-15T09:00:00Z\"}, {\"id\": 2, \"title\": \"Cedar Partners\", \"body\": \"Confirm the business handle, compare the current lifecycle state, apply one scoped action, and verify no collateral rows changed.\", \"updated_at\": \"2026-01-15T09:00:00Z\"}, {\"id\": 3, \"title\": \"Case Routing Policy (rev. 2 \\u2014 CURRENT)\", \"body\": \"Effective 2026-06-01, supersedes rev. 1. Issue categories are determined by the ticket subject prefix: \\\"Billing discrepancy\\\", \\\"Problem updating\\\", \\\"Cannot access\\\", \\\"Question about\\\". A new case routes to the ELIGIBLE agent who has completed (status resolved or closed) the most support tickets in the case's category. E"
+  },
+  {
+   "k": "tool",
+   "name": "core.list_sales_manager_policy",
+   "args": {},
+   "result": "{\"rows\": [{\"id\": 1, \"compliance\": \"escalated\", \"or_finance_approval\": \"standard\", \"citing_the_matrix\": \"standard\", \"status\": \"active\", \"created_at\": \"2024-12-21\"}, {\"id\": 2, \"compliance\": \"escalated\", \"or_finance_approval\": \"closed out\", \"citing_the_matrix\": \"routine\", \"status\": \"pending\", \"created_at\": \"2025-09-29\"}, {\"id\": 3, \"compliance\": \"under review\", \"or_finance_approval\": \"expedited\", \"citing_the_matrix\": \"under review\", \"status\": \"approved\", \"created_at\": \"2025-02-07\"}, {\"id\": 4, \"compliance\": \"confirmed\", \"or_finance_approval\": \"standard\", \"citing_the_matrix\": \"routine\", \"status\": \"inactive\", \"created_at\": \"2024-06-22\"}, {\"id\": 5, \"compliance\": \"routine\", \"or_finance_approval\": \"routine\", \"citing_the_matrix\": \"confirmed\", \"status\": \"inactive\", \"created_at\": \"2025-08-19\"}, {\"id\": 6, \"compliance\": \"deferred\", \"or_finance_approval\": \"closed out\", \"citing_the_matrix\": \"closed out\","
+  },
+  {
+   "k": "tool",
+   "name": "core.list_invariants_verifiable",
+   "args": {},
+   "result": "{\"rows\": [{\"id\": 1, \"an\": \"on hold\", \"a\": \"closed out\", \"weighted\": \"closed out\", \"status\": \"active\", \"created_at\": \"2025-04-17\"}, {\"id\": 2, \"an\": \"routine\", \"a\": \"under review\", \"weighted\": \"confirmed\", \"status\": \"pending\", \"created_at\": \"2025-05-28\"}, {\"id\": 3, \"an\": \"deferred\", \"a\": \"provisional\", \"weighted\": \"provisional\", \"status\": \"approved\", \"created_at\": \"2025-04-12\"}, {\"id\": 4, \"an\": \"standard\", \"a\": \"on hold\", \"weighted\": \"provisional\", \"status\": \"inactive\", \"created_at\": \"2024-09-12\"}, {\"id\": 5, \"an\": \"provisional\", \"a\": \"expedited\", \"weighted\": \"closed out\", \"status\": \"active\", \"created_at\": \"2025-03-25\"}, {\"id\": 6, \"an\": \"escalated\", \"a\": \"escalated\", \"weighted\": \"confirmed\", \"status\": \"approved\", \"created_at\": \"2025-05-01\"}, {\"id\": 7, \"an\": \"routine\", \"a\": \"escalated\", \"weighted\": \"under review\", \"status\": \"pending\", \"created_at\": \"2024-07-20\"}, {\"id\": 8, \"an\": \"provisional"
+  },
+  {
+   "k": "answer",
+   "text": "KB-101"
+  }
+ ],
+ "usage": {
+  "prompt": 84519,
+  "completion": 670
+ },
+ "answer": "KB-101",
+ "passed": true,
+ "model": "claude-opus-5",
+ "costUsd": 0.4393
+}

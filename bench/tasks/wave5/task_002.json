@@ -1,0 +1,175 @@
+{
+ "task_id": "task_002",
+ "prompt": "The finance team at Morgan Stanley has completed its initial review of budget BUD-821707, which is currently in draft status and awaiting final approval. Please update the status of this budget to active to reflect that it has been approved and is now in effect.",
+ "prompt_generation": {
+  "source": "llm",
+  "template_family": "graph.mutation.medium.anchored@1",
+  "template_signature": "template:e8c2ddd7981fb23c",
+  "prompt_class": "resolution"
+ },
+ "goal": "Drive finance budgets through the workflow, applying 1 verified state change.",
+ "required_tools": [
+  "query_finance_budgets",
+  "update_finance_budgets_status",
+  "lookup_finance_budget_with_departments"
+ ],
+ "complexity": "medium",
+ "method": "graph_walk",
+ "steps": [
+  "Search and filter finance_budgets. Returns matching rows. (finance_budgets)",
+  "Update status of a finance budgets record. Valid statuses: draft, active, closed. (finance_budgets)",
+  "Look up a finance budget record with its parent departments data joined. (finance_budgets, departments)"
+ ],
+ "relevant_data": [
+  {
+   "table": "finance_budgets",
+   "id": 118,
+   "field": "budget_number",
+   "value": "BUD-821707"
+  },
+  {
+   "table": "finance_budgets",
+   "id": 1,
+   "field": "budget_number",
+   "value": "BUD-299900"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "finance_budgets",
+   "id": "1",
+   "field": "status",
+   "from": "draft",
+   "to": "active"
+  }
+ ],
+ "tables_affected": [
+  "finance_budgets"
+ ],
+ "walk": [
+  "query_finance_budgets",
+  "update_finance_budgets_status",
+  "lookup_finance_budget_with_departments"
+ ],
+ "effects": [
+  {
+   "table": "finance_budgets",
+   "op": "update",
+   "field": "status",
+   "value": "active"
+  }
+ ],
+ "difficulty_tier": "easy",
+ "sequence_integrity": {
+  "schemaVersion": 1,
+  "passed": true,
+  "pathLength": 3,
+  "uniqueTools": 3,
+  "rules": [
+   "every transition has an evidence-backed edge",
+   "no tool immediately repeats itself, and no tool is used more than 4 times",
+   "terminal actions cannot restart the same entity lifecycle",
+   "the same mutating action cannot repeat on the same entity"
+  ],
+  "transitions": [
+   {
+    "source": "query_finance_budgets",
+    "target": "update_finance_budgets_status",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "query",
+    "targetAction": "update",
+    "sharedEntities": [],
+    "stepIndex": 1,
+    "edgeSupported": true
+   },
+   {
+    "source": "update_finance_budgets_status",
+    "target": "lookup_finance_budget_with_departments",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "update",
+    "targetAction": "lookup",
+    "sharedEntities": [],
+    "stepIndex": 2,
+    "edgeSupported": true
+   }
+  ],
+  "issues": []
+ },
+ "provenance": {
+  "evidence_ids": [
+   "anc_b2a29f754bcf",
+   "anc_adce5df340ef",
+   "anc_13a082b690b3",
+   "anc_ffb5c8e96a65"
+  ],
+  "tool_graph_path": [
+   "query_finance_budgets",
+   "update_finance_budgets_status",
+   "lookup_finance_budget_with_departments"
+  ],
+  "tool_graph_edges": [
+   "query_finance_budgets\u0000update_finance_budgets_status",
+   "update_finance_budgets_status\u0000lookup_finance_budget_with_departments"
+  ],
+  "verifier_id": "task_002",
+  "difficulty_reason": "easy: walk length 3"
+ },
+ "departments": [
+  "finance",
+  "organization"
+ ],
+ "session": [
+  {
+   "turn": 1,
+   "kind": "correction",
+   "user_text": "Correction: \"BUD-299900\" is the target; do not alter \"BUD-821707\"."
+  }
+ ],
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_8e95b8ae40ac5677bbf63791140c71d39344f4c84d9dc27f2aca62da0f8abfdf",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "acceptance_label": "in_band",
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"compliance_review_checklist\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"finance_approval_thresholds\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-10T00:25:14.006Z"
+ },
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_002",
+  "measured": false,
+  "reason": "budget_exhausted",
+  "detail": "solvability budget expired before this sampled task ran"
+ },
+ "anchor_refs": [
+  "anc_b2a29f754bcf",
+  "anc_adce5df340ef",
+  "anc_13a082b690b3",
+  "anc_ffb5c8e96a65"
+ ],
+ "coverage": {
+  "department_ids": [
+   "dept_finance"
+  ],
+  "employee_ids": [],
+  "workflow_ids": [
+   "workflow_finance"
+  ],
+  "cross_department": false
+ }
+}

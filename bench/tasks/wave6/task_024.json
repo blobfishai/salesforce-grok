@@ -1,0 +1,87 @@
+{
+ "task_id": "task_024",
+ "prompt": "In the morgan_stanley_simulated world: Find the opportunity stage gate Harbor Partners, verify status is \"active\", then set its status to \"inactive\". Do not modify any other opportunity stage gates record.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.row_pinned_update@1",
+  "template_signature": "template:1fecd0aaa4394913",
+  "prompt_class": "resolution"
+ },
+ "goal": "Row-pinned update: opportunity_stage_gates[1].status from \"active\" to \"inactive\"",
+ "required_tools": [
+  "core_records_agent",
+  "core_workflow_agent"
+ ],
+ "complexity": "medium",
+ "method": "programmatic",
+ "steps": [
+  "Read the opportunity stage gate Harbor Partners",
+  "Confirm status is \"active\"",
+  "Update status to \"inactive\"",
+  "Confirm no other row was modified"
+ ],
+ "relevant_data": [
+  {
+   "table": "opportunity_stage_gates",
+   "id": "1",
+   "field": "name",
+   "value": "Harbor Partners"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "opportunity_stage_gates",
+   "id": "1",
+   "field": "status",
+   "from": "active",
+   "to": "inactive"
+  }
+ ],
+ "tables_affected": [
+  "opportunity_stage_gates"
+ ],
+ "effects": [
+  {
+   "table": "opportunity_stage_gates",
+   "op": "update",
+   "field": "status",
+   "value": "inactive"
+  }
+ ],
+ "walk": [
+  "core_records_agent",
+  "core_workflow_agent"
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "checked_at": "2026-08-10T07:59:09.997Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_d094a3a0dd4e6d965b9cd10722889dd95963fea4e43d240128da9c71bfc3eec3",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_core_operations"
+  ],
+  "employee_ids": [],
+  "workflow_ids": [
+   "workflow_crm_operations",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff",
+   "workflow_marketing_crm_operations_handoff",
+   "workflow_finance_crm_operations_handoff",
+   "workflow_sourcing_crm_operations_handoff"
+  ],
+  "cross_department": false
+ }
+}

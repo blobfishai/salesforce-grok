@@ -1,0 +1,196 @@
+{
+ "task_id": "task_008",
+ "prompt": "The latest account review flagged Meridian Holdings as inactive in the account tiering standard, so it is now pending final review. To prepare for the upcoming fiscal period, establish a new account tiering standard entry for the company and then update that entry to reflect the current status. Apply only the requested changes to the tiering record. Create the required new account tiering standard record.",
+ "prompt_generation": {
+  "source": "llm",
+  "template_family": "graph.mutation.medium.anchored@1",
+  "template_signature": "template:e8c2ddd7981fb23c",
+  "prompt_class": "resolution"
+ },
+ "goal": "Drive account tiering standard through the workflow, applying 2 verified state changes.",
+ "required_tools": [
+  "get_account_tiering_standard",
+  "create_account_tiering_standard",
+  "list_account_tiering_standard",
+  "update_status_account_tiering_standard"
+ ],
+ "complexity": "medium",
+ "method": "graph_walk",
+ "steps": [
+  "get operation on account_tiering_standard (account_tiering_standard)",
+  "create operation on account_tiering_standard (account_tiering_standard)",
+  "list operation on account_tiering_standard (account_tiering_standard)",
+  "update status operation on account_tiering_standard (account_tiering_standard)"
+ ],
+ "relevant_data": [
+  {
+   "table": "account_tiering_standard",
+   "id": 4,
+   "field": "name",
+   "value": "Meridian Holdings"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "account_tiering_standard",
+   "id": "10",
+   "field": "(new row)",
+   "from": "9 rows",
+   "to": "10 rows"
+  },
+  {
+   "table": "account_tiering_standard",
+   "id": "4",
+   "field": "status",
+   "from": "inactive",
+   "to": "pending"
+  }
+ ],
+ "tables_affected": [
+  "account_tiering_standard"
+ ],
+ "walk": [
+  "get_account_tiering_standard",
+  "create_account_tiering_standard",
+  "list_account_tiering_standard",
+  "update_status_account_tiering_standard"
+ ],
+ "effects": [
+  {
+   "table": "account_tiering_standard",
+   "op": "insert"
+  },
+  {
+   "table": "account_tiering_standard",
+   "op": "update",
+   "field": "status",
+   "value": "pending"
+  }
+ ],
+ "difficulty_tier": "medium",
+ "sequence_integrity": {
+  "schemaVersion": 1,
+  "passed": true,
+  "pathLength": 4,
+  "uniqueTools": 4,
+  "rules": [
+   "every transition has an evidence-backed edge",
+   "no tool immediately repeats itself, and no tool is used more than 4 times",
+   "terminal actions cannot restart the same entity lifecycle",
+   "the same mutating action cannot repeat on the same entity"
+  ],
+  "transitions": [
+   {
+    "source": "get_account_tiering_standard",
+    "target": "create_account_tiering_standard",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "get",
+    "targetAction": "create",
+    "sharedEntities": [
+     "standard"
+    ],
+    "stepIndex": 1,
+    "edgeSupported": true
+   },
+   {
+    "source": "create_account_tiering_standard",
+    "target": "list_account_tiering_standard",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "create",
+    "targetAction": "list",
+    "sharedEntities": [
+     "standard"
+    ],
+    "stepIndex": 2,
+    "edgeSupported": true
+   },
+   {
+    "source": "list_account_tiering_standard",
+    "target": "update_status_account_tiering_standard",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "list",
+    "targetAction": "update",
+    "sharedEntities": [
+     "standard"
+    ],
+    "stepIndex": 3,
+    "edgeSupported": true
+   }
+  ],
+  "issues": []
+ },
+ "provenance": {
+  "evidence_ids": [
+   "anc_3983fe9e5ae5",
+   "anc_1a04b24baacf",
+   "anc_24012528020b"
+  ],
+  "tool_graph_path": [
+   "get_account_tiering_standard",
+   "create_account_tiering_standard",
+   "list_account_tiering_standard",
+   "update_status_account_tiering_standard"
+  ],
+  "tool_graph_edges": [
+   "get_account_tiering_standard\u0000create_account_tiering_standard",
+   "create_account_tiering_standard\u0000list_account_tiering_standard",
+   "list_account_tiering_standard\u0000update_status_account_tiering_standard"
+  ],
+  "verifier_id": "task_008",
+  "difficulty_reason": "medium: walk length 4"
+ },
+ "anchor_refs": [
+  "anc_3983fe9e5ae5",
+  "anc_1a04b24baacf",
+  "anc_24012528020b"
+ ],
+ "departments": [
+  "core"
+ ],
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_a295023e0bcba6fe273eac8c89c59fa86163e01d0dd5aeda738f3fdfd0c950ce",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "acceptance_label": "in_band",
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"compliance_review_checklist\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"finance_budgets.fiscal_quarter\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"hr_performance_reviews.review_period\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"sales_leads.company_name\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-10T00:25:16.750Z"
+ },
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_008",
+  "measured": false,
+  "reason": "not_sampled",
+  "detail": "outside the stratified solvability sample; deterministic acceptance evidence stands"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_core_operations"
+  ],
+  "employee_ids": [],
+  "workflow_ids": [
+   "workflow_crm_operations",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff"
+  ],
+  "cross_department": false
+ }
+}

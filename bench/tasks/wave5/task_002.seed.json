@@ -1,0 +1,50 @@
+{
+ "schema": "task-seed.v1",
+ "task_id": "task_002",
+ "rows": {
+  "finance_budgets": [
+   {
+    "id": 118,
+    "department_id": 6,
+    "fiscal_quarter": "2026-Q2",
+    "allocated_amount": 401047.84,
+    "spent_amount": 188866.26,
+    "status": "draft",
+    "budget_number": "BUD-821707"
+   },
+   {
+    "id": 1,
+    "department_id": 1,
+    "fiscal_quarter": "2026-Q1",
+    "allocated_amount": 361728.24,
+    "spent_amount": 166612.6,
+    "status": "draft",
+    "budget_number": "BUD-299900"
+   },
+   {
+    "id": 1,
+    "department_id": 1,
+    "fiscal_quarter": "2026-Q1",
+    "allocated_amount": 361728.24,
+    "spent_amount": 166612.6,
+    "status": "draft",
+    "budget_number": "BUD-299900"
+   }
+  ]
+ },
+ "documents": [
+  {
+   "store": "agent_documents",
+   "id": 36,
+   "title": "finance budgets handling procedure"
+  }
+ ],
+ "input_documents": [],
+ "mcp_seeding": {
+  "core": [
+   "query_finance_budgets",
+   "update_finance_budgets_status",
+   "lookup_finance_budget_with_departments"
+  ]
+ }
+}

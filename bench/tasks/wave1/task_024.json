@@ -1,0 +1,114 @@
+{
+ "task_id": "task_024",
+ "prompt": "In the morgan_stanley_simulated world: Find all lead records with status \"Working\" and update each one to \"Converted\". Report how many records were updated.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.batch_status_update@1",
+  "template_signature": "template:cb9b08dc4bd45d29",
+  "prompt_class": "queue"
+ },
+ "goal": "Batch conditional update: lead status \"Working\" -> \"Converted\" (3 rows)",
+ "required_tools": [
+  "list_lead",
+  "update_status_lead"
+ ],
+ "complexity": "high",
+ "method": "programmatic",
+ "steps": [
+  "Query all lead records",
+  "Filter for status = \"Working\"",
+  "Update each matching record to status \"Converted\"",
+  "Confirm all updates succeeded"
+ ],
+ "relevant_data": [
+  {
+   "table": "lead",
+   "id": "1",
+   "field": "status",
+   "value": "Working"
+  },
+  {
+   "table": "lead",
+   "id": "5",
+   "field": "status",
+   "value": "Working"
+  },
+  {
+   "table": "lead",
+   "id": "6",
+   "field": "status",
+   "value": "Working"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "lead",
+   "id": "1",
+   "field": "status",
+   "from": "Working",
+   "to": "Converted"
+  },
+  {
+   "table": "lead",
+   "id": "5",
+   "field": "status",
+   "from": "Working",
+   "to": "Converted"
+  },
+  {
+   "table": "lead",
+   "id": "6",
+   "field": "status",
+   "from": "Working",
+   "to": "Converted"
+  }
+ ],
+ "tables_affected": [
+  "lead"
+ ],
+ "effects": [
+  {
+   "table": "lead",
+   "op": "update",
+   "field": "status",
+   "value": "Converted"
+  }
+ ],
+ "walk": [
+  "list_lead",
+  "update_status_lead"
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"finance_expense_reports\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"agent_documents.updated_at\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-09T21:10:55.496Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_97092201ff6c85ea67abc683894bb388cc3699102054be03b1ce20487e23f898",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_core_operations"
+  ],
+  "employee_ids": [],
+  "workflow_ids": [
+   "workflow_crm_operations",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff"
+  ],
+  "cross_department": false
+ }
+}

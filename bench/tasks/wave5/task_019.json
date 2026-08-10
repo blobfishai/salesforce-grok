@@ -1,0 +1,113 @@
+{
+ "task_id": "task_019",
+ "prompt": "In the morgan_stanley_simulated world: locate the hr performance reviews record whose review_number is \"REVIEW-492173\" and whose review_period is exactly \"2025-H2\" and process it according to the CURRENT hr performance reviews handling procedure in the document store. Be careful: multiple versions of the procedure exist and some are outdated, and the current procedure's outcome depends on the record's own attributes. Verify the record first, apply exactly one correct transition, change nothing else, and report what you did.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.employee_grounded_workflow@1",
+  "template_key": "hr_performance_reviews:status:employee_assignment",
+  "template_signature": "template:fce37d5c50d801b3",
+  "prompt_class": "resolution"
+ },
+ "goal": "Employee-grounded workflow: hr performance reviews \"REVIEW-492173\".status from \"submitted\" to \"acknowledged\"",
+ "required_tools": [
+  "lookup_hr_performance_review_with_employees",
+  "human_resources_workflow_agent",
+  "human_resources_records_agent"
+ ],
+ "complexity": "high",
+ "method": "programmatic",
+ "steps": [
+  "Look up hr_performance_reviews record \"REVIEW-492173\" with its employee assignments",
+  "Verify the assigned employees: Maria Garcia, Lisa Park",
+  "Confirm status is \"submitted\"",
+  "Update status to \"acknowledged\"",
+  "Confirm no employee record or unrelated workflow row changed"
+ ],
+ "relevant_data": [
+  {
+   "table": "hr_performance_reviews",
+   "id": "99",
+   "field": "status",
+   "value": "submitted"
+  },
+  {
+   "table": "hr_performance_reviews",
+   "id": "99",
+   "field": "employee_id",
+   "value": 15
+  },
+  {
+   "table": "hr_performance_reviews",
+   "id": "99",
+   "field": "reviewer_employee_id",
+   "value": 16
+  },
+  {
+   "table": "hr_performance_reviews",
+   "id": 99,
+   "field": "review_number",
+   "value": "REVIEW-492173"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "hr_performance_reviews",
+   "id": "99",
+   "field": "status",
+   "from": "submitted",
+   "to": "acknowledged"
+  }
+ ],
+ "tables_affected": [
+  "hr_performance_reviews"
+ ],
+ "effects": [
+  {
+   "table": "hr_performance_reviews",
+   "op": "update",
+   "field": "status",
+   "value": "acknowledged"
+  }
+ ],
+ "walk": [
+  "lookup_hr_performance_review_with_employees",
+  "human_resources_workflow_agent"
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"tasks.assigned_to\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"opportunity_stage_gates\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-10T00:29:31.027Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_a137fc98befad89242833390513aedcd9b9d19412b6e7eedf8b030a4080977f4",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_human_resources",
+   "dept_sales"
+  ],
+  "employee_ids": [
+   "emp_15",
+   "emp_16"
+  ],
+  "workflow_ids": [
+   "workflow_sales",
+   "workflow_human_resources",
+   "workflow_sales_crm_operations_handoff"
+  ],
+  "cross_department": true
+ }
+}

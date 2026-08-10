@@ -1,0 +1,104 @@
+{
+ "task_id": "task_019",
+ "prompt": "In the morgan_stanley_simulated world, process marketing content assets record \"ASSET-577726\", which is assigned to Yuki Tanaka. Use the employee-aware lookup to verify the assignment and confirm status is \"draft\", then update its status to the next stage in the marketing content assets lifecycle, changing only that workflow record.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.employee_grounded_workflow@1",
+  "template_key": "marketing_content_assets:status:employee_assignment",
+  "template_signature": "template:4ad712e4b4434b49",
+  "prompt_class": "resolution"
+ },
+ "goal": "Employee-grounded workflow: marketing content assets \"ASSET-577726\".status from \"draft\" to \"in_review\"",
+ "required_tools": [
+  "marketing_records_agent",
+  "marketing_workflow_agent"
+ ],
+ "complexity": "medium",
+ "method": "programmatic",
+ "steps": [
+  "Look up marketing_content_assets record \"ASSET-577726\" with its employee assignments",
+  "Verify the assigned employee: Yuki Tanaka",
+  "Confirm status is \"draft\"",
+  "Update status to \"in_review\"",
+  "Confirm no employee record or unrelated workflow row changed"
+ ],
+ "relevant_data": [
+  {
+   "table": "marketing_content_assets",
+   "id": "1",
+   "field": "status",
+   "value": "draft"
+  },
+  {
+   "table": "marketing_content_assets",
+   "id": "1",
+   "field": "author_employee_id",
+   "value": 10
+  },
+  {
+   "table": "marketing_content_assets",
+   "id": 1,
+   "field": "asset_number",
+   "value": "ASSET-577726"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "marketing_content_assets",
+   "id": "1",
+   "field": "status",
+   "from": "draft",
+   "to": "in_review"
+  }
+ ],
+ "tables_affected": [
+  "marketing_content_assets"
+ ],
+ "effects": [
+  {
+   "table": "marketing_content_assets",
+   "op": "update",
+   "field": "status",
+   "value": "in_review"
+  }
+ ],
+ "walk": [
+  "marketing_records_agent",
+  "marketing_workflow_agent"
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"employee_work_assignments\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"opportunity.stage\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-09T21:10:46.030Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_25bd243685adf6681ff0984e0f4e014d49798d4dc9bdb2d57225af9316a388cb",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_marketing",
+   "dept_finance"
+  ],
+  "employee_ids": [
+   "emp_10"
+  ],
+  "workflow_ids": [
+   "workflow_finance",
+   "workflow_marketing"
+  ],
+  "cross_department": true
+ }
+}

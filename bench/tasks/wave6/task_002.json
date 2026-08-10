@@ -1,0 +1,187 @@
+{
+ "task_id": "task_002",
+ "prompt": "Find hr leave requests LEAVE-243410 (approved) and look up a hr leave request record with its parent employees data joined. the id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix. when only a business handle is known, resolve it with query_hr_leave_requests and pass the returned id; when the exact id is already known, call this tool directly and search and filter hr_leave_requests. returns matching rows. declared lifecycle: hr_leave_requests.status: submitted → (approved → cancelled | rejected). use this to resolve a human name, title, external code, or other business handle to the exact hr_leave_requests primary key required by item tools. Then change the status. Apply only those requested changes.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "graph.mutation.low.anchored@1",
+  "template_signature": "template:29668c1d4cd0aaf2"
+ },
+ "goal": "Drive hr leave requests through the workflow, applying 1 verified state change.",
+ "required_tools": [
+  "lookup_hr_leave_request_with_employees",
+  "query_hr_leave_requests",
+  "update_hr_leave_requests_status"
+ ],
+ "complexity": "low",
+ "method": "graph_walk",
+ "steps": [
+  "Look up a hr leave request record with its parent employees data joined. (hr_leave_requests, employees)",
+  "Search and filter hr_leave_requests. Returns matching rows. (hr_leave_requests)",
+  "Update status of a hr leave requests record. Valid statuses: submitted, approved, rejected, cancelled. (hr_leave_requests)"
+ ],
+ "relevant_data": [
+  {
+   "table": "hr_leave_requests",
+   "id": 224,
+   "field": "request_number",
+   "value": "LEAVE-243410"
+  },
+  {
+   "table": "hr_leave_requests",
+   "id": 8,
+   "field": "request_number",
+   "value": "LEAVE-857947"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "hr_leave_requests",
+   "id": "8",
+   "field": "status",
+   "from": "approved",
+   "to": "cancelled"
+  }
+ ],
+ "tables_affected": [
+  "hr_leave_requests"
+ ],
+ "walk": [
+  "lookup_hr_leave_request_with_employees",
+  "query_hr_leave_requests",
+  "update_hr_leave_requests_status"
+ ],
+ "effects": [
+  {
+   "table": "hr_leave_requests",
+   "op": "update",
+   "field": "status",
+   "value": "cancelled"
+  }
+ ],
+ "difficulty_tier": "easy",
+ "sequence_integrity": {
+  "schemaVersion": 1,
+  "passed": true,
+  "pathLength": 3,
+  "uniqueTools": 3,
+  "rules": [
+   "every transition has an evidence-backed edge",
+   "no tool immediately repeats itself, and no tool is used more than 4 times",
+   "terminal actions cannot restart the same entity lifecycle",
+   "the same mutating action cannot repeat on the same entity"
+  ],
+  "transitions": [
+   {
+    "source": "lookup_hr_leave_request_with_employees",
+    "target": "query_hr_leave_requests",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "lookup",
+    "targetAction": "query",
+    "sharedEntities": [],
+    "stepIndex": 1,
+    "edgeSupported": true
+   },
+   {
+    "source": "query_hr_leave_requests",
+    "target": "update_hr_leave_requests_status",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "query",
+    "targetAction": "update",
+    "sharedEntities": [],
+    "stepIndex": 2,
+    "edgeSupported": true
+   }
+  ],
+  "issues": []
+ },
+ "provenance": {
+  "evidence_ids": [],
+  "tool_graph_path": [
+   "lookup_hr_leave_request_with_employees",
+   "query_hr_leave_requests",
+   "update_hr_leave_requests_status"
+  ],
+  "tool_graph_edges": [
+   "lookup_hr_leave_request_with_employees\u0000query_hr_leave_requests",
+   "query_hr_leave_requests\u0000update_hr_leave_requests_status"
+  ],
+  "verifier_id": "task_002",
+  "difficulty_reason": "easy: walk length 3"
+ },
+ "departments": [
+  "human_resources",
+  "organization"
+ ],
+ "session": [
+  {
+   "turn": 1,
+   "kind": "correction",
+   "user_text": "Actually, the other one—\"LEAVE-857947\". Nothing should change on \"LEAVE-243410\"."
+  }
+ ],
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_f6ff52bfec6f933cadb19d8df414b0e7b972eb9ba72e32614a8fc1b5018fea47",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "acceptance_label": "in_band",
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"all_segments_responses.parent_list_ids\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"calendar_list_entries.primary\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"employees.job_title\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"ai_call_responses.external_call_id\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"departments.department_code\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"charges.statement_descriptor_suffix\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"risky.monthly_timeline_business_days_id\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"finance_expense_reports.submitted_at\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"line_items_list_prices_per_13_product_catalogmd\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-10T07:55:23.798Z"
+ },
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_002",
+  "measured": false,
+  "reason": "budget_exhausted",
+  "detail": "solvability budget expired before this sampled task ran"
+ },
+ "anchor_refs": [],
+ "coverage": {
+  "department_ids": [
+   "dept_human_resources",
+   "dept_finance",
+   "dept_core_operations",
+   "dept_customer_support"
+  ],
+  "employee_ids": [
+   "emp_10",
+   "emp_7",
+   "emp_4",
+   "emp_2"
+  ],
+  "workflow_ids": [
+   "workflow_human_resources",
+   "workflow_finance",
+   "workflow_customer_support",
+   "workflow_crm_operations",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff",
+   "workflow_marketing_crm_operations_handoff",
+   "workflow_finance_crm_operations_handoff",
+   "workflow_sourcing_crm_operations_handoff"
+  ],
+  "cross_department": true
+ }
+}

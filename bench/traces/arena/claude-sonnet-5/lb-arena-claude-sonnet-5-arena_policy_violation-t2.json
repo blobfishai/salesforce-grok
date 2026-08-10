@@ -1,0 +1,123 @@
+{
+ "label": "lb-arena-claude-sonnet-5",
+ "level": 2,
+ "taskId": "arena_policy_violation",
+ "type": "policy_violation_identification",
+ "trial": 2,
+ "prompt": "Does the price and configuration of quote id 1 comply with company policy as written in the knowledge base? If it does not, return only the Id of the knowledge article being violated (e.g. KB-102). If no violation is found, return None.",
+ "gt": "KB-101",
+ "metric": "exact",
+ "docs": [
+  "KB-101 — Discount Authority Policy",
+  "KB-102 — Regulated Product Approval Chain",
+  "KB-103 — Payment Terms Standard"
+ ],
+ "steps": [
+  {
+   "k": "tool",
+   "name": "core.get_quote",
+   "args": {
+    "id": 1
+   },
+   "result": "{\"rows\": [{\"id\": 1, \"discountpct\": 24, \"status\": \"Approved\", \"approvalsteps\": \"confirmed\", \"created_at\": \"2025-08-01\"}]}"
+  },
+  {
+   "k": "tool",
+   "name": "core.search_knowledge",
+   "args": {
+    "query": "quote policy discount approval"
+   },
+   "result": "{\"table\": \"agent_knowledge\", \"query\": \"quote policy discount approval\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "tool",
+   "name": "core.search_knowledge",
+   "args": {
+    "query": "discount"
+   },
+   "result": "{\"table\": \"agent_knowledge\", \"query\": \"discount\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "tool",
+   "name": "core.search_knowledge",
+   "args": {
+    "query": "quote"
+   },
+   "result": "{\"table\": \"agent_knowledge\", \"query\": \"quote\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "tool",
+   "name": "core.search_knowledge",
+   "args": {
+    "query": "KB"
+   },
+   "result": "{\"table\": \"agent_knowledge\", \"query\": \"KB\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "tool",
+   "name": "core.search_knowledge",
+   "args": {
+    "query": ""
+   },
+   "result": "{\"table\": \"agent_knowledge\", \"query\": \"\", \"count\": 2, \"rows\": [{\"id\": 1, \"content\": \"Large sheet imports must be split into bounded chunks and verified by written-row count.\", \"source\": \"uploaded operations SOP\", \"created_at\": \"2026-01-15T09:00:00Z\"}, {\"id\": 2, \"content\": \"A lifecycle change may advance only to the next declared stage unless an approved branch is explicitly selected.\", \"source\": \"uploaded lifecycle model\", \"created_at\": \"2026-01-15T09:00:00Z\"}]}"
+  },
+  {
+   "k": "tool",
+   "name": "notion.query_documents",
+   "args": {
+    "query": "quote policy"
+   },
+   "result": "{\"table\": \"agent_documents\", \"query\": \"quote policy\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "tool",
+   "name": "core.list_sales_manager_policy",
+   "args": {},
+   "result": "{\"rows\": [{\"id\": 1, \"compliance\": \"escalated\", \"or_finance_approval\": \"standard\", \"citing_the_matrix\": \"standard\", \"status\": \"active\", \"created_at\": \"2024-12-21\"}, {\"id\": 2, \"compliance\": \"escalated\", \"or_finance_approval\": \"closed out\", \"citing_the_matrix\": \"routine\", \"status\": \"pending\", \"created_at\": \"2025-09-29\"}, {\"id\": 3, \"compliance\": \"under review\", \"or_finance_approval\": \"expedited\", \"citing_the_matrix\": \"under review\", \"status\": \"approved\", \"created_at\": \"2025-02-07\"}, {\"id\": 4, \"compliance\": \"confirmed\", \"or_finance_approval\": \"standard\", \"citing_the_matrix\": \"routine\", \"status\": \"inactive\", \"created_at\": \"2024-06-22\"}, {\"id\": 5, \"compliance\": \"routine\", \"or_finance_approval\": \"routine\", \"citing_the_matrix\": \"confirmed\", \"status\": \"inactive\", \"created_at\": \"2025-08-19\"}, {\"id\": 6, \"compliance\": \"deferred\", \"or_finance_approval\": \"closed out\", \"citing_the_matrix\": \"closed out\","
+  },
+  {
+   "k": "tool",
+   "name": "notion.query_documents",
+   "args": {
+    "query": "KB"
+   },
+   "result": "{\"table\": \"agent_documents\", \"query\": \"KB\", \"count\": 4, \"rows\": [{\"id\": 5, \"title\": \"KB-101 \\u2014 Discount Authority Policy\", \"body\": \"Quotes may carry at most 15% discount without Deal Desk approval, and never more than 20% in an Approved state under any authority. Any Approved quote above 20% is out of policy.\", \"updated_at\": \"2026-06-01T09:00:00Z\"}, {\"id\": 6, \"title\": \"KB-102 \\u2014 Regulated Product Approval Chain\", \"body\": \"Quotes containing regulated products require the Compliance step recorded before approval.\", \"updated_at\": \"2026-06-01T09:00:00Z\"}, {\"id\": 7, \"title\": \"KB-103 \\u2014 Payment Terms Standard\", \"body\": \"Net-30 is standard; anything longer than Net-60 requires Finance sign-off.\", \"updated_at\": \"2026-06-01T09:00:00Z\"}, {\"id\": 8, \"title\": \"KB-104 \\u2014 Promotional Discount Windows\", \"body\": \"During declared promotional windows, list prices may be reduced at the catal"
+  },
+  {
+   "k": "tool",
+   "name": "notion.query_documents",
+   "args": {
+    "query": "discount"
+   },
+   "result": "{\"table\": \"agent_documents\", \"query\": \"discount\", \"count\": 2, \"rows\": [{\"id\": 5, \"title\": \"KB-101 \\u2014 Discount Authority Policy\", \"body\": \"Quotes may carry at most 15% discount without Deal Desk approval, and never more than 20% in an Approved state under any authority. Any Approved quote above 20% is out of policy.\", \"updated_at\": \"2026-06-01T09:00:00Z\"}, {\"id\": 8, \"title\": \"KB-104 \\u2014 Promotional Discount Windows\", \"body\": \"During declared promotional windows, list prices may be reduced at the catalog level. This policy does not change quote discount ceilings (see KB-101).\", \"updated_at\": \"2026-06-01T09:00:00Z\"}]}"
+  },
+  {
+   "k": "tool",
+   "name": "core.query_files",
+   "args": {
+    "query": "KB"
+   },
+   "result": "{\"table\": \"agent_files\", \"query\": \"KB\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "tool",
+   "name": "core.query_files",
+   "args": {
+    "query": "policy"
+   },
+   "result": "{\"table\": \"agent_files\", \"query\": \"policy\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "answer",
+   "text": "KB-101"
+  }
+ ],
+ "usage": {
+  "prompt": 139856,
+  "completion": 762
+ },
+ "answer": "KB-101",
+ "passed": true,
+ "model": "claude-sonnet-5",
+ "costUsd": 0.2873
+}

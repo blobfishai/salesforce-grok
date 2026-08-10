@@ -1,0 +1,155 @@
+{
+ "task_id": "task_015",
+ "prompt": "At morgan_stanley_simulated: There's a pending item (TKT-685233 (in_progress)) in support tickets that needs processing. Then change the status. Apply only those requested changes.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "graph.mutation.medium.anchored@1",
+  "template_signature": "template:e8c2ddd7981fb23c"
+ },
+ "goal": "Drive support tickets through the workflow, applying 1 verified state change.",
+ "required_tools": [
+  "query_support_tickets",
+  "lookup_support_ticket_with_employees",
+  "update_support_tickets_status"
+ ],
+ "complexity": "medium",
+ "method": "graph_walk",
+ "steps": [
+  "Search and filter support_tickets. Returns matching rows. (support_tickets)",
+  "Look up a support ticket record with its parent employees data joined. (support_tickets, employees)",
+  "Update status of a support tickets record. Valid statuses: open, in_progress, waiting_customer, resolved, closed. (support_tickets)"
+ ],
+ "relevant_data": [
+  {
+   "table": "support_tickets",
+   "id": 159,
+   "field": "ticket_number",
+   "value": "TKT-685233"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "support_tickets",
+   "id": "159",
+   "field": "status",
+   "from": "in_progress",
+   "to": "waiting_customer"
+  }
+ ],
+ "tables_affected": [
+  "support_tickets"
+ ],
+ "walk": [
+  "query_support_tickets",
+  "lookup_support_ticket_with_employees",
+  "update_support_tickets_status"
+ ],
+ "effects": [
+  {
+   "table": "support_tickets",
+   "op": "update",
+   "field": "status",
+   "value": "waiting_customer"
+  }
+ ],
+ "difficulty_tier": "easy",
+ "sequence_integrity": {
+  "schemaVersion": 1,
+  "passed": true,
+  "pathLength": 3,
+  "uniqueTools": 3,
+  "rules": [
+   "every transition has an evidence-backed edge",
+   "no tool immediately repeats itself, and no tool is used more than 4 times",
+   "terminal actions cannot restart the same entity lifecycle",
+   "the same mutating action cannot repeat on the same entity"
+  ],
+  "transitions": [
+   {
+    "source": "query_support_tickets",
+    "target": "lookup_support_ticket_with_employees",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "query",
+    "targetAction": "lookup",
+    "sharedEntities": [],
+    "stepIndex": 1,
+    "edgeSupported": true
+   },
+   {
+    "source": "lookup_support_ticket_with_employees",
+    "target": "update_support_tickets_status",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "lookup",
+    "targetAction": "update",
+    "sharedEntities": [],
+    "stepIndex": 2,
+    "edgeSupported": true
+   }
+  ],
+  "issues": []
+ },
+ "provenance": {
+  "evidence_ids": [],
+  "tool_graph_path": [
+   "query_support_tickets",
+   "lookup_support_ticket_with_employees",
+   "update_support_tickets_status"
+  ],
+  "tool_graph_edges": [
+   "query_support_tickets\u0000lookup_support_ticket_with_employees",
+   "lookup_support_ticket_with_employees\u0000update_support_tickets_status"
+  ],
+  "verifier_id": "task_015",
+  "difficulty_reason": "easy: walk length 3"
+ },
+ "departments": [
+  "customer_support",
+  "organization"
+ ],
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_8219c7cf9355faf22e1a4b331b8111b55e3ef7746a1609a549920c418eff90d7",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "acceptance_label": "in_band",
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"employee_work_assignments.work_item_ref\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-10T00:25:25.214Z"
+ },
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_015",
+  "measured": false,
+  "reason": "not_sampled",
+  "detail": "outside the stratified solvability sample; deterministic acceptance evidence stands"
+ },
+ "anchor_refs": [],
+ "coverage": {
+  "department_ids": [
+   "dept_customer_support",
+   "dept_human_resources"
+  ],
+  "employee_ids": [
+   "emp_9"
+  ],
+  "workflow_ids": [
+   "workflow_human_resources",
+   "workflow_customer_support",
+   "workflow_customer_support_crm_operations_handoff"
+  ],
+  "cross_department": true
+ }
+}

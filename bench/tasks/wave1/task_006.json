@@ -1,0 +1,174 @@
+{
+ "task_id": "task_006",
+ "prompt": "Find the agent playbooks associated with Riverside Industries and display the list of playbooks. Then create a new agent playbook.",
+ "prompt_generation": {
+  "source": "llm",
+  "template_family": "graph.mutation.low.anchored@1",
+  "template_signature": "template:29668c1d4cd0aaf2"
+ },
+ "goal": "Drive agent playbooks through the workflow, applying 1 verified state change.",
+ "required_tools": [],
+ "complexity": "high",
+ "method": "graph_walk",
+ "steps": [
+  "Discover existing playbooks before creating new ones. (agent_playbooks)",
+  "Capture a repeatable workflow as a playbook. (agent_playbooks)"
+ ],
+ "relevant_data": [
+  {
+   "table": "agent_playbooks",
+   "id": 1,
+   "field": "name",
+   "value": "Riverside Industries"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "agent_playbooks",
+   "id": "3",
+   "field": "(new row)",
+   "from": "2 rows",
+   "to": "3 rows"
+  }
+ ],
+ "tables_affected": [
+  "agent_playbooks"
+ ],
+ "walk": [
+  "list_playbooks",
+  "create_playbook"
+ ],
+ "effects": [
+  {
+   "table": "agent_playbooks",
+   "op": "insert"
+  }
+ ],
+ "difficulty_tier": "hard",
+ "sequence_integrity": {
+  "schemaVersion": 1,
+  "passed": true,
+  "pathLength": 2,
+  "uniqueTools": 2,
+  "rules": [
+   "every transition has an evidence-backed edge",
+   "no tool immediately repeats itself, and no tool is used more than 4 times",
+   "terminal actions cannot restart the same entity lifecycle",
+   "the same mutating action cannot repeat on the same entity"
+  ],
+  "transitions": [
+   {
+    "source": "list_playbooks",
+    "target": "create_playbook",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "list",
+    "targetAction": "create",
+    "sharedEntities": [
+     "playbook"
+    ],
+    "stepIndex": 1,
+    "edgeSupported": true
+   }
+  ],
+  "issues": []
+ },
+ "provenance": {
+  "evidence_ids": [],
+  "tool_graph_path": [
+   "list_playbooks",
+   "create_playbook"
+  ],
+  "tool_graph_edges": [
+   "list_playbooks\u0000create_playbook"
+  ],
+  "verifier_id": "task_006",
+  "difficulty_reason": "hard: walk length 2"
+ },
+ "departments": [
+  "core"
+ ],
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_6a56312264789e24f9485602eb50e4461652b7417a5ce5bf01b5aab7a8563e84",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "acceptance_label": "in_band",
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "checked_at": "2026-08-09T20:54:21.193Z"
+ },
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_006",
+  "measured": true,
+  "provider": "deepseek",
+  "model": null,
+  "runs": 5,
+  "passes": 5,
+  "pass_rate": 1,
+  "retained": true,
+  "band": "trivial",
+  "outcomes": [
+   {
+    "run": 1,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   },
+   {
+    "run": 2,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   },
+   {
+    "run": 3,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   },
+   {
+    "run": 4,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   },
+   {
+    "run": 5,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   }
+  ],
+  "measured_at": "2026-08-09T21:03:53.354Z",
+  "superseded_by_escalation": [
+   "scrub_tool_names"
+  ]
+ },
+ "_reference_tools": [
+  "list_playbooks",
+  "create_playbook"
+ ],
+ "anchor_refs": [],
+ "coverage": {
+  "department_ids": [
+   "dept_core_operations"
+  ],
+  "employee_ids": [],
+  "workflow_ids": [
+   "workflow_crm_operations",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff"
+  ],
+  "cross_department": false
+ }
+}

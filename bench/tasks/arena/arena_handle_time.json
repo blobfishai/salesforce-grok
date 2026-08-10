@@ -1,0 +1,12 @@
+{
+ "level": 2,
+ "id": "arena_handle_time",
+ "type": "handle_time",
+ "metric": "exact",
+ "gt": "EMP-137846",
+ "docs": [
+  "Case Routing Policy (rev. 2 — CURRENT)"
+ ],
+ "prompt": "Per the routing policy's definitions of completed tickets and eligibility, identify the agent who completed the most support tickets opened between 2025-10-01 and 2025-12-31. Return only the employee number of the agent.",
+ "audit_note": "GT corrected 2026-08-10: original was computed pre-near-tie-injection over a degenerate all-zero window (pure tie-break); EMP-137846 is the only eligible agent with in-window completed tickets in the shipped data."
+}

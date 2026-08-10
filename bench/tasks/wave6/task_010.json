@@ -1,0 +1,114 @@
+{
+ "task_id": "task_010",
+ "prompt": "In the morgan_stanley_simulated world, process employee work assignments record \"stripe:work-item:0003\", which is assigned to Maria Garcia and Alex Chen. Use the employee-aware lookup to verify the assignment and confirm status is \"in_progress\", then complete it in the employee work assignments lifecycle, changing only that workflow record.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.employee_grounded_workflow@1",
+  "template_key": "employee_work_assignments:status:employee_assignment",
+  "template_signature": "template:a324a314d83ff055",
+  "prompt_class": "resolution"
+ },
+ "goal": "Employee-grounded workflow: employee work assignments \"stripe:work-item:0003\".status from \"in_progress\" to \"completed\"",
+ "required_tools": [
+  "query_employee_work_assignments",
+  "organization_workflow_agent"
+ ],
+ "complexity": "high",
+ "method": "programmatic",
+ "steps": [
+  "Look up employee_work_assignments record \"stripe:work-item:0003\" with its employee assignments",
+  "Verify the assigned employees: Maria Garcia, Alex Chen",
+  "Confirm status is \"in_progress\"",
+  "Update status to \"completed\"",
+  "Confirm no employee record or unrelated workflow row changed"
+ ],
+ "relevant_data": [
+  {
+   "table": "employee_work_assignments",
+   "id": "3",
+   "field": "status",
+   "value": "in_progress"
+  },
+  {
+   "table": "employee_work_assignments",
+   "id": "3",
+   "field": "employee_id",
+   "value": 3
+  },
+  {
+   "table": "employee_work_assignments",
+   "id": "3",
+   "field": "reviewer_employee_id",
+   "value": 15
+  },
+  {
+   "table": "employee_work_assignments",
+   "id": 3,
+   "field": "work_item_ref",
+   "value": "stripe:work-item:0003"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "employee_work_assignments",
+   "id": "3",
+   "field": "status",
+   "from": "in_progress",
+   "to": "completed"
+  }
+ ],
+ "tables_affected": [
+  "employee_work_assignments"
+ ],
+ "effects": [
+  {
+   "table": "employee_work_assignments",
+   "op": "update",
+   "field": "status",
+   "value": "completed"
+  }
+ ],
+ "walk": [
+  "query_employee_work_assignments",
+  "organization_workflow_agent"
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"tasks.assigned_to\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-10T07:58:40.493Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_555736fccec9ed77abf1764251dfeb9430686326102b872675b7e1c786fb3b79",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_human_resources",
+   "dept_finance",
+   "dept_sales"
+  ],
+  "employee_ids": [
+   "emp_3",
+   "emp_15"
+  ],
+  "workflow_ids": [
+   "workflow_sales",
+   "workflow_human_resources",
+   "workflow_finance",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_finance_crm_operations_handoff"
+  ],
+  "cross_department": true
+ }
+}

@@ -1,0 +1,82 @@
+{
+ "schema": "task-seed.v1",
+ "task_id": "task_001",
+ "rows": {
+  "support_tickets": [
+   {
+    "id": 1,
+    "subject": "Cannot access lead management sop records",
+    "customer_name": "David Brown",
+    "priority": "high",
+    "assignee_employee_id": 7,
+    "opened_at": "2026-01-13",
+    "lead_management_sop_id": 1,
+    "status": "open",
+    "ticket_number": "TKT-703339"
+   },
+   {
+    "id": 1,
+    "subject": "Cannot access lead management sop records",
+    "customer_name": "David Brown",
+    "priority": "high",
+    "assignee_employee_id": 7,
+    "opened_at": "2026-01-13",
+    "lead_management_sop_id": 1,
+    "status": "open",
+    "ticket_number": "TKT-703339"
+   }
+  ],
+  "lead_management_sop": [
+   {
+    "id": 1,
+    "name": "Northgate Associates",
+    "status": "active",
+    "created_at": "2024-02-25"
+   },
+   {
+    "id": 1,
+    "name": "Northgate Associates",
+    "status": "active",
+    "created_at": "2024-02-25"
+   }
+  ]
+ },
+ "documents": [
+  {
+   "store": "agent_documents",
+   "id": 5,
+   "title": "lead management sop handling procedure"
+  },
+  {
+   "store": "agent_documents",
+   "id": 6,
+   "title": "lead management sop handling procedure (rev. 2)"
+  },
+  {
+   "store": "agent_documents",
+   "id": 19,
+   "title": "lead management sop handling procedure"
+  },
+  {
+   "store": "agent_documents",
+   "id": 20,
+   "title": "lead management sop handling procedure (rev. 2)"
+  },
+  {
+   "store": "agent_documents",
+   "id": 33,
+   "title": "support tickets handling procedure"
+  }
+ ],
+ "input_documents": [],
+ "mcp_seeding": {
+  "jira": [
+   "query_support_tickets",
+   "update_support_tickets_status"
+  ],
+  "salesforce": [
+   "list_lead_management_sop",
+   "update_status_lead_management_sop"
+  ]
+ }
+}

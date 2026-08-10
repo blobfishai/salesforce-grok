@@ -87,6 +87,30 @@ Start from researched tasks: everything seen in evals, arenas, and articles. The
 - ⚠️ Delta: we run 2 trials; the spec says fail **3×** before parking. **Adopt:
   `--trials 3` on frontier candidates** (cheap-model-first keeps this affordable).
 
+## 6 · Task-level seeding — fixtures belong to the task, not just the world
+
+Global seeded data alone is not realistic. Every task carries its own fixture bundle
+(`bench/tasks/<world>/<task>.seed.json`, schema `task-seed.v1`):
+
+- **rows** — the specific records this task is about (the deal, the leave request, the
+  invoice), full row objects layered into the episode's session
+- **documents** / **input_documents** — the artifacts the task hands the agent (the
+  matter file, the contract, the transcript) — entries with a `body` are upserted into
+  the document stores; pointer-only entries record provenance
+- **special core data** — internal-platform rows (playbooks, memories, sheets)
+- **mcp_seeding** — which vendor servers' surfaces the task exercises
+
+Runtime: `run-simulation --multi-server --apply-task-seed` applies the bundle to the
+episode's copy-on-write session DB *before* the agent starts (verified: fixtures are
+instantly visible through every vendor MCP server, and vanish with the session).
+Extraction: `scripts/build-bench-folders.mjs` derives baseline bundles from each task's
+pinned rows, prompt-referenced documents, and walk namespaces — hand-enrich them with
+realistic bodies instead of relying on generator filler.
+
+- ✅ Have: schema, extractor, applier, per-vendor visibility test.
+- ⚠️ Delta: today's bundles are extracted pointers; the realism work is authoring
+  rich bodies (real-looking order forms, inboxes, spreadsheets) per task.
+
 ## Order of operations
 
 research/ (questions → answers → links) → THESIS.md → anchors encode the thesis →

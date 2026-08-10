@@ -1,0 +1,103 @@
+{
+ "task_id": "task_021",
+ "prompt": "In the morgan_stanley_simulated world: locate the marketing campaigns record whose campaign_code is \"CAM-992680\" and whose name is exactly \"Harbor Industries 109\" and process it according to the CURRENT marketing campaigns handling procedure in the document store. Be careful: multiple versions of the procedure exist and some are outdated, and the current procedure's outcome depends on the record's own attributes. Verify the record first, apply exactly one correct transition, change nothing else, and report what you did.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.employee_grounded_workflow@1",
+  "template_key": "marketing_campaigns:status:employee_assignment",
+  "template_signature": "template:e712240d215110f8",
+  "prompt_class": "resolution"
+ },
+ "goal": "Employee-grounded workflow: marketing campaigns \"CAM-992680\".status from \"planned\" to \"active\"",
+ "required_tools": [
+  "lookup_marketing_campaign_with_employees",
+  "marketing_workflow_agent",
+  "marketing_records_agent"
+ ],
+ "complexity": "medium",
+ "method": "programmatic",
+ "steps": [
+  "Look up marketing_campaigns record \"CAM-992680\" with its employee assignments",
+  "Verify the assigned employee: Fatima Ali",
+  "Confirm status is \"planned\"",
+  "Update status to \"active\"",
+  "Confirm no employee record or unrelated workflow row changed"
+ ],
+ "relevant_data": [
+  {
+   "table": "marketing_campaigns",
+   "id": "109",
+   "field": "status",
+   "value": "planned"
+  },
+  {
+   "table": "marketing_campaigns",
+   "id": "109",
+   "field": "owner_employee_id",
+   "value": 5
+  },
+  {
+   "table": "marketing_campaigns",
+   "id": 109,
+   "field": "campaign_code",
+   "value": "CAM-992680"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "marketing_campaigns",
+   "id": "109",
+   "field": "status",
+   "from": "planned",
+   "to": "active"
+  }
+ ],
+ "tables_affected": [
+  "marketing_campaigns"
+ ],
+ "effects": [
+  {
+   "table": "marketing_campaigns",
+   "op": "update",
+   "field": "status",
+   "value": "active"
+  }
+ ],
+ "walk": [
+  "lookup_marketing_campaign_with_employees",
+  "marketing_workflow_agent"
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"tasks.assigned_to\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"opportunity_stage_gates\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-10T00:29:34.003Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_f215e5bf8f8963b066afe66b0924ab8c4ad4e61d8647daf9edba2fd18c741c4a",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_marketing"
+  ],
+  "employee_ids": [
+   "emp_5"
+  ],
+  "workflow_ids": [
+   "workflow_marketing"
+  ],
+  "cross_department": false
+ }
+}

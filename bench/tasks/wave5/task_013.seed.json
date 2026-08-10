@@ -1,0 +1,69 @@
+{
+ "schema": "task-seed.v1",
+ "task_id": "task_013",
+ "rows": {
+  "hr_leave_requests": [
+   {
+    "id": 181,
+    "employee_id": 17,
+    "leave_type": "sick",
+    "start_date": "2026-02-13",
+    "days_requested": 11,
+    "approver_employee_id": 4,
+    "status": "approved",
+    "request_number": "LEAVE-259899"
+   },
+   {
+    "id": 5,
+    "employee_id": 1,
+    "leave_type": "vacation",
+    "start_date": "2026-02-03",
+    "days_requested": 2,
+    "approver_employee_id": 2,
+    "status": "approved",
+    "request_number": "LEAVE-590122"
+   },
+   {
+    "id": 5,
+    "employee_id": 1,
+    "leave_type": "vacation",
+    "start_date": "2026-02-03",
+    "days_requested": 2,
+    "approver_employee_id": 2,
+    "status": "approved",
+    "request_number": "LEAVE-590122"
+   }
+  ]
+ },
+ "documents": [
+  {
+   "store": "agent_documents",
+   "id": 3,
+   "title": "hr leave requests handling procedure"
+  },
+  {
+   "store": "agent_documents",
+   "id": 4,
+   "title": "hr leave requests handling procedure (rev. 2)"
+  },
+  {
+   "store": "agent_documents",
+   "id": 11,
+   "title": "hr leave requests handling procedure"
+  },
+  {
+   "store": "agent_documents",
+   "id": 12,
+   "title": "hr leave requests handling procedure (rev. 2)"
+  }
+ ],
+ "input_documents": [],
+ "mcp_seeding": {
+  "core": [
+   "query_hr_leave_requests",
+   "update_hr_leave_requests_status",
+   "lookup_hr_leave_request_with_employees",
+   "lookup_hr_performance_review_with_employees"
+  ]
+ }
+}

@@ -1,0 +1,165 @@
+{
+ "task_id": "task_003",
+ "prompt": "In the morgan_stanley_simulated world: Find the sales lead LEAD-654696, verify status is \"new\", then set its status to \"contacted\". Do not modify any other sales leads record.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.row_pinned_update@1",
+  "template_signature": "template:1fecd0aaa4394913",
+  "prompt_class": "resolution"
+ },
+ "goal": "Row-pinned update: sales_leads[1].status from \"new\" to \"contacted\"",
+ "required_tools": [],
+ "complexity": "high",
+ "method": "programmatic",
+ "steps": [
+  "Read the sales lead LEAD-654696",
+  "Confirm status is \"new\"",
+  "Update status to \"contacted\"",
+  "Confirm no other row was modified"
+ ],
+ "relevant_data": [
+  {
+   "table": "sales_leads",
+   "id": "1",
+   "field": "lead_number",
+   "value": "LEAD-654696"
+  },
+  {
+   "table": "sales_leads",
+   "id": 21,
+   "field": "lead_number",
+   "value": "LEAD-389231"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "sales_leads",
+   "id": "21",
+   "field": "status",
+   "from": "new",
+   "to": "contacted"
+  }
+ ],
+ "tables_affected": [
+  "sales_leads"
+ ],
+ "effects": [
+  {
+   "table": "sales_leads",
+   "op": "update",
+   "field": "status",
+   "value": "contacted"
+  }
+ ],
+ "walk": [
+  "query_sales_leads",
+  "update_sales_leads_status"
+ ],
+ "session": [
+  {
+   "turn": 1,
+   "kind": "correction",
+   "user_text": "Correction: \"LEAD-389231\" is the target; do not alter \"LEAD-654696\"."
+  }
+ ],
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_a31e750b85eac91bdd69674cc8097d4031803dd1856852ed2de4a7acd3f1d2c8",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "acceptance_label": "in_band",
+ "difficulty_tier": "hard",
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "checked_at": "2026-08-09T20:54:18.543Z"
+ },
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_003",
+  "measured": true,
+  "provider": "deepseek",
+  "model": null,
+  "runs": 5,
+  "passes": 5,
+  "pass_rate": 1,
+  "retained": true,
+  "band": "trivial",
+  "outcomes": [
+   {
+    "run": 1,
+    "passed": true,
+    "reward": 1,
+    "steps": 3
+   },
+   {
+    "run": 2,
+    "passed": true,
+    "reward": 1,
+    "steps": 3
+   },
+   {
+    "run": 3,
+    "passed": true,
+    "reward": 1,
+    "steps": 3
+   },
+   {
+    "run": 4,
+    "passed": true,
+    "reward": 1,
+    "steps": 3
+   },
+   {
+    "run": 5,
+    "passed": true,
+    "reward": 1,
+    "steps": 3
+   }
+  ],
+  "measured_at": "2026-08-09T20:55:44.847Z",
+  "superseded_by_escalation": [
+   "scrub_tool_names"
+  ]
+ },
+ "_reference_tools": [
+  "query_sales_leads",
+  "update_sales_leads_status"
+ ],
+ "anchor_refs": [],
+ "provenance": {
+  "evidence_ids": [],
+  "tool_graph_path": [
+   "query_sales_leads",
+   "update_sales_leads_status"
+  ],
+  "tool_graph_edges": [
+   "query_sales_leads\u0000update_sales_leads_status"
+  ],
+  "verifier_id": "task_003",
+  "difficulty_reason": "hard: walk length 2"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_sales",
+   "dept_finance"
+  ],
+  "employee_ids": [
+   "emp_1",
+   "emp_3"
+  ],
+  "workflow_ids": [
+   "workflow_sales",
+   "workflow_finance",
+   "workflow_sales_crm_operations_handoff"
+  ],
+  "cross_department": true
+ }
+}

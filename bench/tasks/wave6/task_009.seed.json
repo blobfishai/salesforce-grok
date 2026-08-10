@@ -1,0 +1,47 @@
+{
+ "schema": "task-seed.v1",
+ "task_id": "task_009",
+ "rows": {
+  "accounts": [
+   {
+    "id": "account_010",
+    "name": "Ironwood Group Account",
+    "industry": "Account industry ready for handoff",
+    "status": "active",
+    "owner_id": "OWN-77DBD7D",
+    "annual_revenue": 65.17,
+    "created_at": "2026-01-07T19:47:00Z"
+   }
+  ]
+ },
+ "documents": [
+  {
+   "store": "agent_documents",
+   "id": 45,
+   "title": "41 — ARTIFACT: Executed MSA Summary Sheet — Ironwood Group"
+  },
+  {
+   "store": "matter_documents",
+   "id": 1,
+   "title": "Deal materials — project_management: Move all of {name}'s tasks that are in progress to in review"
+  }
+ ],
+ "input_documents": [],
+ "mcp_seeding": {
+  "salesforce": [
+   "accounts_list",
+   "account_create",
+   "contact_get",
+   "account_get"
+  ],
+  "pagerduty": [
+   "cases_list"
+  ],
+  "core": [
+   "tasks_list",
+   "task_create",
+   "tasks_list",
+   "task_get"
+  ]
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "schema": "task-seed.v1",
+ "task_id": "task_011",
+ "rows": {
+  "tasks": [
+   {
+    "id": "task_001",
+    "account_id": "account_001",
+    "subject": "Task handoff requires attention",
+    "status": "open",
+    "priority": "high",
+    "assigned_to": "Task assigned to ready for handoff",
+    "due_at": "2026-01-05T21:42:00Z",
+    "description": "Task approval documents that a policy exception needs review."
+   }
+  ]
+ },
+ "documents": [],
+ "input_documents": [],
+ "mcp_seeding": {
+  "core": [
+   "tasks_list",
+   "task_get",
+   "task_create"
+  ],
+  "salesforce": [
+   "accounts_list",
+   "account_get",
+   "contact_get",
+   "contacts_list",
+   "contact_create"
+  ],
+  "pagerduty": [
+   "cases_list",
+   "case_create",
+   "cases_list"
+  ]
+ }
+}

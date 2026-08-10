@@ -1,0 +1,196 @@
+{
+ "label": "lb-arena-deepseek-v4-flash",
+ "level": 2,
+ "taskId": "arena_top_issue",
+ "type": "top_issue_identification",
+ "trial": 1,
+ "prompt": "Identify the most common issue category among support tickets that are still active (status open, in_progress, or waiting_customer). The issue category is the ticket subject's leading phrase. Return only the category name.",
+ "gt": "Billing discrepancy",
+ "metric": "fuzzy",
+ "docs": [],
+ "steps": [
+  {
+   "k": "thinking",
+   "text": "Let me look at support tickets to identify the issue category. The issue category is the ticket subject's leading phrase. I need to look at active tickets (status open, in_progress, or waiting_customer) and count categories.\n\nLet me query support tickets."
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 200, \"rows\": [{\"id\": 1, \"ticket_number\": \"TKT-703339\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Lisa Park\", \"priority\": \"urgent\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-05-13\", \"business_unit_id\": 6, \"status\": \"open\"}, {\"id\": 2, \"ticket_number\": \"TKT-979617\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Omar Hassan\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-06-16\", \"business_unit_id\": 2, \"status\": \"resolved\"}, {\"id\": 3, \"ticket_number\": \"TKT-995387\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Yuki Tanaka\", \"priority\": \"low\", \"assignee_employee_id\": 6, \"opened_at\": \"2026-05-18\", \"business_unit_id\": 10, \"status\": \"in_progress\"}, {\"id\": 4, \"ticket_number\": \"TKT-412766\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Mich"
+  },
+  {
+   "k": "thinking",
+   "text": "The query returned 200 rows, but there might be more. Let me get more data. The count is 200, so there may be more tickets. Let me check the count and continue. Actually, the response says \"count\": 200 with rows listed. There might be more than 200. Let me query with a filter on status to get active tickets, or fetch all.\n\nLet me query with status filter to see the active tickets specifically. But I can also just count from the list. Let me query all tickets to be safe - maybe there are more than 200. Let me query with status filter for open, in_progress, waiting_customer separately.\n\nActually, let me just fetch more tickets to see the full set. The query returned 200 rows but there could be more. Let me try to get more with a larger limit."
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "limit": 200,
+    "status": "open"
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 21, \"rows\": [{\"id\": 1, \"ticket_number\": \"TKT-703339\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Lisa Park\", \"priority\": \"urgent\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-05-13\", \"business_unit_id\": 6, \"status\": \"open\"}, {\"id\": 15, \"ticket_number\": \"TKT-658990\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Kevin Wright\", \"priority\": \"high\", \"assignee_employee_id\": 4, \"opened_at\": \"2026-05-26\", \"business_unit_id\": 2, \"status\": \"open\"}, {\"id\": 16, \"ticket_number\": \"TKT-687027\", \"subject\": \"Question about business unit status\", \"customer_name\": \"Elena Volkov\", \"priority\": \"low\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-03-07\", \"business_unit_id\": 4, \"status\": \"open\"}, {\"id\": 30, \"ticket_number\": \"TKT-517277\", \"subject\": \"Question about business unit status\", \"customer_name\": \"David Brown 30\""
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "limit": 200,
+    "status": "in_progress"
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 56, \"rows\": [{\"id\": 3, \"ticket_number\": \"TKT-995387\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Yuki Tanaka\", \"priority\": \"low\", \"assignee_employee_id\": 6, \"opened_at\": \"2026-05-18\", \"business_unit_id\": 10, \"status\": \"in_progress\"}, {\"id\": 5, \"ticket_number\": \"TKT-975596\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Alex Chen\", \"priority\": \"high\", \"assignee_employee_id\": 2, \"opened_at\": \"2026-01-06\", \"business_unit_id\": 4, \"status\": \"in_progress\"}, {\"id\": 8, \"ticket_number\": \"TKT-739074\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Sarah Kim\", \"priority\": \"low\", \"assignee_employee_id\": 14, \"opened_at\": \"2026-02-22\", \"business_unit_id\": 1, \"status\": \"in_progress\"}, {\"id\": 11, \"ticket_number\": \"TKT-997692\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"Nina Kowalski\""
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "limit": 200,
+    "status": "waiting_customer"
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 49, \"rows\": [{\"id\": 6, \"ticket_number\": \"TKT-487758\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Thomas Lee\", \"priority\": \"medium\", \"assignee_employee_id\": 18, \"opened_at\": \"2026-04-16\", \"business_unit_id\": 1, \"status\": \"waiting_customer\"}, {\"id\": 14, \"ticket_number\": \"TKT-614849\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Carlos Rivera\", \"priority\": \"high\", \"assignee_employee_id\": 4, \"opened_at\": \"2026-06-22\", \"business_unit_id\": 1, \"status\": \"waiting_customer\"}, {\"id\": 21, \"ticket_number\": \"TKT-376151\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Robert Martinez 21\", \"priority\": \"medium\", \"assignee_employee_id\": 13, \"opened_at\": \"2026-01-13\", \"business_unit_id\": 7, \"status\": \"waiting_customer\"}, {\"id\": 27, \"ticket_number\": \"TKT-492915\", \"subject\": \"Billing discrepancy on business uni"
+  },
+  {
+   "k": "thinking",
+   "text": "The results are paginated/truncated. I got 21 open tickets (all shown), but in_progress returned 56 count with truncated rows, and waiting_customer returned 49 count with truncated rows. I need the full lists. Let me fetch the remainder. Since the response truncated at 200 rows in the first query, maybe the API caps at 200 per query but I can get more by... hmm, actually the list query with status filter returned counts. Let me try to get remaining rows. There's no pagination parameter in the schema besides limit. Maybe I can use limit and the query returns all matching. But in_progress count is 56 and only ~50 rows were shown (truncated by the output display?). Actually the output was cut off in the middle (\"opened_at\": \"20...\"). The tool output might be truncated in display but all data was returned? The display shows \"count\": 56 but only some rows. Let me re-query in_progress and waiting_customer to get the full list, perhaps the display truncation cut it off.\n\nActually the tool returns data and my view shows truncated. I should count what I have. But I need accurate counts. Let me think about categories: subjects are:\n1. \"Billing discrepancy on business unit\" → leading phrase \"Billing discrepancy\"\n2. \"Problem updating business unit\" → \"Problem updating\"\n3. \"Cannot access business unit records\" → \"Cannot access\"\n4. \"Question about business unit status\" → \"Question about\"\n\nThe issue category is the ticket subject's leading phrase. Probably category = first two words? \"Billing discrepancy\", \"Problem updating\", \"Cannot access\", \"Question about\". These seem to be the leading phrases.\n\nLet me count across all active tickets. I have:\n- open: 21 tickets (all listed)\n- in_progress: 56 total, but only saw ~50\n- waiting_customer: 49 total, but only saw ~30\n\nI need to get the full lists. Let me re-query with smaller limits or maybe query the sub-agent for a complete count. The records agent can return complete record for a specific handle, but not aggregate.\n\nLet me re-run queries to get the full lists. The tool likely returns all matching rows but the display may be truncated in my view. Let me try querying with limit 200 again for in_progress and waiting_customer — maybe the full output will come through this time. Actually the output was truncated by the system (character limit). Hmm.\n\nAlternatively, I can use the sheet/records sub-agent to compute. The github__sheet_agent supports reading tables? \"read <table_name>\" - maybe I can have it read support_tickets and count.\n\nActually, let me try querying support tickets filtered by status with the natural-language records agent? That returns complete record for a unique handle only.\n\nLet me just re-query in_progress and waiting_customer with limit to see full output. The output truncation may be due to max characters in the response. I'll try fetching in chunks by using limit smaller, but there's no offset parameter. Hmm.\n\nAlternatively I can count categories from what I have and infer. Let me tally what "
+  },
+  {
+   "k": "tool",
+   "name": "github.sheet_agent",
+   "args": {
+    "request": "read support_tickets and count how many tickets have status open, in_progress, or waiting_customer, grouped by the leading phrase of the subject (e.g., \"Billing discrepancy\", \"Problem updating\", \"Cannot access\", \"Question about\"). Return the counts per category."
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 50, \"rows\": [{\"id\": 1, \"ticket_number\": \"TKT-703339\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Lisa Park\", \"priority\": \"urgent\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-05-13\", \"business_unit_id\": 6, \"status\": \"open\"}, {\"id\": 2, \"ticket_number\": \"TKT-979617\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Omar Hassan\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-06-16\", \"business_unit_id\": 2, \"status\": \"resolved\"}, {\"id\": 3, \"ticket_number\": \"TKT-995387\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Yuki Tanaka\", \"priority\": \"low\", \"assignee_employee_id\": 6, \"opened_at\": \"2026-05-18\", \"business_unit_id\": 10, \"status\": \"in_progress\"}, {\"id\": 4, \"ticket_number\": \"TKT-412766\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Micha"
+  },
+  {
+   "k": "thinking",
+   "text": "The sheet agent also truncated at 50 rows. I need a way to get the full data. The queries return counts: open=21, in_progress=56, waiting_customer=49. Total active = 126. I have complete open list (21). For in_progress I need all 56, and waiting_customer all 49.\n\nThe display truncation seems to be at about 50 rows per tool response. Perhaps I can query with limit small enough and rely on... no offset param. Hmm.\n\nAlternative: use the records sub-agent (jira customer support records agent) to look up by subject/customer - not aggregate.\n\nMaybe I can count category totals by using multiple queries. The query tool supports filtering by subject? No, only ticket_number, subject, customer_name, priority, assignee, opened_at, business_unit_id, status. Actually subject is a filter param! I can query by subject. Let me query each subject phrase with status filter, or better: query with status=open and subject=\"Billing discrepancy...\" etc.\n\nActually, since subject filter is exact match probably, I can query each of the 4 subjects for each of the 3 statuses and get counts. That gives exact category counts.\n\nSubjects:\n1. \"Billing discrepancy on business unit\"\n2. \"Problem updating business unit\"\n3. \"Cannot access business unit records\"\n4. \"Question about business unit status\"\n\nFor each of the 3 active statuses, query with subject filter. That's 12 queries but they're independent. Let me do them in parallel.\n\nActually simpler: query by subject with no status filter and count active ones? No, better to filter status too so the count is directly the answer. Let me do 12 parallel calls. Or 4 subject queries with status=open, in_progress, waiting_customer separately.\n\nLet me do them."
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "subject": "Billing discrepancy on business unit",
+    "status": "open"
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 6, \"rows\": [{\"id\": 1, \"ticket_number\": \"TKT-703339\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Lisa Park\", \"priority\": \"urgent\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-05-13\", \"business_unit_id\": 6, \"status\": \"open\"}, {\"id\": 15, \"ticket_number\": \"TKT-658990\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Kevin Wright\", \"priority\": \"high\", \"assignee_employee_id\": 4, \"opened_at\": \"2026-05-26\", \"business_unit_id\": 2, \"status\": \"open\"}, {\"id\": 90, \"ticket_number\": \"TKT-503868\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Elena Volkov 90\", \"priority\": \"medium\", \"assignee_employee_id\": 4, \"opened_at\": \"2026-05-06\", \"business_unit_id\": 2, \"status\": \"open\"}, {\"id\": 126, \"ticket_number\": \"TKT-563575\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Yuki Tan"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "subject": "Billing discrepancy on business unit",
+    "status": "in_progress"
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 22, \"rows\": [{\"id\": 3, \"ticket_number\": \"TKT-995387\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Yuki Tanaka\", \"priority\": \"low\", \"assignee_employee_id\": 6, \"opened_at\": \"2026-05-18\", \"business_unit_id\": 10, \"status\": \"in_progress\"}, {\"id\": 12, \"ticket_number\": \"TKT-269054\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"James Wilson\", \"priority\": \"low\", \"assignee_employee_id\": 4, \"opened_at\": \"2026-01-25\", \"business_unit_id\": 3, \"status\": \"in_progress\"}, {\"id\": 19, \"ticket_number\": \"TKT-566075\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Priya Patel\", \"priority\": \"low\", \"assignee_employee_id\": 18, \"opened_at\": \"2026-02-14\", \"business_unit_id\": 5, \"status\": \"in_progress\"}, {\"id\": 23, \"ticket_number\": \"TKT-759830\", \"subject\": \"Billing discrepancy on business unit\", \"customer_nam"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "subject": "Billing discrepancy on business unit",
+    "status": "waiting_customer"
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 10, \"rows\": [{\"id\": 14, \"ticket_number\": \"TKT-614849\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Carlos Rivera\", \"priority\": \"high\", \"assignee_employee_id\": 4, \"opened_at\": \"2026-06-22\", \"business_unit_id\": 1, \"status\": \"waiting_customer\"}, {\"id\": 27, \"ticket_number\": \"TKT-492915\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Aisha Ahmad 27\", \"priority\": \"urgent\", \"assignee_employee_id\": 12, \"opened_at\": \"2026-04-07\", \"business_unit_id\": 4, \"status\": \"waiting_customer\"}, {\"id\": 33, \"ticket_number\": \"TKT-207529\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Thomas Lee 33\", \"priority\": \"medium\", \"assignee_employee_id\": 15, \"opened_at\": \"2026-01-27\", \"business_unit_id\": 1, \"status\": \"waiting_customer\"}, {\"id\": 42, \"ticket_number\": \"TKT-347840\", \"subject\": \"Billing discrepancy on "
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "subject": "Problem updating business unit",
+    "status": "open"
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 6, \"rows\": [{\"id\": 66, \"ticket_number\": \"TKT-950946\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Fatima Ali 66\", \"priority\": \"low\", \"assignee_employee_id\": 8, \"opened_at\": \"2026-04-13\", \"business_unit_id\": 12, \"status\": \"open\"}, {\"id\": 78, \"ticket_number\": \"TKT-530964\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Michael Johnson 78\", \"priority\": \"medium\", \"assignee_employee_id\": 8, \"opened_at\": \"2026-05-12\", \"business_unit_id\": 11, \"status\": \"open\"}, {\"id\": 83, \"ticket_number\": \"TKT-769055\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Nina Kowalski 83\", \"priority\": \"high\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-03-26\", \"business_unit_id\": 11, \"status\": \"open\"}, {\"id\": 107, \"ticket_number\": \"TKT-432149\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Lisa Park 107\", \"prio"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "subject": "Problem updating business unit",
+    "status": "in_progress"
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 12, \"rows\": [{\"id\": 5, \"ticket_number\": \"TKT-975596\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Alex Chen\", \"priority\": \"high\", \"assignee_employee_id\": 2, \"opened_at\": \"2026-01-06\", \"business_unit_id\": 4, \"status\": \"in_progress\"}, {\"id\": 8, \"ticket_number\": \"TKT-739074\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Sarah Kim\", \"priority\": \"low\", \"assignee_employee_id\": 14, \"opened_at\": \"2026-02-22\", \"business_unit_id\": 1, \"status\": \"in_progress\"}, {\"id\": 34, \"ticket_number\": \"TKT-455443\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Kevin Wright 34\", \"priority\": \"medium\", \"assignee_employee_id\": 5, \"opened_at\": \"2026-04-08\", \"business_unit_id\": 3, \"status\": \"in_progress\"}, {\"id\": 68, \"ticket_number\": \"TKT-797900\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Aisha Ahmad 68\", \""
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "subject": "Problem updating business unit",
+    "status": "waiting_customer"
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 17, \"rows\": [{\"id\": 6, \"ticket_number\": \"TKT-487758\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Thomas Lee\", \"priority\": \"medium\", \"assignee_employee_id\": 18, \"opened_at\": \"2026-04-16\", \"business_unit_id\": 1, \"status\": \"waiting_customer\"}, {\"id\": 21, \"ticket_number\": \"TKT-376151\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Robert Martinez 21\", \"priority\": \"medium\", \"assignee_employee_id\": 13, \"opened_at\": \"2026-01-13\", \"business_unit_id\": 7, \"status\": \"waiting_customer\"}, {\"id\": 35, \"ticket_number\": \"TKT-202832\", \"subject\": \"Problem updating business unit\", \"customer_name\": \"Brian Murphy 35\", \"priority\": \"urgent\", \"assignee_employee_id\": 2, \"opened_at\": \"2026-05-06\", \"business_unit_id\": 12, \"status\": \"waiting_customer\"}, {\"id\": 56, \"ticket_number\": \"TKT-109167\", \"subject\": \"Problem updating business unit\", \"cu"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "subject": "Cannot access business unit records",
+    "status": "open"
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 4, \"rows\": [{\"id\": 43, \"ticket_number\": \"TKT-456080\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"Carlos Rivera 43\", \"priority\": \"medium\", \"assignee_employee_id\": 12, \"opened_at\": \"2026-03-09\", \"business_unit_id\": 9, \"status\": \"open\"}, {\"id\": 61, \"ticket_number\": \"TKT-908880\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"Lisa Park 61\", \"priority\": \"urgent\", \"assignee_employee_id\": 3, \"opened_at\": \"2026-02-06\", \"business_unit_id\": 9, \"status\": \"open\"}, {\"id\": 74, \"ticket_number\": \"TKT-895874\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"Nina Kowalski 74\", \"priority\": \"urgent\", \"assignee_employee_id\": 4, \"opened_at\": \"2026-06-26\", \"business_unit_id\": 9, \"status\": \"open\"}, {\"id\": 95, \"ticket_number\": \"TKT-247244\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"Ma"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "subject": "Cannot access business unit records",
+    "status": "in_progress"
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 16, \"rows\": [{\"id\": 11, \"ticket_number\": \"TKT-997692\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"Nina Kowalski\", \"priority\": \"medium\", \"assignee_employee_id\": 15, \"opened_at\": \"2026-01-16\", \"business_unit_id\": 6, \"status\": \"in_progress\"}, {\"id\": 31, \"ticket_number\": \"TKT-290116\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"Alex Chen 31\", \"priority\": \"low\", \"assignee_employee_id\": 7, \"opened_at\": \"2026-06-19\", \"business_unit_id\": 6, \"status\": \"in_progress\"}, {\"id\": 57, \"ticket_number\": \"TKT-503308\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"Lisa Park 57\", \"priority\": \"urgent\", \"assignee_employee_id\": 8, \"opened_at\": \"2026-02-12\", \"business_unit_id\": 1, \"status\": \"in_progress\"}, {\"id\": 58, \"ticket_number\": \"TKT-369407\", \"subject\": \"Cannot access business unit records\", \"custome"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "subject": "Cannot access business unit records",
+    "status": "waiting_customer"
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 16, \"rows\": [{\"id\": 29, \"ticket_number\": \"TKT-968710\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"Michael Johnson 29\", \"priority\": \"high\", \"assignee_employee_id\": 8, \"opened_at\": \"2026-06-22\", \"business_unit_id\": 9, \"status\": \"waiting_customer\"}, {\"id\": 37, \"ticket_number\": \"TKT-394111\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"Yuki Tanaka 37\", \"priority\": \"medium\", \"assignee_employee_id\": 18, \"opened_at\": \"2026-03-15\", \"business_unit_id\": 7, \"status\": \"waiting_customer\"}, {\"id\": 51, \"ticket_number\": \"TKT-297405\", \"subject\": \"Cannot access business unit records\", \"customer_name\": \"Yuki Tanaka 51\", \"priority\": \"medium\", \"assignee_employee_id\": 17, \"opened_at\": \"2026-05-05\", \"business_unit_id\": 5, \"status\": \"waiting_customer\"}, {\"id\": 52, \"ticket_number\": \"TKT-664235\", \"subject\": \"Cannot access busine"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "subject": "Question about business unit status",
+    "status": "open"
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 5, \"rows\": [{\"id\": 16, \"ticket_number\": \"TKT-687027\", \"subject\": \"Question about business unit status\", \"customer_name\": \"Elena Volkov\", \"priority\": \"low\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-03-07\", \"business_unit_id\": 4, \"status\": \"open\"}, {\"id\": 30, \"ticket_number\": \"TKT-517277\", \"subject\": \"Question about business unit status\", \"customer_name\": \"David Brown 30\", \"priority\": \"medium\", \"assignee_employee_id\": 7, \"opened_at\": \"2026-03-22\", \"business_unit_id\": 1, \"status\": \"open\"}, {\"id\": 50, \"ticket_number\": \"TKT-283495\", \"subject\": \"Question about business unit status\", \"customer_name\": \"Carlos Rivera 50\", \"priority\": \"low\", \"assignee_employee_id\": 11, \"opened_at\": \"2026-01-10\", \"business_unit_id\": 1, \"status\": \"open\"}, {\"id\": 64, \"ticket_number\": \"TKT-123930\", \"subject\": \"Question about business unit status\", \"customer_name\": \"Sarah Kim"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "subject": "Question about business unit status",
+    "status": "in_progress"
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 6, \"rows\": [{\"id\": 49, \"ticket_number\": \"TKT-807539\", \"subject\": \"Question about business unit status\", \"customer_name\": \"Nina Kowalski 49\", \"priority\": \"low\", \"assignee_employee_id\": 4, \"opened_at\": \"2026-04-15\", \"business_unit_id\": 1, \"status\": \"in_progress\"}, {\"id\": 92, \"ticket_number\": \"TKT-778153\", \"subject\": \"Question about business unit status\", \"customer_name\": \"Lisa Park 92\", \"priority\": \"high\", \"assignee_employee_id\": 2, \"opened_at\": \"2026-02-05\", \"business_unit_id\": 10, \"status\": \"in_progress\"}, {\"id\": 138, \"ticket_number\": \"TKT-267619\", \"subject\": \"Question about business unit status\", \"customer_name\": \"Aisha Ahmad 138\", \"priority\": \"urgent\", \"assignee_employee_id\": 8, \"opened_at\": \"2026-03-01\", \"business_unit_id\": 6, \"status\": \"in_progress\"}, {\"id\": 153, \"ticket_number\": \"TKT-448075\", \"subject\": \"Question about business unit status\", \"cu"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "subject": "Question about business unit status",
+    "status": "waiting_customer"
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 6, \"rows\": [{\"id\": 45, \"ticket_number\": \"TKT-159503\", \"subject\": \"Question about business unit status\", \"customer_name\": \"Elena Volkov 45\", \"priority\": \"medium\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-04-20\", \"business_unit_id\": 1, \"status\": \"waiting_customer\"}, {\"id\": 112, \"ticket_number\": \"TKT-321296\", \"subject\": \"Question about business unit status\", \"customer_name\": \"Kevin Wright 112\", \"priority\": \"low\", \"assignee_employee_id\": 14, \"opened_at\": \"2026-06-11\", \"business_unit_id\": 9, \"status\": \"waiting_customer\"}, {\"id\": 114, \"ticket_number\": \"TKT-315790\", \"subject\": \"Question about business unit status\", \"customer_name\": \"James Wilson 114\", \"priority\": \"high\", \"assignee_employee_id\": 17, \"opened_at\": \"2026-04-06\", \"business_unit_id\": 1, \"status\": \"waiting_customer\"}, {\"id\": 140, \"ticket_number\": \"TKT-500366\", \"subject\": \"Question about busi"
+  },
+  {
+   "k": "thinking",
+   "text": "Now let me tally the counts from the subject+status queries:\n\n**Billing discrepancy on business unit** (leading phrase: \"Billing discrepancy\"):\n- open: 6\n- in_progress: 22\n- waiting_customer: 10\n- Total: 38\n\n**Problem updating business unit** (leading phrase: \"Problem updating\"):\n- open: 6\n- in_progress: 12\n- waiting_customer: 17\n- Total: 35\n\n**Cannot access business unit records** (leading phrase: \"Cannot access\"):\n- open: 4\n- in_progress: 16\n- waiting_customer: 16\n- Total: 36\n\n**Question about business unit status** (leading phrase: \"Question about\"):\n- open: 5\n- in_progress: 6\n- waiting_customer: 6\n- Total: 17\n\nWait, let me double check the totals. Open total: 6+6+4+5 = 21 ✓ (matches open count 21). In_progress total: 22+12+16+6 = 56 ✓ (matches 56). Waiting_customer: 10+17+16+6 = 49 ✓ (matches 49). \n\nSo active totals:\n- Billing discrepancy: 38\n- Problem updating: 35\n- Cannot access: 36\n- Question about: 17\n\nThe most common is \"Billing discrepancy\" with 38. Wait, let me double check the counts for each query since the queries returned all rows and the counts were reported as \"count\". For Billing in_progress, count was 22. Yes.\n\nHmm, but wait — could there be tickets beyond id 200? The earlier full query returned count 200 with rows, but the query may have been capped at 200 rows and there may be more tickets. The status-specific counts: open=21, in_progress=56, waiting_customer=49 → 126 active. The subject-specific queries returned counts that sum exactly to those status counts, and all 12 queries returned rows within the 200. Since the per-status counts (21/56/49) came from unfiltered status queries which returned complete counts (not capped? the first unfiltered query returned count 200 which might be a cap...). Hmm, the first query jira__query_support_tickets with limit 200 returned \"count\": 200 — that could be a cap at 200. But the status-filtered queries returned counts 21, 56, 49, which are smaller than 200, suggesting the dataset total is 21+56+49+others. Let me verify: are there more tickets beyond statuses? Let me check the total count by querying all with limit 200 — it said count 200. Could be exactly 200 or capped. But the subject+status queries give consistent counts that match the status counts, so within active tickets, all subjects are accounted for.\n\nActually, let me verify there isn't a 5th subject category among active tickets. The status-filtered queries returned 21, 56, 49 and the subject+status queries sum to exactly those numbers (21, 56, 49). So all active tickets fall into these 4 categories. Good.\n\nMost common category: \"Billing discrepancy\" with 38 active tickets.\n\nThe question asks: \"The issue category is the ticket subject's leading phrase.\" So return the category name = leading phrase. For \"Billing discrepancy on business unit\", the leading phrase is \"Billing discrepancy\". \n\nSo answer: Billing discrepancy."
+  },
+  {
+   "k": "answer",
+   "text": "Billing discrepancy"
+  }
+ ],
+ "usage": {
+  "prompt": 144693,
+  "completion": 4063
+ },
+ "answer": "Billing discrepancy",
+ "passed": true,
+ "model": "deepseek-v4-flash",
+ "costUsd": 0.0214
+}

@@ -1,0 +1,147 @@
+{
+ "label": "lb-arena-deepseek-v4-flash",
+ "level": 2,
+ "taskId": "arena_case_routing",
+ "type": "case_routing",
+ "trial": 2,
+ "prompt": "Use the case routing policy in the document store to determine the most suitable agent for the given case. Return only the employee number of the agent.\n## Given Case\n- Case Subject: Billing discrepancy on Q3 custody statement\n- Case Description: The client reports fee lines on the Q3 custody statement that do not match the agreed schedule and requests correction.",
+ "gt": "EMP-698636",
+ "metric": "exact",
+ "docs": [
+  "Case Routing Policy (rev. 2 — CURRENT)"
+ ],
+ "steps": [
+  {
+   "k": "thinking",
+   "text": "Let me look into the document store for the case routing policy. I should query documents and files to find the routing policy."
+  },
+  {
+   "k": "tool",
+   "name": "notion.query_documents",
+   "args": {
+    "query": "case routing policy"
+   },
+   "result": "{\"table\": \"agent_documents\", \"query\": \"case routing policy\", \"count\": 2, \"rows\": [{\"id\": 3, \"title\": \"Case Routing Policy (rev. 2 \\u2014 CURRENT)\", \"body\": \"Effective 2026-06-01, supersedes rev. 1. Issue categories are determined by the ticket subject prefix: \\\"Billing discrepancy\\\", \\\"Problem updating\\\", \\\"Cannot access\\\", \\\"Question about\\\". A new case routes to the ELIGIBLE agent who has completed (status resolved or closed) the most support tickets in the case's category. Eligibility: employees with status \\\"active\\\" only \\u2014 agents on leave or terminated are never routed. Tie-break 1: fewer currently active tickets (open, in_progress, waiting_customer). Tie-break 2: earlier hire_date. Answer with the agent's employee_number.\", \"updated_at\": \"2026-06-01T09:00:00Z\"}, {\"id\": 4, \"title\": \"Case Routing Policy (rev. 1)\", \"body\": \"[SUPERSEDED] Route new cases to the agent with the most "
+  },
+  {
+   "k": "tool",
+   "name": "core.query_files",
+   "args": {
+    "query": "routing policy"
+   },
+   "result": "{\"table\": \"agent_files\", \"query\": \"routing policy\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "thinking",
+   "text": "The current policy (rev. 2) says:\n- Issue categories determined by ticket subject prefix: \"Billing discrepancy\", \"Problem updating\", \"Cannot access\", \"Question about\".\n- A new case routes to the ELIGIBLE agent who has completed (status resolved or closed) the most support tickets in the case's category.\n- Eligibility: employees with status \"active\" only — agents on leave or terminated are never routed.\n- Tie-break 1: fewer currently active tickets (open, in_progress, waiting_customer).\n- Tie-break 2: earlier hire_date.\n- Answer with the agent's employee_number.\n\nCase: \"Billing discrepancy on Q3 custody statement\" → category \"Billing discrepancy\".\n\nI need to find support tickets with subject prefix \"Billing discrepancy\" that are resolved or closed, group by assignee employee, count completions. Then filter eligible agents (active employees). Then tie-break by fewer currently active tickets, then earlier hire date.\n\nLet me query support tickets and employees."
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "limit": 200
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 200, \"rows\": [{\"id\": 1, \"ticket_number\": \"TKT-703339\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Lisa Park\", \"priority\": \"urgent\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-05-13\", \"business_unit_id\": 6, \"status\": \"open\"}, {\"id\": 2, \"ticket_number\": \"TKT-979617\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Omar Hassan\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-06-16\", \"business_unit_id\": 2, \"status\": \"resolved\"}, {\"id\": 3, \"ticket_number\": \"TKT-995387\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Yuki Tanaka\", \"priority\": \"low\", \"assignee_employee_id\": 6, \"opened_at\": \"2026-05-18\", \"business_unit_id\": 10, \"status\": \"in_progress\"}, {\"id\": 4, \"ticket_number\": \"TKT-412766\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Mich"
+  },
+  {
+   "k": "tool",
+   "name": "core.query_employees",
+   "args": {
+    "limit": 200
+   },
+   "result": "{\"table\": \"employees\", \"count\": 20, \"rows\": [{\"id\": 1, \"employee_number\": \"EMP-698636\", \"name\": \"David Brown\", \"email\": \"contact87222@morganstanleysimulated.com\", \"job_title\": \"Sales Manager\", \"department_id\": 1, \"hire_date\": \"2025-05-15\", \"status\": \"active\"}, {\"id\": 2, \"employee_number\": \"EMP-180062\", \"name\": \"Priya Patel\", \"email\": \"contact18693@morganstanleysimulated.com\", \"job_title\": \"Recruiter\", \"department_id\": 2, \"hire_date\": \"2023-02-15\", \"status\": \"on_leave\"}, {\"id\": 3, \"employee_number\": \"EMP-137846\", \"name\": \"James Wilson\", \"email\": \"contact79271@morganstanleysimulated.com\", \"job_title\": \"Financial Analyst\", \"department_id\": 3, \"hire_date\": \"2023-06-15\", \"status\": \"active\"}, {\"id\": 4, \"employee_number\": \"EMP-272682\", \"name\": \"Mei Huang\", \"email\": \"contact4101@morganstanleysimulated.com\", \"job_title\": \"Support Specialist\", \"department_id\": 4, \"hire_date\": \"2024-02-15\", \"status"
+  },
+  {
+   "k": "thinking",
+   "text": "The support tickets query returned 200 rows but was truncated. I need the full list of tickets to count completed tickets in the \"Billing discrepancy\" category. Let me query more specifically. The list got cut off at ticket 33. Let me query support tickets filtered by subject \"Billing discrepancy\" with limit 200 to get all of them.\n\nAlso note the employees table has 20 employees. Active employees: id 1 (EMP-698636), 3 (EMP-137846), 9 (EMP-237209), 10 (EMP-816977), 11 (EMP-468862), 13 (EMP-934135), 19 (EMP-556801). Wait, id 19 is also \"David Brown\" Compliance Analyst, active, hired 2022-03-01. And id 20 David Brown Sales Manager on_leave.\n\nLet me get all billing discrepancy tickets. I'll query support tickets with subject filter. The query tool has a subject parameter. Let me query for all tickets with subject containing \"Billing discrepancy\" — the tool may do exact match or partial. Let me try.\n\nAlso, to count completed (resolved or closed) per agent, I need all billing discrepancy tickets. Let me query with subject=\"Billing discrepancy on business unit\" or just query with limit 200 and count manually. The first query returned 200 but truncated at id 33. Let me query with limit and filter."
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "limit": 200,
+    "subject": "Billing discrepancy"
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "thinking",
+   "text": "The subject filter requires exact match. The subjects are \"Billing discrepancy on business unit\". Let me query with the exact subject."
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "limit": 200,
+    "subject": "Billing discrepancy on business unit"
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 59, \"rows\": [{\"id\": 1, \"ticket_number\": \"TKT-703339\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Lisa Park\", \"priority\": \"urgent\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-05-13\", \"business_unit_id\": 6, \"status\": \"open\"}, {\"id\": 2, \"ticket_number\": \"TKT-979617\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Omar Hassan\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-06-16\", \"business_unit_id\": 2, \"status\": \"resolved\"}, {\"id\": 3, \"ticket_number\": \"TKT-995387\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Yuki Tanaka\", \"priority\": \"low\", \"assignee_employee_id\": 6, \"opened_at\": \"2026-05-18\", \"business_unit_id\": 10, \"status\": \"in_progress\"}, {\"id\": 4, \"ticket_number\": \"TKT-412766\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Micha"
+  },
+  {
+   "k": "thinking",
+   "text": "The query returned 59 rows but truncated at ticket 116. I need all 59 billing discrepancy tickets. The limit is 200 but it seems truncated at some number of rows (maybe the tool returns max ~30-50 rows). Let me paginate or query more carefully. Actually the response says \"count\": 59, so there are 59 billing discrepancy tickets. The rows shown are truncated. Let me try to get more by using the records sub-agent, or by listing with a different approach.\n\nLet me use the customer_support_records_agent to look up maybe. Actually, the records agent is read-only and resolves a unique business handle. That won't list all.\n\nAlternative: the query tool seems to cap rows returned. Let me try querying with limit maybe it caps at 50 rows? The first query returned 200 count but ~33 rows. Hmm, actually the first query with limit 200 returned rows up to id 33 — that's 33 rows, but there might be more. Actually it showed 33 rows and cut off at \"TKT-207529\" id 33. Wait, the output shows rows 1-33 but the count was 200. That means there are 200 total tickets, and the tool truncated the output at some max rows.\n\nFor the billing discrepancy query, count is 59, rows shown up to id 116. It seems to be truncated at ~40 rows (ids 1,2,3,4,12,14,15,17,19,20,22,23,26,27,28,32,33,42,44,53,62,69,71,73,81,85,87,90,96,97,109,116 - that's 32 rows).\n\nHmm, actually it seems the response is being truncated around 30-40 rows by the environment. I need to gather all 59. Let me try using the sheet agent to read the table, or use the customer_support_records_agent to find all billing tickets. Actually, the sheet agent can \"read <table_name>\" - it says supports reading tables. Let me try reading the support_tickets table via the sheet agent to get the full data.\n\nAlternatively, I can query with pagination using additional filters. The query tool doesn't have an offset parameter. Hmm.\n\nLet me try the github__sheet_agent with \"read support_tickets\" to get all data. Or I could try notion__read_file for a seeded document fixture? No.\n\nLet me try the sheet agent to read the table."
+  },
+  {
+   "k": "tool",
+   "name": "github.sheet_agent",
+   "args": {
+    "request": "read support_tickets"
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 50, \"rows\": [{\"id\": 1, \"ticket_number\": \"TKT-703339\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Lisa Park\", \"priority\": \"urgent\", \"assignee_employee_id\": 10, \"opened_at\": \"2026-05-13\", \"business_unit_id\": 6, \"status\": \"open\"}, {\"id\": 2, \"ticket_number\": \"TKT-979617\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Omar Hassan\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-06-16\", \"business_unit_id\": 2, \"status\": \"resolved\"}, {\"id\": 3, \"ticket_number\": \"TKT-995387\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Yuki Tanaka\", \"priority\": \"low\", \"assignee_employee_id\": 6, \"opened_at\": \"2026-05-18\", \"business_unit_id\": 10, \"status\": \"in_progress\"}, {\"id\": 4, \"ticket_number\": \"TKT-412766\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Micha"
+  },
+  {
+   "k": "thinking",
+   "text": "The sheet agent read also truncated at 50 rows. I need a more reliable approach. The query tool returned count 59 for billing discrepancy subject. But the rows were truncated at ~32 rows. Perhaps I can page through using the customer_support_records_agent? That's for a unique business handle.\n\nAlternative approach: the query tool with limit might return more if I set a lower limit? No, truncation is by the environment at some max characters.\n\nLet me try querying with a smaller limit, like 20, to get all pages. But there's no offset. Hmm, but I can filter by other fields to narrow. E.g., query by status \"resolved\" for billing discrepancy subject. But subject filter needs exact match \"Billing discrepancy on business unit\".\n\nActually the query tool returned count 59 for that subject, but only ~32 rows displayed. Wait, actually let me re-read: the second query returned \"count\": 59 and rows up to id 116 (32 rows). Hmm.\n\nMaybe the truncation limit is on total output characters. Let me try a more targeted query: subject exact + status filter \"resolved\" or \"closed\" only. That will reduce the rows to those completed, which is what I need for the count. Then I can compute per-agent counts.\n\nLet me query subject=\"Billing discrepancy on business unit\" and status=\"resolved\". Then status=\"closed\". Both should be few rows."
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "limit": 200,
+    "status": "resolved",
+    "subject": "Billing discrepancy on business unit"
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 21, \"rows\": [{\"id\": 2, \"ticket_number\": \"TKT-979617\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Omar Hassan\", \"priority\": \"medium\", \"assignee_employee_id\": 1, \"opened_at\": \"2026-06-16\", \"business_unit_id\": 2, \"status\": \"resolved\"}, {\"id\": 4, \"ticket_number\": \"TKT-412766\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Michael Johnson\", \"priority\": \"low\", \"assignee_employee_id\": 3, \"opened_at\": \"2026-02-23\", \"business_unit_id\": 1, \"status\": \"resolved\"}, {\"id\": 17, \"ticket_number\": \"TKT-671273\", \"subject\": \"Billing discrepancy on business unit\", \"customer_name\": \"Robert Martinez\", \"priority\": \"high\", \"assignee_employee_id\": 3, \"opened_at\": \"2026-01-17\", \"business_unit_id\": 11, \"status\": \"resolved\"}, {\"id\": 20, \"ticket_number\": \"TKT-278570\", \"subject\": \"Billing discrepancy on business unit\", \"customer_nam"
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "limit": 200,
+    "status": "closed",
+    "subject": "Billing discrepancy on business unit"
+   },
+   "result": "{\"error\": \"stale_reference\", \"success\": false, \"message\": \"The referenced record could not be loaded \\u2014 the reference may be stale or recently changed. Re-fetch the latest data and retry.\", \"retryable\": true}"
+  },
+  {
+   "k": "thinking",
+   "text": "The resolved query returned 21 rows (all of them, not truncated). Let me tally the resolved billing discrepancy tickets per assignee:\n\n- id 2: emp 1 (resolved)\n- id 4: emp 3 (resolved)\n- id 17: emp 3 (resolved)\n- id 20: emp 5 (resolved)\n- id 22: emp 7 (resolved)\n- id 26: emp 10 (resolved)\n- id 28: emp 1 (resolved)\n- id 32: emp 3 (resolved)\n- id 53: emp 1 (resolved)\n- id 87: emp 8 (resolved)\n- id 97: emp 4 (resolved)\n- id 116: emp 17 (resolved)\n- id 130: emp 2 (resolved)\n- id 135: emp 1 (resolved)\n- id 144: emp 7 (resolved)\n- id 156: emp 1 (resolved)\n- id 166: emp 1 (resolved)\n- id 170: emp 12 (resolved)\n- id 171: emp 4 (resolved)\n- id 188: emp 11 (resolved)\n- id 199: emp 10 (resolved)\n\nCounts resolved:\n- emp 1: ids 2, 28, 53, 135, 156, 166 = 6\n- emp 3: ids 4, 17, 32 = 3\n- emp 5: id 20 = 1\n- emp 7: ids 22, 144 = 2\n- emp 10: ids 26, 199 = 2\n- emp 8: id 87 = 1\n- emp 4: ids 97, 171 = 2\n- emp 17: id 116 = 1\n- emp 2: id 130 = 1\n- emp 12: id 170 = 1\n- emp 11: id 188 = 1\n\nNow I need closed billing discrepancy tickets too. The closed query failed with a stale reference error — retry."
+  },
+  {
+   "k": "tool",
+   "name": "jira.query_support_tickets",
+   "args": {
+    "limit": 200,
+    "status": "closed",
+    "subject": "Billing discrepancy on business unit"
+   },
+   "result": "{\"table\": \"support_tickets\", \"count\": 0, \"rows\": []}"
+  },
+  {
+   "k": "thinking",
+   "text": "No closed billing discrepancy tickets. So completed (resolved or closed) billing discrepancy tickets = the 21 resolved ones.\n\nNow eligibility: employees with status \"active\" only.\nActive employees:\n- emp 1: David Brown, EMP-698636, active\n- emp 3: James Wilson, EMP-137846, active\n- emp 9: Thomas Lee, EMP-237209, active\n- emp 10: Yuki Tanaka, EMP-816977, active\n- emp 11: Aisha Ahmad, EMP-468862, active\n- emp 13: Fatima Ali, EMP-934135, active\n- emp 19: David Brown, EMP-556801, active\n\nNon-active (excluded): emp 2 (on_leave), 4 (on_leave), 5 (on_leave), 6 (on_leave), 7 (on_leave), 8 (on_leave), 12 (on_leave), 14 (on_leave), 15 (on_leave), 16 (on_leave), 17 (terminated), 18 (on_leave), 20 (on_leave).\n\nNow completed billing discrepancy counts among active employees:\n- emp 1: 6 resolved → eligible\n- emp 3: 3 resolved → eligible\n- emp 10: 2 resolved → eligible\n- emp 11: 1 resolved → eligible\n- Others active: emp 9 (0), emp 13 (0), emp 19 (0)\n\nTop: emp 1 with 6 completed. So emp 1 is the most suitable agent.\n\nCheck tie-breaks: emp 1 has the most (6), no tie. Answer: employee_number of emp 1 = EMP-698636.\n\nLet me double check there are no closed billing tickets — the query returned count 0. Also verify the resolved count is complete (21 rows all shown, count 21, no truncation). Good.\n\nSo the answer is EMP-698636."
+  },
+  {
+   "k": "answer",
+   "text": "EMP-698636"
+  }
+ ],
+ "usage": {
+  "prompt": 203280,
+  "completion": 2964
+ },
+ "answer": "EMP-698636",
+ "passed": true,
+ "model": "deepseek-v4-flash",
+ "costUsd": 0.0293
+}

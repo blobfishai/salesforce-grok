@@ -1,0 +1,166 @@
+{
+ "task_id": "task_013",
+ "prompt": "In the morgan_stanley_simulated world: Work through the employee work assignments queue: every record currently \"assigned\" needs to move forward. Review each record, then update its status to the next stage in the employee work assignments lifecycle. The specific employee work assignment work item ref is sendgrid:work-item:0001. The specific employee work assignment work item ref is sendgrid:work-item:0003.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "programmatic.conditional_update@1",
+  "template_signature": "template:4157806ef350925d",
+  "prompt_class": "queue"
+ },
+ "goal": "Queue update: 2 employee_work_assignments from \"assigned\" to \"in_progress\"",
+ "required_tools": [],
+ "complexity": "high",
+ "method": "programmatic",
+ "steps": [
+  "Query employee_work_assignments where status = \"assigned\"",
+  "For each matching record, evaluate the condition",
+  "Update qualifying records to status \"in_progress\"",
+  "Verify all updates took effect"
+ ],
+ "relevant_data": [
+  {
+   "table": "employee_work_assignments",
+   "id": 1,
+   "field": "work_item_ref",
+   "value": "sendgrid:work-item:0001"
+  },
+  {
+   "table": "employee_work_assignments",
+   "id": 3,
+   "field": "work_item_ref",
+   "value": "sendgrid:work-item:0003"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "employee_work_assignments",
+   "id": "1",
+   "field": "status",
+   "from": "assigned",
+   "to": "in_progress"
+  },
+  {
+   "table": "employee_work_assignments",
+   "id": "3",
+   "field": "status",
+   "from": "assigned",
+   "to": "in_progress"
+  }
+ ],
+ "tables_affected": [
+  "employee_work_assignments"
+ ],
+ "effects": [
+  {
+   "table": "employee_work_assignments",
+   "op": "update",
+   "field": "status",
+   "value": "in_progress"
+  }
+ ],
+ "departments": [
+  "organization"
+ ],
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_eaa412b6ef18ac3a8559832f0d25b3235d301377454e92372a600cfb8084d2a4",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "acceptance_label": "in_band",
+ "difficulty_tier": "hard",
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"hr_performance_reviews\" that the verifier never observes",
+   "prompt mentions schema vocabulary \"opportunity.stage\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-09T20:54:24.906Z"
+ },
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_013",
+  "measured": true,
+  "provider": "deepseek",
+  "model": null,
+  "runs": 5,
+  "passes": 5,
+  "pass_rate": 1,
+  "retained": true,
+  "band": "trivial",
+  "outcomes": [
+   {
+    "run": 1,
+    "passed": true,
+    "reward": 1,
+    "steps": 4
+   },
+   {
+    "run": 2,
+    "passed": true,
+    "reward": 1,
+    "steps": 5
+   },
+   {
+    "run": 3,
+    "passed": true,
+    "reward": 1,
+    "steps": 5
+   },
+   {
+    "run": 4,
+    "passed": true,
+    "reward": 1,
+    "steps": 4
+   },
+   {
+    "run": 5,
+    "passed": true,
+    "reward": 1,
+    "steps": 4
+   }
+  ],
+  "measured_at": "2026-08-09T21:04:35.794Z",
+  "superseded_by_escalation": [
+   "scrub_tool_names"
+  ]
+ },
+ "_reference_tools": [
+  "organization_records_agent",
+  "update_employee_work_assignments_status"
+ ],
+ "anchor_refs": [],
+ "provenance": {
+  "evidence_ids": [],
+  "tool_graph_path": [],
+  "verifier_id": "task_013",
+  "difficulty_reason": "hard: walk length 0"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_human_resources",
+   "dept_sales",
+   "dept_finance"
+  ],
+  "employee_ids": [
+   "emp_1",
+   "emp_2",
+   "emp_3",
+   "emp_8"
+  ],
+  "workflow_ids": [
+   "workflow_sales",
+   "workflow_human_resources",
+   "workflow_finance",
+   "workflow_sales_crm_operations_handoff"
+  ],
+  "cross_department": true
+ }
+}

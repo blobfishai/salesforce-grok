@@ -1,0 +1,87 @@
+{
+ "task_id": "task_021",
+ "prompt": "In the morgan_stanley_simulated world: Find the lead scoring policy Ironwood Associates, verify status is \"inactive\", then set its status to \"pending\". Do not modify any other lead scoring policy record.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.row_pinned_update@1",
+  "template_signature": "template:1fecd0aaa4394913",
+  "prompt_class": "resolution"
+ },
+ "goal": "Row-pinned update: lead_scoring_policy[2].status from \"inactive\" to \"pending\"",
+ "required_tools": [
+  "core_records_agent",
+  "core_workflow_agent"
+ ],
+ "complexity": "medium",
+ "method": "programmatic",
+ "steps": [
+  "Read the lead scoring policy Ironwood Associates",
+  "Confirm status is \"inactive\"",
+  "Update status to \"pending\"",
+  "Confirm no other row was modified"
+ ],
+ "relevant_data": [
+  {
+   "table": "lead_scoring_policy",
+   "id": "2",
+   "field": "name",
+   "value": "Ironwood Associates"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "lead_scoring_policy",
+   "id": "2",
+   "field": "status",
+   "from": "inactive",
+   "to": "pending"
+  }
+ ],
+ "tables_affected": [
+  "lead_scoring_policy"
+ ],
+ "effects": [
+  {
+   "table": "lead_scoring_policy",
+   "op": "update",
+   "field": "status",
+   "value": "pending"
+  }
+ ],
+ "walk": [
+  "core_records_agent",
+  "core_workflow_agent"
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "checked_at": "2026-08-10T07:59:05.037Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_ae13995d3644d758d2bada57078ce12d491d775751e6b130e71d10bedeac33ee",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_core_operations"
+  ],
+  "employee_ids": [],
+  "workflow_ids": [
+   "workflow_crm_operations",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff",
+   "workflow_marketing_crm_operations_handoff",
+   "workflow_finance_crm_operations_handoff",
+   "workflow_sourcing_crm_operations_handoff"
+  ],
+  "cross_department": false
+ }
+}

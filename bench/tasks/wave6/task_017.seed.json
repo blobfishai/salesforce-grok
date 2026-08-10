@@ -1,0 +1,67 @@
+{
+ "schema": "task-seed.v1",
+ "task_id": "task_017",
+ "rows": {
+  "sales_opportunities": [
+   {
+    "id": 1,
+    "title": "Riverside Group",
+    "lead_id": 473,
+    "amount": 243133.33,
+    "owner_employee_id": 18,
+    "expected_close_date": "2026-05-07",
+    "lead_management_sop_id": 9,
+    "status": "discovery",
+    "opportunity_number": "OPP-902092"
+   },
+   {
+    "id": 1,
+    "title": "Riverside Group",
+    "lead_id": 473,
+    "amount": 243133.33,
+    "owner_employee_id": 18,
+    "expected_close_date": "2026-05-07",
+    "lead_management_sop_id": 9,
+    "status": "discovery",
+    "opportunity_number": "OPP-902092"
+   }
+  ],
+  "lead_management_sop": [
+   {
+    "id": 9,
+    "name": "Summit Logistics",
+    "status": "active",
+    "created_at": "2025-08-11"
+   },
+   {
+    "id": 9,
+    "name": "Summit Logistics",
+    "status": "active",
+    "created_at": "2025-08-11"
+   }
+  ]
+ },
+ "documents": [
+  {
+   "store": "agent_documents",
+   "id": 3,
+   "title": "Lead Management SOP"
+  },
+  {
+   "store": "agent_documents",
+   "id": 43,
+   "title": "39 — ARTIFACT: Discovery Call Transcript — Summit Operations (Treasury Settlement Suite)"
+  }
+ ],
+ "input_documents": [],
+ "mcp_seeding": {
+  "core": [
+   "query_sales_opportunities",
+   "update_sales_opportunities_status"
+  ],
+  "salesforce": [
+   "core_records_agent",
+   "core_workflow_agent"
+  ]
+ }
+}

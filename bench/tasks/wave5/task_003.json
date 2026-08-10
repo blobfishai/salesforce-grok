@@ -1,0 +1,155 @@
+{
+ "task_id": "task_003",
+ "prompt": "In the morgan_stanley_simulated world: locate the hr leave requests record whose request_number is \"LEAVE-403634\" and whose employee_id is exactly \"1\" and process it according to the CURRENT hr leave requests handling procedure in the document store. Be careful: multiple versions of the procedure exist and some are outdated, and the current procedure's outcome depends on the record's own attributes. Verify the record first, apply exactly one correct transition, change nothing else, and report what you did.",
+ "prompt_generation": {
+  "source": "deterministic",
+  "template_family": "fallback.row_pinned_update@1",
+  "template_signature": "template:1fecd0aaa4394913",
+  "prompt_class": "resolution"
+ },
+ "goal": "Row-pinned update: hr_leave_requests[1].status from \"submitted\" to \"approved\"",
+ "required_tools": [],
+ "complexity": "high",
+ "method": "programmatic",
+ "steps": [
+  "Read the hr leave request LEAVE-403634",
+  "Confirm status is \"submitted\"",
+  "Update status to \"approved\"",
+  "Confirm no other row was modified"
+ ],
+ "relevant_data": [
+  {
+   "table": "hr_leave_requests",
+   "id": "1",
+   "field": "request_number",
+   "value": "LEAVE-403634"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "hr_leave_requests",
+   "id": "1",
+   "field": "status",
+   "from": "submitted",
+   "to": "approved"
+  }
+ ],
+ "tables_affected": [
+  "hr_leave_requests"
+ ],
+ "effects": [
+  {
+   "table": "hr_leave_requests",
+   "op": "update",
+   "field": "status",
+   "value": "approved"
+  }
+ ],
+ "walk": [
+  "query_hr_leave_requests",
+  "update_hr_leave_requests_status"
+ ],
+ "difficulty_tier": "hard",
+ "departments": [
+  "human_resources"
+ ],
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_fc50cf3c401a5d36525bfe65c4638711e202c9b8f1b82b7a1dcb160313d8cf65",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "acceptance_label": "in_band",
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "checked_at": "2026-08-10T00:25:14.909Z"
+ },
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_003",
+  "measured": true,
+  "provider": "deepseek",
+  "model": null,
+  "runs": 5,
+  "passes": 5,
+  "pass_rate": 1,
+  "retained": true,
+  "band": "trivial",
+  "outcomes": [
+   {
+    "run": 1,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   },
+   {
+    "run": 2,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   },
+   {
+    "run": 3,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   },
+   {
+    "run": 4,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   },
+   {
+    "run": 5,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   }
+  ],
+  "measured_at": "2026-08-10T00:26:00.312Z",
+  "superseded_by_escalation": [
+   "scrub_tool_names"
+  ]
+ },
+ "_reference_tools": [
+  "query_hr_leave_requests",
+  "update_hr_leave_requests_status"
+ ],
+ "anchor_refs": [],
+ "provenance": {
+  "evidence_ids": [],
+  "tool_graph_path": [
+   "query_hr_leave_requests",
+   "update_hr_leave_requests_status"
+  ],
+  "tool_graph_edges": [
+   "query_hr_leave_requests\u0000update_hr_leave_requests_status"
+  ],
+  "verifier_id": "task_003",
+  "difficulty_reason": "hard: walk length 2"
+ },
+ "coverage": {
+  "department_ids": [
+   "dept_human_resources",
+   "dept_sales"
+  ],
+  "employee_ids": [
+   "emp_1",
+   "emp_8"
+  ],
+  "workflow_ids": [
+   "workflow_sales",
+   "workflow_human_resources",
+   "workflow_sales_crm_operations_handoff"
+  ],
+  "cross_department": true
+ }
+}

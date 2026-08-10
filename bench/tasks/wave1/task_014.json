@@ -1,0 +1,270 @@
+{
+ "task_id": "task_014",
+ "prompt": "The finance team flagged expense report EXP-300961 as approved and ready for processing. Complete the handling of this report, which requires updating the associated employee's status to on leave. Reference the expense report to identify the related sales lead, work assignment, budget, and department records for context, but only modify the employee record. Use this finance expense reports record to identify the linked sales leads, employee work assignments, finance budgets, departments and employees records. Apply the requested changes only to the employees record. The finance expense reports, sales leads, employee work assignments, finance budgets and departments records are lookups only — leave every other record unchanged.",
+ "prompt_generation": {
+  "source": "llm",
+  "template_family": "graph.mutation.high.anchored@1",
+  "template_signature": "template:7258b7bed5eacef0"
+ },
+ "goal": "Drive employees through the workflow, applying 1 verified state change.",
+ "required_tools": [],
+ "complexity": "high",
+ "method": "graph_walk",
+ "steps": [
+  "Search and filter finance_expense_reports. Returns matching rows. (finance_expense_reports)",
+  "Look up a finance expense report record with its parent employees data joined. (finance_expense_reports, employees)",
+  "Search and filter sales_leads. Returns matching rows. (sales_leads)",
+  "Look up a employee work assignment record with its parent employees data joined. (employee_work_assignments, employees)",
+  "Look up a finance budget record with its parent departments data joined. (finance_budgets, departments)",
+  "Update status of a employees record. Valid statuses: active, on_leave, terminated. (employees)"
+ ],
+ "relevant_data": [
+  {
+   "table": "finance_expense_reports",
+   "id": 43,
+   "field": "report_number",
+   "value": "EXP-300961"
+  },
+  {
+   "table": "employees",
+   "id": 3,
+   "field": "employee_number",
+   "value": "EMP-137846"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "employees",
+   "id": "3",
+   "field": "status",
+   "from": "active",
+   "to": "on_leave"
+  }
+ ],
+ "tables_affected": [
+  "employees"
+ ],
+ "walk": [
+  "query_finance_expense_reports",
+  "lookup_finance_expense_report_with_employees",
+  "query_sales_leads",
+  "lookup_employee_work_assignment_with_employees",
+  "lookup_finance_budget_with_departments",
+  "update_employees_status"
+ ],
+ "effects": [
+  {
+   "table": "employees",
+   "op": "update",
+   "field": "status",
+   "value": "on_leave"
+  }
+ ],
+ "difficulty_tier": "hard",
+ "sequence_integrity": {
+  "schemaVersion": 1,
+  "passed": true,
+  "pathLength": 6,
+  "uniqueTools": 6,
+  "rules": [
+   "every transition has an evidence-backed edge",
+   "no tool immediately repeats itself, and no tool is used more than 4 times",
+   "terminal actions cannot restart the same entity lifecycle",
+   "the same mutating action cannot repeat on the same entity"
+  ],
+  "transitions": [
+   {
+    "source": "query_finance_expense_reports",
+    "target": "lookup_finance_expense_report_with_employees",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "query",
+    "targetAction": "lookup",
+    "sharedEntities": [],
+    "stepIndex": 1,
+    "edgeSupported": true
+   },
+   {
+    "source": "lookup_finance_expense_report_with_employees",
+    "target": "query_sales_leads",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "lookup",
+    "targetAction": "query",
+    "sharedEntities": [],
+    "stepIndex": 2,
+    "edgeSupported": true
+   },
+   {
+    "source": "query_sales_leads",
+    "target": "lookup_employee_work_assignment_with_employees",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "query",
+    "targetAction": "lookup",
+    "sharedEntities": [],
+    "stepIndex": 3,
+    "edgeSupported": true
+   },
+   {
+    "source": "lookup_employee_work_assignment_with_employees",
+    "target": "lookup_finance_budget_with_departments",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "lookup",
+    "targetAction": "lookup",
+    "sharedEntities": [],
+    "stepIndex": 4,
+    "edgeSupported": true
+   },
+   {
+    "source": "lookup_finance_budget_with_departments",
+    "target": "update_employees_status",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "lookup",
+    "targetAction": "update",
+    "sharedEntities": [],
+    "stepIndex": 5,
+    "edgeSupported": true
+   }
+  ],
+  "issues": []
+ },
+ "provenance": {
+  "evidence_ids": [
+   "anc_d8a563fae1ee",
+   "anc_a3211c45910d",
+   "anc_b875054efd13"
+  ],
+  "tool_graph_path": [
+   "query_finance_expense_reports",
+   "lookup_finance_expense_report_with_employees",
+   "query_sales_leads",
+   "lookup_employee_work_assignment_with_employees",
+   "lookup_finance_budget_with_departments",
+   "update_employees_status"
+  ],
+  "tool_graph_edges": [
+   "query_finance_expense_reports\u0000lookup_finance_expense_report_with_employees",
+   "lookup_finance_expense_report_with_employees\u0000query_sales_leads",
+   "query_sales_leads\u0000lookup_employee_work_assignment_with_employees",
+   "lookup_employee_work_assignment_with_employees\u0000lookup_finance_budget_with_departments",
+   "lookup_finance_budget_with_departments\u0000update_employees_status"
+  ],
+  "verifier_id": "task_014",
+  "difficulty_reason": "hard: walk length 6"
+ },
+ "departments": [
+  "finance",
+  "organization",
+  "sales"
+ ],
+ "_reference_tools": [
+  "query_finance_expense_reports",
+  "lookup_finance_expense_report_with_employees",
+  "query_sales_leads",
+  "lookup_employee_work_assignment_with_employees",
+  "lookup_finance_budget_with_departments",
+  "update_employees_status"
+ ],
+ "session": [
+  {
+   "turn": 1,
+   "kind": "correction",
+   "user_text": "不是「EMP-698636」，是「EMP-137846」。只改後者。"
+  }
+ ],
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_4199a51506205b2d38521988ab12d8151c160b49d0952996b657f7cf6dfa80d0",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ },
+ "acceptance_label": "in_band",
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "warnings": [
+   "prompt mentions schema vocabulary \"matter_documents.related_shape\" that the verifier never observes"
+  ],
+  "checked_at": "2026-08-09T20:54:26.499Z"
+ },
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_014",
+  "measured": true,
+  "provider": "deepseek",
+  "model": null,
+  "runs": 5,
+  "passes": 5,
+  "pass_rate": 1,
+  "retained": true,
+  "band": "trivial",
+  "outcomes": [
+   {
+    "run": 1,
+    "passed": true,
+    "reward": 1,
+    "steps": 9
+   },
+   {
+    "run": 2,
+    "passed": true,
+    "reward": 1,
+    "steps": 9
+   },
+   {
+    "run": 3,
+    "passed": true,
+    "reward": 1,
+    "steps": 9
+   },
+   {
+    "run": 4,
+    "passed": true,
+    "reward": 1,
+    "steps": 9
+   },
+   {
+    "run": 5,
+    "passed": true,
+    "reward": 1,
+    "steps": 9
+   }
+  ],
+  "measured_at": "2026-08-09T21:03:17.215Z"
+ },
+ "anchor_refs": [
+  "anc_d8a563fae1ee",
+  "anc_a3211c45910d",
+  "anc_b875054efd13"
+ ],
+ "coverage": {
+  "department_ids": [
+   "dept_human_resources",
+   "dept_finance",
+   "dept_sales",
+   "dept_sourcing"
+  ],
+  "employee_ids": [
+   "emp_3",
+   "emp_1",
+   "emp_13"
+  ],
+  "workflow_ids": [
+   "workflow_sales",
+   "workflow_human_resources",
+   "workflow_finance",
+   "workflow_sourcing",
+   "workflow_sales_crm_operations_handoff"
+  ],
+  "cross_department": true
+ }
+}

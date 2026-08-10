@@ -1,0 +1,38 @@
+{
+ "label": "lb-arena-claude-sonnet-5",
+ "level": 2,
+ "taskId": "arena_lead_qualification",
+ "type": "lead_qualification",
+ "trial": 1,
+ "prompt": "Based on the latest discussion notes for the lead \"Riverside Contact\" in the document store, can this lead be qualified? If the answer is no, which factors—'Budget', 'Authority', 'Need', or 'Timeline'—are responsible? Return only one or several of the four BANT factors, or 'None' if the lead qualifies.",
+ "gt": [
+  "Budget"
+ ],
+ "metric": "set",
+ "docs": [
+  "Lead Discussion Notes — Riverside Contact",
+  "Lead Discussion Notes — Riverside Contact (update)"
+ ],
+ "steps": [
+  {
+   "k": "tool",
+   "name": "notion.query_documents",
+   "args": {
+    "query": "Riverside Contact"
+   },
+   "result": "{\"table\": \"agent_documents\", \"query\": \"Riverside Contact\", \"count\": 2, \"rows\": [{\"id\": 9, \"title\": \"Lead Discussion Notes \\u2014 Riverside Contact\", \"body\": \"Call 1 (2026-05-02): Riverside operations lead confirmed a approved budget envelope of $120k for this initiative; procurement has the PO template ready. Call 2 (2026-05-16): Clear need \\u2014 their manual reconciliation runs 11 hours/week and misses SLAs; they want go-live inside Q4, and the project plan shows a committed timeline. Call 3 (2026-06-03): Our champion is an operations manager who cannot sign; the CFO (economic buyer) has not joined any call and deferred twice. No signature authority has been established.\", \"updated_at\": \"2026-06-03T17:00:00Z\"}, {\"id\": 10, \"title\": \"Lead Discussion Notes \\u2014 Riverside Contact (update)\", \"body\": \"Update (2026-07-21, supersedes earlier notes where they conflict): The CFO joined the las"
+  },
+  {
+   "k": "answer",
+   "text": "Budget"
+  }
+ ],
+ "usage": {
+  "prompt": 54140,
+  "completion": 145
+ },
+ "answer": "Budget",
+ "passed": true,
+ "model": "claude-sonnet-5",
+ "costUsd": 0.1097
+}

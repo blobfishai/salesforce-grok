@@ -1,0 +1,181 @@
+{
+ "task_id": "task_005",
+ "prompt": "Find the scheduled runs for Ironwood Works, then create a new scheduled run for them.",
+ "prompt_generation": {
+  "source": "llm",
+  "template_family": "graph.mutation.low.anchored@1",
+  "template_signature": "template:29668c1d4cd0aaf2"
+ },
+ "goal": "Drive agent scheduled runs through the workflow, applying 1 verified state change.",
+ "required_tools": [],
+ "complexity": "high",
+ "method": "graph_walk",
+ "steps": [
+  "Inspect the automation schedule. (agent_scheduled_runs)",
+  "Automate a playbook on a schedule. (agent_scheduled_runs)"
+ ],
+ "relevant_data": [
+  {
+   "table": "agent_scheduled_runs",
+   "id": 2,
+   "field": "name",
+   "value": "Ironwood Works"
+  }
+ ],
+ "expected_state_changes": [
+  {
+   "table": "agent_scheduled_runs",
+   "id": "3",
+   "field": "(new row)",
+   "from": "2 rows",
+   "to": "3 rows"
+  }
+ ],
+ "tables_affected": [
+  "agent_scheduled_runs"
+ ],
+ "walk": [
+  "list_scheduled_runs",
+  "create_scheduled_run"
+ ],
+ "effects": [
+  {
+   "table": "agent_scheduled_runs",
+   "op": "insert"
+  }
+ ],
+ "difficulty_tier": "hard",
+ "sequence_integrity": {
+  "schemaVersion": 1,
+  "passed": true,
+  "pathLength": 2,
+  "uniqueTools": 2,
+  "rules": [
+   "every transition has an evidence-backed edge",
+   "no tool immediately repeats itself, and no tool is used more than 4 times",
+   "terminal actions cannot restart the same entity lifecycle",
+   "the same mutating action cannot repeat on the same entity"
+  ],
+  "transitions": [
+   {
+    "source": "list_scheduled_runs",
+    "target": "create_scheduled_run",
+    "allowed": true,
+    "rule": "lifecycle_compatible",
+    "sourceAction": "list",
+    "targetAction": "create",
+    "sharedEntities": [
+     "run"
+    ],
+    "stepIndex": 1,
+    "edgeSupported": true
+   }
+  ],
+  "issues": []
+ },
+ "provenance": {
+  "evidence_ids": [],
+  "tool_graph_path": [
+   "list_scheduled_runs",
+   "create_scheduled_run"
+  ],
+  "tool_graph_edges": [
+   "list_scheduled_runs\u0000create_scheduled_run"
+  ],
+  "verifier_id": "task_005",
+  "difficulty_reason": "hard: walk length 2"
+ },
+ "departments": [
+  "core"
+ ],
+ "acceptance_label": "in_band",
+ "solvability": {
+  "schema": "blobfish.task-solvability.v1",
+  "task_id": "task_005",
+  "measured": true,
+  "provider": "deepseek",
+  "model": null,
+  "runs": 5,
+  "passes": 5,
+  "pass_rate": 1,
+  "retained": true,
+  "band": "trivial",
+  "outcomes": [
+   {
+    "run": 1,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   },
+   {
+    "run": 2,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   },
+   {
+    "run": 3,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   },
+   {
+    "run": 4,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   },
+   {
+    "run": 5,
+    "passed": true,
+    "reward": 1,
+    "steps": 2
+   }
+  ],
+  "measured_at": "2026-08-09T20:57:48.566Z",
+  "superseded_by_escalation": [
+   "scrub_tool_names"
+  ]
+ },
+ "_reference_tools": [
+  "list_scheduled_runs",
+  "create_scheduled_run"
+ ],
+ "anchor_refs": [],
+ "coverage": {
+  "department_ids": [
+   "dept_core_operations"
+  ],
+  "employee_ids": [],
+  "workflow_ids": [
+   "workflow_crm_operations",
+   "workflow_sales_crm_operations_handoff",
+   "workflow_customer_support_crm_operations_handoff"
+  ],
+  "cross_department": false
+ },
+ "session": [
+  {
+   "turn": 2,
+   "kind": "followup",
+   "user_text": "現在呢？"
+  }
+ ],
+ "semantic_alignment": {
+  "passed": true,
+  "reasons": [],
+  "checked_at": "2026-08-09T21:12:11.166Z"
+ },
+ "acceptance_evidence": {
+  "protocol": "vcode_discrimination",
+  "attempts": 1,
+  "passes": 1,
+  "pass_rate": 1,
+  "reference_passed": true,
+  "negative_probes_passed": true,
+  "timed_out": false,
+  "accepted_by": "discrimination_gate",
+  "contract_digest": "acceptance_v2_cfd0ea45be2ec652400b8d733af5514bf7fff4bd5a8bec31e2784b9f33060fd2",
+  "reason": "accepted: deterministic reference execution passed; null, shortcut, wrong-row, wrong-value, blind-fallback + incomplete baselines fail"
+ }
+}

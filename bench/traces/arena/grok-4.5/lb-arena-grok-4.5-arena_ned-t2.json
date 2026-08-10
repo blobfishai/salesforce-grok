@@ -1,0 +1,42 @@
+{
+ "label": "lb-arena-grok-4.5",
+ "level": 2,
+ "taskId": "arena_ned",
+ "type": "named_entity_disambiguation",
+ "trial": 2,
+ "prompt": "More than one employee is named David Brown. Return only the employee number of the David Brown who works in department 1 and was hired in 2025.",
+ "gt": "EMP-698636",
+ "metric": "exact",
+ "docs": [],
+ "steps": [
+  {
+   "k": "thinking",
+   "text": "The user wants the employee number of David Brown who works in department 1 and was hired in 2025. There are multiple David Browns."
+  },
+  {
+   "k": "tool",
+   "name": "core.query_employees",
+   "args": {
+    "name": "David Brown",
+    "department_id": 1
+   },
+   "result": "{\"table\": \"employees\", \"count\": 2, \"rows\": [{\"id\": 1, \"employee_number\": \"EMP-698636\", \"name\": \"David Brown\", \"email\": \"contact87222@morganstanleysimulated.com\", \"job_title\": \"Sales Manager\", \"department_id\": 1, \"hire_date\": \"2025-05-15\", \"status\": \"active\"}, {\"id\": 20, \"employee_number\": \"EMP-771204\", \"name\": \"David Brown\", \"email\": \"contact77425@morganstanleysimulated.com\", \"job_title\": \"Sales Manager\", \"department_id\": 1, \"hire_date\": \"2021-09-20\", \"status\": \"on_leave\"}]}"
+  },
+  {
+   "k": "thinking",
+   "text": "The query returned two David Browns in department 1. One was hired in 2025 (EMP-698636 on 2025-05-15) and one in 2021 (EMP-771204). The answer is EMP-698636."
+  },
+  {
+   "k": "answer",
+   "text": "EMP-698636"
+  }
+ ],
+ "usage": {
+  "prompt": 37324,
+  "completion": 51
+ },
+ "answer": "EMP-698636",
+ "passed": true,
+ "model": "grok-4.5",
+ "costUsd": 0.075
+}
