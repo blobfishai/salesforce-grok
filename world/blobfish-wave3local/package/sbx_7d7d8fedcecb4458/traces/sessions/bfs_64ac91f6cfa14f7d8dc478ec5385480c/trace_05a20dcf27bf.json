@@ -1,0 +1,67 @@
+{
+  "id": "trace_05a20dcf27bf",
+  "type": "mcp_tool_call",
+  "tool": "notion.operations_records_agent",
+  "args": {
+    "request": "in table matter_documents, find title \"Deal materials \u2014 project_management: Move all of {name}'s tasks that are in progress to in review\" and return the complete record"
+  },
+  "result": {
+    "ok": true,
+    "tool": "operations_records_agent",
+    "requested_tool": "operations_records_agent",
+    "result": {
+      "status": "found",
+      "table": "matter_documents",
+      "business_handle": {
+        "title": "Deal materials \u2014 project_management: Move all of {name}'s tasks that are in progress to in review"
+      },
+      "record": {
+        "id": 1,
+        "title": "Deal materials \u2014 project_management: Move all of {name}'s tasks that are in progress to in review",
+        "doc_type": "input_materials",
+        "related_shape": "workbench/project_management/0",
+        "body": "MATTER FILE 1 \u2014 PROJECT_MANAGEMENT\nproject_management: Move all of {name}'s tasks that are in progress to in review\n\n\nBACKGROUND. The client engagement covers this project_management matter; the materials in this file are the operative record for the requested analysis.\n\nKEY PROVISIONS. The operative agreement contains representations and warranties, covenants, conditions to closing, indemnification, and termination provisions negotiated between the parties.\n\nOPEN ISSUES. Counsel has flagged provisions requiring analysis against firm precedent and market practice, including deviations introduced by the counterparty's latest markup.\n\nREQUESTED ACTION. Prepare the deliverable described in the engagement instruction, grounded in these materials and the applicable regulatory framework.\n\nENGAGEMENT INSTRUCTION. Move all of kofi's tasks that are in progress to in review\n\nPRACTICE AREA VOCABULARY: project_management."
+      },
+      "declared_lifecycles": {},
+      "next_valid_values": {},
+      "resolution_receipt": {
+        "request": "in table matter_documents, find title \"Deal materials \u2014 project_management: Move all of {name}'s tasks that are in progress to in review\" and return the complete record",
+        "strategy": "unique_business_handle",
+        "candidate_limit": 3,
+        "match_count": 1,
+        "matched_field": "title",
+        "available_business_handle_fields": [
+          "title"
+        ],
+        "available_resolution_fields": [
+          "title",
+          "doc_type",
+          "related_shape",
+          "body"
+        ],
+        "returned_fields": [
+          "body",
+          "doc_type",
+          "id",
+          "related_shape",
+          "title"
+        ],
+        "read_only": true,
+        "mutation_applied": false
+      },
+      "workflow_context": {
+        "mutable_fields": [
+          "title",
+          "doc_type",
+          "related_shape",
+          "body"
+        ],
+        "declared_lifecycle_fields": []
+      }
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786321134.006836
+}
