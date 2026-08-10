@@ -1,0 +1,49 @@
+{
+  "id": "trace_70b22a40b67a",
+  "type": "mcp_tool_call",
+  "tool": "notion.query_documents",
+  "args": {
+    "query": "lead management sop handling procedure",
+    "limit": 10
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_documents",
+    "requested_tool": "query_documents",
+    "result": {
+      "table": "agent_documents",
+      "query": "lead management sop handling procedure",
+      "count": 4,
+      "rows": [
+        {
+          "id": 5,
+          "title": "lead management sop handling procedure",
+          "body": "[SUPERSEDED 2025] lead management sop records verified in status \"active\" must be moved to status \"pending\". This document may be outdated.",
+          "updated_at": "2025-02-11"
+        },
+        {
+          "id": 6,
+          "title": "lead management sop handling procedure (rev. 2)",
+          "body": "[CURRENT \u2014 effective 2026-06-01, supersedes all prior versions] For lead management sop records verified in status \"active\": if the record's created_at is \"2024-02-25\", move it to status \"inactive\"; otherwise move it to status \"pending\". Apply exactly one transition.",
+          "updated_at": "2026-06-01"
+        },
+        {
+          "id": 19,
+          "title": "lead management sop handling procedure",
+          "body": "[SUPERSEDED 2025] lead management sop records verified in status \"inactive\" must be moved to status \"active\". This document may be outdated.",
+          "updated_at": "2025-02-11"
+        },
+        {
+          "id": 20,
+          "title": "lead management sop handling procedure (rev. 2)",
+          "body": "[CURRENT \u2014 effective 2026-06-01, supersedes all prior versions] For lead management sop records verified in status \"inactive\": if the record's created_at is \"2025-04-03\", move it to status \"pending\"; otherwise move it to status \"active\". Apply exactly one transition.",
+          "updated_at": "2026-06-01"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786345109.91409
+}

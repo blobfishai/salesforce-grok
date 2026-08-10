@@ -1,0 +1,35 @@
+{
+  "id": "trace_70c005cdfb3a",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.create_account_tiering_standard",
+  "args": {
+    "name": "Meridian Holdings",
+    "status": "active",
+    "created_at": "2025-11-18"
+  },
+  "result": {
+    "ok": true,
+    "tool": "create_account_tiering_standard",
+    "requested_tool": "create_account_tiering_standard",
+    "result": {
+      "id": 1010
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "account_tiering_standard",
+        "row_id": "1010",
+        "operation": "insert",
+        "before": null,
+        "after": {
+          "id": 1010,
+          "name": "Meridian Holdings",
+          "status": "active",
+          "created_at": "2025-11-18"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786344952.7145238
+}

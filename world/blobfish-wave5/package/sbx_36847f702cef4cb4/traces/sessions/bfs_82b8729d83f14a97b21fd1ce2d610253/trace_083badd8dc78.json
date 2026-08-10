@@ -1,0 +1,22 @@
+{
+  "id": "trace_083badd8dc78",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.core_records_agent",
+  "args": {
+    "request": "in table account_tiering_standard, find name \"Lakeshore Industries\" and created_at \"2025-11-14\" and return the complete record."
+  },
+  "result": {
+    "ok": false,
+    "tool": "core_records_agent",
+    "requested_tool": "core_records_agent",
+    "result": {
+      "error": "ambiguous_match",
+      "message": "business handle matched multiple records",
+      "match_count": 2
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": "ambiguous_match"
+  },
+  "timestamp": 1786345687.163221
+}

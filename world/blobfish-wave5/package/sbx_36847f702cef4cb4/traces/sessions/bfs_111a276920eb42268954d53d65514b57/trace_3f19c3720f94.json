@@ -1,0 +1,117 @@
+{
+  "id": "trace_3f19c3720f94",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.sales_workflow_agent",
+  "args": {
+    "request": "in table tasks, find id \"task_118\" and set status to \"completed\"."
+  },
+  "result": {
+    "ok": true,
+    "tool": "sales_workflow_agent",
+    "requested_tool": "sales_workflow_agent",
+    "result": {
+      "status": "updated",
+      "table": "tasks",
+      "business_handle": {
+        "id": "task_118"
+      },
+      "field": "status",
+      "before": "blocked",
+      "after": "completed",
+      "record": {
+        "id": "task_118",
+        "account_id": "account_002",
+        "subject": "Riverside Group Follow-Up Task",
+        "status": "completed",
+        "priority": "high",
+        "assigned_to": "OWN-50A4969",
+        "due_at": null,
+        "description": "Teammate-flagged follow-up for Riverside Group Account. Review account status, update opportunity pipeline, and confirm next steps."
+      },
+      "resolution_receipt": {
+        "request": "in table tasks, find id \"task_118\" and set status to \"completed\".",
+        "strategy": "unique_business_handle",
+        "candidate_limit": 3,
+        "match_count": 1,
+        "matched_field": "id",
+        "available_business_handle_fields": [
+          "id"
+        ],
+        "available_resolution_fields": [
+          "id",
+          "account_id",
+          "subject",
+          "priority",
+          "assigned_to",
+          "due_at",
+          "description"
+        ],
+        "returned_fields": [
+          "account_id",
+          "assigned_to",
+          "description",
+          "due_at",
+          "id",
+          "priority",
+          "status",
+          "subject"
+        ]
+      },
+      "transition_receipt": {
+        "declared_lifecycle": [
+          "open",
+          "in_progress",
+          "blocked",
+          "completed",
+          "cancelled"
+        ],
+        "before": "blocked",
+        "after": "completed",
+        "mutation_applied": true,
+        "changed_primary_key": "task_118"
+      },
+      "policy_receipt": {
+        "scope": "single_resolved_record",
+        "mutable_fields": [
+          "subject",
+          "status",
+          "priority",
+          "assigned_to",
+          "due_at",
+          "description"
+        ],
+        "collateral_rows_changed": 0
+      }
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "tasks",
+        "row_id": "task_118",
+        "operation": "update",
+        "before": {
+          "id": "task_118",
+          "account_id": "account_002",
+          "subject": "Riverside Group Follow-Up Task",
+          "status": "blocked",
+          "priority": "high",
+          "assigned_to": "OWN-50A4969",
+          "due_at": null,
+          "description": "Teammate-flagged follow-up for Riverside Group Account. Review account status, update opportunity pipeline, and confirm next steps."
+        },
+        "after": {
+          "id": "task_118",
+          "account_id": "account_002",
+          "subject": "Riverside Group Follow-Up Task",
+          "status": "completed",
+          "priority": "high",
+          "assigned_to": "OWN-50A4969",
+          "due_at": null,
+          "description": "Teammate-flagged follow-up for Riverside Group Account. Review account status, update opportunity pipeline, and confirm next steps."
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786344861.270893
+}

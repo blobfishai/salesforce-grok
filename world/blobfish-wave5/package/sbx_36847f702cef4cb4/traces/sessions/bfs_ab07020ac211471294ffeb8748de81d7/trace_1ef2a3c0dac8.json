@@ -1,0 +1,25 @@
+{
+  "id": "trace_1ef2a3c0dac8",
+  "type": "mcp_tool_call",
+  "tool": "core.human_resources_workflow_agent",
+  "args": {
+    "request": "in table employee_work_assignments, find work_item_ref \"sendgrid:work-item:0011\" and set status to the next declared lifecycle stage."
+  },
+  "result": {
+    "ok": false,
+    "tool": "human_resources_workflow_agent",
+    "requested_tool": "human_resources_workflow_agent",
+    "result": {
+      "error": "out_of_scope",
+      "message": "table is not owned by this department",
+      "available_tables": [
+        "hr_leave_requests",
+        "hr_performance_reviews"
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": "out_of_scope"
+  },
+  "timestamp": 1786345485.533812
+}

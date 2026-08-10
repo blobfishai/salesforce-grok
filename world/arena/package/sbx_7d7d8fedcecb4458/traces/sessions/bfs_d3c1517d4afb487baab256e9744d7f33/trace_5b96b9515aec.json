@@ -1,0 +1,25 @@
+{
+  "id": "trace_5b96b9515aec",
+  "type": "mcp_tool_call",
+  "tool": "jira.query_support_tickets",
+  "args": {
+    "subject": "Billing discrepancy on business unit",
+    "status": "closed",
+    "limit": 200
+  },
+  "result": {
+    "ok": false,
+    "tool": "query_support_tickets",
+    "requested_tool": "query_support_tickets",
+    "result": {
+      "success": false,
+      "error": "stale_reference",
+      "message": "The referenced record could not be loaded \u2014 the reference may be stale or recently changed. Re-fetch the latest data and retry.",
+      "retryable": true
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": "stale_reference"
+  },
+  "timestamp": 1786346358.309935
+}

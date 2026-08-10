@@ -1,0 +1,35 @@
+{
+  "id": "trace_a0a3ccfdb9aa",
+  "type": "mcp_tool_call",
+  "tool": "jira.query_support_tickets",
+  "args": {
+    "id": 110,
+    "limit": 5
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_support_tickets",
+    "requested_tool": "query_support_tickets",
+    "result": {
+      "table": "support_tickets",
+      "count": 1,
+      "rows": [
+        {
+          "id": 110,
+          "ticket_number": "TKT-531451",
+          "subject": "Question about business unit status",
+          "customer_name": "Brian Murphy 110",
+          "priority": "high",
+          "assignee_employee_id": 1,
+          "opened_at": "2026-02-21",
+          "business_unit_id": 1,
+          "status": "resolved"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786344814.146129
+}

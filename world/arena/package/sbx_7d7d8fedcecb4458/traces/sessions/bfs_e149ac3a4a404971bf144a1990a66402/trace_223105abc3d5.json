@@ -1,0 +1,24 @@
+{
+  "id": "trace_223105abc3d5",
+  "type": "mcp_tool_call",
+  "tool": "jira.customer_support_records_agent",
+  "args": {
+    "request": "in table support_tickets, find all tickets where subject starts with \"Billing discrepancy\" and status is \"resolved\" or status is \"closed\" and return the assignee_employee_id for each"
+  },
+  "result": {
+    "ok": false,
+    "tool": "customer_support_records_agent",
+    "requested_tool": "customer_support_records_agent",
+    "result": {
+      "error": "request_not_understood",
+      "message": "Use: in table <table>, find (or look up / locate / retrieve) <business_field> \"<value>\" and return the complete record",
+      "available_tables": [
+        "support_tickets"
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": "request_not_understood"
+  },
+  "timestamp": 1786345028.29217
+}

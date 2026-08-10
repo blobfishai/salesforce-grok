@@ -1,0 +1,25 @@
+{
+  "id": "trace_cb7b08fa46d1",
+  "type": "mcp_tool_call",
+  "tool": "core.human_resources_workflow_agent",
+  "args": {
+    "request": "in table hr_performance_reviews, find review_number \\\"REVIEW-492173\\\" and review_period \\\"2025-H2\\\" and set status to the next declared lifecycle stage."
+  },
+  "result": {
+    "ok": false,
+    "tool": "human_resources_workflow_agent",
+    "requested_tool": "human_resources_workflow_agent",
+    "result": {
+      "error": "request_not_understood",
+      "message": "Use: in table <table>, find (or look up / locate / retrieve) <business_field> \"<value>\" and request one scoped update",
+      "available_tables": [
+        "hr_leave_requests",
+        "hr_performance_reviews"
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": "request_not_understood"
+  },
+  "timestamp": 1786345566.673826
+}

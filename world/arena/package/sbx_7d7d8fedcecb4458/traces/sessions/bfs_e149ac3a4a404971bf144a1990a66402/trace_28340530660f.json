@@ -1,0 +1,46 @@
+{
+  "id": "trace_28340530660f",
+  "type": "mcp_tool_call",
+  "tool": "jira.query_support_tickets",
+  "args": {
+    "business_unit_id": 8,
+    "limit": 200
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_support_tickets",
+    "requested_tool": "query_support_tickets",
+    "result": {
+      "table": "support_tickets",
+      "count": 2,
+      "rows": [
+        {
+          "id": 25,
+          "ticket_number": "TKT-703049",
+          "subject": "Cannot access business unit records",
+          "customer_name": "Alex Chen 25",
+          "priority": "high",
+          "assignee_employee_id": 1,
+          "opened_at": "2026-01-10",
+          "business_unit_id": 8,
+          "status": "closed"
+        },
+        {
+          "id": 156,
+          "ticket_number": "TKT-379943",
+          "subject": "Billing discrepancy on business unit",
+          "customer_name": "Nina Kowalski 156",
+          "priority": "medium",
+          "assignee_employee_id": 1,
+          "opened_at": "2026-05-22",
+          "business_unit_id": 8,
+          "status": "resolved"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786345047.7439702
+}

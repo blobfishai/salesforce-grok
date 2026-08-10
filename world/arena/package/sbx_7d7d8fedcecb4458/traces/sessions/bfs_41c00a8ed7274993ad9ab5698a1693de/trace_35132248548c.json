@@ -1,0 +1,47 @@
+{
+  "id": "trace_35132248548c",
+  "type": "mcp_tool_call",
+  "tool": "jira.query_support_tickets",
+  "args": {
+    "status": "resolved",
+    "assignee_employee_id": 17,
+    "limit": 100
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_support_tickets",
+    "requested_tool": "query_support_tickets",
+    "result": {
+      "table": "support_tickets",
+      "count": 2,
+      "rows": [
+        {
+          "id": 116,
+          "ticket_number": "TKT-251762",
+          "subject": "Billing discrepancy on business unit",
+          "customer_name": "Fatima Ali 116",
+          "priority": "high",
+          "assignee_employee_id": 17,
+          "opened_at": "2026-01-06",
+          "business_unit_id": 1,
+          "status": "resolved"
+        },
+        {
+          "id": 180,
+          "ticket_number": "TKT-169917",
+          "subject": "Question about business unit status",
+          "customer_name": "James Wilson 180",
+          "priority": "high",
+          "assignee_employee_id": 17,
+          "opened_at": "2026-02-19",
+          "business_unit_id": 4,
+          "status": "resolved"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786345199.572012
+}

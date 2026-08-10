@@ -1,0 +1,36 @@
+{
+  "id": "trace_e4c4b7ef4028",
+  "type": "mcp_tool_call",
+  "tool": "jira.query_support_tickets",
+  "args": {
+    "assignee_employee_id": 3,
+    "status": "closed",
+    "limit": 100
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_support_tickets",
+    "requested_tool": "query_support_tickets",
+    "result": {
+      "table": "support_tickets",
+      "count": 1,
+      "rows": [
+        {
+          "id": 80,
+          "ticket_number": "TKT-269107",
+          "subject": "Problem updating business unit",
+          "customer_name": "Mei Huang 80",
+          "priority": "low",
+          "assignee_employee_id": 3,
+          "opened_at": "2026-01-16",
+          "business_unit_id": 3,
+          "status": "closed"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786345827.872011
+}

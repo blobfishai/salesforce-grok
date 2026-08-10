@@ -1,0 +1,23 @@
+{
+  "id": "trace_2b871e86aadf",
+  "type": "mcp_tool_call",
+  "tool": "email.organization_workflow_agent",
+  "args": {
+    "request": "in table employee_work_assignments, find reviewer_employee_id \"3\" and set status to the next declared lifecycle stage"
+  },
+  "result": {
+    "ok": false,
+    "tool": "organization_workflow_agent",
+    "requested_tool": "organization_workflow_agent",
+    "result": {
+      "error": "ambiguous_match",
+      "message": "resolution attribute matched multiple records",
+      "field": "reviewer_employee_id",
+      "match_count": 3
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": "ambiguous_match"
+  },
+  "timestamp": 1786345478.310196
+}

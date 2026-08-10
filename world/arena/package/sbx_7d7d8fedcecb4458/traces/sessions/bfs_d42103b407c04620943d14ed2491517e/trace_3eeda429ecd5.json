@@ -1,0 +1,46 @@
+{
+  "id": "trace_3eeda429ecd5",
+  "type": "mcp_tool_call",
+  "tool": "jira.query_support_tickets",
+  "args": {
+    "assignee_employee_id": 1,
+    "status": "open"
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_support_tickets",
+    "requested_tool": "query_support_tickets",
+    "result": {
+      "table": "support_tickets",
+      "count": 2,
+      "rows": [
+        {
+          "id": 83,
+          "ticket_number": "TKT-769055",
+          "subject": "Problem updating business unit",
+          "customer_name": "Nina Kowalski 83",
+          "priority": "high",
+          "assignee_employee_id": 1,
+          "opened_at": "2026-03-26",
+          "business_unit_id": 11,
+          "status": "open"
+        },
+        {
+          "id": 147,
+          "ticket_number": "TKT-492510",
+          "subject": "Problem updating business unit",
+          "customer_name": "Sarah Kim 147",
+          "priority": "low",
+          "assignee_employee_id": 1,
+          "opened_at": "2026-03-06",
+          "business_unit_id": 12,
+          "status": "open"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786345624.50458
+}

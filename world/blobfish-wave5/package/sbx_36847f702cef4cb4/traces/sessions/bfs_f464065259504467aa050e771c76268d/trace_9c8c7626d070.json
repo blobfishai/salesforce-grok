@@ -1,0 +1,31 @@
+{
+  "id": "trace_9c8c7626d070",
+  "type": "mcp_tool_call",
+  "tool": "core.search_knowledge",
+  "args": {
+    "query": "current account tiering standard handling procedure",
+    "limit": 5
+  },
+  "result": {
+    "ok": true,
+    "tool": "search_knowledge",
+    "requested_tool": "search_knowledge",
+    "result": {
+      "table": "agent_knowledge",
+      "query": "current account tiering standard handling procedure",
+      "count": 1,
+      "rows": [
+        {
+          "id": 3,
+          "content": "The current account tiering standard handling procedure is to set the status of the record to the next declared lifecycle stage (active \u2192 inactive \u2192 pending). Outdated procedures may exist in other documents but should not be used. For the record with name \"Lakeshore Industries\" and created_at exactly \"2025-11-14\", the status is inactive so the correct transition is to pending.",
+          "source": "synthetic simulation inference from available tools and declared lifecycle",
+          "created_at": "2026-08-10 07:08:01"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786345698.4385312
+}

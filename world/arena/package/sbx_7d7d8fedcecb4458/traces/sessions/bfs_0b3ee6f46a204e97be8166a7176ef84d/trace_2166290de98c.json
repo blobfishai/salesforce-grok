@@ -1,0 +1,37 @@
+{
+  "id": "trace_2166290de98c",
+  "type": "mcp_tool_call",
+  "tool": "notion.query_documents",
+  "args": {
+    "query": "routing policy",
+    "limit": 20
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_documents",
+    "requested_tool": "query_documents",
+    "result": {
+      "table": "agent_documents",
+      "query": "routing policy",
+      "count": 2,
+      "rows": [
+        {
+          "id": 3,
+          "title": "Case Routing Policy (rev. 2 \u2014 CURRENT)",
+          "body": "Effective 2026-06-01, supersedes rev. 1. Issue categories are determined by the ticket subject prefix: \"Billing discrepancy\", \"Problem updating\", \"Cannot access\", \"Question about\". A new case routes to the ELIGIBLE agent who has completed (status resolved or closed) the most support tickets in the case's category. Eligibility: employees with status \"active\" only \u2014 agents on leave or terminated are never routed. Tie-break 1: fewer currently active tickets (open, in_progress, waiting_customer). Tie-break 2: earlier hire_date. Answer with the agent's employee_number.",
+          "updated_at": "2026-06-01T09:00:00Z"
+        },
+        {
+          "id": 4,
+          "title": "Case Routing Policy (rev. 1)",
+          "body": "[SUPERSEDED] Route new cases to the agent with the most total completed tickets regardless of category. All employees are eligible.",
+          "updated_at": "2025-03-10T09:00:00Z"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786344968.151552
+}

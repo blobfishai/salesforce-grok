@@ -229,7 +229,12 @@ boot()
       try { msg = JSON.parse(line); } catch { return replyErr(null, -32700, "Parse error"); }
       handle(msg).catch((e) => process.stderr.write(`[blobfish-bridge] unhandled: ${e.stack}\n`));
     });
-    rl.on("close", () => process.exit(0));
+    // Release the world session on shutdown — the packaged server caps live
+    // sessions at 256 and a scan sweep leaks one per trial otherwise.
+    rl.on("close", async () => {
+      try { if (SESSION) await rest(`/sessions/${encodeURIComponent(SESSION)}`, { method: "DELETE" }); } catch { /* best effort */ }
+      process.exit(0);
+    });
   })
   .catch((e) => {
     process.stderr.write(`[blobfish-bridge] boot failed: ${e.message}\n`);

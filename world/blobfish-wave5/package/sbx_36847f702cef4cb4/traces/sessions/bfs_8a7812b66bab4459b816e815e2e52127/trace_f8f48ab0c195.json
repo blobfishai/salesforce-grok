@@ -1,0 +1,27 @@
+{
+  "id": "trace_f8f48ab0c195",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.sales_workflow_agent",
+  "args": {
+    "request": "in table tasks, find id \"task_118\" and set status to the next declared lifecycle stage"
+  },
+  "result": {
+    "ok": false,
+    "tool": "sales_workflow_agent",
+    "requested_tool": "sales_workflow_agent",
+    "result": {
+      "error": "ambiguous_next_lifecycle",
+      "message": "the next lifecycle stage branches; request an exact business outcome",
+      "field": "status",
+      "before": "blocked",
+      "allowed": [
+        "completed",
+        "cancelled"
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": "ambiguous_next_lifecycle"
+  },
+  "timestamp": 1786344872.1208372
+}

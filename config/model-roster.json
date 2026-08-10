@@ -1,0 +1,109 @@
+{
+  "comment": "Leaderboard model roster. All providers speak the OpenAI /chat/completions dialect (Anthropic via its OpenAI-compat endpoint). Pricing = USD per million tokens; claude/deepseek entries verified via web lookup 2026-08-09 (see confidence).",
+  "defaultModel": "grok-4.5",
+  "providers": {
+    "xai": {
+      "baseUrl": "https://api.x.ai/v1",
+      "envKey": "XAI_API_KEY"
+    },
+    "anthropic": {
+      "baseUrl": "https://api.anthropic.com/v1",
+      "envKey": "ANTHROPIC_API_KEY"
+    },
+    "deepseek": {
+      "baseUrl": "https://api.deepseek.com",
+      "envKey": "DEEPSEEK_API_KEY"
+    }
+  },
+  "models": {
+    "grok-4.5": {
+      "provider": "xai",
+      "displayName": "Grok 4.5",
+      "contextWindowTokens": 500000,
+      "maxCompletionTokens": 4096,
+      "pricing": {
+        "input": 2.0,
+        "output": 6.0,
+        "confidence": "verified"
+      }
+    },
+    "grok-4.3": {
+      "provider": "xai",
+      "displayName": "Grok 4.3",
+      "contextWindowTokens": 1000000,
+      "maxCompletionTokens": 4096,
+      "pricing": {
+        "input": 1.25,
+        "output": 2.5,
+        "confidence": "verified"
+      }
+    },
+    "grok-4.20-0309-reasoning": {
+      "provider": "xai",
+      "displayName": "Grok 4.20 Reasoning",
+      "contextWindowTokens": 1000000,
+      "maxCompletionTokens": 4096,
+      "pricing": {
+        "input": 1.25,
+        "output": 2.5,
+        "confidence": "verified"
+      }
+    },
+    "claude-opus-5": {
+      "provider": "anthropic",
+      "displayName": "Claude Opus 5",
+      "contextWindowTokens": 1000000,
+      "maxCompletionTokens": 4096,
+      "pricing": {
+        "input": 5.0,
+        "output": 25.0,
+        "confidence": "verified"
+      }
+    },
+    "claude-sonnet-5": {
+      "provider": "anthropic",
+      "displayName": "Claude Sonnet 5",
+      "contextWindowTokens": 1000000,
+      "maxCompletionTokens": 4096,
+      "pricing": {
+        "input": 2.0,
+        "output": 10.0,
+        "confidence": "verified",
+        "note": "intro pricing through 2026-08-31; $3/$15 after"
+      }
+    },
+    "claude-haiku-4-5-20251001": {
+      "provider": "anthropic",
+      "displayName": "Claude Haiku 4.5",
+      "contextWindowTokens": 200000,
+      "maxCompletionTokens": 4096,
+      "pricing": {
+        "input": 1.0,
+        "output": 5.0,
+        "confidence": "verified"
+      }
+    },
+    "deepseek-v4-pro": {
+      "provider": "deepseek",
+      "displayName": "DeepSeek V4 Pro",
+      "contextWindowTokens": 1048576,
+      "maxCompletionTokens": 4096,
+      "pricing": {
+        "input": 0.435,
+        "output": 0.87,
+        "confidence": "verified"
+      }
+    },
+    "deepseek-v4-flash": {
+      "provider": "deepseek",
+      "displayName": "DeepSeek V4 Flash",
+      "contextWindowTokens": 1048576,
+      "maxCompletionTokens": 4096,
+      "pricing": {
+        "input": 0.14,
+        "output": 0.28,
+        "confidence": "verified"
+      }
+    }
+  }
+}

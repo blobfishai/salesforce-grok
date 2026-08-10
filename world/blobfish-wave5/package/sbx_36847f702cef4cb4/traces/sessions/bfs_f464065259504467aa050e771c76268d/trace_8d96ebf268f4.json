@@ -1,0 +1,23 @@
+{
+  "id": "trace_8d96ebf268f4",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.core_records_agent",
+  "args": {
+    "request": "in table account_tiering_standard, find name \"Lakeshore Industries\" and return the complete record"
+  },
+  "result": {
+    "ok": false,
+    "tool": "core_records_agent",
+    "requested_tool": "core_records_agent",
+    "result": {
+      "success": false,
+      "error": "rate_limited",
+      "message": "Rate limit exceeded for this operation. Wait a moment and retry.",
+      "retryable": true
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": "rate_limited"
+  },
+  "timestamp": 1786345673.948489
+}

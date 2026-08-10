@@ -24,6 +24,8 @@ const opt = (name, dflt) => (argv.includes(name) ? argv[argv.indexOf(name) + 1] 
 const TRIALS = Number(opt("--trials", "2"));
 const CONCURRENCY = Number(opt("--concurrency", "3"));
 const LABEL = opt("--label", "scan");
+const MODEL = opt("--model", process.env.SIM_MODEL ?? process.env.XAI_MODEL ?? config.engine.model);
+const TRIAL_TIMEOUT_MIN = Number(opt("--trial-timeout-min", "10"));
 const WORLD_FILE = opt("--world-file",
   existsSync(join(ROOT, config.blobfish.worldFile)) ? join(ROOT, config.blobfish.worldFile) : join(ROOT, config.blobfish.previewWorldFile));
 
@@ -42,12 +44,12 @@ function runTrial(taskId, trial) {
   return new Promise((resolve) => {
     const out = join(TMP, `${LABEL}-${taskId}-t${trial}.json`);
     rmSync(out, { force: true });
-    const child = spawn("node", ["sim/run-simulation.mjs", "--task", taskId, "--json-out", out, "--world-file", WORLD_FILE], {
+    const child = spawn("node", ["sim/run-simulation.mjs", "--task", taskId, "--json-out", out, "--world-file", WORLD_FILE, "--model", MODEL], {
       cwd: ROOT,
       env: { ...process.env, BLOBFISH_LOCAL: "1" },
       stdio: ["ignore", "ignore", "ignore"],
     });
-    const timer = setTimeout(() => { try { child.kill("SIGKILL"); } catch { /* gone */ } }, 10 * 60 * 1000);
+    const timer = setTimeout(() => { try { child.kill("SIGKILL"); } catch { /* gone */ } }, TRIAL_TIMEOUT_MIN * 60 * 1000);
     child.on("exit", (code) => {
       clearTimeout(timer);
       let rec = null;
@@ -119,7 +121,7 @@ const summary = {
   label: LABEL,
   worldFile: WORLD_FILE,
   worldId: world.world_id ?? null,
-  model: "grok-4.5",
+  model: MODEL,
   finishedAt: new Date().toISOString(),
   trialsPerTask: TRIALS,
   totals: {
@@ -138,7 +140,7 @@ const summary = {
 const outPath = join(ROOT, "data", "flake", `${LABEL}.json`);
 writeFileSync(outPath, JSON.stringify(summary, null, 2));
 
-console.log(`\n=== ${LABEL}: grok-4.5 pass-rate scoreboard ===`);
+console.log(`\n=== ${LABEL}: ${MODEL} pass-rate scoreboard ===`);
 for (const r of rows) {
   console.log(`${(r.class === "FLAKY" ? "~FLAKY" : r.class).padEnd(7)} ${String(r.passes)}/${r.trials}  ${r.taskId}  calls~${r.avgToolCalls ?? "?"}  ${Object.keys(r.failedConditions).join(",") || "-"}`);
 }

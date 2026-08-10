@@ -1,0 +1,36 @@
+{
+  "id": "trace_a906ff75b60f",
+  "type": "mcp_tool_call",
+  "tool": "jira.query_support_tickets",
+  "args": {
+    "status": "closed",
+    "assignee_employee_id": 2,
+    "limit": 100
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_support_tickets",
+    "requested_tool": "query_support_tickets",
+    "result": {
+      "table": "support_tickets",
+      "count": 1,
+      "rows": [
+        {
+          "id": 149,
+          "ticket_number": "TKT-228613",
+          "subject": "Question about business unit status",
+          "customer_name": "Thomas Lee 149",
+          "priority": "urgent",
+          "assignee_employee_id": 2,
+          "opened_at": "2026-04-23",
+          "business_unit_id": 4,
+          "status": "closed"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786345209.140091
+}

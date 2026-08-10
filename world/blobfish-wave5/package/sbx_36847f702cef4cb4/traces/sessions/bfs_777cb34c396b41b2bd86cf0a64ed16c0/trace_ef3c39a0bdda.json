@@ -1,0 +1,22 @@
+{
+  "id": "trace_ef3c39a0bdda",
+  "type": "mcp_tool_call",
+  "tool": "github.finance_records_agent",
+  "args": {
+    "request": "in table finance_expense_reports, find report_number \"EXP-413432\" and category \"software\" and return the complete record"
+  },
+  "result": {
+    "ok": false,
+    "tool": "finance_records_agent",
+    "requested_tool": "finance_records_agent",
+    "result": {
+      "error": "ambiguous_match",
+      "message": "business handle matched multiple records",
+      "match_count": 2
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": "ambiguous_match"
+  },
+  "timestamp": 1786345509.693084
+}

@@ -1,0 +1,35 @@
+{
+  "id": "trace_c61b4f4dfd34",
+  "type": "mcp_tool_call",
+  "tool": "jira.query_support_tickets",
+  "args": {
+    "assignee_employee_id": 3,
+    "status": "waiting_customer"
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_support_tickets",
+    "requested_tool": "query_support_tickets",
+    "result": {
+      "table": "support_tickets",
+      "count": 1,
+      "rows": [
+        {
+          "id": 175,
+          "ticket_number": "TKT-656843",
+          "subject": "Cannot access business unit records",
+          "customer_name": "Robert Martinez 175",
+          "priority": "high",
+          "assignee_employee_id": 3,
+          "opened_at": "2026-01-01",
+          "business_unit_id": 11,
+          "status": "waiting_customer"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786345624.889737
+}

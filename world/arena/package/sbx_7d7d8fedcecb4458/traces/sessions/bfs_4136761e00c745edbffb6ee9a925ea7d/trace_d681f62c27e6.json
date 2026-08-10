@@ -1,0 +1,36 @@
+{
+  "id": "trace_d681f62c27e6",
+  "type": "mcp_tool_call",
+  "tool": "jira.query_support_tickets",
+  "args": {
+    "status": "in_progress",
+    "subject": "Problem updating business unit",
+    "limit": 1
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_support_tickets",
+    "requested_tool": "query_support_tickets",
+    "result": {
+      "table": "support_tickets",
+      "count": 1,
+      "rows": [
+        {
+          "id": 5,
+          "ticket_number": "TKT-975596",
+          "subject": "Problem updating business unit",
+          "customer_name": "Alex Chen",
+          "priority": "high",
+          "assignee_employee_id": 2,
+          "opened_at": "2026-01-06",
+          "business_unit_id": 4,
+          "status": "in_progress"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786345064.5588129
+}

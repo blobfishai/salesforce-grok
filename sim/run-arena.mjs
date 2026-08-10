@@ -11,6 +11,7 @@ import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { McpClient } from "./lib/mcp-client.mjs";
+import { resolveModel, costUsd, ToolNameCodec, mangleTools, chat as llmChat } from "./lib/llm-client.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(readFileSync(join(ROOT, "config", "world.config.json"), "utf8"));
@@ -20,6 +21,7 @@ const TRIALS = Number(opt("--trials", "1"));
 const LABEL = opt("--label", "arena");
 const only = opt("--task", null);
 const MAX_TURNS = Number(opt("--max-turns", "16"));
+const modelFlag = opt("--model", null);
 
 const spec = JSON.parse(readFileSync(join(ROOT, "world", "arena", "arena-tasks.json"), "utf8"));
 const tasks = spec.tasks.filter((t) => !only || t.id === only);
@@ -30,8 +32,8 @@ function loadEnv() {
   return env;
 }
 const env = loadEnv();
-const API_KEY = env.XAI_API_KEY;
-const MODEL = env.XAI_MODEL ?? config.engine.model;
+const MODEL_INFO = resolveModel(ROOT, modelFlag ?? env.SIM_MODEL ?? env.XAI_MODEL ?? config.engine.model, env);
+const MODEL = MODEL_INFO.id;
 
 const norm = (s) => String(s ?? "").trim().toLowerCase().replace(/[.\s"']+$/g, "").replace(/^["']+/, "");
 function score(metric, gt, answer) {
@@ -47,20 +49,15 @@ function score(metric, gt, answer) {
   return false;
 }
 
-async function chat(messages, tools) {
-  const res = await fetch(`${config.engine.baseUrl}/chat/completions`, {
-    method: "POST", headers: { Authorization: `Bearer ${API_KEY}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ model: MODEL, messages, tools, tool_choice: "auto", max_tokens: 3000 }),
-  });
-  if (!res.ok) throw new Error(`xAI ${res.status}: ${await res.text()}`);
-  return res.json();
-}
+const chat = (messages, tools) => llmChat(MODEL_INFO, messages, tools, { maxTokens: 3000 });
 
 async function runEpisode(task, trial) {
   const mcp = new McpClient(config.mcp.command, config.mcp.args, { cwd: ROOT });
   const init = await mcp.start();
   const HARNESS = new Set(["verify_task", "reset_session"]);
-  const tools = (await mcp.listTools()).filter((t) => !HARNESS.has(t.name)).map((t) => ({ type: "function", function: { name: t.name, description: t.description, parameters: t.inputSchema } }));
+  const agentTools = (await mcp.listTools()).filter((t) => !HARNESS.has(t.name));
+  const codec = new ToolNameCodec(agentTools.map((t) => t.name));
+  const tools = mangleTools(agentTools, codec);
   const messages = [
     { role: "system", content: `You are a CRM analyst at morgan_stanley_simulated (a fully synthetic sandbox). ${init.instructions ?? ""} Investigate with the available tools — consult the document store when a task references policies or notes. When you are confident, reply with exactly one line: FINAL ANSWER: <answer>` },
     { role: "user", content: task.prompt },
@@ -77,8 +74,9 @@ async function runEpisode(task, trial) {
     if (msg.tool_calls?.length) {
       for (const tc of msg.tool_calls) {
         let args = {}; try { args = JSON.parse(tc.function.arguments || "{}"); } catch { /* raw */ }
-        const res = await mcp.callTool(tc.function.name, args, 120000);
-        episode.steps.push({ k: "tool", name: tc.function.name, args, result: String(res.text).slice(0, 900) });
+        const mcpName = codec.mcp(tc.function.name);
+        const res = await mcp.callTool(mcpName, args, 120000);
+        episode.steps.push({ k: "tool", name: mcpName, args, result: String(res.text).slice(0, 900) });
         messages.push({ role: "tool", tool_call_id: tc.id, content: String(res.text).slice(0, 8000) });
       }
       continue;
@@ -90,7 +88,8 @@ async function runEpisode(task, trial) {
   mcp.close();
   episode.answer = answer;
   episode.passed = answer !== null && score(task.metric, task.gt, answer);
-  episode.costUsd = +(((episode.usage.prompt / 1e6) * 2) + ((episode.usage.completion / 1e6) * 6)).toFixed(4);
+  episode.model = MODEL;
+  episode.costUsd = costUsd(MODEL_INFO, episode.usage) ?? 0;
   return episode;
 }
 

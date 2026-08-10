@@ -1,0 +1,44 @@
+{
+  "id": "trace_6a8d8890dccf",
+  "type": "mcp_tool_call",
+  "tool": "erp.query_sourcing_purchase_orders",
+  "args": {
+    "po_number": "PO-639182",
+    "limit": 5
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_sourcing_purchase_orders",
+    "requested_tool": "query_sourcing_purchase_orders",
+    "result": {
+      "table": "sourcing_purchase_orders",
+      "count": 2,
+      "rows": [
+        {
+          "id": 113,
+          "po_number": "PO-639182",
+          "vendor_id": 132,
+          "requested_by_employee_id": 12,
+          "amount": 24709.31,
+          "ordered_at": "2026-02-09",
+          "approver_employee_id": 14,
+          "status": "received"
+        },
+        {
+          "id": 700,
+          "po_number": "PO-639182",
+          "vendor_id": "132-B",
+          "requested_by_employee_id": 12,
+          "amount": 24709.31,
+          "ordered_at": "2026-02-09",
+          "approver_employee_id": 14,
+          "status": "received"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786345587.401099
+}

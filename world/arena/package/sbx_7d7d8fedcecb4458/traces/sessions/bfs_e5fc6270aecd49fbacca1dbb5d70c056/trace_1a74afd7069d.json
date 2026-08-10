@@ -1,0 +1,47 @@
+{
+  "id": "trace_1a74afd7069d",
+  "type": "mcp_tool_call",
+  "tool": "jira.query_support_tickets",
+  "args": {
+    "assignee_employee_id": 10,
+    "status": "resolved",
+    "limit": 100
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_support_tickets",
+    "requested_tool": "query_support_tickets",
+    "result": {
+      "table": "support_tickets",
+      "count": 2,
+      "rows": [
+        {
+          "id": 26,
+          "ticket_number": "TKT-837776",
+          "subject": "Billing discrepancy on business unit",
+          "customer_name": "James Wilson 26",
+          "priority": "low",
+          "assignee_employee_id": 10,
+          "opened_at": "2026-04-01",
+          "business_unit_id": 2,
+          "status": "resolved"
+        },
+        {
+          "id": 199,
+          "ticket_number": "TKT-983373",
+          "subject": "Billing discrepancy on business unit",
+          "customer_name": "Kevin Wright 199",
+          "priority": "urgent",
+          "assignee_employee_id": 10,
+          "opened_at": "2026-05-23",
+          "business_unit_id": 2,
+          "status": "resolved"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786345844.477483
+}

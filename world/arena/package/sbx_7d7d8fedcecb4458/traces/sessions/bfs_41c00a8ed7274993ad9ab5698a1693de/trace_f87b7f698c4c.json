@@ -1,0 +1,47 @@
+{
+  "id": "trace_f87b7f698c4c",
+  "type": "mcp_tool_call",
+  "tool": "jira.query_support_tickets",
+  "args": {
+    "status": "closed",
+    "assignee_employee_id": 10,
+    "limit": 100
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_support_tickets",
+    "requested_tool": "query_support_tickets",
+    "result": {
+      "table": "support_tickets",
+      "count": 2,
+      "rows": [
+        {
+          "id": 18,
+          "ticket_number": "TKT-551832",
+          "subject": "Question about business unit status",
+          "customer_name": "Maria Garcia",
+          "priority": "urgent",
+          "assignee_employee_id": 10,
+          "opened_at": "2026-05-09",
+          "business_unit_id": 10,
+          "status": "closed"
+        },
+        {
+          "id": 47,
+          "ticket_number": "TKT-491471",
+          "subject": "Problem updating business unit",
+          "customer_name": "Thomas Lee 47",
+          "priority": "medium",
+          "assignee_employee_id": 10,
+          "opened_at": "2026-01-09",
+          "business_unit_id": 4,
+          "status": "closed"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786345209.538013
+}

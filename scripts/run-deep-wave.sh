@@ -20,17 +20,21 @@ JOB_ID=$(node -e 'const j=require(process.argv[1]);console.log(j.job?.job_id??j.
 [ -z "$JOB_ID" ] && { echo "FAILED: no job_id"; exit 1; }
 echo "JOB_ID=$JOB_ID"
 
-END=$((SECONDS+3600))
+END=$((SECONDS+7200))
 STATUS=creating_world
 while [ $SECONDS -lt $END ]; do
-  curl -sS -N -m 1800 -H "X-API-Key: $KEY" \
+  # One long-lived stream drives serverless execution. Keep -m below the platform
+  # edge timeout but long; on drop, wait for in-flight executor ticks to settle
+  # before reconnecting — an immediate reconnect can spawn a second executor and
+  # kill the build with "changed in another process".
+  curl -sS -N -m 3300 -H "X-API-Key: $KEY" \
     "https://blobfish.ai/api/v1/sandbox/jobs/$JOB_ID/stream" >> "$SP/${WAVE}_stream.log" 2>&1 || true
   curl -sS -m 30 -H "X-API-Key: $KEY" \
     "https://blobfish.ai/api/v1/sandbox/jobs/$JOB_ID" -o "$SP/${WAVE}_status.json" || true
   STATUS=$(node -e 'try{const j=require(process.argv[1]);console.log(j.job?.status??j.status??"unknown")}catch{console.log("unknown")}' "$SP/${WAVE}_status.json")
   echo "[$WAVE] status=$STATUS elapsed=${SECONDS}s"
   if [ "$STATUS" = "ready" ] || [ "$STATUS" = "failed" ]; then break; fi
-  sleep 10
+  sleep 45
 done
 
 if [ "$STATUS" != "ready" ]; then

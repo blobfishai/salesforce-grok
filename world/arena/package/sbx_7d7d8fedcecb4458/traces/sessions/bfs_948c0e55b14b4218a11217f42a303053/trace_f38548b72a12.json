@@ -1,0 +1,36 @@
+{
+  "id": "trace_f38548b72a12",
+  "type": "mcp_tool_call",
+  "tool": "jira.query_support_tickets",
+  "args": {
+    "subject": "Question about business unit status",
+    "status": "in_progress",
+    "limit": 1
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_support_tickets",
+    "requested_tool": "query_support_tickets",
+    "result": {
+      "table": "support_tickets",
+      "count": 1,
+      "rows": [
+        {
+          "id": 49,
+          "ticket_number": "TKT-807539",
+          "subject": "Question about business unit status",
+          "customer_name": "Nina Kowalski 49",
+          "priority": "low",
+          "assignee_employee_id": 4,
+          "opened_at": "2026-04-15",
+          "business_unit_id": 1,
+          "status": "in_progress"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786345099.835924
+}

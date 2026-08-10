@@ -1,0 +1,22 @@
+{
+  "id": "trace_dce78fba5275",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.core_workflow_agent",
+  "args": {
+    "request": "in table account_tiering_standard, find name \"Lakeshore Industries\" and set status to the next declared lifecycle stage"
+  },
+  "result": {
+    "ok": false,
+    "tool": "core_workflow_agent",
+    "requested_tool": "core_workflow_agent",
+    "result": {
+      "error": "ambiguous_match",
+      "message": "business handle matched multiple records",
+      "match_count": 2
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": "ambiguous_match"
+  },
+  "timestamp": 1786344592.3703701
+}

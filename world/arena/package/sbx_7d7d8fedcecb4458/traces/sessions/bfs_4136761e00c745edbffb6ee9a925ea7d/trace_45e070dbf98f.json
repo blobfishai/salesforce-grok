@@ -1,0 +1,36 @@
+{
+  "id": "trace_45e070dbf98f",
+  "type": "mcp_tool_call",
+  "tool": "jira.query_support_tickets",
+  "args": {
+    "status": "waiting_customer",
+    "subject": "Problem updating business unit",
+    "limit": 1
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_support_tickets",
+    "requested_tool": "query_support_tickets",
+    "result": {
+      "table": "support_tickets",
+      "count": 1,
+      "rows": [
+        {
+          "id": 6,
+          "ticket_number": "TKT-487758",
+          "subject": "Problem updating business unit",
+          "customer_name": "Thomas Lee",
+          "priority": "medium",
+          "assignee_employee_id": 18,
+          "opened_at": "2026-04-16",
+          "business_unit_id": 1,
+          "status": "waiting_customer"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786345064.6428359
+}

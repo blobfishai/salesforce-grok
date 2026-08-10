@@ -1,0 +1,36 @@
+{
+  "id": "trace_e7202370a5fd",
+  "type": "mcp_tool_call",
+  "tool": "jira.query_support_tickets",
+  "args": {
+    "status": "closed",
+    "assignee_employee_id": 4,
+    "limit": 100
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_support_tickets",
+    "requested_tool": "query_support_tickets",
+    "result": {
+      "table": "support_tickets",
+      "count": 1,
+      "rows": [
+        {
+          "id": 196,
+          "ticket_number": "TKT-304848",
+          "subject": "Problem updating business unit",
+          "customer_name": "Sarah Kim 196",
+          "priority": "high",
+          "assignee_employee_id": 4,
+          "opened_at": "2026-04-14",
+          "business_unit_id": 1,
+          "status": "closed"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786345209.298471
+}

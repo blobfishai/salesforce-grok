@@ -1,0 +1,34 @@
+{
+  "id": "trace_459a901cb852",
+  "type": "mcp_tool_call",
+  "tool": "core.query_hr_performance_reviews",
+  "args": {
+    "review_number": "REVIEW-492173",
+    "review_period": "2025-H2",
+    "limit": 5
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_hr_performance_reviews",
+    "requested_tool": "query_hr_performance_reviews",
+    "result": {
+      "table": "hr_performance_reviews",
+      "count": 1,
+      "rows": [
+        {
+          "id": 99,
+          "review_number": "REVIEW-492173",
+          "employee_id": 15,
+          "reviewer_employee_id": 16,
+          "review_period": "2025-H2",
+          "overall_rating": 5,
+          "status": "submitted"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786345146.775337
+}

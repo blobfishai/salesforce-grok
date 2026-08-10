@@ -1,0 +1,25 @@
+{
+  "id": "trace_eddf521dd7bd",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.sourcing_records_agent",
+  "args": {
+    "request": "in table sourcing_purchase_orders, find po_number \\\"PO-639182\\\" and return the complete record."
+  },
+  "result": {
+    "ok": false,
+    "tool": "sourcing_records_agent",
+    "requested_tool": "sourcing_records_agent",
+    "result": {
+      "error": "request_not_understood",
+      "message": "Use: in table <table>, find (or look up / locate / retrieve) <business_field> \"<value>\" and return the complete record",
+      "available_tables": [
+        "sourcing_purchase_orders",
+        "sourcing_vendors"
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": "request_not_understood"
+  },
+  "timestamp": 1786345586.505194
+}

@@ -1,0 +1,51 @@
+{
+  "id": "trace_3d40d9488522",
+  "type": "mcp_tool_call",
+  "tool": "core.update_hr_leave_requests_status",
+  "args": {
+    "id": 1,
+    "new_status": "approved"
+  },
+  "result": {
+    "ok": true,
+    "tool": "update_hr_leave_requests_status",
+    "requested_tool": "update_hr_leave_requests_status",
+    "result": {
+      "updated": true,
+      "id": 1,
+      "table": "hr_leave_requests",
+      "old_status": "submitted",
+      "new_status": "approved"
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "hr_leave_requests",
+        "row_id": "1",
+        "operation": "update",
+        "before": {
+          "id": 1,
+          "request_number": "LEAVE-403634",
+          "employee_id": 1,
+          "leave_type": "bereavement",
+          "start_date": "2026-04-16",
+          "days_requested": 7,
+          "approver_employee_id": 8,
+          "status": "submitted"
+        },
+        "after": {
+          "id": 1,
+          "request_number": "LEAVE-403634",
+          "employee_id": 1,
+          "leave_type": "bereavement",
+          "start_date": "2026-04-16",
+          "days_requested": 7,
+          "approver_employee_id": 8,
+          "status": "approved"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786345440.004777
+}

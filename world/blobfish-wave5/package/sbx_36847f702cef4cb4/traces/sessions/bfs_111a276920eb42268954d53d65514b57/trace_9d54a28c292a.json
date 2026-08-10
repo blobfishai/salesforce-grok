@@ -1,0 +1,116 @@
+{
+  "id": "trace_9d54a28c292a",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.sales_workflow_agent",
+  "args": {
+    "request": "in table opportunities, find id \"opportunity_111\" and set status to \"closed_won\"."
+  },
+  "result": {
+    "ok": true,
+    "tool": "sales_workflow_agent",
+    "requested_tool": "sales_workflow_agent",
+    "result": {
+      "status": "updated",
+      "table": "opportunities",
+      "business_handle": {
+        "id": "opportunity_111"
+      },
+      "field": "status",
+      "before": "negotiation",
+      "after": "closed_won",
+      "record": {
+        "id": "opportunity_111",
+        "account_id": "account_002",
+        "name": "Riverside Group Follow-Up Opportunity",
+        "status": "closed_won",
+        "amount": 75000.0,
+        "close_date": null,
+        "owner_id": "OWN-50A4969",
+        "created_at": "2026-01-05T10:51:00Z"
+      },
+      "resolution_receipt": {
+        "request": "in table opportunities, find id \"opportunity_111\" and set status to \"closed_won\".",
+        "strategy": "unique_business_handle",
+        "candidate_limit": 3,
+        "match_count": 1,
+        "matched_field": "id",
+        "available_business_handle_fields": [
+          "id",
+          "name"
+        ],
+        "available_resolution_fields": [
+          "id",
+          "account_id",
+          "name",
+          "amount",
+          "close_date",
+          "owner_id",
+          "created_at"
+        ],
+        "returned_fields": [
+          "account_id",
+          "amount",
+          "close_date",
+          "created_at",
+          "id",
+          "name",
+          "owner_id",
+          "status"
+        ]
+      },
+      "transition_receipt": {
+        "declared_lifecycle": [
+          "discovery",
+          "proposal",
+          "negotiation",
+          "closed_won",
+          "closed_lost"
+        ],
+        "before": "negotiation",
+        "after": "closed_won",
+        "mutation_applied": true,
+        "changed_primary_key": "opportunity_111"
+      },
+      "policy_receipt": {
+        "scope": "single_resolved_record",
+        "mutable_fields": [
+          "name",
+          "status",
+          "amount",
+          "close_date"
+        ],
+        "collateral_rows_changed": 0
+      }
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "opportunities",
+        "row_id": "opportunity_111",
+        "operation": "update",
+        "before": {
+          "id": "opportunity_111",
+          "account_id": "account_002",
+          "name": "Riverside Group Follow-Up Opportunity",
+          "status": "negotiation",
+          "amount": 75000.0,
+          "close_date": null,
+          "owner_id": "OWN-50A4969",
+          "created_at": "2026-01-05T10:51:00Z"
+        },
+        "after": {
+          "id": "opportunity_111",
+          "account_id": "account_002",
+          "name": "Riverside Group Follow-Up Opportunity",
+          "status": "closed_won",
+          "amount": 75000.0,
+          "close_date": null,
+          "owner_id": "OWN-50A4969",
+          "created_at": "2026-01-05T10:51:00Z"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786344874.166811
+}

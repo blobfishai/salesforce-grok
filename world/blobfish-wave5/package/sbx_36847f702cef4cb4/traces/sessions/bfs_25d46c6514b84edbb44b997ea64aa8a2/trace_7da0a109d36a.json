@@ -1,0 +1,25 @@
+{
+  "id": "trace_7da0a109d36a",
+  "type": "mcp_tool_call",
+  "tool": "core.human_resources_workflow_agent",
+  "args": {
+    "request": "in table hr_leave_requests, find request_number \\\"LEAVE-797240\\\" and set status to \\\"approved\\\""
+  },
+  "result": {
+    "ok": false,
+    "tool": "human_resources_workflow_agent",
+    "requested_tool": "human_resources_workflow_agent",
+    "result": {
+      "error": "request_not_understood",
+      "message": "Use: in table <table>, find (or look up / locate / retrieve) <business_field> \"<value>\" and request one scoped update",
+      "available_tables": [
+        "hr_leave_requests",
+        "hr_performance_reviews"
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": "request_not_understood"
+  },
+  "timestamp": 1786345535.2804322
+}

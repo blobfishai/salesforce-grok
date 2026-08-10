@@ -1,0 +1,25 @@
+{
+  "id": "trace_350b9f09243a",
+  "type": "mcp_tool_call",
+  "tool": "core.query_hr_leave_requests",
+  "args": {
+    "request_number": "LEAVE-797240",
+    "employee_id": 13,
+    "limit": 5
+  },
+  "result": {
+    "ok": false,
+    "tool": "query_hr_leave_requests",
+    "requested_tool": "query_hr_leave_requests",
+    "result": {
+      "success": false,
+      "error": "stale_reference",
+      "message": "The referenced record could not be loaded \u2014 the reference may be stale or recently changed. Re-fetch the latest data and retry.",
+      "retryable": true
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": "stale_reference"
+  },
+  "timestamp": 1786345526.8693519
+}

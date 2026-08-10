@@ -13,6 +13,7 @@ import { readFileSync, existsSync, mkdirSync, appendFileSync, writeFileSync } fr
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { McpClient } from "./lib/mcp-client.mjs";
+import { resolveModel, costUsd, ToolNameCodec, mangleTools, chat as llmChat } from "./lib/llm-client.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(readFileSync(join(ROOT, "config", "world.config.json"), "utf8"));
@@ -22,6 +23,7 @@ const LOCAL = argv.includes("--local");
 const taskFlag = argv.includes("--task") ? argv[argv.indexOf("--task") + 1] : null;
 const jsonOutFlag = argv.includes("--json-out") ? argv[argv.indexOf("--json-out") + 1] : null;
 const worldFileFlag = argv.includes("--world-file") ? argv[argv.indexOf("--world-file") + 1] : null;
+const modelFlag = argv.includes("--model") ? argv[argv.indexOf("--model") + 1] : null;
 
 function loadEnv() {
   const env = { ...process.env };
@@ -34,12 +36,14 @@ function loadEnv() {
   return env;
 }
 const env = loadEnv();
-const API_KEY = env.XAI_API_KEY;
-if (!API_KEY) {
-  console.error("XAI_API_KEY missing — copy .env.example to .env and set it.");
+let MODEL_INFO;
+try {
+  MODEL_INFO = resolveModel(ROOT, modelFlag ?? env.SIM_MODEL ?? env.XAI_MODEL ?? config.engine.model, env);
+} catch (e) {
+  console.error(String(e.message));
   process.exit(1);
 }
-const MODEL = env.XAI_MODEL ?? config.engine.model;
+const MODEL = MODEL_INFO.id;
 
 const LOG_DIR = join(ROOT, "sim", "logs");
 mkdirSync(LOG_DIR, { recursive: true });
@@ -49,15 +53,7 @@ const log = (obj) => appendFileSync(LOG, JSON.stringify(obj) + "\n");
 const TRUNCATE = 8000;
 const clip = (s) => (s.length > TRUNCATE ? s.slice(0, TRUNCATE) + `\n…[truncated ${s.length - TRUNCATE} chars]` : s);
 
-async function chat(messages, tools) {
-  const res = await fetch(`${config.engine.baseUrl}/chat/completions`, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${API_KEY}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ model: MODEL, messages, tools, tool_choice: "auto", max_tokens: config.engine.maxCompletionTokens }),
-  });
-  if (!res.ok) throw new Error(`xAI API ${res.status}: ${await res.text()}`);
-  return res.json();
-}
+const chat = (messages, tools) => llmChat(MODEL_INFO, messages, tools, { maxTokens: config.engine.maxCompletionTokens });
 
 /** Agentic loop: model <-> MCP tools until a final (non-tool) answer or turn cap.
  *  The cap is blobfish-style reference-relative when opts.maxTurns is supplied:
@@ -69,7 +65,7 @@ async function runAgent(mcp, llmTools, messages, opts = {}) {
   const usage = { prompt: 0, completion: 0, total: 0 };
   let toolCallCount = 0;
   let finalText = null;
-  const guardTokens = Math.floor(config.engine.contextWindowTokens * config.engine.contextGuardRatio);
+  const guardTokens = Math.floor(MODEL_INFO.contextWindowTokens * config.engine.contextGuardRatio);
 
   for (let turn = 1; turn <= maxTurns; turn++) {
     const resp = await chat(messages, llmTools);
@@ -80,7 +76,7 @@ async function runAgent(mcp, llmTools, messages, opts = {}) {
     log({ type: "completion", turn, model: resp.model, usage: u });
 
     if ((u.prompt_tokens ?? 0) > guardTokens) {
-      console.warn(`! Context guard: prompt ${u.prompt_tokens} > ${guardTokens} tokens (90% of ${config.engine.contextWindowTokens}); trimming oldest tool output`);
+      console.warn(`! Context guard: prompt ${u.prompt_tokens} > ${guardTokens} tokens (90% of ${MODEL_INFO.contextWindowTokens}); trimming oldest tool output`);
       const oldTool = messages.find((m) => m.role === "tool" && m.content !== "[trimmed]");
       if (oldTool) oldTool.content = "[trimmed]";
     }
@@ -93,17 +89,18 @@ async function runAgent(mcp, llmTools, messages, opts = {}) {
       for (const tc of msg.tool_calls) {
         let args = {};
         try { args = JSON.parse(tc.function.arguments || "{}"); } catch { /* leave empty */ }
+        const mcpName = opts.codec ? opts.codec.mcp(tc.function.name) : tc.function.name;
         let resultText;
         try {
-          const r = await mcp.callTool(tc.function.name, args, 180000); // world sub-agent tools can be slow
+          const r = await mcp.callTool(mcpName, args, 180000); // world sub-agent tools can be slow
           resultText = r.text;
           toolCallCount++;
-          console.log(`[turn ${turn}] ${tc.function.name}(${clip(JSON.stringify(args)).slice(0, 200)}) -> ${r.ok ? "ok" : "ERROR"}`);
+          console.log(`[turn ${turn}] ${mcpName}(${clip(JSON.stringify(args)).slice(0, 200)}) -> ${r.ok ? "ok" : "ERROR"}`);
         } catch (e) {
           resultText = `ERROR: ${e.message}`;
-          console.log(`[turn ${turn}] ${tc.function.name} -> transport error: ${e.message}`);
+          console.log(`[turn ${turn}] ${mcpName} -> transport error: ${e.message}`);
         }
-        log({ type: "tool", turn, name: tc.function.name, args, result: resultText });
+        log({ type: "tool", turn, name: mcpName, args, result: resultText });
         messages.push({ role: "tool", tool_call_id: tc.id, content: clip(resultText) });
       }
       continue;
@@ -118,11 +115,11 @@ async function runAgent(mcp, llmTools, messages, opts = {}) {
 }
 
 function printStats(usage, toolCallCount) {
-  const cost = (usage.prompt / 1e6) * 2.0 + (usage.completion / 1e6) * 6.0; // grok-4.5 $/M, see config/models.json
+  const cost = costUsd(MODEL_INFO, usage); // per-model $/M from config/model-roster.json
   console.log(`=== Run stats ===`);
   console.log(`Model: ${MODEL} | tool calls: ${toolCallCount}`);
-  console.log(`Tokens: prompt ${usage.prompt.toLocaleString()}, completion ${usage.completion.toLocaleString()} (context limit ${config.engine.contextWindowTokens.toLocaleString()})`);
-  console.log(`Approx cost: $${cost.toFixed(4)} | transcript: ${LOG}`);
+  console.log(`Tokens: prompt ${usage.prompt.toLocaleString()}, completion ${usage.completion.toLocaleString()} (context limit ${MODEL_INFO.contextWindowTokens.toLocaleString()})`);
+  console.log(`Approx cost: ${cost === null ? "n/a (no pricing)" : "$" + cost.toFixed(4)} | transcript: ${LOG}`);
 }
 
 const taskField = (t, ...names) => names.map((n) => t[n]).find((v) => v !== undefined && v !== null);
@@ -158,10 +155,9 @@ async function mainBlobfish() {
   console.log(`MCP connected: ${init.serverInfo.name}`);
   const mcpTools = await mcp.listTools();
   const HARNESS = new Set(["verify_task", "reset_session"]);
-  const llmTools = mcpTools.filter((t) => !HARNESS.has(t.name)).map((t) => ({
-    type: "function",
-    function: { name: t.name, description: t.description, parameters: t.inputSchema },
-  }));
+  const agentTools = mcpTools.filter((t) => !HARNESS.has(t.name));
+  const codec = new ToolNameCodec(agentTools.map((t) => t.name));
+  const llmTools = mangleTools(agentTools, codec);
   console.log(`World tools exposed to agent: ${llmTools.length}\n`);
 
   const messages = [
@@ -181,7 +177,7 @@ async function mainBlobfish() {
   // the turn cap from the task's own reference walk length.
   const refWalk = Array.isArray(task.walk) ? task.walk.length : 0;
   const maxTurns = Math.max(config.engine.maxAgentTurns, refWalk * 3 + 6);
-  const { usage, toolCallCount } = await runAgent(mcp, llmTools, messages, { maxTurns });
+  const { usage, toolCallCount } = await runAgent(mcp, llmTools, messages, { maxTurns, codec });
   printStats(usage, toolCallCount);
 
   console.log(`\n=== Verifying task ${taskId} via blobfish VCode ===`);
@@ -195,12 +191,13 @@ async function mainBlobfish() {
     writeFileSync(jsonOutFlag, JSON.stringify({
       mode: "blobfish",
       taskId,
+      model: MODEL,
       passed,
       reward: v.data?.reward ?? 0,
       failedConditions: v.data?.failed_conditions ?? [],
       toolCalls: toolCallCount,
       usage,
-      costUsd: +(((usage.prompt / 1e6) * 2) + ((usage.completion / 1e6) * 6)).toFixed(4),
+      costUsd: costUsd(MODEL_INFO, usage) ?? 0,
       log: LOG,
       finishedAt: new Date().toISOString(),
     }, null, 2));
@@ -218,10 +215,8 @@ async function mainLocal() {
   const init = await mcp.start();
   console.log(`MCP connected: ${init.serverInfo.name} v${init.serverInfo.version}`);
   const mcpTools = await mcp.listTools();
-  const llmTools = mcpTools.map((t) => ({
-    type: "function",
-    function: { name: t.name, description: t.description, parameters: t.inputSchema },
-  }));
+  const codec = new ToolNameCodec(mcpTools.map((t) => t.name));
+  const llmTools = mangleTools(mcpTools, codec);
   console.log(`Tools exposed to agent: ${llmTools.length}\n`);
 
   const messages = [
@@ -236,7 +231,7 @@ async function mainLocal() {
     { role: "user", content: scenario.goal },
   ];
 
-  const { usage, toolCallCount } = await runAgent(mcp, llmTools, messages);
+  const { usage, toolCallCount } = await runAgent(mcp, llmTools, messages, { codec });
   printStats(usage, toolCallCount);
 
   const finalState = await mcp.callTool("get_flow_state", { opportunityId: scenario.opportunityId });

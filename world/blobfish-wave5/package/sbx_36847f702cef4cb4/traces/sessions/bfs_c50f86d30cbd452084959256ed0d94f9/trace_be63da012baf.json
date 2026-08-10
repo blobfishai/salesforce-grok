@@ -1,0 +1,71 @@
+{
+  "id": "trace_be63da012baf",
+  "type": "verify",
+  "task_id": "task_020",
+  "result": {
+    "task_id": "task_020",
+    "passed": true,
+    "reward": 1.0,
+    "explanation": "All task checks passed",
+    "assertions": [
+      {
+        "name": "state_changed",
+        "passed": true,
+        "details": "world state changed"
+      },
+      {
+        "name": "reads_before_writes",
+        "passed": true,
+        "details": "reads=1, writes=0, read_first=True"
+      },
+      {
+        "name": "no_shortcut_direct_update",
+        "passed": true,
+        "details": "inspected data before writing"
+      },
+      {
+        "name": "sourcing_purchase_orders_113_status_is_closed",
+        "passed": true,
+        "details": "sourcing_purchase_orders[113].status = closed, expected closed"
+      },
+      {
+        "name": "sourcing_purchase_orders_113_status_was_received",
+        "passed": true,
+        "details": "sourcing_purchase_orders[113].status was received, expected received (confirms correct row targeted)"
+      },
+      {
+        "name": "no_collateral_sourcing_purchase_orders",
+        "passed": true,
+        "details": "only target rows modified"
+      },
+      {
+        "name": "no_offtask_table_changes",
+        "passed": true,
+        "details": "no off-task tables were modified"
+      },
+      {
+        "name": "no_rows_destroyed",
+        "passed": true,
+        "details": "no rows were destroyed in any table"
+      },
+      {
+        "name": "no_undeclared_rows_created",
+        "passed": true,
+        "details": "all created rows were declared by task insert effects"
+      },
+      {
+        "name": "audit_logs_append_only",
+        "passed": true,
+        "details": "audit_logs append-only invariant holds"
+      },
+      {
+        "name": "all_tools_succeeded",
+        "passed": true,
+        "details": "4/5 tool calls succeeded"
+      }
+    ],
+    "failed_conditions": [],
+    "advisory_conditions": []
+  },
+  "timestamp": 1786345579.391169
+}

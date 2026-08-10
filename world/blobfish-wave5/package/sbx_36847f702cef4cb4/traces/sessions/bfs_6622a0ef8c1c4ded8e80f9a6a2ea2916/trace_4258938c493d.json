@@ -1,0 +1,49 @@
+{
+  "id": "trace_4258938c493d",
+  "type": "mcp_tool_call",
+  "tool": "core.task_create",
+  "args": {
+    "account_id": "account_002",
+    "subject": "Follow-up on Riverside Group Account",
+    "status": "open",
+    "priority": "high",
+    "assigned_to": "OWN-50A4969",
+    "description": "Handle flagged account for follow-up, update opportunities and tasks accordingly."
+  },
+  "result": {
+    "ok": true,
+    "tool": "task_create",
+    "requested_tool": "task_create",
+    "result": {
+      "id": "task_118",
+      "account_id": "account_002",
+      "subject": "Follow-up on Riverside Group Account",
+      "status": "open",
+      "priority": "high",
+      "assigned_to": "OWN-50A4969",
+      "due_at": null,
+      "description": "Handle flagged account for follow-up, update opportunities and tasks accordingly."
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "tasks",
+        "row_id": "task_118",
+        "operation": "insert",
+        "before": null,
+        "after": {
+          "id": "task_118",
+          "account_id": "account_002",
+          "subject": "Follow-up on Riverside Group Account",
+          "status": "open",
+          "priority": "high",
+          "assigned_to": "OWN-50A4969",
+          "due_at": null,
+          "description": "Handle flagged account for follow-up, update opportunities and tasks accordingly."
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786345266.2465322
+}

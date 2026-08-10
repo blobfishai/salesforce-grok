@@ -1,0 +1,46 @@
+{
+  "id": "trace_277b1f2ac76a",
+  "type": "mcp_tool_call",
+  "tool": "jira.query_support_tickets",
+  "args": {
+    "assignee_employee_id": 3,
+    "status": "open"
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_support_tickets",
+    "requested_tool": "query_support_tickets",
+    "result": {
+      "table": "support_tickets",
+      "count": 2,
+      "rows": [
+        {
+          "id": 61,
+          "ticket_number": "TKT-908880",
+          "subject": "Cannot access business unit records",
+          "customer_name": "Lisa Park 61",
+          "priority": "urgent",
+          "assignee_employee_id": 3,
+          "opened_at": "2026-02-06",
+          "business_unit_id": 9,
+          "status": "open"
+        },
+        {
+          "id": 115,
+          "ticket_number": "TKT-879007",
+          "subject": "Problem updating business unit",
+          "customer_name": "Brian Murphy 115",
+          "priority": "low",
+          "assignee_employee_id": 3,
+          "opened_at": "2026-04-19",
+          "business_unit_id": 7,
+          "status": "open"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786345624.733506
+}

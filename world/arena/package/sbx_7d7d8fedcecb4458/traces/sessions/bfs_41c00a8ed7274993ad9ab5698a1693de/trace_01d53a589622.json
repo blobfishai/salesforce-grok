@@ -1,0 +1,36 @@
+{
+  "id": "trace_01d53a589622",
+  "type": "mcp_tool_call",
+  "tool": "jira.query_support_tickets",
+  "args": {
+    "status": "closed",
+    "assignee_employee_id": 13,
+    "limit": 100
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_support_tickets",
+    "requested_tool": "query_support_tickets",
+    "result": {
+      "table": "support_tickets",
+      "count": 1,
+      "rows": [
+        {
+          "id": 198,
+          "ticket_number": "TKT-856020",
+          "subject": "Problem updating business unit",
+          "customer_name": "Priya Patel 198",
+          "priority": "medium",
+          "assignee_employee_id": 13,
+          "opened_at": "2026-02-14",
+          "business_unit_id": 3,
+          "status": "closed"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786345209.6198158
+}

@@ -1,0 +1,28 @@
+{
+  "id": "trace_6f2aeffeb6b4",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.core_workflow_agent",
+  "args": {
+    "request": "in table opportunity_stage_gates, find id \"2\" and set status to \"pending\""
+  },
+  "result": {
+    "ok": false,
+    "tool": "core_workflow_agent",
+    "requested_tool": "core_workflow_agent",
+    "result": {
+      "error": "invalid_business_handle",
+      "message": "use a declared business handle or exact non-lifecycle resolution field",
+      "allowed": [
+        "name"
+      ],
+      "resolution_fields": [
+        "name",
+        "created_at"
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": "invalid_business_handle"
+  },
+  "timestamp": 1786345704.707932
+}

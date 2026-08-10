@@ -1,0 +1,33 @@
+{
+  "id": "trace_a9ae5e030920",
+  "type": "mcp_tool_call",
+  "tool": "core.query_hr_leave_requests",
+  "args": {
+    "id": 1
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_hr_leave_requests",
+    "requested_tool": "query_hr_leave_requests",
+    "result": {
+      "table": "hr_leave_requests",
+      "count": 1,
+      "rows": [
+        {
+          "id": 1,
+          "request_number": "LEAVE-403634",
+          "employee_id": 1,
+          "leave_type": "bereavement",
+          "start_date": "2026-04-16",
+          "days_requested": 7,
+          "approver_employee_id": 8,
+          "status": "approved"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786344486.602465
+}

@@ -1,0 +1,68 @@
+{
+  "id": "trace_1357bd7f946d",
+  "type": "mcp_tool_call",
+  "tool": "jira.query_support_tickets",
+  "args": {
+    "assignee_employee_id": 14,
+    "limit": 200
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_support_tickets",
+    "requested_tool": "query_support_tickets",
+    "result": {
+      "table": "support_tickets",
+      "count": 4,
+      "rows": [
+        {
+          "id": 8,
+          "ticket_number": "TKT-739074",
+          "subject": "Problem updating business unit",
+          "customer_name": "Sarah Kim",
+          "priority": "low",
+          "assignee_employee_id": 14,
+          "opened_at": "2026-02-22",
+          "business_unit_id": 1,
+          "status": "in_progress"
+        },
+        {
+          "id": 89,
+          "ticket_number": "TKT-135391",
+          "subject": "Question about business unit status",
+          "customer_name": "James Wilson 89",
+          "priority": "low",
+          "assignee_employee_id": 14,
+          "opened_at": "2026-02-25",
+          "business_unit_id": 1,
+          "status": "resolved"
+        },
+        {
+          "id": 111,
+          "ticket_number": "TKT-670661",
+          "subject": "Problem updating business unit",
+          "customer_name": "Lisa Park 111",
+          "priority": "medium",
+          "assignee_employee_id": 14,
+          "opened_at": "2026-02-02",
+          "business_unit_id": 1,
+          "status": "resolved"
+        },
+        {
+          "id": 112,
+          "ticket_number": "TKT-321296",
+          "subject": "Question about business unit status",
+          "customer_name": "Kevin Wright 112",
+          "priority": "low",
+          "assignee_employee_id": 14,
+          "opened_at": "2026-06-11",
+          "business_unit_id": 9,
+          "status": "waiting_customer"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786345039.860863
+}

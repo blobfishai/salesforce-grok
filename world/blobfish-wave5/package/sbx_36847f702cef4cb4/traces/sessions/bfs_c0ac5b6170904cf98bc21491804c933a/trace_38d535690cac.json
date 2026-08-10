@@ -1,0 +1,46 @@
+{
+  "id": "trace_38d535690cac",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.account_create",
+  "args": {
+    "name": "Riverside Group Account Follow-up",
+    "industry": "Follow-up Industry",
+    "status": "active",
+    "owner_id": "OWN-50A4969",
+    "annual_revenue": 100
+  },
+  "result": {
+    "ok": true,
+    "tool": "account_create",
+    "requested_tool": "account_create",
+    "result": {
+      "id": "account_112",
+      "name": "Riverside Group Account Follow-up",
+      "industry": "Follow-up Industry",
+      "status": "active",
+      "owner_id": "OWN-50A4969",
+      "annual_revenue": 100.0,
+      "created_at": "2026-01-05T10:52:00Z"
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "accounts",
+        "row_id": "account_112",
+        "operation": "insert",
+        "before": null,
+        "after": {
+          "id": "account_112",
+          "name": "Riverside Group Account Follow-up",
+          "industry": "Follow-up Industry",
+          "status": "active",
+          "owner_id": "OWN-50A4969",
+          "annual_revenue": 100.0,
+          "created_at": "2026-01-05T10:52:00Z"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786345259.6789901
+}

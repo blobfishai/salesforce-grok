@@ -1,0 +1,25 @@
+{
+  "id": "trace_da404e1fd372",
+  "type": "mcp_tool_call",
+  "tool": "core.human_resources_workflow_agent",
+  "args": {
+    "request": "in table hr_leave_requests, find request_number \"LEAVE-403634\" and either set status to \"approved\" or set status to the next declared lifecycle stage."
+  },
+  "result": {
+    "ok": false,
+    "tool": "human_resources_workflow_agent",
+    "requested_tool": "human_resources_workflow_agent",
+    "result": {
+      "error": "request_not_understood",
+      "message": "Request a record report, an exact field value, or the next declared lifecycle stage",
+      "available_tables": [
+        "hr_leave_requests",
+        "hr_performance_reviews"
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": "request_not_understood"
+  },
+  "timestamp": 1786345100.921536
+}

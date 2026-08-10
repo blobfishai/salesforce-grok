@@ -1,0 +1,80 @@
+{
+  "id": "trace_a9b33764263c",
+  "type": "mcp_tool_call",
+  "tool": "jira.query_support_tickets",
+  "args": {
+    "status": "resolved",
+    "assignee_employee_id": 2,
+    "limit": 100
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_support_tickets",
+    "requested_tool": "query_support_tickets",
+    "result": {
+      "table": "support_tickets",
+      "count": 5,
+      "rows": [
+        {
+          "id": 75,
+          "ticket_number": "TKT-733114",
+          "subject": "Question about business unit status",
+          "customer_name": "Robert Martinez 75",
+          "priority": "urgent",
+          "assignee_employee_id": 2,
+          "opened_at": "2026-02-16",
+          "business_unit_id": 11,
+          "status": "resolved"
+        },
+        {
+          "id": 77,
+          "ticket_number": "TKT-969281",
+          "subject": "Question about business unit status",
+          "customer_name": "Omar Hassan 77",
+          "priority": "medium",
+          "assignee_employee_id": 2,
+          "opened_at": "2026-05-27",
+          "business_unit_id": 6,
+          "status": "resolved"
+        },
+        {
+          "id": 130,
+          "ticket_number": "TKT-141402",
+          "subject": "Billing discrepancy on business unit",
+          "customer_name": "Sarah Kim 130",
+          "priority": "high",
+          "assignee_employee_id": 2,
+          "opened_at": "2026-01-18",
+          "business_unit_id": 10,
+          "status": "resolved"
+        },
+        {
+          "id": 158,
+          "ticket_number": "TKT-769511",
+          "subject": "Question about business unit status",
+          "customer_name": "Yuki Tanaka 158",
+          "priority": "low",
+          "assignee_employee_id": 2,
+          "opened_at": "2026-04-02",
+          "business_unit_id": 7,
+          "status": "resolved"
+        },
+        {
+          "id": 186,
+          "ticket_number": "TKT-959324",
+          "subject": "Cannot access business unit records",
+          "customer_name": "Maria Garcia 186",
+          "priority": "medium",
+          "assignee_employee_id": 2,
+          "opened_at": "2026-04-25",
+          "business_unit_id": 9,
+          "status": "resolved"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786345198.356889
+}

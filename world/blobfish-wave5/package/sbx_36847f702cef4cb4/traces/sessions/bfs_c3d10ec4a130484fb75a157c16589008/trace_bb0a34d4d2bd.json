@@ -1,0 +1,39 @@
+{
+  "id": "trace_bb0a34d4d2bd",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.update_status_lead_management_sop",
+  "args": {
+    "id": 1,
+    "status": "inactive"
+  },
+  "result": {
+    "ok": true,
+    "tool": "update_status_lead_management_sop",
+    "requested_tool": "update_status_lead_management_sop",
+    "result": {
+      "updated": 1
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "lead_management_sop",
+        "row_id": "1",
+        "operation": "update",
+        "before": {
+          "id": 1,
+          "name": "Northgate Associates",
+          "status": "active",
+          "created_at": "2024-02-25"
+        },
+        "after": {
+          "id": 1,
+          "name": "Northgate Associates",
+          "status": "inactive",
+          "created_at": "2024-02-25"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786345461.225023
+}

@@ -1,0 +1,47 @@
+{
+  "id": "trace_c47198fc77b0",
+  "type": "mcp_tool_call",
+  "tool": "jira.query_support_tickets",
+  "args": {
+    "status": "resolved",
+    "assignee_employee_id": 9,
+    "limit": 100
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_support_tickets",
+    "requested_tool": "query_support_tickets",
+    "result": {
+      "table": "support_tickets",
+      "count": 2,
+      "rows": [
+        {
+          "id": 46,
+          "ticket_number": "TKT-812645",
+          "subject": "Cannot access business unit records",
+          "customer_name": "James Wilson 46",
+          "priority": "low",
+          "assignee_employee_id": 9,
+          "opened_at": "2026-05-03",
+          "business_unit_id": 13,
+          "status": "resolved"
+        },
+        {
+          "id": 191,
+          "ticket_number": "TKT-779342",
+          "subject": "Question about business unit status",
+          "customer_name": "Lisa Park 191",
+          "priority": "urgent",
+          "assignee_employee_id": 9,
+          "opened_at": "2026-05-18",
+          "business_unit_id": 2,
+          "status": "resolved"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786345198.938284
+}

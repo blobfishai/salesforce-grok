@@ -1,0 +1,36 @@
+{
+  "id": "trace_840ecd724b26",
+  "type": "mcp_tool_call",
+  "tool": "jira.query_support_tickets",
+  "args": {
+    "subject": "Cannot access business unit records",
+    "status": "open",
+    "limit": 1
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_support_tickets",
+    "requested_tool": "query_support_tickets",
+    "result": {
+      "table": "support_tickets",
+      "count": 1,
+      "rows": [
+        {
+          "id": 43,
+          "ticket_number": "TKT-456080",
+          "subject": "Cannot access business unit records",
+          "customer_name": "Carlos Rivera 43",
+          "priority": "medium",
+          "assignee_employee_id": 12,
+          "opened_at": "2026-03-09",
+          "business_unit_id": 9,
+          "status": "open"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786345099.991297
+}

@@ -1,0 +1,22 @@
+{
+  "id": "trace_6e55315b1aba",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.core_workflow_agent",
+  "args": {
+    "request": "in table lead_scoring_policy, find name \"Summit Services\" and set status to \"inactive\""
+  },
+  "result": {
+    "ok": false,
+    "tool": "core_workflow_agent",
+    "requested_tool": "core_workflow_agent",
+    "result": {
+      "error": "ambiguous_match",
+      "message": "business handle matched multiple records",
+      "match_count": 2
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": "ambiguous_match"
+  },
+  "timestamp": 1786345632.321301
+}

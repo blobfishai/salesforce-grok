@@ -1,0 +1,39 @@
+{
+  "id": "trace_a8be36d186f0",
+  "type": "mcp_tool_call",
+  "tool": "github.sheet_agent",
+  "args": {
+    "request": "create sheet \"active_tickets\" with columns: category, status"
+  },
+  "result": {
+    "ok": true,
+    "tool": "sheet_agent",
+    "requested_tool": "sheet_agent",
+    "result": {
+      "status": "created",
+      "sheet": "active_tickets",
+      "sheet_id": 1,
+      "columns": [
+        "category",
+        "status"
+      ]
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "agent_sheets",
+        "row_id": "1",
+        "operation": "insert",
+        "before": null,
+        "after": {
+          "id": 1,
+          "title": "active_tickets",
+          "columns_spec": "category, status",
+          "created_at": "2026-08-10 07:13:13"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786345993.3098319
+}
