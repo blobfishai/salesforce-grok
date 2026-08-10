@@ -59,14 +59,19 @@ async function chat(messages, tools) {
   return res.json();
 }
 
-/** Agentic loop: model <-> MCP tools until a final (non-tool) answer or turn cap. */
-async function runAgent(mcp, llmTools, messages) {
+/** Agentic loop: model <-> MCP tools until a final (non-tool) answer or turn cap.
+ *  The cap is blobfish-style reference-relative when opts.maxTurns is supplied:
+ *  a budget derived from the task's own reference walk length, so long-horizon
+ *  tasks get proportionally long budgets and the cap never masquerades as a
+ *  capability verdict. */
+async function runAgent(mcp, llmTools, messages, opts = {}) {
+  const maxTurns = opts.maxTurns ?? config.engine.maxAgentTurns;
   const usage = { prompt: 0, completion: 0, total: 0 };
   let toolCallCount = 0;
   let finalText = null;
   const guardTokens = Math.floor(config.engine.contextWindowTokens * config.engine.contextGuardRatio);
 
-  for (let turn = 1; turn <= config.engine.maxAgentTurns; turn++) {
+  for (let turn = 1; turn <= maxTurns; turn++) {
     const resp = await chat(messages, llmTools);
     const u = resp.usage ?? {};
     usage.prompt += u.prompt_tokens ?? 0;
@@ -172,7 +177,11 @@ async function mainBlobfish() {
     { role: "user", content: typeof taskPrompt === "string" ? taskPrompt : JSON.stringify(taskPrompt) },
   ];
 
-  const { usage, toolCallCount } = await runAgent(mcp, llmTools, messages);
+  // Reference-relative budget (blobfish calibrationBudgetCeiling-style): scale
+  // the turn cap from the task's own reference walk length.
+  const refWalk = Array.isArray(task.walk) ? task.walk.length : 0;
+  const maxTurns = Math.max(config.engine.maxAgentTurns, refWalk * 3 + 6);
+  const { usage, toolCallCount } = await runAgent(mcp, llmTools, messages, { maxTurns });
   printStats(usage, toolCallCount);
 
   console.log(`\n=== Verifying task ${taskId} via blobfish VCode ===`);

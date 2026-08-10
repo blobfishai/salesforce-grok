@@ -19,6 +19,7 @@ const opt = (n, d) => (argv.includes(n) ? argv[argv.indexOf(n) + 1] : d);
 const TRIALS = Number(opt("--trials", "1"));
 const LABEL = opt("--label", "arena");
 const only = opt("--task", null);
+const MAX_TURNS = Number(opt("--max-turns", "16"));
 
 const spec = JSON.parse(readFileSync(join(ROOT, "world", "arena", "arena-tasks.json"), "utf8"));
 const tasks = spec.tasks.filter((t) => !only || t.id === only);
@@ -66,7 +67,7 @@ async function runEpisode(task, trial) {
   ];
   const episode = { label: LABEL, level: spec.level, taskId: task.id, type: task.type, trial, prompt: task.prompt, gt: task.gt, metric: task.metric, docs: task.docs, steps: [], usage: { prompt: 0, completion: 0 } };
   let answer = null;
-  for (let turn = 1; turn <= 16 && answer === null; turn++) {
+  for (let turn = 1; turn <= MAX_TURNS && answer === null; turn++) {
     const r = await chat(messages, tools);
     episode.usage.prompt += r.usage?.prompt_tokens ?? 0;
     episode.usage.completion += r.usage?.completion_tokens ?? 0;
