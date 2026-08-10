@@ -16,19 +16,18 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const PROMPT = `Maximum-complexity revenue-operations simulation world for the fictional bulge-bracket investment bank "Morgan Stanley (SIMULATED)". Evolve the existing Salesforce CRM (Sales Cloud + Service Cloud) lead-to-order world into the FULL B2B revenue lifecycle across an integrated GTM stack: (1) lead capture and enrichment waterfall with ICP scoring and intent signals; (2) inbound routing with an MQL->SAL acceptance gate; (3) outbound email sequencing with reply classification on SendGrid-style email infrastructure; (4) dialer plus conversation intelligence with diarized call transcripts and MEDDIC scorecards; (5) meeting scheduling with round-robin assignment on Google Calendar; (6) CRM core lead->contact->account->opportunity->quote->order in Salesforce; (7) CPQ with tiered discount authority and the sequential Deal Desk -> Compliance -> Finance approval matrix; (8) contract lifecycle and e-signature with a clause library and customer-first countersign order; (9) Stripe-style billing: subscriptions, invoices, payments, a dunning ladder, refunds/credits and proration reconciled against activated orders; (10) forecasting and pipeline inspection with commit categories and stale-deal rules; (11) customer success: weighted health scores, churn playbooks, EBR cadence, renewals on a 120-day timeline with uplift policy; (12) support cases with SLA tiers on Intercom-style ticketing; (13) territory, quota and compensation including deal splits and commission statements; (14) marketing automation: campaigns, nurture tracks, an MQL->SQL handoff SLA, consent and suppression lists; (15) sales enablement: battlecards against three named fictional competitors and content engagement tracking; (16) proposals/RFP responses with a security-questionnaire answer library; (17) analytics and reporting with exact KPI formulas; (18) RevOps data hygiene: duplicate detection, merges, and a webhook event bus between systems; (19) partner deal registration with conflict windows and margin tiers. Slack-style deal-room messaging carries approvals and escalations, Gmail-style correspondence threads, a Notion-style knowledge base holds the SOP corpus, Google Drive/Sheets document stores hold the artifacts (MSAs, order forms, rate cards, call transcripts, commission statements, win/loss reports), NetSuite-style order records reconcile billing, and Workday-style rep rosters carry quotas. Deep multi-hop cross-system workflows with strict policy gates from the anchor SOPs; cross-system invariants (closed-won opportunity => executed order form => activated order => subscription => invoice => payment) and document-grounded decisions where the agent must read the governing SOP or artifact before acting. All data synthetic.`;
 
 // tool_limit: <=0 means ALL of the service's operations; positive caps the mount.
+// r3 trim: the 12-service / ~390-op mount blew blobfish's 25-min end-to-end build
+// budget in assemble_calibrate. 7 services / ~200 ops keeps every core revenue
+// workflow mocked (the dropped suites — gmail/drive/sheets/notion/workday — stay
+// represented through anchors and generated domain tools) and fits the budget.
 const MOCK_SERVICES = [
   { service: "salesforce", tool_limit: 0 },
-  { service: "stripe", tool_limit: 80 },
-  { service: "sendgrid", tool_limit: 45 },
-  { service: "intercom", tool_limit: 40 },
-  { service: "slack", tool_limit: 35 },
-  { service: "gmail", tool_limit: 30 },
-  { service: "googlecalendar", tool_limit: 20 },
-  { service: "googledrive", tool_limit: 20 },
-  { service: "googlesheets", tool_limit: 0 },
-  { service: "notion", tool_limit: 0 },
+  { service: "stripe", tool_limit: 50 },
+  { service: "sendgrid", tool_limit: 30 },
+  { service: "intercom", tool_limit: 25 },
+  { service: "slack", tool_limit: 25 },
+  { service: "googlecalendar", tool_limit: 12 },
   { service: "netsuite", tool_limit: 0 },
-  { service: "workday", tool_limit: 15 },
 ];
 
 function corpus(dir) {

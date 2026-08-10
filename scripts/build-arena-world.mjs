@@ -65,7 +65,6 @@ const rank = (metric) => Object.entries(stats)
 
 const routeCat = "Billing discrepancy";
 const routedTo = rank((s) => s.doneByCat[routeCat] ?? 0)[0];
-const busiest = rank((s) => s.doneH2)[0];
 const activeByCat = {};
 for (const t of rows("support_tickets")) if (ACTIVE.has(t.status)) activeByCat[catOf(t.subject)] = (activeByCat[catOf(t.subject)] ?? 0) + 1;
 const topIssue = Object.entries(activeByCat).sort((a, b) => b[1] - a[1])[0];
@@ -82,6 +81,22 @@ if (LEVEL >= 2) {
   T.support_tickets.row_count = rows("support_tickets").length;
 }
 const routedToFinal = rank((s) => s.doneByCat[routeCat] ?? 0)[0];
+
+// handle_time GT must be computed AFTER near-tie injection: injected tickets are
+// resolved and opened inside the analytics window, so they count toward doneH2.
+// (2026-08-10 audit: the pre-injection GT was stale AND degenerate — every agent
+// had zero in-window completions, so the "winner" was pure tie-break; three
+// models found the true post-injection answer and were scored wrong.)
+for (const s of Object.values(stats)) s.doneH2 = 0;
+for (const t of rows("support_tickets")) {
+  if (DONE.has(t.status) && t.opened_at >= WIN[0] && t.opened_at <= WIN[1]) {
+    (stats[t.assignee_employee_id] ??= { done: 0, doneByCat: {}, active: 0, doneH2: 0 }).doneH2++;
+  }
+}
+const busiest = rank((s) => s.doneH2)[0];
+if (!busiest || (busiest[1].doneH2 ?? 0) === 0) {
+  throw new Error(`handle_time window ${WIN} is degenerate: no eligible agent completed any in-window ticket — GT would be pure tie-break`);
+}
 
 // ------------------------------------------------------------------ seeded input documents
 const docs = T.agent_documents;

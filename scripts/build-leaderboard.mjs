@@ -28,6 +28,16 @@ for (const [id, m] of Object.entries(roster.models)) {
     row.worldTasks = w.totals.tasks;
     row.worldStrict = w.totals.solidPass / w.totals.tasks;
     row.worldTrial = trials.length ? trials.filter((t) => t.passed).length / trials.length : 0;
+    // Audited strict (2026-08-10): required_workflow_path demands a tool order
+    // documented nowhere the agent can read — trials whose ONLY failure is that
+    // assertion count as passes. End-state and collateral assertions still bind.
+    const exPath = {};
+    for (const t of trials) {
+      const fc = new Set(t.failedConditions ?? []);
+      const ok = t.passed || (fc.size > 0 && [...fc].every((c) => c === "required_workflow_path"));
+      (exPath[t.taskId] ??= []).push(ok);
+    }
+    row.worldAudited = Object.values(exPath).filter((v) => v.every(Boolean)).length / w.totals.tasks;
     row.flaky = w.totals.flaky;
     row.infraErrors = w.totals.infraErrors;
     row.worldCost = w.totals.costUsd;
@@ -50,7 +60,7 @@ for (const [id, m] of Object.entries(roster.models)) {
   }
   rows.push(row);
 }
-rows.sort((x, y) => (y.worldStrict ?? -1) - (x.worldStrict ?? -1) || (y.arenaAcc ?? -1) - (x.arenaAcc ?? -1));
+rows.sort((x, y) => (y.worldAudited ?? y.worldStrict ?? -1) - (x.worldAudited ?? x.worldStrict ?? -1) || (y.arenaAcc ?? -1) - (x.arenaAcc ?? -1));
 
 const pct = (v) => (v === null || v === undefined ? "—" : (v * 100).toFixed(1) + "%");
 const money = (v) => (v === null || v === undefined ? "—" : "$" + v.toFixed(2));
@@ -107,8 +117,8 @@ const taskMatrix = `<table><thead><tr><th>Task</th>${rows.map((r) => `<th class=
   taskIds.map((tid) => `<tr><td>${tid}</td>${rows.map((r) => { const t = r.perTask?.[tid]; if (!t) return "<td>—</td>"; const cls = t.cls === "pass" ? "ok" : t.cls === "FLAKY" ? "flaky" : "bad"; return `<td class="${cls}">${t.passes}/${t.trials}</td>`; }).join("")}</tr>`).join("") +
   `</tbody></table>`;
 
-const mainTable = `<table><thead><tr><th>#</th><th>Model</th><th>Provider</th><th>Workflow strict<br><span class="sub">all trials pass</span></th><th>Workflow lenient<br><span class="sub">trial pass rate</span></th><th>Arena Q&amp;A</th><th>Avg calls</th><th>Cost/task</th><th>Run cost</th><th>$/M in·out</th></tr></thead><tbody>` +
-  rows.map((r, i) => `<tr><td>${i + 1}</td><td><b>${esc(r.name)}</b></td><td>${r.provider}</td><td><b>${pct(r.worldStrict)}</b>${r.flaky ? ` <span class="sub">(${r.flaky} flaky)</span>` : ""}</td><td>${pct(r.worldTrial)}</td><td>${pct(r.arenaAcc)}</td><td>${r.avgCalls?.toFixed(1) ?? "—"}</td><td>${money(r.costPerTask)}</td><td>${money((r.worldCost ?? 0) + (r.arenaCost ?? 0))}</td><td>${r.pricing ? `$${r.pricing.input}·$${r.pricing.output}` : "—"}</td></tr>`).join("") +
+const mainTable = `<table><thead><tr><th>#</th><th>Model</th><th>Provider</th><th>Workflow (audited)<br><span class="sub">ex undocumented-path</span></th><th>Workflow strict<br><span class="sub">all assertions</span></th><th>Arena Q&amp;A<br><span class="sub">corrected GT</span></th><th>Avg calls</th><th>Cost/task</th><th>Run cost</th><th>$/M in·out</th></tr></thead><tbody>` +
+  rows.map((r, i) => `<tr><td>${i + 1}</td><td><b>${esc(r.name)}</b></td><td>${r.provider}</td><td><b>${pct(r.worldAudited)}</b>${r.flaky ? ` <span class="sub">(${r.flaky} flaky)</span>` : ""}</td><td>${pct(r.worldStrict)}</td><td>${pct(r.arenaAcc)}</td><td>${r.avgCalls?.toFixed(1) ?? "—"}</td><td>${money(r.costPerTask)}</td><td>${money((r.worldCost ?? 0) + (r.arenaCost ?? 0))}</td><td>${r.pricing ? `$${r.pricing.input}·$${r.pricing.output}` : "—"}</td></tr>`).join("") +
   `</tbody></table>`;
 
 const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -133,14 +143,14 @@ svg{max-width:100%;height:auto;background:#fff;border:1px solid #e2e8f0}
 <h1>CRM Agent Leaderboard</h1>
 <p class="sub">Morgan Stanley (SIMULATED) revenue-operations world · blobfish.ai-generated, VCode state-verified · wave-5 hardened task set (17 tasks × 2 trials) + CRMArena-style analytics arena (6 tasks × 2 trials) · generated ${new Date().toISOString().slice(0, 10)}</p>
 
-<div class="note"><b>How to read this.</b> <b>Workflow strict</b> = share of state-mutating tasks where <i>every</i> trial passed the world's own VCode verifier (state diffs, policy-order, no-collateral-damage assertions) — the Harvey-LAB-style strict metric. <b>Workflow lenient</b> = trial-level pass rate. <b>Arena Q&amp;A</b> = exact/fuzzy answer accuracy on CRMArena-derived analytics tasks. Verification is deterministic program checks on final DB state + tool trace — no LLM judge.</div>
+<div class="note"><b>How to read this.</b> <b>Workflow (audited)</b> is the primary metric: strict all-trials-pass on the world's VCode verifiers, after the 2026-08-10 audit reclassified <code>required_workflow_path</code> on task_008/task_012 as an environment artifact (the mandated tool order is documented nowhere an agent can read — all 7 models failed it 0/2). End-state, policy, and collateral assertions still bind. <b>Arena Q&amp;A</b> uses the corrected handle_time ground truth (original GT was computed pre-near-tie-injection over a degenerate window; three models had found the true answer and were scored wrong). Verification is deterministic program checks on final DB state + tool trace — no LLM judge.</div>
 
 <h2>Leaderboard</h2>
 ${mainTable}
 
-<h2>Workflow pass rate <span class="sub toggle"><button class="on" onclick="tg(this,'strict')">strict</button><button onclick="tg(this,'lenient')">lenient</button></span></h2>
-<div id="c-strict">${barChart(rows, (r) => r.worldStrict)}</div>
-<div id="c-lenient" style="display:none">${barChart(rows, (r) => r.worldTrial, { color: "#0891b2" })}</div>
+<h2>Workflow pass rate <span class="sub toggle"><button class="on" onclick="tg(this,'strict')">audited</button><button onclick="tg(this,'lenient')">official strict</button></span></h2>
+<div id="c-strict">${barChart(rows, (r) => r.worldAudited)}</div>
+<div id="c-lenient" style="display:none">${barChart(rows, (r) => r.worldStrict, { color: "#0891b2" })}</div>
 
 <h2>Arena analytics accuracy</h2>
 ${barChart(rows, (r) => r.arenaAcc, { color: "#d97706" })}

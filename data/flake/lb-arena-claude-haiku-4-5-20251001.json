@@ -2,7 +2,9 @@
   "label": "lb-arena-claude-haiku-4-5-20251001",
   "level": 2,
   "model": "claude-haiku-4-5-20251001",
-  "finishedAt": "2026-08-10T07:08:31.424Z",
+  "finishedAt": "2026-08-10T07:49:50.435Z",
+  "rescoredAt": "2026-08-10",
+  "rescoreNote": "re-scored from episode logs against corrected GT (handle_time audit 2026-08-10)",
   "tasks": [
     {
       "taskId": "arena_case_routing",
@@ -10,13 +12,6 @@
       "trials": 2,
       "passRate": 0,
       "class": "fail"
-    },
-    {
-      "taskId": "arena_top_issue",
-      "passes": 1,
-      "trials": 2,
-      "passRate": 0.5,
-      "class": "FLAKY"
     },
     {
       "taskId": "arena_handle_time",
@@ -33,6 +28,13 @@
       "class": "pass"
     },
     {
+      "taskId": "arena_ned",
+      "passes": 2,
+      "trials": 2,
+      "passRate": 1,
+      "class": "pass"
+    },
+    {
       "taskId": "arena_policy_violation",
       "passes": 2,
       "trials": 2,
@@ -40,11 +42,11 @@
       "class": "pass"
     },
     {
-      "taskId": "arena_ned",
-      "passes": 2,
+      "taskId": "arena_top_issue",
+      "passes": 1,
       "trials": 2,
-      "passRate": 1,
-      "class": "pass"
+      "passRate": 0.5,
+      "class": "FLAKY"
     }
   ],
   "costUsd": 1.24
