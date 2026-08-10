@@ -1,0 +1,78 @@
+{
+  "level": 2,
+  "worldId": "sbx_7d7d8fedcecb4458",
+  "builtAt": "2026-08-10T05:13:01.567Z",
+  "seededDocs": [
+    "Case Routing Policy (rev. 2 — CURRENT)",
+    "Case Routing Policy (rev. 1)",
+    "KB-101 — Discount Authority Policy",
+    "KB-102 — Regulated Product Approval Chain",
+    "KB-103 — Payment Terms Standard",
+    "KB-104 — Promotional Discount Windows",
+    "Lead Discussion Notes — Riverside Contact",
+    "Lead Discussion Notes — Riverside Contact (update)"
+  ],
+  "tasks": [
+    {
+      "id": "arena_case_routing",
+      "type": "case_routing",
+      "metric": "exact",
+      "gt": "EMP-698636",
+      "docs": [
+        "Case Routing Policy (rev. 2 — CURRENT)"
+      ],
+      "prompt": "Use the case routing policy in the document store to determine the most suitable agent for the given case. Return only the employee number of the agent.\n## Given Case\n- Case Subject: Billing discrepancy on Q3 custody statement\n- Case Description: The client reports fee lines on the Q3 custody statement that do not match the agreed schedule and requests correction."
+    },
+    {
+      "id": "arena_top_issue",
+      "type": "top_issue_identification",
+      "metric": "fuzzy",
+      "gt": "Billing discrepancy",
+      "docs": [],
+      "prompt": "Identify the most common issue category among support tickets that are still active (status open, in_progress, or waiting_customer). The issue category is the ticket subject's leading phrase. Return only the category name."
+    },
+    {
+      "id": "arena_handle_time",
+      "type": "handle_time",
+      "metric": "exact",
+      "gt": "EMP-468862",
+      "docs": [
+        "Case Routing Policy (rev. 2 — CURRENT)"
+      ],
+      "prompt": "Per the routing policy's definitions of completed tickets and eligibility, identify the agent who completed the most support tickets opened between 2025-10-01 and 2025-12-31. Return only the employee number of the agent."
+    },
+    {
+      "id": "arena_lead_qualification",
+      "type": "lead_qualification",
+      "metric": "set",
+      "gt": [
+        "Budget"
+      ],
+      "docs": [
+        "Lead Discussion Notes — Riverside Contact",
+        "Lead Discussion Notes — Riverside Contact (update)"
+      ],
+      "prompt": "Based on the latest discussion notes for the lead \"Riverside Contact\" in the document store, can this lead be qualified? If the answer is no, which factors—'Budget', 'Authority', 'Need', or 'Timeline'—are responsible? Return only one or several of the four BANT factors, or 'None' if the lead qualifies."
+    },
+    {
+      "id": "arena_policy_violation",
+      "type": "policy_violation_identification",
+      "metric": "exact",
+      "gt": "KB-101",
+      "docs": [
+        "KB-101 — Discount Authority Policy",
+        "KB-102 — Regulated Product Approval Chain",
+        "KB-103 — Payment Terms Standard"
+      ],
+      "prompt": "Does the price and configuration of quote id 1 comply with company policy as written in the knowledge base? If it does not, return only the Id of the knowledge article being violated (e.g. KB-102). If no violation is found, return None."
+    },
+    {
+      "id": "arena_ned",
+      "type": "named_entity_disambiguation",
+      "metric": "exact",
+      "gt": "EMP-698636",
+      "docs": [],
+      "prompt": "More than one employee is named David Brown. Return only the employee number of the David Brown who works in department 1 and was hired in 2025."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "trace_c7583e3e1603",
+  "type": "mcp_tool_call",
+  "tool": "jira.query_support_tickets",
+  "args": {
+    "opened_at": "2025-11-01",
+    "limit": 200
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_support_tickets",
+    "requested_tool": "query_support_tickets",
+    "result": {
+      "table": "support_tickets",
+      "count": 1,
+      "rows": [
+        {
+          "id": 201,
+          "ticket_number": "TKT-970000",
+          "subject": "Billing discrepancy in fee schedule",
+          "customer_name": "Halstead Fund",
+          "priority": "medium",
+          "assignee_employee_id": 3,
+          "opened_at": "2025-11-01",
+          "business_unit_id": 1,
+          "status": "resolved"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786339099.49932
+}

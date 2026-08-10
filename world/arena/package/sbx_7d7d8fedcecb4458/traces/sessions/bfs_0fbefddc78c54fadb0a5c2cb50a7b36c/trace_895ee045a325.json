@@ -1,0 +1,84 @@
+{
+  "id": "trace_895ee045a325",
+  "type": "mcp_tool_call",
+  "tool": "notion.query_documents",
+  "args": {
+    "limit": 100
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_documents",
+    "requested_tool": "query_documents",
+    "result": {
+      "table": "agent_documents",
+      "query": null,
+      "count": 10,
+      "rows": [
+        {
+          "id": 1,
+          "title": "Meridian Supply Co",
+          "body": "Review unresolved business units exceptions before the next operating handoff. Record the decision, owner, and evidence used.",
+          "updated_at": "2026-01-15T09:00:00Z"
+        },
+        {
+          "id": 2,
+          "title": "Cedar Partners",
+          "body": "Confirm the business handle, compare the current lifecycle state, apply one scoped action, and verify no collateral rows changed.",
+          "updated_at": "2026-01-15T09:00:00Z"
+        },
+        {
+          "id": 3,
+          "title": "Case Routing Policy (rev. 2 \u2014 CURRENT)",
+          "body": "Effective 2026-06-01, supersedes rev. 1. Issue categories are determined by the ticket subject prefix: \"Billing discrepancy\", \"Problem updating\", \"Cannot access\", \"Question about\". A new case routes to the ELIGIBLE agent who has completed (status resolved or closed) the most support tickets in the case's category. Eligibility: employees with status \"active\" only \u2014 agents on leave or terminated are never routed. Tie-break 1: fewer currently active tickets (open, in_progress, waiting_customer). Tie-break 2: earlier hire_date. Answer with the agent's employee_number.",
+          "updated_at": "2026-06-01T09:00:00Z"
+        },
+        {
+          "id": 4,
+          "title": "Case Routing Policy (rev. 1)",
+          "body": "[SUPERSEDED] Route new cases to the agent with the most total completed tickets regardless of category. All employees are eligible.",
+          "updated_at": "2025-03-10T09:00:00Z"
+        },
+        {
+          "id": 5,
+          "title": "KB-101 \u2014 Discount Authority Policy",
+          "body": "Quotes may carry at most 15% discount without Deal Desk approval, and never more than 20% in an Approved state under any authority. Any Approved quote above 20% is out of policy.",
+          "updated_at": "2026-06-01T09:00:00Z"
+        },
+        {
+          "id": 6,
+          "title": "KB-102 \u2014 Regulated Product Approval Chain",
+          "body": "Quotes containing regulated products require the Compliance step recorded before approval.",
+          "updated_at": "2026-06-01T09:00:00Z"
+        },
+        {
+          "id": 7,
+          "title": "KB-103 \u2014 Payment Terms Standard",
+          "body": "Net-30 is standard; anything longer than Net-60 requires Finance sign-off.",
+          "updated_at": "2026-06-01T09:00:00Z"
+        },
+        {
+          "id": 8,
+          "title": "KB-104 \u2014 Promotional Discount Windows",
+          "body": "During declared promotional windows, list prices may be reduced at the catalog level. This policy does not change quote discount ceilings (see KB-101).",
+          "updated_at": "2026-06-01T09:00:00Z"
+        },
+        {
+          "id": 9,
+          "title": "Lead Discussion Notes \u2014 Riverside Contact",
+          "body": "Call 1 (2026-05-02): Riverside operations lead confirmed a approved budget envelope of $120k for this initiative; procurement has the PO template ready. Call 2 (2026-05-16): Clear need \u2014 their manual reconciliation runs 11 hours/week and misses SLAs; they want go-live inside Q4, and the project plan shows a committed timeline. Call 3 (2026-06-03): Our champion is an operations manager who cannot sign; the CFO (economic buyer) has not joined any call and deferred twice. No signature authority has been established.",
+          "updated_at": "2026-06-03T17:00:00Z"
+        },
+        {
+          "id": 10,
+          "title": "Lead Discussion Notes \u2014 Riverside Contact (update)",
+          "body": "Update (2026-07-21, supersedes earlier notes where they conflict): The CFO joined the last call and confirmed signing authority is resolved. However, group finance froze the initiative budget pending the H2 review \u2014 the $120k envelope is no longer approved. Need and timeline are unchanged.",
+          "updated_at": "2026-07-21T17:00:00Z"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786339197.9454248
+}

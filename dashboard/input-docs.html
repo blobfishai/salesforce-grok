@@ -1,0 +1,94 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Input documents & world evolution — arena eval</title><style>
+  :root { color-scheme: dark; --page:#0d0d0d; --surface-1:#1a1a19; --ink:#fff; --ink-2:#c3c2b7; --muted:#898781;
+    --grid:#2c2c2a; --border:rgba(255,255,255,.10); --series-1:#3987e5; --crit:#d03b3b; }
+  * { box-sizing:border-box; margin:0; }
+  body { background:var(--page); color:var(--ink); font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif; padding:24px; }
+  .wrap { max-width:1180px; margin:0 auto; }
+  header { display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 14px; }
+  h1 { font-size:20px; font-weight:650; }
+  .badge { font-size:11px; font-weight:600; color:var(--crit); border:1px solid currentColor; border-radius:999px; padding:2px 9px; }
+  .sub { color:var(--ink-2); margin:4px 0 16px; }
+  .panel { background:var(--surface-1); border:1px solid var(--border); border-radius:12px; padding:16px; margin-bottom:14px; }
+  .panel h2 { font-size:14.5px; font-weight:650; margin-bottom:4px; }
+  .note { color:var(--ink-2); font-size:12.5px; margin-bottom:12px; }
+  .doc { border:1px solid var(--grid); border-radius:10px; padding:12px 14px; margin-bottom:10px; }
+  .dhead { display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px; margin-bottom:6px; }
+  .dtitle { font-weight:650; font-size:13.5px; }
+  .dmeta { color:var(--muted); font-size:11px; }
+  .dbody { color:var(--ink-2); font-size:12.5px; font-family: Georgia, "Times New Roman", serif; background:var(--page); border:1px solid var(--grid); border-radius:8px; padding:10px 12px; }
+  .dused { margin-top:8px; font-size:11.5px; color:var(--muted); }
+  .chip { font-size:10.5px; border-radius:999px; padding:1px 8px; border:1px solid var(--grid); color:var(--ink-2); }
+  .chip.blue { color:var(--series-1); border-color:var(--series-1); }
+  .mono { font-family:ui-monospace,Menlo,monospace; }
+  table { width:100%; border-collapse:collapse; }
+  th { text-align:left; color:var(--muted); font-size:11.5px; padding:6px 8px; border-bottom:1px solid var(--grid); }
+  td { padding:6px 8px; border-bottom:1px solid var(--grid); vertical-align:top; }
+  td.num { text-align:right; } td.cond { color:var(--ink-2); font-size:12.5px; }
+  footer { color:var(--muted); font-size:12px; margin-top:14px; }
+</style></head><body><div class="wrap">
+  <header><h1>Input documents — what the tasks are anchored to</h1><span class="badge">SIMULATED · SYNTHETIC</span></header>
+  <div class="sub">Arena level 1 · every task's ground truth is computed from these documents + the world's own records, then scored CRMArena-style (exact / fuzzy / set match).</div>
+
+  <div class="panel">
+    <h2>Seeded task documents (inside the world's document store)</h2>
+    <div class="note">The agent must retrieve and reason over these — the answers live nowhere else.</div>
+    
+  <div class="doc">
+    <div class="dhead"><span class="dtitle">Case Routing Policy (rev. 2 — CURRENT)</span><span class="dmeta">agent_documents · id 3 · 2026-06-01</span></div>
+    <div class="dbody">Effective 2026-06-01, supersedes rev. 1. Issue categories are determined by the ticket subject prefix: "Billing discrepancy", "Problem updating", "Cannot access", "Question about". A new case routes to the ELIGIBLE agent who has completed (status resolved or closed) the most support tickets in the case's category. Eligibility: employees with status "active" only — agents on leave or terminated are never routed. Tie-break 1: fewer currently active tickets (open, in_progress, waiting_customer). Tie-break 2: earlier hire_date. Answer with the agent's employee_number.</div>
+    <div class="dused">grounds: <span class="chip blue mono">arena_case_routing</span> <span class="chip blue mono">arena_handle_time</span></div>
+  </div>
+  <div class="doc">
+    <div class="dhead"><span class="dtitle">KB-101 — Discount Authority Policy</span><span class="dmeta">agent_documents · id 4 · 2026-06-01</span></div>
+    <div class="dbody">Quotes may carry at most 15% discount without Deal Desk approval, and never more than 20% in an Approved state under any authority. Any Approved quote above 20% is out of policy.</div>
+    <div class="dused">grounds: <span class="chip blue mono">arena_policy_violation</span></div>
+  </div>
+  <div class="doc">
+    <div class="dhead"><span class="dtitle">KB-102 — Regulated Product Approval Chain</span><span class="dmeta">agent_documents · id 5 · 2026-06-01</span></div>
+    <div class="dbody">Quotes containing regulated products require the Compliance step recorded before approval.</div>
+    <div class="dused">grounds: <span class="chip blue mono">arena_policy_violation</span></div>
+  </div>
+  <div class="doc">
+    <div class="dhead"><span class="dtitle">KB-103 — Payment Terms Standard</span><span class="dmeta">agent_documents · id 6 · 2026-06-01</span></div>
+    <div class="dbody">Net-30 is standard; anything longer than Net-60 requires Finance sign-off.</div>
+    <div class="dused">grounds: <span class="chip blue mono">arena_policy_violation</span></div>
+  </div>
+  <div class="doc">
+    <div class="dhead"><span class="dtitle">Lead Discussion Notes — Riverside Contact</span><span class="dmeta">agent_documents · id 7 · 2026-06-03</span></div>
+    <div class="dbody">Call 1 (2026-05-02): Riverside operations lead confirmed a approved budget envelope of $120k for this initiative; procurement has the PO template ready. Call 2 (2026-05-16): Clear need — their manual reconciliation runs 11 hours/week and misses SLAs; they want go-live inside Q4, and the project plan shows a committed timeline. Call 3 (2026-06-03): Our champion is an operations manager who cannot sign; the CFO (economic buyer) has not joined any call and deferred twice. No signature authority has been established.</div>
+    <div class="dused">grounds: <span class="chip blue mono">arena_lead_qualification</span></div>
+  </div>
+  </div>
+
+  <div class="panel">
+    <h2>World-generation input files (anchor corpus → blobfish API)</h2>
+    <div class="note">Uploaded as <span class="mono">anchor_files</span> to <span class="mono">POST /api/v1/sandbox/jobs</span>; filename tokens map to research angles; workflow chains become graph walks.</div>
+    <table><thead><tr><th>file</th><th>document</th><th>excerpt</th><th>size</th></tr></thead><tbody>
+  <tr><td class="mono">01-lead-management-sop.md</td><td>Lead Management SOP</td><td class="cond">Lifecycle: New -&gt; Working -&gt; Converted | Disqualified. Only New/Working leads may be worked. Conversion (see 04-opportunity-stage-…</td><td class="num">0.7k</td></tr>
+  <tr><td class="mono">02-lead-scoring-policy.md</td><td>Lead Scoring Policy</td><td class="cond">Score = segment fit (0-40) + product interest strength (0-30) + region priority (0-30). Segment fit: Sovereign Wealth 40, Pension …</td><td class="num">0.7k</td></tr>
+  <tr><td class="mono">03-account-tiering.md</td><td>Account Tiering Standard</td><td class="cond">Tiers: Platinum (&gt;= $5M trailing TCV or sovereign mandate), Gold ($1M-$5M), Silver (&lt; $1M or newly converted). Tier drives discoun…</td><td class="num">0.6k</td></tr>
+  <tr><td class="mono">04-opportunity-stage-gates.md</td><td>Opportunity Stage Gates</td><td class="cond">Stages: Qualification -&gt; Discovery -&gt; Proposal -&gt; Negotiation -&gt; Closed Won | Closed Lost. Gate criteria: Discovery requires a log…</td><td class="num">0.7k</td></tr>
+  <tr><td class="mono">05-cpq-discount-policy.md</td><td>CPQ Discount Policy</td><td class="cond">List prices come from 13-product-catalog.md. Discount authority by account tier (03-account-tiering.md): Platinum up to 15%, Gold …</td><td class="num">0.7k</td></tr>
+  <tr><td class="mono">06-deal-desk-charter.md</td><td>Deal Desk Charter</td><td class="cond">Deal Desk reviews pricing exceptions: over-authority discounts (05-cpq-discount-policy.md), TCV &gt; $5M, non-standard payment terms,…</td><td class="num">0.6k</td></tr>
+  <tr><td class="mono">07-compliance-review-checklist.md</td><td>Compliance Review Checklist</td><td class="cond">Triggered when account.newClient = true or any quoted product is regulated (13-product-catalog.md). Checklist: KYC file complete; …</td><td class="num">0.7k</td></tr>
+  <tr><td class="mono">08-finance-approval-thresholds.md</td><td>Finance Approval Thresholds</td><td class="cond">Finance signs quotes with TCV &gt; $25,000,000, multi-year commitments &gt; 24 months, or non-standard revenue terms. Finance validates …</td><td class="num">0.6k</td></tr>
+  <tr><td class="mono">09-order-activation-runbook.md</td><td>Order Activation Runbook</td><td class="cond">Preconditions: quote status Approved (05-cpq-discount-policy.md) and opportunity at Negotiation (04-opportunity-stage-gates.md). A…</td><td class="num">0.7k</td></tr>
+  <tr><td class="mono">10-case-management-sla.md</td><td>Case Management SLA</td><td class="cond">Priorities: High (respond 4h, resolve 3 business days), Medium (8h / 5 days), Low (24h / 10 days). Platinum accounts (03-account-t…</td><td class="num">0.6k</td></tr>
+  <tr><td class="mono">11-activity-logging-standards.md</td><td>Activity Logging Standards</td><td class="cond">Types: Call, Email, Meeting, Task. Every stage gate (04-opportunity-stage-gates.md), approval decision (06-deal-desk-charter.md), …</td><td class="num">0.6k</td></tr>
+  <tr><td class="mono">12-forecast-methodology.md</td><td>Forecast Methodology</td><td class="cond">Weighted pipeline = sum(open opportunity amount x stage probability): Qualification 10%, Discovery 25%, Proposal 50%, Negotiation …</td><td class="num">0.6k</td></tr>
+  <tr><td class="mono">13-product-catalog.md</td><td>Product Catalog (Synthetic)</td><td class="cond">| Product | Family | List (USD/yr) | Regulated | |---|---|---|---|…</td><td class="num">0.8k</td></tr>
+  <tr><td class="mono">14-renewal-playbook.md</td><td>Renewal Playbook</td><td class="cond">Renewal opportunities open 120 days before order anniversary (09-order-activation-runbook.md) at Proposal stage with last-signed p…</td><td class="num">0.7k</td></tr>
+  <tr><td class="mono">15-territory-model.md</td><td>Territory Model</td><td class="cond">Regions: AMER, EMEA, APAC. Region priority for scoring (02-lead-scoring-policy.md): AMER 30, EMEA 25, APAC 20 — except Sovereign W…</td><td class="num">0.6k</td></tr>
+  <tr><td class="mono">16-data-quality-rules.md</td><td>Data Quality Rules</td><td class="cond">Every record carries synthetic=true. Invariants: an order must reference an Approved quote at conversion time (09-order-activation…</td><td class="num">0.7k</td></tr>
+  <tr><td class="mono">personas_roles-crm-org.md</td><td>Personas &amp; Roles — Simulated CRM Organization</td><td class="cond">- **Account Executive (Sales rep)** — owns leads (01-lead-management-sop.md), opportunities,   quotes; may not approve own discoun…</td><td class="num">1.5k</td></tr>
+  <tr><td class="mono">regulations-compliance-regimes.md</td><td>Regulations &amp; Compliance Regimes (Synthetic)</td><td class="cond">- **KYC/AML screening** — every newClient account completes identity and sanctions   screening before quote approval (07-complianc…</td><td class="num">1.4k</td></tr></tbody></table>
+  </div>
+
+  <div class="panel">
+    <h2>How the world deepened, wave over wave</h2>
+    <div class="note">Each iteration adds input documents, tools, hops, or ambiguity — then re-measures grok-4.5.</div>
+    <table><thead><tr><th>wave</th><th>inputs added</th><th>world / result</th></tr></thead><tbody><tr><td><b>wave 1</b></td><td class="cond">1 anchor PRD → POST /api/v1/sandbox/jobs</td><td class="cond">33 tables · 104 tools · 27 tasks · walks ≤6 hops · 2,377 rows</td></tr><tr><td><b>wave 2</b></td><td class="cond">18 anchor docs (12 grounding angles) + mock_services salesforce/stripe → same API</td><td class="cond">49 tables · 171 tools · 28 tasks · walks to 13 hops · 2,553 rows</td></tr><tr><td><b>wave 4</b></td><td class="cond">+15 seeded SOP documents inside the world (per passing task)</td><td class="cond">same schema; doc-retrieval hop added — grok still 15/15</td></tr><tr><td><b>wave 5</b></td><td class="cond">+conflicting SOP revisions, conditional rules, record collisions, decoy docs</td><td class="cond">frontier found: task_003 50% · task_018 0/6 · cliff at ~11 calls</td></tr><tr><td><b>arena L1</b></td><td class="cond">+real-eval task suite (CRMArena task types) grounded in routing policy, KB articles, lead notes</td><td class="cond">6 answer-matched tasks with computed ground truth</td></tr><tr><td><b>arena L2</b></td><td class="cond">+policy revisions, near-tie data, decoy KBs, superseding notes, extra name collisions</td><td class="cond">the hardening rung applied only to tasks grok passes</td></tr></tbody></table>
+  </div>
+  <footer>Simulation only — synthetic data; not affiliated with Morgan Stanley or Salesforce.</footer>
+</div></body></html>

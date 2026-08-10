@@ -81,6 +81,7 @@ async function runAgent(mcp, llmTools, messages) {
     }
 
     const msg = resp.choices[0].message;
+    if (msg.reasoning_content) log({ type: "thinking", turn, content: String(msg.reasoning_content).slice(0, 4000) });
     messages.push({ role: "assistant", content: msg.content ?? "", tool_calls: msg.tool_calls });
 
     if (msg.tool_calls?.length) {
