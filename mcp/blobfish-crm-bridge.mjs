@@ -64,9 +64,28 @@ const HARNESS_TOOLS = [
 function normSchema(s) {
   // LLM APIs require a root object schema; repair anything else.
   if (!s || typeof s !== "object" || Array.isArray(s)) return { type: "object", properties: {} };
-  if (s.type === "object") return { properties: {}, ...s };
-  if (s.properties) return { ...s, type: "object" };
-  return { type: "object", properties: {} };
+  let out;
+  if (s.type === "object") out = { properties: {}, ...s };
+  else if (s.properties) out = { ...s, type: "object" };
+  else return { type: "object", properties: {} };
+  return dedupeRequired(out);
+}
+
+// Some distilled wave-6 tool schemas ship duplicate entries in `required`
+// (e.g. ["segment_id","segment_id"]) — DeepSeek/Anthropic reject the whole
+// request with "non-unique elements". Dedupe recursively.
+function dedupeRequired(node) {
+  if (!node || typeof node !== "object") return node;
+  if (Array.isArray(node)) return node.map(dedupeRequired);
+  const out = { ...node };
+  if (Array.isArray(out.required)) out.required = [...new Set(out.required)];
+  for (const k of ["properties", "items", "definitions", "$defs"]) {
+    if (out[k] && typeof out[k] === "object") {
+      out[k] = Array.isArray(out[k]) ? out[k].map(dedupeRequired)
+        : Object.fromEntries(Object.entries(out[k]).map(([n, v]) => [n, dedupeRequired(v)]));
+    }
+  }
+  return out;
 }
 
 function authHeaders() {
