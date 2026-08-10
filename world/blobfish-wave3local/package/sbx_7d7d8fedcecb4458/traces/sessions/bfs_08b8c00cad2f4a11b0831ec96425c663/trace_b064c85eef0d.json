@@ -1,0 +1,78 @@
+{
+  "id": "trace_b064c85eef0d",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.query_sales_leads",
+  "args": {
+    "limit": 5
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_sales_leads",
+    "requested_tool": "query_sales_leads",
+    "result": {
+      "table": "sales_leads",
+      "count": 5,
+      "rows": [
+        {
+          "id": 1,
+          "lead_number": "LEAD-654696",
+          "company_name": "Riverside Company",
+          "contact_name": "Thomas Lee",
+          "source": "website",
+          "estimated_value": 73500.0,
+          "owner_employee_id": 1,
+          "created_at": "2026-02-13",
+          "status": "new"
+        },
+        {
+          "id": 2,
+          "lead_number": "LEAD-521568",
+          "company_name": "Meridian Company",
+          "contact_name": "Sarah Kim",
+          "source": "cold_call",
+          "estimated_value": 43000.0,
+          "owner_employee_id": 1,
+          "created_at": "2026-01-14",
+          "status": "converted"
+        },
+        {
+          "id": 3,
+          "lead_number": "LEAD-481689",
+          "company_name": "Northgate Company",
+          "contact_name": "Robert Martinez",
+          "source": "cold_call",
+          "estimated_value": 65500.0,
+          "owner_employee_id": 1,
+          "created_at": "2026-01-02",
+          "status": "contacted"
+        },
+        {
+          "id": 4,
+          "lead_number": "LEAD-274912",
+          "company_name": "Summit Company",
+          "contact_name": "Maria Garcia",
+          "source": "partner",
+          "estimated_value": 92500.0,
+          "owner_employee_id": 1,
+          "created_at": "2026-01-10",
+          "status": "converted"
+        },
+        {
+          "id": 5,
+          "lead_number": "LEAD-784310",
+          "company_name": "Fairview Company",
+          "contact_name": "Yuki Tanaka",
+          "source": "website",
+          "estimated_value": 22500.0,
+          "owner_employee_id": 14,
+          "created_at": "2026-05-09",
+          "status": "qualified"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786321161.25966
+}

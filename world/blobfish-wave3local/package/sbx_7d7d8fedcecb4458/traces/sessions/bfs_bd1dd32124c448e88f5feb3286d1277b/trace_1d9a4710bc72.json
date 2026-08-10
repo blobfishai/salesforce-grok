@@ -1,0 +1,51 @@
+{
+  "id": "trace_1d9a4710bc72",
+  "type": "mcp_tool_call",
+  "tool": "core.update_employee_work_assignments_status",
+  "args": {
+    "id": 3,
+    "new_status": "in_progress"
+  },
+  "result": {
+    "ok": true,
+    "tool": "update_employee_work_assignments_status",
+    "requested_tool": "update_employee_work_assignments_status",
+    "result": {
+      "updated": true,
+      "id": 3,
+      "table": "employee_work_assignments",
+      "old_status": "assigned",
+      "new_status": "in_progress"
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "employee_work_assignments",
+        "row_id": "3",
+        "operation": "update",
+        "before": {
+          "id": 3,
+          "employee_id": 3,
+          "reviewer_employee_id": 8,
+          "department_id": 3,
+          "service": "sendgrid",
+          "work_item_ref": "sendgrid:work-item:0003",
+          "assignment_role": "owner",
+          "status": "assigned"
+        },
+        "after": {
+          "id": 3,
+          "employee_id": 3,
+          "reviewer_employee_id": 8,
+          "department_id": 3,
+          "service": "sendgrid",
+          "work_item_ref": "sendgrid:work-item:0003",
+          "assignment_role": "owner",
+          "status": "in_progress"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786321363.747155
+}

@@ -1,0 +1,123 @@
+{
+  "id": "trace_41541ec9792c",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.sales_workflow_agent",
+  "args": {
+    "request": "in table sales_leads, find company_name \"Summit Company\" and set status to \"lost\""
+  },
+  "result": {
+    "ok": true,
+    "tool": "sales_workflow_agent",
+    "requested_tool": "sales_workflow_agent",
+    "result": {
+      "status": "updated",
+      "table": "sales_leads",
+      "business_handle": {
+        "company_name": "Summit Company"
+      },
+      "field": "status",
+      "before": "converted",
+      "after": "lost",
+      "record": {
+        "id": 4,
+        "lead_number": "LEAD-274912",
+        "company_name": "Summit Company",
+        "contact_name": "Maria Garcia",
+        "source": "partner",
+        "estimated_value": 92500.0,
+        "owner_employee_id": 1,
+        "created_at": "2026-01-10",
+        "status": "lost"
+      },
+      "resolution_receipt": {
+        "request": "in table sales_leads, find company_name \"Summit Company\" and set status to \"lost\"",
+        "strategy": "unique_business_handle",
+        "candidate_limit": 3,
+        "match_count": 1,
+        "matched_field": "company_name",
+        "available_business_handle_fields": [
+          "lead_number",
+          "company_name",
+          "contact_name"
+        ],
+        "available_resolution_fields": [
+          "lead_number",
+          "company_name",
+          "contact_name",
+          "source",
+          "estimated_value",
+          "owner_employee_id",
+          "created_at"
+        ],
+        "returned_fields": [
+          "company_name",
+          "contact_name",
+          "created_at",
+          "estimated_value",
+          "id",
+          "lead_number",
+          "owner_employee_id",
+          "source",
+          "status"
+        ]
+      },
+      "transition_receipt": {
+        "declared_lifecycle": [
+          "new",
+          "contacted",
+          "qualified",
+          "converted",
+          "lost"
+        ],
+        "before": "converted",
+        "after": "lost",
+        "mutation_applied": true,
+        "changed_primary_key": 4
+      },
+      "policy_receipt": {
+        "scope": "single_resolved_record",
+        "mutable_fields": [
+          "lead_number",
+          "company_name",
+          "contact_name",
+          "source",
+          "estimated_value",
+          "status"
+        ],
+        "collateral_rows_changed": 0
+      }
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "sales_leads",
+        "row_id": "4",
+        "operation": "update",
+        "before": {
+          "id": 4,
+          "lead_number": "LEAD-274912",
+          "company_name": "Summit Company",
+          "contact_name": "Maria Garcia",
+          "source": "partner",
+          "estimated_value": 92500.0,
+          "owner_employee_id": 1,
+          "created_at": "2026-01-10",
+          "status": "converted"
+        },
+        "after": {
+          "id": 4,
+          "lead_number": "LEAD-274912",
+          "company_name": "Summit Company",
+          "contact_name": "Maria Garcia",
+          "source": "partner",
+          "estimated_value": 92500.0,
+          "owner_employee_id": 1,
+          "created_at": "2026-01-10",
+          "status": "lost"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786321327.438563
+}

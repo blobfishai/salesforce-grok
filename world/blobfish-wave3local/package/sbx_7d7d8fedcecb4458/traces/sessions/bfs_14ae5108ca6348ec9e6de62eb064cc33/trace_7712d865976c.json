@@ -1,0 +1,51 @@
+{
+  "id": "trace_7712d865976c",
+  "type": "mcp_tool_call",
+  "tool": "core.update_employees_status",
+  "args": {
+    "id": 3,
+    "new_status": "on_leave"
+  },
+  "result": {
+    "ok": true,
+    "tool": "update_employees_status",
+    "requested_tool": "update_employees_status",
+    "result": {
+      "updated": true,
+      "id": 3,
+      "table": "employees",
+      "old_status": "active",
+      "new_status": "on_leave"
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "employees",
+        "row_id": "3",
+        "operation": "update",
+        "before": {
+          "id": 3,
+          "employee_number": "EMP-137846",
+          "name": "James Wilson",
+          "email": "contact79271@morganstanleysimulated.com",
+          "job_title": "Financial Analyst",
+          "department_id": 3,
+          "hire_date": "2023-06-15",
+          "status": "active"
+        },
+        "after": {
+          "id": 3,
+          "employee_number": "EMP-137846",
+          "name": "James Wilson",
+          "email": "contact79271@morganstanleysimulated.com",
+          "job_title": "Financial Analyst",
+          "department_id": 3,
+          "hire_date": "2023-06-15",
+          "status": "on_leave"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786321293.827361
+}

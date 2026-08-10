@@ -1,0 +1,24 @@
+{
+  "id": "trace_08faa4000a6c",
+  "type": "mcp_tool_call",
+  "tool": "email.organization_workflow_agent",
+  "args": {
+    "request": "in table employees, find name \"kofi\" and set status to the next declared lifecycle stage"
+  },
+  "result": {
+    "ok": false,
+    "tool": "organization_workflow_agent",
+    "requested_tool": "organization_workflow_agent",
+    "result": {
+      "error": "not_found",
+      "message": "no record matched the business handle",
+      "table": "employees",
+      "field": "name",
+      "value": "kofi"
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": "not_found"
+  },
+  "timestamp": 1786321209.540763
+}

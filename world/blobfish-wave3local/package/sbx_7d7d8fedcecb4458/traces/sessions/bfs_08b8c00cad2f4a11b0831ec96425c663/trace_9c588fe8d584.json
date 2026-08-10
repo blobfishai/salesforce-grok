@@ -1,0 +1,24 @@
+{
+  "id": "trace_9c588fe8d584",
+  "type": "mcp_tool_call",
+  "tool": "email.organization_records_agent",
+  "args": {
+    "request": "in table employees, find employee_number \"kofi\" and return the complete record"
+  },
+  "result": {
+    "ok": false,
+    "tool": "organization_records_agent",
+    "requested_tool": "organization_records_agent",
+    "result": {
+      "error": "not_found",
+      "message": "no record matched the business handle",
+      "table": "employees",
+      "field": "employee_number",
+      "value": "kofi"
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": "not_found"
+  },
+  "timestamp": 1786321189.187513
+}

@@ -1,0 +1,45 @@
+{
+  "id": "trace_1c81e8c58cac",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.update_status_lead",
+  "args": {
+    "id": 5,
+    "status": "Converted"
+  },
+  "result": {
+    "ok": true,
+    "tool": "update_status_lead",
+    "requested_tool": "update_status_lead",
+    "result": {
+      "updated": 1
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "lead",
+        "row_id": "5",
+        "operation": "update",
+        "before": {
+          "id": 5,
+          "company": "closed out",
+          "contactname": "Cedar Contact",
+          "segment": "standard",
+          "status": "Working",
+          "interestproductid": "under review",
+          "created_at": "2024-10-08"
+        },
+        "after": {
+          "id": 5,
+          "company": "closed out",
+          "contactname": "Cedar Contact",
+          "segment": "standard",
+          "status": "Converted",
+          "interestproductid": "under review",
+          "created_at": "2024-10-08"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786321478.872627
+}

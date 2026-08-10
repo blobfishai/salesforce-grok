@@ -1,0 +1,45 @@
+{
+  "id": "trace_e74f1f9c7fcf",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.update_status_lead",
+  "args": {
+    "id": 11,
+    "status": "Converted"
+  },
+  "result": {
+    "ok": true,
+    "tool": "update_status_lead",
+    "requested_tool": "update_status_lead",
+    "result": {
+      "updated": 1
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "lead",
+        "row_id": "11",
+        "operation": "update",
+        "before": {
+          "id": 11,
+          "company": "expedited",
+          "contactname": "Meridian Contact",
+          "segment": "under review",
+          "status": "Working",
+          "interestproductid": "escalated",
+          "created_at": "2025-01-15"
+        },
+        "after": {
+          "id": 11,
+          "company": "expedited",
+          "contactname": "Meridian Contact",
+          "segment": "under review",
+          "status": "Converted",
+          "interestproductid": "escalated",
+          "created_at": "2025-01-15"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786321479.312317
+}

@@ -1,0 +1,39 @@
+{
+  "id": "trace_5d200b483d3f",
+  "type": "mcp_tool_call",
+  "tool": "calendar.create_scheduled_run",
+  "args": {
+    "name": "Ironwood Works",
+    "schedule": "every monday 09:00",
+    "playbook_name": "Riverside Logistics"
+  },
+  "result": {
+    "ok": true,
+    "tool": "create_scheduled_run",
+    "requested_tool": "create_scheduled_run",
+    "result": {
+      "status": "saved",
+      "table": "agent_scheduled_runs",
+      "id": 3
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "agent_scheduled_runs",
+        "row_id": "3",
+        "operation": "insert",
+        "before": null,
+        "after": {
+          "id": 3,
+          "name": "Ironwood Works",
+          "schedule": "every monday 09:00",
+          "playbook_name": "Riverside Logistics",
+          "status": "scheduled",
+          "created_at": "2026-08-10 00:20:27"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786321227.808328
+}

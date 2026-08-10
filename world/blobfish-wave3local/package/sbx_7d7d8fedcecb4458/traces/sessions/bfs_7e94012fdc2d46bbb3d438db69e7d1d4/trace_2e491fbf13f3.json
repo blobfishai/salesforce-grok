@@ -1,0 +1,45 @@
+{
+  "id": "trace_2e491fbf13f3",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.update_status_lead",
+  "args": {
+    "id": 10,
+    "status": "Converted"
+  },
+  "result": {
+    "ok": true,
+    "tool": "update_status_lead",
+    "requested_tool": "update_status_lead",
+    "result": {
+      "updated": 1
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "lead",
+        "row_id": "10",
+        "operation": "update",
+        "before": {
+          "id": 10,
+          "company": "escalated",
+          "contactname": "Northgate Contact",
+          "segment": "closed out",
+          "status": "Working",
+          "interestproductid": "standard",
+          "created_at": "2025-10-31"
+        },
+        "after": {
+          "id": 10,
+          "company": "escalated",
+          "contactname": "Northgate Contact",
+          "segment": "closed out",
+          "status": "Converted",
+          "interestproductid": "standard",
+          "created_at": "2025-10-31"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786321479.237866
+}

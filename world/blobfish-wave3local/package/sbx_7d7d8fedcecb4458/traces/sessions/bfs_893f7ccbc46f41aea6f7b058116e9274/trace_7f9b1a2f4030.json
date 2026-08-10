@@ -1,0 +1,90 @@
+{
+  "id": "trace_7f9b1a2f4030",
+  "type": "mcp_tool_call",
+  "tool": "email.organization_records_agent",
+  "args": {
+    "request": "in table employees, find name \"Thomas Lee\" and return the complete record"
+  },
+  "result": {
+    "ok": true,
+    "tool": "organization_records_agent",
+    "requested_tool": "organization_records_agent",
+    "result": {
+      "status": "found",
+      "table": "employees",
+      "business_handle": {
+        "name": "Thomas Lee"
+      },
+      "record": {
+        "id": 9,
+        "employee_number": "EMP-237209",
+        "name": "Thomas Lee",
+        "email": "contact1933@morganstanleysimulated.com",
+        "job_title": "Recruiter",
+        "department_id": 2,
+        "hire_date": "2025-06-15",
+        "status": "active"
+      },
+      "declared_lifecycles": {
+        "status": [
+          "active",
+          "on_leave",
+          "terminated"
+        ]
+      },
+      "next_valid_values": {
+        "status": "on_leave"
+      },
+      "resolution_receipt": {
+        "request": "in table employees, find name \"Thomas Lee\" and return the complete record",
+        "strategy": "unique_business_handle",
+        "candidate_limit": 3,
+        "match_count": 1,
+        "matched_field": "name",
+        "available_business_handle_fields": [
+          "employee_number",
+          "name",
+          "email",
+          "job_title"
+        ],
+        "available_resolution_fields": [
+          "employee_number",
+          "name",
+          "email",
+          "job_title",
+          "department_id",
+          "hire_date"
+        ],
+        "returned_fields": [
+          "department_id",
+          "email",
+          "employee_number",
+          "hire_date",
+          "id",
+          "job_title",
+          "name",
+          "status"
+        ],
+        "read_only": true,
+        "mutation_applied": false
+      },
+      "workflow_context": {
+        "mutable_fields": [
+          "employee_number",
+          "name",
+          "email",
+          "job_title",
+          "hire_date",
+          "status"
+        ],
+        "declared_lifecycle_fields": [
+          "status"
+        ]
+      }
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786321451.840329
+}

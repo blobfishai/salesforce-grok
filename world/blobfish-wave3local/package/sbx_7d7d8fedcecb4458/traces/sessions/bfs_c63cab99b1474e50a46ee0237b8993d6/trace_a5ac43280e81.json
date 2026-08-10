@@ -1,0 +1,51 @@
+{
+  "id": "trace_a5ac43280e81",
+  "type": "mcp_tool_call",
+  "tool": "core.update_employees_status",
+  "args": {
+    "id": 4,
+    "new_status": "terminated"
+  },
+  "result": {
+    "ok": true,
+    "tool": "update_employees_status",
+    "requested_tool": "update_employees_status",
+    "result": {
+      "updated": true,
+      "id": 4,
+      "table": "employees",
+      "old_status": "on_leave",
+      "new_status": "terminated"
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "employees",
+        "row_id": "4",
+        "operation": "update",
+        "before": {
+          "id": 4,
+          "employee_number": "EMP-272682",
+          "name": "Mei Huang",
+          "email": "contact4101@morganstanleysimulated.com",
+          "job_title": "Support Specialist",
+          "department_id": 4,
+          "hire_date": "2024-02-15",
+          "status": "on_leave"
+        },
+        "after": {
+          "id": 4,
+          "employee_number": "EMP-272682",
+          "name": "Mei Huang",
+          "email": "contact4101@morganstanleysimulated.com",
+          "job_title": "Support Specialist",
+          "department_id": 4,
+          "hire_date": "2024-02-15",
+          "status": "terminated"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786321299.843678
+}

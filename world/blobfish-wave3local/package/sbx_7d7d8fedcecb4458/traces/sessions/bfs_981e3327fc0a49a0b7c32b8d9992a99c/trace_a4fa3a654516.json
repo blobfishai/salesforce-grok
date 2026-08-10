@@ -1,0 +1,22 @@
+{
+  "id": "trace_a4fa3a654516",
+  "type": "mcp_tool_call",
+  "tool": "email.organization_workflow_agent",
+  "args": {
+    "request": "in table employees, find employee_number \"EMP-137846\" and set status to \"on_leave\""
+  },
+  "result": {
+    "ok": false,
+    "tool": "organization_workflow_agent",
+    "requested_tool": "organization_workflow_agent",
+    "result": {
+      "error": "ambiguous_match",
+      "message": "business handle matched multiple records",
+      "match_count": 3
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": "ambiguous_match"
+  },
+  "timestamp": 1786321363.047669
+}

@@ -1,0 +1,51 @@
+{
+  "id": "trace_7094d453f0bb",
+  "type": "mcp_tool_call",
+  "tool": "core.update_marketing_content_assets_status",
+  "args": {
+    "id": 1,
+    "new_status": "in_review"
+  },
+  "result": {
+    "ok": true,
+    "tool": "update_marketing_content_assets_status",
+    "requested_tool": "update_marketing_content_assets_status",
+    "result": {
+      "updated": true,
+      "id": 1,
+      "table": "marketing_content_assets",
+      "old_status": "draft",
+      "new_status": "in_review"
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "marketing_content_assets",
+        "row_id": "1",
+        "operation": "update",
+        "before": {
+          "id": 1,
+          "asset_number": "ASSET-577726",
+          "title": "Northgate Logistics",
+          "asset_type": "whitepaper",
+          "campaign_id": 5,
+          "author_employee_id": 10,
+          "due_date": "2026-05-13",
+          "status": "draft"
+        },
+        "after": {
+          "id": 1,
+          "asset_number": "ASSET-577726",
+          "title": "Northgate Logistics",
+          "asset_type": "whitepaper",
+          "campaign_id": 5,
+          "author_employee_id": 10,
+          "due_date": "2026-05-13",
+          "status": "in_review"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786321432.754602
+}

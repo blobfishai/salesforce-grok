@@ -1,0 +1,39 @@
+{
+  "id": "trace_51bb0c35177d",
+  "type": "mcp_tool_call",
+  "tool": "notion.operations_workflow_agent",
+  "args": {
+    "request": "in table matter_documents, find title \"Deal materials \u2014 project_management: Move all of {name}'s tasks that are in progress to in review\" and set doc_type to \"input_materials\""
+  },
+  "result": {
+    "ok": true,
+    "tool": "operations_workflow_agent",
+    "requested_tool": "operations_workflow_agent",
+    "result": {
+      "status": "already_current",
+      "table": "matter_documents",
+      "business_handle": {
+        "title": "Deal materials \u2014 project_management: Move all of {name}'s tasks that are in progress to in review"
+      },
+      "field": "doc_type",
+      "value": "input_materials",
+      "resolution_receipt": {
+        "request": "in table matter_documents, find title \"Deal materials \u2014 project_management: Move all of {name}'s tasks that are in progress to in review\" and set doc_type to \"input_materials\"",
+        "strategy": "unique_business_handle",
+        "match_count": 1,
+        "matched_field": "title"
+      },
+      "transition_receipt": {
+        "declared_lifecycle": [],
+        "before": "input_materials",
+        "after": "input_materials",
+        "mutation_applied": false,
+        "reason": "already_current"
+      }
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786321255.161173
+}

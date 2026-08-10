@@ -1,0 +1,53 @@
+{
+  "id": "trace_bcabb6cb6d47",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.update_sales_leads_status",
+  "args": {
+    "id": 21,
+    "new_status": "contacted"
+  },
+  "result": {
+    "ok": true,
+    "tool": "update_sales_leads_status",
+    "requested_tool": "update_sales_leads_status",
+    "result": {
+      "updated": true,
+      "id": 21,
+      "table": "sales_leads",
+      "old_status": "new",
+      "new_status": "contacted"
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "sales_leads",
+        "row_id": "21",
+        "operation": "update",
+        "before": {
+          "id": 21,
+          "lead_number": "LEAD-389231",
+          "company_name": "Fairview Company 21",
+          "contact_name": "Carlos Rivera 21",
+          "source": "partner",
+          "estimated_value": 32000.0,
+          "owner_employee_id": 3,
+          "created_at": "2026-03-07",
+          "status": "new"
+        },
+        "after": {
+          "id": 21,
+          "lead_number": "LEAD-389231",
+          "company_name": "Fairview Company 21",
+          "contact_name": "Carlos Rivera 21",
+          "source": "partner",
+          "estimated_value": 32000.0,
+          "owner_employee_id": 3,
+          "created_at": "2026-03-07",
+          "status": "contacted"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786321186.250719
+}

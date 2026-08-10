@@ -1,0 +1,63 @@
+{
+  "id": "trace_bf0fc676e598",
+  "type": "mcp_tool_call",
+  "tool": "github.query_finance_expense_reports",
+  "args": {
+    "report_number": "EXP-779082"
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_finance_expense_reports",
+    "requested_tool": "query_finance_expense_reports",
+    "result": {
+      "table": "finance_expense_reports",
+      "count": 4,
+      "rows": [
+        {
+          "id": 131,
+          "report_number": "EXP-779082",
+          "employee_id": 4,
+          "category": "software",
+          "amount": 542.08,
+          "submitted_at": "2026-03-21",
+          "approver_employee_id": 7,
+          "status": "approved"
+        },
+        {
+          "id": 404,
+          "report_number": "EXP-779082",
+          "employee_id": "4 (archived)",
+          "category": "software",
+          "amount": 542.08,
+          "submitted_at": "2026-03-21",
+          "approver_employee_id": 7,
+          "status": "approved"
+        },
+        {
+          "id": 405,
+          "report_number": "EXP-779082",
+          "employee_id": "4 (duplicate)",
+          "category": "software",
+          "amount": 542.08,
+          "submitted_at": "2026-03-21",
+          "approver_employee_id": 7,
+          "status": "approved"
+        },
+        {
+          "id": 406,
+          "report_number": "EXP-779082",
+          "employee_id": "4 (transferred)",
+          "category": "software",
+          "amount": 542.08,
+          "submitted_at": "2026-03-21",
+          "approver_employee_id": 7,
+          "status": "approved"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786321477.613929
+}

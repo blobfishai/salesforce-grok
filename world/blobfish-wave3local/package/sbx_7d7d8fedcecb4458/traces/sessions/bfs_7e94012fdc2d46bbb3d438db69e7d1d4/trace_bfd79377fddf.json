@@ -1,0 +1,45 @@
+{
+  "id": "trace_bfd79377fddf",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.update_status_lead",
+  "args": {
+    "id": 219,
+    "status": "Converted"
+  },
+  "result": {
+    "ok": true,
+    "tool": "update_status_lead",
+    "requested_tool": "update_status_lead",
+    "result": {
+      "updated": 1
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "lead",
+        "row_id": "219",
+        "operation": "update",
+        "before": {
+          "id": 219,
+          "company": "under review",
+          "contactname": "Riverside Contact (transferred)",
+          "segment": "deferred",
+          "status": "Working",
+          "interestproductid": "on hold",
+          "created_at": "2024-08-23"
+        },
+        "after": {
+          "id": 219,
+          "company": "under review",
+          "contactname": "Riverside Contact (transferred)",
+          "segment": "deferred",
+          "status": "Converted",
+          "interestproductid": "on hold",
+          "created_at": "2024-08-23"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786321479.7352629
+}

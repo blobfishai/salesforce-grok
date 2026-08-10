@@ -1,0 +1,63 @@
+{
+  "id": "trace_9e1ed4f0b30e",
+  "type": "mcp_tool_call",
+  "tool": "erp.query_sourcing_purchase_orders",
+  "args": {
+    "po_number": "PO-664255"
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_sourcing_purchase_orders",
+    "requested_tool": "query_sourcing_purchase_orders",
+    "result": {
+      "table": "sourcing_purchase_orders",
+      "count": 4,
+      "rows": [
+        {
+          "id": 105,
+          "po_number": "PO-664255",
+          "vendor_id": 77,
+          "requested_by_employee_id": 1,
+          "amount": 18066.18,
+          "ordered_at": "2026-05-08",
+          "approver_employee_id": 9,
+          "status": "approved"
+        },
+        {
+          "id": 404,
+          "po_number": "PO-664255",
+          "vendor_id": "77 (archived)",
+          "requested_by_employee_id": 1,
+          "amount": 18066.18,
+          "ordered_at": "2026-05-08",
+          "approver_employee_id": 9,
+          "status": "approved"
+        },
+        {
+          "id": 405,
+          "po_number": "PO-664255",
+          "vendor_id": "77 (duplicate)",
+          "requested_by_employee_id": 1,
+          "amount": 18066.18,
+          "ordered_at": "2026-05-08",
+          "approver_employee_id": 9,
+          "status": "approved"
+        },
+        {
+          "id": 406,
+          "po_number": "PO-664255",
+          "vendor_id": "77 (transferred)",
+          "requested_by_employee_id": 1,
+          "amount": 18066.18,
+          "ordered_at": "2026-05-08",
+          "approver_employee_id": 9,
+          "status": "approved"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786321451.6907609
+}

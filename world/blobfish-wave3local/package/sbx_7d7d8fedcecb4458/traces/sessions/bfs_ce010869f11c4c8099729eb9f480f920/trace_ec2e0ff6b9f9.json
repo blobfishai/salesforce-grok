@@ -1,0 +1,45 @@
+{
+  "id": "trace_ec2e0ff6b9f9",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.update_status_lead",
+  "args": {
+    "id": 4,
+    "status": "Working"
+  },
+  "result": {
+    "ok": true,
+    "tool": "update_status_lead",
+    "requested_tool": "update_status_lead",
+    "result": {
+      "updated": 1
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "lead",
+        "row_id": "4",
+        "operation": "update",
+        "before": {
+          "id": 4,
+          "company": "expedited",
+          "contactname": "Lakeshore Contact",
+          "segment": "on hold",
+          "status": "Converted",
+          "interestproductid": "standard",
+          "created_at": "2025-08-27"
+        },
+        "after": {
+          "id": 4,
+          "company": "expedited",
+          "contactname": "Lakeshore Contact",
+          "segment": "on hold",
+          "status": "Working",
+          "interestproductid": "standard",
+          "created_at": "2025-08-27"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786321498.955435
+}

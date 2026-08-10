@@ -1,0 +1,36 @@
+{
+  "id": "trace_8174cb2439a7",
+  "type": "mcp_tool_call",
+  "tool": "notion.document_agent",
+  "args": {
+    "request": "list all documents"
+  },
+  "result": {
+    "ok": true,
+    "tool": "document_agent",
+    "requested_tool": "document_agent",
+    "result": {
+      "status": "created",
+      "doc": "list all documents",
+      "doc_id": 3,
+      "hint": "verbs: create doc \"T\": <body> \u00b7 append to \"T\": <text> \u00b7 read \"T\""
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "agent_documents",
+        "row_id": "3",
+        "operation": "insert",
+        "before": null,
+        "after": {
+          "id": 3,
+          "title": "list all documents",
+          "body": "list all documents",
+          "updated_at": "2026-08-10 00:19:42"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786321182.1684191
+}

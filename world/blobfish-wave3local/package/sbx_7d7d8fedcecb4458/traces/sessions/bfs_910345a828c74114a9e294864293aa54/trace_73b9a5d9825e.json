@@ -1,0 +1,94 @@
+{
+  "id": "trace_73b9a5d9825e",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.sales_records_agent",
+  "args": {
+    "request": "in table sales_leads, find company_name \"Summit Company\" and return the complete record"
+  },
+  "result": {
+    "ok": true,
+    "tool": "sales_records_agent",
+    "requested_tool": "sales_records_agent",
+    "result": {
+      "status": "found",
+      "table": "sales_leads",
+      "business_handle": {
+        "company_name": "Summit Company"
+      },
+      "record": {
+        "id": 4,
+        "lead_number": "LEAD-274912",
+        "company_name": "Summit Company",
+        "contact_name": "Maria Garcia",
+        "source": "partner",
+        "estimated_value": 92500.0,
+        "owner_employee_id": 1,
+        "created_at": "2026-01-10",
+        "status": "converted"
+      },
+      "declared_lifecycles": {
+        "status": [
+          "new",
+          "contacted",
+          "qualified",
+          "converted",
+          "lost"
+        ]
+      },
+      "next_valid_values": {
+        "status": "lost"
+      },
+      "resolution_receipt": {
+        "request": "in table sales_leads, find company_name \"Summit Company\" and return the complete record",
+        "strategy": "unique_business_handle",
+        "candidate_limit": 3,
+        "match_count": 1,
+        "matched_field": "company_name",
+        "available_business_handle_fields": [
+          "lead_number",
+          "company_name",
+          "contact_name"
+        ],
+        "available_resolution_fields": [
+          "lead_number",
+          "company_name",
+          "contact_name",
+          "source",
+          "estimated_value",
+          "owner_employee_id",
+          "created_at"
+        ],
+        "returned_fields": [
+          "company_name",
+          "contact_name",
+          "created_at",
+          "estimated_value",
+          "id",
+          "lead_number",
+          "owner_employee_id",
+          "source",
+          "status"
+        ],
+        "read_only": true,
+        "mutation_applied": false
+      },
+      "workflow_context": {
+        "mutable_fields": [
+          "lead_number",
+          "company_name",
+          "contact_name",
+          "source",
+          "estimated_value",
+          "status"
+        ],
+        "declared_lifecycle_fields": [
+          "status"
+        ]
+      }
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786321324.95826
+}

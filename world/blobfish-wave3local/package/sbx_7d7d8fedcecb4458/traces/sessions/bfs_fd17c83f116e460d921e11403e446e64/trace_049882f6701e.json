@@ -1,0 +1,41 @@
+{
+  "id": "trace_049882f6701e",
+  "type": "mcp_tool_call",
+  "tool": "core.update_status_quote",
+  "args": {
+    "id": 9,
+    "status": "Rejected"
+  },
+  "result": {
+    "ok": true,
+    "tool": "update_status_quote",
+    "requested_tool": "update_status_quote",
+    "result": {
+      "updated": 1
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "quote",
+        "row_id": "9",
+        "operation": "update",
+        "before": {
+          "id": 9,
+          "discountpct": 83,
+          "status": "Approved",
+          "approvalsteps": "routine",
+          "created_at": "2025-07-17"
+        },
+        "after": {
+          "id": 9,
+          "discountpct": 83,
+          "status": "Rejected",
+          "approvalsteps": "routine",
+          "created_at": "2025-07-17"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786321505.1194859
+}

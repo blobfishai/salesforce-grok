@@ -1,0 +1,35 @@
+{
+  "id": "trace_2bbe65b15ccd",
+  "type": "mcp_tool_call",
+  "tool": "core.query_employee_work_assignments",
+  "args": {
+    "work_item_ref": "salesforce:work-item:0004",
+    "employee_id": 4,
+    "reviewer_employee_id": 1
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_employee_work_assignments",
+    "requested_tool": "query_employee_work_assignments",
+    "result": {
+      "table": "employee_work_assignments",
+      "count": 1,
+      "rows": [
+        {
+          "id": 4,
+          "employee_id": 4,
+          "reviewer_employee_id": 1,
+          "department_id": 4,
+          "service": "salesforce",
+          "work_item_ref": "salesforce:work-item:0004",
+          "assignment_role": "owner",
+          "status": "in_progress"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786321317.830842
+}

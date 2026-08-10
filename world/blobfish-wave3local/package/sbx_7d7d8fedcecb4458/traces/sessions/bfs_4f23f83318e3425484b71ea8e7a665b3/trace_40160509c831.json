@@ -1,0 +1,22 @@
+{
+  "id": "trace_40160509c831",
+  "type": "mcp_tool_call",
+  "tool": "email.organization_records_agent",
+  "args": {
+    "request": "in table employee_work_assignments, find work_item_ref \"sendgrid:work-item:0001\" and return the complete record."
+  },
+  "result": {
+    "ok": false,
+    "tool": "organization_records_agent",
+    "requested_tool": "organization_records_agent",
+    "result": {
+      "error": "ambiguous_match",
+      "message": "business handle matched multiple records",
+      "match_count": 3
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": "ambiguous_match"
+  },
+  "timestamp": 1786321300.988087
+}

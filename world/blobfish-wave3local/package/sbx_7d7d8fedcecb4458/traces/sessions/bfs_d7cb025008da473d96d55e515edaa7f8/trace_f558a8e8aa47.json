@@ -1,0 +1,27 @@
+{
+  "id": "trace_f558a8e8aa47",
+  "type": "mcp_tool_call",
+  "tool": "email.organization_workflow_agent",
+  "args": {
+    "request": "in table employee_work_assignments, find work_item_ref \"workday:work-item:0006\" and set status to the next declared lifecycle stage"
+  },
+  "result": {
+    "ok": false,
+    "tool": "organization_workflow_agent",
+    "requested_tool": "organization_workflow_agent",
+    "result": {
+      "error": "ambiguous_next_lifecycle",
+      "message": "the next lifecycle stage branches; request an exact business outcome",
+      "field": "status",
+      "before": "in_progress",
+      "allowed": [
+        "completed",
+        "cancelled"
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": "ambiguous_next_lifecycle"
+  },
+  "timestamp": 1786321337.720659
+}

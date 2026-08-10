@@ -1,0 +1,51 @@
+{
+  "id": "trace_88ca8c6b6003",
+  "type": "mcp_tool_call",
+  "tool": "github.update_finance_expense_reports_status",
+  "args": {
+    "id": 131,
+    "new_status": "reimbursed"
+  },
+  "result": {
+    "ok": true,
+    "tool": "update_finance_expense_reports_status",
+    "requested_tool": "update_finance_expense_reports_status",
+    "result": {
+      "updated": true,
+      "id": 131,
+      "table": "finance_expense_reports",
+      "old_status": "approved",
+      "new_status": "reimbursed"
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "finance_expense_reports",
+        "row_id": "131",
+        "operation": "update",
+        "before": {
+          "id": 131,
+          "report_number": "EXP-779082",
+          "employee_id": 4,
+          "category": "software",
+          "amount": 542.08,
+          "submitted_at": "2026-03-21",
+          "approver_employee_id": 7,
+          "status": "approved"
+        },
+        "after": {
+          "id": 131,
+          "report_number": "EXP-779082",
+          "employee_id": 4,
+          "category": "software",
+          "amount": 542.08,
+          "submitted_at": "2026-03-21",
+          "approver_employee_id": 7,
+          "status": "reimbursed"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786321480.423125
+}

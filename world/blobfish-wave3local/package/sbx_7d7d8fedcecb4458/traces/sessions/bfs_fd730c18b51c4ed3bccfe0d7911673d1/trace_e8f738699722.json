@@ -1,0 +1,51 @@
+{
+  "id": "trace_e8f738699722",
+  "type": "mcp_tool_call",
+  "tool": "erp.update_sourcing_purchase_orders_status",
+  "args": {
+    "id": 105,
+    "new_status": "received"
+  },
+  "result": {
+    "ok": true,
+    "tool": "update_sourcing_purchase_orders_status",
+    "requested_tool": "update_sourcing_purchase_orders_status",
+    "result": {
+      "updated": true,
+      "id": 105,
+      "table": "sourcing_purchase_orders",
+      "old_status": "approved",
+      "new_status": "received"
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "sourcing_purchase_orders",
+        "row_id": "105",
+        "operation": "update",
+        "before": {
+          "id": 105,
+          "po_number": "PO-664255",
+          "vendor_id": 77,
+          "requested_by_employee_id": 1,
+          "amount": 18066.18,
+          "ordered_at": "2026-05-08",
+          "approver_employee_id": 9,
+          "status": "approved"
+        },
+        "after": {
+          "id": 105,
+          "po_number": "PO-664255",
+          "vendor_id": 77,
+          "requested_by_employee_id": 1,
+          "amount": 18066.18,
+          "ordered_at": "2026-05-08",
+          "approver_employee_id": 9,
+          "status": "received"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786321464.3129
+}

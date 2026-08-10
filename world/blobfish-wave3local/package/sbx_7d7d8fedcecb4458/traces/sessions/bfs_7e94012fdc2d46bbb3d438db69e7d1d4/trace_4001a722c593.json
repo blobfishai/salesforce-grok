@@ -1,0 +1,45 @@
+{
+  "id": "trace_4001a722c593",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.update_status_lead",
+  "args": {
+    "id": 7,
+    "status": "Converted"
+  },
+  "result": {
+    "ok": true,
+    "tool": "update_status_lead",
+    "requested_tool": "update_status_lead",
+    "result": {
+      "updated": 1
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "lead",
+        "row_id": "7",
+        "operation": "update",
+        "before": {
+          "id": 7,
+          "company": "standard",
+          "contactname": "Harbor Contact",
+          "segment": "closed out",
+          "status": "Working",
+          "interestproductid": "closed out",
+          "created_at": "2025-05-06"
+        },
+        "after": {
+          "id": 7,
+          "company": "standard",
+          "contactname": "Harbor Contact",
+          "segment": "closed out",
+          "status": "Converted",
+          "interestproductid": "closed out",
+          "created_at": "2025-05-06"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786321479.021363
+}

@@ -1,0 +1,45 @@
+{
+  "id": "trace_f707faa39979",
+  "type": "mcp_tool_call",
+  "tool": "salesforce.update_status_lead",
+  "args": {
+    "id": 2,
+    "status": "Working"
+  },
+  "result": {
+    "ok": true,
+    "tool": "update_status_lead",
+    "requested_tool": "update_status_lead",
+    "result": {
+      "updated": 1
+    },
+    "mutated": true,
+    "db_diff": [
+      {
+        "table": "lead",
+        "row_id": "2",
+        "operation": "update",
+        "before": {
+          "id": 2,
+          "company": "under review",
+          "contactname": "Cedar Contact",
+          "segment": "escalated",
+          "status": "Converted",
+          "interestproductid": "expedited",
+          "created_at": "2025-06-27"
+        },
+        "after": {
+          "id": 2,
+          "company": "under review",
+          "contactname": "Cedar Contact",
+          "segment": "escalated",
+          "status": "Working",
+          "interestproductid": "expedited",
+          "created_at": "2025-06-27"
+        }
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1786321498.813845
+}

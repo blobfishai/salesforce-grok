@@ -1,0 +1,34 @@
+{
+  "id": "trace_6eb85f95c642",
+  "type": "mcp_tool_call",
+  "tool": "erp.query_sourcing_purchase_orders",
+  "args": {
+    "po_number": "PO-846852",
+    "vendor_id": 98
+  },
+  "result": {
+    "ok": true,
+    "tool": "query_sourcing_purchase_orders",
+    "requested_tool": "query_sourcing_purchase_orders",
+    "result": {
+      "table": "sourcing_purchase_orders",
+      "count": 1,
+      "rows": [
+        {
+          "id": 102,
+          "po_number": "PO-846852",
+          "vendor_id": 98,
+          "requested_by_employee_id": 18,
+          "amount": 2610.78,
+          "ordered_at": "2026-01-18",
+          "approver_employee_id": 2,
+          "status": "approved"
+        }
+      ]
+    },
+    "mutated": false,
+    "db_diff": [],
+    "error": null
+  },
+  "timestamp": 1786321451.760844
+}
