@@ -1,0 +1,23 @@
+{
+ "name": "lookup_sales_opportunity_with_sales_leads",
+ "mcp_name": "salesforce.lookup_sales_opportunity_with_sales_leads",
+ "asset_namespace": "salesforce",
+ "description": "Look up a sales opportunitie record with its parent sales leads data joined. The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix. When only a business handle is known, resolve it with query_sales_opportunities and pass the returned id; when the exact id is already known, call this tool directly.",
+ "type": "read",
+ "target_tables": [
+  "sales_leads",
+  "sales_opportunities"
+ ],
+ "parameters": {
+  "id": "INTEGER"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "integer",
+    "description": "The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix. Resolve a business handle with query_sales_opportunities; never derive this value from a visible code suffix."
+   }
+  }
+ }
+}

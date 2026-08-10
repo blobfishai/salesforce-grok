@@ -1,0 +1,32 @@
+{
+ "name": "sourcing_records_agent",
+ "mcp_name": "salesforce.sourcing_records_agent",
+ "asset_namespace": "salesforce",
+ "description": "Delegate sourcing record lookup to morgan_stanley_simulated's read-only records sub-agent using a natural-language request. Prefer this over raw get/query tools when the user supplies a business handle. It resolves a unique business handle or exact readable attribute inside the tool, returns declared lifecycle order plus the next valid value, and rejects missing or ambiguous matches. Use only when the target appears in this owned table/handle scope: company_sourcing_handoffs[handoff_ref], customers[id|name|email], journal_entries[id], purchase_orders[id], sourcing_purchase_orders[po_number], sourcing_vendors[vendor_number|name|contact_name], vendors[id|name|email]. Request grammar: in table <table>, find <business_field> \"<value>\" and return the complete record.",
+ "type": "read",
+ "target_tables": [
+  "company_sourcing_handoffs",
+  "customers",
+  "journal_entries",
+  "purchase_orders",
+  "sourcing_purchase_orders",
+  "sourcing_vendors",
+  "vendors"
+ ],
+ "parameters": {
+  "request": "TEXT"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "request": {
+    "type": "string",
+    "description": "Natural-language lookup request containing a unique business handle or exact readable attribute"
+   }
+  },
+  "required": [
+   "request"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "name": "retrieve_collection",
+ "mcp_name": "core.retrieve_collection",
+ "asset_namespace": "core",
+ "description": "Retrieve a collection (GET /help_center/collections/{collection_id})",
+ "type": "read",
+ "target_tables": [
+  "collections"
+ ],
+ "parameters": {
+  "collection_id": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "collection_id": {
+    "type": "integer",
+    "description": "The unique identifier for the collection which is given by Intercom."
+   }
+  },
+  "required": [
+   "collection_id"
+  ],
+  "additionalProperties": false
+ }
+}

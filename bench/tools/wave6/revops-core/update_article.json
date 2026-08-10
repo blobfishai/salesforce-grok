@@ -1,0 +1,70 @@
+{
+ "name": "update_article",
+ "mcp_name": "core.update_article",
+ "asset_namespace": "core",
+ "description": "Update an article (PUT /articles/{article_id}) Declared lifecycle: articles.state: published → draft.",
+ "type": "write",
+ "target_tables": [
+  "articles"
+ ],
+ "parameters": {
+  "article_id": "integer",
+  "title": "string",
+  "description": "string",
+  "body": "string",
+  "author_id": "integer",
+  "state": "string",
+  "parent_id": "string",
+  "parent_type": "string",
+  "translated_content": "json"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "article_id": {
+    "type": "integer",
+    "description": "The unique identifier for the article which is given by Intercom."
+   },
+   "title": {
+    "type": "string",
+    "description": "The title of the article.For multilingual articles, this will be the title of the default language's content."
+   },
+   "description": {
+    "type": "string",
+    "description": "The description of the article. For multilingual articles, this will be the description of the default language's content."
+   },
+   "body": {
+    "type": "string",
+    "description": "The content of the article. For multilingual articles, this will be the body of the default language's content."
+   },
+   "author_id": {
+    "type": "integer",
+    "description": "The id of the author of the article. For multilingual articles, this will be the id of the author of the default language's content. Must b…"
+   },
+   "state": {
+    "type": "string",
+    "description": "Whether the article will be `published` or will be a `draft`. Defaults to draft. For multilingual articles, this will be the state of the d… Declared lifecycle: published → draft.",
+    "enum": [
+     "published",
+     "draft"
+    ]
+   },
+   "parent_id": {
+    "type": "string",
+    "description": "The id of the article's parent collection or section. An article without this field stands alone."
+   },
+   "parent_type": {
+    "type": "string",
+    "description": "The type of parent, which can either be a `collection` or `section`."
+   },
+   "translated_content": {
+    "type": "object",
+    "description": "The Translated Content of an Article. The keys are the locale codes and the values are the translated content of the article."
+   }
+  },
+  "required": [
+   "article_id"
+  ],
+  "additionalProperties": false
+ }
+}

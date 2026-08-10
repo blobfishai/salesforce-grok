@@ -1,0 +1,50 @@
+{
+ "name": "task_create",
+ "mcp_name": "core.task_create",
+ "asset_namespace": "core",
+ "description": "Create one tenant-scoped task. (POST /services/data/v1/tasks) Declared lifecycle: tasks.status: open → in_progress → blocked → (completed | cancelled).",
+ "type": "write",
+ "target_tables": [
+  "tasks"
+ ],
+ "parameters": {
+  "account_id": "string",
+  "subject": "string",
+  "status": "string",
+  "priority": "string",
+  "assigned_to": "string",
+  "description": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "account_id": {
+    "type": "string"
+   },
+   "subject": {
+    "type": "string"
+   },
+   "status": {
+    "type": "string",
+    "enum": [
+     "open",
+     "in_progress",
+     "blocked",
+     "completed",
+     "cancelled"
+    ],
+    "description": "Declared lifecycle: open → in_progress → blocked → (completed | cancelled)."
+   },
+   "priority": {
+    "type": "string"
+   },
+   "assigned_to": {
+    "type": "string"
+   },
+   "description": {
+    "type": "string"
+   }
+  },
+  "additionalProperties": false
+ }
+}

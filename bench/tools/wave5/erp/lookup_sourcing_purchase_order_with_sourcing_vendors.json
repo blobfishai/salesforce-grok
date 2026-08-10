@@ -1,0 +1,23 @@
+{
+ "name": "lookup_sourcing_purchase_order_with_sourcing_vendors",
+ "mcp_name": "erp.lookup_sourcing_purchase_order_with_sourcing_vendors",
+ "asset_namespace": "erp",
+ "description": "Look up a sourcing purchase order record with its parent sourcing vendors data joined. The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix. When only a business handle is known, resolve it with query_sourcing_purchase_orders and pass the returned id; when the exact id is already known, call this tool directly.",
+ "type": "read",
+ "target_tables": [
+  "sourcing_purchase_orders",
+  "sourcing_vendors"
+ ],
+ "parameters": {
+  "id": "INTEGER"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "integer",
+    "description": "The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix. Resolve a business handle with query_sourcing_purchase_orders; never derive this value from a visible code suffix."
+   }
+  }
+ }
+}

@@ -1,0 +1,45 @@
+{
+ "name": "customer_create",
+ "mcp_name": "core.customer_create",
+ "asset_namespace": "core",
+ "description": "Create one tenant-scoped customer. (POST /services/data/v1/customers) Declared lifecycle: customers.status: prospect → active → credit_hold → inactive.",
+ "type": "write",
+ "target_tables": [
+  "customers"
+ ],
+ "parameters": {
+  "name": "string",
+  "email": "string",
+  "status": "string",
+  "currency": "string",
+  "balance": "number"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "name": {
+    "type": "string"
+   },
+   "email": {
+    "type": "string"
+   },
+   "status": {
+    "type": "string",
+    "enum": [
+     "prospect",
+     "active",
+     "credit_hold",
+     "inactive"
+    ],
+    "description": "Declared lifecycle: prospect → active → credit_hold → inactive."
+   },
+   "currency": {
+    "type": "string"
+   },
+   "balance": {
+    "type": "number"
+   }
+  },
+  "additionalProperties": false
+ }
+}

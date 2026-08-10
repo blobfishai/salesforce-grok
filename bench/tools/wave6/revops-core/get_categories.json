@@ -1,0 +1,33 @@
+{
+ "name": "get_categories",
+ "mcp_name": "core.get_categories",
+ "asset_namespace": "core",
+ "description": "Retrieve all categories (GET /categories)",
+ "type": "read",
+ "target_tables": [
+  "categories"
+ ],
+ "parameters": {
+  "limit": "integer",
+  "category": "string",
+  "offset": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "limit": {
+    "type": "integer",
+    "description": "The number of categories to display per page."
+   },
+   "category": {
+    "type": "string",
+    "description": "Allows you to perform a prefix search on this particular category."
+   },
+   "offset": {
+    "type": "integer",
+    "description": "The point in the list that you would like to begin displaying results."
+   }
+  },
+  "additionalProperties": false
+ }
+}

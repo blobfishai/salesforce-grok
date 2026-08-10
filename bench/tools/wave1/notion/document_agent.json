@@ -1,0 +1,26 @@
+{
+ "name": "document_agent",
+ "mcp_name": "notion.document_agent",
+ "asset_namespace": "notion",
+ "description": "Delegate document work to morgan_stanley_simulated's document sub-agent in free text. Supports: create doc \"Title\": <body> · append to \"Title\": <text> · read \"Title\".",
+ "type": "write",
+ "target_tables": [
+  "agent_documents"
+ ],
+ "parameters": {
+  "request": "TEXT"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "request": {
+    "type": "string",
+    "description": "Free-text instruction for the document sub-agent"
+   }
+  },
+  "required": [
+   "request"
+  ],
+  "additionalProperties": false
+ }
+}

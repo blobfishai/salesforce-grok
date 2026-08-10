@@ -1,0 +1,61 @@
+{
+ "name": "query_employee_work_assignments",
+ "mcp_name": "core.query_employee_work_assignments",
+ "asset_namespace": "core",
+ "description": "Search and filter employee_work_assignments. Returns matching rows. Declared lifecycle: employee_work_assignments.status: assigned → in_progress → (completed | cancelled). Use this to resolve a human name, title, external code, or other business handle to the exact employee_work_assignments primary key required by item tools.",
+ "type": "read",
+ "target_tables": [
+  "employee_work_assignments"
+ ],
+ "parameters": {
+  "id": "INTEGER",
+  "employee_id": "INTEGER",
+  "reviewer_employee_id": "INTEGER",
+  "department_id": "INTEGER",
+  "service": "TEXT",
+  "work_item_ref": "TEXT",
+  "assignment_role": "TEXT",
+  "status": "TEXT",
+  "limit": "INTEGER"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "integer"
+   },
+   "employee_id": {
+    "type": "integer"
+   },
+   "reviewer_employee_id": {
+    "type": "integer"
+   },
+   "department_id": {
+    "type": "integer"
+   },
+   "service": {
+    "type": "string"
+   },
+   "work_item_ref": {
+    "type": "string"
+   },
+   "assignment_role": {
+    "type": "string"
+   },
+   "status": {
+    "type": "string",
+    "enum": [
+     "assigned",
+     "in_progress",
+     "completed",
+     "cancelled"
+    ],
+    "description": "Declared lifecycle: assigned → in_progress → (completed | cancelled)."
+   },
+   "limit": {
+    "type": "integer"
+   }
+  },
+  "additionalProperties": false
+ }
+}

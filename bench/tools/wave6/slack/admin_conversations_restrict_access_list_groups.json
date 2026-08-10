@@ -1,0 +1,36 @@
+{
+ "name": "admin_conversations_restrict_access_list_groups",
+ "mcp_name": "slack.admin_conversations_restrict_access_list_groups",
+ "asset_namespace": "slack",
+ "description": "List all IDP Groups linked to a channel (GET /admin.conversations.restrictAccess.listGroups)",
+ "type": "read",
+ "target_tables": [
+  "admin_conversations_restrict_accesses"
+ ],
+ "parameters": {
+  "token": "string",
+  "channel_id": "string",
+  "team_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "token": {
+    "type": "string",
+    "description": "Authentication token. Requires scope: `admin.conversations:read`"
+   },
+   "channel_id": {
+    "type": "string"
+   },
+   "team_id": {
+    "type": "string",
+    "description": "The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that a…"
+   }
+  },
+  "required": [
+   "token",
+   "channel_id"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,32 @@
+{
+ "name": "create_data_export",
+ "mcp_name": "core.create_data_export",
+ "asset_namespace": "core",
+ "description": "Create content data export (POST /export/content/data)",
+ "type": "write",
+ "target_tables": [
+  "data_exports"
+ ],
+ "parameters": {
+  "created_at_after": "integer",
+  "created_at_before": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "created_at_after": {
+    "type": "integer",
+    "description": "The start date that you request data for. It must be formatted as a unix timestamp."
+   },
+   "created_at_before": {
+    "type": "integer",
+    "description": "The end date that you request data for. It must be formatted as a unix timestamp."
+   }
+  },
+  "required": [
+   "created_at_after",
+   "created_at_before"
+  ],
+  "additionalProperties": false
+ }
+}

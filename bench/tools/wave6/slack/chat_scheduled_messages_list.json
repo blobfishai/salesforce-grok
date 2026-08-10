@@ -1,0 +1,43 @@
+{
+ "name": "chat_scheduled_messages_list",
+ "mcp_name": "slack.chat_scheduled_messages_list",
+ "asset_namespace": "slack",
+ "description": "Returns a list of scheduled messages. (GET /chat.scheduledMessages.list)",
+ "type": "read",
+ "target_tables": [
+  "messages"
+ ],
+ "parameters": {
+  "channel": "string",
+  "latest": "number",
+  "oldest": "number",
+  "limit": "integer",
+  "cursor": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "channel": {
+    "type": "string",
+    "description": "The channel of the scheduled messages"
+   },
+   "latest": {
+    "type": "number",
+    "description": "A UNIX timestamp of the latest value in the time range"
+   },
+   "oldest": {
+    "type": "number",
+    "description": "A UNIX timestamp of the oldest value in the time range"
+   },
+   "limit": {
+    "type": "integer",
+    "description": "Maximum number of original entries to return."
+   },
+   "cursor": {
+    "type": "string",
+    "description": "For pagination purposes, this is the `cursor` value returned from a previous call to `chat.scheduledmessages.list` indicating where you wan…"
+   }
+  },
+  "additionalProperties": false
+ }
+}

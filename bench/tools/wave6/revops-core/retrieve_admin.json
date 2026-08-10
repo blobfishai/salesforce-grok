@@ -1,0 +1,26 @@
+{
+ "name": "retrieve_admin",
+ "mcp_name": "core.retrieve_admin",
+ "asset_namespace": "core",
+ "description": "Retrieve an admin (GET /admins/{admin_id})",
+ "type": "read",
+ "target_tables": [
+  "admins"
+ ],
+ "parameters": {
+  "admin_id": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "admin_id": {
+    "type": "integer",
+    "description": "The unique identifier of a given admin"
+   }
+  },
+  "required": [
+   "admin_id"
+  ],
+  "additionalProperties": false
+ }
+}

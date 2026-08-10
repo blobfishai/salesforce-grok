@@ -1,0 +1,34 @@
+{
+ "name": "journal_entries_list",
+ "mcp_name": "core.journal_entries_list",
+ "asset_namespace": "core",
+ "description": "List journal_entries with bounded lifecycle filtering. (GET /services/data/v1/journal_entries) Declared lifecycle: journal_entries.status: draft → submitted → approved → posted → reversed. Use this to resolve a human name, title, external code, or other business handle to the exact journal_entries primary key required by item tools.",
+ "type": "read",
+ "target_tables": [
+  "journal_entries"
+ ],
+ "parameters": {
+  "status": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "enum": [
+     "draft",
+     "submitted",
+     "approved",
+     "posted",
+     "reversed"
+    ],
+    "description": "Declared lifecycle: draft → submitted → approved → posted → reversed."
+   },
+   "limit": {
+    "type": "integer"
+   }
+  },
+  "additionalProperties": false
+ }
+}

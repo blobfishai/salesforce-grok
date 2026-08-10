@@ -1,0 +1,29 @@
+{
+ "name": "search_knowledge",
+ "mcp_name": "core.search_knowledge",
+ "asset_namespace": "core",
+ "description": "Search or list shared knowledge by content or source before adding another entry.",
+ "type": "read",
+ "target_tables": [
+  "agent_knowledge"
+ ],
+ "parameters": {
+  "query": "TEXT",
+  "limit": "INTEGER"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "query": {
+    "type": "string",
+    "description": "Optional free-text knowledge content or source search"
+   },
+   "limit": {
+    "type": "integer",
+    "description": "Maximum rows to return (1-200)"
+   }
+  },
+  "required": [],
+  "additionalProperties": false
+ }
+}

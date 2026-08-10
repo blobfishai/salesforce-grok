@@ -1,0 +1,45 @@
+{
+ "name": "create_quote",
+ "mcp_name": "core.create_quote",
+ "asset_namespace": "core",
+ "description": "create quote records Declared lifecycle: quote.status: Approved.",
+ "type": "write",
+ "target_tables": [
+  "quote"
+ ],
+ "parameters": {
+  "discountpct": "integer",
+  "status": "text",
+  "approvalsteps": "text",
+  "created_at": "text"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "discountpct": {
+    "type": "integer"
+   },
+   "status": {
+    "type": "string",
+    "enum": [
+     "Approved",
+     "Rejected"
+    ],
+    "description": "Declared lifecycle: Approved."
+   },
+   "approvalsteps": {
+    "type": "string"
+   },
+   "created_at": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "discountpct",
+   "status",
+   "approvalsteps",
+   "created_at"
+  ],
+  "additionalProperties": false
+ }
+}

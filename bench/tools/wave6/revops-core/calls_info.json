@@ -1,0 +1,26 @@
+{
+ "name": "calls_info",
+ "mcp_name": "core.calls_info",
+ "asset_namespace": "core",
+ "description": "Returns information about a Call. (GET /calls.info)",
+ "type": "read",
+ "target_tables": [
+  "calls"
+ ],
+ "parameters": {
+  "id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "string",
+    "description": "`id` of the Call returned by the [`calls.add`](/methods/calls.add) method."
+   }
+  },
+  "required": [
+   "id"
+  ],
+  "additionalProperties": false
+ }
+}

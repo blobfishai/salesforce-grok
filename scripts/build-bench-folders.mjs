@@ -96,6 +96,32 @@ for (const [w, rel] of Object.entries(WORLDS)) {
   for (const t of spec.tasks) writeFileSync(join(tdir, `${t.id}.json`), JSON.stringify({ level: spec.level, ...t }, null, 1));
 }
 
+// ---------------------------------------------------------------- mcp tools
+// Every tool the worlds expose, browsable: bench/tools/<world>/<vendor>/<name>.json
+// (schema, type, target tables, MCP name) + <name>.py (the actual generated
+// implementation the packaged server executes).
+const vendorReg = JSON.parse(readFileSync(join(ROOT, "config", "mcp-servers.json"), "utf8")).vendors;
+const nsToVendor = {};
+for (const [v, spec] of Object.entries(vendorReg)) for (const ns of spec.namespaces) nsToVendor[ns] = v;
+for (const [w, rel] of Object.entries(WORLDS)) {
+  const world = (JSON.parse(readFileSync(join(ROOT, rel), "utf8"))).world ?? JSON.parse(readFileSync(join(ROOT, rel), "utf8"));
+  const index = [];
+  for (const t of world.tools ?? []) {
+    const ns = t.asset_namespace ?? (t.mcp_name?.includes(".") ? t.mcp_name.split(".")[0] : "core");
+    const vendor = w === "wave6" ? (nsToVendor[ns] ?? ns) : ns;
+    const dir = join(BENCH, "tools", w, vendor);
+    mkdirSync(dir, { recursive: true });
+    const { source, ...meta } = t;
+    writeFileSync(join(dir, `${t.name}.json`), JSON.stringify(meta, null, 1));
+    if (source) writeFileSync(join(dir, `${t.name}.py`), source);
+    index.push({ vendor, name: t.name, mcp: t.mcp_name, type: t.type, tables: t.target_tables ?? [] });
+  }
+  index.sort((a, b) => a.vendor.localeCompare(b.vendor) || a.name.localeCompare(b.name));
+  writeFileSync(join(BENCH, "tools", w, "INDEX.md"),
+    `# ${w} — ${index.length} MCP tools\n\n| vendor server | tool | type | target tables |\n|---|---|---|---|\n` +
+    index.map((i) => `| ${i.vendor} | \`${i.name}\` | ${i.type ?? ""} | ${(i.tables ?? []).slice(0, 3).join(", ")} |`).join("\n") + "\n");
+}
+
 // ---------------------------------------------------------------- traces
 const trialDir = join(ROOT, "data", "flake", ".trials");
 const copied = { traces: 0, failed: 0, missing: 0 };
@@ -189,6 +215,7 @@ world/*/world.json, data/flake/.trials/, sim/logs/).
 | folder | contents | files |
 |---|---|---|
 | tasks/ | every task definition by world (wave5, wave6, wave1, arena) + per-task \`*.seed.json\` fixture bundles (rows, documents, input documents, per-vendor MCP seeding) | ${counts(join(BENCH, "tasks"))} |
+| tools/ | every MCP tool by world → vendor server: schema (.json) + generated Python implementation (.py) + INDEX.md | ${counts(join(BENCH, "tools"))} |
 | verifiers/ | VCode verifier source (.py) + assertions metadata (.meta.json) | ${counts(join(BENCH, "verifiers"))} |
 | traces/ | every full run transcript, grouped world → model | ${counts(join(BENCH, "traces"))} |
 | failed-traces/ | the failing subset, same layout | ${counts(join(BENCH, "failed-traces"))} |

@@ -1,0 +1,46 @@
+{
+ "name": "journal_entry_create",
+ "mcp_name": "core.journal_entry_create",
+ "asset_namespace": "core",
+ "description": "Create one tenant-scoped journal_entry. (POST /services/data/v1/journal_entries) Declared lifecycle: journal_entries.status: draft → submitted → approved → posted → reversed.",
+ "type": "write",
+ "target_tables": [
+  "journal_entries"
+ ],
+ "parameters": {
+  "status": "string",
+  "amount": "number",
+  "currency": "string",
+  "memo": "string",
+  "approved_by": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "enum": [
+     "draft",
+     "submitted",
+     "approved",
+     "posted",
+     "reversed"
+    ],
+    "description": "Declared lifecycle: draft → submitted → approved → posted → reversed."
+   },
+   "amount": {
+    "type": "number"
+   },
+   "currency": {
+    "type": "string"
+   },
+   "memo": {
+    "type": "string"
+   },
+   "approved_by": {
+    "type": "string"
+   }
+  },
+  "additionalProperties": false
+ }
+}

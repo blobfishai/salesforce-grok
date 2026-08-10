@@ -1,0 +1,73 @@
+{
+ "name": "calendar_calendars_insert",
+ "mcp_name": "calendar.calendar_calendars_insert",
+ "asset_namespace": "calendar",
+ "description": "Creates a secondary calendar. The authenticated user for the request is made the data owner of the new calendar. Note: We recommend to auth… (POST /calendars)",
+ "type": "write",
+ "target_tables": [
+  "calendars"
+ ],
+ "parameters": {
+  "conference_properties": "json",
+  "time_zone": "string",
+  "kind": "string",
+  "description": "string",
+  "label_properties": "json",
+  "id": "string",
+  "data_owner": "string",
+  "etag": "string",
+  "auto_accept_invitations": "boolean",
+  "location": "string",
+  "summary": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "conference_properties": {
+    "type": "object",
+    "description": "Conferencing properties for this calendar, for example what types of conferences are allowed."
+   },
+   "time_zone": {
+    "type": "string",
+    "description": "The time zone of the calendar. (Formatted as an IANA Time Zone Database name, e.g. \"Europe/Zurich\".) Optional."
+   },
+   "kind": {
+    "type": "string",
+    "description": "Type of the resource (\"calendar#calendar\")."
+   },
+   "description": {
+    "type": "string",
+    "description": "Description of the calendar. Optional."
+   },
+   "label_properties": {
+    "type": "object",
+    "description": "Label properties defined on this calendar. If specified, overwrites the existing label properties. If not specified, the label properties r…"
+   },
+   "id": {
+    "type": "string",
+    "description": "Identifier of the calendar. To retrieve IDs call the calendarList.list() method."
+   },
+   "data_owner": {
+    "type": "string",
+    "description": "The email of the owner of the calendar. Set only for secondary calendars. Read-only."
+   },
+   "etag": {
+    "type": "string",
+    "description": "ETag of the resource."
+   },
+   "auto_accept_invitations": {
+    "type": "boolean",
+    "description": "Whether this calendar automatically accepts invitations. Only valid for resource calendars."
+   },
+   "location": {
+    "type": "string",
+    "description": "Geographic location of the calendar as free-form text. Optional."
+   },
+   "summary": {
+    "type": "string",
+    "description": "Title of the calendar."
+   }
+  },
+  "additionalProperties": false
+ }
+}

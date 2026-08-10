@@ -1,0 +1,28 @@
+{
+ "name": "conversations_create",
+ "mcp_name": "slack.conversations_create",
+ "asset_namespace": "slack",
+ "description": "Initiates a public or private channel-based conversation (POST /conversations.create)",
+ "type": "write",
+ "target_tables": [
+  "channels"
+ ],
+ "parameters": {
+  "name": "string",
+  "is_private": "boolean"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "name": {
+    "type": "string",
+    "description": "Name of the public or private channel to create"
+   },
+   "is_private": {
+    "type": "boolean",
+    "description": "Create a private channel instead of a public one"
+   }
+  },
+  "additionalProperties": false
+ }
+}

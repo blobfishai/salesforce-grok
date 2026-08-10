@@ -1,0 +1,38 @@
+{
+ "name": "update_hr_performance_reviews_status",
+ "mcp_name": "core.update_hr_performance_reviews_status",
+ "asset_namespace": "core",
+ "description": "Update status of a hr performance reviews record. Valid statuses: draft, submitted, acknowledged, finalized. Declared lifecycle: hr_performance_reviews.status: draft → submitted → acknowledged → finalized. The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix. When only a business handle is known, resolve it with query_hr_performance_reviews and pass the returned id; when the exact id is already known, call this tool directly.",
+ "type": "write",
+ "target_tables": [
+  "hr_performance_reviews"
+ ],
+ "parameters": {
+  "id": "INTEGER",
+  "new_status": "TEXT"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "integer",
+    "description": "The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix. Resolve a business handle with query_hr_performance_reviews; never derive this value from a visible code suffix."
+   },
+   "new_status": {
+    "type": "string",
+    "enum": [
+     "draft",
+     "submitted",
+     "acknowledged",
+     "finalized"
+    ],
+    "description": "Declared lifecycle: draft → submitted → acknowledged → finalized."
+   }
+  },
+  "required": [
+   "id",
+   "new_status"
+  ],
+  "additionalProperties": false
+ }
+}

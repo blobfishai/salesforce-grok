@@ -1,0 +1,46 @@
+{
+ "name": "update_collection",
+ "mcp_name": "core.update_collection",
+ "asset_namespace": "core",
+ "description": "Update a collection (PUT /help_center/collections/{collection_id})",
+ "type": "write",
+ "target_tables": [
+  "collections"
+ ],
+ "parameters": {
+  "collection_id": "integer",
+  "name": "string",
+  "description": "string",
+  "translated_content": "json",
+  "parent_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "collection_id": {
+    "type": "integer",
+    "description": "The unique identifier for the collection which is given by Intercom."
+   },
+   "name": {
+    "type": "string",
+    "description": "The name of the collection. For multilingual collections, this will be the name of the default language's content."
+   },
+   "description": {
+    "type": "string",
+    "description": "The description of the collection. For multilingual collections, this will be the description of the default language's content."
+   },
+   "translated_content": {
+    "type": "object",
+    "description": "The Translated Content of an Group. The keys are the locale codes and the values are the translated content of the Group."
+   },
+   "parent_id": {
+    "type": "string",
+    "description": "The id of the parent collection. If `null` then it will be updated as the first level collection."
+   }
+  },
+  "required": [
+   "collection_id"
+  ],
+  "additionalProperties": false
+ }
+}

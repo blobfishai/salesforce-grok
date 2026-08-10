@@ -1,0 +1,19 @@
+{
+ "name": "query_departments",
+ "mcp_name": "core.query_departments",
+ "asset_namespace": "core",
+ "description": "Search and filter departments. Returns matching rows. Use this to resolve a human name, title, external code, or other business handle to the exact departments primary key required by item tools.",
+ "type": "read",
+ "target_tables": [
+  "departments"
+ ],
+ "parameters": {
+  "id": "INTEGER",
+  "department_code": "TEXT",
+  "name": "TEXT",
+  "focus": "TEXT",
+  "headcount": "INTEGER",
+  "annual_budget": "REAL",
+  "limit": "INTEGER"
+ }
+}

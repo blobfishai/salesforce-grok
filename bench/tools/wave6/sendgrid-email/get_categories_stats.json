@@ -1,0 +1,57 @@
+{
+ "name": "get_categories_stats",
+ "mcp_name": "email.get_categories_stats",
+ "asset_namespace": "email",
+ "description": "Retrieve Email Statistics for Categories (GET /categories/stats)",
+ "type": "read",
+ "target_tables": [
+  "category_stats"
+ ],
+ "parameters": {
+  "start_date": "string",
+  "end_date": "string",
+  "categories": "string",
+  "limit": "integer",
+  "offset": "integer",
+  "aggregated_by": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "start_date": {
+    "type": "string",
+    "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD"
+   },
+   "end_date": {
+    "type": "string",
+    "description": "The end date of the statistics to retrieve. Defaults to today. Must follow format YYYY-MM-DD."
+   },
+   "categories": {
+    "type": "string",
+    "description": "The individual categories that you want to retrieve statistics for. You may include up to 10 different categories."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The number of results to include."
+   },
+   "offset": {
+    "type": "integer",
+    "description": "The number of results to skip."
+   },
+   "aggregated_by": {
+    "type": "string",
+    "description": "How to group the statistics. Must be either \"day\", \"week\", or \"month\".",
+    "enum": [
+     "day",
+     "week",
+     "month"
+    ]
+   }
+  },
+  "required": [
+   "start_date",
+   "categories"
+  ],
+  "additionalProperties": false
+ }
+}

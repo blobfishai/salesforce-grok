@@ -1,0 +1,26 @@
+{
+ "name": "get_content_import_source",
+ "mcp_name": "core.get_content_import_source",
+ "asset_namespace": "core",
+ "description": "Retrieve a content import source (GET /ai/content_import_sources/{source_id})",
+ "type": "read",
+ "target_tables": [
+  "content_import_sources"
+ ],
+ "parameters": {
+  "source_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "source_id": {
+    "type": "string",
+    "description": "The unique identifier for the content import source which is given by Intercom."
+   }
+  },
+  "required": [
+   "source_id"
+  ],
+  "additionalProperties": false
+ }
+}

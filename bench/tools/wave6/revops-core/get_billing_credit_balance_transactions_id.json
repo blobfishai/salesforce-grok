@@ -1,0 +1,31 @@
+{
+ "name": "get_billing_credit_balance_transactions_id",
+ "mcp_name": "core.get_billing_credit_balance_transactions_id",
+ "asset_namespace": "core",
+ "description": "Retrieve a credit balance transaction (GET /v1/billing/credit_balance_transactions/{id}). The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix.",
+ "type": "read",
+ "target_tables": [
+  "billing_credit_balance_transactions"
+ ],
+ "parameters": {
+  "expand": "json",
+  "id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "expand": {
+    "type": "object",
+    "description": "Specifies which fields in the response should be expanded."
+   },
+   "id": {
+    "type": "string",
+    "description": "Unique identifier for the object. The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix."
+   }
+  },
+  "required": [
+   "id"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,29 @@
+{
+ "name": "search_memory",
+ "mcp_name": "core.search_memory",
+ "asset_namespace": "core",
+ "description": "Search or list durable memory entries before saving a new operating preference.",
+ "type": "read",
+ "target_tables": [
+  "agent_memories"
+ ],
+ "parameters": {
+  "query": "TEXT",
+  "limit": "INTEGER"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "query": {
+    "type": "string",
+    "description": "Optional free-text memory content search"
+   },
+   "limit": {
+    "type": "integer",
+    "description": "Maximum rows to return (1-200)"
+   }
+  },
+  "required": [],
+  "additionalProperties": false
+ }
+}

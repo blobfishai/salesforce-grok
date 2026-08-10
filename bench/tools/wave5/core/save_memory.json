@@ -1,0 +1,26 @@
+{
+ "name": "save_memory",
+ "mcp_name": "core.save_memory",
+ "asset_namespace": "core",
+ "description": "Save a durable memory entry the agent can rely on in later sessions.",
+ "type": "write",
+ "target_tables": [
+  "agent_memories"
+ ],
+ "parameters": {
+  "content": "TEXT"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "content": {
+    "type": "string",
+    "description": "Memory content to persist"
+   }
+  },
+  "required": [
+   "content"
+  ],
+  "additionalProperties": false
+ }
+}

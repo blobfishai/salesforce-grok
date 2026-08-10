@@ -1,0 +1,31 @@
+{
+ "name": "add_to_knowledge",
+ "mcp_name": "core.add_to_knowledge",
+ "asset_namespace": "core",
+ "description": "Add an entry to the shared knowledge base.",
+ "type": "write",
+ "target_tables": [
+  "agent_knowledge"
+ ],
+ "parameters": {
+  "content": "TEXT",
+  "source": "TEXT"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "content": {
+    "type": "string",
+    "description": "Knowledge content"
+   },
+   "source": {
+    "type": "string",
+    "description": "Where this knowledge came from"
+   }
+  },
+  "required": [
+   "content"
+  ],
+  "additionalProperties": false
+ }
+}

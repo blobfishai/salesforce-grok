@@ -1,0 +1,31 @@
+{
+ "name": "create_api_keys",
+ "mcp_name": "core.create_api_keys",
+ "asset_namespace": "core",
+ "description": "Create API keys (POST /api_keys)",
+ "type": "write",
+ "target_tables": [
+  "api_keys"
+ ],
+ "parameters": {
+  "name": "string",
+  "scopes": "json"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "name": {
+    "type": "string",
+    "description": "The name you will use to describe this API Key."
+   },
+   "scopes": {
+    "type": "object",
+    "description": "The individual permissions that you are giving to this API Key."
+   }
+  },
+  "required": [
+   "name"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,35 @@
+{
+ "name": "purchase_orders_list",
+ "mcp_name": "erp.purchase_orders_list",
+ "asset_namespace": "erp",
+ "description": "List purchase_orders with bounded lifecycle filtering. (GET /services/data/v1/purchase_orders) Declared lifecycle: purchase_orders.status: draft → pending_approval → approved → received → closed → cancelled. Use this to resolve a human name, title, external code, or other business handle to the exact purchase_orders primary key required by item tools.",
+ "type": "read",
+ "target_tables": [
+  "purchase_orders"
+ ],
+ "parameters": {
+  "status": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "enum": [
+     "draft",
+     "pending_approval",
+     "approved",
+     "received",
+     "closed",
+     "cancelled"
+    ],
+    "description": "Declared lifecycle: draft → pending_approval → approved → received → closed → cancelled."
+   },
+   "limit": {
+    "type": "integer"
+   }
+  },
+  "additionalProperties": false
+ }
+}

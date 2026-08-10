@@ -1,0 +1,26 @@
+{
+ "name": "read_file",
+ "mcp_name": "notion.read_file",
+ "asset_namespace": "notion",
+ "description": "Read a seeded document fixture (CSV/TSV export) by filename — the ingest side of file→records workflows.",
+ "type": "read",
+ "target_tables": [
+  "agent_files"
+ ],
+ "parameters": {
+  "filename": "TEXT"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "filename": {
+    "type": "string",
+    "description": "Fixture filename"
+   }
+  },
+  "required": [
+   "filename"
+  ],
+  "additionalProperties": false
+ }
+}

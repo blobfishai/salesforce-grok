@@ -1,0 +1,26 @@
+{
+ "name": "retrieve_article",
+ "mcp_name": "core.retrieve_article",
+ "asset_namespace": "core",
+ "description": "Retrieve an article (GET /articles/{article_id})",
+ "type": "read",
+ "target_tables": [
+  "articles"
+ ],
+ "parameters": {
+  "article_id": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "article_id": {
+    "type": "integer",
+    "description": "The unique identifier for the article which is given by Intercom."
+   }
+  },
+  "required": [
+   "article_id"
+  ],
+  "additionalProperties": false
+ }
+}

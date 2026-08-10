@@ -1,0 +1,44 @@
+{
+ "name": "admin_apps_approved_list",
+ "mcp_name": "core.admin_apps_approved_list",
+ "asset_namespace": "core",
+ "description": "List approved apps for an org or workspace. (GET /admin.apps.approved.list)",
+ "type": "read",
+ "target_tables": [
+  "admin_apps_approveds"
+ ],
+ "parameters": {
+  "token": "string",
+  "limit": "integer",
+  "cursor": "string",
+  "team_id": "string",
+  "enterprise_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "token": {
+    "type": "string",
+    "description": "Authentication token. Requires scope: `admin.apps:read`"
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The maximum number of items to return. Must be between 1 - 1000 both inclusive."
+   },
+   "cursor": {
+    "type": "string",
+    "description": "Set `cursor` to `next_cursor` returned by the previous call to list items in the next page"
+   },
+   "team_id": {
+    "type": "string"
+   },
+   "enterprise_id": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "token"
+  ],
+  "additionalProperties": false
+ }
+}

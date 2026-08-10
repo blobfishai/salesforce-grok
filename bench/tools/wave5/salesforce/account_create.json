@@ -1,0 +1,45 @@
+{
+ "name": "account_create",
+ "mcp_name": "salesforce.account_create",
+ "asset_namespace": "salesforce",
+ "description": "Create one tenant-scoped account. (POST /services/data/v1/accounts) Declared lifecycle: accounts.status: prospect → active → at_risk → inactive.",
+ "type": "write",
+ "target_tables": [
+  "accounts"
+ ],
+ "parameters": {
+  "name": "string",
+  "industry": "string",
+  "status": "string",
+  "owner_id": "string",
+  "annual_revenue": "number"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "name": {
+    "type": "string"
+   },
+   "industry": {
+    "type": "string"
+   },
+   "status": {
+    "type": "string",
+    "enum": [
+     "prospect",
+     "active",
+     "at_risk",
+     "inactive"
+    ],
+    "description": "Declared lifecycle: prospect → active → at_risk → inactive."
+   },
+   "owner_id": {
+    "type": "string"
+   },
+   "annual_revenue": {
+    "type": "number"
+   }
+  },
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "name": "purchase_order_get",
+ "mcp_name": "erp.purchase_order_get",
+ "asset_namespace": "erp",
+ "description": "Get one purchase_order by id. (GET /services/data/v1/purchase_orders/{id}). The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix. When only a business handle is known, resolve it with purchase_orders_list and pass the returned id; when the exact id is already known, call this tool directly.",
+ "type": "read",
+ "target_tables": [
+  "purchase_orders"
+ ],
+ "parameters": {
+  "id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "string",
+    "description": "The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix. Resolve a business handle with purchase_orders_list; never derive this value from a visible code suffix."
+   }
+  },
+  "required": [
+   "id"
+  ],
+  "additionalProperties": false
+ }
+}

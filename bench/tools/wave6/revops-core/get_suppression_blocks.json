@@ -1,0 +1,38 @@
+{
+ "name": "get_suppression_blocks",
+ "mcp_name": "core.get_suppression_blocks",
+ "asset_namespace": "core",
+ "description": "Retrieve all blocks (GET /suppression/blocks)",
+ "type": "read",
+ "target_tables": [
+  "blocks"
+ ],
+ "parameters": {
+  "start_time": "integer",
+  "end_time": "integer",
+  "limit": "integer",
+  "offset": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "start_time": {
+    "type": "integer",
+    "description": "The start of the time range when a blocked email was created (inclusive). This is a unix timestamp."
+   },
+   "end_time": {
+    "type": "integer",
+    "description": "The end of the time range when a blocked email was created (inclusive). This is a unix timestamp."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "Limit the number of results to be displayed per page."
+   },
+   "offset": {
+    "type": "integer",
+    "description": "The point in the list to begin displaying results."
+   }
+  },
+  "additionalProperties": false
+ }
+}

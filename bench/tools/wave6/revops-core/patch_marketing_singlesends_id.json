@@ -1,0 +1,50 @@
+{
+ "name": "patch_marketing_singlesends_id",
+ "mcp_name": "core.patch_marketing_singlesends_id",
+ "asset_namespace": "core",
+ "description": "Update Single Send (PATCH /marketing/singlesends/{id}). The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix.",
+ "type": "write",
+ "target_tables": [
+  "singlesends"
+ ],
+ "parameters": {
+  "id": "string",
+  "categories": "json",
+  "email_config": "json",
+  "name": "string",
+  "send_at": "timestamp",
+  "send_to": "json"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "string",
+    "description": "The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix."
+   },
+   "categories": {
+    "type": "object",
+    "description": "The categories to associate with this Single Send."
+   },
+   "email_config": {
+    "type": "object"
+   },
+   "name": {
+    "type": "string",
+    "description": "The name of the Single Send."
+   },
+   "send_at": {
+    "type": "string",
+    "description": "The ISO 8601 time at which to send the Single Send — this must be set for a future time."
+   },
+   "send_to": {
+    "type": "object"
+   }
+  },
+  "required": [
+   "id",
+   "name"
+  ],
+  "additionalProperties": false
+ }
+}

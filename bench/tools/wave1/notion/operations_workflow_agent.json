@@ -1,0 +1,26 @@
+{
+ "name": "operations_workflow_agent",
+ "mcp_name": "notion.operations_workflow_agent",
+ "asset_namespace": "notion",
+ "description": "Delegate operations record work to morgan_stanley_simulated's workflow sub-agent using a natural-language request. Prefer this over raw update tools when the user supplies a business handle. It resolves a unique business handle or exact non-lifecycle attribute inside the tool, applies one scoped update, returns the before/after record, and rejects missing, ambiguous, or out-of-lifecycle values. Use only when the target appears in this owned table/handle scope: matter_documents[title]. Request grammar: in table <table>, find <business_field> \"<value>\" and either set <field> to \"<value>\" or set <field> to the next declared lifecycle stage.",
+ "type": "write",
+ "target_tables": [
+  "matter_documents"
+ ],
+ "parameters": {
+  "request": "TEXT"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "request": {
+    "type": "string",
+    "description": "Natural-language workflow request containing a unique business handle or exact readable attribute and requested outcome"
+   }
+  },
+  "required": [
+   "request"
+  ],
+  "additionalProperties": false
+ }
+}

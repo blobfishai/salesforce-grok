@@ -1,0 +1,81 @@
+{
+ "name": "post_campaigns",
+ "mcp_name": "core.post_campaigns",
+ "asset_namespace": "core",
+ "description": "Create a Campaign (POST /campaigns)",
+ "type": "write",
+ "target_tables": [
+  "campaigns"
+ ],
+ "parameters": {
+  "categories": "json",
+  "custom_unsubscribe_url": "string",
+  "editor": "string",
+  "html_content": "string",
+  "ip_pool": "string",
+  "list_ids": "json",
+  "plain_content": "string",
+  "segment_ids": "json",
+  "sender_id": "integer",
+  "subject": "string",
+  "suppression_group_id": "integer",
+  "title": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "categories": {
+    "type": "object",
+    "description": "The categories you would like associated to this campaign."
+   },
+   "custom_unsubscribe_url": {
+    "type": "string",
+    "description": "This is the url of the custom unsubscribe page that you provide for customers to unsubscribe from your suppression groups."
+   },
+   "editor": {
+    "type": "string",
+    "description": "The editor used in the UI."
+   },
+   "html_content": {
+    "type": "string",
+    "description": "The HTML of your marketing email."
+   },
+   "ip_pool": {
+    "type": "string",
+    "description": "The pool of IPs that you would like to send this email from."
+   },
+   "list_ids": {
+    "type": "object",
+    "description": "The IDs of the lists you are sending this campaign to. You can have both segment IDs and list IDs"
+   },
+   "plain_content": {
+    "type": "string",
+    "description": "The plain text content of your emails."
+   },
+   "segment_ids": {
+    "type": "object",
+    "description": "The segment IDs that you are sending this list to. You can have both segment IDs and list IDs. Segments are limited to 10 segment IDs."
+   },
+   "sender_id": {
+    "type": "integer",
+    "description": "The ID of the \"sender\" identity that you have created. Your recipients will see this as the \"from\" on your marketing emails."
+   },
+   "subject": {
+    "type": "string",
+    "description": "The subject of your campaign that your recipients will see."
+   },
+   "suppression_group_id": {
+    "type": "integer",
+    "description": "The suppression group that this marketing email belongs to, allowing recipients to opt-out of emails of this type."
+   },
+   "title": {
+    "type": "string",
+    "description": "The display title of your campaign. This will be viewable by you in the Marketing Campaigns UI."
+   }
+  },
+  "required": [
+   "title"
+  ],
+  "additionalProperties": false
+ }
+}

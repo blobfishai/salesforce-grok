@@ -1,0 +1,44 @@
+{
+ "name": "post_marketing_singlesends",
+ "mcp_name": "core.post_marketing_singlesends",
+ "asset_namespace": "core",
+ "description": "Create Single Send (POST /marketing/singlesends)",
+ "type": "write",
+ "target_tables": [
+  "singlesends"
+ ],
+ "parameters": {
+  "categories": "json",
+  "email_config": "json",
+  "name": "string",
+  "send_at": "timestamp",
+  "send_to": "json"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "categories": {
+    "type": "object",
+    "description": "The categories to associate with this Single Send."
+   },
+   "email_config": {
+    "type": "object"
+   },
+   "name": {
+    "type": "string",
+    "description": "The name of the Single Send."
+   },
+   "send_at": {
+    "type": "string",
+    "description": "The ISO 8601 time at which to send the Single Send — this must be set for a future time."
+   },
+   "send_to": {
+    "type": "object"
+   }
+  },
+  "required": [
+   "name"
+  ],
+  "additionalProperties": false
+ }
+}

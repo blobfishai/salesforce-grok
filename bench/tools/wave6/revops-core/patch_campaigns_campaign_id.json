@@ -1,0 +1,56 @@
+{
+ "name": "patch_campaigns_campaign_id",
+ "mcp_name": "core.patch_campaigns_campaign_id",
+ "asset_namespace": "core",
+ "description": "Update a Campaign (PATCH /campaigns/{campaign_id})",
+ "type": "write",
+ "target_tables": [
+  "campaigns"
+ ],
+ "parameters": {
+  "campaign_id": "integer",
+  "categories": "json",
+  "html_content": "string",
+  "plain_content": "string",
+  "subject": "string",
+  "title": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "campaign_id": {
+    "type": "integer",
+    "description": "The id of the campaign you would like to retrieve."
+   },
+   "categories": {
+    "type": "object",
+    "description": "The categories you want to tag on this campaign."
+   },
+   "html_content": {
+    "type": "string",
+    "description": "The HTML content of this campaign."
+   },
+   "plain_content": {
+    "type": "string",
+    "description": "The plain content of this campaign."
+   },
+   "subject": {
+    "type": "string",
+    "description": "The subject line for your campaign."
+   },
+   "title": {
+    "type": "string",
+    "description": "The title of the campaign."
+   }
+  },
+  "required": [
+   "campaign_id",
+   "categories",
+   "html_content",
+   "plain_content",
+   "subject",
+   "title"
+  ],
+  "additionalProperties": false
+ }
+}

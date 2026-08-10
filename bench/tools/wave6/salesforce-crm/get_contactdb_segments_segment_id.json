@@ -1,0 +1,27 @@
+{
+ "name": "get_contactdb_segments_segment_id",
+ "mcp_name": "salesforce.get_contactdb_segments_segment_id",
+ "asset_namespace": "salesforce",
+ "description": "Retrieve a segment (GET /contactdb/segments/{segment_id})",
+ "type": "read",
+ "target_tables": [
+  "contactdb_segments"
+ ],
+ "parameters": {
+  "segment_id": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "segment_id": {
+    "type": "integer",
+    "description": "The ID of the segment you want to request."
+   }
+  },
+  "required": [
+   "segment_id",
+   "segment_id"
+  ],
+  "additionalProperties": false
+ }
+}

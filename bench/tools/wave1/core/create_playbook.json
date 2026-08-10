@@ -1,0 +1,32 @@
+{
+ "name": "create_playbook",
+ "mcp_name": "core.create_playbook",
+ "asset_namespace": "core",
+ "description": "Create a reusable automation playbook (named step list).",
+ "type": "write",
+ "target_tables": [
+  "agent_playbooks"
+ ],
+ "parameters": {
+  "name": "TEXT",
+  "steps": "TEXT"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "name": {
+    "type": "string",
+    "description": "Playbook name"
+   },
+   "steps": {
+    "type": "string",
+    "description": "Ordered steps, one per line"
+   }
+  },
+  "required": [
+   "name",
+   "steps"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,28 @@
+{
+ "name": "get_suppression_bounces",
+ "mcp_name": "core.get_suppression_bounces",
+ "asset_namespace": "core",
+ "description": "Retrieve all bounces (GET /suppression/bounces)",
+ "type": "read",
+ "target_tables": [
+  "bounces"
+ ],
+ "parameters": {
+  "start_time": "integer",
+  "end_time": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "start_time": {
+    "type": "integer",
+    "description": "Refers start of the time range in unix timestamp when a bounce was created (inclusive)."
+   },
+   "end_time": {
+    "type": "integer",
+    "description": "Refers end of the time range in unix timestamp when a bounce was created (inclusive)."
+   }
+  },
+  "additionalProperties": false
+ }
+}

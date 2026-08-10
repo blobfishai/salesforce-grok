@@ -1,0 +1,31 @@
+{
+ "name": "admin_conversations_rename",
+ "mcp_name": "slack.admin_conversations_rename",
+ "asset_namespace": "slack",
+ "description": "Rename a public or private channel. (POST /admin.conversations.rename)",
+ "type": "write",
+ "target_tables": [
+  "admin_conversations"
+ ],
+ "parameters": {
+  "channel_id": "string",
+  "name": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "channel_id": {
+    "type": "string",
+    "description": "The channel to rename."
+   },
+   "name": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "channel_id",
+   "name"
+  ],
+  "additionalProperties": false
+ }
+}

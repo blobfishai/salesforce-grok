@@ -1,0 +1,33 @@
+{
+ "name": "getall_automation_stats",
+ "mcp_name": "core.getall_automation_stats",
+ "asset_namespace": "core",
+ "description": "Get All Automation Stats (GET /marketing/stats/automations)",
+ "type": "read",
+ "target_tables": [
+  "automations_responses"
+ ],
+ "parameters": {
+  "automation_ids": "json",
+  "page_size": "integer",
+  "page_token": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "automation_ids": {
+    "type": "object",
+    "description": "This endpoint returns all automation IDs if no `automation_ids` are specified."
+   },
+   "page_size": {
+    "type": "integer",
+    "description": "The number of elements you want returned on each page."
+   },
+   "page_token": {
+    "type": "string",
+    "description": "The stats endpoints are paginated. To get the next page, call the passed `_metadata.next` URL. If `_metadata.prev` doesn't exist, you're at…"
+   }
+  },
+  "additionalProperties": false
+ }
+}

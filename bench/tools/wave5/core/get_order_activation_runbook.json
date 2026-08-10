@@ -1,0 +1,22 @@
+{
+ "name": "get_order_activation_runbook",
+ "mcp_name": "core.get_order_activation_runbook",
+ "asset_namespace": "core",
+ "description": "get order_activation_runbook records. The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix. When only a business handle is known, resolve it with list_order_activation_runbook and pass the returned id; when the exact id is already known, call this tool directly.",
+ "type": "read",
+ "target_tables": [
+  "order_activation_runbook"
+ ],
+ "parameters": {
+  "id": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "integer",
+    "description": "The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix. Resolve a business handle with list_order_activation_runbook; never derive this value from a visible code suffix."
+   }
+  }
+ }
+}

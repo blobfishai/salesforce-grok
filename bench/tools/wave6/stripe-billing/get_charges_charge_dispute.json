@@ -1,0 +1,30 @@
+{
+ "name": "get_charges_charge_dispute",
+ "mcp_name": "stripe.get_charges_charge_dispute",
+ "asset_namespace": "stripe",
+ "description": "<p>Retrieve a dispute for a specified charge.</p> (GET /v1/charges/{charge}/dispute)",
+ "type": "read",
+ "target_tables": [
+  "disputes"
+ ],
+ "parameters": {
+  "charge": "string",
+  "expand": "json"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "charge": {
+    "type": "string"
+   },
+   "expand": {
+    "type": "object",
+    "description": "Specifies which fields in the response should be expanded."
+   }
+  },
+  "required": [
+   "charge"
+  ],
+  "additionalProperties": false
+ }
+}

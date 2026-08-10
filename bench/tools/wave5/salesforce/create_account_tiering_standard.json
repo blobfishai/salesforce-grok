@@ -1,0 +1,41 @@
+{
+ "name": "create_account_tiering_standard",
+ "mcp_name": "salesforce.create_account_tiering_standard",
+ "asset_namespace": "salesforce",
+ "description": "create account_tiering_standard records Declared lifecycle: account_tiering_standard.status: active → inactive → pending.",
+ "type": "write",
+ "target_tables": [
+  "account_tiering_standard"
+ ],
+ "parameters": {
+  "name": "text",
+  "status": "text",
+  "created_at": "text"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "name": {
+    "type": "string"
+   },
+   "status": {
+    "type": "string",
+    "enum": [
+     "active",
+     "inactive",
+     "pending"
+    ],
+    "description": "Declared lifecycle: active → inactive → pending."
+   },
+   "created_at": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "name",
+   "status",
+   "created_at"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,23 @@
+{
+ "name": "lookup_company_finance_handoff_with_volume_bands",
+ "mcp_name": "core.lookup_company_finance_handoff_with_volume_bands",
+ "asset_namespace": "core",
+ "description": "Look up a company finance handoff record with its parent volume bands data joined. The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix. When only a business handle is known, resolve it with query_company_finance_handoffs and pass the returned id; when the exact id is already known, call this tool directly.",
+ "type": "read",
+ "target_tables": [
+  "company_finance_handoffs",
+  "volume_bands"
+ ],
+ "parameters": {
+  "id": "INTEGER"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "integer",
+    "description": "The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix. Resolve a business handle with query_company_finance_handoffs; never derive this value from a visible code suffix."
+   }
+  }
+ }
+}

@@ -1,0 +1,47 @@
+{
+ "name": "purchase_order_create",
+ "mcp_name": "erp.purchase_order_create",
+ "asset_namespace": "erp",
+ "description": "Create one tenant-scoped purchase_order. (POST /services/data/v1/purchase_orders) Declared lifecycle: purchase_orders.status: draft → pending_approval → approved → received → closed → cancelled.",
+ "type": "write",
+ "target_tables": [
+  "purchase_orders"
+ ],
+ "parameters": {
+  "vendor_id": "string",
+  "status": "string",
+  "amount": "number",
+  "currency": "string",
+  "owner_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "vendor_id": {
+    "type": "string"
+   },
+   "status": {
+    "type": "string",
+    "enum": [
+     "draft",
+     "pending_approval",
+     "approved",
+     "received",
+     "closed",
+     "cancelled"
+    ],
+    "description": "Declared lifecycle: draft → pending_approval → approved → received → closed → cancelled."
+   },
+   "amount": {
+    "type": "number"
+   },
+   "currency": {
+    "type": "string"
+   },
+   "owner_id": {
+    "type": "string"
+   }
+  },
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,41 @@
+{
+ "name": "create_opportunity_stage_gates",
+ "mcp_name": "salesforce.create_opportunity_stage_gates",
+ "asset_namespace": "salesforce",
+ "description": "create opportunity_stage_gates records Declared lifecycle: opportunity_stage_gates.status: active → inactive → pending.",
+ "type": "write",
+ "target_tables": [
+  "opportunity_stage_gates"
+ ],
+ "parameters": {
+  "name": "text",
+  "status": "text",
+  "created_at": "text"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "name": {
+    "type": "string"
+   },
+   "status": {
+    "type": "string",
+    "enum": [
+     "active",
+     "inactive",
+     "pending"
+    ],
+    "description": "Declared lifecycle: active → inactive → pending."
+   },
+   "created_at": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "name",
+   "status",
+   "created_at"
+  ],
+  "additionalProperties": false
+ }
+}

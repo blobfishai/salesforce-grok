@@ -1,0 +1,41 @@
+{
+ "name": "create_activity_logging_standards",
+ "mcp_name": "core.create_activity_logging_standards",
+ "asset_namespace": "core",
+ "description": "create activity_logging_standards records Declared lifecycle: activity_logging_standards.status: active → inactive → pending.",
+ "type": "write",
+ "target_tables": [
+  "activity_logging_standards"
+ ],
+ "parameters": {
+  "name": "text",
+  "status": "text",
+  "created_at": "text"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "name": {
+    "type": "string"
+   },
+   "status": {
+    "type": "string",
+    "enum": [
+     "active",
+     "inactive",
+     "pending"
+    ],
+    "description": "Declared lifecycle: active → inactive → pending."
+   },
+   "created_at": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "name",
+   "status",
+   "created_at"
+  ],
+  "additionalProperties": false
+ }
+}

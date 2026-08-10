@@ -1,0 +1,39 @@
+{
+ "name": "update_marketing_campaigns_status",
+ "mcp_name": "core.update_marketing_campaigns_status",
+ "asset_namespace": "core",
+ "description": "Update status of a marketing campaigns record. Valid statuses: draft, planned, active, paused, completed. Declared lifecycle: marketing_campaigns.status: draft → planned → active → paused → completed. The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix. When only a business handle is known, resolve it with query_marketing_campaigns and pass the returned id; when the exact id is already known, call this tool directly.",
+ "type": "write",
+ "target_tables": [
+  "marketing_campaigns"
+ ],
+ "parameters": {
+  "id": "INTEGER",
+  "new_status": "TEXT"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "integer",
+    "description": "The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix. Resolve a business handle with query_marketing_campaigns; never derive this value from a visible code suffix."
+   },
+   "new_status": {
+    "type": "string",
+    "enum": [
+     "draft",
+     "planned",
+     "active",
+     "paused",
+     "completed"
+    ],
+    "description": "Declared lifecycle: draft → planned → active → paused → completed."
+   }
+  },
+  "required": [
+   "id",
+   "new_status"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "name": "customer_support_workflow_agent",
+ "mcp_name": "jira.customer_support_workflow_agent",
+ "asset_namespace": "jira",
+ "description": "Delegate customer support record work to morgan_stanley_simulated's workflow sub-agent using a natural-language request. Prefer this over raw update tools when the user supplies a business handle. It resolves a unique business handle or exact non-lifecycle attribute inside the tool, applies one scoped update, returns the before/after record, and rejects missing, ambiguous, or out-of-lifecycle values. Use only when the target appears in this owned table/handle scope: activity_log_lists[id], admin_lists[id], admin_with_apps[id|name|email|job_title], admins[name|email|job_title], ai_call_responses[user_phone_number], article_lists[id], articles[title|url], away_status_reason_lists[id], collections[name|url], content_import_sources[url], conversations[title], data_exports[id|download_url], help_centers[display_name|url], news_items[title|cover_image_url], support_tickets[ticket_number|customer_name]. Request grammar: in table <table>, find <business_field> \"<value>\" and either set <field> to \"<value>\" or set <field> to the next declared lifecycle stage.",
+ "type": "write",
+ "target_tables": [
+  "activity_log_lists",
+  "admin_lists",
+  "admin_with_apps",
+  "admins",
+  "ai_call_responses",
+  "article_lists",
+  "articles",
+  "away_status_reason_lists",
+  "collections",
+  "content_import_sources",
+  "conversations",
+  "data_exports",
+  "help_centers",
+  "news_items",
+  "support_tickets"
+ ],
+ "parameters": {
+  "request": "TEXT"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "request": {
+    "type": "string",
+    "description": "Natural-language workflow request containing a unique business handle or exact readable attribute and requested outcome"
+   }
+  },
+  "required": [
+   "request"
+  ],
+  "additionalProperties": false
+ }
+}

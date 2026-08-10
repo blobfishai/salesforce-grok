@@ -1,0 +1,37 @@
+{
+ "name": "create_scheduled_run",
+ "mcp_name": "calendar.create_scheduled_run",
+ "asset_namespace": "calendar",
+ "description": "Schedule a recurring automation run (re-enters as a new task episode).",
+ "type": "write",
+ "target_tables": [
+  "agent_scheduled_runs"
+ ],
+ "parameters": {
+  "name": "TEXT",
+  "schedule": "TEXT",
+  "playbook_name": "TEXT"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "name": {
+    "type": "string",
+    "description": "Run name"
+   },
+   "schedule": {
+    "type": "string",
+    "description": "Cadence, e.g. \"every monday 09:00\""
+   },
+   "playbook_name": {
+    "type": "string",
+    "description": "Playbook to execute"
+   }
+  },
+  "required": [
+   "name",
+   "schedule"
+  ],
+  "additionalProperties": false
+ }
+}

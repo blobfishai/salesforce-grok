@@ -1,0 +1,39 @@
+{
+ "name": "update_support_tickets_status",
+ "mcp_name": "jira.update_support_tickets_status",
+ "asset_namespace": "jira",
+ "description": "Update status of a support tickets record. Valid statuses: open, in_progress, waiting_customer, resolved, closed. Declared lifecycle: support_tickets.status: open → in_progress → waiting_customer → resolved → closed. The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix. When only a business handle is known, resolve it with query_support_tickets and pass the returned id; when the exact id is already known, call this tool directly.",
+ "type": "write",
+ "target_tables": [
+  "support_tickets"
+ ],
+ "parameters": {
+  "id": "INTEGER",
+  "new_status": "TEXT"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "integer",
+    "description": "The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix. Resolve a business handle with query_support_tickets; never derive this value from a visible code suffix."
+   },
+   "new_status": {
+    "type": "string",
+    "enum": [
+     "open",
+     "in_progress",
+     "waiting_customer",
+     "resolved",
+     "closed"
+    ],
+    "description": "Declared lifecycle: open → in_progress → waiting_customer → resolved → closed."
+   }
+  },
+  "required": [
+   "id",
+   "new_status"
+  ],
+  "additionalProperties": false
+ }
+}

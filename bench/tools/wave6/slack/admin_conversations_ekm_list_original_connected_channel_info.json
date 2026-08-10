@@ -1,0 +1,46 @@
+{
+ "name": "admin_conversations_ekm_list_original_connected_channel_info",
+ "mcp_name": "slack.admin_conversations_ekm_list_original_connected_channel_info",
+ "asset_namespace": "slack",
+ "description": "List all disconnected channels—i.e., channels that were once connected to other workspaces and then disconnected—and the corresponding orig… (GET /admin.conversations.ekm.listOriginalConnectedChannelInfo)",
+ "type": "read",
+ "target_tables": [
+  "admin_conversations_ekms"
+ ],
+ "parameters": {
+  "token": "string",
+  "channel_ids": "string",
+  "team_ids": "string",
+  "limit": "integer",
+  "cursor": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "token": {
+    "type": "string",
+    "description": "Authentication token. Requires scope: `admin.conversations:read`"
+   },
+   "channel_ids": {
+    "type": "string",
+    "description": "A comma-separated list of channels to filter to."
+   },
+   "team_ids": {
+    "type": "string",
+    "description": "A comma-separated list of the workspaces to which the channels you would like returned belong."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "The maximum number of items to return. Must be between 1 - 1000 both inclusive."
+   },
+   "cursor": {
+    "type": "string",
+    "description": "Set `cursor` to `next_cursor` returned by the previous call to list items in the next page."
+   }
+  },
+  "required": [
+   "token"
+  ],
+  "additionalProperties": false
+ }
+}

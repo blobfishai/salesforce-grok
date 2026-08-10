@@ -1,0 +1,51 @@
+{
+ "name": "finance_records_agent",
+ "mcp_name": "github.finance_records_agent",
+ "asset_namespace": "github",
+ "description": "Delegate finance record lookup to morgan_stanley_simulated's read-only records sub-agent using a natural-language request. Prefer this over raw get/query tools when the user supplies a business handle. It resolves a unique business handle or exact readable attribute inside the tool, returns declared lifecycle order plus the next valid value, and rejects missing or ambiguous matches. Use only when the target appears in this owned table/handle scope: account_links[id|url], account_sessions[id], apple_pay_domains[id|domain_name], application_fees[id], apps_secrets[id|name], balance_settings[id], balance_transactions[id], balances[id], bank_accounts[id|account_holder_name|bank_name], billing_alerts[id|title], billing_credit_balance_summaries[id], billing_credit_balance_transactions[id], billing_meters[id|display_name|event_name], capabilities[id], charges[id|receipt_email|receipt_number|receipt_url], checkout_sessions[id|client_reference_id|cancel_url|customer_email], climate_orders[id], company_finance_handoffs[handoff_ref], credit_notes[id|number], disputes[id], finance_budgets[budget_number], finance_expense_reports[report_number], identity_verification_sessions[id|client_reference_id|url], invoice_rendering_templates[id], invoices[id|account_name|customer_email|customer_name], issuing_authorizations[id]. Request grammar: in table <table>, find <business_field> \"<value>\" and return the complete record.",
+ "type": "read",
+ "target_tables": [
+  "account_links",
+  "account_sessions",
+  "apple_pay_domains",
+  "application_fees",
+  "apps_secrets",
+  "balance_settings",
+  "balance_transactions",
+  "balances",
+  "bank_accounts",
+  "billing_alerts",
+  "billing_credit_balance_summaries",
+  "billing_credit_balance_transactions",
+  "billing_meters",
+  "capabilities",
+  "charges",
+  "checkout_sessions",
+  "climate_orders",
+  "company_finance_handoffs",
+  "credit_notes",
+  "disputes",
+  "finance_budgets",
+  "finance_expense_reports",
+  "identity_verification_sessions",
+  "invoice_rendering_templates",
+  "invoices",
+  "issuing_authorizations"
+ ],
+ "parameters": {
+  "request": "TEXT"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "request": {
+    "type": "string",
+    "description": "Natural-language lookup request containing a unique business handle or exact readable attribute"
+   }
+  },
+  "required": [
+   "request"
+  ],
+  "additionalProperties": false
+ }
+}

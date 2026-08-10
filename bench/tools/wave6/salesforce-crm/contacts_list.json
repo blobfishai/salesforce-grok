@@ -1,0 +1,33 @@
+{
+ "name": "contacts_list",
+ "mcp_name": "salesforce.contacts_list",
+ "asset_namespace": "salesforce",
+ "description": "List contacts with bounded lifecycle filtering. (GET /services/data/v1/contacts) Declared lifecycle: contacts.status: new → qualified → active → opted_out. Use this to resolve a human name, title, external code, or other business handle to the exact contacts primary key required by item tools.",
+ "type": "read",
+ "target_tables": [
+  "contacts"
+ ],
+ "parameters": {
+  "status": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "enum": [
+     "new",
+     "qualified",
+     "active",
+     "opted_out"
+    ],
+    "description": "Declared lifecycle: new → qualified → active → opted_out."
+   },
+   "limit": {
+    "type": "integer"
+   }
+  },
+  "additionalProperties": false
+ }
+}

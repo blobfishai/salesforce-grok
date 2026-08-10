@@ -1,0 +1,46 @@
+{
+ "name": "create_content_import_source",
+ "mcp_name": "core.create_content_import_source",
+ "asset_namespace": "core",
+ "description": "Create a content import source (POST /ai/content_import_sources) Declared lifecycle: content_import_sources.status: active → deactivated.",
+ "type": "write",
+ "target_tables": [
+  "content_import_sources"
+ ],
+ "parameters": {
+  "sync_behavior": "string",
+  "status": "string",
+  "url": "string",
+  "audience_ids": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "sync_behavior": {
+    "type": "string",
+    "description": "If you intend to create or update External Pages via the API, this should be set to `api`."
+   },
+   "status": {
+    "type": "string",
+    "description": "The status of the content import source. Declared lifecycle: active → deactivated.",
+    "enum": [
+     "active",
+     "deactivated"
+    ]
+   },
+   "url": {
+    "type": "string",
+    "description": "The URL of the content import source."
+   },
+   "audience_ids": {
+    "type": "string",
+    "description": "The unique identifiers for the audiences to associate with this content import source. Can be a single integer or an array of integers."
+   }
+  },
+  "required": [
+   "sync_behavior",
+   "url"
+  ],
+  "additionalProperties": false
+ }
+}

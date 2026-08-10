@@ -1,0 +1,33 @@
+{
+ "name": "accounts_list",
+ "mcp_name": "salesforce.accounts_list",
+ "asset_namespace": "salesforce",
+ "description": "List accounts with bounded lifecycle filtering. (GET /services/data/v1/accounts) Declared lifecycle: accounts.status: prospect → active → at_risk → inactive. Use this to resolve a human name, title, external code, or other business handle to the exact accounts primary key required by item tools.",
+ "type": "read",
+ "target_tables": [
+  "accounts"
+ ],
+ "parameters": {
+  "status": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "enum": [
+     "prospect",
+     "active",
+     "at_risk",
+     "inactive"
+    ],
+    "description": "Declared lifecycle: prospect → active → at_risk → inactive."
+   },
+   "limit": {
+    "type": "integer"
+   }
+  },
+  "additionalProperties": false
+ }
+}

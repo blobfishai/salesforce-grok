@@ -1,0 +1,39 @@
+{
+ "name": "update_sourcing_purchase_orders_status",
+ "mcp_name": "erp.update_sourcing_purchase_orders_status",
+ "asset_namespace": "erp",
+ "description": "Update status of a sourcing purchase orders record. Valid statuses: draft, submitted, approved, received, closed. Declared lifecycle: sourcing_purchase_orders.status: draft → submitted → approved → received → closed. The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix. When only a business handle is known, resolve it with query_sourcing_purchase_orders and pass the returned id; when the exact id is already known, call this tool directly.",
+ "type": "write",
+ "target_tables": [
+  "sourcing_purchase_orders"
+ ],
+ "parameters": {
+  "id": "INTEGER",
+  "new_status": "TEXT"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "integer",
+    "description": "The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix. Resolve a business handle with query_sourcing_purchase_orders; never derive this value from a visible code suffix."
+   },
+   "new_status": {
+    "type": "string",
+    "enum": [
+     "draft",
+     "submitted",
+     "approved",
+     "received",
+     "closed"
+    ],
+    "description": "Declared lifecycle: draft → submitted → approved → received → closed."
+   }
+  },
+  "required": [
+   "id",
+   "new_status"
+  ],
+  "additionalProperties": false
+ }
+}

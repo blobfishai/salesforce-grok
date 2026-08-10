@@ -1,0 +1,73 @@
+{
+ "name": "post_identity_verification_sessions",
+ "mcp_name": "core.post_identity_verification_sessions",
+ "asset_namespace": "core",
+ "description": "Create a VerificationSession (POST /v1/identity/verification_sessions)",
+ "type": "write",
+ "target_tables": [
+  "identity_verification_sessions"
+ ],
+ "parameters": {
+  "client_reference_id": "string",
+  "expand": "json",
+  "metadata": "json",
+  "options": "json",
+  "provided_details": "json",
+  "related_customer": "string",
+  "related_customer_account": "string",
+  "related_person": "json",
+  "return_url": "string",
+  "type": "string",
+  "verification_flow": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "client_reference_id": {
+    "type": "string",
+    "description": "A string to reference this user. This can be a customer ID, a session ID, or similar, and can be used to reconcile this verification with y…"
+   },
+   "expand": {
+    "type": "object",
+    "description": "Specifies which fields in the response should be expanded."
+   },
+   "metadata": {
+    "type": "object",
+    "description": "Set of [key-value pairs](https://docs.stripe.com/api/metadata) that you can attach to an object. This can be useful for storing additional …"
+   },
+   "options": {
+    "type": "object",
+    "description": "A set of options for the session’s verification checks."
+   },
+   "provided_details": {
+    "type": "object",
+    "description": "Details provided about the user being verified. These details might be shown to the user."
+   },
+   "related_customer": {
+    "type": "string",
+    "description": "Customer ID"
+   },
+   "related_customer_account": {
+    "type": "string",
+    "description": "The ID of the Account representing a customer."
+   },
+   "related_person": {
+    "type": "object",
+    "description": "Tokens referencing a Person resource and its associated account."
+   },
+   "return_url": {
+    "type": "string",
+    "description": "The URL that the user will be redirected to upon completing the verification flow."
+   },
+   "type": {
+    "type": "string",
+    "description": "The type of [verification check](https://docs.stripe.com/identity/verification-checks) to be performed. You must provide a `type` if not pa…"
+   },
+   "verification_flow": {
+    "type": "string",
+    "description": "The ID of a verification flow from the Dashboard. See https://docs.stripe.com/identity/verification-flows."
+   }
+  },
+  "additionalProperties": false
+ }
+}

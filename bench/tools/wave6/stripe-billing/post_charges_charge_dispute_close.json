@@ -1,0 +1,30 @@
+{
+ "name": "post_charges_charge_dispute_close",
+ "mcp_name": "stripe.post_charges_charge_dispute_close",
+ "asset_namespace": "stripe",
+ "description": "PostChargesChargeDisputeClose (POST /v1/charges/{charge}/dispute/close)",
+ "type": "write",
+ "target_tables": [
+  "disputes"
+ ],
+ "parameters": {
+  "charge": "string",
+  "expand": "json"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "charge": {
+    "type": "string"
+   },
+   "expand": {
+    "type": "object",
+    "description": "Specifies which fields in the response should be expanded."
+   }
+  },
+  "required": [
+   "charge"
+  ],
+  "additionalProperties": false
+ }
+}

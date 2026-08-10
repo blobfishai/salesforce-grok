@@ -1,0 +1,34 @@
+{
+ "name": "cases_list",
+ "mcp_name": "pagerduty.cases_list",
+ "asset_namespace": "pagerduty",
+ "description": "List cases with bounded lifecycle filtering. (GET /services/data/v1/cases) Declared lifecycle: cases.status: new → working → waiting_customer → escalated → closed. Use this to resolve a human name, title, external code, or other business handle to the exact cases primary key required by item tools.",
+ "type": "read",
+ "target_tables": [
+  "cases"
+ ],
+ "parameters": {
+  "status": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "enum": [
+     "new",
+     "working",
+     "waiting_customer",
+     "escalated",
+     "closed"
+    ],
+    "description": "Declared lifecycle: new → working → waiting_customer → escalated → closed."
+   },
+   "limit": {
+    "type": "integer"
+   }
+  },
+  "additionalProperties": false
+ }
+}

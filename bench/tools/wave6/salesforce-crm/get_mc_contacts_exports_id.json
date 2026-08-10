@@ -1,0 +1,26 @@
+{
+ "name": "get_mc_contacts_exports_id",
+ "mcp_name": "salesforce.get_mc_contacts_exports_id",
+ "asset_namespace": "salesforce",
+ "description": "Export Contacts Status (GET /marketing/contacts/exports/{id}). The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix.",
+ "type": "read",
+ "target_tables": [
+  "contact_exports"
+ ],
+ "parameters": {
+  "id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "string",
+    "description": "The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix."
+   }
+  },
+  "required": [
+   "id"
+  ],
+  "additionalProperties": false
+ }
+}

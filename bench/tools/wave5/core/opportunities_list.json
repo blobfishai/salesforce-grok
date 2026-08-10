@@ -1,0 +1,34 @@
+{
+ "name": "opportunities_list",
+ "mcp_name": "core.opportunities_list",
+ "asset_namespace": "core",
+ "description": "List opportunities with bounded lifecycle filtering. (GET /services/data/v1/opportunities) Declared lifecycle: opportunities.status: discovery → proposal → negotiation → (closed_won | closed_lost). Use this to resolve a human name, title, external code, or other business handle to the exact opportunities primary key required by item tools.",
+ "type": "read",
+ "target_tables": [
+  "opportunities"
+ ],
+ "parameters": {
+  "status": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "enum": [
+     "discovery",
+     "proposal",
+     "negotiation",
+     "closed_won",
+     "closed_lost"
+    ],
+    "description": "Declared lifecycle: discovery → proposal → negotiation → (closed_won | closed_lost)."
+   },
+   "limit": {
+    "type": "integer"
+   }
+  },
+  "additionalProperties": false
+ }
+}

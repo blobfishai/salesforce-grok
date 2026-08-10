@@ -1,0 +1,46 @@
+{
+ "name": "opportunity_create",
+ "mcp_name": "salesforce.opportunity_create",
+ "asset_namespace": "salesforce",
+ "description": "Create one tenant-scoped opportunity. (POST /services/data/v1/opportunities) Declared lifecycle: opportunities.status: discovery → proposal → negotiation → (closed_won | closed_lost).",
+ "type": "write",
+ "target_tables": [
+  "opportunities"
+ ],
+ "parameters": {
+  "account_id": "string",
+  "name": "string",
+  "status": "string",
+  "amount": "number",
+  "owner_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "account_id": {
+    "type": "string"
+   },
+   "name": {
+    "type": "string"
+   },
+   "status": {
+    "type": "string",
+    "enum": [
+     "discovery",
+     "proposal",
+     "negotiation",
+     "closed_won",
+     "closed_lost"
+    ],
+    "description": "Declared lifecycle: discovery → proposal → negotiation → (closed_won | closed_lost)."
+   },
+   "amount": {
+    "type": "number"
+   },
+   "owner_id": {
+    "type": "string"
+   }
+  },
+  "additionalProperties": false
+ }
+}

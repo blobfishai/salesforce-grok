@@ -1,0 +1,31 @@
+{
+ "name": "patch_api_keys_api_key_id",
+ "mcp_name": "core.patch_api_keys_api_key_id",
+ "asset_namespace": "core",
+ "description": "Update API key name (PATCH /api_keys/{api_key_id})",
+ "type": "write",
+ "target_tables": [
+  "api_keys"
+ ],
+ "parameters": {
+  "api_key_id": "string",
+  "name": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "api_key_id": {
+    "type": "string"
+   },
+   "name": {
+    "type": "string",
+    "description": "The new name of the API Key."
+   }
+  },
+  "required": [
+   "api_key_id",
+   "name"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,45 @@
+{
+ "name": "vendor_create",
+ "mcp_name": "core.vendor_create",
+ "asset_namespace": "core",
+ "description": "Create one tenant-scoped vendor. (POST /services/data/v1/vendors) Declared lifecycle: vendors.status: pending_review → active → on_hold → inactive.",
+ "type": "write",
+ "target_tables": [
+  "vendors"
+ ],
+ "parameters": {
+  "name": "string",
+  "email": "string",
+  "status": "string",
+  "currency": "string",
+  "balance": "number"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "name": {
+    "type": "string"
+   },
+   "email": {
+    "type": "string"
+   },
+   "status": {
+    "type": "string",
+    "enum": [
+     "pending_review",
+     "active",
+     "on_hold",
+     "inactive"
+    ],
+    "description": "Declared lifecycle: pending_review → active → on_hold → inactive."
+   },
+   "currency": {
+    "type": "string"
+   },
+   "balance": {
+    "type": "number"
+   }
+  },
+  "additionalProperties": false
+ }
+}

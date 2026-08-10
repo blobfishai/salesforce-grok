@@ -1,0 +1,27 @@
+{
+ "name": "finance_records_agent",
+ "mcp_name": "github.finance_records_agent",
+ "asset_namespace": "github",
+ "description": "Delegate finance record lookup to morgan_stanley_simulated's read-only records sub-agent using a natural-language request. Prefer this over raw get/query tools when the user supplies a business handle. It resolves a unique business handle or exact readable attribute inside the tool, returns declared lifecycle order plus the next valid value, and rejects missing or ambiguous matches. Use only when the target appears in this owned table/handle scope: finance_budgets[budget_number], finance_expense_reports[report_number]. Request grammar: in table <table>, find <business_field> \"<value>\" and return the complete record.",
+ "type": "read",
+ "target_tables": [
+  "finance_budgets",
+  "finance_expense_reports"
+ ],
+ "parameters": {
+  "request": "TEXT"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "request": {
+    "type": "string",
+    "description": "Natural-language lookup request containing a unique business handle or exact readable attribute"
+   }
+  },
+  "required": [
+   "request"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,22 @@
+{
+ "name": "get_api_keys",
+ "mcp_name": "core.get_api_keys",
+ "asset_namespace": "core",
+ "description": "Retrieve all API Keys belonging to the authenticated user (GET /api_keys)",
+ "type": "read",
+ "target_tables": [
+  "api_keys"
+ ],
+ "parameters": {
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "limit": {
+    "type": "integer"
+   }
+  },
+  "additionalProperties": false
+ }
+}

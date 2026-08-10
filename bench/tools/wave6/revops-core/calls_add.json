@@ -1,0 +1,62 @@
+{
+ "name": "calls_add",
+ "mcp_name": "core.calls_add",
+ "asset_namespace": "core",
+ "description": "Registers a new Call. (POST /calls.add)",
+ "type": "write",
+ "target_tables": [
+  "calls"
+ ],
+ "parameters": {
+  "external_unique_id": "string",
+  "external_display_id": "string",
+  "join_url": "string",
+  "desktop_app_join_url": "string",
+  "date_start": "integer",
+  "title": "string",
+  "created_by": "string",
+  "users": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "external_unique_id": {
+    "type": "string",
+    "description": "An ID supplied by the 3rd-party Call provider. It must be unique across all Calls from that service."
+   },
+   "external_display_id": {
+    "type": "string",
+    "description": "An optional, human-readable ID supplied by the 3rd-party Call provider. If supplied, this ID will be displayed in the Call object."
+   },
+   "join_url": {
+    "type": "string",
+    "description": "The URL required for a client to join the Call."
+   },
+   "desktop_app_join_url": {
+    "type": "string",
+    "description": "When supplied, available Slack clients will attempt to directly launch the 3rd-party Call with this URL."
+   },
+   "date_start": {
+    "type": "integer",
+    "description": "Call start time in UTC UNIX timestamp format"
+   },
+   "title": {
+    "type": "string",
+    "description": "The name of the Call."
+   },
+   "created_by": {
+    "type": "string",
+    "description": "The valid Slack user ID of the user who created this Call. When this method is called with a user token, the `created_by` field is optional…"
+   },
+   "users": {
+    "type": "string",
+    "description": "The list of users to register as participants in the Call. [Read more on how to specify users here](/apis/calls#users)."
+   }
+  },
+  "required": [
+   "external_unique_id",
+   "join_url"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,45 @@
+{
+ "name": "contact_create",
+ "mcp_name": "salesforce.contact_create",
+ "asset_namespace": "salesforce",
+ "description": "Create one tenant-scoped contact. (POST /services/data/v1/contacts) Declared lifecycle: contacts.status: new → qualified → active → opted_out.",
+ "type": "write",
+ "target_tables": [
+  "contacts"
+ ],
+ "parameters": {
+  "account_id": "string",
+  "name": "string",
+  "email": "string",
+  "status": "string",
+  "owner_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "account_id": {
+    "type": "string"
+   },
+   "name": {
+    "type": "string"
+   },
+   "email": {
+    "type": "string"
+   },
+   "status": {
+    "type": "string",
+    "enum": [
+     "new",
+     "qualified",
+     "active",
+     "opted_out"
+    ],
+    "description": "Declared lifecycle: new → qualified → active → opted_out."
+   },
+   "owner_id": {
+    "type": "string"
+   }
+  },
+  "additionalProperties": false
+ }
+}

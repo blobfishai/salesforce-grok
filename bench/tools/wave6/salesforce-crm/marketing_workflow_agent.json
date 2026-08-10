@@ -1,0 +1,43 @@
+{
+ "name": "marketing_workflow_agent",
+ "mcp_name": "salesforce.marketing_workflow_agent",
+ "asset_namespace": "salesforce",
+ "description": "Delegate marketing record work to morgan_stanley_simulated's workflow sub-agent using a natural-language request. Prefer this over raw update tools when the user supplies a business handle. It resolves a unique business handle or exact non-lifecycle attribute inside the tool, applies one scoped update, returns the before/after record, and rejects missing, ambiguous, or out-of-lifecycle values. Use only when the target appears in this owned table/handle scope: all_segments_responses[id|name], api_keys[id|name], automations_link_stats_responses[id], automations_responses[id], batches[id], blocks[id|email], bounces[id|email], campaigns[title|custom_unsubscribe_url|subject], category_stats[id], certificates[id], click_trackings[id], company_marketing_handoffs[handoff_ref], contact_exports[id], contactdb_segments[name], marketing_campaigns[campaign_code|name], marketing_content_assets[asset_number|title], singlesends[id|name], suppression_groups[name|last_email_sent_at]. Request grammar: in table <table>, find <business_field> \"<value>\" and either set <field> to \"<value>\" or set <field> to the next declared lifecycle stage.",
+ "type": "write",
+ "target_tables": [
+  "all_segments_responses",
+  "api_keys",
+  "automations_link_stats_responses",
+  "automations_responses",
+  "batches",
+  "blocks",
+  "bounces",
+  "campaigns",
+  "category_stats",
+  "certificates",
+  "click_trackings",
+  "company_marketing_handoffs",
+  "contact_exports",
+  "contactdb_segments",
+  "marketing_campaigns",
+  "marketing_content_assets",
+  "singlesends",
+  "suppression_groups"
+ ],
+ "parameters": {
+  "request": "TEXT"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "request": {
+    "type": "string",
+    "description": "Natural-language workflow request containing a unique business handle or exact readable attribute and requested outcome"
+   }
+  },
+  "required": [
+   "request"
+  ],
+  "additionalProperties": false
+ }
+}

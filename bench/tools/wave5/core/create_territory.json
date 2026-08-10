@@ -1,0 +1,41 @@
+{
+ "name": "create_territory",
+ "mcp_name": "core.create_territory",
+ "asset_namespace": "core",
+ "description": "create territory records Declared lifecycle: territory.status: active → inactive → pending.",
+ "type": "write",
+ "target_tables": [
+  "territory"
+ ],
+ "parameters": {
+  "name": "text",
+  "status": "text",
+  "created_at": "text"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "name": {
+    "type": "string"
+   },
+   "status": {
+    "type": "string",
+    "enum": [
+     "active",
+     "inactive",
+     "pending"
+    ],
+    "description": "Declared lifecycle: active → inactive → pending."
+   },
+   "created_at": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "name",
+   "status",
+   "created_at"
+  ],
+  "additionalProperties": false
+ }
+}

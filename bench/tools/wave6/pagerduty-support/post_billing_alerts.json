@@ -1,0 +1,42 @@
+{
+ "name": "post_billing_alerts",
+ "mcp_name": "pagerduty.post_billing_alerts",
+ "asset_namespace": "pagerduty",
+ "description": "Create a billing alert (POST /v1/billing/alerts)",
+ "type": "write",
+ "target_tables": [
+  "billing_alerts"
+ ],
+ "parameters": {
+  "alert_type": "string",
+  "expand": "json",
+  "title": "string",
+  "usage_threshold": "json"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "alert_type": {
+    "type": "string",
+    "description": "The type of alert to create."
+   },
+   "expand": {
+    "type": "object",
+    "description": "Specifies which fields in the response should be expanded."
+   },
+   "title": {
+    "type": "string",
+    "description": "The title of the alert."
+   },
+   "usage_threshold": {
+    "type": "object",
+    "description": "The configuration of the usage threshold."
+   }
+  },
+  "required": [
+   "alert_type",
+   "title"
+  ],
+  "additionalProperties": false
+ }
+}

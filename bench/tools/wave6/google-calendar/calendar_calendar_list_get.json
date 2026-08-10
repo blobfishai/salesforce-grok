@@ -1,0 +1,26 @@
+{
+ "name": "calendar_calendar_list_get",
+ "mcp_name": "calendar.calendar_calendar_list_get",
+ "asset_namespace": "calendar",
+ "description": "Returns a calendar from the user's calendar list. (GET /users/me/calendarList/{calendarId})",
+ "type": "read",
+ "target_tables": [
+  "calendar_list_entries"
+ ],
+ "parameters": {
+  "calendarId": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "calendarId": {
+    "type": "string",
+    "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currentl…"
+   }
+  },
+  "required": [
+   "calendarId"
+  ],
+  "additionalProperties": false
+ }
+}

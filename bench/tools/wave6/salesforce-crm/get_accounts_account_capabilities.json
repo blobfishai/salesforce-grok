@@ -1,0 +1,30 @@
+{
+ "name": "get_accounts_account_capabilities",
+ "mcp_name": "salesforce.get_accounts_account_capabilities",
+ "asset_namespace": "salesforce",
+ "description": "List all account capabilities (GET /v1/accounts/{account}/capabilities)",
+ "type": "read",
+ "target_tables": [
+  "capabilities"
+ ],
+ "parameters": {
+  "account": "string",
+  "expand": "json"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "account": {
+    "type": "string"
+   },
+   "expand": {
+    "type": "object",
+    "description": "Specifies which fields in the response should be expanded."
+   }
+  },
+  "required": [
+   "account"
+  ],
+  "additionalProperties": false
+ }
+}

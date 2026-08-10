@@ -1,0 +1,41 @@
+{
+ "name": "create_case_management_sla",
+ "mcp_name": "core.create_case_management_sla",
+ "asset_namespace": "core",
+ "description": "create case_management_sla records Declared lifecycle: case_management_sla.status: active → inactive → pending.",
+ "type": "write",
+ "target_tables": [
+  "case_management_sla"
+ ],
+ "parameters": {
+  "name": "text",
+  "status": "text",
+  "created_at": "text"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "name": {
+    "type": "string"
+   },
+   "status": {
+    "type": "string",
+    "enum": [
+     "active",
+     "inactive",
+     "pending"
+    ],
+    "description": "Declared lifecycle: active → inactive → pending."
+   },
+   "created_at": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "name",
+   "status",
+   "created_at"
+  ],
+  "additionalProperties": false
+ }
+}

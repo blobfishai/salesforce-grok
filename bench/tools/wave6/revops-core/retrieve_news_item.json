@@ -1,0 +1,26 @@
+{
+ "name": "retrieve_news_item",
+ "mcp_name": "core.retrieve_news_item",
+ "asset_namespace": "core",
+ "description": "Retrieve a news item (GET /news/news_items/{news_item_id})",
+ "type": "read",
+ "target_tables": [
+  "news_items"
+ ],
+ "parameters": {
+  "news_item_id": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "news_item_id": {
+    "type": "integer",
+    "description": "The unique identifier for the news item which is given by Intercom."
+   }
+  },
+  "required": [
+   "news_item_id"
+  ],
+  "additionalProperties": false
+ }
+}

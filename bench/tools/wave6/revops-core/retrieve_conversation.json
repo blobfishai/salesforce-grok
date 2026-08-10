@@ -1,0 +1,36 @@
+{
+ "name": "retrieve_conversation",
+ "mcp_name": "core.retrieve_conversation",
+ "asset_namespace": "core",
+ "description": "Retrieve a conversation (GET /conversations/{conversation_id})",
+ "type": "read",
+ "target_tables": [
+  "conversations"
+ ],
+ "parameters": {
+  "conversation_id": "integer",
+  "display_as": "string",
+  "include_translations": "boolean"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "conversation_id": {
+    "type": "integer",
+    "description": "The id of the conversation to target"
+   },
+   "display_as": {
+    "type": "string",
+    "description": "Set to plaintext to retrieve conversation messages in plain text."
+   },
+   "include_translations": {
+    "type": "boolean",
+    "description": "If set to true, conversation parts will be translated to the detected language of the conversation."
+   }
+  },
+  "required": [
+   "conversation_id"
+  ],
+  "additionalProperties": false
+ }
+}

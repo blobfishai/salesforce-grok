@@ -1,0 +1,41 @@
+{
+ "name": "create_compliance_review_checklist",
+ "mcp_name": "core.create_compliance_review_checklist",
+ "asset_namespace": "core",
+ "description": "create compliance_review_checklist records Declared lifecycle: compliance_review_checklist.status: active → inactive → pending.",
+ "type": "write",
+ "target_tables": [
+  "compliance_review_checklist"
+ ],
+ "parameters": {
+  "name": "text",
+  "status": "text",
+  "created_at": "text"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "name": {
+    "type": "string"
+   },
+   "status": {
+    "type": "string",
+    "enum": [
+     "active",
+     "inactive",
+     "pending"
+    ],
+    "description": "Declared lifecycle: active → inactive → pending."
+   },
+   "created_at": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "name",
+   "status",
+   "created_at"
+  ],
+  "additionalProperties": false
+ }
+}

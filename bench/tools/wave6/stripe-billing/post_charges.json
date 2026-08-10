@@ -1,0 +1,116 @@
+{
+ "name": "post_charges",
+ "mcp_name": "stripe.post_charges",
+ "asset_namespace": "stripe",
+ "description": "<p>This method is no longer recommended—use the <a href=\"/docs/api/payment_intents\">Payment Intents API</a> to initiate a new payment inste… (POST /v1/charges)",
+ "type": "write",
+ "target_tables": [
+  "charges"
+ ],
+ "parameters": {
+  "amount": "integer",
+  "application_fee": "integer",
+  "application_fee_amount": "integer",
+  "capture": "boolean",
+  "card": "string",
+  "currency": "string",
+  "customer": "string",
+  "description": "string",
+  "destination": "string",
+  "expand": "json",
+  "metadata": "string",
+  "on_behalf_of": "string",
+  "radar_options": "json",
+  "receipt_email": "string",
+  "shipping": "json",
+  "source": "string",
+  "statement_descriptor": "string",
+  "statement_descriptor_suffix": "string",
+  "transfer_data": "json",
+  "transfer_group": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "amount": {
+    "type": "integer",
+    "description": "Amount intended to be collected by this payment. A positive integer representing how much to charge in the [smallest currency unit](https:/…"
+   },
+   "application_fee": {
+    "type": "integer"
+   },
+   "application_fee_amount": {
+    "type": "integer",
+    "description": "A fee in cents (or local equivalent) that will be applied to the charge and transferred to the application owner's Stripe account. The requ…"
+   },
+   "capture": {
+    "type": "boolean",
+    "description": "Whether to immediately capture the charge. Defaults to `true`. When `false`, the charge issues an authorization (or pre-authorization), and…"
+   },
+   "card": {
+    "type": "string",
+    "description": "A token, like the ones returned by [Stripe.js](https://stripe.com/docs/js)."
+   },
+   "currency": {
+    "type": "string",
+    "description": "Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://st…"
+   },
+   "customer": {
+    "type": "string",
+    "description": "The ID of an existing customer that will be charged in this request."
+   },
+   "description": {
+    "type": "string",
+    "description": "An arbitrary string which you can attach to a `Charge` object. It is displayed when in the web interface alongside the charge. Note that if…"
+   },
+   "destination": {
+    "type": "string"
+   },
+   "expand": {
+    "type": "object",
+    "description": "Specifies which fields in the response should be expanded."
+   },
+   "metadata": {
+    "type": "string",
+    "description": "Set of [key-value pairs](https://docs.stripe.com/api/metadata) that you can attach to an object. This can be useful for storing additional …"
+   },
+   "on_behalf_of": {
+    "type": "string",
+    "description": "The Stripe account ID for which these funds are intended. You can specify the business of record as the connected account using the `on_beh…"
+   },
+   "radar_options": {
+    "type": "object",
+    "description": "Options to configure Radar. See [Radar Session](https://docs.stripe.com/radar/radar-session) for more information."
+   },
+   "receipt_email": {
+    "type": "string",
+    "description": "The email address to which this charge's [receipt](https://docs.stripe.com/dashboard/receipts) will be sent. The receipt will not be sent u…"
+   },
+   "shipping": {
+    "type": "object",
+    "description": "Shipping information for the charge. Helps prevent fraud on charges for physical goods."
+   },
+   "source": {
+    "type": "string",
+    "description": "A payment source to be charged. This can be the ID of a [card](https://docs.stripe.com/api#cards) (i.e., credit or debit card), a [bank acc…"
+   },
+   "statement_descriptor": {
+    "type": "string",
+    "description": "For a non-card charge, text that appears on the customer's statement as the statement descriptor. This value overrides the account's defaul…"
+   },
+   "statement_descriptor_suffix": {
+    "type": "string",
+    "description": "Provides information about a card charge. Concatenated to the account's [statement descriptor prefix](https://docs.stripe.com/get-started/a…"
+   },
+   "transfer_data": {
+    "type": "object",
+    "description": "An optional dictionary including the account to automatically transfer to as part of a destination charge. [See the Connect documentation](…"
+   },
+   "transfer_group": {
+    "type": "string",
+    "description": "A string that identifies this transaction as part of a group. For details, see [Grouping transactions](https://docs.stripe.com/connect/sepa…"
+   }
+  },
+  "additionalProperties": false
+ }
+}

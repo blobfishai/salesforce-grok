@@ -1,0 +1,56 @@
+{
+ "name": "query_finance_budgets",
+ "mcp_name": "core.query_finance_budgets",
+ "asset_namespace": "core",
+ "description": "Search and filter finance_budgets. Returns matching rows. Declared lifecycle: finance_budgets.status: draft → active → closed. Use this to resolve a human name, title, external code, or other business handle to the exact finance_budgets primary key required by item tools.",
+ "type": "read",
+ "target_tables": [
+  "finance_budgets"
+ ],
+ "parameters": {
+  "id": "INTEGER",
+  "budget_number": "TEXT",
+  "department_id": "INTEGER",
+  "fiscal_quarter": "TEXT",
+  "allocated_amount": "REAL",
+  "spent_amount": "REAL",
+  "status": "TEXT",
+  "limit": "INTEGER"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "integer"
+   },
+   "budget_number": {
+    "type": "string"
+   },
+   "department_id": {
+    "type": "integer"
+   },
+   "fiscal_quarter": {
+    "type": "string"
+   },
+   "allocated_amount": {
+    "type": "number"
+   },
+   "spent_amount": {
+    "type": "number"
+   },
+   "status": {
+    "type": "string",
+    "enum": [
+     "draft",
+     "active",
+     "closed"
+    ],
+    "description": "Declared lifecycle: draft → active → closed."
+   },
+   "limit": {
+    "type": "integer"
+   }
+  },
+  "additionalProperties": false
+ }
+}

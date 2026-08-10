@@ -1,0 +1,37 @@
+{
+ "name": "update_status_order_activation_runbook",
+ "mcp_name": "core.update_status_order_activation_runbook",
+ "asset_namespace": "core",
+ "description": "update status order_activation_runbook records Declared lifecycle: order_activation_runbook.status: active → inactive → pending. The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix. When only a business handle is known, resolve it with list_order_activation_runbook and pass the returned id; when the exact id is already known, call this tool directly.",
+ "type": "write",
+ "target_tables": [
+  "order_activation_runbook"
+ ],
+ "parameters": {
+  "id": "integer",
+  "status": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "integer",
+    "description": "The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix. Resolve a business handle with list_order_activation_runbook; never derive this value from a visible code suffix."
+   },
+   "status": {
+    "type": "string",
+    "enum": [
+     "active",
+     "inactive",
+     "pending"
+    ],
+    "description": "Declared lifecycle: active → inactive → pending."
+   }
+  },
+  "required": [
+   "id",
+   "status"
+  ],
+  "additionalProperties": false
+ }
+}

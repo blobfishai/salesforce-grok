@@ -1,0 +1,54 @@
+{
+ "name": "case_create",
+ "mcp_name": "pagerduty.case_create",
+ "asset_namespace": "pagerduty",
+ "description": "Create one tenant-scoped case. (POST /services/data/v1/cases) Declared lifecycle: cases.status: new → working → waiting_customer → escalated → closed.",
+ "type": "write",
+ "target_tables": [
+  "cases"
+ ],
+ "parameters": {
+  "account_id": "string",
+  "contact_id": "string",
+  "subject": "string",
+  "status": "string",
+  "priority": "string",
+  "owner_id": "string",
+  "description": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "account_id": {
+    "type": "string"
+   },
+   "contact_id": {
+    "type": "string"
+   },
+   "subject": {
+    "type": "string"
+   },
+   "status": {
+    "type": "string",
+    "enum": [
+     "new",
+     "working",
+     "waiting_customer",
+     "escalated",
+     "closed"
+    ],
+    "description": "Declared lifecycle: new → working → waiting_customer → escalated → closed."
+   },
+   "priority": {
+    "type": "string"
+   },
+   "owner_id": {
+    "type": "string"
+   },
+   "description": {
+    "type": "string"
+   }
+  },
+  "additionalProperties": false
+ }
+}

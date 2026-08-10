@@ -1,0 +1,28 @@
+{
+ "name": "organization_records_agent",
+ "mcp_name": "email.organization_records_agent",
+ "asset_namespace": "email",
+ "description": "Delegate organization record lookup to morgan_stanley_simulated's read-only records sub-agent using a natural-language request. Prefer this over raw get/query tools when the user supplies a business handle. It resolves a unique business handle or exact readable attribute inside the tool, returns declared lifecycle order plus the next valid value, and rejects missing or ambiguous matches. Use only when the target appears in this owned table/handle scope: departments[department_code|name], employee_work_assignments[work_item_ref], employees[employee_number|name|email|job_title]. Request grammar: in table <table>, find <business_field> \"<value>\" and return the complete record.",
+ "type": "read",
+ "target_tables": [
+  "departments",
+  "employee_work_assignments",
+  "employees"
+ ],
+ "parameters": {
+  "request": "TEXT"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "request": {
+    "type": "string",
+    "description": "Natural-language lookup request containing a unique business handle or exact readable attribute"
+   }
+  },
+  "required": [
+   "request"
+  ],
+  "additionalProperties": false
+ }
+}

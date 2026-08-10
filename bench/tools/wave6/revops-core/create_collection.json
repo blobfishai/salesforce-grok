@@ -1,0 +1,46 @@
+{
+ "name": "create_collection",
+ "mcp_name": "core.create_collection",
+ "asset_namespace": "core",
+ "description": "Create a collection (POST /help_center/collections)",
+ "type": "write",
+ "target_tables": [
+  "collections"
+ ],
+ "parameters": {
+  "name": "string",
+  "description": "string",
+  "translated_content": "json",
+  "parent_id": "string",
+  "help_center_id": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "name": {
+    "type": "string",
+    "description": "The name of the collection. For multilingual collections, this will be the name of the default language's content."
+   },
+   "description": {
+    "type": "string",
+    "description": "The description of the collection. For multilingual collections, this will be the description of the default language's content."
+   },
+   "translated_content": {
+    "type": "object",
+    "description": "The Translated Content of an Group. The keys are the locale codes and the values are the translated content of the Group."
+   },
+   "parent_id": {
+    "type": "string",
+    "description": "The id of the parent collection. If `null` then it will be created as the first level collection."
+   },
+   "help_center_id": {
+    "type": "integer",
+    "description": "The id of the help center where the collection will be created. If `null` then it will be created in the default help center."
+   }
+  },
+  "required": [
+   "name"
+  ],
+  "additionalProperties": false
+ }
+}

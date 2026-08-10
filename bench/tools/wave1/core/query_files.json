@@ -1,0 +1,29 @@
+{
+ "name": "query_files",
+ "mcp_name": "core.query_files",
+ "asset_namespace": "core",
+ "description": "Search or list the seeded file registry before reading one exact filename.",
+ "type": "read",
+ "target_tables": [
+  "agent_files"
+ ],
+ "parameters": {
+  "query": "TEXT",
+  "limit": "INTEGER"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "query": {
+    "type": "string",
+    "description": "Optional free-text filename or file-content search"
+   },
+   "limit": {
+    "type": "integer",
+    "description": "Maximum rows to return (1-200)"
+   }
+  },
+  "required": [],
+  "additionalProperties": false
+ }
+}

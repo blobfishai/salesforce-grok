@@ -1,0 +1,47 @@
+{
+ "name": "admin_conversations_create",
+ "mcp_name": "slack.admin_conversations_create",
+ "asset_namespace": "slack",
+ "description": "Create a public or private channel-based conversation. (POST /admin.conversations.create)",
+ "type": "write",
+ "target_tables": [
+  "admin_conversations"
+ ],
+ "parameters": {
+  "name": "string",
+  "description": "string",
+  "is_private": "boolean",
+  "org_wide": "boolean",
+  "team_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "name": {
+    "type": "string",
+    "description": "Name of the public or private channel to create."
+   },
+   "description": {
+    "type": "string",
+    "description": "Description of the public or private channel to create."
+   },
+   "is_private": {
+    "type": "boolean",
+    "description": "When `true`, creates a private channel instead of a public channel"
+   },
+   "org_wide": {
+    "type": "boolean",
+    "description": "When `true`, the channel will be available org-wide. Note: if the channel is not `org_wide=true`, you must specify a `team_id` for this cha…"
+   },
+   "team_id": {
+    "type": "string",
+    "description": "The workspace to create the channel in. Note: this argument is required unless you set `org_wide=true`."
+   }
+  },
+  "required": [
+   "name",
+   "is_private"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,66 @@
+{
+ "name": "create_news_item",
+ "mcp_name": "core.create_news_item",
+ "asset_namespace": "core",
+ "description": "Create a news item (POST /news/news_items) Declared lifecycle: news_items.state: draft → live.",
+ "type": "write",
+ "target_tables": [
+  "news_items"
+ ],
+ "parameters": {
+  "title": "string",
+  "body": "string",
+  "sender_id": "integer",
+  "state": "string",
+  "deliver_silently": "boolean",
+  "labels": "json",
+  "reactions": "json",
+  "newsfeed_assignments": "json"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "title": {
+    "type": "string",
+    "description": "The title of the news item."
+   },
+   "body": {
+    "type": "string",
+    "description": "The news item body, which may contain HTML."
+   },
+   "sender_id": {
+    "type": "integer",
+    "description": "The id of the sender of the news item. Must be a teammate on the workspace."
+   },
+   "state": {
+    "type": "string",
+    "description": "News items will not be visible to your users in the assigned newsfeeds until they are set live. Declared lifecycle: draft → live.",
+    "enum": [
+     "draft",
+     "live"
+    ]
+   },
+   "deliver_silently": {
+    "type": "boolean",
+    "description": "When set to `true`, the news item will appear in the messenger newsfeed without showing a notification badge."
+   },
+   "labels": {
+    "type": "object",
+    "description": "Label names displayed to users to categorize the news item."
+   },
+   "reactions": {
+    "type": "object",
+    "description": "Ordered list of emoji reactions to the news item. When empty, reactions are disabled."
+   },
+   "newsfeed_assignments": {
+    "type": "object",
+    "description": "A list of newsfeed_assignments to assign to the specified newsfeed."
+   }
+  },
+  "required": [
+   "title",
+   "sender_id"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "name": "calendar_agent",
+ "mcp_name": "calendar.calendar_agent",
+ "asset_namespace": "calendar",
+ "description": "Delegate scheduling to morgan_stanley_simulated's calendar sub-agent in free text. Supports: schedule \"Title\" on YYYY-MM-DD · read events.",
+ "type": "write",
+ "target_tables": [
+  "agent_events"
+ ],
+ "parameters": {
+  "request": "TEXT"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "request": {
+    "type": "string",
+    "description": "Free-text instruction for the calendar sub-agent"
+   }
+  },
+  "required": [
+   "request"
+  ],
+  "additionalProperties": false
+ }
+}

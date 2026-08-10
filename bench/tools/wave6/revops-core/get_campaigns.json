@@ -1,0 +1,28 @@
+{
+ "name": "get_campaigns",
+ "mcp_name": "core.get_campaigns",
+ "asset_namespace": "core",
+ "description": "Retrieve all Campaigns (GET /campaigns)",
+ "type": "read",
+ "target_tables": [
+  "campaigns"
+ ],
+ "parameters": {
+  "limit": "integer",
+  "offset": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "limit": {
+    "type": "integer",
+    "description": "The number of results you would like to receive at a time."
+   },
+   "offset": {
+    "type": "integer",
+    "description": "The index of the first campaign to return, where 0 is the first campaign."
+   }
+  },
+  "additionalProperties": false
+ }
+}

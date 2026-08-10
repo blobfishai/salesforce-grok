@@ -1,0 +1,62 @@
+{
+ "name": "query_sourcing_purchase_orders",
+ "mcp_name": "erp.query_sourcing_purchase_orders",
+ "asset_namespace": "erp",
+ "description": "Search and filter sourcing_purchase_orders. Returns matching rows. Declared lifecycle: sourcing_purchase_orders.status: draft → submitted → approved → received → closed. Use this to resolve a human name, title, external code, or other business handle to the exact sourcing_purchase_orders primary key required by item tools.",
+ "type": "read",
+ "target_tables": [
+  "sourcing_purchase_orders"
+ ],
+ "parameters": {
+  "id": "INTEGER",
+  "po_number": "TEXT",
+  "vendor_id": "INTEGER",
+  "requested_by_employee_id": "INTEGER",
+  "amount": "REAL",
+  "ordered_at": "TEXT",
+  "approver_employee_id": "INTEGER",
+  "status": "TEXT",
+  "limit": "INTEGER"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "integer"
+   },
+   "po_number": {
+    "type": "string"
+   },
+   "vendor_id": {
+    "type": "integer"
+   },
+   "requested_by_employee_id": {
+    "type": "integer"
+   },
+   "amount": {
+    "type": "number"
+   },
+   "ordered_at": {
+    "type": "string"
+   },
+   "approver_employee_id": {
+    "type": "integer"
+   },
+   "status": {
+    "type": "string",
+    "enum": [
+     "draft",
+     "submitted",
+     "approved",
+     "received",
+     "closed"
+    ],
+    "description": "Declared lifecycle: draft → submitted → approved → received → closed."
+   },
+   "limit": {
+    "type": "integer"
+   }
+  },
+  "additionalProperties": false
+ }
+}

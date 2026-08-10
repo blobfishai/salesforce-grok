@@ -1,0 +1,27 @@
+{
+ "name": "sheet_agent",
+ "mcp_name": "github.sheet_agent",
+ "asset_namespace": "github",
+ "description": "Delegate spreadsheet/records work to morgan_stanley_simulated's records sub-agent in free text. Supports: create sheet \"Title\" with columns: a, b · write rows to \"Title\": <inline TSV rows> · read \"Title\" or read <table_name> · update \"Title\" row N set col = value. Writes at most 50 rows per call and reports the unwritten remainder — send large imports in chunks and VERIFY the written count (acknowledgments can be empty even when the write applied).",
+ "type": "write",
+ "target_tables": [
+  "agent_sheet_rows",
+  "agent_sheets"
+ ],
+ "parameters": {
+  "request": "TEXT"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "request": {
+    "type": "string",
+    "description": "Free-text instruction for the sheet sub-agent (may carry inline TSV rows)"
+   }
+  },
+  "required": [
+   "request"
+  ],
+  "additionalProperties": false
+ }
+}

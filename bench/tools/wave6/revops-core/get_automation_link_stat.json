@@ -1,0 +1,46 @@
+{
+ "name": "get_automation_link_stat",
+ "mcp_name": "core.get_automation_link_stat",
+ "asset_namespace": "core",
+ "description": "Get Automation Click Tracking Stats by ID (GET /marketing/stats/automations/{id}/links). The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix.",
+ "type": "read",
+ "target_tables": [
+  "automations_link_stats_responses"
+ ],
+ "parameters": {
+  "id": "string",
+  "group_by": "json",
+  "step_ids": "json",
+  "page_size": "integer",
+  "page_token": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "string",
+    "description": "The ID of the Automation you want to get click tracking stats for. The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix."
+   },
+   "group_by": {
+    "type": "object",
+    "description": "Automations can have multiple steps. Including `step_id` as a `group_by` metric allows further granularity of stats."
+   },
+   "step_ids": {
+    "type": "object",
+    "description": "Comma-separated list of `step_ids` that you want the link stats for."
+   },
+   "page_size": {
+    "type": "integer",
+    "description": "The number of elements you want returned on each page."
+   },
+   "page_token": {
+    "type": "string",
+    "description": "The stats endpoints are paginated. To get the next page, call the passed `_metadata.next` URL. If `_metadata.prev` doesn't exist, you're at…"
+   }
+  },
+  "required": [
+   "id"
+  ],
+  "additionalProperties": false
+ }
+}

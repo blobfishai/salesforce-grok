@@ -1,0 +1,46 @@
+{
+ "name": "calendar_acl_list",
+ "mcp_name": "calendar.calendar_acl_list",
+ "asset_namespace": "calendar",
+ "description": "Returns the rules in the access control list for the calendar. (GET /calendars/{calendarId}/acl)",
+ "type": "read",
+ "target_tables": [
+  "acls"
+ ],
+ "parameters": {
+  "calendarId": "string",
+  "maxResults": "integer",
+  "pageToken": "string",
+  "showDeleted": "boolean",
+  "syncToken": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "calendarId": {
+    "type": "string",
+    "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currentl…"
+   },
+   "maxResults": {
+    "type": "integer",
+    "description": "Maximum number of entries returned on one result page. By default the value is 100 entries. The page size can never be larger than 250 entr…"
+   },
+   "pageToken": {
+    "type": "string",
+    "description": "Token specifying which result page to return. Optional."
+   },
+   "showDeleted": {
+    "type": "boolean",
+    "description": "Whether to include deleted ACLs in the result. Deleted ACLs are represented by role equal to \"none\". Deleted ACLs will always be included i…"
+   },
+   "syncToken": {
+    "type": "string",
+    "description": "Token obtained from the nextSyncToken field returned on the last page of results from the previous list request. It makes the result of thi…"
+   }
+  },
+  "required": [
+   "calendarId"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,41 @@
+{
+ "name": "create_lead_management_sop",
+ "mcp_name": "salesforce.create_lead_management_sop",
+ "asset_namespace": "salesforce",
+ "description": "create lead_management_sop records Declared lifecycle: lead_management_sop.status: active → inactive → pending.",
+ "type": "write",
+ "target_tables": [
+  "lead_management_sop"
+ ],
+ "parameters": {
+  "name": "text",
+  "status": "text",
+  "created_at": "text"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "name": {
+    "type": "string"
+   },
+   "status": {
+    "type": "string",
+    "enum": [
+     "active",
+     "inactive",
+     "pending"
+    ],
+    "description": "Declared lifecycle: active → inactive → pending."
+   },
+   "created_at": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "name",
+   "status",
+   "created_at"
+  ],
+  "additionalProperties": false
+ }
+}

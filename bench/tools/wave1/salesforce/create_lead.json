@@ -1,0 +1,50 @@
+{
+ "name": "create_lead",
+ "mcp_name": "salesforce.create_lead",
+ "asset_namespace": "salesforce",
+ "description": "create lead records Declared lifecycle: lead.status: Working → Converted.",
+ "type": "write",
+ "target_tables": [
+  "lead"
+ ],
+ "parameters": {
+  "company": "text",
+  "contactname": "text",
+  "segment": "text",
+  "status": "text",
+  "interestproductid": "text"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "company": {
+    "type": "string"
+   },
+   "contactname": {
+    "type": "string"
+   },
+   "segment": {
+    "type": "string"
+   },
+   "status": {
+    "type": "string",
+    "enum": [
+     "Working",
+     "Converted"
+    ],
+    "description": "Declared lifecycle: Working → Converted."
+   },
+   "interestproductid": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "company",
+   "contactname",
+   "segment",
+   "status",
+   "interestproductid"
+  ],
+  "additionalProperties": false
+ }
+}

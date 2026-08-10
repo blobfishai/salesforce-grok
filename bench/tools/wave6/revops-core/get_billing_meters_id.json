@@ -1,0 +1,31 @@
+{
+ "name": "get_billing_meters_id",
+ "mcp_name": "core.get_billing_meters_id",
+ "asset_namespace": "core",
+ "description": "Retrieve a billing meter (GET /v1/billing/meters/{id}). The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix.",
+ "type": "read",
+ "target_tables": [
+  "billing_meters"
+ ],
+ "parameters": {
+  "expand": "json",
+  "id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "expand": {
+    "type": "object",
+    "description": "Specifies which fields in the response should be expanded."
+   },
+   "id": {
+    "type": "string",
+    "description": "The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix."
+   }
+  },
+  "required": [
+   "id"
+  ],
+  "additionalProperties": false
+ }
+}

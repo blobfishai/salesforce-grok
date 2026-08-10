@@ -1,0 +1,57 @@
+{
+ "name": "update_content_import_source",
+ "mcp_name": "core.update_content_import_source",
+ "asset_namespace": "core",
+ "description": "Update a content import source (PUT /ai/content_import_sources/{source_id}) Declared lifecycle: content_import_sources.status: active → deactivated.",
+ "type": "write",
+ "target_tables": [
+  "content_import_sources"
+ ],
+ "parameters": {
+  "source_id": "string",
+  "sync_behavior": "string",
+  "status": "string",
+  "url": "string",
+  "audience_ids": "string",
+  "apply_audience_to_existing_content": "boolean"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "source_id": {
+    "type": "string",
+    "description": "The unique identifier for the content import source which is given by Intercom."
+   },
+   "sync_behavior": {
+    "type": "string",
+    "description": "If you intend to create or update External Pages via the API, this should be set to `api`. You can not change the value to or from api."
+   },
+   "status": {
+    "type": "string",
+    "description": "The status of the content import source. Declared lifecycle: active → deactivated.",
+    "enum": [
+     "active",
+     "deactivated"
+    ]
+   },
+   "url": {
+    "type": "string",
+    "description": "The URL of the content import source. This may only be different from the existing value if the sync behavior is API."
+   },
+   "audience_ids": {
+    "type": "string",
+    "description": "The unique identifiers for the audiences to associate with this content import source. Can be a single integer or an array of integers. Set…"
+   },
+   "apply_audience_to_existing_content": {
+    "type": "boolean",
+    "description": "When true, the audience will be applied to all existing external pages belonging to this content import source."
+   }
+  },
+  "required": [
+   "source_id",
+   "sync_behavior",
+   "url"
+  ],
+  "additionalProperties": false
+ }
+}

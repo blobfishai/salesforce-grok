@@ -1,0 +1,25 @@
+{
+ "name": "post_marketing_contacts_batch",
+ "mcp_name": "salesforce.post_marketing_contacts_batch",
+ "asset_namespace": "salesforce",
+ "description": "Get Batched Contacts by IDs (POST /marketing/contacts/batch)",
+ "type": "write",
+ "target_tables": [
+  "batches"
+ ],
+ "parameters": {
+  "ids": "json"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "ids": {
+    "type": "object"
+   }
+  },
+  "required": [
+   "ids"
+  ],
+  "additionalProperties": false
+ }
+}

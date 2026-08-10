@@ -1,0 +1,26 @@
+{
+ "name": "admin_conversations_get_conversation_prefs",
+ "mcp_name": "slack.admin_conversations_get_conversation_prefs",
+ "asset_namespace": "slack",
+ "description": "Get conversation preferences for a public or private channel. (GET /admin.conversations.getConversationPrefs)",
+ "type": "read",
+ "target_tables": [
+  "admin_conversations"
+ ],
+ "parameters": {
+  "channel_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "channel_id": {
+    "type": "string",
+    "description": "The channel to get preferences for."
+   }
+  },
+  "required": [
+   "channel_id"
+  ],
+  "additionalProperties": false
+ }
+}

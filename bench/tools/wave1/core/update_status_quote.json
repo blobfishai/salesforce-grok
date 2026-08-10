@@ -1,0 +1,36 @@
+{
+ "name": "update_status_quote",
+ "mcp_name": "core.update_status_quote",
+ "asset_namespace": "core",
+ "description": "update status quote records Declared lifecycle: quote.status: Approved. The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix. When only a business handle is known, resolve it with list_quote and pass the returned id; when the exact id is already known, call this tool directly.",
+ "type": "write",
+ "target_tables": [
+  "quote"
+ ],
+ "parameters": {
+  "id": "integer",
+  "status": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "integer",
+    "description": "The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix. Resolve a business handle with list_quote; never derive this value from a visible code suffix."
+   },
+   "status": {
+    "type": "string",
+    "enum": [
+     "Approved",
+     "Rejected"
+    ],
+    "description": "Declared lifecycle: Approved."
+   }
+  },
+  "required": [
+   "id",
+   "status"
+  ],
+  "additionalProperties": false
+ }
+}

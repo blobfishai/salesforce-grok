@@ -1,0 +1,22 @@
+{
+ "name": "get_territory",
+ "mcp_name": "core.get_territory",
+ "asset_namespace": "core",
+ "description": "get territory records. The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix. When only a business handle is known, resolve it with list_territory and pass the returned id; when the exact id is already known, call this tool directly.",
+ "type": "read",
+ "target_tables": [
+  "territory"
+ ],
+ "parameters": {
+  "id": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "id": {
+    "type": "integer",
+    "description": "The id argument is the exact opaque primary key, not a human name, title, external code, or numeric code suffix. Resolve a business handle with list_territory; never derive this value from a visible code suffix."
+   }
+  }
+ }
+}
