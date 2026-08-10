@@ -200,14 +200,32 @@ CRMArena's published GPT-4o ReAct trajectories.
 ## Repo layout
 
 ```
-config/            world.config.json (engine/MCP wiring) · models.json (xAI snapshot)
-data/seed/         synthetic seed for the local mock
-docs/              GROK-4.5-LIMITS.md · anchors/ (world-generation anchor PRDs)
-mcp/               blobfish-crm-bridge.mjs · salesforce-crm-server.mjs
-sim/               run-simulation.mjs · lib/mcp-client.mjs · scenarios/
-test/              smoke.mjs
-world/             downloaded blobfish world artifacts
+config/            world.config.json (engine/MCP wiring) · model-roster.json (leaderboard models)
+                   mcp-servers.json (per-vendor MCP registry) · models.json (xAI snapshot)
+data/seed/         synthetic seed for the local mock; data/coverage/ (domain census + verdicts)
+docs/              CREATION-PROTOCOL.md · COVERAGE.md · COMPARISON.md · anchors/ (world corpus)
+mcp/               vendor-server.mjs (one MCP server per product: salesforce-crm,
+                   stripe-billing, slack, ... from config/mcp-servers.json)
+                   harness-server.mjs (verify_task/reset over the merged trace)
+                   lib/world-upstream.mjs (shared session broker + trace + schema repair)
+                   blobfish-crm-bridge.mjs (legacy single-server bridge)
+                   salesforce-crm-server.mjs (offline mock)
+sim/               run-simulation.mjs (--multi-server spawns the per-vendor topology)
+                   run-flake-scan.mjs · run-arena.mjs · run-interactive.mjs · lib/
+test/              smoke.mjs · multi-server-smoke.mjs
+world/             downloaded blobfish world artifacts (wave-5, wave-6, arena, ...)
 ```
+
+### MCP topology
+
+Realistic mode (`--multi-server`): the agent connects to **one MCP server per
+product** — 11 vendor servers (salesforce-crm 27 tools, revops-core 122,
+google-calendar 10, stripe-billing 7, slack 7, netsuite-erp 7, notion-docs 6,
+github 6, jira 5, pagerduty-support 5, sendgrid-email 3) plus a separate
+eval-harness server. All servers share one world session (runner-owned
+`session.json`) and append to one merged `trace.jsonl`, so cross-vendor state is
+consistent and VCode verification sees the whole rollout. Tools surface to the
+model as `vendor__tool`, the standard multi-server MCP convention.
 
 ## Notes & gotchas
 

@@ -16,8 +16,10 @@
     "name": "blobfish-crm-bridge",
     "transport": "stdio",
     "command": "node",
-    "args": ["mcp/blobfish-crm-bridge.mjs"]
+    "args": ["mcp/blobfish-crm-bridge.mjs"],
+    "note": "legacy single-server bridge; the realistic per-vendor topology lives in config/mcp-servers.json (run-simulation --multi-server)"
   },
+  "mcpServers": "config/mcp-servers.json",
   "mcpLocalFallback": {
     "name": "salesforce-crm-mock",
     "transport": "stdio",

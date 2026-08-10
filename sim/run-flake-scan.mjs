@@ -26,6 +26,7 @@ const CONCURRENCY = Number(opt("--concurrency", "3"));
 const LABEL = opt("--label", "scan");
 const MODEL = opt("--model", process.env.SIM_MODEL ?? process.env.XAI_MODEL ?? config.engine.model);
 const TRIAL_TIMEOUT_MIN = Number(opt("--trial-timeout-min", "10"));
+const MULTI = argv.includes("--multi-server");
 const WORLD_FILE = opt("--world-file",
   existsSync(join(ROOT, config.blobfish.worldFile)) ? join(ROOT, config.blobfish.worldFile) : join(ROOT, config.blobfish.previewWorldFile));
 
@@ -44,7 +45,7 @@ function runTrial(taskId, trial) {
   return new Promise((resolve) => {
     const out = join(TMP, `${LABEL}-${taskId}-t${trial}.json`);
     rmSync(out, { force: true });
-    const child = spawn("node", ["sim/run-simulation.mjs", "--task", taskId, "--json-out", out, "--world-file", WORLD_FILE, "--model", MODEL], {
+    const child = spawn("node", ["sim/run-simulation.mjs", "--task", taskId, "--json-out", out, "--world-file", WORLD_FILE, "--model", MODEL, ...(MULTI ? ["--multi-server"] : [])], {
       cwd: ROOT,
       env: { ...process.env, BLOBFISH_LOCAL: "1" },
       stdio: ["ignore", "ignore", "ignore"],

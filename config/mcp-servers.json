@@ -1,0 +1,16 @@
+{
+  "comment": "Per-vendor MCP server registry. Each entry becomes one stdio MCP server (mcp/vendor-server.mjs --vendor <key>) exposing only its namespaces' tools under bare names — the realistic topology where an agent connects to each product's own MCP server. The runner surfaces tools to the LLM as <vendor>__<tool>, the standard multi-server convention. Namespace tool counts are for the wave-6 world sbx_291042075d7547f4.",
+  "vendors": {
+    "salesforce-crm": { "namespaces": ["salesforce"], "product": "Salesforce Sales Cloud (SIMULATED)", "blurb": "CRM of record: accounts, contacts, leads, opportunities, cases, tasks." },
+    "stripe-billing": { "namespaces": ["stripe"], "product": "Stripe (SIMULATED)", "blurb": "Billing: customers, subscriptions, invoices, charges, payments." },
+    "sendgrid-email": { "namespaces": ["email"], "product": "SendGrid (SIMULATED)", "blurb": "Outbound email infrastructure: sends, suppressions, deliverability." },
+    "slack": { "namespaces": ["slack"], "product": "Slack (SIMULATED)", "blurb": "Deal-room messaging: channels, messages, scheduled posts." },
+    "google-calendar": { "namespaces": ["calendar"], "product": "Google Calendar (SIMULATED)", "blurb": "Scheduling: calendars, events, availability." },
+    "netsuite-erp": { "namespaces": ["erp"], "product": "NetSuite (SIMULATED)", "blurb": "ERP: orders, purchase records, reconciliation." },
+    "notion-docs": { "namespaces": ["notion"], "product": "Notion (SIMULATED)", "blurb": "Knowledge base and document store: SOPs, battlecards, artifacts." },
+    "github": { "namespaces": ["github"], "product": "GitHub (SIMULATED)", "blurb": "Sheets/exports surface used by RevOps tooling." },
+    "jira": { "namespaces": ["jira"], "product": "Jira (SIMULATED)", "blurb": "Internal ticketing." },
+    "pagerduty-support": { "namespaces": ["pagerduty"], "product": "PagerDuty (SIMULATED)", "blurb": "Support escalation and case paging." },
+    "revops-core": { "namespaces": ["core"], "product": "Internal RevOps data platform (SIMULATED)", "blurb": "Company-internal records, workflows, documents, sheets, memories, sub-agents." }
+  }
+}
