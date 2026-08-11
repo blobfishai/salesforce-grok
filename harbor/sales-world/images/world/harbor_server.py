@@ -100,11 +100,16 @@ class HarborHandler(server.Handler):
 
 
 def main():
-    from http.server import HTTPServer
+    # Threading matters: the packaged server uses a single-threaded HTTPServer, and
+    # the verifier issues many rapid successive requests (one or more per check).
+    # Serialized handling dropped connections mid-response and surfaced as httpx
+    # transport errors that pytest recorded as *failures* -- flaky grading, which
+    # is worse than no grading.
+    from http.server import ThreadingHTTPServer
 
     port = int(os.environ.get("PORT", "8080"))
-    print(f"sales-world listening on :{port} (+ POST /verifier/query)", flush=True)
-    HTTPServer(("0.0.0.0", port), HarborHandler).serve_forever()
+    print(f"sales-world listening on :{port} (+ /verifier/query, /verifier/trace)", flush=True)
+    ThreadingHTTPServer(("0.0.0.0", port), HarborHandler).serve_forever()
 
 
 if __name__ == "__main__":

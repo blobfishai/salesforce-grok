@@ -6,6 +6,7 @@ failed — "quote left in draft" reads better in a results table than "task fail
 import json
 import os
 import pathlib
+import time
 
 import httpx
 import pytest
@@ -17,27 +18,41 @@ CHECKS = json.loads(pathlib.Path("/tests/checks.json").read_text())
 _results = {}
 
 
+_trace_cache = []
+
+
+def _post(path, payload, tries=4):
+    """Transport errors here would be recorded as check failures, so retry them."""
+    last = None
+    for attempt in range(tries):
+        try:
+            r = httpx.post(
+                f"{WORLD}{path}",
+                json=payload,
+                headers={"X-Verifier-Token": TOKEN},
+                timeout=120.0,
+            )
+            r.raise_for_status()
+            return r.json()
+        except Exception as e:  # noqa: BLE001 - retried, then re-raised
+            last = e
+            time.sleep(0.5 * (attempt + 1))
+    raise RuntimeError(f"verifier endpoint {path} unreachable after {tries} tries: {last}")
+
+
 def trace():
-    """Tool calls the agent actually made, for false-completion checks."""
-    r = httpx.post(
-        f"{WORLD}/verifier/trace",
-        json={},
-        headers={"X-Verifier-Token": TOKEN},
-        timeout=60.0,
-    )
-    r.raise_for_status()
-    return r.json()["calls"]
+    """Tool calls the agent actually made, for false-completion checks.
+
+    Fetched once per session: a trial can contain hundreds of calls, and asking
+    for them inside every assertion is what made this flaky in the first place.
+    """
+    if not _trace_cache:
+        _trace_cache.extend(_post("/verifier/trace", {})["calls"])
+    return _trace_cache
 
 
 def query(sql, params=None, db="state"):
-    r = httpx.post(
-        f"{WORLD}/verifier/query",
-        json={"sql": sql, "params": params or [], "db": db},
-        headers={"X-Verifier-Token": TOKEN},
-        timeout=60.0,
-    )
-    r.raise_for_status()
-    return r.json()["rows"]
+    return _post("/verifier/query", {"sql": sql, "params": params or [], "db": db})["rows"]
 
 
 def evaluate(check):

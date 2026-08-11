@@ -1,0 +1,32 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1786472008.6469204,
+            "stop": 1786472008.8553457
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_check",
+                "status": "passed",
+                "duration": 0.03440370492171496,
+                "start": 1786472008.6728632,
+                "stop": 1786472008.7076898,
+                "retries": 5,
+                "file_path": "test_outputs.py",
+                "tags": [
+                    "parametrize::check::[{'name': 'james_park_over_quota_resubmitted_as_closed', 'sql': \"SELECT COUNT(*) AS n FROM forecast_submissions WHERE employee_id = ? AND period = '2026-Q3' AND category = 'closed'\", 'params': [5], 'expect': {'scalar_equals': 1}}, {'name': 'alex_rivera_over_quota_resubmitted_as_closed', 'sql': \"SELECT COUNT(*) AS n FROM forecast_submissions WHERE employee_id = ? AND period = '2026-Q3' AND category = 'closed'\", 'params': [7], 'expect': {'scalar_equals': 1}}, {'name': 'mei_huang_under_quota_left_alone', 'sql': \"SELECT COUNT(*) AS n FROM forecast_submissions WHERE employee_id = ? AND period = '2026-Q3'\", 'params': [1], 'expect': {'scalar_equals': 1}}, {'name': 'diego_alvarez_under_quota_left_alone', 'sql': \"SELECT COUNT(*) AS n FROM forecast_submissions WHERE employee_id = ? AND period = '2026-Q3'\", 'params': [3], 'expect': {'scalar_equals': 1}}, {'name': 'quotas_and_attainment_untouched', 'sql': 'SELECT id, quota_amount, attainment_amount FROM rep_quotas ORDER BY id', 'expect': {'unchanged_vs_seed': True}}, {'name': 'other_periods_untouched', 'sql': \"SELECT id, category, amount FROM forecast_submissions WHERE period <> '2026-Q3' ORDER BY id\", 'expect': {'unchanged_vs_seed': True}}]::ids_['james_park_over_quota_resubmitted_as_closed', 'alex_rivera_over_quota_resubmitted_as_closed', 'mei_huang_under_quota_left_alone', 'diego_alvarez_under_quota_left_alone', 'quotas_and_attainment_untouched', 'other_periods_untouched']"
+                ]
+            }
+        ]
+    }
+}
