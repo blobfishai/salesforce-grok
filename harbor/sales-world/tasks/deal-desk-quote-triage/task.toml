@@ -1,0 +1,38 @@
+schema_version = "1.1"
+
+[task]
+name = "sales-world/deal-desk-quote-triage"
+description = "Clear the deal desk approval queue against the discount and TCV matrix"
+authors = [{ name = "salesforce-grok sales-world" }]
+keywords = ["deal-desk", "cpq", "approvals", "policy"]
+
+[metadata]
+family = "deal-desk"
+persona = "Deal Desk analyst"
+difficulty = "medium"
+citations = ["research/answers/stakeholder-roster.md#deal desk workflow approval matrix", "research/repos/eval/SalesforceAIResearch__CRMArena/run_tasks_crmarena_pro.sh"]
+
+[verifier]
+timeout_sec = 600.0
+
+[verifier.env]
+HARBOR_VERIFIER_TOKEN = "harbor-verifier-token"
+WORLD_URL = "http://world:8080"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 900.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 10240
+gpus = 0
+
+[environment.env]
+
+[[environment.mcp_servers]]
+name = "salesforce"
+transport = "streamable-http"
+url = "http://salesforce:8000/mcp"
+args = []

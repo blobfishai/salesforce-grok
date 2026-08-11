@@ -18,6 +18,16 @@ clone_one() {
   dir="$DEST/$axis/${owner}__${name}"
   key="${axis}__${owner}__${name}"
 
+  # Disk guard: the corpus is large and the sweep is unattended. Stop taking on
+  # new repos once free space drops under ~6 GB rather than filling the volume.
+  free_mb=$(df -m "$DEST" | awk 'NR==2{print $4}')
+  if [ "${free_mb:-0}" -lt 6000 ] && [ ! -d "$dir/.git" ]; then
+    printf 'SKIP\t%s\t%s\t-\t0\t0K\tdisk guard: %sMB free\n' "$axis" "$repo" "$free_mb" \
+      > "$DEST/.status/$key"
+    echo "[SKIP] $repo (disk guard)"
+    return 0
+  fi
+
   if [ -d "$dir/.git" ]; then
     status=SKIP; note="already present"
   else
