@@ -1,0 +1,40 @@
+{
+ "source": {
+  "repo": "calypsoCodex/hubspot-mcp-extended",
+  "commit": "b645fe0ae53775a5d550f76cbe935e0bc3322598",
+  "path": "research/repos/mcp/calypsoCodex__hubspot-mcp-extended",
+  "url": "https://github.com/calypsoCodex/hubspot-mcp-extended",
+  "license": "OTHER"
+ },
+ "adapter": {
+  "name": "mcp_server",
+  "version": "1.0"
+ },
+ "fidelity": "adapted",
+ "tables": [],
+ "tools": [
+  {
+   "name": "lineItemId",
+   "namespace": "hubspot-mcp-extended",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  }
+ ],
+ "policies": [],
+ "tasks": [],
+ "refusals": [
+  {
+   "kind": "tools",
+   "what": "input schemas",
+   "why": "declared shapes are not extracted; only verb names are, so mocks need schemas authored",
+   "count": 1
+  },
+  {
+   "kind": "data",
+   "what": "seed data",
+   "why": "MCP servers proxy a live SaaS and ship no fixtures",
+   "count": 1
+  }
+ ]
+}

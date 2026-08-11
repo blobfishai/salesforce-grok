@@ -1,0 +1,693 @@
+{
+ "source": {
+  "repo": "TomGranot/hubspot-admin-skills",
+  "commit": "cb6a1e828482bdffafa159d4f4b184ba67041424",
+  "path": "research/repos/workflow/TomGranot__hubspot-admin-skills",
+  "url": "https://github.com/TomGranot/hubspot-admin-skills",
+  "license": "MIT"
+ },
+ "adapter": {
+  "name": "skillpack",
+  "version": "1.0"
+ },
+ "fidelity": "inspired",
+ "tables": [],
+ "tools": [],
+ "policies": [],
+ "tasks": [
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_build-smart-lists",
+   "prompt": "Create foundational segmented lists for marketing and sales operations via the Lists API, plus advanced UI-built segments: a master sendable list, ICP-based lists, persona lists, and engagement lists. All active (dynamic) lists.",
+   "context": {
+    "skill": "build-smart-lists",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/build-smart-lists/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_review-bounced-contacts",
+   "prompt": "Weekly manual review of contacts with 3+ bounce events. Decide whether to delete or attempt recovery for each flagged contact. Prevents over-suppression while removing truly bad data.",
+   "context": {
+    "skill": "review-bounced-contacts",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/review-bounced-contacts/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_connect-hubspot-mcp",
+   "prompt": "Connect Claude Code to HubSpot's official remote MCP server for natural-language CRM reads and writes. Covers OAuth setup, scope selection, verification, and when to use MCP versus this repo's API scripts.",
+   "context": {
+    "skill": "connect-hubspot-mcp",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/connect-hubspot-mcp/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_bounce-monitoring-workflow",
+   "prompt": "Build a workflow to protect sender reputation through automated bounce monitoring. Auto-suppresses contacts above a configurable bounce threshold, alerts on hard bounces, and flags high-bounce contacts for weekly manual review.",
+   "context": {
+    "skill": "bounce-monitoring-workflow",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/bounce-monitoring-workflow/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_audit-api-usage",
+   "prompt": "Inventory the integrations, private apps, and internal tooling that call HubSpot APIs, and flag anything on legacy v1-v4 endpoints ahead of HubSpot's March 30, 2027 end of support. Produces a migration checklist to date-based API versions.",
+   "context": {
+    "skill": "audit-api-usage",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/audit-api-usage/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_hubspot-implementation-plan",
+   "prompt": "Generate a phased implementation plan from a HubSpot audit report. Creates prioritized, sequenced cleanup processes with effort estimates, dependencies, and automation feasibility. Use after running /hubspot-audit.",
+   "context": {
+    "skill": "hubspot-implementation-plan",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/hubspot-implementation-plan/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_merge-duplicate-companies",
+   "prompt": "Identify duplicate company records by domain and name, export audit CSVs for review, and guide merging. API for discovery, third-party tools or manual UI for merging (HubSpot has no bulk merge API).",
+   "context": {
+    "skill": "merge-duplicate-companies",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/merge-duplicate-companies/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_enrich-industry",
+   "prompt": "Backfill contact-level industry from associated company records using a HubSpot workflow. Enables industry-based segmentation for targeted campaigns aligned with ICP verticals.",
+   "context": {
+    "skill": "enrich-industry",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/enrich-industry/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_lifecycle-progression-workflow",
+   "prompt": "Build workflows to automate contact progression through the sales funnel: Lead to MQL to SQL to Opportunity to Customer. Each transition is triggered by a specific event (score threshold, meeting booked, deal created, deal won).",
+   "context": {
+    "skill": "lifecycle-progression-workflow",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/lifecycle-progression-workflow/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_build-lead-scoring",
+   "prompt": "Create a comprehensive lead scoring model with separate Fit and Engagement scores using HubSpot's new Lead Scoring tool. Replaces the deprecated HubSpot Score property.",
+   "context": {
+    "skill": "build-lead-scoring",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/build-lead-scoring/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_enrich-company-name",
+   "prompt": "Populate missing contact company name fields from associated company records using a HubSpot workflow with optional API backfill. Ensures contacts inherit their company name for segmentation, personalization, and ICP classification.",
+   "context": {
+    "skill": "enrich-company-name",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/enrich-company-name/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_delete-no-email-contacts",
+   "prompt": "Delete contacts with no email address from a HubSpot CRM instance. These contacts cannot receive any communication and inflate billing. Fully automated via the HubSpot CRM Search and Batch Archive APIs.",
+   "context": {
+    "skill": "delete-no-email-contacts",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/delete-no-email-contacts/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_sandbox-self-test",
+   "prompt": "Verify the entire toolkit against a disposable HubSpot developer test account or sandbox that you bring: seed synthetic fixtures, run every scripted skill's read path, exercise end-to-end and API round-trip cases, produce a graded report, and tear everything down. Hard-refuses to run against production.",
+   "context": {
+    "skill": "sandbox-self-test",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/sandbox-self-test/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_backfill-geo-data",
+   "prompt": "Enrich missing geographic data (country, state, city) on contacts and companies using HubSpot workflows, external data providers, or IP-based geolocation.",
+   "context": {
+    "skill": "backfill-geo-data",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/backfill-geo-data/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_suppress-global-unsubscribes",
+   "prompt": "Identify and suppress globally unsubscribed contacts to ensure legal compliance and reduce billing. Hybrid approach: API for discovery and audit, manual UI for suppression (hs_marketable_status is read-only).",
+   "context": {
+    "skill": "suppress-global-unsubscribes",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/suppress-global-unsubscribes/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_cleanup-deals",
+   "prompt": "Standardize deal pipelines, remove test deals, and address deals with missing amounts or close dates. Coordinates with Salesforce sync if applicable.",
+   "context": {
+    "skill": "cleanup-deals",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/cleanup-deals/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_hubspot-audit",
+   "prompt": "Run a comprehensive HubSpot CRM database audit. Analyzes contacts, companies, deals, engagement, data quality, and deliverability. Use when starting a CRM cleanup, onboarding a new client, or performing quarterly health checks.",
+   "context": {
+    "skill": "hubspot-audit",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/hubspot-audit/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_suppress-hard-bounced",
+   "prompt": "Identify and suppress hard-bounced contacts to protect email sender reputation. Hybrid approach: API for discovery and audit, manual UI for suppression (hs_marketable_status is read-only via API).",
+   "context": {
+    "skill": "suppress-hard-bounced",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/suppress-hard-bounced/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_weekly-cleanup-routine",
+   "prompt": "A lightweight 5-minute weekly health check covering bounce monitoring, new contact quality, workflow health, list growth trends, and data quality sampling. Quick early warning system, not a comprehensive audit.",
+   "context": {
+    "skill": "weekly-cleanup-routine",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/weekly-cleanup-routine/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_create-segment-lists",
+   "prompt": "Create business segment lists in HubSpot for customers, partners, competitors, employees, ICP tiers, and industries. Enables segment-based targeting, suppression, and analytics.",
+   "context": {
+    "skill": "create-segment-lists",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/create-segment-lists/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_standardize-geo-values",
+   "prompt": "Convert inconsistent country and state/region formats to standardized values across contacts and companies. Ensures geographic segmentation works reliably.",
+   "context": {
+    "skill": "standardize-geo-values",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/standardize-geo-values/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_assign-unowned-contacts",
+   "prompt": "Assign an owner to marketing contacts that have no owner. Ensures every marketable contact has accountability for follow-up, proper lead routing, and accurate owner-based reporting.",
+   "context": {
+    "skill": "assign-unowned-contacts",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/assign-unowned-contacts/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_reassign-deactivated-owners",
+   "prompt": "Reassign contacts and companies from deactivated team members to active owners. Fully automated via the HubSpot Owners API and Batch Update API. Includes territory analysis for informed reassignment decisions.",
+   "context": {
+    "skill": "reassign-deactivated-owners",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/reassign-deactivated-owners/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_cleanup-workflows",
+   "prompt": "Audit and remove inactive, test, or deprecated workflows from HubSpot. Identifies workflows that have never enrolled contacts, workflows turned off for 90+ days, and test workflows.",
+   "context": {
+    "skill": "cleanup-workflows",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/cleanup-workflows/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_new-contact-hygiene-workflow",
+   "prompt": "Build a HubSpot workflow that auto-enriches and stages new contacts upon creation. Sets lifecycle stage via the v4 Automation API, copies company name and industry from the associated company (UI step), and branches on completeness.",
+   "context": {
+    "skill": "new-contact-hygiene-workflow",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/new-contact-hygiene-workflow/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_suppress-ghost-contacts",
+   "prompt": "Identify and suppress ghost contacts who received marketing emails but never opened any. These contacts destroy sender reputation and deliverability. Hybrid approach: API for discovery, manual UI for suppression.",
+   "context": {
+    "skill": "suppress-ghost-contacts",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/suppress-ghost-contacts/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_engagement-suppression-workflow",
+   "prompt": "Build a two-tier sunset workflow that re-engages dormant contacts before suppressing them. Tier 1 triggers a re-engagement campaign after a configurable inactivity window. Tier 2 suppresses contacts that fail to re-engage within a configurable re-engagement window.",
+   "context": {
+    "skill": "engagement-suppression-workflow",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/engagement-suppression-workflow/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_cleanup-forms",
+   "prompt": "Audit and remove unused, test, or deprecated forms from HubSpot. Identifies forms with zero submissions, forms not embedded on any page, and test forms left over from development.",
+   "context": {
+    "skill": "cleanup-forms",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/cleanup-forms/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_quarterly-database-cleanup",
+   "prompt": "Run a comprehensive quarterly CRM audit covering list health, bounce monitoring, data quality, scoring calibration, engagement metrics, and property cleanup. Produces a health report with quarter-over-quarter trend comparison.",
+   "context": {
+    "skill": "quarterly-database-cleanup",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/quarterly-database-cleanup/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_cleanup-dashboards",
+   "prompt": "Audit and consolidate HubSpot reporting dashboards. Identifies unused, duplicate, or outdated dashboards. Must be performed manually \u2014 no dashboard API is available.",
+   "context": {
+    "skill": "cleanup-dashboards",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/cleanup-dashboards/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_cleanup-lists",
+   "prompt": "Audit and remove unused, empty, or duplicate list definitions from HubSpot. Identifies lists with zero members, lists not used by any workflow or email, and overlapping list criteria.",
+   "context": {
+    "skill": "cleanup-lists",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/cleanup-lists/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_cleanup-lead-owners",
+   "prompt": "Remove non-employee users from HubSpot and reassign their orphaned contacts, companies, and deals. Pairs with the assign-unowned-contacts skill for comprehensive ownership cleanup.",
+   "context": {
+    "skill": "cleanup-lead-owners",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/cleanup-lead-owners/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_waterfall-enrich-contacts",
+   "prompt": "Enrich HubSpot contacts (email, phone, job title) through an external enrichment provider and write results back safely. Pluggable provider adapters with FullEnrich waterfall enrichment as the default; Apollo, Hunter, and Dropcontact included; bring your own via a template.",
+   "context": {
+    "skill": "waterfall-enrich-contacts",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/waterfall-enrich-contacts/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_cleanup-properties",
+   "prompt": "Archive or delete unused custom properties across all HubSpot object types (contacts, companies, deals). Identifies Salesforce sync properties, test/temp properties, and obsolete form fields.",
+   "context": {
+    "skill": "cleanup-properties",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/cleanup-properties/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_fix-lifecycle-stages",
+   "prompt": "Ensure all contacts and companies have appropriate lifecycle stages. Backfills missing stages via API, fixes records stuck at disallowed stages, and creates prevention workflows to stop future gaps.",
+   "context": {
+    "skill": "fix-lifecycle-stages",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/fix-lifecycle-stages/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_create-icp-tiers",
+   "prompt": "Classify companies into Ideal Customer Profile (ICP) tiers based on firmographic data (industry + employee count). Creates a custom property via API and 4 classification workflows in HubSpot UI.",
+   "context": {
+    "skill": "create-icp-tiers",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/create-icp-tiers/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_TomGranot__hubspot-admin-skills_workflows-as-code",
+   "prompt": "Export all HubSpot workflows to versioned JSON files via the v4 Automation API, diff exports over time, and restore or recreate workflows from JSON. Treats workflow definitions like code: backed up, reviewable, and recoverable.",
+   "context": {
+    "skill": "workflows-as-code",
+    "path": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/workflows-as-code/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "TomGranot__hubspot-admin-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "kind": "verifier",
+   "what": "graded ground truth",
+   "why": "skills document procedures, not expected end states; tasks derived from them must be authored and gated separately",
+   "count": 37
+  }
+ ]
+}

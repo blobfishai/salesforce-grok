@@ -1,0 +1,207 @@
+{
+ "source": {
+  "repo": "keinsaasforever/gtm-pipeline-skills",
+  "commit": "f3af48046ecd729702e85122beb13957a8a478e4",
+  "path": "research/repos/workflow/keinsaasforever__gtm-pipeline-skills",
+  "url": "https://github.com/keinsaasforever/gtm-pipeline-skills",
+  "license": "MIT"
+ },
+ "adapter": {
+  "name": "skillpack",
+  "version": "1.0"
+ },
+ "fidelity": "inspired",
+ "tables": [],
+ "tools": [],
+ "policies": [],
+ "tasks": [
+  {
+   "id": "skill_keinsaasforever__gtm-pipeline-skills_gtm-people-search",
+   "prompt": "Find contacts at specific companies or by persona. Use when you have a company list and need contacts with specific roles (company mode), or when building a persona-based prospect list without a company list (persona mode). Also triggers on \"find contacts\", \"search for people at [company]\", \"find [role] contacts\", \"people search\".",
+   "context": {
+    "skill": "gtm-pipeline:people-search",
+    "path": "research/repos/workflow/keinsaasforever__gtm-pipeline-skills/skills/gtm-people-search/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "keinsaasforever__gtm-pipeline-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_keinsaasforever__gtm-pipeline-skills_gtm-company-enrichment",
+   "prompt": "Enrich a company list with structured data and score against ICP. Phase 1: data enrichment (PhantomBuster SN, Parallel Task Group, SimilarWeb, Firecrawl, SerpAPI). Phase 2: ICP scoring by the agent (icp_score 0-100, optional gate \u226570). Use after company-search and before signal-search. Also triggers on \"enrich companies\", \"ICP scoring\", \"score companies\".",
+   "context": {
+    "skill": "gtm-pipeline:company-enrichment",
+    "path": "research/repos/workflow/keinsaasforever__gtm-pipeline-skills/skills/gtm-company-enrichment/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "keinsaasforever__gtm-pipeline-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_keinsaasforever__gtm-pipeline-skills_gtm-signal-search",
+   "prompt": "Find buying intent signals for target companies and score them for purchase intent. Runs a Python script (signal_search.py) that orchestrates Parallel web search (always on), Firecrawl crawl (opt-in), Parallel structured enrichment (opt-in), and a Signal Assessment LLM that scores 1-100. Universal templates live in the script; client-specific prompts come from the working directory's context/ files. Runs standalone or in either pipeline workflow \u2014 does NOT require ICP scoring as input. Also triggers on \"signal search\", \"find signals for\", \"buying intent\".",
+   "context": {
+    "skill": "gtm-pipeline:signal-search",
+    "path": "research/repos/workflow/keinsaasforever__gtm-pipeline-skills/skills/gtm-signal-search/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "keinsaasforever__gtm-pipeline-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_keinsaasforever__gtm-pipeline-skills_gtm-contact-filter",
+   "prompt": "Classify and filter contacts from people-search output BEFORE enrichment. Rejects non-ICP contacts and ranks the rest using job tier, industry tier, location tier, company size, and ICP keyword scoring. Saves enrichment credits by only passing qualified contacts downstream. Input: contacts_found.csv. Output: contacts_filtered.csv. Also triggers on \"filter contacts\", \"ICP filter\", \"rank contacts\".",
+   "context": {
+    "skill": "gtm-pipeline:contact-filter",
+    "path": "research/repos/workflow/keinsaasforever__gtm-pipeline-skills/skills/gtm-contact-filter/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "keinsaasforever__gtm-pipeline-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_keinsaasforever__gtm-pipeline-skills_gtm-setup",
+   "prompt": "Onboarding skill \u2014 walks a new user through installation, API key configuration, PhantomBuster agent IDs, first client setup (auto-research from domain + 5 refinement questions), and a skill tour. Run this first after cloning the repo. Also triggers on \"set up gtm skills\", \"configure gtm\", \"gtm onboarding\", \"first time setup\".",
+   "context": {
+    "skill": "gtm-pipeline:setup",
+    "path": "research/repos/workflow/keinsaasforever__gtm-pipeline-skills/skills/gtm-setup/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "keinsaasforever__gtm-pipeline-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_keinsaasforever__gtm-pipeline-skills_gtm-pipeline",
+   "prompt": "Plan and execute a full GTM lead generation pipeline, from company discovery to enriched contacts. Use when a client needs end-to-end orchestration spanning multiple GTM skills: determines Company-First vs Signal-First workflow, assesses starting data, plans the skill sequence with cost estimates for user approval, then chains skill outputs. Not for demo requests (use gtm-demo) or single-step requests (invoke that skill directly). Also triggers on \"run the pipeline\", \"start pipeline for [client]\", \"full pipeline\", \"Stripe payment trigger\".",
+   "context": {
+    "skill": "gtm-pipeline:pipeline",
+    "path": "research/repos/workflow/keinsaasforever__gtm-pipeline-skills/skills/gtm-pipeline/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "keinsaasforever__gtm-pipeline-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_keinsaasforever__gtm-pipeline-skills_gtm-demo",
+   "prompt": "Generate a demo lead list of ~10 enriched contacts with personalized message examples. Use when a demo is requested, a webhook prompt describes a target audience, or someone asks to \"create a demo for [client]\". Enforces demo mode restrictions (email only, no phone, ~10 contacts). Chains people-search \u2192 contact-filter \u2192 people-enrichment \u2192 (optional signal-search) \u2192 message generation. Pass `--with-signals` (or ask the user) to enable a buying-intent scoring pass before message generation \u2014 pricier but produces sharper, signal-anchored messages.",
+   "context": {
+    "skill": "gtm-pipeline:demo",
+    "path": "research/repos/workflow/keinsaasforever__gtm-pipeline-skills/skills/gtm-demo/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "keinsaasforever__gtm-pipeline-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_keinsaasforever__gtm-pipeline-skills_gtm-company-search",
+   "prompt": "Build a list of companies matching ICP criteria. Use when a client needs a company list \u2014 no existing list, wants to expand, or signal-based discovery needs enrichment. Providers: Sales Navigator + PhantomBuster, Parallel FindAll, Firecrawl Agent, Pipe0 Amplemarket, BC/FE byproduct, web scraping. Also triggers on \"build company list\", \"find companies\", \"company search\".",
+   "context": {
+    "skill": "gtm-pipeline:company-search",
+    "path": "research/repos/workflow/keinsaasforever__gtm-pipeline-skills/skills/gtm-company-search/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "keinsaasforever__gtm-pipeline-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_keinsaasforever__gtm-pipeline-skills_gtm-outreach",
+   "prompt": "Execute LinkedIn outreach \u2014 send connection requests and personalized messages/InMails to a contact list via PhantomBuster, one profile at a time on a timed loop. Use after people-enrichment when contacts are ready for outreach. Also triggers on \"linkedin outreach\", \"send connection requests\", \"connect with leads on linkedin\", \"send linkedin messages\", \"send inmails\", \"start outreach\", \"launch outreach campaign\", \"put contacts on outreach\".",
+   "context": {
+    "skill": "gtm-pipeline:outreach",
+    "path": "research/repos/workflow/keinsaasforever__gtm-pipeline-skills/skills/gtm-outreach/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "keinsaasforever__gtm-pipeline-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_keinsaasforever__gtm-pipeline-skills_gtm-people-enrichment",
+   "prompt": "Enrich contacts with work email, phone number, and/or LinkedIn URL. Use when you have a contact list that needs enrichment before outreach. Email waterfall (FullEnrich \u2192 Pipe0), phone (FullEnrich \u2192 Pipe0 \u2192 BetterContact). Enforces demo mode (email only, no phone). Also triggers on \"enrich contacts\", \"find emails for\", \"get phone numbers for\".",
+   "context": {
+    "skill": "gtm-pipeline:people-enrichment",
+    "path": "research/repos/workflow/keinsaasforever__gtm-pipeline-skills/skills/gtm-people-enrichment/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "keinsaasforever__gtm-pipeline-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "kind": "verifier",
+   "what": "graded ground truth",
+   "why": "skills document procedures, not expected end states; tasks derived from them must be authored and gated separately",
+   "count": 10
+  }
+ ]
+}

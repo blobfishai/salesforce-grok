@@ -1,0 +1,63 @@
+{
+ "source": {
+  "repo": "willwearing/salesnav-skill",
+  "commit": "7c1bd60c36d13abd45d1969b7d5af825f5694db1",
+  "path": "research/repos/workflow/willwearing__salesnav-skill",
+  "url": "https://github.com/willwearing/salesnav-skill",
+  "license": "UNKNOWN"
+ },
+ "adapter": {
+  "name": "skillpack",
+  "version": "1.0"
+ },
+ "fidelity": "inspired",
+ "tables": [],
+ "tools": [],
+ "policies": [],
+ "tasks": [
+  {
+   "id": "skill_willwearing__salesnav-skill_salesnav",
+   "prompt": "LinkedIn Sales Navigator automation via Playwright. Search accounts/leads, manage lists, track alerts, and bulk-sync from Vitally. Connects to your logged-in Chrome browser session.",
+   "context": {
+    "skill": "salesnav",
+    "path": "research/repos/workflow/willwearing__salesnav-skill/agents/salesnav/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "willwearing__salesnav-skill"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_willwearing__salesnav-skill_salesnav",
+   "prompt": "LinkedIn Sales Navigator automation - search accounts/leads, manage lists, track alerts, bulk-sync from Vitally. Uses Chrome DevTools MCP to control your logged-in browser.",
+   "context": {
+    "skill": "salesnav",
+    "path": "research/repos/workflow/willwearing__salesnav-skill/skills/salesnav/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "willwearing__salesnav-skill"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "kind": "verifier",
+   "what": "graded ground truth",
+   "why": "skills document procedures, not expected end states; tasks derived from them must be authored and gated separately",
+   "count": 2
+  }
+ ]
+}

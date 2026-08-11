@@ -1,0 +1,405 @@
+{
+ "source": {
+  "repo": "concaption/cold-md",
+  "commit": "8332a5a656dc9841e43bf7939fbcbec00e711cb2",
+  "path": "research/repos/workflow/concaption__cold-md",
+  "url": "https://github.com/concaption/cold-md",
+  "license": "MIT"
+ },
+ "adapter": {
+  "name": "skillpack",
+  "version": "1.0"
+ },
+ "fidelity": "inspired",
+ "tables": [],
+ "tools": [],
+ "policies": [],
+ "tasks": [
+  {
+   "id": "skill_concaption__cold-md_cold-triage",
+   "prompt": "Pull unread inbox replies from FoxReach, surface interested ones, draft responses per cold.md ## Objections, mark routine ones (OOO/not_interested) as read. Replaces v0 stub. Use when the user says \"triage replies\", \"any new replies\", \"/cold triage\", or on a daily cron.",
+   "context": {
+    "skill": "cold-triage",
+    "path": "research/repos/workflow/concaption__cold-md/plugin/cold-md/skills/cold-triage/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "concaption__cold-md"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_concaption__cold-md_cold-status",
+   "prompt": "Print the current state of the autoresearch loop \u2014 what we've learned, what's being tested, what's pending review, what's next. Reads everything in .cold/ and outputs a one-screen dashboard. Use anytime to orient. No FoxReach calls \u2014 purely local read.",
+   "context": {
+    "skill": "cold-status",
+    "path": "research/repos/workflow/concaption__cold-md/plugin/cold-md/skills/cold-status/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "concaption__cold-md"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_concaption__cold-md_cold-icp",
+   "prompt": "Build your Ideal Customer Profile (ICP) and write it to icp.md for the rest of the cold.md suite to consume. Use when the user says \"build my ICP\", \"define my target audience\", \"who should I sell to\", \"analyze my website for ICP\", or when starting a new cold outreach project. Can bootstrap from a URL (scrape homepage, about, pricing, case studies) or run an interactive Q&A. Writes a structured icp.md that cold-leads, cold-draft, and cold-send all read.",
+   "context": {
+    "skill": "cold-icp",
+    "path": "research/repos/workflow/concaption__cold-md/plugin/cold-md/skills/cold-icp/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "concaption__cold-md"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_concaption__cold-md_cold-report",
+   "prompt": "Generate a digest of cold outreach performance - deliverability, replies, booked calls, domain health. Use when the user asks for a report, digest, summary, weekly recap, performance check, or asks \"how did my campaigns do\". Reads live metrics from the FoxReach API. Designed to be called by cron (daily or weekly) and post results to Slack or email. Part of the cold.md suite.",
+   "context": {
+    "skill": "cold-report",
+    "path": "research/repos/workflow/concaption__cold-md/plugin/cold-md/skills/cold-report/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "concaption__cold-md"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_concaption__cold-md_cold-send",
+   "prompt": "Push the active campaign to FoxReach \u2014 creates sequences, registers variants from cold-draft output, runs pre-flight checks (banned-phrase lint, audience check, plan-limit math, bounce-rate guard), and starts the campaign. Use after /cold leads + /cold draft. Replaces v0 stub.",
+   "context": {
+    "skill": "cold-send",
+    "path": "research/repos/workflow/concaption__cold-md/plugin/cold-md/skills/cold-send/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "concaption__cold-md"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_concaption__cold-md_cold-leads",
+   "prompt": "Import a CSV of leads, score each against icp.md, drop misaligned ones, optionally enrich with per-lead web research, then push the survivors into FoxReach as a campaign. Replaces the v0 stub. Use when the user says \"import leads\", \"score these prospects\", \"filter to my ICP\", \"build a campaign from this CSV\".",
+   "context": {
+    "skill": "cold-leads",
+    "path": "research/repos/workflow/concaption__cold-md/plugin/cold-md/skills/cold-leads/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "concaption__cold-md"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_concaption__cold-md_cold-experiment",
+   "prompt": "Design the next A/B experiment for the autoresearch loop. Reads the current tier from .cold/config.json, picks the variable to test, drafts arm specs (e.g. statement vs. question subject lines), declares sample size + success criteria, and writes a protocol to .cold/experiments/. Use after /cold offer and before /cold draft. The experiment protocol is what cold-draft reads to generate variant pairs. Use when the user says \"design the next experiment\", \"what should we test next\", \"set up the A/B\", or \"/cold experiment\".",
+   "context": {
+    "skill": "cold-experiment",
+    "path": "research/repos/workflow/concaption__cold-md/plugin/cold-md/skills/cold-experiment/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "concaption__cold-md"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_concaption__cold-md_cold-draft",
+   "prompt": "Draft cold email openers, bumps, breakups, and replies from a cold.md file. Use when the user asks to write a cold email, sequence, bump, breakup, reply, objection response, or any outbound message - or when a cold.md file exists at the repo root or is referenced. Enforces the cold.md spec (https://cold.md) - obeys banned phrases, voice rules, proof list, sequence constraints, and audience disqualifiers. Part of the cold.md suite.",
+   "context": {
+    "skill": "cold-draft",
+    "path": "research/repos/workflow/concaption__cold-md/plugin/cold-md/skills/cold-draft/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "concaption__cold-md"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_concaption__cold-md_cold-offer",
+   "prompt": "Refine your value proposition (the \"## Value\" section of cold.md) using competitor pricing, market trends, and case studies. Searches the web for what comparable products charge, what pain points the target market is talking about, and what proof patterns work. Writes findings to .cold/research/ and proposes a tightened one-sentence value statement to commit to offer.md and cold.md. Use when starting a new project after /cold icp, or when the user says \"tighten my offer\", \"refine my value prop\", \"what should I be charging\", \"validate my offer\".",
+   "context": {
+    "skill": "cold-offer",
+    "path": "research/repos/workflow/concaption__cold-md/plugin/cold-md/skills/cold-offer/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "concaption__cold-md"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_concaption__cold-md_cold-learn",
+   "prompt": "Read the active experiment's results from FoxReach, run the statistical test, and propose a cold.md diff (or auto-commit if trust earned). Computes interested-reply rate per variant via foxreach inbox categorize-stats, applies a two-proportion z-test, checks guards (bounce rate, not-interested rate), and either writes .cold/proposed-diff.patch or applies it directly. Use 7+ days after /cold send when an experiment is active. Updates beliefs.md and decisions.md. Use when the user says \"read the experiment\", \"/cold learn\", \"what did we learn\", or \"is the test done yet\".",
+   "context": {
+    "skill": "cold-learn",
+    "path": "research/repos/workflow/concaption__cold-md/plugin/cold-md/skills/cold-learn/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "concaption__cold-md"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_concaption__cold-md_cold-triage",
+   "prompt": "Pull unread inbox replies from FoxReach, surface interested ones, draft responses per cold.md ## Objections, mark routine ones (OOO/not_interested) as read. Replaces v0 stub. Use when the user says \"triage replies\", \"any new replies\", \"/cold triage\", or on a daily cron.",
+   "context": {
+    "skill": "cold-triage",
+    "path": "research/repos/workflow/concaption__cold-md/skills/cold-triage/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "concaption__cold-md"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_concaption__cold-md_cold-status",
+   "prompt": "Print the current state of the autoresearch loop \u2014 what we've learned, what's being tested, what's pending review, what's next. Reads everything in .cold/ and outputs a one-screen dashboard. Use anytime to orient. No FoxReach calls \u2014 purely local read.",
+   "context": {
+    "skill": "cold-status",
+    "path": "research/repos/workflow/concaption__cold-md/skills/cold-status/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "concaption__cold-md"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_concaption__cold-md_cold-research",
+   "prompt": "Run per-lead web research on a candidates CSV, write one bundle.md per lead, and emit assignments.json splitting leads into A/B arms for experiments. Uses parallel sub-agents for batches of 10. Spawned by cold-experiment when the experiment design has personalization as the variable, or by the user saying \"research these leads\", \"personalize this list\", \"build per-lead bundles\".",
+   "context": {
+    "skill": "cold-research",
+    "path": "research/repos/workflow/concaption__cold-md/skills/cold-research/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "concaption__cold-md"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_concaption__cold-md_cold-icp",
+   "prompt": "Build your Ideal Customer Profile (ICP) and write it to icp.md for the rest of the cold.md suite to consume. Use when the user says \"build my ICP\", \"define my target audience\", \"who should I sell to\", \"analyze my website for ICP\", or when starting a new cold outreach project. Can bootstrap from a URL (scrape homepage, about, pricing, case studies) or run an interactive Q&A. Writes a structured icp.md that cold-leads, cold-draft, and cold-send all read.",
+   "context": {
+    "skill": "cold-icp",
+    "path": "research/repos/workflow/concaption__cold-md/skills/cold-icp/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "concaption__cold-md"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_concaption__cold-md_cold-report",
+   "prompt": "Generate a digest of cold outreach performance - deliverability, replies, booked calls, domain health. Use when the user asks for a report, digest, summary, weekly recap, performance check, or asks \"how did my campaigns do\". Reads live metrics from the FoxReach API. Designed to be called by cron (daily or weekly) and post results to Slack or email. Part of the cold.md suite.",
+   "context": {
+    "skill": "cold-report",
+    "path": "research/repos/workflow/concaption__cold-md/skills/cold-report/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "concaption__cold-md"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_concaption__cold-md_cold-send",
+   "prompt": "Push the active campaign to FoxReach \u2014 creates sequences, registers variants from cold-draft output, runs pre-flight checks (banned-phrase lint, audience check, plan-limit math, bounce-rate guard), and starts the campaign. Use after /cold leads + /cold draft. Replaces v0 stub.",
+   "context": {
+    "skill": "cold-send",
+    "path": "research/repos/workflow/concaption__cold-md/skills/cold-send/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "concaption__cold-md"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_concaption__cold-md_cold-leads",
+   "prompt": "Import a CSV of leads, score each against icp.md, drop misaligned ones, optionally enrich with per-lead web research, then push the survivors into FoxReach as a campaign. Replaces the v0 stub. Use when the user says \"import leads\", \"score these prospects\", \"filter to my ICP\", \"build a campaign from this CSV\".",
+   "context": {
+    "skill": "cold-leads",
+    "path": "research/repos/workflow/concaption__cold-md/skills/cold-leads/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "concaption__cold-md"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_concaption__cold-md_cold-experiment",
+   "prompt": "Design the next A/B experiment for the autoresearch loop. Reads the current tier from .cold/config.json, picks the variable to test, drafts arm specs (e.g. statement vs. question subject lines), declares sample size + success criteria, and writes a protocol to .cold/experiments/. Use after /cold offer and before /cold draft. The experiment protocol is what cold-draft reads to generate variant pairs. Use when the user says \"design the next experiment\", \"what should we test next\", \"set up the A/B\", or \"/cold experiment\".",
+   "context": {
+    "skill": "cold-experiment",
+    "path": "research/repos/workflow/concaption__cold-md/skills/cold-experiment/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "concaption__cold-md"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_concaption__cold-md_cold-draft",
+   "prompt": "Draft cold email openers, bumps, breakups, and replies from a cold.md file. Use when the user asks to write a cold email, sequence, bump, breakup, reply, objection response, or any outbound message - or when a cold.md file exists at the repo root or is referenced. Enforces the cold.md spec (https://cold.md) - obeys banned phrases, voice rules, proof list, sequence constraints, and audience disqualifiers. Part of the cold.md suite.",
+   "context": {
+    "skill": "cold-draft",
+    "path": "research/repos/workflow/concaption__cold-md/skills/cold-draft/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "concaption__cold-md"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_concaption__cold-md_cold-offer",
+   "prompt": "Refine your value proposition (the \"## Value\" section of cold.md) using competitor pricing, market trends, and case studies. Searches the web for what comparable products charge, what pain points the target market is talking about, and what proof patterns work. Writes findings to .cold/research/ and proposes a tightened one-sentence value statement to commit to offer.md and cold.md. Use when starting a new project after /cold icp, or when the user says \"tighten my offer\", \"refine my value prop\", \"what should I be charging\", \"validate my offer\".",
+   "context": {
+    "skill": "cold-offer",
+    "path": "research/repos/workflow/concaption__cold-md/skills/cold-offer/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "concaption__cold-md"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_concaption__cold-md_cold-learn",
+   "prompt": "Read the active experiment's results from FoxReach, run the statistical test, and propose a cold.md diff (or auto-commit if trust earned). Computes interested-reply rate per variant via foxreach inbox categorize-stats, applies a two-proportion z-test, checks guards (bounce rate, not-interested rate), and either writes .cold/proposed-diff.patch or applies it directly. Use 7+ days after /cold send when an experiment is active. Updates beliefs.md and decisions.md. Use when the user says \"read the experiment\", \"/cold learn\", \"what did we learn\", or \"is the test done yet\".",
+   "context": {
+    "skill": "cold-learn",
+    "path": "research/repos/workflow/concaption__cold-md/skills/cold-learn/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "concaption__cold-md"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "kind": "verifier",
+   "what": "graded ground truth",
+   "why": "skills document procedures, not expected end states; tasks derived from them must be authored and gated separately",
+   "count": 21
+  }
+ ]
+}

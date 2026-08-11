@@ -1,0 +1,4761 @@
+{
+ "source": {
+  "repo": "gooseworks-ai/goose-skills",
+  "commit": "8866b2a63ae06a17213bb8525d7dcfd8991a90b2",
+  "path": "research/repos/workflow/gooseworks-ai__goose-skills",
+  "url": "https://github.com/gooseworks-ai/goose-skills",
+  "license": "MIT"
+ },
+ "adapter": {
+  "name": "skillpack",
+  "version": "1.0"
+ },
+ "fidelity": "inspired",
+ "tables": [],
+ "tools": [],
+ "policies": [],
+ "tasks": [
+  {
+   "id": "skill_gooseworks-ai__goose-skills_investor-call-prep",
+   "prompt": "Prepare for investor calls by pulling upcoming meetings from Google Calendar, deeply researching each investor and their firm (website scraping, portfolio analysis, thesis extraction), checking for competitor conflicts, and outputting an honest prep sheet with compatibility assessments. Use when asked to prep for investor meetings, fundraising calls, VC meetings, or demo day.",
+   "context": {
+    "skill": "investor-call-prep",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research/capabilities/investor-call-prep/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_customer-discovery",
+   "prompt": ">",
+   "context": {
+    "skill": "customer-discovery",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research/capabilities/customer-discovery/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_buyer-persona-generator",
+   "prompt": ">",
+   "context": {
+    "skill": "buyer-persona-generator",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research/capabilities/buyer-persona-generator/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_market-research",
+   "prompt": "Research market trends, size, competitors, and growth opportunities",
+   "context": {
+    "skill": "market-research",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research/capabilities/market-research/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_investor-research",
+   "prompt": "Research VCs, angels, and investors - portfolio, thesis, contact info",
+   "context": {
+    "skill": "investor-research",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research/capabilities/investor-research/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_churn-risk-detector",
+   "prompt": ">",
+   "context": {
+    "skill": "churn-risk-detector",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research/composites/churn-risk-detector/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_review-intelligence-digest",
+   "prompt": ">",
+   "context": {
+    "skill": "review-intelligence-digest",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research/composites/review-intelligence-digest/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_voice-of-customer-synthesizer",
+   "prompt": ">",
+   "context": {
+    "skill": "voice-of-customer-synthesizer",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research/composites/voice-of-customer-synthesizer/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-imessage-chat",
+   "prompt": "Assemble an iMessage chat-reveal video ad from a thread JSON \u2014 one continuous Playwright recording of the conversation animating in (typing dots, composer typing, bubble pops, auto-scroll) crossfaded into a designed end card, with iMessage send/receive SFX and an optional ducked music bed. FREE assembly (Playwright + ffmpeg); the recipe supplies the per-brand thread + product + end-card config and gates the paid product-image/music calls to their own capabilities. Use for the imessage-chat format.",
+   "context": {
+    "skill": "render-imessage-chat",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-imessage-chat/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-mosaic-grid-reveal",
+   "prompt": "Render a 'mosaic-grid-reveal' video from a config \u2014 a real-DOM FULL-BLEED N\u00d7N mosaic of real product tiles that pops in one tile at a time (scatter order, ease-out-back overshoot), the grid clears, then the brand wordmark builds line-by-line followed by a sub-label, tagline, and CTA; frame-stepped via Playwright and encoded with FFmpeg \u2014 deterministic assembly, FREE (the music bed comes from create-music-elevenlabs), so the wordmark, tile captions, and CTA stay pixel-crisp. Use for the mosaic-grid-reveal format.",
+   "context": {
+    "skill": "render-mosaic-grid-reveal",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-mosaic-grid-reveal/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-3d-character-explainer",
+   "prompt": "Assemble a glossy 3D-character animated-explainer video ad (~77s, 9:16) built on an \"N types of X\" listicle spine \u2014 a recurring human protagonist plus a locked cast of N persona characters, one per list item. Given the per-scene i2v clips + a per-scene target-duration table + a narration track, it trims each clip to its scene window, re-encodes every segment to identical 1080x1920/30fps/libx264/yuv420p (decrease+pad, never crop) so the concat demuxer never drops frames, concats, and muxes audio \u2014 in RESTYLE mode the source ad's VO+music mix is reused verbatim, in ORIGINAL mode fresh per-scene ",
+   "context": {
+    "skill": "render-3d-character-explainer",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-3d-character-explainer/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-multiworld",
+   "prompt": "Assemble a silent, music-led 3-world product-tour ad \u2014 trim and hard-cut-concat the per-world WIDE-arrival + top-down-macro clips, composite the HTML/Playwright brand end card (\"FIND YOUR DAILY.\" + handwritten scent labels + arrows) over an AI flat-lay background, and mux one music bed into a 720x1280 web master. FREE, deterministic assembly (Playwright + PIL/HTML + FFmpeg); the recipe supplies the config and gates the paid clip/background/music calls. Use for the multiworld-product-tour format.",
+   "context": {
+    "skill": "render-multiworld",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-multiworld/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-flat-vector-explainer",
+   "prompt": "Assemble the FREE steps of the flat-vector-explainer video format \u2014 a flat-illustration creator-character walks a countable N-step product routine, one step per beat, and Remotion composites every chip/numeral/tagline/slate/CTA as an animated DOM overlay ON TOP of the Kling i2v character clips (text is NEVER baked into a keyframe \u2014 i2v warps type), the closing 'N products' grid is a PIL composite of the REAL product photos (not AI), full-sentence VO drives word-by-word burned captions over a VO-forward music bed, and the ~50s animated silent master is re-cut to a 30s deliverable FROM the anima",
+   "context": {
+    "skill": "render-flat-vector-explainer",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-flat-vector-explainer/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-myth-vs-fact",
+   "prompt": "Assemble a myth-vs-fact kinetic-typography explainer video ad (\u224829.5s, 9:16) from N myth/fact pairs + hook / turn / punch copy + palette + a brand end-card PNG + a VO track \u2014 a hook, 3 red-strike MYTH cards that flip to teal-check FACT cards (per-line strikethrough that crosses EVERY wrapped line), a \"what actually works\" turn, an optional proof reveal, a punch line, and a static end card. DETERMINISTIC assembly with ZERO AI-gen visuals \u2014 HTML hyperframes rendered frame-exact via Playwright (`window.renderAt(t)`, animation a pure function of beat-local time), Whisper beat-snap to VO word onset",
+   "context": {
+    "skill": "render-myth-vs-fact",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-myth-vs-fact/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-cinematic-music-video",
+   "prompt": "Assemble a cinematic live-action-style music-video ad from a config \u2014 an original sung anthem carries the whole narrative while N 35mm-film-look i2v clips are each cut to their lyric window and hard-concatenated on the beat as a 3-act arc, the anthem muxed at loudnorm I=-14, cinematic lower-third serif captions built from the song's OWN word timings (never Whisper) with the hook line landing on the chorus drop, and closed on a brand end card composited from the real asset \u2014 never AI-rendered text. This is the FREE deterministic assembly stage (cut-to-window + hard concat + anthem mux + caption",
+   "context": {
+    "skill": "render-cinematic-music-video",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-cinematic-music-video/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-photo-grid-card",
+   "prompt": "Render a 'photo-grid promo card' video from a config \u2014 a real-DOM card with a FIXED header/footer and a CONTINUOUSLY SCROLLING 2-row grid of MIXED tiles (video clips, product/lifestyle stills, big-serif %-OFF, dark promo-code or CTA) + feature chips, frame-stepped via Playwright with real-time <video> playback and encoded with FFmpeg \u2014 deterministic assembly, FREE (the clips + music come from create-video-fal + create-music-elevenlabs), text stays pixel-crisp. Use for the photo-grid-promo-card format.",
+   "context": {
+    "skill": "render-photo-grid-card",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-photo-grid-card/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-proof-points-overlay",
+   "prompt": "Build the deterministic PIL pill overlays for a 'perfect-score + proof-points' UGC video ad (white 10/10 score header with a medal + orange sub with a finger-down + 3-4 green-check proof pills) and composite them onto a base clip in a diagonal L->R->L->R cascade, then mux the music bed into master-final.mp4. Config-driven (config.json), 1080x1920 9:16, FREE and deterministic (no paid calls, text stays pixel-crisp). Use for the overlay-proof-points format; the base clip + music come from separate paid capabilities.",
+   "context": {
+    "skill": "render-proof-points-overlay",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-proof-points-overlay/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-stopmotion-hand-swatch-cycle",
+   "prompt": "Assemble a stop-motion hand-swatch-cycle product-demo ad from a config \u2014 a sequence of still PLATES (one hand swiping a single-barrel cosmetic across a cream skin-patch, the barrel + swatch changing per plate while the hand, background, crop, and lighting stay locked) is PNG\u2192mp4 loop-encoded at each plate's own stop-motion hold (fast motion frames 150\u2013250ms, per-shade ~380ms, hero beats 1100\u20131800ms), concat-demuxed with HARD cuts into a silent master, closed on a Playwright HTML-rendered branded end card (serif tagline + sans subtitle + real logo SVG over a hero BG, never AI-rendered text), an",
+   "context": {
+    "skill": "render-stopmotion-hand-swatch-cycle",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-stopmotion-hand-swatch-cycle/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-3d-product-showcase",
+   "prompt": "Assemble a premium 3D product-showcase ad from a config \u2014 four beat clips (an orbiting hero rotation, a macro push-in, a physics reveal, a typographic close) normalized to the brand-color canvas, hard-concatenated in order, closed on a deterministic Playwright brand end card, and mixed under one instrumental bed at loudnorm I=-16 (music-only, no VO). Ships the runnable build_endcard.py + build_masters.py; the rotation/macro clips are create-video-fal i2v seeded on a create-image-fal styled hero, the reveal is Veo3 i2v, and the bed is create-music-elevenlabs. Use for the 3d-product-showcase for",
+   "context": {
+    "skill": "render-3d-product-showcase",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-3d-product-showcase/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-podcast-skit",
+   "prompt": "Assemble a two-host fake-podcast skit ad from a config \u2014 per-line lipsync clips hard-concatenated in script order, scaled/padded to 1080\u00d71920, WHITE bottom-center captions (up to 5 words per cue, broken on sentence punctuation, word-wrapped to stay in-frame, held at least 0.9s) built from each line's OWN ElevenLabs char-level timestamps (offset by cumulative clip start, never Whisper), and closed on a Playwright/PIL brand end card composited from the real wordmark \u2014 never AI-rendered text. This is the FREE deterministic assembly stage (concat + white captions + end card + crf28 encode); the pe",
+   "context": {
+    "skill": "render-podcast-skit",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-podcast-skit/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-creator-pip-listicle",
+   "prompt": "Assemble a creator picture-in-picture product-listicle ad from a config \u2014 the creator stays FULL-FRAME the whole beat (voice plus lips generated together per beat, no separate VO, no cut to a full-frame product shot), and on each product beat three persistent overlays ride on top for the WHOLE beat \u2014 a title pill top-center, the DEMO in a rounded PiP window top-right (the brand's real UGC clip MUTED, or for a no-UGC brand the product's own autocropped UI still / screen-recording sized to fill the window), and a bottom product card (rounded thumbnail plus 'N \u00b7 CATEGORY' small-caps plus product ",
+   "context": {
+    "skill": "render-creator-pip-listicle",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-creator-pip-listicle/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_verify-product-image",
+   "prompt": "QC gate for a generated static ad image \u2014 verify the file opens, matches the requested dimensions, shows the correct product/subject (right shape, colour, label, logo), and has no garbled text or severe artifacts. Records pass/fail/needs-human in verification.md. Used as the final check in the static ad remix flow before shipping.",
+   "context": {
+    "skill": "verify-product-image",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/verify-product-image/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-vignette",
+   "prompt": "Assemble a short-form 'vignette' ad from clean product cutouts composited over a kinetic background video \u2014 birefnet cutout, then a cold-open text card + product carousel + annotated specimen-sheet end card, plus loudnorm + separate-pass music mux. FREE assembly (PIL + rsvg + FFmpeg); the recipe supplies the config and gates the paid BG/cutout/music calls to their own capabilities. Use for the vignette format.",
+   "context": {
+    "skill": "render-vignette",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-vignette/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_ugc-fixloop",
+   "prompt": "the UGC fix-loop toolkit \u2014 surgically re-render a bad window/beat of a single-take UGC master (stitch_replacement.py, pure FFmpeg) and GPT cross-model review a Seedance prompt before render (vet_seedance_prompt.py, routed through the openai-proxy). Fetch it into a one-shot UGC recipe so both scripts resolve on any machine and the vet call bills the Ads agent.",
+   "context": {
+    "skill": "ugc-fixloop",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/ugc-fixloop/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_create-vo-elevenlabs",
+   "prompt": "Generate a voiceover (VO) clip via ElevenLabs text-to-speech, ROUTED THROUGH THE elevenlabs-proxy so it bills the Ads agent. Voice id + script text come from the template recipe. Use for the spoken narration of VO-driven video-ad formats (cgi-app-sizzle, flat-vector-explainer, hypermotion). Never call ElevenLabs directly \u2014 the proxy attribution is required.",
+   "context": {
+    "skill": "create-vo-elevenlabs",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/create-vo-elevenlabs/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-narrated-ugc-wardrobe-stitch",
+   "prompt": "Assemble a narrated-UGC \"stitch reply\" ad from a config \u2014 a single spoken VO carries a verbatim testimonial while ~30 per-cut i2v clips (one creator across ~5 wardrobes in ~3 worlds, plus product B-roll) are each trimmed to their EDL window built from the VO's Whisper word boundaries and hard-concatenated via filter_complex concat (never the demuxer, which drops audio on a duration mismatch), the VO mixed over an optional sidechain-ducked instrumental bed (\u221220dB, 20 to 1) so the VO stays on top, karaoke-pop captions burned on every word throughout (VEED Whisper preset, re-spelled against the l",
+   "context": {
+    "skill": "render-narrated-ugc-wardrobe-stitch",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-narrated-ugc-wardrobe-stitch/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-glassy-matte-grwm",
+   "prompt": "Assemble a multi-scene GRWM beauty-demo ad from a config \u2014 a locked-identity creator applies ~5 products step by step while a SEPARATE ElevenLabs voiceover narrates and every scene cut is snapped to the VO's product-name word-starts (Whisper word-level timestamps), then ~5 Playwright product overlay cards (real PDP-verified taglines) are composited onto the master each on its product-NAME word-start, the SEPARATE VO is mixed on top of a ducked music bed at loudnorm I=-14, clean-white 3-words/cue captions are burned, and the video closes on a flat-lay end card. This is the FREE deterministic as",
+   "context": {
+    "skill": "render-glassy-matte-grwm",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-glassy-matte-grwm/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_create-video-fal",
+   "prompt": "Image-to-video (or text-to-video) via any FAL video model (Kling, Seedance, Veo), ROUTED THROUGH THE GooseWorks fal-proxy so the call bills the Ads agent. The template recipe names the model + params; image_url inputs must be public URLs (the orchestrator hosts local frames via MCP get_upload_url -> get_download_url). Returns the result video URL and downloads it. Use for the generative base clip of any video-ad format.",
+   "context": {
+    "skill": "create-video-fal",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/create-video-fal/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-value-prop",
+   "prompt": "Render a designed 'value prop' video from a config \u2014 3-5 noun-phrase benefit claims (<=4 words each) revealed sequentially over per-SKU product visuals, one crisp editorial frame per claim (hook sticker -> N claim beats -> brand end card). Deterministic PIL/HTML beat renderer frame-stepped via Playwright and encoded with FFmpeg, sound-off legible, hard cuts, uniform pacing. FREE (no paid calls); music is added separately (create-music-elevenlabs). Use for the value-prop format.",
+   "context": {
+    "skill": "render-value-prop",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-value-prop/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-brand-identity-reveal",
+   "prompt": "Render a 'brand identity reveal' video from a config \u2014 a single poster frame in a real, softly-lit space (real wall, soft-focus plant in the corner, dappled leaf shadow, illuminated poster) whose artwork HARD-CUTS through ~10 on-brand poster mockups (hero product, IG post, hanging banners, sticker sheet, logo lockup, poster, two lifestyle stills, packaging, big icon) then holds on a brand end card. The environment plate is one create-image-fal generation; the mockups are real-DOM HTML frame-stepped via Playwright, perspective-composited into the detected frame quad with the plate's real leaf-s",
+   "context": {
+    "skill": "render-brand-identity-reveal",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-brand-identity-reveal/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-cgi-sizzle",
+   "prompt": "Assemble a 3D-CGI app sizzle \u2014 nano-banana CGI plates (blank-glow floating phone + smoky-black studio + amaranth rim-light + placeholder burst shapes) plus PIL compositing of the REAL App Store screenshots onto the bezel + burst-out overlays, driven by Kling 3.0 i2v steady-float per beat with a per-beat Ken-Burns FFmpeg push-in fallback when Kling garbles the UI, then VO/music mix (sidechain duck, loudnorm) + 1.15x speed + anti-AI grain finalize. The on-screen UI, instructor faces, and wordmark are ALWAYS real assets composited via PIL \u2014 never AI-rendered. The paid steps (plates, i2v clips, VO",
+   "context": {
+    "skill": "render-cgi-sizzle",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-cgi-sizzle/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-imessage-cascade",
+   "prompt": "Assemble an iMessage notification-cascade video ad (\u224814s, 9:16) from a phone-on-desk plate + 3\u20135 messages \u2014 authentic Apple Messages banners composited in PIL (SF Pro text, green Messages icon, warm translucent-greige fill, soft shadow) spring in one-by-one at the BOTTOM and push the stack UP, a right-aligned Show-less/X pill rides above, the X clears the stack, then a serif end card resolves. FREE assembly (PIL + ffmpeg); the recipe supplies the per-brand plate, notifications, and end-card config and gates the paid plate-clean/music calls to their own capabilities. Use for the imessage-notifi",
+   "context": {
+    "skill": "render-imessage-cascade",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-imessage-cascade/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-chatgpt-chat",
+   "prompt": "Assemble a ChatGPT chat-reveal video ad from a thread + timeline JSON \u2014 one continuous Playwright recording of a ChatGPT mobile chat (user types with the iOS keyboard up \u2192 taps send \u2192 keyboard slides down + header cluster swaps in one beat \u2192 one gray loading dot \u2192 the assistant answer streams in word-by-word) crossfaded into a designed end card, with subliminal ChatGPT SFX and an optional ducked music bed. FREE assembly (Playwright + ffmpeg); the recipe supplies the per-brand thread + timeline + end-card config and gates the paid music call to its own capability. The ChatGPT sibling of render-",
+   "context": {
+    "skill": "render-chatgpt-chat",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-chatgpt-chat/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-cosmic-mythology-voiceover",
+   "prompt": "Assemble a cosmic-mythology-voiceover reel from a config \u2014 a warm spoken voiceover carries the whole narrative while N curated cosmic stills are weighted beat-synced across the delivered VO duration (cut_dur = VO_dur times weight over the weight sum, so emotional beats hold longer), Ken-Burns-zoomed per still (scale 2x, center crop, zoompan, fade-in first and fade-out last), ffmpeg-concatenated, the VO composited under the picture (libx264 crf18 plus aac), the ONE on-screen hook line faded on over the open with a drawtext alpha window, and Whisper/VEED captions burned along the bottom \u2014 never ",
+   "context": {
+    "skill": "render-cosmic-mythology-voiceover",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-cosmic-mythology-voiceover/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-absurdist-explainer",
+   "prompt": "Assemble an absurdist animated-explainer video ad (~38s, 9:16) from per-scene i2v clips + their measured VO windows \u2014 retime each clip to its VO, re-encode every segment to identical 30fps/libx264/yuv420p so the concat demuxer never drops frames, concat, build a REAL-product PIL end card (never AI) with a slow Ken-Burns, mix VO (loudnorm I=-14) under music (loudnorm I=-26, volume 0.62, amix normalize=0), and burn libass captions last. FREE deterministic assembly (bash-free, Python + ffmpeg + PIL); the recipe supplies the clips, VO, music, product photo, palette, and caption table and gates the",
+   "context": {
+    "skill": "render-absurdist-explainer",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-absurdist-explainer/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-model-comparison-grid",
+   "prompt": "Render a 'model comparison grid' video from a config \u2014 a fal-style \"same prompt, N contenders\" showcase \u2014 a dark real-DOM stage where per beat a monospace prompt fades in centered, docks to a small top strip, then a labeled 2-4 panel grid (static images OR muted video clips, mixable per cell) staggers in and holds for comparison, plus a minimal end card \u2014 frame-stepped via Playwright (video cells are frame-seeked deterministically) and encoded with FFmpeg. Deterministic assembly, FREE (cell media comes from create-image-fal / create-video-fal, music from create-music-elevenlabs), text stays pi",
+   "context": {
+    "skill": "render-model-comparison-grid",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-model-comparison-grid/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-hypermotion",
+   "prompt": "Assemble the FREE steps of the product-hypermotion + kinetic-typography video format \u2014 dice ONE Seedance 2.0 hypermotion clip into 5-6 segments and intercut them with PIL kinetic-typography spec/CTA cards (italic skew, 1.08x outline echo, 3D extrusion, slam-with-shake, inversion flash) plus a real-logo PIL end card (base64-decoded from the brand SVG), center-crop 1:1 to 9:16, and explicit-map mux a music bed. Deterministic, FREE (PIL + FFmpeg), no paid calls, the real logo and spec typography stay pixel-crisp. The paid steps (the ONE Seedance i2v, the music) are separate capabilities; the reci",
+   "context": {
+    "skill": "render-hypermotion",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-hypermotion/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_meta-ad-scraper",
+   "prompt": "Scrape competitor ads from Meta's Ad Library (Facebook, Instagram, Messenger, Threads, WhatsApp). Search by company name, Facebook Page URL, or keyword. Returns ad creatives, spend estimates, reach, impressions, and campaign details. Use for competitive ad research, messaging analysis, and creative inspiration.",
+   "context": {
+    "skill": "meta-ad-scraper",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/meta-ad-scraper/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_create-music-elevenlabs",
+   "prompt": "Generate an instrumental music bed via ElevenLabs Music, ROUTED THROUGH THE elevenlabs-proxy so it bills the Ads agent. Trims any sparse intro, loudnorm, fades the tail. Prompt + length from the template recipe. Use for the music layer of any video-ad format.",
+   "context": {
+    "skill": "create-music-elevenlabs",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/create-music-elevenlabs/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-cartoon-music-video",
+   "prompt": "Assemble a cartoon / animated / hand-crafted music-video ad from a config \u2014 a sung song carries the whole narrative while N per-bar i2v clips (one recurring animated character, one look pack) are each cut to their BAR window from librosa beat-tracking and hard-concatenated on the bar, VEED-whisper white bold-sans captions in the BOTTOM third (Alignment 2, above the logo bug, no pill) burned from the song's word timings re-spelled against the locked lyrics, a persistent brand logo bug held over the body (suppressed on the end card), and closed on a solid-brand-color PIL end card with the song s",
+   "context": {
+    "skill": "render-cartoon-music-video",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-cartoon-music-video/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-ig-live-gallery",
+   "prompt": "Render an 'Instagram-Live social-proof gallery' video from a config \u2014 ~5 real brand product stills each framed as an Instagram-LIVE card (IG gradient-ring avatar, username, verified check, red LIVE badge, viewer count, close X, a short claim-free live-comment feed, an empty 'Add a comment\u2026' bar, and reaction hearts floating up the right edge), with a brand-approved benefit sentence building one phrase per slide and a clean logo endcard, rendered deterministically with PIL frames plus FFmpeg \u2014 FREE (the music bed comes from create-music-elevenlabs), products and wordmark stay crisp. Use for the",
+   "context": {
+    "skill": "render-ig-live-gallery",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-ig-live-gallery/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-song-mv",
+   "prompt": "Assemble a song-driven music-video ad from a config \u2014 a generated sung track carries the whole narration across N tableaux (one keyframe -> one i2v clip per lyric beat) with NO separate voiceover, captions synced to the song's OWN word timings (script-window, never Whisper) and the hook word landing on the chorus drop, closed on a PIL brand end card. This is the FREE deterministic assembly stage (clip cut-to-timeline + captions + end card + FFmpeg composite); the song, keyframes, and clips come from create-music-elevenlabs / create-image-fal / create-video-fal. Use for the song-driven-music-vi",
+   "context": {
+    "skill": "render-song-mv",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-song-mv/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_newsletter-sponsorship-finder",
+   "prompt": ">",
+   "context": {
+    "skill": "newsletter-sponsorship-finder",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/newsletter-sponsorship-finder/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_create-image-fal",
+   "prompt": "Generate or edit an image via any FAL image model (nano-banana edit, gpt-image, flux, ...), ROUTED THROUGH THE fal-proxy so it bills the Ads agent. image_urls must be public URLs (orchestrator hosts local product refs via MCP upload->presign). The recipe names the model + prompt. Use for keyframes, flat-cover transforms, product hero edits. (For the OpenAI gpt-image family specifically, create-image-gpt-image-fal also exists.)",
+   "context": {
+    "skill": "create-image-fal",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/create-image-fal/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-food-product-sizzle",
+   "prompt": "Assemble a wordless macro-tabletop food-product sizzle ad from a config \u2014 normalize fps and SAR across ~4 photorealistic macro clips (hands tearing, flat lay, bite, box hero), concat them, apply a global anti-AI grain pass (eq plus hqdn3d plus noise), composite the audio (a non-diegetic acoustic music bed plus a couple of short diegetic SFX like a snap and a tear placed at measured cue points, loudnorm), composite a STATIC end card entirely in PIL (real logo PNG plus real product PNG plus a serif heritage headline plus a CTA \u2014 never AI-rendered text), and burn optional serif stat-callout pills",
+   "context": {
+    "skill": "render-food-product-sizzle",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-food-product-sizzle/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_create-image-gpt-image-fal",
+   "prompt": "Generate a single photoreal or designed image with OpenAI gpt-image via fal.ai. Supports gpt-image-1 (default, fixed sizes \u2014 the FAL fallback for Higgsfield's `gpt_image_2`) and gpt-image-2 (`openai/gpt-image-2`, custom output sizes up to 3840px). Routes to text-to-image or the edit variant depending on whether a reference image is provided. Use for photoreal character anchors, scene keyframes, and designed sheets (e.g. storyboards) where precise layout and legible text matter.",
+   "context": {
+    "skill": "create-image-gpt-image-fal",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/create-image-gpt-image-fal/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_media-proxy",
+   "prompt": "Shared helper that routes ALL paid media generation (FAL image/video, ElevenLabs music) through the GooseWorks proxies so every call bills the Ads agent \u2014 never a provider SDK's default host. Host-swaps the FAL queue URLs, loads the agent token from ~/.gooseworks/credentials.json, and returns the result CDN URL. Every video-ad media capability imports this; templates never call a provider directly.",
+   "context": {
+    "skill": "media-proxy",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/media-proxy/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-airdrop-carousel",
+   "prompt": "Assemble a viral iOS \"AirDrop\" notification-carousel video ad (\u22486\u20138s, 9:16) from a brand line plus 6\u201316 real product photos \u2014 a native AirDrop share-sheet card (\"Brand would like to share a ___ \u00b7 Decline / Accept\") springs up and its preview window CYCLES through the products, landing on a range/lineup payoff with an Accept tap; a chime + soft per-swap ticks track the swaps. DETERMINISTIC assembly \u2014 an HTML card (real DOM text) rendered to PNG via headless Chrome, chroma-keyed, its magenta window refilled per-product in PIL, then animated + audio-synthed with FFmpeg. FREE (no paid model calls)",
+   "context": {
+    "skill": "render-airdrop-carousel",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-airdrop-carousel/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-split-screen-creator",
+   "prompt": "Assemble a split-screen creator ad from a config \u2014 a two-zone vertical composite where a supplied AI-creator lip-sync take fills the BOTTOM ~48% while real 16:9 product/demo clips run uncropped in the TOP ~52%, each top clip contain-fit with a darkened blurred cover-scale fill of the same clip (never black bars), a 3px brand-color divider between the zones, the creator slice cover-fit per the per-scene VO timing, scenes hard-concatenated with the body audio being the concatenated creator VO slices, an end card held on the last sharp frame ~3s, then the ASSEMBLED cut transcribed with local Whis",
+   "context": {
+    "skill": "render-split-screen-creator",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-split-screen-creator/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-offer-ad",
+   "prompt": "Render a punchy ~12s vertical (9:16) music-only direct-response OFFER ad as a 4-beat kinetic-typography film \u2014 HEADLINE slam \u2192 real PRODUCT drop \u2192 CLAIM/proof \u2192 CTA pill \u2014 from one config of copy slots, a real product photo, a brand palette, fonts, bpm, and beat split. DETERMINISTIC + FREE (a bundled Remotion project; springs + interpolate, no AI-gen for visuals). Backgrounds are engine gradient divs off the palette, props are inline SVG, the ONLY composited bitmap is the REAL product photo (objectFit:contain, never stretched), and ALL headline/claim/CTA/URL/wordmark text is typeset in the eng",
+   "context": {
+    "skill": "render-offer-ad",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-offer-ad/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-search-grid",
+   "prompt": "Render a 'search-grid' (Pinterest search-moodboard) video from a config \u2014 a real-DOM page with four continuous beats (masonry search grid + typing hook with counter-drift columns \u2192 3 cards slide in from the right and stack \u2192 the top card box-grows to fullscreen then swipe-left \u00d72 through captioned feature shots \u2192 warm end card), frame-stepped via Chromium and encoded with FFmpeg \u2014 deterministic assembly, FREE (real brand photos + logo; the optional music bed comes from create-music-elevenlabs), so type/logo/photos stay pixel-crisp. Use for the search-grid format.",
+   "context": {
+    "skill": "render-search-grid",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-search-grid/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-editorial-motion-podcast",
+   "prompt": "Assemble an editorial-motion podcast-clip ad from a config \u2014 a real clipped podcast MP3 carries the narrative while N flat 2-tone editorial-illustration keyframes are animated NOT by generative i2v but by DETERMINISTIC ffmpeg ken-burns (zoompan) + hard cuts (no crossfades, which expose geometric drift), each beat snapped to its spoken line, the real audio muxed, Whisper-driven captions burned only mid-sentence, and closed on a PIL brand end card \u2014 never AI-rendered text. This is the FREE deterministic assembly stage (ffmpeg ken-burns + hard concat + audio mux + captions + end card); the real a",
+   "context": {
+    "skill": "render-editorial-motion-podcast",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-editorial-motion-podcast/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_google-ad-scraper",
+   "prompt": "Scrape competitor ads from Google Ads by domain. Returns ad creatives, formats, and campaign details. Use for competitive ad research and messaging analysis.",
+   "context": {
+    "skill": "google-ad-scraper",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/google-ad-scraper/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-vo-anchored-motion-listicle",
+   "prompt": "Assemble an expert/educator motion-graphic LISTICLE video ad from a config \u2014 a spoken authoritative voiceover carries a numbered listicle while N web-animated hyperframe beats (HTML plus the Web Animations API, one branded design system of alternating tiles, big hero numerals, and glass-pill callouts) are rendered frame-by-frame via Playwright and anchored to the VO's word-level timestamps, periodic color-graded B-roll windows give visual breath, and captions burn ONLY inside those B-roll windows (2-word chunks, ASS Format header carrying a Name field so none drop) with the VO mixed under a lo",
+   "context": {
+    "skill": "render-vo-anchored-motion-listicle",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/capabilities/render-vo-anchored-motion-listicle/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_sponsored-newsletter-finder",
+   "prompt": ">",
+   "context": {
+    "skill": "sponsored-newsletter-finder",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/composites/sponsored-newsletter-finder/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_paid-channel-prioritizer",
+   "prompt": ">",
+   "context": {
+    "skill": "paid-channel-prioritizer",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/composites/paid-channel-prioritizer/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_meta-ads-analyzer",
+   "prompt": "Diagnose Meta Ads campaign performance using Meta's actual system mechanics \u2014 Breakdown Effect, Learning Phase, Auction Overlap, Pacing, and Creative Fatigue \u2014 and produce structured, testable recommendations that avoid judging segments by average CPA instead of marginal efficiency.",
+   "context": {
+    "skill": "meta-ads-analyzer",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/composites/meta-ads-analyzer/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_google-search-ads-builder",
+   "prompt": ">",
+   "context": {
+    "skill": "google-search-ads-builder",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/composites/google-search-ads-builder/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_meta-ad-policy-checker",
+   "prompt": "Pre-flight policy check for Meta ads. Takes ad copy plus advertiser context, resolves and fetches the relevant Meta transparency-center policy pages at runtime, and returns a Pass / Fix Required / Block verdict with cited findings and rewrites.",
+   "context": {
+    "skill": "meta-ad-policy-checker",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/composites/meta-ad-policy-checker/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_competitor-ad-intelligence",
+   "prompt": ">",
+   "context": {
+    "skill": "competitor-ad-intelligence",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/composites/competitor-ad-intelligence/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_extract-source-sample",
+   "prompt": "Given the path to a finished content-goose ad-run folder, extract everything that defines that ad \u2014 recipe shot list, VO script, characters, voices, world, atom-skills, master mp4 \u2014 and emit a `source-sample.json` in the exact shape the `upload-ad-sample` skill writes to the Goose Ads library. Also links every character and voice to the central character library at `<repo-root>/assets/character-library/` (repo-root derived from the run-dir, not a hardcoded path), and if a character isn't in the library yet, adds it first then links. Use when the user wants to remix one of their existing ads \u2014 ",
+   "context": {
+    "skill": "extract-source-sample",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/composites/extract-source-sample/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_remix-graphic-ad-from-reference",
+   "prompt": "Recreate a static graphic ad (Pinterest pin, IG/FB feed image, poster) from a reference image, swapping in a new brand's product and new copy while keeping the reference's layout, composition, and visual energy. ALWAYS generated with GPT Image 2 in edit-the-reference mode (fal-ai/gpt-image-1/edit-image, a billed FAL generation); the HTML/goose-graphics overlay is only an optional text-finishing step, never the generator. The static-graphics counterpart to the video remix-ad skill; this is what the app calls when a user picks a reference ad and wants it for their own product.",
+   "context": {
+    "skill": "remix-graphic-ad-from-reference",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/composites/remix-graphic-ad-from-reference/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_trending-ad-hook-spotter",
+   "prompt": ">",
+   "context": {
+    "skill": "trending-ad-hook-spotter",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/composites/trending-ad-hook-spotter/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_ad-angle-miner",
+   "prompt": ">",
+   "context": {
+    "skill": "ad-angle-miner",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/composites/ad-angle-miner/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_ad-lead-quality-analyzer",
+   "prompt": "For paid lead-gen and participant-recruitment ads, replaces vanity CPA with true CAC per qualified lead by joining ad-platform data with downstream funnel events, surfaces tracking gaps, and classifies every creative into Scale / Keep / Investigate / Cut.",
+   "context": {
+    "skill": "ad-lead-quality-analyzer",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/composites/ad-lead-quality-analyzer/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_meta-ads-campaign-builder",
+   "prompt": ">",
+   "context": {
+    "skill": "meta-ads-campaign-builder",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/composites/meta-ads-campaign-builder/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_ad-to-landing-page-auditor",
+   "prompt": ">",
+   "context": {
+    "skill": "ad-to-landing-page-auditor",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/composites/ad-to-landing-page-auditor/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_ad-campaign-analyzer",
+   "prompt": ">",
+   "context": {
+    "skill": "ad-campaign-analyzer",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/composites/ad-campaign-analyzer/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_brand-research",
+   "prompt": "Kickoff research for a brand you haven't worked on before \u2014 web research, existing-ad analysis from the Meta Ad Library, editorial-grammar profiling, sourced + AI-generated brand assets, hook/CTA libraries, and an ad concept brief. Produces one reusable brand-context pack (brand-summary, visual-identity, competitors, audience, existing-ads, brand-grammar, an asset manifest, and a concept brief) in a single pass. Use when starting on a brand the workspace hasn't touched.",
+   "context": {
+    "skill": "brand-research",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/composites/brand-research/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_stitch-videos-ffmpeg",
+   "prompt": "stitch video segments with ffmpeg concat, xfade, overlay, audio mux, and export settings.",
+   "context": {
+    "skill": "stitch-videos-ffmpeg",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/packs/video-ad-formats/stitch-videos-ffmpeg/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_create-chatgpt-mockup",
+   "prompt": "Render pixel-accurate ChatGPT mobile (iOS) screen mockups in light mode from a thread JSON. Supports user text bubbles, user image attachments, assistant markdown prose, citation chips, the OpenAI spiral logo, the Apps-SDK GPT chip in the composer, and three header styles (model-tag, plain title, \"Get Plus\"). Fixed 9:16 viewport. Outputs HTML + PNG.",
+   "context": {
+    "skill": "create-chatgpt-mockup",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/packs/video-ad-formats/create-chatgpt-mockup/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_create-imessage-mockup",
+   "prompt": "Render pixel-accurate iMessage screenshot mockups (DM or group) from a thread JSON. Supports minimal, with-keyboard, and full iPhone 15 Pro frame variants. Outputs HTML + PNG.",
+   "context": {
+    "skill": "create-imessage-mockup",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/packs/video-ad-formats/create-imessage-mockup/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_render-ios-keyboard",
+   "prompt": "Render a static iOS QWERTY keyboard as inline HTML+CSS sized for the 750-wide 9:16 stage. Includes the 3-suggestion bar, alpha keys, shift/backspace, 123/emoji/space/return row, and the bottom globe+mic strip. No animation logic \u2014 slide up/down is the molecule's job (CSS transform on the .keyboard root).",
+   "context": {
+    "skill": "render-ios-keyboard",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/packs/video-ad-formats/render-ios-keyboard/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_mix-master",
+   "prompt": "Canonical short-form-ad audio mix in one FFmpeg pass. VO loudnorm + 3.0\u00d7 per-clip + 2.0\u00d7 mix, music 0.13 base + apad+afade, sidechain compress 20:1 @ 0.01, climax line +20%, optional video-to-music duration sync. Replaces the reactive multi-round tuning that cost v03 6+ passes.",
+   "context": {
+    "skill": "mix-master",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/packs/video-ad-formats/mix-master/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_watch",
+   "prompt": "Watch a rendered video (whole file or specific ranges) at a chosen fidelity and emit a timestamp-keyed observation report. Observation only \u2014 no edits, no verdicts.",
+   "context": {
+    "skill": "watch",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/packs/video-ad-formats/watch/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_create-apple-notes-mockup",
+   "prompt": "Render pixel-accurate Apple Notes (iPhone, light mode) screenshot mockups from a JSON note spec. Outputs HTML + PNG at the iPhone 16/15 Pro native 1180\u00d72556. Supports paragraphs, images, checklists, dividers, autocorrect underline, smart quotes, and an optional iOS keyboard chrome overlay used by the parent video-ad molecule.",
+   "context": {
+    "skill": "create-apple-notes-mockup",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/packs/video-ad-formats/create-apple-notes-mockup/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_review-ugc-render",
+   "prompt": "Mandatory pre-publish review gate for a UGC video render. Transcribes the finished render's AUDIO with Whisper and word-diffs it against the approved spoken script, then gates set_final_render \u2014 blocking a render whose generated audio mis-voices a word (e.g. the approved \"human-vetted\" spoken as \"human witted\"), drops an approved phrase, or comes back silent. Runnable, gating counterpart to content-goose's review-transcript-integrity atom. Every ugc-video-formats recipe runs this after render and BEFORE set_final_render.",
+   "context": {
+    "skill": "review-ugc-render",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/packs/ugc-video-formats/review-ugc-render/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_create-video-seedance-2-fal",
+   "prompt": "Generate a single 4-15s vertical video clip with ByteDance Seedance 2.0 reference-to-video via fal.ai. Multi-image reference (avatar + product + setting), native lip-synced VO + ambient audio (generate-audio on by default), internal multi-cut handling within one render. Routes through the GooseWorks FAL proxy (bills the Ads agent). The default clip atom for AI-creator UGC ads built on the NB2 + Seedance architecture. Validated on beauty-by-earth/video-01.",
+   "context": {
+    "skill": "create-video-seedance-2-fal",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/ads/packs/ugc-video-formats/create-video-seedance-2-fal/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_create-html-slides",
+   "prompt": "Create stunning, animation-rich HTML presentations from scratch or by converting PowerPoint files. Use when the user wants to build a presentation, convert a PPT/PPTX to web, or create slides for a talk/pitch. Helps non-designers discover their aesthetic through visual exploration rather than abstract choices.",
+   "context": {
+    "skill": "frontend-slides",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/design/capabilities/create-html-slides/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_remotion-best-practices",
+   "prompt": "Best practices for Remotion - Video creation in React",
+   "context": {
+    "skill": "remotion-best-practices",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/design/capabilities/remotion-best-practices/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_create-dashboard",
+   "prompt": ">",
+   "context": {
+    "skill": "create-dashboard",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/design/capabilities/create-dashboard/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_create-workflow-diagram",
+   "prompt": "Create FigJam/Miro-style workflow diagrams as high-quality PNG images from plain-text workflow descriptions. Renders beautiful HTML diagrams with connected nodes, arrows, and labels, then screenshots them for sharing.",
+   "context": {
+    "skill": "create-workflow-diagram",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/design/capabilities/create-workflow-diagram/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_data-charts-tako",
+   "prompt": "Search and visualize the world's data - get charts, insights, and embeddable knowledge cards for finance, economics, demographics, sports, and more",
+   "context": {
+    "skill": "data-charts-tako",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/design/capabilities/data-charts-tako/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_create-html-carousel",
+   "prompt": "Create LinkedIn carousel posts as high-quality PNG images. Design informational multi-slide posts like \"5 AI GTM workflows\" with consistent styling, then automatically screenshot each slide at LinkedIn's optimal 1080x1080px format.",
+   "context": {
+    "skill": "create-html-carousel",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/design/capabilities/create-html-carousel/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_terminal-gif-recordings",
+   "prompt": "Create polished terminal GIF recordings using VHS (Video Hardware Software) by Charmbracelet. Use when asked to create terminal demos, CLI gifs, command-line recordings, or animated terminal screenshots for documentation, READMEs, or marketing.",
+   "context": {
+    "skill": "terminal-gif-recordings",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/design/capabilities/terminal-gif-recordings/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_goose-graphics",
+   "prompt": "Portable visual skill pack for the Agent Skills ecosystem (Claude Code, Claude Desktop, Claude Cowork, Claude Design, Goose, Cursor, Codex). Discovers community-published styles + formats via the gooseworks CLI, runs an extract-style workflow on reference images, and exports rendered PNGs via Playwright.",
+   "context": {
+    "skill": "goose-graphics",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/design/composites/goose-graphics/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_goose-graphics-create-style",
+   "prompt": ">",
+   "context": {
+    "skill": "goose-graphics-create-style",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/design/composites/goose-graphics-create-style/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_goose-graphics-create-format",
+   "prompt": ">",
+   "context": {
+    "skill": "goose-graphics-create-format",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/design/composites/goose-graphics-create-format/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_talking-head-video",
+   "prompt": "Creates talking head videos from any source material (docs, changelogs, blog posts, notes, transcripts). Produces multi-scene videos with avatar narration over screenshots/images using HeyGen v2 API. Supports Quick Shot and Full Producer modes.",
+   "context": {
+    "skill": "talking-head-video",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/design/packs/video-production/talking-head-video/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_product-reel-generator",
+   "prompt": "Generates Instagram-ready product reels from any e-commerce product page URL. Scrapes product images, classifies by type, generates AI-animated clips via Higgsfield API, creates text overlays with style presets, and composes a 15-20 second reel with music. Supports model-based and product-only reels.",
+   "context": {
+    "skill": "product-reel-generator",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/design/packs/video-production/product-reel-generator/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_video-clipper",
+   "prompt": "Repurposes long-form video (podcasts, interviews, talks) into short-form vertical clips for Instagram Reels, TikTok, and YouTube Shorts. Handles transcription, moment selection, clip extraction, speaker-tracked reframing (16:9 to 9:16), and animated captions.",
+   "context": {
+    "skill": "video-clipper",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/design/packs/video-production/video-clipper/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_beat-sync-reel",
+   "prompt": "Generates Instagram Reels where product image cuts are synced to audio beats. Accepts audio as a local file, URL, or search query. Uses librosa for beat detection, FFmpeg Ken Burns for scene animation, and Pillow for text overlays. No AI video generation \u2014 fully free, fast, and scalable.",
+   "context": {
+    "skill": "beat-sync-reel",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/design/packs/video-production/beat-sync-reel/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_video-polish",
+   "prompt": "Takes an existing screen recording or demo video and adds professional zoom/pan effects synchronized to the narration. Uses transcript-driven zoom targeting and Remotion for rendering. Optionally replaces audio with a soundtrack.",
+   "context": {
+    "skill": "video-polish",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/design/packs/video-production/video-polish/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_champion-tracker",
+   "prompt": ">",
+   "context": {
+    "skill": "champion-tracker",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/sales/capabilities/champion-tracker/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_sales-coaching",
+   "prompt": ">",
+   "context": {
+    "skill": "sales-coaching",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/sales/composites/sales-coaching/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_expansion-signal-spotter",
+   "prompt": ">",
+   "context": {
+    "skill": "expansion-signal-spotter",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/sales/composites/expansion-signal-spotter/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_sales-call-prep",
+   "prompt": ">",
+   "context": {
+    "skill": "sales-call-prep",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/sales/composites/sales-call-prep/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_disqualification-handling",
+   "prompt": ">",
+   "context": {
+    "skill": "disqualification-handling",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/sales/composites/disqualification-handling/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_pipeline-review",
+   "prompt": ">",
+   "context": {
+    "skill": "pipeline-review",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/sales/composites/pipeline-review/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_meeting-brief",
+   "prompt": "Daily meeting preparation system that checks your calendar each morning, deeply researches external attendees (LinkedIn, company info, GitHub, past notes), and sends you personalized briefs via email (1 per person). Use when you want automated preparation for upcoming meetings with context about each person you're meeting.",
+   "context": {
+    "skill": "meeting-brief",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/sales/composites/meeting-brief/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_generate-voice-guide",
+   "prompt": ">",
+   "context": {
+    "skill": "generate-voice-guide",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/brand/capabilities/generate-voice-guide/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_get-brand-assets",
+   "prompt": "Get company logos, brand colors, fonts, and style guides",
+   "context": {
+    "skill": "get-brand-assets",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/brand/capabilities/get-brand-assets/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_brand-voice-extractor",
+   "prompt": ">",
+   "context": {
+    "skill": "brand-voice-extractor",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/brand/capabilities/brand-voice-extractor/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_visual-brand-extractor",
+   "prompt": ">",
+   "context": {
+    "skill": "visual-brand-extractor",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/brand/capabilities/visual-brand-extractor/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_update-brand-kit",
+   "prompt": "Maintain a brand kit \u2014 the canonical brand context an ad or content pipeline reads (positioning, audience, voice, standing instructions, brand-type, value-props, colors), plus manage the product list and attach product photos. Use when someone says \"update my brand kit\", \"set my brand voice/audience\", \"add a product to my brand\", or hands you a folder of product shots to attach. Platform-agnostic: it teaches the field model, partial-update/clear semantics, override behavior, caps and validation, and the hero-image and product-matching rules \u2014 independent of any specific backend.",
+   "context": {
+    "skill": "update-brand-kit",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/brand/capabilities/update-brand-kit/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_brand-intel-branddev",
+   "prompt": "Brand intelligence - logos, colors, fonts, styleguides, and company data from any domain",
+   "context": {
+    "skill": "brand-intel-branddev",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/brand/capabilities/brand-intel-branddev/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_messaging-ab-tester",
+   "prompt": ">",
+   "context": {
+    "skill": "messaging-ab-tester",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/brand/composites/messaging-ab-tester/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_launch-positioning-builder",
+   "prompt": ">",
+   "context": {
+    "skill": "launch-positioning-builder",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/brand/composites/launch-positioning-builder/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_create-x-content",
+   "prompt": ">",
+   "context": {
+    "skill": "create-x-content",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/content/capabilities/create-x-content/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_create-linkedin-content",
+   "prompt": ">",
+   "context": {
+    "skill": "create-linkedin-content",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/content/capabilities/create-linkedin-content/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_content-asset-creator",
+   "prompt": ">",
+   "context": {
+    "skill": "content-asset-creator",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/content/capabilities/content-asset-creator/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_campaign-brief-generator",
+   "prompt": ">",
+   "context": {
+    "skill": "campaign-brief-generator",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/content/composites/campaign-brief-generator/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_feature-launch-playbook",
+   "prompt": ">",
+   "context": {
+    "skill": "feature-launch-playbook",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/content/composites/feature-launch-playbook/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_customer-story-builder",
+   "prompt": ">",
+   "context": {
+    "skill": "customer-story-builder",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/content/composites/customer-story-builder/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_content-brief-factory",
+   "prompt": ">",
+   "context": {
+    "skill": "content-brief-factory",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/content/composites/content-brief-factory/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_help-center-article-generator",
+   "prompt": ">",
+   "context": {
+    "skill": "help-center-article-generator",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/content/composites/help-center-article-generator/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_twitter-profile-lookup",
+   "prompt": "Look up Twitter/X profiles - get bio, followers, tweets, and engagement",
+   "context": {
+    "skill": "twitter-profile-lookup",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/social/capabilities/twitter-profile-lookup/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_linkedin-influencer-discovery",
+   "prompt": ">",
+   "context": {
+    "skill": "linkedin-influencer-discovery",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/social/capabilities/linkedin-influencer-discovery/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_social-listening",
+   "prompt": "Monitor brand mentions, competitor activity, and industry conversations across social media and the web",
+   "context": {
+    "skill": "social-listening",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/social/capabilities/social-listening/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_tiktok-search",
+   "prompt": "Search TikTok - find profiles, videos, hashtags, and trending content",
+   "context": {
+    "skill": "tiktok-search",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/social/capabilities/tiktok-search/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_find-twitter-influencers",
+   "prompt": "Find Twitter/X influencers to promote a product or brand. Use when asked to find influencers, discover Twitter accounts for partnerships, identify creators in a niche, or build an influencer outreach list.",
+   "context": {
+    "skill": "find-twitter-influencers",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/social/capabilities/find-twitter-influencers/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_linkedin-scraper",
+   "prompt": "Get LinkedIn profiles, company pages, and posts",
+   "context": {
+    "skill": "linkedin-scraper",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/social/capabilities/linkedin-scraper/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_instagram-scraper",
+   "prompt": "Get Instagram profiles, posts, and reels",
+   "context": {
+    "skill": "instagram-scraper",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/social/capabilities/instagram-scraper/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_tiktok-influencer-finder",
+   "prompt": "Find TikTok influencers using Apify's Influencer Discovery Agent. Use when the user wants to discover TikTok creators or influencers in any niche.",
+   "context": {
+    "skill": "tiktok-influencer-finder",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/social/capabilities/tiktok-influencer-finder/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_linkedin-post-research",
+   "prompt": ">",
+   "context": {
+    "skill": "linkedin-post-research",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/social/capabilities/linkedin-post-research/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_kol-discovery",
+   "prompt": ">",
+   "context": {
+    "skill": "kol-discovery",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/social/capabilities/kol-discovery/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_social-media-scraping-scrapecreators",
+   "prompt": "Social media scraping - Instagram, TikTok, LinkedIn, and X/Twitter profiles, posts, and content",
+   "context": {
+    "skill": "social-media-scraping-scrapecreators",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/social/capabilities/social-media-scraping-scrapecreators/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_linkedin-profile-post-scraper",
+   "prompt": ">",
+   "context": {
+    "skill": "linkedin-profile-post-scraper",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/social/capabilities/linkedin-profile-post-scraper/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_social-kit",
+   "prompt": ">",
+   "context": {
+    "skill": "social-kit",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/social/composites/social-kit/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_tech-stack-teardown",
+   "prompt": ">",
+   "context": {
+    "skill": "tech-stack-teardown",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/competitive-intel/capabilities/tech-stack-teardown/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_landing-page-intel",
+   "prompt": ">",
+   "context": {
+    "skill": "landing-page-intel",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/competitive-intel/capabilities/landing-page-intel/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_competitor-research",
+   "prompt": "Research competitors - products, pricing, team, funding, and strategy",
+   "context": {
+    "skill": "competitor-research",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/competitive-intel/capabilities/competitor-research/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_company-current-gtm-analysis",
+   "prompt": ">",
+   "context": {
+    "skill": "company-current-gtm-analysis",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/competitive-intel/composites/company-current-gtm-analysis/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_battlecard-generator",
+   "prompt": ">",
+   "context": {
+    "skill": "battlecard-generator",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/competitive-intel/composites/battlecard-generator/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_competitive-pricing-intel",
+   "prompt": ">",
+   "context": {
+    "skill": "competitive-pricing-intel",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/competitive-intel/composites/competitive-pricing-intel/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_competitor-intel",
+   "prompt": ">",
+   "context": {
+    "skill": "competitor-intel",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/competitive-intel/composites/competitor-intel/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_industry-scanner",
+   "prompt": ">",
+   "context": {
+    "skill": "industry-scanner",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/competitive-intel/composites/industry-scanner/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_competitor-content-tracker",
+   "prompt": ">",
+   "context": {
+    "skill": "competitor-content-tracker",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/competitive-intel/composites/competitor-content-tracker/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_competitor-monitoring-system",
+   "prompt": ">",
+   "context": {
+    "skill": "competitor-monitoring-system",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/competitive-intel/playbooks/competitor-monitoring-system/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_phone-verification",
+   "prompt": "Verify phone numbers using SMS one-time codes via the Didit API. Use when you need to confirm a user owns a phone number, implement SMS-based 2FA, or validate phone during signup/onboarding flows.",
+   "context": {
+    "skill": "phone-verification",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/phone-verification/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_ai-video-calls-tavus",
+   "prompt": "AI video conversations - create real-time video calls with AI personas",
+   "context": {
+    "skill": "ai-video-calls-tavus",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/ai-video-calls-tavus/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_web-archive-scraper",
+   "prompt": ">",
+   "context": {
+    "skill": "web-archive-scraper",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/web-archive-scraper/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_web-search-linkup",
+   "prompt": "Web search and content fetching - search the web or extract content from URLs",
+   "context": {
+    "skill": "web-search-linkup",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/web-search-linkup/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_identity-verification-didit",
+   "prompt": "Identity verification via phone/email OTP and AML screening using Didit API",
+   "context": {
+    "skill": "identity-verification-didit",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/identity-verification-didit/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_ai-web-scraping-scrapegraph",
+   "prompt": "AI-powered web scraping - extract data using natural language prompts",
+   "context": {
+    "skill": "ai-web-scraping-scrapegraph",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/ai-web-scraping-scrapegraph/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_youtube-watcher",
+   "prompt": "Fetch and read transcripts from YouTube videos. Use when you need to summarize a video, answer questions about its content, or extract information from it.",
+   "context": {
+    "skill": "youtube-watcher",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/youtube-watcher/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_web-scraping-olostep",
+   "prompt": "Web scraping, crawling, and AI-powered answer extraction at scale",
+   "context": {
+    "skill": "web-scraping-olostep",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/web-scraping-olostep/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_web-search-perplexity",
+   "prompt": "Perplexity AI search and chat completions with real-time web data",
+   "context": {
+    "skill": "web-search-perplexity",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/web-search-perplexity/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_extract-webpage-data",
+   "prompt": "Extract structured data from web pages using AI",
+   "context": {
+    "skill": "extract-webpage-data",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/extract-webpage-data/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_find-skill",
+   "prompt": "Find and install skills from the Orthogonal skill library. Use when you need capabilities you don't have, want to discover available skills, or need to add new tools to your agent.",
+   "context": {
+    "skill": "find-skill",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/find-skill/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_skill-creator",
+   "prompt": "Create, structure, and package agent skills. Use when designing new skills, updating existing skills, or helping users build skills with scripts, references, and assets. Triggers on requests to create skills, write SKILL.md files, or structure skill directories.",
+   "context": {
+    "skill": "skill-creator",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/skill-creator/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_web-search-tavily",
+   "prompt": "AI-powered web search, crawling, extraction, and deep research",
+   "context": {
+    "skill": "web-search-tavily",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/web-search-tavily/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_hyperlocal-weather-precip",
+   "prompt": "Hyperlocal weather data - precipitation, temperature, wind, soil moisture and more",
+   "context": {
+    "skill": "hyperlocal-weather-precip",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/hyperlocal-weather-precip/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_restaurant-booking",
+   "prompt": "Book restaurant reservations via browser automation. Use when asked to make dinner reservations, book a table, or find availability at restaurants. Supports OpenTable, Resy, and direct restaurant booking sites.",
+   "context": {
+    "skill": "restaurant-booking",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/restaurant-booking/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_web-search",
+   "prompt": "Search the web, platforms, and datasets. Use when asked to search, find, look up, research, or discover information from the web, YouTube, Amazon, eBay, news, academic sources, or any online platform.",
+   "context": {
+    "skill": "web-search",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/web-search/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_youtube-apify-transcript",
+   "prompt": "Fetch YouTube transcripts via APIFY API. Works from cloud IPs (Hetzner, AWS, etc.) by bypassing YouTube's bot detection. Free tier includes $5/month credits (~714 videos). No credit card required.",
+   "context": {
+    "skill": "youtube-apify-transcript",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/youtube-apify-transcript/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_structured-scraping-riveter",
+   "prompt": "Web scraping with structured data extraction - define your output schema",
+   "context": {
+    "skill": "structured-scraping-riveter",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/structured-scraping-riveter/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_web-search-exa",
+   "prompt": "Neural web search - find similar content, extract pages, and run deep research",
+   "context": {
+    "skill": "web-search-exa",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/web-search-exa/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_ebay-search",
+   "prompt": "Search eBay listings - find items, auctions, deals, and compare prices",
+   "context": {
+    "skill": "ebay-search",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/ebay-search/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_website-screenshot-notte",
+   "prompt": "Take screenshots of any website using Notte browser automation. Use when asked to screenshot, capture, or snap a webpage.",
+   "context": {
+    "skill": "website-screenshot-notte",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/website-screenshot-notte/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_web-search-andi",
+   "prompt": "Fast, high-quality web search with intelligent ranking and instant answers",
+   "context": {
+    "skill": "web-search-andi",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/web-search-andi/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_browser-automation-notte",
+   "prompt": "Browser automation - control browser sessions, scrape pages, and run AI agents",
+   "context": {
+    "skill": "browser-automation-notte",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/browser-automation-notte/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_weather",
+   "prompt": "Get current weather and forecasts using free APIs (no API key required). Use when asked about weather, temperature, forecasts, or climate conditions for any location.",
+   "context": {
+    "skill": "weather",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/weather/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_api-tester",
+   "prompt": "Test and document API endpoints - validate responses, check status, generate examples",
+   "context": {
+    "skill": "api-tester",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/api-tester/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_company-domain-lookup-logodev",
+   "prompt": "Logo.dev - search for company domains by brand name",
+   "context": {
+    "skill": "company-domain-lookup-logodev",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/company-domain-lookup-logodev/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_web-scraping",
+   "prompt": "Scrape websites, extract structured data, and automate browsers. Use when asked to scrape, extract, crawl, parse, or pull data from web pages or any URL.",
+   "context": {
+    "skill": "web-scraping",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/web-scraping/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_prediction-market-odds",
+   "prompt": "Get prediction market odds and prices from Polymarket and Kalshi",
+   "context": {
+    "skill": "prediction-market-odds",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/prediction-market-odds/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_web-research-parallel",
+   "prompt": "Web research API with OpenAI-compatible chat completions and async tasks",
+   "context": {
+    "skill": "web-research-parallel",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/web-research-parallel/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_prediction-markets-dome",
+   "prompt": "Prediction markets data - Polymarket, Kalshi markets, prices, positions, and trades",
+   "context": {
+    "skill": "prediction-markets-dome",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/prediction-markets-dome/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_web-search-valyu",
+   "prompt": "Web search, AI answers, content extraction, and async deep research",
+   "context": {
+    "skill": "web-search-valyu",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/web-search-valyu/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_pdf-processor",
+   "prompt": "Process PDFs - extract text, tables, and structured data from documents",
+   "context": {
+    "skill": "pdf-processor",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/pdf-processor/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_image-analyzer",
+   "prompt": "Analyze images with AI - extract text, describe content, detect objects",
+   "context": {
+    "skill": "image-analyzer",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/image-analyzer/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_amazon-search",
+   "prompt": "Search Amazon products - find items, compare prices, read reviews",
+   "context": {
+    "skill": "amazon-search",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/amazon-search/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_multi-platform-search-searchapi",
+   "prompt": "Multi-platform search - YouTube, Amazon, eBay, Walmart, TikTok, Instagram, and more",
+   "context": {
+    "skill": "multi-platform-search-searchapi",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/multi-platform-search-searchapi/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_web-search-jina",
+   "prompt": "Jina Search - fast web search returning SERP results",
+   "context": {
+    "skill": "web-search-jina",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/research-tools/capabilities/web-search-jina/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_reddit-post-finder",
+   "prompt": "Scrape and search Reddit posts using Apify. Use when you need to find Reddit discussions, track competitor mentions, monitor product feedback, discover pain points, or analyze subreddit content. Supports keyword filtering, time-based searches, and subreddit-specific queries.",
+   "context": {
+    "skill": "reddit-post-finder",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/monitoring/capabilities/reddit-post-finder/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_twitter-mention-tracker",
+   "prompt": ">",
+   "context": {
+    "skill": "twitter-mention-tracker",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/monitoring/capabilities/twitter-mention-tracker/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_product-hunt-scraper",
+   "prompt": ">",
+   "context": {
+    "skill": "product-hunt-scraper",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/monitoring/capabilities/product-hunt-scraper/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_blog-feed-monitor",
+   "prompt": ">",
+   "context": {
+    "skill": "blog-feed-monitor",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/monitoring/capabilities/blog-feed-monitor/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_review-site-scraper",
+   "prompt": ">",
+   "context": {
+    "skill": "review-site-scraper",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/monitoring/capabilities/review-site-scraper/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_hacker-news-scraper",
+   "prompt": ">",
+   "context": {
+    "skill": "hacker-news-scraper",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/monitoring/capabilities/hacker-news-scraper/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_uptime-monitor",
+   "prompt": "Monitor website uptime - check availability, response times, and status",
+   "context": {
+    "skill": "uptime-monitor",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/monitoring/capabilities/uptime-monitor/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_review-scraper",
+   "prompt": ">",
+   "context": {
+    "skill": "review-scraper",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/monitoring/capabilities/review-scraper/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_funding-signal-monitor",
+   "prompt": ">",
+   "context": {
+    "skill": "funding-signal-monitor",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/monitoring/composites/funding-signal-monitor/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_newsletter-monitor",
+   "prompt": ">",
+   "context": {
+    "skill": "newsletter-monitor",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/monitoring/composites/newsletter-monitor/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_kol-content-monitor",
+   "prompt": ">",
+   "context": {
+    "skill": "kol-content-monitor",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/monitoring/composites/kol-content-monitor/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_newsletter-signal-scanner",
+   "prompt": ">",
+   "context": {
+    "skill": "newsletter-signal-scanner",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/monitoring/composites/newsletter-signal-scanner/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_site-content-catalog",
+   "prompt": ">",
+   "context": {
+    "skill": "site-content-catalog",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/seo/capabilities/site-content-catalog/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_seo-domain-analyzer",
+   "prompt": ">",
+   "context": {
+    "skill": "seo-domain-analyzer",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/seo/capabilities/seo-domain-analyzer/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_seo-traffic-analyzer",
+   "prompt": ">",
+   "context": {
+    "skill": "seo-traffic-analyzer",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/seo/capabilities/seo-traffic-analyzer/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_seo-analyzer",
+   "prompt": "Analyze website SEO - keywords, content, competitors, and improvement opportunities",
+   "context": {
+    "skill": "seo-analyzer",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/seo/capabilities/seo-analyzer/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_aeo",
+   "prompt": ">",
+   "context": {
+    "skill": "aeo",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/seo/capabilities/aeo/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_seo-content-audit",
+   "prompt": ">",
+   "context": {
+    "skill": "seo-content-audit",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/seo/composites/seo-content-audit/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_seo-opportunity-finder",
+   "prompt": ">",
+   "context": {
+    "skill": "seo-opportunity-finder",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/seo/composites/seo-opportunity-finder/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_topical-authority-mapper",
+   "prompt": ">",
+   "context": {
+    "skill": "topical-authority-mapper",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/seo/composites/topical-authority-mapper/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_programmatic-seo-spy",
+   "prompt": ">",
+   "context": {
+    "skill": "programmatic-seo-spy",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/seo/composites/programmatic-seo-spy/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_programmatic-seo-planner",
+   "prompt": ">",
+   "context": {
+    "skill": "programmatic-seo-planner",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/seo/composites/programmatic-seo-planner/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_seo-content-engine",
+   "prompt": ">",
+   "context": {
+    "skill": "seo-content-engine",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/seo/playbooks/seo-content-engine/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_linkedin-commenter-extractor",
+   "prompt": ">",
+   "context": {
+    "skill": "linkedin-commenter-extractor",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/linkedin-commenter-extractor/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_email-finder-hunter",
+   "prompt": "Email finder and verifier - find emails, verify deliverability, discover companies",
+   "context": {
+    "skill": "email-finder-hunter",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/email-finder-hunter/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_icp-identification",
+   "prompt": ">",
+   "context": {
+    "skill": "icp-identification",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/icp-identification/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_team-linkedin-profiles",
+   "prompt": "Find LinkedIn profiles of a specific team or department at a company. Use when asked to get LinkedIn profiles, find team members, or look up people in a particular team/department/group at a company.",
+   "context": {
+    "skill": "team-linkedin-profiles",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/team-linkedin-profiles/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_conference-speaker-scraper",
+   "prompt": ">",
+   "context": {
+    "skill": "conference-speaker-scraper",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/conference-speaker-scraper/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_apollo-lead-finder",
+   "prompt": ">",
+   "context": {
+    "skill": "apollo-lead-finder",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/apollo-lead-finder/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_kol-engager-icp",
+   "prompt": ">",
+   "context": {
+    "skill": "kol-engager-icp",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/kol-engager-icp/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_tam-builder",
+   "prompt": ">",
+   "context": {
+    "skill": "tam-builder",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/tam-builder/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_find-email-by-name",
+   "prompt": "Find someone's email address given their name and company",
+   "context": {
+    "skill": "find-email-by-name",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/find-email-by-name/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_lead-enrichment-sixtyfour",
+   "prompt": "AI-powered lead enrichment - find emails, phones, and enrich company/lead data",
+   "context": {
+    "skill": "lead-enrichment-sixtyfour",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/lead-enrichment-sixtyfour/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_pain-language-engagers",
+   "prompt": ">",
+   "context": {
+    "skill": "pain-language-engagers",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/pain-language-engagers/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_company-funding-search",
+   "prompt": "Find company funding history, investors, and investment details",
+   "context": {
+    "skill": "company-funding-search",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/company-funding-search/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_person-lookup",
+   "prompt": "Look up information about a person - work history, social profiles, contact info",
+   "context": {
+    "skill": "person-lookup",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/person-lookup/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_targeted-prospecting",
+   "prompt": "Build a prospect list of companies with decision makers, verified contact info, and hiring/intent signals. Use when asked to find leads by industry, build an account list with specific titles, prospect companies that are actively hiring, or create a targeted outreach list filtered by company size, location, and hiring activity.",
+   "context": {
+    "skill": "targeted-prospecting",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/targeted-prospecting/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_comprehensive-enrichment",
+   "prompt": "Enrich any person or company from any identifier \u2014 email, name, LinkedIn URL, domain, company name, Twitter/X handle. Use when asked to enrich, look up, or research a lead, contact, person, or company.",
+   "context": {
+    "skill": "comprehensive-enrichment",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/comprehensive-enrichment/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_job-search",
+   "prompt": "Search for jobs matching your skills, experience, and preferences",
+   "context": {
+    "skill": "job-search",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/job-search/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_contact-finder-contactout",
+   "prompt": "Find emails, phone numbers, and enrich profiles using ContactOut. LinkedIn enrichment, people search, company enrichment, and batch operations.",
+   "context": {
+    "skill": "contact-finder-contactout",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/contact-finder-contactout/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_signal-scanner",
+   "prompt": ">",
+   "context": {
+    "skill": "signal-scanner",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/signal-scanner/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_company-intel",
+   "prompt": "Full company intelligence report - overview, team, funding, products, news",
+   "context": {
+    "skill": "company-intel",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/company-intel/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_contact-cache",
+   "prompt": ">",
+   "context": {
+    "skill": "contact-cache",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/contact-cache/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_verify-email",
+   "prompt": "Verify if an email address is valid and deliverable",
+   "context": {
+    "skill": "verify-email",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/verify-email/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_yc-batch-evaluator",
+   "prompt": "Evaluate YC batch companies for investment \u2014 scrapes the YC directory, researches each company and its founders (work history, LinkedIn, website), assesses founder-company fit, and exports to Google Sheets with priority rankings. Use when asked to evaluate YC companies, research a YC batch, screen startups, or do due diligence on YC companies.",
+   "context": {
+    "skill": "yc-batch-evaluator",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/yc-batch-evaluator/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_linkedin-job-scraper",
+   "prompt": ">",
+   "context": {
+    "skill": "linkedin-job-scraper",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/linkedin-job-scraper/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_lead-enrichment",
+   "prompt": "Enrich leads with email, phone, company data using multiple data sources",
+   "context": {
+    "skill": "lead-enrichment",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/lead-enrichment/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_competitor-post-engagers",
+   "prompt": ">",
+   "context": {
+    "skill": "competitor-post-engagers",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/competitor-post-engagers/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_job-posting-intent",
+   "prompt": ">",
+   "context": {
+    "skill": "job-posting-intent",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/job-posting-intent/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_job-scraper",
+   "prompt": ">",
+   "context": {
+    "skill": "job-scraper",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/job-scraper/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_luma-event-attendees",
+   "prompt": "Find speakers, hosts, and guest profiles at conferences and events on Luma. Two modes - free direct scrape for hosts, or Apify-powered search for full guest profiles with LinkedIn/Twitter/bio.",
+   "context": {
+    "skill": "luma-event-attendees",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/luma-event-attendees/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_sales-prospecting",
+   "prompt": "Build targeted prospect lists with verified contact information",
+   "context": {
+    "skill": "sales-prospecting",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/sales-prospecting/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_enrichment-nyne",
+   "prompt": "Intelligence and enrichment - person and company data, social profiles, events, and funding",
+   "context": {
+    "skill": "enrichment-nyne",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/enrichment-nyne/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_gtm-enrichment-deep",
+   "prompt": "AI-agent-powered lead enrichment using Sixtyfour as primary source. Takes an email (+ optional name) and returns comprehensive person + company data with funding, AI/B2B classification, and full error visibility. Higher cost (~$0.20/lead) but simpler architecture.",
+   "context": {
+    "skill": "gtm-enrichment-deep",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/gtm-enrichment-deep/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_lead-qualification",
+   "prompt": ">",
+   "context": {
+    "skill": "lead-qualification",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/lead-qualification/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_email-finder-tomba",
+   "prompt": "Email finder and verifier - find emails from domains, LinkedIn, or company search",
+   "context": {
+    "skill": "email-finder-tomba",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/email-finder-tomba/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_people-company-search-fiber",
+   "prompt": "People, company, investor, and job search with LinkedIn data enrichment",
+   "context": {
+    "skill": "people-company-search-fiber",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/people-company-search-fiber/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_gtm-enrichment-smart",
+   "prompt": "Multi-provider waterfall lead enrichment. Takes an email (+ optional name) and returns person + company data by cross-referencing cheap APIs first, using expensive AI agents only as fallback. Cost-efficient (~$0.04-$0.10/lead) with confidence scoring and full error visibility.",
+   "context": {
+    "skill": "gtm-enrichment-smart",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/gtm-enrichment-smart/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_company-contact-finder",
+   "prompt": ">",
+   "context": {
+    "skill": "company-contact-finder",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/company-contact-finder/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_icp-website-review",
+   "prompt": ">",
+   "context": {
+    "skill": "icp-website-review",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/capabilities/icp-website-review/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_inbound-lead-triage",
+   "prompt": ">",
+   "context": {
+    "skill": "inbound-lead-triage",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/composites/inbound-lead-triage/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_get-qualified-leads-from-luma",
+   "prompt": ">",
+   "context": {
+    "skill": "get-qualified-leads-from-luma",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/composites/get-qualified-leads-from-luma/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_inbound-lead-qualification",
+   "prompt": ">",
+   "context": {
+    "skill": "inbound-lead-qualification",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/composites/inbound-lead-qualification/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_inbound-lead-enrichment",
+   "prompt": ">",
+   "context": {
+    "skill": "inbound-lead-enrichment",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/composites/inbound-lead-enrichment/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_icp-website-audit",
+   "prompt": ">",
+   "context": {
+    "skill": "icp-website-audit",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/composites/icp-website-audit/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_event-prospecting-pipeline",
+   "prompt": "Find attendees at conferences/events, research their companies, qualify against ICP, and launch outreach",
+   "context": {
+    "skill": "event-prospecting-pipeline",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/playbooks/event-prospecting-pipeline/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_signal-detection-pipeline",
+   "prompt": "Detect buying signals from multiple sources, qualify leads, and generate outreach context",
+   "context": {
+    "skill": "signal-detection-pipeline",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/playbooks/signal-detection-pipeline/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_community-signals",
+   "prompt": "Extract leads from developer forums (Hacker News, Reddit) by detecting intent signals \u2014 alternative seeking, competitor pain, scaling challenges, DIY solutions, and migration intent. Scores users by intent strength and cross-platform presence.",
+   "context": {
+    "skill": "community-signals",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/packs/lead-gen-devtools/community-signals/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_event-signals",
+   "prompt": "Extract leads from conferences, meetups, hackathons, and podcasts by analyzing speaker lists, sponsor lists, hackathon entries, and podcast guests. Discovers events via Sessionize, Confs.tech, Meetup, Luma, ListenNotes, and Devpost. Looks back 90 days and forward 180 days.",
+   "context": {
+    "skill": "event-signals",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/packs/lead-gen-devtools/event-signals/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_github-repo-signals",
+   "prompt": "Extract and score leads from GitHub repositories by analyzing stars, forks, issues, PRs, comments, and contributions. Produces unified multi-repo CSV with deduplicated user profiles. No paid API credits required.",
+   "context": {
+    "skill": "github-repo-signals",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/packs/lead-gen-devtools/github-repo-signals/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_competitor-signals",
+   "prompt": "Extract leads from competitor product activity \u2014 Product Hunt commenters/upvoters, HN posts about competitors, case studies, testimonials, tech press, and switching signals. Detects people actively switching from competitors as highest-priority leads.",
+   "context": {
+    "skill": "competitor-signals",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/packs/lead-gen-devtools/competitor-signals/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_lead-discovery",
+   "prompt": "Orchestrator that runs first for lead generation requests. Gathers business context via website analysis or questions, identifies competitors, builds ICP, and routes to signal skills with pre-filled inputs.",
+   "context": {
+    "skill": "lead-discovery",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/packs/lead-gen-devtools/lead-discovery/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_demo-builder",
+   "prompt": "Builds personalized demo assets for top prospects using the founder's product API/MCP/SDK. Researches prospect, proposes demo concepts, builds working prototype, tests it, and generates comparison report with live demo link.",
+   "context": {
+    "skill": "demo-builder",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/lead-generation/packs/lead-gen-devtools/demo-builder/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_linkedin-outreach",
+   "prompt": ">",
+   "context": {
+    "skill": "linkedin-outreach",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/outreach/capabilities/linkedin-outreach/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_email-drafting",
+   "prompt": ">",
+   "context": {
+    "skill": "email-drafting",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/outreach/capabilities/email-drafting/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_linkedin-message-writer",
+   "prompt": ">",
+   "context": {
+    "skill": "linkedin-message-writer",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/outreach/capabilities/linkedin-message-writer/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_email-campaign",
+   "prompt": "Build email campaigns - find emails, verify them, and prepare outreach",
+   "context": {
+    "skill": "email-campaign",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/outreach/capabilities/email-campaign/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_send-sms-textbelt",
+   "prompt": "Send SMS text messages to phone numbers. Use when the user asks to send a text, send an SMS, text someone, message a phone number, or send a notification via text message.",
+   "context": {
+    "skill": "send-sms-textbelt",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/outreach/capabilities/send-sms-textbelt/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_setup-outreach-campaign-smartlead",
+   "prompt": ">",
+   "context": {
+    "skill": "setup-outreach-campaign-smartlead",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/outreach/capabilities/setup-outreach-campaign-smartlead/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_cold-email-outreach",
+   "prompt": ">",
+   "context": {
+    "skill": "cold-email-outreach",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/outreach/capabilities/cold-email-outreach/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_sequence-performance",
+   "prompt": ">",
+   "context": {
+    "skill": "sequence-performance",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/outreach/composites/sequence-performance/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_leadership-change-outreach",
+   "prompt": ">",
+   "context": {
+    "skill": "leadership-change-outreach",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/outreach/composites/leadership-change-outreach/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_funding-signal-outreach",
+   "prompt": ">",
+   "context": {
+    "skill": "funding-signal-outreach",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/outreach/composites/funding-signal-outreach/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_news-signal-outreach",
+   "prompt": ">",
+   "context": {
+    "skill": "news-signal-outreach",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/outreach/composites/news-signal-outreach/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_hiring-signal-outreach",
+   "prompt": ">",
+   "context": {
+    "skill": "hiring-signal-outreach",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/outreach/composites/hiring-signal-outreach/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_champion-move-outreach",
+   "prompt": ">",
+   "context": {
+    "skill": "champion-move-outreach",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/outreach/composites/champion-move-outreach/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_customer-win-back-sequencer",
+   "prompt": ">",
+   "context": {
+    "skill": "customer-win-back-sequencer",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/outreach/composites/customer-win-back-sequencer/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_gooseworks-ai__goose-skills_outbound-prospecting-engine",
+   "prompt": ">",
+   "context": {
+    "skill": "outbound-prospecting-engine",
+    "path": "research/repos/workflow/gooseworks-ai__goose-skills/skills/outreach/playbooks/outbound-prospecting-engine/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "gooseworks-ai__goose-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "kind": "verifier",
+   "what": "graded ground truth",
+   "why": "skills document procedures, not expected end states; tasks derived from them must be authored and gated separately",
+   "count": 263
+  }
+ ]
+}

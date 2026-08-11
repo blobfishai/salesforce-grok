@@ -1,0 +1,135 @@
+{
+ "source": {
+  "repo": "violetfleming47/deal-intelligence",
+  "commit": "99972565581d5dca28e1a6777fd2726ee9ddb8a5",
+  "path": "research/repos/workflow/violetfleming47__deal-intelligence",
+  "url": "https://github.com/violetfleming47/deal-intelligence",
+  "license": "MIT"
+ },
+ "adapter": {
+  "name": "skillpack",
+  "version": "1.0"
+ },
+ "fidelity": "inspired",
+ "tables": [],
+ "tools": [],
+ "policies": [],
+ "tasks": [
+  {
+   "id": "skill_violetfleming47__deal-intelligence_conversation-scanner",
+   "prompt": "Reads meeting transcripts, CRM emails, and CRM notes to classify deal progression signals \u2014 pain, commitment, authority, buying intent, language posture shifts. Runs daily in parallel with other spotters. Writes to di_raw_signals and di_signal_classifications. Triggered automatically on cadence, or manually via 'run conversation reader', 'scan conversations for [deal]', 'what signals are in [deal]'.",
+   "context": {
+    "skill": "conversation-scanner",
+    "path": "research/repos/workflow/violetfleming47__deal-intelligence/skills/conversation-scanner/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "violetfleming47__deal-intelligence"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_violetfleming47__deal-intelligence_state-builder",
+   "prompt": "Aggregates all available reader outputs into the five-dimension di_deal_state snapshot using SCD Type 2 versioning. Runs daily after all readers complete. No direct CRM or transcript provider access \u2014 everything comes through DI tables. Writes new di_deal_state versions only when something actually changed. Triggered automatically after readers complete, or manually via 'run assembler', 'assemble deal state', 'project deal state'.",
+   "context": {
+    "skill": "state-builder",
+    "path": "research/repos/workflow/violetfleming47__deal-intelligence/skills/state-builder/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "violetfleming47__deal-intelligence"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_violetfleming47__deal-intelligence_deal-tracker",
+   "prompt": "Reads CRM deal properties and property change history to detect stage transitions, deal value changes, owner reassignments, and close date shifts. The lightest spotter \u2014 reads structured fields, not unstructured text. Runs daily in parallel with other spotters. Writes to di_raw_signals and di_signal_classifications. Triggered automatically on cadence, or manually via 'run deal properties reader', 'check stage changes', 'what moved in the pipeline'.",
+   "context": {
+    "skill": "deal-tracker",
+    "path": "research/repos/workflow/violetfleming47__deal-intelligence/skills/deal-tracker/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "violetfleming47__deal-intelligence"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_violetfleming47__deal-intelligence_lifecycle",
+   "prompt": "Freshness and decay management for the Deal Intelligence pipeline. Runs FIRST every cadence \u2014 before spotters, before the assembler, before anything analytical. Manages entity freshness transitions (active \u2192 aging \u2192 stale \u2192 archived), extends freshness for pattern-matched entities, and cleans the data layer so downstream agents work with current data. Triggered automatically before every pipeline run, or manually via 'run lifecycle', 'clean the data layer', 'check freshness'.",
+   "context": {
+    "skill": "lifecycle",
+    "path": "research/repos/workflow/violetfleming47__deal-intelligence/skills/lifecycle/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "violetfleming47__deal-intelligence"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_violetfleming47__deal-intelligence_blocker-scanner",
+   "prompt": "Reads meeting transcripts, CRM notes, and CRM emails to classify friction types, objections, competitive mentions, boosts, and unblocking events. Runs daily in parallel with other spotters. Writes to di_raw_signals and di_signal_classifications. Triggered automatically on cadence, or manually via 'run friction reader', 'scan friction for [deal]', 'what's stalling [deal]'.",
+   "context": {
+    "skill": "blocker-scanner",
+    "path": "research/repos/workflow/violetfleming47__deal-intelligence/skills/blocker-scanner/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "violetfleming47__deal-intelligence"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_violetfleming47__deal-intelligence_deal-briefer",
+   "prompt": "Forensic deep dive on a single deal from the Deal Intelligence pipeline. On-demand only. Triggered by 'deep dive on [deal]', 'prep me for the [company] call', 'analyse [deal]', 'what's happening with [company]', or any request for a single-deal analytical deep dive backed by evidence from di_* tables.",
+   "context": {
+    "skill": "deal-briefer",
+    "path": "research/repos/workflow/violetfleming47__deal-intelligence/skills/deal-briefer/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "violetfleming47__deal-intelligence"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "kind": "verifier",
+   "what": "graded ground truth",
+   "why": "skills document procedures, not expected end states; tasks derived from them must be authored and gated separately",
+   "count": 6
+  }
+ ]
+}

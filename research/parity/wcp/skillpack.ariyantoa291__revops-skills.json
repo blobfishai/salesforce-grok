@@ -1,0 +1,99 @@
+{
+ "source": {
+  "repo": "ariyantoa291/revops-skills",
+  "commit": "93c27f731b767831c227a847b1a3169515e5f0fd",
+  "path": "research/repos/workflow/ariyantoa291__revops-skills",
+  "url": "https://github.com/ariyantoa291/revops-skills",
+  "license": "MIT"
+ },
+ "adapter": {
+  "name": "skillpack",
+  "version": "1.0"
+ },
+ "fidelity": "inspired",
+ "tables": [],
+ "tools": [],
+ "policies": [],
+ "tasks": [
+  {
+   "id": "skill_ariyantoa291__revops-skills_deal-investigator",
+   "prompt": "Produce a structured deal review for a single opportunity. Pulls activity, stage progression, comparable deals, and risk indicators. Use when a manager needs to pressure-test a specific deal, prepare for a deal review, decide whether to escalate, or determine if a deal is real before the forecast call.",
+   "context": {
+    "skill": "deal-investigator",
+    "path": "research/repos/workflow/ariyantoa291__revops-skills/skills/deal-investigator/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "ariyantoa291__revops-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_ariyantoa291__revops-skills_salesforce-revops-audit",
+   "prompt": "Run a comprehensive Salesforce RevOps health audit across five dimensions (pipeline health, data quality, forecast hygiene, deal integrity, process integrity) and produce a graded report (A through F) with a prioritized remediation queue. Use as the entry point for any new Salesforce org assessment, before a new RevOps leader's first forecast call, before a QBR cycle, or quarterly as a recurring health check. The audit recommends which remediation skills to run next.",
+   "context": {
+    "skill": "salesforce-revops-audit",
+    "path": "research/repos/workflow/ariyantoa291__revops-skills/skills/salesforce-revops-audit/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "ariyantoa291__revops-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_ariyantoa291__revops-skills_pipeline-hygiene-audit",
+   "prompt": "Audit a sales team's open pipeline for hygiene issues and produce a per-rep punchlist of fixes ranked by severity. Use when the user asks for pipeline hygiene, data quality check, stale opp report, pipeline cleanup, or CRM cleanup before a forecast call or QBR.",
+   "context": {
+    "skill": "pipeline-hygiene-audit",
+    "path": "research/repos/workflow/ariyantoa291__revops-skills/skills/pipeline-hygiene-audit/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "ariyantoa291__revops-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_ariyantoa291__revops-skills_forecast-call-prep",
+   "prompt": "Prepare the executive summary for a weekly forecast call by reconciling rep commits against historical close-rate models and surfacing material variance. Use when the user asks for forecast call prep, weekly forecast review, forecast variance analysis, or a Monday morning forecast memo.",
+   "context": {
+    "skill": "forecast-call-prep",
+    "path": "research/repos/workflow/ariyantoa291__revops-skills/skills/forecast-call-prep/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "ariyantoa291__revops-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "kind": "verifier",
+   "what": "graded ground truth",
+   "why": "skills document procedures, not expected end states; tasks derived from them must be authored and gated separately",
+   "count": 4
+  }
+ ]
+}

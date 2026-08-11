@@ -1,0 +1,297 @@
+{
+ "source": {
+  "repo": "getaero-io/gtm-eng-skills",
+  "commit": "fe7d879d1c04331bc4db195e6eb34a510bcf8493",
+  "path": "research/repos/workflow/getaero-io__gtm-eng-skills",
+  "url": "https://github.com/getaero-io/gtm-eng-skills",
+  "license": "MIT"
+ },
+ "adapter": {
+  "name": "skillpack",
+  "version": "1.0"
+ },
+ "fidelity": "inspired",
+ "tables": [],
+ "tools": [],
+ "policies": [],
+ "tasks": [
+  {
+   "id": "skill_getaero-io__gtm-eng-skills_clay-to-deepline",
+   "prompt": "Convert a Clay table configuration into local Deepline scripts. Handles extraction (MCP or script), documentation, action mapping, script generation, and parity validation against Clay ground truth.",
+   "context": {
+    "skill": "clay-to-deepline",
+    "path": "research/repos/workflow/getaero-io__gtm-eng-skills/skills/clay-to-deepline/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "getaero-io__gtm-eng-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_getaero-io__gtm-eng-skills_deepline-plays",
+   "prompt": "Run Deepline GTM workflows: find companies or people, enrich CSV rows, compare providers, build waterfalls, verify data, and write outreach from verified research. Trigger for provider-backed discovery, enrichment, research, scoring, outreach copy or sequences, or any request involving Deepline Plays. Skip Clay table conversion and work with no Deepline, outbound, or data-provider step.",
+   "context": {
+    "skill": "deepline-plays",
+    "path": "research/repos/workflow/getaero-io__gtm-eng-skills/skills/deepline-plays/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "getaero-io__gtm-eng-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_getaero-io__gtm-eng-skills_deepline-analytics",
+   "prompt": "Use this skill when answering business analytics, RevOps, GTM metric, pipeline, revenue, funnel, customer, or warehouse questions with Deepline. Triggers on phrases like 'query Snowflake', 'analyze pipeline', 'total ACV', 'break down by quarter', 'use the semantic layer', 'run a semantic query', or any use of snowflake_get_semantic_layer / snowflake_run_semantic_query. Skip prospecting, enrichment, contact finding, outbound, or personalization workflows; use deepline-gtm for those.",
+   "context": {
+    "skill": "deepline-analytics",
+    "path": "research/repos/workflow/getaero-io__gtm-eng-skills/skills/deepline-analytics/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "getaero-io__gtm-eng-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_getaero-io__gtm-eng-skills_linkedin-url-lookup",
+   "prompt": "Resolve LinkedIn profile URLs from name + company with strict identity validation to avoid false positives.",
+   "context": {
+    "skill": "linkedin-url-lookup",
+    "path": "research/repos/workflow/getaero-io__gtm-eng-skills/skills/linkedin-url-lookup/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "getaero-io__gtm-eng-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_getaero-io__gtm-eng-skills_deepline-ads-audiences",
+   "prompt": "Use this skill when building, enriching, auditing, or uploading B2B paid ads audiences to Google Customer Match, Meta/Facebook Custom Audiences, or LinkedIn Matched Audiences. Triggers on phrases like '/deepline-ads-audience', '/deepline-ads-audiences', 'upload this audience', 'create custom audiences', 'personal email hashes', 'increase Facebook match rate', 'Google ads audience', 'Meta audience', 'FB audience', or any workflow that turns CRM/customer/contact data into paid ads upload lists. Skip for outbound prospecting sequences, cold email, or pure campaign copywriting.",
+   "context": {
+    "skill": "deepline-ads-audiences",
+    "path": "research/repos/workflow/getaero-io__gtm-eng-skills/skills/deepline-ads-audiences/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "getaero-io__gtm-eng-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_getaero-io__gtm-eng-skills_niche-signal-discovery",
+   "prompt": "Discover niche first-party signals that differentiate Closed Won vs Closed Lost accounts for ICP analysis. Use when the user provides won/lost customer domain lists and wants differential signals (website content, job listings, tech stack, maturity markers) to build account scoring models and prospecting criteria. Triggers: ICP analysis, niche signals, won vs lost analysis, differential signals, signal discovery, ICP signal report, account scoring signals, lead scoring, first-party signals, buyer signals. Before reading this file, first read deepline-gtm to understand the Deepline CLI tool and",
+   "context": {
+    "skill": "niche-signal-discovery",
+    "path": "research/repos/workflow/getaero-io__gtm-eng-skills/skills/niche-signal-discovery/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "getaero-io__gtm-eng-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_getaero-io__gtm-eng-skills_deepline-monitors",
+   "prompt": "ACCESS-GATED beta. Deepline Monitors are provider event feeds (job posts, email replies, funding, intent) that stream into your warehouse and trigger plays. Only use if you have monitor access: run `deepline monitors status` first; if it reports no access, do NOT use this recipe \u2014 tell the user to contact the Deepline team.",
+   "context": {
+    "skill": "deepline-monitors",
+    "path": "research/repos/workflow/getaero-io__gtm-eng-skills/skills/deepline-monitors/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "getaero-io__gtm-eng-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_getaero-io__gtm-eng-skills_deepline-pre-research",
+   "prompt": "Use when the user wants a last30days-style pre-research pass in Deepline: discover the critical public, private, CRM, workflow, social, and web data sources for a research/enrichment job; compare provider coverage; estimate Deepline credit cost; recommend the source plan before building or running the workflow; or build custom language/messaging from buyer, competitor, community, and CRM evidence. Triggers: pre-research, source discovery, provider strategy, research data sources, ScrapeCreators, X/Twitter data, Reddit comments, public and private datasets, CRM data, workflow data, custom langu",
+   "context": {
+    "skill": "deepline-pre-research",
+    "path": "research/repos/workflow/getaero-io__gtm-eng-skills/skills/deepline-pre-research/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "getaero-io__gtm-eng-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_getaero-io__gtm-eng-skills_find-qualified-titles",
+   "prompt": "Use when finding real role-holders at known company domains from an ICP, especially prompts like 'find all job titles at these companies', 'find qualified titles', 'find RevOps or marketing-ops buyers', or when exact title discovery should precede paid people search.",
+   "context": {
+    "skill": "find-qualified-titles",
+    "path": "research/repos/workflow/getaero-io__gtm-eng-skills/skills/find-qualified-titles/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "getaero-io__gtm-eng-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_getaero-io__gtm-eng-skills_deepline-quickstart",
+   "prompt": "Run a quick Deepline demo recipe to show the user how Deepline works.",
+   "context": {
+    "skill": "deepline-quickstart",
+    "path": "research/repos/workflow/getaero-io__gtm-eng-skills/skills/deepline-quickstart/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "getaero-io__gtm-eng-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_getaero-io__gtm-eng-skills_build-tam",
+   "prompt": "Build a Total Addressable Market list by sourcing accounts and contacts from providers like Crustdata, Dropleads, and PDL.",
+   "context": {
+    "skill": "build-tam",
+    "path": "research/repos/workflow/getaero-io__gtm-eng-skills/skills/build-tam/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "getaero-io__gtm-eng-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_getaero-io__gtm-eng-skills_deepline-plays-review",
+   "prompt": "Use this skill when a human needs to review a Deepline Play result and hand feedback, labels, or approval back to the agent for revision, evaluation, comparison, or bounded iteration. Triggers on \u201cput this run in a Sheet,\u201d \u201creview these results,\u201d \u201cread my feedback,\u201d \u201cmake this a standing rule,\u201d \u201cnever regress on this case,\u201d \u201ccompare these runs,\u201d \u201ckeep improving,\u201d or \u201cadd the revised run to the same spreadsheet.\u201d Skip ordinary Play authoring or execution with no human review loop, generic spreadsheet work, and one-off CSV export.",
+   "context": {
+    "skill": "deepline-plays-review",
+    "path": "research/repos/workflow/getaero-io__gtm-eng-skills/skills/deepline-plays-review/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "getaero-io__gtm-eng-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_getaero-io__gtm-eng-skills_portfolio-prospecting",
+   "prompt": "Find companies backed by a specific investor or accelerator, then find contacts and build personalized outbound.",
+   "context": {
+    "skill": "portfolio-prospecting",
+    "path": "research/repos/workflow/getaero-io__gtm-eng-skills/skills/portfolio-prospecting/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "getaero-io__gtm-eng-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_getaero-io__gtm-eng-skills_deepline-feedback",
+   "prompt": "Send feedback or bug reports to the Deepline team, including session transcript and environment info. Use when the user asks to report a bug, send product feedback, or share the current Claude/Cowork session with Deepline support.",
+   "context": {
+    "skill": "deepline-feedback",
+    "path": "research/repos/workflow/getaero-io__gtm-eng-skills/skills/deepline-feedback/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "getaero-io__gtm-eng-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_getaero-io__gtm-eng-skills_deepline-gtm",
+   "prompt": "GTM prospecting, enrichment, outreach, scoring, CSVs, and plays. Discovery: deepline-pre-research. Providers: adyntel,ai_ark,allegrow,amplemarket,apify,attention,attio,aviato,bettercontact,bloomberry,bluesky,bounceban,browserbase,builtwith,clickhouse,cloudflare,contactout,crustdata,crustdata-v2,crustdata-v3,customer_db,dataforseo,datagma,deepline_ip_to_company,deepline_native,deeplineagent,discolike,dropleads,emailbison,emailguard,enformion,exa,findymail,firecrawl,fireflies,firmable,forager,fullenrich,generic_http,gong,google_ads_audiences,google_workspace,hackernews,heyreach,hubspot,hunter,ic",
+   "context": {
+    "skill": "deepline-gtm",
+    "path": "research/repos/workflow/getaero-io__gtm-eng-skills/skills/deepline-gtm/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "getaero-io__gtm-eng-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "kind": "verifier",
+   "what": "graded ground truth",
+   "why": "skills document procedures, not expected end states; tasks derived from them must be authored and gated separately",
+   "count": 15
+  }
+ ]
+}

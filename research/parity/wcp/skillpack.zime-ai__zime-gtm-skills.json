@@ -1,0 +1,603 @@
+{
+ "source": {
+  "repo": "zime-ai/zime-gtm-skills",
+  "commit": "ca927c5be6cb76d0646eeb7da27d3dd707821343",
+  "path": "research/repos/workflow/zime-ai__zime-gtm-skills",
+  "url": "https://github.com/zime-ai/zime-gtm-skills",
+  "license": "MIT"
+ },
+ "adapter": {
+  "name": "skillpack",
+  "version": "1.0"
+ },
+ "fidelity": "inspired",
+ "tables": [],
+ "tools": [],
+ "policies": [],
+ "tasks": [
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_sandler",
+   "prompt": "Audits a B2B sales call transcript against the Sandler Selling System submarine (Bonding & Rapport, Up-Front Contract, Pain, Budget, Decision, Fulfillment, Post-Sell), or sweeps a CRM export for deals missing Sandler-relevant fields. Use when checking whether a rep pitched before earning the right to, whether a close was actually agreed to or just assumed, or auditing a pipeline for deals that skipped a submarine compartment.",
+   "context": {
+    "skill": "sandler",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/sandler/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_prospect-pipeline-check",
+   "prompt": "Sweeps a CRM pipeline export for prospect-stage deals with no real two-way engagement from the prospect side \u2014 the earliest \"is this even a deal\" gate, before budget, buyer, or pain are even in scope. Use when auditing a prospect-stage pipeline for zombie deals a rep is carrying forward on outbound activity alone, or before a pipeline review to separate real opportunities from unanswered outreach.",
+   "context": {
+    "skill": "prospect-pipeline-check",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/prospect-pipeline-check/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_faint",
+   "prompt": "Audits a B2B sales call transcript against the FAINT qualification framework (Funds, Authority, Interest, Need, Timing), or sweeps a CRM export for deals missing FAINT fields. Use when a prospect hasn't articulated a clear need yet but shows financial capacity and curiosity, or when deciding whether a demand-driven lead is worth advancing before a formal need is on record.",
+   "context": {
+    "skill": "faint",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/faint/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_meeting-to-qualify",
+   "prompt": "Audits a qualification call transcript to assess whether a deal is real \u2014 authority, budget plausibility, urgency, and fit \u2014 or sweeps a CRM export for deals never properly qualified. Use when deciding whether to invest further in a deal, reviewing a qualification call, or checking pipeline for unqualified deals inflating forecast.",
+   "context": {
+    "skill": "meeting-to-qualify",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/meeting-to-qualify/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_qualify-pipeline-check",
+   "prompt": "Sweeps a CRM/pipeline export for deals that advanced past the Qualify stage without the facts that stage is supposed to establish \u2014 economic buyer, pain, budget signal, a close date consistent with the procurement cycle, a next step, and a qualification-framework record. Use when RevOps or a manager wants to audit the Qualify pipeline for deals advanced on hope rather than evidence. Does not read call transcripts \u2014 that's `meeting-to-qualify` (audits the qualification call itself) or `sql-to-qualify` (audits the SQL handoff call); this one only asks whether the CRM record itself can prove qual",
+   "context": {
+    "skill": "qualify-pipeline-check",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/qualify-pipeline-check/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_first-call-rampup",
+   "prompt": "Audits a new rep's early sales call transcript against a foundational-skills rubric covering opening, open-ended questioning, pain uncovering, and pitch delivery. Use when coaching a newly ramped rep, reviewing their first calls, or building a rep-development plan from real call evidence.",
+   "context": {
+    "skill": "first-call-rampup",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/first-call-rampup/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_poc-success",
+   "prompt": "Audits a POC/pilot exit review \u2014 did the pilot actually meet its agreed success criteria, and is that decision documented with evidence and sign-off \u2014 or sweeps a CRM export for deals past their POC end date with no recorded outcome. Use when a pilot has just wrapped and you need a structured read on whether it genuinely passed, or when checking pipeline for POCs that ran out the clock with no outcome written down.",
+   "context": {
+    "skill": "poc-success",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/poc-success/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_challenger",
+   "prompt": "Audits a B2B sales call transcript against the Challenger Sale framework (teach, tailor, take control, plus the commercial-teaching pitch arc), or sweeps a CRM export for deals with no teaching insight logged. Use when a rep leans on discovery-question skill but rarely brings a point of view, when prepping a rep for a competitive or status-quo-defending deal, or when a manager wants to know if a call taught the buyer something new rather than just restating their stated problem.",
+   "context": {
+    "skill": "challenger",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/challenger/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_technical-discovery",
+   "prompt": "Audits a technical/solution-fit call transcript against a rubric covering current stack, future-state vision, POC scope, and technical stakeholders, or sweeps a CRM export for deals missing technical-fit data. Use when reviewing a technical discovery or solution-engineering call, or checking pipeline for deals heading into a POC without technical groundwork.",
+   "context": {
+    "skill": "technical-discovery",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/technical-discovery/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_adoption-leaderboard",
+   "prompt": "Scores a rep's or a team's recent sales calls against a fixed set of five winning-behavior checklists (rapport, upsell signals, renewal risk, customer experience, value realization), then ranks reps lowest-adoption-first so the highest-leverage coaching targets lead. Use when running a team calibration, prepping 1:1 coaching from real call evidence instead of impressions, or checking whether a specific behavior is actually landing across a book of calls.",
+   "context": {
+    "skill": "adoption-leaderboard",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/adoption-leaderboard/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_meddpicc",
+   "prompt": "Audits a B2B sales call transcript against the MEDDPICC qualification framework (Metrics, Economic buyer, Decision criteria, Decision process, Paper process, Identify pain, Champion, Competition), or sweeps a CRM export for deals missing MEDDPICC fields. Use when a deal is heading toward legal/procurement/security review and needs a read on the close-mechanics letter that MEDDICC doesn't cover, prepping for a late-stage forecast call, or checking whether a pipeline deal has a mapped signature path.",
+   "context": {
+    "skill": "meddpicc",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/meddpicc/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_won-pipeline-check",
+   "prompt": "Sweeps a closed-won deal export for missing handoff and record data the post-sale team needs \u2014 CS owner, kickoff date, signed value/term, contract reference, and date/stage consistency. Use when a deal desk or RevOps person wants to check closed-won deals before they hand off to onboarding/CS, or audit a pipeline export for won deals with incomplete records.",
+   "context": {
+    "skill": "won-pipeline-check",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/won-pipeline-check/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_negotiation-closing",
+   "prompt": "Audits a late-stage negotiation call transcript against a rubric covering pricing sentiment, procurement momentum, contracting awareness, and closure timeline, or sweeps a CRM export for late-stage deals with no documented closing path. Use when reviewing a negotiation call, or checking pipeline for deals stuck in late stage with no clear path to close.",
+   "context": {
+    "skill": "negotiation-closing",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/negotiation-closing/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_improve-demo",
+   "prompt": "Audits a product demo call transcript against a rubric covering tailoring, stakeholder presence, engagement, and outcome clarity, or sweeps a CRM export for demos with no documented next step. Use when reviewing a demo call, coaching a rep on demo delivery, or checking pipeline for demos that didn't produce a clear next step.",
+   "context": {
+    "skill": "improve-demo",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/improve-demo/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_upsell-expansion",
+   "prompt": "Audits an expansion/upsell call transcript against a rubric covering opportunity clarity, champion strength, renewal health, and strategic alignment, or sweeps a CRM export for expansion opportunities missing a health check. Use when reviewing an upsell or expansion conversation, or checking an account list for expansion pushes that skipped a renewal-health check first.",
+   "context": {
+    "skill": "upsell-expansion",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/upsell-expansion/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_persona-based-discovery",
+   "prompt": "Audits whether a discovery call's questions and framing were actually tailored to the specific buyer persona in the room (technical evaluator, economic buyer, end user, etc.), or sweeps a CRM export for deals with no persona/role data attached to contacts. Use when checking that a rep adapted to who they were talking to rather than running a one-size-fits-all script, or when reviewing a pipeline export for deals missing contact-role fields.",
+   "context": {
+    "skill": "persona-based-discovery",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/persona-based-discovery/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_new-business-registration",
+   "prompt": "Audits a new-logo deal-registration record, or the call/checkpoint where a rep registers a brand-new opportunity into pipeline, against general deal-registration practice covering entity identification, duplicate/conflict checking, source attribution, and ICP fit. Use when reviewing a fresh deal registration before it's approved, or sweeping a registration export for records missing required fields. Not for partner-sourced end-client registrations \u2014 see end-client-registration.",
+   "context": {
+    "skill": "new-business-registration",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/new-business-registration/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_end-client-registration",
+   "prompt": "Audits a partner/reseller's end-client deal registration for completeness \u2014 partner identity, end-client entity kept distinct from the partner, engagement scope, conflict check against the direct pipeline, confirmed permission to engage the end-client contact, commercial terms, and an expiry window. Use when reviewing a channel/partner deal registration export or a partner registration-review call, before accepting the registration into the partner pipeline. Distinct from `new-business-registration` (sibling skill), which audits a direct new-logo opportunity with no partner involved.",
+   "context": {
+    "skill": "end-client-registration",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/end-client-registration/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_pain-finder",
+   "prompt": "Ranks the pain points surfaced in a sales call transcript by confidence and evidence, tagged by category. Use when a rep wants to know what a prospect's real pain points are and which to lead with in a follow-up, or when comparing pain points across multiple calls with the same account.",
+   "context": {
+    "skill": "pain-finder",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/pain-finder/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_sql-to-qualify",
+   "prompt": "Audits the first call after a sales-qualified lead (SQL) hand-off to check whether there's a real opportunity worth a rep's time \u2014 right contact, pain in the prospect's own words, rough budget/urgency fit, competitive awareness, and a concrete next meeting \u2014 or sweeps a CRM export for SQLs sitting untouched past this gate. Use right after an SQL is assigned and worked for the first time, before investing in a full qualification call.",
+   "context": {
+    "skill": "sql-to-qualify",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/sql-to-qualify/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_negotiation-pipeline-check",
+   "prompt": "Sweeps a deal/pipeline export for deals in negotiation with no paper process started, no named approver on a discount, no credible close date, or no named signature path. Use when reviewing forecast-stage negotiation deals for whether they have a real mechanical path to signature, not just a stated intent to close.",
+   "context": {
+    "skill": "negotiation-pipeline-check",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/negotiation-pipeline-check/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_customer-success",
+   "prompt": "Audits a periodic QBR or account health-review call transcript against a rubric covering value delivered, usage breadth, open issues, and forward alignment, or sweeps a CRM export for accounts overdue for a health review. Use when reviewing a QBR or ongoing health check-in, distinct from a renewal-risk-triggered or expansion-triggered conversation.",
+   "context": {
+    "skill": "customer-success",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/customer-success/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_pilot-to-conversion",
+   "prompt": "Audits a pilot/POC check-in call transcript against a rubric covering plan alignment, technical readiness, user engagement, and results against criteria, or sweeps a CRM export for pilots at risk of stalling before conversion. Use when reviewing a pilot check-in call, or checking pipeline for POCs that have run long without a documented result.",
+   "context": {
+    "skill": "pilot-to-conversion",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/pilot-to-conversion/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_evaluation-pipeline-check",
+   "prompt": "Sweeps a deal/pipeline export for technical evaluations running without defined success criteria, a technical champion, or an evaluation end date, and flags evaluations running long, stalled, or missing a security/procurement review relative to the export's own norms. Use when reviewing deals sitting in a technical evaluation stage, or auditing a pipeline export before a forecast call.",
+   "context": {
+    "skill": "evaluation-pipeline-check",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/evaluation-pipeline-check/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_bant",
+   "prompt": "Audits a B2B sales call transcript against the BANT qualification framework (Budget, Authority, Need, Timeline), or sweeps a CRM export for deals missing BANT fields. Use when qualifying an early-stage lead, deciding whether to advance a deal past a first call, or checking a pipeline export for unqualified opportunities.",
+   "context": {
+    "skill": "bant",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/bant/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_poc-pilot-pipeline-check",
+   "prompt": "Sweeps a CRM pipeline export for POCs and pilots running with no exit criteria, no sponsor, or no conversion date. Use when RevOps or a manager wants a pipeline-wide read on which POCs/pilots can actually convert versus which are drifting with nothing written down.",
+   "context": {
+    "skill": "poc-pilot-pipeline-check",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/poc-pilot-pipeline-check/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_qualify-to-poc",
+   "prompt": "Audits the call/checkpoint that moves a qualified deal into POC/pilot kickoff \u2014 the go/no-go gate before pilot work starts \u2014 against five dimensions covering success criteria, technical scope, stakeholder commitment, timeline/exit criteria, and resourcing. Or sweeps a CRM export for deals entering pilot stage without those fields set. Use when deciding whether a deal is actually ready to start a POC, reviewing a POC-kickoff call, or checking pipeline for pilots that started without a real plan.",
+   "context": {
+    "skill": "qualify-to-poc",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/qualify-to-poc/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_onboarding-journey",
+   "prompt": "Audits a new-customer onboarding call transcript against a rubric covering onboarding experience, sentiment, and early expansion signal, or sweeps a CRM export for onboarding accounts with no documented health signal. Use when reviewing an onboarding check-in call, or checking a new-customer list for onboardings going quiet.",
+   "context": {
+    "skill": "onboarding-journey",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/onboarding-journey/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_churn-prevention",
+   "prompt": "Audits a renewal-risk or check-in call transcript against a churn/retention-signal rubric, or sweeps a CRM export for at-risk accounts missing renewal-risk data. Use when reviewing a customer check-in or QBR before a renewal, coaching a CSM on retention conversations, or scanning an account list for churn risk.",
+   "context": {
+    "skill": "churn-prevention",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/churn-prevention/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_meddicc",
+   "prompt": "Audits a B2B sales call transcript against the MEDDICC qualification framework (Metrics, Economic buyer, Decision criteria, Decision process, Identify pain, Champion, Competition), or sweeps a CRM export for deals missing MEDDICC fields. Use when qualifying an opportunity, prepping for a deal-review or forecast call, or checking whether a deal in the pipeline has real MEDDICC coverage.",
+   "context": {
+    "skill": "meddicc",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/meddicc/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_next-step-commitment",
+   "prompt": "Checks whether a sales call ended with a real, dated, mutually-owned next step versus a vague \"we'll circle back.\" Use when reviewing whether a call actually moved a deal forward, coaching a rep on closing calls out properly, or sweeping a CRM export for deals stuck without a next step.",
+   "context": {
+    "skill": "next-step-commitment",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/next-step-commitment/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_zime-ai__zime-gtm-skills_deep-discovery",
+   "prompt": "Audits an early-stage B2B sales discovery call transcript against a discovery-quality rubric, or sweeps a CRM deal export for missing discovery fields. Use when reviewing a discovery/early-stage sales call, coaching a rep on discovery quality, or checking a pipeline export for deals with thin discovery.",
+   "context": {
+    "skill": "deep-discovery",
+    "path": "research/repos/workflow/zime-ai__zime-gtm-skills/skills/deep-discovery/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "zime-ai__zime-gtm-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "kind": "verifier",
+   "what": "graded ground truth",
+   "why": "skills document procedures, not expected end states; tasks derived from them must be authored and gated separately",
+   "count": 32
+  }
+ ]
+}

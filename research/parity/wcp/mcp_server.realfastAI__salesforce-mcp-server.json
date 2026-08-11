@@ -1,0 +1,117 @@
+{
+ "source": {
+  "repo": "realfastAI/salesforce-mcp-server",
+  "commit": "ff8afa864cde50c5891d2d4622cab41cb32fc5c1",
+  "path": "research/repos/mcp/realfastAI__salesforce-mcp-server",
+  "url": "https://github.com/realfastAI/salesforce-mcp-server",
+  "license": "UNKNOWN"
+ },
+ "adapter": {
+  "name": "mcp_server",
+  "version": "1.0"
+ },
+ "fidelity": "adapted",
+ "tables": [],
+ "tools": [
+  {
+   "name": "describe_layout",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "describe_object",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "explain_query_plan",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "get_org_limits",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "get_picklist_values",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "get_recent_items",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "get_record",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "get_user_info",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "list_objects",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "soql_query",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "sosl_search",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "validate_soql",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  }
+ ],
+ "policies": [],
+ "tasks": [],
+ "refusals": [
+  {
+   "kind": "tools",
+   "what": "input schemas",
+   "why": "declared shapes are not extracted; only verb names are, so mocks need schemas authored",
+   "count": 12
+  },
+  {
+   "kind": "data",
+   "what": "seed data",
+   "why": "MCP servers proxy a live SaaS and ship no fixtures",
+   "count": 1
+  }
+ ]
+}

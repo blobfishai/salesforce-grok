@@ -1,0 +1,45 @@
+{
+ "source": {
+  "repo": "forma-norden/clay-claude-code-skill-pack",
+  "commit": "b666ce35a9dc52fcd7bd2ec82549f8b3f7332c97",
+  "path": "research/repos/workflow/forma-norden__clay-claude-code-skill-pack",
+  "url": "https://github.com/forma-norden/clay-claude-code-skill-pack",
+  "license": "MIT"
+ },
+ "adapter": {
+  "name": "skillpack",
+  "version": "1.0"
+ },
+ "fidelity": "inspired",
+ "tables": [],
+ "tools": [],
+ "policies": [],
+ "tasks": [
+  {
+   "id": "skill_forma-norden__clay-claude-code-skill-pack_skills",
+   "prompt": "Expert Clay platform consultant for B2B data enrichment and workflow automation. Use when the user asks about Clay tables, waterfall enrichment, Clay credits, Clay AI columns, Claygent, enrichment workflows, Clay integrations, Clay exports, Clay table design, lead scoring in Clay, or building data pipelines in Clay. Also triggers on \"Clay table\", \"enrichment waterfall\", \"Clay credits\", \"Claygent\", \"Clay AI column\", \"Clay export\", \"Clay providers\", \"enrich in Clay\", \"Clay column\", \"Clay formulas\", \"find emails\", \"email waterfall\", \"phone waterfall\", \"lead scoring\", \"Clay debugging\", \"Clay troub",
+   "context": {
+    "skill": "clay-claude-code-skill-pack",
+    "path": "research/repos/workflow/forma-norden__clay-claude-code-skill-pack/.agents/skills/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "forma-norden__clay-claude-code-skill-pack"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "kind": "verifier",
+   "what": "graded ground truth",
+   "why": "skills document procedures, not expected end states; tasks derived from them must be authored and gated separately",
+   "count": 1
+  }
+ ]
+}

@@ -1,0 +1,171 @@
+{
+ "source": {
+  "repo": "NachoLafuente/5050-gtm",
+  "commit": "6be9168dae7e9c3740ee53c5c2447cf7fd59201e",
+  "path": "research/repos/workflow/NachoLafuente__5050-gtm",
+  "url": "https://github.com/NachoLafuente/5050-gtm",
+  "license": "MIT"
+ },
+ "adapter": {
+  "name": "skillpack",
+  "version": "1.0"
+ },
+ "fidelity": "inspired",
+ "tables": [],
+ "tools": [],
+ "policies": [],
+ "tasks": [
+  {
+   "id": "skill_NachoLafuente__5050-gtm_call-coach",
+   "prompt": "B2B discovery call coach. Paste any transcript \u2014 Granola export, Fireflies, Fathom, plain text, a file path \u2014 and get a full coaching report: framework flags, gaps the rep failed to build, admissions captured, and a complete next-call script. Uses local memory files to track deals across multiple calls so coaching compounds over time. Invoke when the user says \"/call-coach\", pastes a sales transcript (even with no question attached), says \"coach this call\", \"debrief my call\", \"what did I miss\", or wants prep for an upcoming discovery or review call.",
+   "context": {
+    "skill": "call-coach",
+    "path": "research/repos/workflow/NachoLafuente__5050-gtm/skills/call-coach/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "NachoLafuente__5050-gtm"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_NachoLafuente__5050-gtm_ltv-cac",
+   "prompt": "Compute SaaS LTV, CAC payback, and LTV/CAC ratio with multiple frameworks side by side (Skok basic, NDR-adjusted, AI-inference-adjusted, Sequoia contribution margin). Outputs a styled Excel workbook with verdict, sensitivity heatmap, and 36-month cohort projection. Use when the user says \"/ltv-cac\", \"calculate LTV\", \"LTV CAC ratio\", \"is this business healthy\", \"unit economics\", or \"should I scale acquisition\". One-shot, no warehouse.",
+   "context": {
+    "skill": "ltv-cac",
+    "path": "research/repos/workflow/NachoLafuente__5050-gtm/skills/ltv-cac/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "NachoLafuente__5050-gtm"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_NachoLafuente__5050-gtm_linkedin-self-improvement-loop",
+   "prompt": "A build-measure-learn loop for your LinkedIn. Ingests your Creator analytics export, keeps a persistent belief model of what drives your reach and engagement, reconciles last cycle's beliefs against the new data, proposes ONE experiment to run next, and hands draft briefs to a drafting skill. Run it on a cadence and it compounds. Use when the user says \"/linkedin-self-improvement-loop\", \"improve my LinkedIn\", \"what should I post next\", \"did my last experiment work\", or hands over a fresh LinkedIn analytics export. Advisory by design: it proposes and drafts, a human always posts. No API keys.",
+   "context": {
+    "skill": "linkedin-self-improvement-loop",
+    "path": "research/repos/workflow/NachoLafuente__5050-gtm/skills/linkedin-self-improvement-loop/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "NachoLafuente__5050-gtm"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_NachoLafuente__5050-gtm_attio-deepline-enrich",
+   "prompt": "Enrich records inside Attio with a clear cost gate before any credit is spent. Pull a chosen object (companies, people, or custom) from Attio, fill chosen attributes via Deepline providers (emails, phones, firmographics, LinkedIn, ICP fields), show the exact credit and dollar cost, wait for an explicit yes, run it, then write the values straight back into Attio. Use when the user says \"/attio-deepline-enrich\", \"enrich my Attio companies/people\", \"fill in missing emails/phones/firmographics in Attio\", \"enrich N records in Attio\", or \"top up <attribute> on my Attio records\". Never spends credits",
+   "context": {
+    "skill": "attio-deepline-enrich",
+    "path": "research/repos/workflow/NachoLafuente__5050-gtm/skills/attio-deepline-enrich/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "NachoLafuente__5050-gtm"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_NachoLafuente__5050-gtm_cohort-analysis",
+   "prompt": "Build a full SaaS cohort analysis from a CRM (Attio/Stripe/CSV) joined to revenue (Stripe/Attio/CSV). Outputs a styled Excel workbook with conditional formatting (Customer Churn, MRR Churn, CAC Payback) plus per-section CSVs. Use when the user says \"/cohort-analysis\", \"build a cohort table\", \"cohort analysis for <client>\", \"retention by signup month\", or \"show me NRR by cohort\". One-shot, no warehouse, no cron.",
+   "context": {
+    "skill": "cohort-analysis",
+    "path": "research/repos/workflow/NachoLafuente__5050-gtm/skills/cohort-analysis/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "NachoLafuente__5050-gtm"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_NachoLafuente__5050-gtm_cfo-skill",
+   "prompt": "Read-only CFO data dashboard for bootstrapped startups. Two modes, CSV templates (works with any stack: Attio/HubSpot/Salesforce + Qonto/Mercury/Brex + Stripe + Moss/Ramp/Pleo) or live API pull from Attio + Qonto + Stripe + Moss. Computes runway, burn rate, MRR/ARR, NRR, customer concentration, AR aging, DSO, vendor spend, departmental burn. Outputs an Excel workbook with 8 sheets. Use when the user asks \"what's our runway?\", \"how much cash do we have?\", \"what's our burn?\", \"who are our biggest customers?\", \"where is spend going?\", \"what's our MRR?\", \"AR aging?\". Read-only by design. NOT finan",
+   "context": {
+    "skill": "cfo-skill",
+    "path": "research/repos/workflow/NachoLafuente__5050-gtm/skills/cfo-skill/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "NachoLafuente__5050-gtm"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_NachoLafuente__5050-gtm_disco-prep",
+   "prompt": "Generate a tight pre-discovery-call prep brief from an intro email, referral, or company name. Outputs a 3-section scan doc (who they are, ranked questions, proof to drop) you can read in the two minutes before a sales or consulting call. Use when the user says \"/disco-prep\", pastes an intro email, or asks to \"prep for the disco call\", \"what should I ask\", or \"disco agenda\". Output goes to the chat, not a file. One-shot, no warehouse, no cron.",
+   "context": {
+    "skill": "disco-prep",
+    "path": "research/repos/workflow/NachoLafuente__5050-gtm/skills/disco-prep/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "NachoLafuente__5050-gtm"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_NachoLafuente__5050-gtm_gsc-lighthouse",
+   "prompt": "Pull Google Search Console health (sitemap status, indexing coverage, 28-day search analytics) for a verified GSC property, then run Lighthouse via the PageSpeed Insights API on the top 10 pages by clicks. Outputs a single combined report grouped by theme, surfacing real problems and skipping the noise. Use when the user says \"/gsc-lighthouse\", \"search console check\", \"lighthouse audit\", \"indexing status\", or \"is the site healthy in Google's eyes\". One-shot, no warehouse, no cron.",
+   "context": {
+    "skill": "gsc-lighthouse",
+    "path": "research/repos/workflow/NachoLafuente__5050-gtm/skills/gsc-lighthouse/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "NachoLafuente__5050-gtm"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "kind": "verifier",
+   "what": "graded ground truth",
+   "why": "skills document procedures, not expected end states; tasks derived from them must be authored and gated separately",
+   "count": 8
+  }
+ ]
+}

@@ -1,0 +1,131 @@
+{
+ "source": {
+  "repo": "kylastech/kylas-crm-mcp-server",
+  "commit": "fae3d4763bd4bf0b877ebd953e91a9789c596322",
+  "path": "research/repos/mcp/kylastech__kylas-crm-mcp-server",
+  "url": "https://github.com/kylastech/kylas-crm-mcp-server",
+  "license": "MIT"
+ },
+ "adapter": {
+  "name": "mcp_server",
+  "version": "1.0"
+ },
+ "fidelity": "adapted",
+ "tables": [],
+ "tools": [
+  {
+   "name": "create_lead",
+   "namespace": "kylas-crm-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "get_current_user",
+   "namespace": "kylas-crm-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "get_lead",
+   "namespace": "kylas-crm-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "get_lead_field_instructions",
+   "namespace": "kylas-crm-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "get_pipeline_details",
+   "namespace": "kylas-crm-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "get_pipeline_stages",
+   "namespace": "kylas-crm-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "lookup_pipelines",
+   "namespace": "kylas-crm-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "lookup_products",
+   "namespace": "kylas-crm-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "lookup_users",
+   "namespace": "kylas-crm-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "parse_datetime_to_utc_iso_tool",
+   "namespace": "kylas-crm-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "search_idle_leads",
+   "namespace": "kylas-crm-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "search_leads",
+   "namespace": "kylas-crm-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "search_leads_by_term",
+   "namespace": "kylas-crm-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "update_lead",
+   "namespace": "kylas-crm-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  }
+ ],
+ "policies": [],
+ "tasks": [],
+ "refusals": [
+  {
+   "kind": "tools",
+   "what": "input schemas",
+   "why": "declared shapes are not extracted; only verb names are, so mocks need schemas authored",
+   "count": 14
+  },
+  {
+   "kind": "data",
+   "what": "seed data",
+   "why": "MCP servers proxy a live SaaS and ship no fixtures",
+   "count": 1
+  }
+ ]
+}

@@ -1,0 +1,171 @@
+{
+ "source": {
+  "repo": "mat-lucie/outbound-sales-agent",
+  "commit": "6ebe94c62a392501e714df187df6ecc29d56b075",
+  "path": "research/repos/workflow/mat-lucie__outbound-sales-agent",
+  "url": "https://github.com/mat-lucie/outbound-sales-agent",
+  "license": "MIT"
+ },
+ "adapter": {
+  "name": "skillpack",
+  "version": "1.0"
+ },
+ "fidelity": "inspired",
+ "tables": [],
+ "tools": [],
+ "policies": [],
+ "tasks": [
+  {
+   "id": "skill_mat-lucie__outbound-sales-agent_data-quality-report",
+   "prompt": "Compute the weekly Data Quality Report \u2014 8-metric Attio dashboard with P0/P1 alarms that gate downstream DM sends.",
+   "context": {
+    "skill": "data-quality-report",
+    "path": "research/repos/workflow/mat-lucie__outbound-sales-agent/skills/data-quality-report/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "mat-lucie__outbound-sales-agent"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_mat-lucie__outbound-sales-agent_audit-reminder-sweep",
+   "prompt": "Scan the Operator Review Queue for rows that have stayed `open` longer than the staleness floor. Read-only digest.",
+   "context": {
+    "skill": "audit-reminder-sweep",
+    "path": "research/repos/workflow/mat-lucie__outbound-sales-agent/skills/audit-reminder-sweep/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "mat-lucie__outbound-sales-agent"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_mat-lucie__outbound-sales-agent_onboard",
+   "prompt": "Stand the outbound engine up against a new operator's CRM, PhantomBuster account, and ICP. Interviews the operator, generates + conformance-tests a non-Attio CRM adapter when needed, writes config/*.yaml + .env, and verifies with a dry run.",
+   "context": {
+    "skill": "onboard",
+    "path": "research/repos/workflow/mat-lucie__outbound-sales-agent/skills/onboard/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "mat-lucie__outbound-sales-agent"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_mat-lucie__outbound-sales-agent_health-check",
+   "prompt": "Ad-hoc connectivity check across Attio and PhantomBuster. Read-only \u2014 no state mutations.",
+   "context": {
+    "skill": "health-check",
+    "path": "research/repos/workflow/mat-lucie__outbound-sales-agent/skills/health-check/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "mat-lucie__outbound-sales-agent"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_mat-lucie__outbound-sales-agent_threshold-calibration",
+   "prompt": "Compute ROC sweep for the quality_score pass threshold. Math-only \u2014 opens a recommendation queue row; never changes the live threshold.",
+   "context": {
+    "skill": "threshold-calibration",
+    "path": "research/repos/workflow/mat-lucie__outbound-sales-agent/skills/threshold-calibration/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "mat-lucie__outbound-sales-agent"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_mat-lucie__outbound-sales-agent_sales-daily",
+   "prompt": "Run the daily sales check. Phase A = invites (every day), Phase B = DM sequencing (Mon-Fri only). Includes pipeline-starvation evaluation. Skipped under --dry-run.",
+   "context": {
+    "skill": "sales-daily",
+    "path": "research/repos/workflow/mat-lucie__outbound-sales-agent/skills/sales-daily/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "mat-lucie__outbound-sales-agent"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_mat-lucie__outbound-sales-agent_sales-weekly",
+   "prompt": "Monday's full weekly sales bundle. Pulls prospect targets, runs prospecting + learn + diagnostic + brain + report as a sequenced step set.",
+   "context": {
+    "skill": "sales-weekly",
+    "path": "research/repos/workflow/mat-lucie__outbound-sales-agent/skills/sales-weekly/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "mat-lucie__outbound-sales-agent"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_mat-lucie__outbound-sales-agent_sales-finalize-borderline",
+   "prompt": "Finalize the morning's borderline batch. Replaces the Monday 14:00 cron. Idempotent within the day; safe to re-run.",
+   "context": {
+    "skill": "sales-finalize-borderline",
+    "path": "research/repos/workflow/mat-lucie__outbound-sales-agent/skills/sales-finalize-borderline/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "mat-lucie__outbound-sales-agent"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "kind": "verifier",
+   "what": "graded ground truth",
+   "why": "skills document procedures, not expected end states; tasks derived from them must be authored and gated separately",
+   "count": 8
+  }
+ ]
+}

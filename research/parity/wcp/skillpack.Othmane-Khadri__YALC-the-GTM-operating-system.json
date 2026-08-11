@@ -1,0 +1,1125 @@
+{
+ "source": {
+  "repo": "Othmane-Khadri/YALC-the-GTM-operating-system",
+  "commit": "ffc6e372d68270f26478160d11c5999df982f37b",
+  "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system",
+  "url": "https://github.com/Othmane-Khadri/YALC-the-GTM-operating-system",
+  "license": "MIT"
+ },
+ "adapter": {
+  "name": "skillpack",
+  "version": "1.0"
+ },
+ "fidelity": "inspired",
+ "tables": [],
+ "tools": [],
+ "policies": [],
+ "tasks": [
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_predictleads-dashboard",
+   "prompt": "Use when a teammate wants to visually browse PredictLeads signals already cached in local SQLite \u2014 triggers include \"dashboard for [domains]\", \"visualize signals for [list]\", \"show signals as a dashboard\", \"HTML view of [client lookalikes]\", or any request to scan many companies' signals at a glance.",
+   "context": {
+    "skill": "predictleads-dashboard",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/predictleads-dashboard/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_fullenrich-plg-reverse-lookup",
+   "prompt": "Use when the user says \"set up FullEnrich reverse lookup for trial signups\", \"PLG enrichment webhook\", \"identify free trial signups via FullEnrich\", \"reverse email lookup for these signups\", \"who are these emails\", \"deploy a hosted webhook for trial signups\", or any variant indicating they want to identify the person and company behind a signup email. Two install paths: (a) CLI batch over a CSV/JSON of recent signups, (b) hosted webhook that receives signup events live, runs FullEnrich reverse lookup, and outputs the enriched record as a JSONL log plus an optional generic forward webhook the u",
+   "context": {
+    "skill": "fullenrich-plg-reverse-lookup",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/fullenrich-plg-reverse-lookup/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_build-routine",
+   "prompt": "Auto-derive a complete sales routine \u2014 installed frameworks, schedules, and default dashboard \u2014 from your archetype, available providers, and rich context, then install it on confirmation. Hybrid runtime: the proposal is import-direct (~700ms median, deterministic rule-based), the install is shell-out (writes to ~/.gtm-os/routine.yaml + config.yaml). Use when the user says 'build my sales routine', 'show me what YALC would auto-configure', 'propose a routine for me', 'set up a sales routine', or 'auto-derive my routine'. Side-effecting on install only \u2014 propose is read-only.",
+   "context": {
+    "skill": "build-routine",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/build-routine/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_fullenrich-content-engagers",
+   "prompt": "Use when the user says \"enrich people who engaged with this post\", \"qualify post engagers with FullEnrich\", \"scrape and enrich LinkedIn post {URL}\", \"engagers from this post into a CSV\", \"enrich this CSV of leads\", \"FullEnrich content engagers\", or any variant indicating they want to convert a list of leads \u2014 either LinkedIn post likers/commenters scraped via Unipile, or a bring-your-own CSV \u2014 into ICP-qualified, enriched leads via FullEnrich v2 bulk enrichment with webhook callback delivery.",
+   "context": {
+    "skill": "fullenrich-content-engagers",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/fullenrich-content-engagers/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_send-cold-email",
+   "prompt": "Send a cold email campaign or single message via the configured email provider (Instantly by default), optionally pre-drafting the sequence. Use when the user says 'send a cold email to this list', 'fire the email sequence', 'launch the email campaign', 'send the drip sequence', or 'email these qualified leads'. Side-effecting \u2014 calls Instantly API and writes to local SQLite + Notion.",
+   "context": {
+    "skill": "send-cold-email",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/send-cold-email/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_track-campaigns",
+   "prompt": "Poll Unipile / Instantly for the status of running campaigns, advance sequence steps that are due, and sync results to Notion. Run this on a cadence (cron / launchd) or manually after staging a campaign. Use when the user says 'track campaigns', 'advance the sequences', 'check campaign progress', 'poll for replies', or 'sync replies to Notion'. Side-effecting \u2014 calls Unipile/Instantly, writes to SQLite + Notion.",
+   "context": {
+    "skill": "track-campaigns",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/track-campaigns/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_predictleads-signals",
+   "prompt": "Use when a teammate wants ad-hoc PredictLeads signals for a single company, asks \"what's happening at [company]\", \"signals for [domain]\", \"enrich [domain] with PredictLeads\", \"pull jobs/funding/news for [company]\", or wants to read previously cached signals from local SQLite without burning new credits.",
+   "context": {
+    "skill": "predictleads-signals",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/predictleads-signals/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_answer-linkedin-comments",
+   "prompt": "Reply to comments on a LinkedIn post via Unipile \u2014 drafts thread-aware replies grounded in the user's voice and the conversation context, then sends on approval. Use when the user says 'answer comments on my post', 'reply to LinkedIn comments', 'respond to engagement on this post', 'draft replies to commenters', or 'answer the LinkedIn thread'. Side-effecting \u2014 calls Unipile to read + post replies.",
+   "context": {
+    "skill": "answer-linkedin-comments",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/answer-linkedin-comments/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_icp-import",
+   "prompt": "Translate a client's Notion ICP doc into YALC framework files for a tenant. Reads the Notion page (any structure), maps content flexibly into the 9 canonical YALC sections (framework.yaml, icp/segments.yaml, qualification_rules.md, voice/, positioning/, search_queries.txt, campaign_templates.yaml, company_context.yaml), parks unmappable content in notes.md, and lands everything in _preview/ for review and commit. Use when someone says 'import ICP for X', 'populate framework from Notion', 'sync ICP from Notion for <tenant>', or 'pull ICP into YALC'.",
+   "context": {
+    "skill": "icp-import",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/icp-import/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_claap-weekly-recap",
+   "prompt": "Turns a week of Claap-recorded sales calls into action items and focus blocks on a Notion Kanban, delivered with a Slack summary. Use when the user says 'weekly call recap', 'turn my calls into action items', 'Sunday recap from Claap', 'what should I focus on next week based on my calls', 'pull this week's deal next steps from Claap', or schedules a recurring digest of recorded conversations. Side-effecting \u2014 reads Claap via MCP, writes Notion cards, sends a Slack DM. On first run with no config it enters an interactive SETUP MODE that walks the user through wiring everything up \u2014 no failed sc",
+   "context": {
+    "skill": "claap-weekly-recap",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/claap-weekly-recap/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_qualify-leads",
+   "prompt": "Run the GTM-OS 7-gate qualification pipeline over a batch of leads from a CSV, JSON, Notion DB, profile-visitors export, post-engagers export, or an existing SQLite result set. Writes per-lead pass/fail data back into SQLite and returns a result-set id you can hand to the campaign launcher. Use when the user says 'qualify these leads', 'score this lead list', 'run the qualification pipeline', 'check if these leads are a fit', or 'qualify the engagers'. Side-effecting \u2014 writes to the local SQLite db.",
+   "context": {
+    "skill": "qualify-leads",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/qualify-leads/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_run-doctor",
+   "prompt": "Run the GTM-OS health check across all 5 diagnostic layers (environment, database, configuration, provider connectivity, runtime state). Use when the user says 'is YALC working', 'diagnose YALC', 'check YALC health', 'is everything configured', 'run the health check', or 'are my keys set up'. Read-only \u2014 never writes anything. Surfaces /keys/connect/<provider> URLs alongside any failed provider so the user has a one-click path to fix.",
+   "context": {
+    "skill": "run-doctor",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/run-doctor/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_setup",
+   "prompt": "Install and configure YALC GTM-OS for first-time use. Use only after the user has decided to proceed with installation. Triggers on phrases like 'install YALC', 'configure YALC', 'set up the CLI', 'first-time install', 'scaffold ~/.gtm-os', '.env setup', 'set up YALC', or '/setup'. Installs the CLI if missing, writes a template .env file, captures company context from a website + LinkedIn, walks through preview review, commits to live, and recommends frameworks based on the resulting setup. Does NOT cover 'what is YALC' or general first-touch orientation \u2014 route those to the yalc-orientation s",
+   "context": {
+    "skill": "setup",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/setup/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_prospect-discovery-pipeline",
+   "prompt": "Use when a teammate wants a full discovery-to-outreach pipeline anchored on existing clients. Triggers include \"find prospects like [client]\", \"build a target list like [domain]\", \"lookalike discovery for [client]\", \"discovery to outreach for [criteria]\", \"10 companies similar to [X] with a CMO\", or any multi-step request combining lookalike search + decision-maker identification + signal enrichment + LinkedIn variant drafting.",
+   "context": {
+    "skill": "prospect-discovery-pipeline",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/prospect-discovery-pipeline/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_predictleads-lookalikes",
+   "prompt": "Use when a teammate wants to find companies similar to a known account, asks \"find lookalikes for [domain]\", \"companies like [client]\", \"similar to [domain]\", \"competitors of [company]\", or \"expand the target list from [client]\". Pure account discovery \u2014 no outreach drafting, no CMO finding.",
+   "context": {
+    "skill": "predictleads-lookalikes",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/predictleads-lookalikes/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_yalc-orientation",
+   "prompt": "First-touch onboarding for someone who just opened the YALC repo. Triggers when the user pastes the repo URL `https://github.com/Othmane-Khadri/YALC-the-GTM-operating-system` (with or without trailing slash, with or without `.git`), or says any of: 'what is yalc', 'what is this', \\\"let's start\\\", \\\"let's go\\\", 'i just cloned this', 'how do i use this', 'got the repo', 'where do i begin', \\\"i'm new to yalc\\\". Introduces YALC, checks prerequisites, asks the user what they want to do, and routes to the right capability. Hands off to /setup if the environment isn't initialized.",
+   "context": {
+    "skill": "yalc-orientation",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/yalc-orientation/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_notion-review",
+   "prompt": "Set up a Notion verification surface so YALC outputs (qualified leads, qualified visitors, qualified engagers, lead-magnet replies, content drafts) land in a kanban that you approve in Notion before downstream skills act on them. Each output type has ONE Batches kanban \u2014 every card is a batch (e.g. one lead list per campaign). Clicking a card opens its page with an INLINE Leads table rendered directly in the body (no extra click). Every item defaults to Status='Qualified'; users mark bad rows as 'Removed' (kill list), then drag the batch from To Review \u2192 Approved with one drag. Supports per-us",
+   "context": {
+    "skill": "notion-review",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/notion-review/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_launch-linkedin-campaign",
+   "prompt": "Set up a LinkedIn outreach campaign on a list of leads (connect \u2192 DM1 \u2192 DM2 sequence) by chaining `campaign:create` and `campaign:create-sequence`. Enforces the outbound hypothesis gate (refuses to launch without a hypothesis recorded for outreach-campaign-builder). Use when the user says 'launch a LinkedIn campaign for these leads', 'send a LinkedIn outreach to this list', 'start the outbound to the qualified leads', 'run the LinkedIn sequence on this result set', or 'fire the connect-then-DM flow'. Side-effecting \u2014 writes to SQLite and stages the sequence on Unipile.",
+   "context": {
+    "skill": "launch-linkedin-campaign",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/launch-linkedin-campaign/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_research-prospect",
+   "prompt": "Run ad-hoc web research on a prospect (company URL or person) \u2014 Firecrawl scrapes the marketing site, key pages (pricing, careers, blog), and surfaces a brief. Read-only. Use when the user says 'research this prospect', 'tell me about [company]', 'do a deep dive on [domain]', 'pull a brief on this lead', or 'crawl the marketing site for [name]'. Side-effecting on the Firecrawl side (API call), no local DB writes.",
+   "context": {
+    "skill": "research-prospect",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/research-prospect/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_fullenrich-network-activation",
+   "prompt": "Use when the user says \"activate co-founder network with FullEnrich\", \"enrich LinkedIn connections export\", \"qualify my LinkedIn connections CSV\", \"turn Connections.csv into a lead list\", \"FullEnrich network activation\", or any variant indicating they want to convert a LinkedIn personal-network CSV export into ICP-qualified leads with FullEnrich-verified emails and phones. Reads the LinkedIn Data Export Connections.csv, applies an ICP filter, then enriches missing contact info via FullEnrich v2 with webhook callback delivery.",
+   "context": {
+    "skill": "fullenrich-network-activation",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/fullenrich-network-activation/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_cross-platform-scheduler",
+   "prompt": "",
+   "context": {
+    "skill": "cross-platform-scheduler",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/cross-platform-scheduler/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_lemlist-campaign-from-icp",
+   "prompt": "Use when the user says \"create a lemlist campaign for X\", \"build a lemlist campaign from this ICP\", \"spin a lemlist campaign for Y\", \"ICP to lemlist\", \"natural language to lemlist campaign\", \"draft a lemlist campaign\", \"lemlist campaign for VPs/Managers/ICs at Z\", or any variant indicating they want to turn a natural-language ICP description into a paused, ready-to-review lemlist campaign with sourced leads and a seniority-routed sequence. Orchestrates 24 lemlist atomic skills (ICP, persona, sourcing, copywriting, QA) and the lemlist MCP server (`get_lemleads_filters`, `lemleads_search`, `crea",
+   "context": {
+    "skill": "lemlist-campaign-from-icp",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lemlist-campaign-from-icp/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_fullenrich-event-attendees",
+   "prompt": "Use when the user says \"enrich this LinkedIn event\", \"enrich attendees of this event\", \"enrich this attendees CSV\", \"scrape and enrich LinkedIn event {URL}\", \"FullEnrich event attendees\", or any variant indicating they want to turn LinkedIn event attendees into an SDR-ready CSV with verified emails and mobile phones. Two input modes: (a) bring-your-own attendees CSV (PhantomBuster, Evaboot, Sales Navigator, manual paste), or (b) run a user-configured Apify actor against a LinkedIn event URL. Both converge on FullEnrich v2 bulk enrichment with webhook callback delivery.",
+   "context": {
+    "skill": "fullenrich-event-attendees",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/fullenrich-event-attendees/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_find-lookalikes",
+   "prompt": "Find companies similar to a seed domain via PredictLeads' similar_companies endpoint and persist them as a result set ready for enrichment or qualification. Use when the user says 'find lookalikes for [domain]', 'companies similar to [name]', 'show me lookalike accounts', 'expand from this company', or 'discover similar prospects'. Side-effecting \u2014 calls PredictLeads API and writes to local cache.",
+   "context": {
+    "skill": "find-lookalikes",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/find-lookalikes/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_campaign-strategy",
+   "prompt": "Pre-flight strategy advisor for a new campaign. Analyses every past campaign in the local YALC DB (HeyReach campaigns auto-sync on each run), their real outbound copy, where in the sequence each conversation first replied, every prior retro brief, and the validated/proven intelligence file. Then it proposes angle, audience, batch size, channel choice, and concrete testable hypotheses for the campaign you are about to launch. Does NOT draft outbound copy \u2014 that is refine-outbound-copy's job. Use when someone says 'I want to launch a campaign for X', 'how should we approach this campaign', 'what",
+   "context": {
+    "skill": "campaign-strategy",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/campaign-strategy/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_show-routine",
+   "prompt": "Show the proposed sales routine without installing it \u2014 read-only preview of which frameworks YALC would auto-configure, with schedules and rationale, based on current archetype + providers + context. Use when the user says 'show my routine', 'what would YALC propose', 'preview the routine', 'dry-run the routine generator', or 'just show me the proposal'. Read-only \u2014 never writes anything.",
+   "context": {
+    "skill": "show-routine",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/show-routine/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_debugger",
+   "prompt": "Activate when any GTM-OS CLI command fails with an error. Also triggers on: 'debug', 'fix', 'not working', 'broken', 'troubleshoot', 'help me fix', 'what went wrong', 'why is this failing', or any variant indicating something is broken.",
+   "context": {
+    "skill": "debugger",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/debugger/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_enrich-with-signals",
+   "prompt": "Pull PredictLeads buying-intent signals (jobs, news, funding, tech, leadership changes) for a result set of companies and write them back into the local cache. Use when the user says 'enrich these companies with signals', 'add buying signals to this list', 'pull intent data for [domain]', 'check signals for these accounts', or 'fetch jobs and news for these companies'. Side-effecting \u2014 calls PredictLeads API and writes to local SQLite + JSON cache.",
+   "context": {
+    "skill": "enrich-with-signals",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/enrich-with-signals/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_lost-deal-revival-agent",
+   "prompt": "Drafts revival messages for closed-lost deals when a public company signal contradicts the original objection. Receives the signal-pair watcher's fire payload, fetches the verbatim Claap objection quote, and produces a 2-line draft that quotes it back. Default output is a HubSpot task for human review. Optional Lemlist DRAFT sequence for higher-volume tenants. Never auto-sends. Use when the user says 'revive closed-lost deals', 'set up revival agent', 'when objection X is fixed by signal Y reach out', 'lost deal revival', or schedules a closed-lost re-engagement loop. Side-effecting on each fi",
+   "context": {
+    "skill": "lost-deal-revival-agent",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lost-deal-revival-agent/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_scrape-post-engagers",
+   "prompt": "Pull the audience that engaged with a LinkedIn post \u2014 likers (reactors) and commenters \u2014 via Unipile, dedupe across endpoints, and persist them as a result set ready for qualification or campaign launch. Use when the user says 'scrape engagers from this post', 'who liked this LinkedIn post', 'who commented on this LinkedIn post', 'pull engagers from this URL', or 'get the audience of this post'. Side-effecting \u2014 calls Unipile and writes to the local SQLite DB.",
+   "context": {
+    "skill": "scrape-post-engagers",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/scrape-post-engagers/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_integrate-with-yalc",
+   "prompt": "Points at the user's existing Claude Code repo, analyses what's already there, and produces a plan for how to make it work alongside YALC without conflicts. Covers workspace layout, skill trigger collisions, context migration, and orchestration examples. Read-only by default \u2014 a separate apply step moves files only after the user confirms. Use when someone says 'integrate my repo with YALC', 'I have my own Claude Code setup, how do I add YALC', 'merge my repo with YALC', 'how do I bolt YALC onto my existing skills', or 'I want to use my own skills alongside YALC'.",
+   "context": {
+    "skill": "integrate-with-yalc",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/integrate-with-yalc/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_import-leads",
+   "prompt": "Import a batch of leads from CSV, JSON, or a Notion DB into the local SQLite database without running the qualification pipeline. Use when the user says 'just import this CSV', 'load these leads without qualifying', 'bulk import this file', 'add these prospects to the DB', or 'pull this Notion DB into YALC'. Side-effecting \u2014 writes rows into local SQLite.",
+   "context": {
+    "skill": "import-leads",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/import-leads/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_run-competitive-intel",
+   "prompt": "Pull competitive intelligence on a competitor \u2014 pricing, positioning, recent changes, customer stories \u2014 via the competitive-intel CLI. Use when the user says 'analyze this competitor', 'pull competitive intel on [company]', 'compare us to [competitor]', 'what's [company] doing differently', or 'audit [competitor] pricing'. Side-effecting \u2014 calls Firecrawl + Anthropic, writes to local cache.",
+   "context": {
+    "skill": "run-competitive-intel",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/run-competitive-intel/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_list-adapters",
+   "prompt": "Show every capability the engine knows about and which provider backs it (built-in TypeScript, bundled YAML, or user-installed YAML), with availability flags reflecting whether each provider's API key is set. Use when the user says 'list adapters', 'show me which providers are configured', 'which providers are available', 'what capabilities can YALC use right now', or 'show capability coverage'. Read-only \u2014 never writes anything.",
+   "context": {
+    "skill": "list-adapters",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/list-adapters/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_provider-builder",
+   "prompt": "Use when a teammate wants to add a new vendor to YALC for an existing capability without shipping a release. Triggers include \"add a new provider for X\", \"wire up [vendor] to YALC\", \"build an adapter for [vendor]\", \"I want to use [vendor] for [capability]\", \"add Apollo for icp-company-search\", or any variant indicating they want to author a declarative YAML manifest under `~/.gtm-os/adapters/`. Converts a vendor name + capability id + docs URL into a registered, smoke-tested manifest in roughly five minutes.",
+   "context": {
+    "skill": "provider-builder",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/provider-builder/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_campaign-dashboard",
+   "prompt": "This skill should be used when the user says 'campaign status', 'show me campaigns', 'visualize campaigns', 'what's the state of campaigns', 'campaign dashboard', 'open campaign view', 'how are outreach campaigns doing visually', 'show campaign pipeline', 'show me the leads for [campaign]', or any variant indicating they want a visual browser-based campaign dashboard.",
+   "context": {
+    "skill": "campaign-dashboard",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/campaign-dashboard/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_personalize-message",
+   "prompt": "Generate a personalized outbound message (LinkedIn DM or cold email) for a single prospect by combining a template with the lead's profile, company, and recent signals. Use when the user says 'personalize this message', 'tailor this outreach to the prospect', 'rewrite this template for [name]', 'make this message more personal', or 'generate a personal opener'. Side-effecting \u2014 calls Anthropic and may pull live profile/company context via Firecrawl/Unipile/Crustdata.",
+   "context": {
+    "skill": "personalize-message",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/personalize-message/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_gtm-action-thinker",
+   "prompt": ">",
+   "context": {
+    "skill": "gtm-action-thinker",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lemlist/gtm-action-thinker/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_icp-definer",
+   "prompt": ">",
+   "context": {
+    "skill": "icp-definer",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lemlist/icp-definer/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_list-builder",
+   "prompt": ">",
+   "context": {
+    "skill": "list-builder",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lemlist/list-builder/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_cta-designer",
+   "prompt": "Design personalized, value-based call-to-actions (CTAs) for cold outreach that spark conversations instead of demanding meetings. Use when asked \"what CTA should I use\", \"help me with my call to action\", \"how to end my email\", \"what lead magnet should I offer\", \"how to get a reply\", \"how to close my cold email\", \"CTA ideas for outreach\", \"what should I ask for in my sequence\", or any request about how to end an outreach message or what to offer prospects. Always use this skill before writing or finalizing any outreach CTA. This skill replaces generic \"book a call\" CTAs with Permissionless Valu",
+   "context": {
+    "skill": "cta-designer",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lemlist/cta-designer/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_offer-definer",
+   "prompt": ">",
+   "context": {
+    "skill": "offer-definer",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lemlist/offer-definer/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_copywriting-analyzer",
+   "prompt": ">",
+   "context": {
+    "skill": "copywriting-analyzer",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lemlist/copywriting-analyzer/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_copywriting-refiner",
+   "prompt": ">",
+   "context": {
+    "skill": "copywriting-refiner",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lemlist/copywriting-refiner/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_linkedin-outbound-angle",
+   "prompt": ">",
+   "context": {
+    "skill": "linkedin-outbound-angle",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lemlist/linkedin-outbound-angle/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_people-finder",
+   "prompt": ">",
+   "context": {
+    "skill": "people-finder",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lemlist/people-finder/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_copywriting-ic-sequence",
+   "prompt": ">",
+   "context": {
+    "skill": "copywriting-ic-sequence",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lemlist/copywriting-ic-sequence/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_competitor-finder",
+   "prompt": ">",
+   "context": {
+    "skill": "competitor-finder",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lemlist/competitor-finder/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_copywriting-first-touch",
+   "prompt": ">",
+   "context": {
+    "skill": "copywriting-first-touch",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lemlist/copywriting-first-touch/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_persona-definer",
+   "prompt": ">",
+   "context": {
+    "skill": "persona-definer",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lemlist/persona-definer/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_outbound-campaign-architect",
+   "prompt": ">",
+   "context": {
+    "skill": "outbound-campaign-architect",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lemlist/outbound-campaign-architect/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_copywriting-vp-sequence",
+   "prompt": ">",
+   "context": {
+    "skill": "copywriting-vp-sequence",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lemlist/copywriting-vp-sequence/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_trigger-finder",
+   "prompt": ">",
+   "context": {
+    "skill": "trigger-finder",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lemlist/trigger-finder/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_reply-handler",
+   "prompt": ">",
+   "context": {
+    "skill": "reply-handler",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lemlist/reply-handler/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_outbound-analyst",
+   "prompt": "Analyze and benchmark outbound campaign performance against real lemlist data from 244K+ campaigns and 249M+ emails. Use when asked \"are my stats good\", \"is my reply rate good\", \"why am I not getting replies\", \"is my open rate normal\", \"how do I compare to benchmarks\", \"my campaign is underperforming\", \"what's a good reply rate\", \"is X% good for cold email\", \"my LinkedIn acceptance rate is low\", \"how many emails should I send per day\", \"my deliverability is bad\", \"analyze my campaign stats\", or any question involving outreach metrics, rates, or performance. Always use this skill before giving ",
+   "context": {
+    "skill": "outbound-analyst",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lemlist/outbound-analyst/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_copywriting-follow-up",
+   "prompt": ">",
+   "context": {
+    "skill": "copywriting-follow-up",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lemlist/copywriting-follow-up/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_pain-identifier",
+   "prompt": ">",
+   "context": {
+    "skill": "pain-identifier",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lemlist/pain-identifier/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_campaign-angle-finder",
+   "prompt": ">",
+   "context": {
+    "skill": "campaign-angle-finder",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lemlist/campaign-angle-finder/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_copywriting-manager-sequence",
+   "prompt": ">",
+   "context": {
+    "skill": "copywriting-manager-sequence",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lemlist/copywriting-manager-sequence/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_value-prop-lister",
+   "prompt": ">",
+   "context": {
+    "skill": "value-prop-lister",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lemlist/value-prop-lister/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_Othmane-Khadri__YALC-the-GTM-operating-system_company-finder",
+   "prompt": ">",
+   "context": {
+    "skill": "company-finder",
+    "path": "research/repos/workflow/Othmane-Khadri__YALC-the-GTM-operating-system/.claude/skills/lemlist/company-finder/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "Othmane-Khadri__YALC-the-GTM-operating-system"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "kind": "verifier",
+   "what": "graded ground truth",
+   "why": "skills document procedures, not expected end states; tasks derived from them must be authored and gated separately",
+   "count": 61
+  }
+ ]
+}

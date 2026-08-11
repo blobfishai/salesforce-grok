@@ -1,0 +1,82 @@
+{
+ "source": {
+  "repo": "lkm1developer/apollo-io-mcp-server",
+  "commit": "3870acab2580004a831a7f837123190f30d77960",
+  "path": "research/repos/mcp/lkm1developer__apollo-io-mcp-server",
+  "url": "https://github.com/lkm1developer/apollo-io-mcp-server",
+  "license": "MIT"
+ },
+ "adapter": {
+  "name": "mcp_server",
+  "version": "1.0"
+ },
+ "fidelity": "adapted",
+ "tables": [],
+ "tools": [
+  {
+   "name": "employees_of_company",
+   "namespace": "apollo-io-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "get_person_email",
+   "namespace": "apollo-io-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "organization_enrichment",
+   "namespace": "apollo-io-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "organization_job_postings",
+   "namespace": "apollo-io-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "organization_search",
+   "namespace": "apollo-io-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "people_enrichment",
+   "namespace": "apollo-io-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "people_search",
+   "namespace": "apollo-io-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  }
+ ],
+ "policies": [],
+ "tasks": [],
+ "refusals": [
+  {
+   "kind": "tools",
+   "what": "input schemas",
+   "why": "declared shapes are not extracted; only verb names are, so mocks need schemas authored",
+   "count": 7
+  },
+  {
+   "kind": "data",
+   "what": "seed data",
+   "why": "MCP servers proxy a live SaaS and ship no fixtures",
+   "count": 1
+  }
+ ]
+}

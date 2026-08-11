@@ -1,0 +1,45 @@
+{
+ "source": {
+  "repo": "explorium-ai/vibeprospecting-plugin",
+  "commit": "804bab5e0500d7a0f8613a83a3cfe5b79e6a31c3",
+  "path": "research/repos/workflow/explorium-ai__vibeprospecting-plugin",
+  "url": "https://github.com/explorium-ai/vibeprospecting-plugin",
+  "license": "UNKNOWN"
+ },
+ "adapter": {
+  "name": "skillpack",
+  "version": "1.0"
+ },
+ "fidelity": "inspired",
+ "tables": [],
+ "tools": [],
+ "policies": [],
+ "tasks": [
+  {
+   "id": "skill_explorium-ai__vibeprospecting-plugin_vibe-prospecting",
+   "prompt": "Find company & contact data. Turn your agent into a prospecting platform. Get contact information, roles, tech stack, business events, website changes, intent data. Build lead lists, research prospects, identify talent. 150M+ companies, 800M+ professionals, 50+ data sources.",
+   "context": {
+    "skill": "\"vibe-prospecting\"",
+    "path": "research/repos/workflow/explorium-ai__vibeprospecting-plugin/skills/vibe-prospecting/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "explorium-ai__vibeprospecting-plugin"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "kind": "verifier",
+   "what": "graded ground truth",
+   "why": "skills document procedures, not expected end states; tasks derived from them must be authored and gated separately",
+   "count": 1
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+{
+ "source": {
+  "repo": "salesforcecli/plugin-agent",
+  "commit": "b9974065008249b3e2ef62da6ff1e8158b3faee2",
+  "path": "research/repos/workflow/salesforcecli__plugin-agent",
+  "url": "https://github.com/salesforcecli/plugin-agent",
+  "license": "Apache-2.0"
+ },
+ "adapter": {
+  "name": "skillpack",
+  "version": "1.0"
+ },
+ "fidelity": "inspired",
+ "tables": [],
+ "tools": [],
+ "policies": [],
+ "tasks": [
+  {
+   "id": "skill_salesforcecli__plugin-agent_agent-pr-review",
+   "prompt": "Review pull requests in plugin-agent using GitHub CLI. Use for \"review PR\", \"code review\", or \"gh pr view\".",
+   "context": {
+    "skill": "agent-pr-review",
+    "path": "research/repos/workflow/salesforcecli__plugin-agent/.cursor/skills/agent-pr-review/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "salesforcecli__plugin-agent"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "kind": "verifier",
+   "what": "graded ground truth",
+   "why": "skills document procedures, not expected end states; tasks derived from them must be authored and gated separately",
+   "count": 1
+  }
+ ]
+}

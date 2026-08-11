@@ -1,0 +1,61 @@
+{
+ "source": {
+  "repo": "Linked-API/linkedapi-mcp",
+  "commit": "72fe2b5abd291534a38dfd72f7d366cd293d2c45",
+  "path": "research/repos/mcp/Linked-API__linkedapi-mcp",
+  "url": "https://github.com/Linked-API/linkedapi-mcp",
+  "license": "MIT"
+ },
+ "adapter": {
+  "name": "mcp_server",
+  "version": "1.0"
+ },
+ "fidelity": "adapted",
+ "tables": [],
+ "tools": [
+  {
+   "name": "authentication_requirements",
+   "namespace": "linkedapi-mcp",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "background_workflows",
+   "namespace": "linkedapi-mcp",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "parameter_usage",
+   "namespace": "linkedapi-mcp",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "performance_guidelines",
+   "namespace": "linkedapi-mcp",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  }
+ ],
+ "policies": [],
+ "tasks": [],
+ "refusals": [
+  {
+   "kind": "tools",
+   "what": "input schemas",
+   "why": "declared shapes are not extracted; only verb names are, so mocks need schemas authored",
+   "count": 4
+  },
+  {
+   "kind": "data",
+   "what": "seed data",
+   "why": "MCP servers proxy a live SaaS and ship no fixtures",
+   "count": 1
+  }
+ ]
+}

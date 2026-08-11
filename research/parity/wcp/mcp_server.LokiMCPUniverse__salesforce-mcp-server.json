@@ -1,0 +1,124 @@
+{
+ "source": {
+  "repo": "LokiMCPUniverse/salesforce-mcp-server",
+  "commit": "86650e00c568373eb9b617933b4874bd4dc90d30",
+  "path": "research/repos/mcp/LokiMCPUniverse__salesforce-mcp-server",
+  "url": "https://github.com/LokiMCPUniverse/salesforce-mcp-server",
+  "license": "UNKNOWN"
+ },
+ "adapter": {
+  "name": "mcp_server",
+  "version": "1.0"
+ },
+ "fidelity": "adapted",
+ "tables": [],
+ "tools": [
+  {
+   "name": "salesforce_bulk_create",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "salesforce_create_record",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "salesforce_delete_record",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "salesforce_describe_object",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "salesforce_execute_apex",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "salesforce_get_record",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "salesforce_limits",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "salesforce_list_objects",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "salesforce_query",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "salesforce_query_more",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "salesforce_run_report",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "salesforce_search",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "salesforce_update_record",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  }
+ ],
+ "policies": [],
+ "tasks": [],
+ "refusals": [
+  {
+   "kind": "tools",
+   "what": "input schemas",
+   "why": "declared shapes are not extracted; only verb names are, so mocks need schemas authored",
+   "count": 13
+  },
+  {
+   "kind": "data",
+   "what": "seed data",
+   "why": "MCP servers proxy a live SaaS and ship no fixtures",
+   "count": 1
+  }
+ ]
+}

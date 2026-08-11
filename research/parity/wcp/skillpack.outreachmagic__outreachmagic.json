@@ -1,0 +1,45 @@
+{
+ "source": {
+  "repo": "outreachmagic/outreachmagic",
+  "commit": "51249735bd3ed1730ed6f82bc1bd8cb97e8df5df",
+  "path": "research/repos/workflow/outreachmagic__outreachmagic",
+  "url": "https://github.com/outreachmagic/outreachmagic",
+  "license": "MIT"
+ },
+ "adapter": {
+  "name": "skillpack",
+  "version": "1.0"
+ },
+ "fidelity": "inspired",
+ "tables": [],
+ "tools": [],
+ "policies": [],
+ "tasks": [
+  {
+   "id": "skill_outreachmagic__outreachmagic_outreachmagic",
+   "prompt": ">",
+   "context": {
+    "skill": "outreachmagic",
+    "path": "research/repos/workflow/outreachmagic__outreachmagic/skills/outreachmagic/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "outreachmagic__outreachmagic"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "kind": "verifier",
+   "what": "graded ground truth",
+   "why": "skills document procedures, not expected end states; tasks derived from them must be authored and gated separately",
+   "count": 1
+  }
+ ]
+}

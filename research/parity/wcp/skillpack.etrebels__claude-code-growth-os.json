@@ -1,0 +1,387 @@
+{
+ "source": {
+  "repo": "etrebels/claude-code-growth-os",
+  "commit": "3a97a614decb9e0ae03f1a06d26fdd360c2d6746",
+  "path": "research/repos/workflow/etrebels__claude-code-growth-os",
+  "url": "https://github.com/etrebels/claude-code-growth-os",
+  "license": "MIT"
+ },
+ "adapter": {
+  "name": "skillpack",
+  "version": "1.0"
+ },
+ "fidelity": "inspired",
+ "tables": [],
+ "tools": [],
+ "policies": [],
+ "tasks": [
+  {
+   "id": "skill_etrebels__claude-code-growth-os_inbox-digest",
+   "prompt": "Scan the last 48 hours of unread newsletters, news emails, and blog digests. Summarize what's relevant to your work. Trigger when the user asks \"what did I miss\", \"any interesting newsletters\", or as part of the morning briefing ritual.",
+   "context": {
+    "skill": "inbox-digest",
+    "path": "research/repos/workflow/etrebels__claude-code-growth-os/.claude/skills/inbox-digest/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "etrebels__claude-code-growth-os"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_etrebels__claude-code-growth-os_status-update",
+   "prompt": "Draft a short status update from recent daily-log entries. Trigger when the user asks for a status update, a weekly update, or \"what should I tell my team / manager / board\".",
+   "context": {
+    "skill": "status-update",
+    "path": "research/repos/workflow/etrebels__claude-code-growth-os/.claude/skills/status-update/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "etrebels__claude-code-growth-os"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_etrebels__claude-code-growth-os_example-skill",
+   "prompt": "A template skill. Replace it with a task you repeat. Trigger only when the user explicitly asks to run the example skill.",
+   "context": {
+    "skill": "example-skill",
+    "path": "research/repos/workflow/etrebels__claude-code-growth-os/.claude/skills/example-skill/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "etrebels__claude-code-growth-os"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_etrebels__claude-code-growth-os_calendar-followup",
+   "prompt": "Surface unfinished follow-ups from last week's external meetings. Trigger when the user asks \"who do I need to follow up with\", \"what meetings haven't I followed up on\", or as part of the morning briefing ritual.",
+   "context": {
+    "skill": "calendar-followup",
+    "path": "research/repos/workflow/etrebels__claude-code-growth-os/.claude/skills/calendar-followup/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "etrebels__claude-code-growth-os"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_etrebels__claude-code-growth-os_lead-qualify",
+   "prompt": "Score a lead or opportunity against an ideal-customer-profile fit check. Trigger when the user pastes a lead/company and asks \"is this a fit\", \"should I pursue\", or to qualify/score a lead against the ICP.",
+   "context": {
+    "skill": "lead-qualify",
+    "path": "research/repos/workflow/etrebels__claude-code-growth-os/.claude/skills/lead-qualify/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "etrebels__claude-code-growth-os"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_etrebels__claude-code-growth-os_product-signal",
+   "prompt": "Route post-sale and field signals into product's roadmap queue, and write the buyer-facing line for anything shipped. Trigger when the user says \"what should product hear\", \"triage the roadmap signals\", \"route this to product\", \"feature request\", or \"what does this feature mean for the buyer\".",
+   "context": {
+    "skill": "product-signal",
+    "path": "research/repos/workflow/etrebels__claude-code-growth-os/.claude/skills/product-signal/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "etrebels__claude-code-growth-os"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_etrebels__claude-code-growth-os_meeting-prep",
+   "prompt": "Build a pre-meeting briefing \u2014 who's in the room, what they care about, your goal, and the questions to ask. Trigger when the user asks to prep for a meeting or call, \"what should I know before\", or names an upcoming meeting.",
+   "context": {
+    "skill": "meeting-prep",
+    "path": "research/repos/workflow/etrebels__claude-code-growth-os/.claude/skills/meeting-prep/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "etrebels__claude-code-growth-os"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_etrebels__claude-code-growth-os_content-repurpose",
+   "prompt": "Turn one piece of source material into several channel-ready drafts. Trigger when the user asks to repurpose something, \"turn this into posts\", or \"what can I make from this\".",
+   "context": {
+    "skill": "content-repurpose",
+    "path": "research/repos/workflow/etrebels__claude-code-growth-os/.claude/skills/content-repurpose/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "etrebels__claude-code-growth-os"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_etrebels__claude-code-growth-os_triage",
+   "prompt": "Triage a list of incoming items into do-now / schedule / delegate / drop. Trigger when the user pastes a list and asks to triage, prioritize, or \"what should I do first\".",
+   "context": {
+    "skill": "triage",
+    "path": "research/repos/workflow/etrebels__claude-code-growth-os/.claude/skills/triage/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "etrebels__claude-code-growth-os"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_etrebels__claude-code-growth-os_marketing-feedback",
+   "prompt": "Turn what sales hears in the field into marketing actions. Trigger when a meeting note or call recap surfaces a recurring objection, a competitor mention, the buyer's own language, a missing proof point, or a win/loss reason \u2014 or when the user says \"log this for marketing\", \"what should marketing know\", or \"field intel\".",
+   "context": {
+    "skill": "marketing-feedback",
+    "path": "research/repos/workflow/etrebels__claude-code-growth-os/.claude/skills/marketing-feedback/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "etrebels__claude-code-growth-os"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_etrebels__claude-code-growth-os_qbr-prep",
+   "prompt": "Turn a customer's recent calls, adoption signal, and roadmap status into a QBR brief that leads with the outcome they bought. Trigger when a quarterly business review is coming up, before a renewal or value-review call, or when the user says \"QBR prep\", \"build the QBR\", \"quarterly review for X\", or \"value review\".",
+   "context": {
+    "skill": "qbr-prep",
+    "path": "research/repos/workflow/etrebels__claude-code-growth-os/.claude/skills/qbr-prep/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "etrebels__claude-code-growth-os"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_etrebels__claude-code-growth-os_support-signal",
+   "prompt": "Cluster a batch of support tickets or threads into ranked product themes, then hand them to product-signal for the roadmap. Trigger when there's a pile of support tickets, or the user says \"what are the tickets telling us\", \"cluster these tickets\", \"support themes\", \"top issues this month\", or wants raw support volume turned into product feedback.",
+   "context": {
+    "skill": "support-signal",
+    "path": "research/repos/workflow/etrebels__claude-code-growth-os/.claude/skills/support-signal/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "etrebels__claude-code-growth-os"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_etrebels__claude-code-growth-os_cold-outreach",
+   "prompt": "Draft a first-touch cold email or LinkedIn DM. Trigger when the user asks for a cold email, an outreach message, or a first touch to a named prospect.",
+   "context": {
+    "skill": "cold-outreach",
+    "path": "research/repos/workflow/etrebels__claude-code-growth-os/.claude/skills/cold-outreach/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "etrebels__claude-code-growth-os"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_etrebels__claude-code-growth-os_churn-save",
+   "prompt": "Turn a red/amber account into a recovery play \u2014 the real risk, the re-engagement outreach, the renewal-clock timing. Trigger when account-health flags a \ud83d\udd34/\ud83d\udfe1 account, when the user says \"save this account\", \"they're going to churn\", \"the customer went quiet\", \"renewal at risk\", or right after a RETENTION-RISK line is logged.",
+   "context": {
+    "skill": "churn-save",
+    "path": "research/repos/workflow/etrebels__claude-code-growth-os/.claude/skills/churn-save/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "etrebels__claude-code-growth-os"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_etrebels__claude-code-growth-os_onboarding-handoff",
+   "prompt": "Run the Won\u2192onboarding handoff \u2014 the seam most teams drop. Trigger when a deal is marked won/closed-won, when the user says \"we won X\", \"hand this off to onboarding\", \"kick off the new customer\", or \"onboarding checklist\".",
+   "context": {
+    "skill": "onboarding-handoff",
+    "path": "research/repos/workflow/etrebels__claude-code-growth-os/.claude/skills/onboarding-handoff/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "etrebels__claude-code-growth-os"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_etrebels__claude-code-growth-os_expansion-signal",
+   "prompt": "Work an expansion-ready account into an angle and a clean hand to sales \u2014 the second growth motion the funnel forgets. Trigger when account-health flags an EXPANSION-SIGNAL, when a healthy account asks for more unprompted, a second team wants access, or the user says \"this account is ready to grow\", \"expansion play\", \"upsell\", or \"land and expand\".",
+   "context": {
+    "skill": "expansion-signal",
+    "path": "research/repos/workflow/etrebels__claude-code-growth-os/.claude/skills/expansion-signal/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "etrebels__claude-code-growth-os"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_etrebels__claude-code-growth-os_account-health",
+   "prompt": "Score a customer's health, start the renewal motion, and flag churn or expansion early. Trigger when the user asks \"how's this account doing\", \"health check\", \"are we at risk of churn\", \"is this account ready to expand\", or before a renewal or QBR.",
+   "context": {
+    "skill": "account-health",
+    "path": "research/repos/workflow/etrebels__claude-code-growth-os/.claude/skills/account-health/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "etrebels__claude-code-growth-os"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_etrebels__claude-code-growth-os_event-to-pipeline",
+   "prompt": "Turn a conference, meetup, or event you attend or host into booked calls. Trigger when the user is about to attend or host an event, asks how to \"work the room\", or names an upcoming conference/meetup.",
+   "context": {
+    "skill": "event-to-pipeline",
+    "path": "research/repos/workflow/etrebels__claude-code-growth-os/.claude/skills/event-to-pipeline/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "etrebels__claude-code-growth-os"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_etrebels__claude-code-growth-os_retention-feedback",
+   "prompt": "Turn what customer success hears after the sale into product and retention actions. Trigger when an onboarding note, QBR, support thread, or usage review surfaces adoption friction, a churn-risk signal, a feature request that blocks expansion, or a customer who's ready to grow \u2014 or when the user says \"log this for product\", \"retention risk\", \"what's the churn signal\", or \"post-sale feedback\".",
+   "context": {
+    "skill": "retention-feedback",
+    "path": "research/repos/workflow/etrebels__claude-code-growth-os/.claude/skills/retention-feedback/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "etrebels__claude-code-growth-os"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_etrebels__claude-code-growth-os_follow-up",
+   "prompt": "Debrief a meeting and draft the follow-up. Trigger when the user asks to debrief a call, follow up, or \"what do I send after that meeting\".",
+   "context": {
+    "skill": "follow-up",
+    "path": "research/repos/workflow/etrebels__claude-code-growth-os/.claude/skills/follow-up/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "etrebels__claude-code-growth-os"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "kind": "verifier",
+   "what": "graded ground truth",
+   "why": "skills document procedures, not expected end states; tasks derived from them must be authored and gated separately",
+   "count": 20
+  }
+ ]
+}

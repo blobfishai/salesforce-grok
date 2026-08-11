@@ -1,0 +1,45 @@
+{
+ "source": {
+  "repo": "leafcraft/quote-to-cash",
+  "commit": "950b24cd58761944bc6f4b3b2d8ea0facef5effd",
+  "path": "research/repos/workflow/leafcraft__quote-to-cash",
+  "url": "https://github.com/leafcraft/quote-to-cash",
+  "license": "UNKNOWN"
+ },
+ "adapter": {
+  "name": "skillpack",
+  "version": "1.0"
+ },
+ "fidelity": "inspired",
+ "tables": [],
+ "tools": [],
+ "policies": [],
+ "tasks": [
+  {
+   "id": "skill_leafcraft__quote-to-cash_leafmesh",
+   "prompt": "Wire multi-agent meshes, HITL webhooks, can_call routing, decorators, and YAML config for the LeafMesh SDK. Use when adding agents, configuring flows, or debugging mesh issues.",
+   "context": {
+    "skill": "leafmesh",
+    "path": "research/repos/workflow/leafcraft__quote-to-cash/.claude/skills/leafmesh/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "leafcraft__quote-to-cash"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "kind": "verifier",
+   "what": "graded ground truth",
+   "why": "skills document procedures, not expected end states; tasks derived from them must be authored and gated separately",
+   "count": 1
+  }
+ ]
+}

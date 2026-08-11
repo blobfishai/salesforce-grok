@@ -1,0 +1,99 @@
+{
+ "source": {
+  "repo": "deejay-hub/salesforce-ada-agent-skills",
+  "commit": "fcb4d2344dc61803a9b1922550b409e6d642363f",
+  "path": "research/repos/workflow/deejay-hub__salesforce-ada-agent-skills",
+  "url": "https://github.com/deejay-hub/salesforce-ada-agent-skills",
+  "license": "MIT"
+ },
+ "adapter": {
+  "name": "skillpack",
+  "version": "1.0"
+ },
+ "fidelity": "inspired",
+ "tables": [],
+ "tools": [],
+ "policies": [],
+ "tasks": [
+  {
+   "id": "skill_deejay-hub__salesforce-ada-agent-skills_learn",
+   "prompt": "Educate on Salesforce architecture topics with structured, citation-grounded responses. Use when the user wants to understand a concept, pattern, feature, or best practice.",
+   "context": {
+    "skill": "learn",
+    "path": "research/repos/workflow/deejay-hub__salesforce-ada-agent-skills/.gemini/skills/learn/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "deejay-hub__salesforce-ada-agent-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_deejay-hub__salesforce-ada-agent-skills_decide",
+   "prompt": "Generate a Decision Record through structured analysis pipeline. Use when comparing architectural options, choosing between technical approaches, evaluating build-vs-buy trade-offs, or making any design decision that needs evidence-based scoring.",
+   "context": {
+    "skill": "decide",
+    "path": "research/repos/workflow/deejay-hub__salesforce-ada-agent-skills/.gemini/skills/decide/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "deejay-hub__salesforce-ada-agent-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_deejay-hub__salesforce-ada-agent-skills_learn",
+   "prompt": "Educate on Salesforce architecture topics with structured, citation-grounded responses. Use when the user wants to understand a concept, pattern, feature, or best practice.",
+   "context": {
+    "skill": "learn",
+    "path": "research/repos/workflow/deejay-hub__salesforce-ada-agent-skills/.claude/skills/learn/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "deejay-hub__salesforce-ada-agent-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  },
+  {
+   "id": "skill_deejay-hub__salesforce-ada-agent-skills_decide",
+   "prompt": "Generate a Decision Record through structured analysis pipeline. Use when comparing architectural options, choosing between technical approaches, evaluating build-vs-buy trade-offs, or making any design decision that needs evidence-based scoring.",
+   "context": {
+    "skill": "decide",
+    "path": "research/repos/workflow/deejay-hub__salesforce-ada-agent-skills/.claude/skills/decide/SKILL.md"
+   },
+   "tags": [
+    "workflow",
+    "skill",
+    "deejay-hub__salesforce-ada-agent-skills"
+   ],
+   "fidelity": "inspired",
+   "verifier": {
+    "kind": "none",
+    "note": "a skill describes a procedure; it carries no ground truth"
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "kind": "verifier",
+   "what": "graded ground truth",
+   "why": "skills document procedures, not expected end states; tasks derived from them must be authored and gated separately",
+   "count": 4
+  }
+ ]
+}

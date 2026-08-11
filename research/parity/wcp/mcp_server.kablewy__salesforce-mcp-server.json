@@ -1,0 +1,68 @@
+{
+ "source": {
+  "repo": "kablewy/salesforce-mcp-server",
+  "commit": "a8513a3cdc22dbfde3f92efd3f81e6268990e163",
+  "path": "research/repos/mcp/kablewy__salesforce-mcp-server",
+  "url": "https://github.com/kablewy/salesforce-mcp-server",
+  "license": "UNKNOWN"
+ },
+ "adapter": {
+  "name": "mcp_server",
+  "version": "1.0"
+ },
+ "fidelity": "adapted",
+ "tables": [],
+ "tools": [
+  {
+   "name": "describe-object",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "metadata-retrieve",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "query",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "queryEval",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  },
+  {
+   "name": "tooling-query",
+   "namespace": "salesforce-mcp-server",
+   "description": "",
+   "input_schema": null,
+   "binding": null
+  }
+ ],
+ "policies": [],
+ "tasks": [],
+ "refusals": [
+  {
+   "kind": "tools",
+   "what": "input schemas",
+   "why": "declared shapes are not extracted; only verb names are, so mocks need schemas authored",
+   "count": 5
+  },
+  {
+   "kind": "data",
+   "what": "seed data",
+   "why": "MCP servers proxy a live SaaS and ship no fixtures",
+   "count": 1
+  }
+ ]
+}
