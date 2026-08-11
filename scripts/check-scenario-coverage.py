@@ -81,6 +81,35 @@ PATTERNS = [
     ("27. Segment -> campaign -> scored progression", ["campaign_touches", "get_campaigns", "post_campaigns"], ["campaign_attribution"], None),
 ]
 
+# The workflow canon (research/answers/sales-workflow-canon.md, 21 scenarios from
+# vendor + methodology sources). Listed here are the ones whose grading SHAPE is
+# new to this world — restraint-graded (the correct action may be to write
+# nothing) and conservation-identity checks — plus the canon staples.
+CANON_SCENARIOS = [
+    ("1.1 MEDDPICC gap remediation", ["meddic_scorecard", "task_create"], [], None),
+    ("1.2 Champion vs Coach discrimination (restraint)", ["transcript_evidence", "contacts"], [],
+     "a restraint-graded verifier: passing may require writing NOTHING"),
+    ("1.3 BANT lead conversion gate", ["sales_leads", "lead_update_fields"], ["lead_qualification"], None),
+    ("2.1 Mutual action plan", ["agent_documents", "task_create"], [], None),
+    ("2.2 Stage advance gate (restraint, two branches)", ["opportunity_stage_gates", "update_sales_opportunities_status"], ["wrong_stage_rectification"], None),
+    ("2.4 Weekly pipeline hygiene sweep", ["stale_opportunity_ladder", "aggregate_query", "task_create"], [], None),
+    ("2.5 Submit the weekly forecast", ["forecast_submissions", "forecast_submit"], ["forecast_rollup_commit"], None),
+    ("2.6 Sandbagging audit (restraint)", ["sandbagging_red_flags", "aggregate_query"], [],
+     "a restraint-graded verifier + planted sandbagging fixtures"),
+    ("2.8 Win/loss capture on close", ["winloss_talking_points", "update_sales_opportunities_status"], [], None),
+    ("3.1 Inbound MQL SLA breach recovery", ["sales_leads", "lead_update_fields", "task_create"], ["inbound_lead_capture_routing"], None),
+    ("3.2 MQL rejected with reason code + recycled", ["company_marketing_handoffs", "update_company_marketing_handoffs_status"], [],
+     "a rejection-reason field on the handoff record"),
+    ("3.3 Fuzzy merge with source-priority survivorship", ["lead_find_duplicates", "lead_merge", "lead_merge_log"], ["lead_dedupe_merge"], None),
+    ("3.4 Territory carve with ramped quota (restraint)", ["rep_quotas", "territory"], [],
+     "a territory-assignment write tool + ramped-quota fixtures"),
+    ("3.5 Split-credit commission statement", ["rep_quotas", "sheet_agent"], [],
+     "an OpportunitySplit table and a clawback/dispute surface"),
+    ("3.6 Contact hygiene + normalization pass", ["data_quality_rules", "contacts", "lead_update_fields"], [], None),
+    ("3.7 Funnel conversion + pipeline waterfall (answer + identity)", ["aggregate_query", "funnel_conversion_rates"], [],
+     "a snapshot table so the waterfall balance identity can be asserted"),
+]
+
 BENCH_SCENARIOS = [
     ("GTM-Bench: prospect list, per-row provenance, negative-scored", ["query_sales_leads", "aggregate_query"], [],
      "a scoring rule that PENALIZES unsupported rows (verifier feature)"),
@@ -116,6 +145,7 @@ def main():
     lines = []
     counts = {"RUNNABLE": 0, "BUILDABLE": 0, "BLOCKED": 0}
     for title, group in (("Open-source workflow patterns (27)", PATTERNS),
+                         ("Sales workflow canon (16 of 21 scenarios)", CANON_SCENARIOS),
                          ("2026 benchmark scenario types (10)", BENCH_SCENARIOS)):
         lines.append(f"\n## {title}\n" if md else f"\n=== {title}")
         if md:
@@ -135,7 +165,8 @@ def main():
                 lines.append(f"| {name} | **{st}** | {detail} |")
             else:
                 lines.append(f"  {st:9} {name:58} {detail[:70]}")
-    header = (f"scenario coverage — {len(PATTERNS)} OSS patterns + {len(BENCH_SCENARIOS)} benchmark types "
+    header = (f"scenario coverage — {len(PATTERNS)} OSS patterns + {len(CANON_SCENARIOS)} canon scenarios "
+              f"+ {len(BENCH_SCENARIOS)} benchmark types "
               f"vs a world of {len(TOOLS)} tools / {len(TABLES)} tables / {len(world['tasks'])} tasks")
     print(("# " + header) if md else header)
     print("\n".join(lines))
