@@ -1,4 +1,4 @@
-# wave6 — 443 MCP tools
+# wave6 — 444 MCP tools
 
 | vendor server | tool | type | target tables |
 |---|---|---|---|
@@ -309,6 +309,7 @@
 | salesforce-crm | `lead_create` | write | sales_leads |
 | salesforce-crm | `lead_find_duplicates` | read | sales_leads |
 | salesforce-crm | `lead_merge` | write | sales_leads, sales_opportunities, lead_merge_log |
+| salesforce-crm | `lead_merge_log_list` | read | lead_merge_log |
 | salesforce-crm | `lead_update_fields` | write | sales_leads |
 | salesforce-crm | `lookup_sales_lead_with_employees` | read | employees, sales_leads |
 | salesforce-crm | `lookup_sales_opportunity_with_sales_leads` | read | sales_leads, sales_opportunities |

@@ -2035,6 +2035,30 @@
    "custom_source": "\ndef lead_merge(db_path='state.db', **kwargs):\n    '''Merge a duplicate lead into a master lead, re-parenting child records and\n    deleting the loser (POST /services/data/v62.0/composite/sobjects/Lead/merge).'''\n    import sqlite3, datetime\n    master = kwargs.get('master_lead_id')\n    victim = kwargs.get('duplicate_lead_id')\n    if not master or not victim:\n        return [{'message': 'missing required parameters: master_lead_id, duplicate_lead_id',\n                 'errorCode': 'REQUIRED_FIELD_MISSING'}]\n    if str(master) == str(victim):\n        return [{'message': 'a lead cannot be merged into itself', 'errorCode': 'INVALID_CROSS_REFERENCE_KEY'}]\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    try:\n        m = conn.execute('SELECT * FROM sales_leads WHERE id = ?', (str(master),)).fetchone()\n        v = conn.execute('SELECT * FROM sales_leads WHERE id = ?', (str(victim),)).fetchone()\n        if m is None or v is None:\n            return [{'message': 'lead not found', 'errorCode': 'NOT_FOUND'}]\n        m, v = dict(m), dict(v)\n        # survivorship: master wins on conflict, but fills its blanks from the victim\n        updates, filled = [], []\n        for key, val in v.items():\n            if key in ('id', 'lead_number'):\n                continue\n            if (m.get(key) in (None, '', 0)) and val not in (None, ''):\n                updates.append(key)\n                filled.append((key, val))\n        if updates:\n            conn.execute('UPDATE sales_leads SET ' + ', '.join('\"' + k + '\" = ?' for k in updates) +\n                         ' WHERE id = ?', [val for _, val in filled] + [str(master)])\n        # re-parent children before the delete so nothing is orphaned\n        reparented = conn.execute('UPDATE sales_opportunities SET lead_id = ? WHERE lead_id = ?',\n                                  (str(master), str(victim))).rowcount\n        conn.execute('DELETE FROM sales_leads WHERE id = ?', (str(victim),))\n        conn.execute('INSERT INTO lead_merge_log (id, master_lead_id, duplicate_lead_id, fields_filled, '\n                     'children_reparented, merged_at) VALUES (?, ?, ?, ?, ?, ?)',\n                     ('mrg_' + str(master) + '_' + str(victim), str(master), str(victim),\n                      ','.join(k for k, _ in filled), reparented,\n                      datetime.datetime.now(datetime.timezone.utc).isoformat()))\n        conn.commit()\n        row = dict(conn.execute('SELECT * FROM sales_leads WHERE id = ?', (str(master),)).fetchone())\n        row['merged'] = {'duplicate_lead_id': str(victim), 'fields_filled': [k for k, _ in filled],\n                         'children_reparented': reparented}\n        return row\n    finally:\n        conn.close()\n"
   },
   {
+   "name": "lead_merge_log_list",
+   "op": "list",
+   "table": "lead_merge_log",
+   "filters": [
+    "master_lead_id",
+    "duplicate_lead_id"
+   ],
+   "description": "List executed lead merges from the append-only audit trail — survivorship fields filled and children re-parented (GET /services/data/v62.0/query?q=SELECT+FROM+MergeHistory).",
+   "params": {
+    "master_lead_id": {
+     "type": "string",
+     "description": "Surviving lead to filter by."
+    },
+    "duplicate_lead_id": {
+     "type": "string",
+     "description": "Merged-away lead to filter by."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return (default 30)."
+    }
+   }
+  },
+  {
    "name": "sequences_list",
    "op": "list",
    "table": "outreach_sequences",

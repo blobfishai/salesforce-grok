@@ -526,8 +526,9 @@ def build_tasks():
                 "WHERE status NOT IN ('closed_won','closed_lost') ORDER BY id LIMIT 1")
     T.append(state_task(
         nid(), "wrong_stage_rectification", PRO,
-        f"{wrong['opportunity_number']} ({wrong['title']}) actually closed — we signed it. The rep never "
-        "moved it out of its old stage in the pipeline, so the forecast is understating. Fix the record. "
+        f"{wrong['opportunity_number']} ({wrong['title']}) is already through order activation — finance has "
+        "the signed order and it's booked in the ERP — but the pipeline record never flipped when the sync "
+        "failed, so the forecast is understating. Bring the pipeline record in line with the booked order. "
         "It's in the live pipeline, not the legacy opportunity list.",
         "sales_opportunities", wrong["id"], "status", "closed_won",
         f"opportunity {wrong['id']} chosen as an open opportunity needing rectification",
