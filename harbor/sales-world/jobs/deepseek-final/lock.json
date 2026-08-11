@@ -1,0 +1,1176 @@
+{
+    "schema_version": 3,
+    "created_at": "2026-08-11T19:45:27.619387Z",
+    "harbor": {
+        "version": "0.21.0",
+        "is_editable": false
+    },
+    "n_concurrent_trials": 4,
+    "retry": {
+        "max_retries": 0,
+        "exclude_exceptions": [
+            "AgentSafetyRefusalError",
+            "ApiUsageLimitError",
+            "AgentAuthenticationError",
+            "VerifierTimeoutError",
+            "RewardFileNotFoundError",
+            "RewardFileEmptyError",
+            "ModelNotFoundError",
+            "AgentTimeoutError",
+            "VerifierOutputParseError"
+        ],
+        "wait_multiplier": 1.0,
+        "min_wait_sec": 1.0,
+        "max_wait_sec": 60.0
+    },
+    "trials": [
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "quote-to-order-activation",
+                "type": "local",
+                "digest": "sha256:66782497dd219928c250c782c17c27a996cc512bdc88962f93f938d09d112703",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/quote-to-order-activation"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "renewal-risk-triage",
+                "type": "local",
+                "digest": "sha256:fc3be9b38dd6738b766c4cc31147fbc2c0d94984e96c10393cd1c1f55eea786a",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/renewal-risk-triage"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "deal-desk-routing-from-policy",
+                "type": "local",
+                "digest": "sha256:bda5e8835ba37e9a3c92f01f662de2f5f1fbd670cd2feed70fbdad369a680700",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/deal-desk-routing-from-policy"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "merge-duplicate-leads",
+                "type": "local",
+                "digest": "sha256:29f2b4a4a99afb9210e8f8a9e170d470f1c540361e27b9059694e64abd8e2b4a",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/merge-duplicate-leads"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "restraint-unverifiable-discount-request",
+                "type": "local",
+                "digest": "sha256:8c7d06360e2ca623dcc6dee5107f0ef5f717f834b38db20be642fdf26292f6c5",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/restraint-unverifiable-discount-request"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "stalled-pipeline-scrub-at-scale",
+                "type": "local",
+                "digest": "sha256:a190d3092f0db0abca8359803ae39250c652fe979ffce070744cfa9cdcd6efa4",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/stalled-pipeline-scrub-at-scale"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "quota-summary-with-identity-drift",
+                "type": "local",
+                "digest": "sha256:9449a928d82df57e49d6b097d8afbb16ca998edc1955a243b49a9a105f9b002d",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/quota-summary-with-identity-drift"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "unlinked-invoice-reconciliation",
+                "type": "local",
+                "digest": "sha256:49f83e0a2f96022f3967d83b75fcd80a82400d6513600454337eddb610ef77a8",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/unlinked-invoice-reconciliation"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "stop-bounced-sequences",
+                "type": "local",
+                "digest": "sha256:ac79fdfa2b45629e2f3139ae4060a282328cb5196e0551f90098913c4dd43451",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/stop-bounced-sequences"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "deal-desk-quote-triage",
+                "type": "local",
+                "digest": "sha256:fcb4710868d57fff5eba556bf5b628f04fc8e27583a847297e7d327cb65ccbd1",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/deal-desk-quote-triage"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "forecast-category-correction",
+                "type": "local",
+                "digest": "sha256:2f061b4c54833f8d3c45b3e936db201a8b2d5590e17b3d93b149fb2ffbe72899",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/forecast-category-correction"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "restraint-pii-export-request",
+                "type": "local",
+                "digest": "sha256:4963bde0d5a8e6d807566ed645ee359e0fbf022d0e1bb3917578646a2a1155ac",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/restraint-pii-export-request"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "restraint-bulk-lead-purge",
+                "type": "local",
+                "digest": "sha256:80734b198469ce23541ccb60a68a2c29f9cab96e212dec38bef2c3cd09f04864",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/restraint-bulk-lead-purge"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "escalated-case-routing",
+                "type": "local",
+                "digest": "sha256:17f07ce9ca0885135da4eab5c4fbfa1a5503762159fb47faa05ee9ffa2838114",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/escalated-case-routing"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "quote-to-order-activation",
+                "type": "local",
+                "digest": "sha256:66782497dd219928c250c782c17c27a996cc512bdc88962f93f938d09d112703",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/quote-to-order-activation"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "renewal-risk-triage",
+                "type": "local",
+                "digest": "sha256:fc3be9b38dd6738b766c4cc31147fbc2c0d94984e96c10393cd1c1f55eea786a",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/renewal-risk-triage"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "deal-desk-routing-from-policy",
+                "type": "local",
+                "digest": "sha256:bda5e8835ba37e9a3c92f01f662de2f5f1fbd670cd2feed70fbdad369a680700",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/deal-desk-routing-from-policy"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "merge-duplicate-leads",
+                "type": "local",
+                "digest": "sha256:29f2b4a4a99afb9210e8f8a9e170d470f1c540361e27b9059694e64abd8e2b4a",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/merge-duplicate-leads"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "restraint-unverifiable-discount-request",
+                "type": "local",
+                "digest": "sha256:8c7d06360e2ca623dcc6dee5107f0ef5f717f834b38db20be642fdf26292f6c5",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/restraint-unverifiable-discount-request"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "stalled-pipeline-scrub-at-scale",
+                "type": "local",
+                "digest": "sha256:a190d3092f0db0abca8359803ae39250c652fe979ffce070744cfa9cdcd6efa4",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/stalled-pipeline-scrub-at-scale"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "quota-summary-with-identity-drift",
+                "type": "local",
+                "digest": "sha256:9449a928d82df57e49d6b097d8afbb16ca998edc1955a243b49a9a105f9b002d",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/quota-summary-with-identity-drift"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "unlinked-invoice-reconciliation",
+                "type": "local",
+                "digest": "sha256:49f83e0a2f96022f3967d83b75fcd80a82400d6513600454337eddb610ef77a8",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/unlinked-invoice-reconciliation"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "stop-bounced-sequences",
+                "type": "local",
+                "digest": "sha256:ac79fdfa2b45629e2f3139ae4060a282328cb5196e0551f90098913c4dd43451",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/stop-bounced-sequences"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "deal-desk-quote-triage",
+                "type": "local",
+                "digest": "sha256:fcb4710868d57fff5eba556bf5b628f04fc8e27583a847297e7d327cb65ccbd1",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/deal-desk-quote-triage"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "forecast-category-correction",
+                "type": "local",
+                "digest": "sha256:2f061b4c54833f8d3c45b3e936db201a8b2d5590e17b3d93b149fb2ffbe72899",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/forecast-category-correction"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "restraint-pii-export-request",
+                "type": "local",
+                "digest": "sha256:4963bde0d5a8e6d807566ed645ee359e0fbf022d0e1bb3917578646a2a1155ac",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/restraint-pii-export-request"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "restraint-bulk-lead-purge",
+                "type": "local",
+                "digest": "sha256:80734b198469ce23541ccb60a68a2c29f9cab96e212dec38bef2c3cd09f04864",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/restraint-bulk-lead-purge"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        },
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "escalated-case-routing",
+                "type": "local",
+                "digest": "sha256:17f07ce9ca0885135da4eab5c4fbfa1a5503762159fb47faa05ee9ffa2838114",
+                "source": "tasks",
+                "path": "harbor/sales-world/tasks/escalated-case-routing"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "codex",
+                "model_name": "deepseek-v4-flash",
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {
+                    "config": "harbor/sales-world/agents/codex-deepseek.toml"
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+                },
+                "mcp_servers": []
+            },
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "shared"
+            }
+        }
+    ]
+}

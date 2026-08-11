@@ -1,0 +1,14 @@
+# Codex pointed at DeepSeek's OpenAI-compatible endpoint.
+#
+# DeepSeek ships a first-party Codex integration served over the /responses API,
+# so wire_api must be "responses" (Codex dropped "chat" support entirely).
+# As of 2026-08-11 only deepseek-v4-flash is enabled for it; deepseek-v4-pro
+# returns "Codex integration ... will be available starting early August 2026".
+model = "deepseek-v4-flash"
+model_provider = "deepseek"
+
+[model_providers.deepseek]
+name = "DeepSeek"
+base_url = "https://api.deepseek.com/v1"
+env_key = "DEEPSEEK_API_KEY"
+wire_api = "responses"
