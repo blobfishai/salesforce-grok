@@ -1,0 +1,28 @@
+{
+ "task_id": "w8_002",
+ "prompt": "Data hygiene sweep before the QBR: some leads are missing the deal size or the source that tells us where they came from. Find every one of them and open a follow-up task for each so the owning rep fixes their own record — one task per broken lead, and put the lead's company name in the task so the rep knows what to look at.",
+ "goal": "Wave-8 — crm_data_hygiene_audit",
+ "complexity": "high",
+ "method": "wave8_pack",
+ "provenance": {
+  "source_benchmark": "sales workflow canon — conservation identities and data-derived cardinality (research/answers/sales-workflow-canon.md)",
+  "workflow_type": "crm_data_hygiene_audit",
+  "cloned_by": "scripts/build-wave8-tasks.py",
+  "grading": "cardinality"
+ },
+ "difficulty_tier": "reference",
+ "required_tools": [
+  "query_sales_leads",
+  "aggregate_query",
+  "task_create"
+ ],
+ "tables_affected": [
+  "tasks"
+ ],
+ "expected_state_changes": [
+  {
+   "table": "tasks",
+   "rows": 3
+  }
+ ]
+}

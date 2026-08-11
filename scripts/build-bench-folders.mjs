@@ -29,7 +29,7 @@ const LABEL_WORLD = [
   [/^lb-w5-/, "wave5"], [/^grok420-probes$/, "wave5"], [/^wave4$/, "wave5"], [/^wave5b?$/, "wave5"],
   [/^w6-/, "wave6"],
   // wave-6 world packs: CRMArena clone, the wave-7 workflow pack and their re-runs
-  [/^crma-/, "wave6"], [/^wave7-/, "wave6"], [/^realism-/, "wave6"], [/^restraint-/, "wave6"],
+  [/^crma-/, "wave6"], [/^wave7-/, "wave6"], [/^realism-/, "wave6"], [/^restraint-/, "wave6"], [/^wave8-/, "wave6"],
   [/^wave1b?$/, "wave1"], [/^wave3-local$/, "wave1"],
   [/^wave2/, "wave5"], // wave2 world == wave5 world id (pre-hardening variant)
 ];

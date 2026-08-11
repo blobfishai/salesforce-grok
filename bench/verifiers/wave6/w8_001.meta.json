@@ -1,0 +1,28 @@
+{
+ "task_id": "w8_001",
+ "assertions": [
+  "reported_something",
+  "every_bucket_correct",
+  "population_stated",
+  "conservation_identity"
+ ],
+ "initial_state_check": "{\"converted\": 168, \"contacted\": 129, \"qualified\": 111, \"new\": 53, \"lost\": 42, \"working\": 1}",
+ "field_policies": [],
+ "positive_case": {
+  "description": "Agent completes funnel_conversion_waterfall correctly",
+  "expected": "pass"
+ },
+ "negative_cases": [
+  {
+   "description": "One bucket omitted or wrong",
+   "fails_assertion": "every_bucket_correct",
+   "expected": "fail"
+  },
+  {
+   "description": "Parts do not sum to the whole",
+   "fails_assertion": "conservation_identity",
+   "expected": "fail"
+  }
+ ],
+ "discrimination": 2
+}

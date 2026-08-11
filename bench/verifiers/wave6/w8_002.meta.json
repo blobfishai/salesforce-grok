@@ -1,0 +1,33 @@
+{
+ "task_id": "w8_002",
+ "assertions": [
+  "state_changed",
+  "exact_cardinality",
+  "every_target_covered",
+  "no_offtask_table_changes"
+ ],
+ "initial_state_check": "[\"Harborview Partners\", \"Crestline Trust\", \"Crestline Trust\"]",
+ "field_policies": [],
+ "positive_case": {
+  "description": "Agent completes crm_data_hygiene_audit correctly",
+  "expected": "pass"
+ },
+ "negative_cases": [
+  {
+   "description": "Fixes some but not all defective records",
+   "fails_assertion": "exact_cardinality",
+   "expected": "fail"
+  },
+  {
+   "description": "Pads the output with tasks for healthy records",
+   "fails_assertion": "exact_cardinality",
+   "expected": "fail"
+  },
+  {
+   "description": "Right count, wrong records",
+   "fails_assertion": "every_target_covered",
+   "expected": "fail"
+  }
+ ],
+ "discrimination": 3
+}

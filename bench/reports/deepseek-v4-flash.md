@@ -171,3 +171,7 @@
 | task | trial | calls | classification | failed assertions | trace |
 |---|---|---|---|---|---|
 | crma_011 | 1 | 3 | real | answer_matches_gold | [jsonl](../failed-traces/wave6/deepseek-v4-flash/wave7-refix--crma_011-t1.jsonl) |
+
+## Sweep `wave8-v1` (world wave6)
+
+- trials 2 · passed 2 · failed 0 · env-bug 0 · artifact-only 0 · **real 0**

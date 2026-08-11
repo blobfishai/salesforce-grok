@@ -1,0 +1,23 @@
+{
+ "task_id": "w8_001",
+ "prompt": "Marketing and sales keep quoting different funnel numbers at each other. Give me the definitive breakdown of the lead database by status — every stage with its count, plus the total — so the two teams are working off one set of numbers.",
+ "goal": "Wave-8 — funnel_conversion_waterfall",
+ "complexity": "high",
+ "method": "wave8_pack",
+ "provenance": {
+  "source_benchmark": "sales workflow canon — conservation identities and data-derived cardinality (research/answers/sales-workflow-canon.md)",
+  "workflow_type": "funnel_conversion_waterfall",
+  "cloned_by": "scripts/build-wave8-tasks.py",
+  "grading": "identity"
+ },
+ "difficulty_tier": "reference",
+ "required_tools": [
+  "aggregate_query",
+  "query_sales_leads",
+  "sheet_agent"
+ ],
+ "tables_affected": [],
+ "expected_state_changes": [],
+ "answer_graded": true,
+ "gold_answer": "{\"converted\": 168, \"contacted\": 129, \"qualified\": 111, \"new\": 53, \"lost\": 42, \"working\": 1}"
+}

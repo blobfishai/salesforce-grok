@@ -72,7 +72,8 @@ PATTERNS = [
     ("20. Stage progression with entry criteria / stale guard", ["update_sales_opportunities_status", "opportunity_stage_gates"], ["wrong_stage_rectification"], None),
     ("21. Quote-to-cash document chain", ["sales_quotes", "erp_sales_order_create", "erp_invoice_create", "post_invoices"], ["quote_approval", "discount_approval_policy_check"], None),
     ("22. Duplicate detection and merge", ["lead_find_duplicates", "lead_merge"], ["lead_dedupe_merge"], None),
-    ("23. CRM hygiene audit -> remediation tasks", ["data_quality_rules", "task_create", "aggregate_query"], [], None),
+    ("23. CRM hygiene audit -> remediation tasks", ["data_quality_rules", "task_create", "aggregate_query"],
+     ["crm_data_hygiene_audit"], None),
     ("24. Cross-system sync / reverse ETL", ["agent_sheets", "sheet_agent", "aggregate_query"], [],
      "an explicit field-mapping + conflict-reconciliation surface"),
     ("25. Approval-gated write-back with audit trail", ["quote_update_status", "lead_merge_log_list"],
@@ -107,9 +108,10 @@ CANON_SCENARIOS = [
      "a territory-assignment write tool + ramped-quota fixtures"),
     ("3.5 Split-credit commission statement", ["rep_quotas", "sheet_agent"], [],
      "an OpportunitySplit table and a clawback/dispute surface"),
-    ("3.6 Contact hygiene + normalization pass", ["data_quality_rules", "contacts", "lead_update_fields"], [], None),
-    ("3.7 Funnel conversion + pipeline waterfall (answer + identity)", ["aggregate_query", "funnel_conversion_rates"], [],
-     "a snapshot table so the waterfall balance identity can be asserted"),
+    ("3.6 Contact hygiene + normalization pass", ["data_quality_rules", "contacts", "lead_update_fields"],
+     ["crm_data_hygiene_audit"], None),
+    ("3.7 Funnel conversion + pipeline waterfall (answer + identity)", ["aggregate_query", "funnel_conversion_rates"],
+     ["funnel_conversion_waterfall"], None),
 ]
 
 BENCH_SCENARIOS = [
