@@ -90,14 +90,18 @@ Vendoring data or code requires a permissive licence; deriving *facts* does not.
 
 | stage | state |
 |---|---|
-| ingested into WCPs | **2,755 tasks** |
-| compiled to Harbor tasks | 16 (the hand-authored `sales-world` suite) |
-| passing the oracle gate | 16 / 16 |
-| measured against a model | 16 (grok-4.5, DeepSeek v4-flash) |
+| ingested into WCPs | **3,864 tasks** (2,755 corpus + 1,109 generated waves) |
+| compiled to runnable Harbor tasks | **2,295** (1,170 CRMArena + 1,109 waves + 16 sales-world) |
+| validated by Harbor's own task validator | 2,279 / 2,279 compiled parity tasks, 0 invalid |
+| harness-checked (world + answer channel + metric agree) | 27 CRMArena + 18 waves, all 1.000 |
+| measured against a model | 16 sales-world (grok-4.5, DeepSeek v4-flash) |
 
-The gap between the first and second rows is the honest statement of where
-this stands: the corpus is consumable and normalized, and the compiler that
-turns WCP tasks into Harbor tasks currently only covers the authored suite.
-Closing it is mechanical for `answer_match` (CRMArena) once the parity world
-serves the SOQL surface, and needs a state importer for `action_trace`
-(tau-bench seeds its DB through its own env).
+A harness check is not a solvability proof. The oracle submits the known ground
+truth, which shows the world, the answer channel and the metric agree end to
+end; whether a task can actually be solved from the data with the tools given is
+only established by running a model. That distinction is why the reference
+script is named a harness check rather than a solution.
+
+Still outstanding: tau-bench's 165 `action_trace` tasks need a state importer,
+because its env seeds the DB at runtime — the adapter refuses them rather than
+faking the initial state.
