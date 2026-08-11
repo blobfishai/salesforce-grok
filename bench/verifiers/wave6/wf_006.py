@@ -4,7 +4,7 @@ Grading: several row-level outcomes must ALL hold, with collateral guards.
 Targets computed from the world database at build time:
     SUM(amount) of closed_won opportunities owned by the rep
 """
-CHECKS = [{'name': 'forecast_created', 'kind': 'row_count_delta', 'table': 'forecast_submissions', 'delta': 1}, {'name': 'forecast_correct', 'kind': 'row_matching', 'table': 'forecast_submissions', 'match': {'employee_id': 1, 'period': '2026-Q3', 'category': 'commit'}}]
+CHECKS = [{'name': 'forecast_created', 'kind': 'row_count_delta', 'table': 'forecast_submissions', 'delta': 1}, {'name': 'forecast_correct', 'kind': 'row_matching', 'table': 'forecast_submissions', 'match': {'employee_id': 1, 'period': '2026-Q3', 'category': 'commit'}}, {'name': 'commit_amount_derived', 'kind': 'row_matching', 'table': 'forecast_submissions', 'match': {'employee_id': 1, 'period': '2026-Q3', 'amount': 8994592.93}}]
 ALLOWED_TABLES = ['forecast_submissions']
 
 def _rows(state, table):

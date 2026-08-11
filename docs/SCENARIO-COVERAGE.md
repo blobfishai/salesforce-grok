@@ -109,3 +109,27 @@ Two further honest notes carried from the research:
   arXiv:2601.17087). Any multi-turn selling score this world produces — once a
   buyer simulator exists — inherits that inflation and should be reported with
   the caveat.
+
+## Prompt realism — what a task may and may not assume
+
+Tasks were rewritten (2026-08-11) after an audit found most read like benchmark
+instructions rather than requests a colleague would send. The tells, and the rule
+each produced:
+
+| tell | example (before) | rule |
+|---|---|---|
+| internal row ids | "Re-score health record `health_0005`" | name the business handle; make the agent resolve the record |
+| the answer supplied | "The commit number is 8994592.93" | withhold anything the task exists to make the agent derive |
+| verifier-speak | "Change nothing else" | move the constraint into the world — the seeded **Agent Operating Standard** doc carries it, so guards stay fair without the prompt teaching them |
+| schema leakage | "set `intent_label` to one of: interested, not_now, …" | let the picklist be discovered; the canon calls this *read-the-config, don't-know-the-answer* |
+
+**Measured cost of the rewrite:** 29/34 passing after, versus 31/34 before, with
+the 6–20-call band improving to 100%. Two of the regressions were the rewrite's
+own fault and were fixed — dropping a precision cue the grader still enforced
+(the agent answered 22.0% against a gold of 22.02), and using "move them forward
+in the funnel", which from status `new` makes `contacted` a defensible answer.
+
+**The trade-off worth stating plainly:** realism and determinism conflict wherever
+the world does not itself resolve the ambiguity. A prompt may safely omit an enum
+value when the picklist is discoverable; it may not omit a precision the grader
+enforces, and it may not use a phrase that maps to two valid end states.

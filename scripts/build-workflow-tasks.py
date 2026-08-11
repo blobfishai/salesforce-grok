@@ -132,10 +132,9 @@ def build():
     child = one("SELECT id FROM sales_opportunities WHERE lead_id = ?", (dupe["victim"],))
     T.append({
         "kind": "multi", "task_id": nid(), "wf_type": "lead_dedupe_merge", "source": SRC_OSS,
-        "prompt": (f"{dupe['company_name']} appears twice in the lead database as leads {dupe['master']} and "
-                   f"{dupe['victim']}. Merge them, keeping lead {dupe['master']} as the master record. The "
-                   "surviving lead must end up with the estimated value that only the duplicate carried, any "
-                   "child opportunity must follow the master, and the duplicate record must be gone."),
+        "prompt": (f"We've got {dupe['company_name']} in the lead database twice — same contact, someone "
+                   "re-entered them after the webinar. Clean it up: keep the older record as the survivor, "
+                   "make sure we don't lose the deal value or the opportunity hanging off the newer one."),
         "gold_sql": f"duplicate pair on company_name={dupe['company_name']!r}: master={dupe['master']}, victim={dupe['victim']}",
         "tools": ["lead_find_duplicates", "lead_merge", "query_sales_leads"],
         "allowed": ["sales_leads", "sales_opportunities", "lead_merge_log"],
@@ -152,9 +151,9 @@ def build():
     # ---- inbound capture + routing ----
     T.append({
         "kind": "multi", "task_id": nid(), "wf_type": "inbound_lead_capture_routing", "source": SRC_OSS,
-        "prompt": ("A webinar attendee from Beacon Hill Advisors submitted the contact form: Priya Raman, "
-                   "estimated value $85,000. Create the lead with source 'webinar' and route it to employee 3 "
-                   "as owner. Create exactly one lead and change nothing else."),
+        "prompt": ("Inbound from this morning's webinar: Priya Raman at Beacon Hill Advisors, sized around "
+                   "$85k. Get her into the system as a lead from that webinar and put Diego Alvarez "
+                   "(employee 3) on it — he covers that patch."),
         "gold_sql": "new lead row asserted by field match, not by id (the agent mints the id)",
         "tools": ["lead_create", "query_sales_leads"],
         "allowed": ["sales_leads"],
@@ -185,9 +184,9 @@ def build():
             break
     T.append({
         "kind": "state", "task_id": nid(), "wf_type": "reply_intent_classification", "source": SRC_OSS,
-        "prompt": (f"Read email thread {thr['id']} from {thr['account_name']} and classify the prospect's reply. "
-                   "Set its intent_label to whichever of these fits: interested, not_now, unsubscribe, referral, "
-                   "pricing_question, out_of_office. Change nothing else."),
+        "prompt": (f"{thr['account_name']} replied on thread {thr['id']} and it's still sitting unclassified in "
+                   "the queue. Read what they actually said and tag it with the right intent so routing picks "
+                   "it up — use the labels the other threads already use."),
         "table": "email_threads", "row_id": thr["id"], "field": "intent_label", "expected": thr["intent_label"],
         "gold_sql": f"intent derived from the inbound reply text of thread {thr['id']}: {thr['body'][:70]!r}",
         "tools": ["email_threads_list", "email_messages_list", "email_thread_classify"],
@@ -200,10 +199,9 @@ def build():
     if unsub and unsub["enrollment_id"]:
         T.append({
             "kind": "multi", "task_id": nid(), "wf_type": "unsubscribe_optout_enforcement", "source": SRC_CANON,
-            "prompt": (f"The contact on email thread {unsub['id']} ({unsub['account_name']}) has asked to be "
-                       "removed and never contacted again. Honour it: mark that thread's intent_label as "
-                       f"'unsubscribe' and stop their outbound sequence by setting enrollment "
-                       f"{unsub['enrollment_id']} to status 'completed'. Touch nothing else."),
+            "prompt": (f"{unsub['account_name']} replied on thread {unsub['id']} asking us to stop contacting "
+                       "them. Make sure that actually happens — tag the thread so we have the record, and get "
+                       "them out of whatever sequence is still running against them."),
             "gold_sql": f"thread {unsub['id']} carries the unsubscribe reply; enrollment {unsub['enrollment_id']} is its lead's active sequence",
             "tools": ["email_threads_list", "email_messages_list", "email_thread_classify",
                       "sequence_enrollments_list", "sequence_enrollment_update"],
@@ -221,9 +219,8 @@ def build():
     lead = one("SELECT id, company_name FROM sales_leads WHERE status='qualified' ORDER BY id LIMIT 1")
     T.append({
         "kind": "multi", "task_id": nid(), "wf_type": "sequence_enrollment", "source": SRC_OSS,
-        "prompt": (f"Lead {lead['id']} ({lead['company_name']}) is qualified and should start outbound. Enroll it "
-                   f"in the active sequence '{seq['name']}' ({seq['id']}) at step 1. Create exactly one "
-                   "enrollment and change nothing else."),
+        "prompt": (f"{lead['company_name']} (lead {lead['id']}) is qualified now — start them on our live "
+                   "enterprise outbound cadence from the top."),
         "gold_sql": f"active sequence {seq['id']}, qualified lead {lead['id']}",
         "tools": ["sequences_list", "sequence_steps_list", "sequence_enroll_lead"],
         "allowed": ["outreach_enrollments"],
@@ -241,9 +238,9 @@ def build():
     amt = commit_amt["v"] or 100000.0
     T.append({
         "kind": "multi", "task_id": nid(), "wf_type": "forecast_rollup_commit", "source": SRC_CANON,
-        "prompt": (f"Submit the 2026-Q3 commit forecast for {rep['employee_name']} (employee {rep['employee_id']}). "
-                   f"The commit number is the total of their closed-won opportunities: {amt}. Create exactly one "
-                   "forecast submission in category 'commit' for period 2026-Q3 and change nothing else."),
+        "prompt": (f"Forecast call is in an hour and {rep['employee_name']} hasn't submitted. Put their Q3 "
+                   "commit in for them — commit is what they've already closed-won this quarter, so work it "
+                   "out from their deals and file it."),
         "gold_sql": "SUM(amount) of closed_won opportunities owned by the rep",
         "tools": ["rep_quotas_list", "aggregate_query", "forecast_submit"],
         "allowed": ["forecast_submissions"],
@@ -251,6 +248,9 @@ def build():
             {"name": "forecast_created", "kind": "row_count_delta", "table": "forecast_submissions", "delta": 1},
             {"name": "forecast_correct", "kind": "row_matching", "table": "forecast_submissions",
              "match": {"employee_id": rep["employee_id"], "period": "2026-Q3", "category": "commit"}},
+            # the prompt no longer hands over the number — so grade the number
+            {"name": "commit_amount_derived", "kind": "row_matching", "table": "forecast_submissions",
+             "match": {"employee_id": rep["employee_id"], "period": "2026-Q3", "amount": amt}},
         ],
     })
 
@@ -259,8 +259,8 @@ def build():
               "WHERE period='2026-Q3' ORDER BY shortfall DESC LIMIT 1")
     T.append({
         "kind": "answer", "task_id": nid(), "wf_type": "quota_attainment_analysis", "source": SRC_CANON,
-        "prompt": ("For the 2026-Q3 period, which rep has the largest shortfall between their quota and their "
-                   "attainment? Answer with the rep's name."),
+        "prompt": ("Who on the team is furthest behind quota this quarter? I want to know where to spend my "
+                   "coaching time."),
         "gold": gap["employee_name"], "accepted": [gap["employee_name"]],
         "gold_sql": "MAX(quota_amount - attainment_amount) over rep_quotas WHERE period='2026-Q3'",
         "tools": ["rep_quotas_list"], "tables": ["rep_quotas"],
@@ -271,9 +271,9 @@ def build():
               "WHERE band='red' ORDER BY score ASC LIMIT 1")
     T.append({
         "kind": "state", "task_id": nid(), "wf_type": "churn_risk_save_workflow", "source": SRC_CANON,
-        "prompt": (f"{red['account_name']} is in the red health band (score {red['score']}, risk: "
-                   f"{red['primary_risk']}). The save play has run and adoption recovered. Re-score their health "
-                   f"record {red['id']} to band 'yellow'. Change nothing else."),
+        "prompt": (f"Good news on {red['account_name']} — the save play worked, adoption is climbing back and "
+                   "they're no longer our worst account. Move their health record off red to the middle band "
+                   "so the CS dashboard stops paging us."),
         "table": "account_health", "row_id": red["id"], "field": "band", "expected": "yellow",
         "gold_sql": "lowest-scoring red-band account in account_health",
         "tools": ["account_health_list", "account_usage_list", "account_health_update"],
@@ -284,8 +284,8 @@ def build():
              "GROUP BY campaign_id ORDER BY c DESC, campaign_id LIMIT 1")
     T.append({
         "kind": "answer", "task_id": nid(), "wf_type": "campaign_attribution", "source": SRC_CANON,
-        "prompt": ("Using first-touch attribution, which campaign is credited with originating the most leads? "
-                   "Answer with the campaign id."),
+        "prompt": ("Marketing wants budget for next quarter. On first-touch, which campaign actually "
+                   "originated the most leads? Give me the campaign id."),
         "gold": ft["campaign_id"], "accepted": [ft["campaign_id"]],
         "gold_sql": "COUNT(*) over campaign_touches WHERE position='first' GROUP BY campaign_id",
         "tools": ["campaign_touches_list", "aggregate_query"], "tables": ["campaign_touches"],
@@ -294,10 +294,9 @@ def build():
     # ---- e-signature order (policy: customer signs first) ----
     T.append({
         "kind": "multi", "task_id": nid(), "wf_type": "quote_document_generation_esignature", "source": SRC_CANON,
-        "prompt": ("Meridian Capital's FY26 order form is ready for signature. Create an e-signature envelope "
-                   "for account_003 titled 'Meridian Capital — Order Form FY26' following the mandated signer "
-                   "order in which the customer signs before your firm countersigns. Create exactly one envelope "
-                   "and change nothing else."),
+        "prompt": ("Meridian Capital's FY26 order form is ready to go out for signature — title it "
+                   "'Meridian Capital — Order Form FY26'. Send it out following our standard signing order; "
+                   "legal is strict about who signs first."),
         "gold_sql": "signer_order policy value 'customer_first' from the seeded envelope corpus",
         "tools": ["signature_envelopes_list", "signature_envelope_create"],
         "allowed": ["signature_envelopes"],
@@ -312,8 +311,7 @@ def build():
     stale = one("SELECT COUNT(*) c FROM sales_opportunities WHERE status='negotiation'")
     T.append({
         "kind": "answer", "task_id": nid(), "wf_type": "pipeline_inspection_stalled", "source": SRC_CANON,
-        "prompt": ("Pipeline inspection: how many sales opportunities are currently sitting in the "
-                   "'negotiation' stage? Answer with the number."),
+        "prompt": ("Pipeline review prep — how many deals are stuck in negotiation right now?"),
         "gold": stale["c"], "accepted": [str(stale["c"])],
         "gold_sql": "COUNT(*) FROM sales_opportunities WHERE status='negotiation'",
         "tools": ["aggregate_query", "query_sales_opportunities"], "tables": ["sales_opportunities"],
@@ -324,8 +322,8 @@ def build():
               "WHERE band='green' ORDER BY renewal_date LIMIT 1")
     T.append({
         "kind": "answer", "task_id": nid(), "wf_type": "renewal_expansion_management", "source": SRC_CANON,
-        "prompt": ("Which healthy (green band) account has the nearest upcoming renewal date? Answer with the "
-                   "account name."),
+        "prompt": ("Which of our healthy accounts renews soonest? I want to get the expansion conversation "
+                   "started before it's a renewal scramble."),
         "gold": ren["account_name"], "accepted": [ren["account_name"]],
         "gold_sql": "earliest renewal_date among green-band accounts in account_health",
         "tools": ["account_health_list"], "tables": ["account_health"],

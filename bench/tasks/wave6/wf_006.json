@@ -1,6 +1,6 @@
 {
  "task_id": "wf_006",
- "prompt": "Submit the 2026-Q3 commit forecast for Mei Huang (employee 1). The commit number is the total of their closed-won opportunities: 8994592.93. Create exactly one forecast submission in category 'commit' for period 2026-Q3 and change nothing else.",
+ "prompt": "Forecast call is in an hour and Mei Huang hasn't submitted. Put their Q3 commit in for them — commit is what they've already closed-won this quarter, so work it out from their deals and file it.",
  "goal": "Workflow — forecast_rollup_commit",
  "complexity": "medium",
  "method": "workflow_pack",
@@ -27,6 +27,10 @@
   {
    "table": "forecast_submissions",
    "check": "forecast_correct"
+  },
+  {
+   "table": "forecast_submissions",
+   "check": "commit_amount_derived"
   }
  ]
 }
