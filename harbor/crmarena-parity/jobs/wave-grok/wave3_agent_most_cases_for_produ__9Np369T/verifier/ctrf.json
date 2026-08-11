@@ -1,0 +1,54 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 1,
+            "failed": 1,
+            "skipped": 1,
+            "pending": 0,
+            "other": 0,
+            "start": 1786487274.9057183,
+            "stop": 1786487274.9928894
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_answer_was_submitted",
+                "status": "passed",
+                "duration": 0.0015041799979371717,
+                "start": 1786487274.9757762,
+                "stop": 1786487274.9776866,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_exact_match",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0011832189993583597,
+                "start": 1786487274.9779046,
+                "stop": 1786487274.9907293,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "tags": [
+                    "skipif::False::reason_exact_match tasks only"
+                ],
+                "trace": "@pytest.mark.skipif(METRIC != \"exact\", reason=\"exact_match tasks only\")\n    def test_exact_match():\n>       assert PROPOSED == GT, f\"expected {GT!r}, got {PROPOSED!r}\"\nE       AssertionError: expected '005Ws000001xTrqIAE', got 'None'\nE       assert 'None' == '005Ws000001xTrqIAE'\nE         \nE         - 005Ws000001xTrqIAE\nE         + None\n\n/tests/test_outputs.py:81: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_outputs.py::test_fuzzy_match",
+                "status": "skipped",
+                "duration": 0.001409303999025724,
+                "start": 1786487274.9909122,
+                "stop": 1786487274.9925866,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "('/tests/test_outputs.py', 84, 'Skipped: fuzzy_match tasks only')"
+            }
+        ]
+    }
+}

@@ -1,4 +1,9 @@
+# CRM question
+
 In the past 10 months, is there a particular month where we received significantly more cases of All-Weather Golf Gloves compared to other months? The associated product Id is 01tWs000002wRebIAE. Return only the month name.
+
+## Context
+
 
 ## How to work
 The CRM is on the `crm` MCP server. Query it with `issue_soql_query` (SOQL;

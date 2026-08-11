@@ -1,4 +1,9 @@
+# CRM question
+
 In the past 6 quarters, which agent had the lowest average handle time for those handling any cases? Return only the Id of the agent.
+
+## Context
+
 
 ## How to work
 The CRM is on the `crm` MCP server. Query it with `issue_soql_query` (SOQL;

@@ -1,4 +1,9 @@
+# CRM question
+
 In January 2022, find the agent who handled over one case with the longest handle time. Return only the Id of the agent.
+
+## Context
+
 
 ## How to work
 The CRM is on the `crm` MCP server. Query it with `issue_soql_query` (SOQL;

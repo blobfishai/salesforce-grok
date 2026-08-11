@@ -1,4 +1,9 @@
+# CRM question
+
 Do loyalty points at Shoes & Clothings expire?
+
+## Context
+
 
 ## How to work
 The CRM is on the `crm` MCP server. Query it with `issue_soql_query` (SOQL;

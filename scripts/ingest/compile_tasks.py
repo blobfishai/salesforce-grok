@@ -210,9 +210,15 @@ asyncio.run(main())
 PY
 """
 
-INSTRUCTION = """{required}
+# The question leads. Context must never start the file: an instruction beginning
+# with "- " is parsed as a flag by CLI agents (grok-build died with
+# "unexpected argument '- ' found" on all 20 trials).
+INSTRUCTION = """# CRM question
 
 {prompt}
+
+## Context
+{required}
 
 ## How to work
 The CRM is on the `crm` MCP server. Query it with `issue_soql_query` (SOQL;

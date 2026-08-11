@@ -1,0 +1,27 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.2, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5, anyio-4.14.2
+collected 3 items
+
+../tests/test_outputs.py .Fs                                             [100%]
+
+=================================== FAILURES ===================================
+_______________________________ test_exact_match _______________________________
+
+    @pytest.mark.skipif(METRIC != "exact", reason="exact_match tasks only")
+    def test_exact_match():
+>       assert PROPOSED == GT, f"expected {GT!r}, got {PROPOSED!r}"
+E       AssertionError: expected 'Incorrect Item Received', got 'Size Mismatch'
+E       assert 'Size Mismatch' == 'Incorrect Item Received'
+E         
+E         - Incorrect Item Received
+E         + Size Mismatch
+
+/tests/test_outputs.py:81: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../tests/test_outputs.py::test_answer_was_submitted
+SKIPPED [1] ../tests/test_outputs.py:84: fuzzy_match tasks only
+FAILED ../tests/test_outputs.py::test_exact_match - AssertionError: expected ...
+==================== 1 failed, 1 passed, 1 skipped in 0.07s ====================

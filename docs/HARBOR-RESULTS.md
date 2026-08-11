@@ -1,5 +1,9 @@
 # Harbor results — measured, including what is not yet proven
 
+> Two datasets now: the 16 hand-authored `sales-world` tasks (below), and
+> `crmarena-parity` — 1,170 reproduced CRMArena tasks plus 1,109 generated
+> deeper-join tasks. Parity results are in the section at the end.
+
 All runs use the Harbor harness against `harbor/sales-world/tasks`, Docker
 environments, one MCP gateway container per vendor. Raw output is in
 `harbor/sales-world/jobs/<job>/` — `reward.txt`, `ctrf.json`, and
@@ -190,3 +194,49 @@ even *attempted* rather than merely that state is unchanged.
    then +policy conflict, per `research/THESIS.md` §5.
 3. Hold `stalled-pipeline-scrub-at-scale` fixed as a frontier marker and
    re-measure it against every new model.
+
+
+---
+
+# CRMArena parity + generated waves
+
+`harbor/crmarena-parity/` — CRMArena's own org served over MCP, its own tasks and
+its own metric. Compiled by `scripts/ingest/compile_tasks.py` from the WCPs.
+
+| dataset | tasks | validated | harness check |
+|---|---:|---:|---|
+| CRMArena (reproduced, `exact` fidelity) | 1,170 | 1,170 / 1,170 | 27 / 27 at 1.000 |
+| generated waves 1–3 (`adapted`) | 1,109 | 1,109 / 1,109 | 18 / 18 at 1.000 |
+
+Waves pair a natural-language prompt with the SQL that computes its answer, so
+ground truth is derived from the world rather than authored. Join depth 2–5;
+360 of the 1,109 are abstention tasks whose correct answer is `None`.
+
+## grok-4.5 on a depth-stratified wave sample — 16/20 (0.800)
+
+| join depth | pass / total |
+|---|---:|
+| depth 2 | 3 / 4 |
+| **depth 3** (`agent_most_cases_for_product`) | **2 / 5** |
+| depth 4 | 3 / 3 |
+| depth 5 | 4 / 4 |
+| abstention (correct answer is `None`) | 4 / 4 |
+
+The interesting failure is **over-refusal**, not error. On three of the four
+misses grok-4.5 spent 14, 20 and 36 tool calls and then answered `None` — it
+abstained on questions the data *can* answer. It abstains correctly when it
+should (4/4 on the genuine abstention tasks), so this is not a blanket bias: it
+is a specific failure to convert a long multi-hop retrieval into a committed
+answer.
+
+That is the same boundary the `sales-world` suite found from the other side —
+there, the model acted when it should have declined; here it declines when it
+should act.
+
+### A packaging defect this run caught
+
+The first attempt scored 0.000 across all 20 trials with
+`NonZeroAgentExitCodeError`. The compiled `instruction.md` began with
+`- Answer from the CRM data only.`, and the grok CLI parses a leading `-` as a
+flag: `error: unexpected argument '- ' found`. Instructions now lead with the
+question under a heading. Universal failure, our defect — the rule holds.

@@ -1,7 +1,12 @@
+# CRM question
+
 Use the case routing policy to determine the most suitable agent for the given case. Return only the Id of the agent.
 ## Given Case
 - Case Subject: Size Mismatch on Marathon Performance Shoes
 - Case Description: I recently purchased a pair of Marathon Performance Shoes, but the size chart on the website doesn't seem to match the actual size of the product. The shoes are much tighter than what I expected based on the chart.
+
+## Context
+
 
 ## How to work
 The CRM is on the `crm` MCP server. Query it with `issue_soql_query` (SOQL;

@@ -1,4 +1,9 @@
+# CRM question
+
 Determine the agent with the longest handle time who managed more than 2 cases in Winter 2020. Return only the Id of the agent.
+
+## Context
+
 
 ## How to work
 The CRM is on the `crm` MCP server. Query it with `issue_soql_query` (SOQL;

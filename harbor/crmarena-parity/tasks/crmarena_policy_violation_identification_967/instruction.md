@@ -1,4 +1,9 @@
+# CRM question
+
 Did the agent breach the policy in this situation? If yes, which knowledge article was breached? Return only the Id of the knowledge article or None if no violation is found.
+
+## Context
+
 
 ## How to work
 The CRM is on the `crm` MCP server. Query it with `issue_soql_query` (SOQL;

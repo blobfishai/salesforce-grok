@@ -1,4 +1,9 @@
+# CRM question
+
 Find the agent in November 2021 who handled over two cases and had the fewest number of transfers. Return only the Id of the agent.
+
+## Context
+
 
 ## How to work
 The CRM is on the `crm` MCP server. Query it with `issue_soql_query` (SOQL;

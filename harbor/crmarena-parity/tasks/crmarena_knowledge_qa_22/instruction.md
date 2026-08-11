@@ -1,4 +1,9 @@
+# CRM question
+
 What should you do if the basketball shoes you ordered don't fit as expected?
+
+## Context
+
 
 ## How to work
 The CRM is on the `crm` MCP server. Query it with `issue_soql_query` (SOQL;

@@ -1,4 +1,9 @@
+# CRM question
+
 Can you display the thermal cycling jacket I purchased five days ago? Return only the Id of the product from the contact's relevant past transaction.
+
+## Context
+
 
 ## How to work
 The CRM is on the `crm` MCP server. Query it with `issue_soql_query` (SOQL;

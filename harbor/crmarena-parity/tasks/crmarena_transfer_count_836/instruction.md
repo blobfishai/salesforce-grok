@@ -1,4 +1,9 @@
+# CRM question
+
 Who was the agent with the lowest average transfer counts among those who handled more than 2 cases in the last two months? Return only the Id of the agent.
+
+## Context
+
 
 ## How to work
 The CRM is on the `crm` MCP server. Query it with `issue_soql_query` (SOQL;

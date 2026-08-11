@@ -1,4 +1,9 @@
+# CRM question
+
 Is there a specific month over the last 6 quarters when the number of cases for the Peak Performance Hoodie was significantly higher compared to other months? The associated product Id is 01tWs000002wSSbIAM. Return only the month name.
+
+## Context
+
 
 ## How to work
 The CRM is on the `crm` MCP server. Query it with `issue_soql_query` (SOQL;

@@ -1,7 +1,12 @@
+# CRM question
+
 Use the case routing policy to determine the most suitable agent for the given case. Return only the Id of the agent.
 ## Given Case
 - Case Subject: Incorrect Item Received - Urgent Exchange Needed
 - Case Description: I recently ordered the Pro Fitness Chest Strap, but I received a completely different item instead. This is not what I needed, and I require an immediate exchange for the correct Pro Fitness Chest Strap that I initially ordered. Please assist me in resolving this issue as soon as possible.
+
+## Context
+
 
 ## How to work
 The CRM is on the `crm` MCP server. Query it with `issue_soql_query` (SOQL;

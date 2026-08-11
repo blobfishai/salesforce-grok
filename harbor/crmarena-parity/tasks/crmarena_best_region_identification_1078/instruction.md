@@ -1,4 +1,9 @@
+# CRM question
+
 Which states had the fastest case resolutions in Winter 2020? Return only the two-letter abbreviation of the most matching state (eg. CA).
+
+## Context
+
 
 ## How to work
 The CRM is on the `crm` MCP server. Query it with `issue_soql_query` (SOQL;

@@ -1,4 +1,9 @@
+# CRM question
+
 Which states have the quickest case closure times in the past two quarters? Return only the two-letter abbreviation of the most matching state (eg. CA).
+
+## Context
+
 
 ## How to work
 The CRM is on the `crm` MCP server. Query it with `issue_soql_query` (SOQL;

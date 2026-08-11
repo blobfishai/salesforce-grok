@@ -1,4 +1,9 @@
+# CRM question
+
 In January 2021, find the agent with over one case who had the highest number of transfers. Return only the Id of the agent.
+
+## Context
+
 
 ## How to work
 The CRM is on the `crm` MCP server. Query it with `issue_soql_query` (SOQL;

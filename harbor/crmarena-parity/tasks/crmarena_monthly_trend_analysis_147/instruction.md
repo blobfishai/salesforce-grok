@@ -1,4 +1,9 @@
+# CRM question
+
 Is there a month in the past 11 months where we received significantly more cases for RapidGo Running Shoes compared to other months? The associated product Id is 01tWs000002wODjIAM. Return only the month name.
+
+## Context
+
 
 ## How to work
 The CRM is on the `crm` MCP server. Query it with `issue_soql_query` (SOQL;

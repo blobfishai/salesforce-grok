@@ -1,4 +1,9 @@
+# CRM question
+
 What has been the most frequent problem with Elemental Soccer Shin Guards over the past 6 months? The associated product Id is 01tWs000002wRmgIAE. Return only the issue Id of the most reported issue for this product.
+
+## Context
+
 
 ## How to work
 The CRM is on the `crm` MCP server. Query it with `issue_soql_query` (SOQL;

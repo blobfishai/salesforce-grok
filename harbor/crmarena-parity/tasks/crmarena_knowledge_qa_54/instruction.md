@@ -1,4 +1,9 @@
+# CRM question
+
 What are the conditions for returning shoes?
+
+## Context
+
 
 ## How to work
 The CRM is on the `crm` MCP server. Query it with `issue_soql_query` (SOQL;
