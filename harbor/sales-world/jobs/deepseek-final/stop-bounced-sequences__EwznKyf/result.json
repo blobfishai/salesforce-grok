@@ -1,0 +1,120 @@
+{
+    "id": "fb58ddf3-1ef8-486c-8c1b-36a166304750",
+    "task_name": "sales-world/stop-bounced-sequences",
+    "trial_name": "stop-bounced-sequences__EwznKyf",
+    "trial_uri": "file:///Users/samuelchien/dev/salesforce-grok/harbor/sales-world/jobs/deepseek-final/stop-bounced-sequences__EwznKyf",
+    "task_id": {
+        "path": "harbor/sales-world/tasks/stop-bounced-sequences"
+    },
+    "source": "tasks",
+    "task_checksum": "bbc2a57566b9b363a7ebfb45c4e3eeaef1d6871aa68c9d4275eeb9a6915dd078",
+    "config": {
+        "task": {
+            "path": "harbor/sales-world/tasks/stop-bounced-sequences",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": "tasks"
+        },
+        "trial_name": "stop-bounced-sequences__EwznKyf",
+        "trials_dir": "harbor/sales-world/jobs/deepseek-final",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "codex",
+            "import_path": null,
+            "model_name": "deepseek-v4-flash",
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {
+                "config": "harbor/sales-world/agents/codex-deepseek.toml"
+            },
+            "env": {
+                "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+            },
+            "mcp_servers": []
+        },
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": true,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {},
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "disable": false
+        },
+        "artifacts": [],
+        "extra_instruction_paths": [],
+        "job_id": "74090795-a4a7-483a-a8c0-8a73ce20177a",
+        "source_trial": null
+    },
+    "agent_info": {
+        "name": "codex",
+        "version": "0.147.0",
+        "model_info": {
+            "name": "deepseek-v4-flash",
+            "provider": "openai"
+        }
+    },
+    "agent_result": {
+        "n_input_tokens": 93045,
+        "n_cache_tokens": 92416,
+        "n_output_tokens": 498,
+        "cost_usd": null,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 1.0
+        }
+    },
+    "verifier_environment_mode": "shared",
+    "exception_info": null,
+    "started_at": "2026-08-11T20:05:57.988725Z",
+    "finished_at": "2026-08-11T20:08:14.894621Z",
+    "environment_setup": {
+        "started_at": "2026-08-11T20:05:57.990039Z",
+        "finished_at": "2026-08-11T20:06:12.698436Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-08-11T20:06:12.698549Z",
+        "finished_at": "2026-08-11T20:07:30.867012Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-08-11T20:07:30.867253Z",
+        "finished_at": "2026-08-11T20:07:41.478226Z"
+    },
+    "verifier": {
+        "started_at": "2026-08-11T20:07:41.933227Z",
+        "finished_at": "2026-08-11T20:07:43.125915Z"
+    },
+    "step_results": null
+}

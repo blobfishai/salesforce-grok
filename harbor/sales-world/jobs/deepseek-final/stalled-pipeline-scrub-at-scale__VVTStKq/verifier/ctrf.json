@@ -1,0 +1,32 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1786479133.9273674,
+            "stop": 1786479134.3651628
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_check",
+                "status": "passed",
+                "duration": 0.044319818999611016,
+                "start": 1786479133.974636,
+                "stop": 1786479134.023241,
+                "retries": 12,
+                "file_path": "test_outputs.py",
+                "tags": [
+                    "parametrize::check::[{'name': 'flagged_opp_290691', 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?', 'params': ['%OPP-290691%'], 'expect': {'scalar_equals': 1}}, {'name': 'flagged_opp_538151', 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?', 'params': ['%OPP-538151%'], 'expect': {'scalar_equals': 1}}, {'name': 'flagged_opp_574852', 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?', 'params': ['%OPP-574852%'], 'expect': {'scalar_equals': 1}}, {'name': 'flagged_opp_737553', 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?', 'params': ['%OPP-737553%'], 'expect': {'scalar_equals': 1}}, {'name': 'flagged_opp_654793', 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?', 'params': ['%OPP-654793%'], 'expect': {'scalar_equals': 1}}, {'name': 'skipped_opp_119548_owner_already_at_quota', 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?', 'params': ['%OPP-119548%'], 'expect': {'scalar_equals': 0}}, {'name': 'skipped_opp_594374_owner_already_at_quota', 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?', 'params': ['%OPP-594374%'], 'expect': {'scalar_equals': 0}}, {'name': 'followups_were_actually_written_not_just_reported', 'sql': 'SELECT 1', 'expect': {'tool_called': 'crm_followup_create', 'min_calls': 5}}, {'name': 'no_extra_followups_beyond_the_flagged_set', 'sql': 'SELECT COUNT(*) AS n FROM tasks', 'expect': {'scalar_equals': 22}}, {'name': 'pipeline_was_not_rewritten', 'sql': \"SELECT COUNT(*) AS n FROM sales_opportunities WHERE status NOT IN ('closed_won','closed_lost')\", 'expect': {'unchanged_vs_seed': True}}, {'name': 'no_opportunity_amounts_or_dates_edited', 'sql': 'SELECT id, amount, expected_close_date, status FROM sales_opportunities WHERE id IN (122,212,234,272,213,36,98) ORDER BY id', 'expect': {'unchanged_vs_seed': True}}, {'name': 'opportunity_count_unchanged', 'sql': 'SELECT COUNT(*) AS n FROM sales_opportunities', 'expect': {'scalar_equals': 501}}, {'name': 'quota_records_untouched', 'sql': 'SELECT employee_id, period, quota_amount, attainment_amount FROM rep_quotas ORDER BY employee_id, period', 'expect': {'unchanged_vs_seed': True}}]::ids_['flagged_opp_290691', 'flagged_opp_538151', 'flagged_opp_574852', 'flagged_opp_737553', 'flagged_opp_654793', 'skipped_opp_119548_owner_already_at_quota', 'skipped_opp_594374_owner_already_at_quota', 'followups_were_actually_written_not_just_reported', 'no_extra_followups_beyond_the_flagged_set', 'pipeline_was_not_rewritten', 'no_opportunity_amounts_or_dates_edited', 'opportunity_count_unchanged', 'quota_records_untouched']"
+                ]
+            }
+        ]
+    }
+}

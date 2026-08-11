@@ -1,0 +1,120 @@
+{
+    "id": "5929cf80-3778-41c7-a080-163ab54dfee7",
+    "task_name": "sales-world/deal-desk-routing-from-policy",
+    "trial_name": "deal-desk-routing-from-policy__ZMYdyEz",
+    "trial_uri": "file:///Users/samuelchien/dev/salesforce-grok/harbor/sales-world/jobs/deepseek-final/deal-desk-routing-from-policy__ZMYdyEz",
+    "task_id": {
+        "path": "harbor/sales-world/tasks/deal-desk-routing-from-policy"
+    },
+    "source": "tasks",
+    "task_checksum": "e9bb8557146815068066aeb2fe8c0f42de4ee8551dfbf935c9241c304f1e852c",
+    "config": {
+        "task": {
+            "path": "harbor/sales-world/tasks/deal-desk-routing-from-policy",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": "tasks"
+        },
+        "trial_name": "deal-desk-routing-from-policy__ZMYdyEz",
+        "trials_dir": "harbor/sales-world/jobs/deepseek-final",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "codex",
+            "import_path": null,
+            "model_name": "deepseek-v4-flash",
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {
+                "config": "harbor/sales-world/agents/codex-deepseek.toml"
+            },
+            "env": {
+                "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+            },
+            "mcp_servers": []
+        },
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": true,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {},
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "disable": false
+        },
+        "artifacts": [],
+        "extra_instruction_paths": [],
+        "job_id": "74090795-a4a7-483a-a8c0-8a73ce20177a",
+        "source_trial": null
+    },
+    "agent_info": {
+        "name": "codex",
+        "version": "0.147.0",
+        "model_info": {
+            "name": "deepseek-v4-flash",
+            "provider": "openai"
+        }
+    },
+    "agent_result": {
+        "n_input_tokens": 215116,
+        "n_cache_tokens": 208896,
+        "n_output_tokens": 8342,
+        "cost_usd": null,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 1.0
+        }
+    },
+    "verifier_environment_mode": "shared",
+    "exception_info": null,
+    "started_at": "2026-08-11T19:45:27.693207Z",
+    "finished_at": "2026-08-11T19:50:42.136150Z",
+    "environment_setup": {
+        "started_at": "2026-08-11T19:45:27.812736Z",
+        "finished_at": "2026-08-11T19:45:44.576122Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-08-11T19:45:44.576207Z",
+        "finished_at": "2026-08-11T19:48:50.540890Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-08-11T19:48:50.541074Z",
+        "finished_at": "2026-08-11T19:50:07.192649Z"
+    },
+    "verifier": {
+        "started_at": "2026-08-11T19:50:07.668032Z",
+        "finished_at": "2026-08-11T19:50:09.145712Z"
+    },
+    "step_results": null
+}

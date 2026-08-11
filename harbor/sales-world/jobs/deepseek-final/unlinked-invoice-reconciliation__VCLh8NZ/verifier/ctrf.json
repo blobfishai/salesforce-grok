@@ -1,0 +1,32 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1786478845.5326462,
+            "stop": 1786478845.8474605
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_check",
+                "status": "passed",
+                "duration": 0.07934831100010342,
+                "start": 1786478845.5587847,
+                "stop": 1786478845.6393366,
+                "retries": 7,
+                "file_path": "test_outputs.py",
+                "tags": [
+                    "parametrize::check::[{'name': 'recon_ticket_for_inv_1004', 'sql': \"SELECT COUNT(*) AS n FROM jira_issues WHERE project_key = 'RECON' AND summary LIKE ?\", 'params': ['%INV-1004%'], 'expect': {'scalar_equals': 1}}, {'name': 'recon_ticket_for_inv_1005', 'sql': \"SELECT COUNT(*) AS n FROM jira_issues WHERE project_key = 'RECON' AND summary LIKE ?\", 'params': ['%INV-1005%'], 'expect': {'scalar_equals': 1}}, {'name': 'recon_ticket_for_inv_1006', 'sql': \"SELECT COUNT(*) AS n FROM jira_issues WHERE project_key = 'RECON' AND summary LIKE ?\", 'params': ['%INV-1006%'], 'expect': {'scalar_equals': 1}}, {'name': 'recon_ticket_for_inv_1007', 'sql': \"SELECT COUNT(*) AS n FROM jira_issues WHERE project_key = 'RECON' AND summary LIKE ?\", 'params': ['%INV-1007%'], 'expect': {'scalar_equals': 1}}, {'name': 'recon_ticket_for_inv_1008', 'sql': \"SELECT COUNT(*) AS n FROM jira_issues WHERE project_key = 'RECON' AND summary LIKE ?\", 'params': ['%INV-1008%'], 'expect': {'scalar_equals': 1}}, {'name': 'no_ticket_for_correctly_linked_invoices', 'sql': \"SELECT COUNT(*) AS n FROM jira_issues WHERE project_key = 'RECON' AND (summary LIKE '%INV-1001%' OR summary LIKE '%INV-1002%' OR summary LIKE '%INV-1003%')\", 'expect': {'scalar_equals': 0}}, {'name': 'invoices_were_not_edited', 'sql': 'SELECT id, created_from, status, total, amount_remaining FROM erp_invoices ORDER BY id', 'expect': {'unchanged_vs_seed': True}}, {'name': 'sales_orders_untouched', 'sql': 'SELECT id, status, total FROM erp_sales_orders ORDER BY id', 'expect': {'unchanged_vs_seed': True}}]::ids_['recon_ticket_for_inv_1004', 'recon_ticket_for_inv_1005', 'recon_ticket_for_inv_1006', 'recon_ticket_for_inv_1007', 'recon_ticket_for_inv_1008', 'no_ticket_for_correctly_linked_invoices', 'invoices_were_not_edited', 'sales_orders_untouched']"
+                ]
+            }
+        ]
+    }
+}

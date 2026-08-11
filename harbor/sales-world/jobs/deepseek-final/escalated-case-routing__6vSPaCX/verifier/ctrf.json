@@ -1,0 +1,32 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1786478377.8279133,
+            "stop": 1786478378.4452186
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_check",
+                "status": "passed",
+                "duration": 0.07227036700078315,
+                "start": 1786478377.8898716,
+                "stop": 1786478377.9635847,
+                "retries": 12,
+                "file_path": "test_outputs.py",
+                "tags": [
+                    "parametrize::check::[{'name': 'urgent_svc_100004_chased_and_left_escalated', 'sql': 'SELECT (SELECT status FROM service_cases WHERE id = ?) AS s, (SELECT COUNT(*) FROM tasks WHERE subject LIKE ?) AS n', 'params': ['case_svc_0005', '%SVC-100004%'], 'expect': {'rows_equal': [{'s': 'escalated', 'n': '1'}]}}, {'name': 'urgent_svc_100029_chased_and_left_escalated', 'sql': 'SELECT (SELECT status FROM service_cases WHERE id = ?) AS s, (SELECT COUNT(*) FROM tasks WHERE subject LIKE ?) AS n', 'params': ['case_svc_0030', '%SVC-100029%'], 'expect': {'rows_equal': [{'s': 'escalated', 'n': '1'}]}}, {'name': 'urgent_svc_100094_chased_and_left_escalated', 'sql': 'SELECT (SELECT status FROM service_cases WHERE id = ?) AS s, (SELECT COUNT(*) FROM tasks WHERE subject LIKE ?) AS n', 'params': ['case_svc_0095', '%SVC-100094%'], 'expect': {'rows_equal': [{'s': 'escalated', 'n': '1'}]}}, {'name': 'low_svc_100025_returned_to_open', 'sql': 'SELECT status FROM service_cases WHERE id = ?', 'params': ['case_svc_0026'], 'expect': {'scalar_equals': 'open'}}, {'name': 'low_svc_100096_returned_to_open', 'sql': 'SELECT status FROM service_cases WHERE id = ?', 'params': ['case_svc_0097'], 'expect': {'scalar_equals': 'open'}}, {'name': 'low_svc_100164_returned_to_open', 'sql': 'SELECT status FROM service_cases WHERE id = ?', 'params': ['case_svc_0165'], 'expect': {'scalar_equals': 'open'}}, {'name': 'low_svc_100025_got_no_followup', 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?', 'params': ['%SVC-100025%'], 'expect': {'scalar_equals': 0}}, {'name': 'low_svc_100096_got_no_followup', 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?', 'params': ['%SVC-100096%'], 'expect': {'scalar_equals': 0}}, {'name': 'low_svc_100164_got_no_followup', 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?', 'params': ['%SVC-100164%'], 'expect': {'scalar_equals': 0}}, {'name': 'medium_svc_100022_left_untouched', 'sql': 'SELECT status FROM service_cases WHERE id = ?', 'params': ['case_svc_0023'], 'expect': {'scalar_equals': 'escalated'}}, {'name': 'medium_svc_100158_left_untouched', 'sql': 'SELECT status FROM service_cases WHERE id = ?', 'params': ['case_svc_0159'], 'expect': {'scalar_equals': 'escalated'}}, {'name': 'closed_cases_untouched', 'sql': \"SELECT COUNT(*) AS n FROM service_cases WHERE status = 'closed'\", 'expect': {'unchanged_vs_seed': True}}, {'name': 'no_cases_created_or_deleted', 'sql': 'SELECT COUNT(*) AS n FROM service_cases', 'expect': {'scalar_equals': 180}}]::ids_['urgent_svc_100004_chased_and_left_escalated', 'urgent_svc_100029_chased_and_left_escalated', 'urgent_svc_100094_chased_and_left_escalated', 'low_svc_100025_returned_to_open', 'low_svc_100096_returned_to_open', 'low_svc_100164_returned_to_open', 'low_svc_100025_got_no_followup', 'low_svc_100096_got_no_followup', 'low_svc_100164_got_no_followup', 'medium_svc_100022_left_untouched', 'medium_svc_100158_left_untouched', 'closed_cases_untouched', 'no_cases_created_or_deleted']"
+                ]
+            }
+        ]
+    }
+}
