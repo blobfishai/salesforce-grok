@@ -1,0 +1,38 @@
+{
+ "name": "forecast_submissions_list",
+ "mcp_name": "salesforce.forecast_submissions_list",
+ "asset_namespace": "salesforce",
+ "description": "List submitted forecast categories per rep (GET /services/data/v62.0/query?q=SELECT+FROM+ForecastingItem).",
+ "type": "read",
+ "target_tables": [
+  "forecast_submissions"
+ ],
+ "parameters": {
+  "employee_id": "integer",
+  "period": "string",
+  "category": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "employee_id": {
+    "type": "integer",
+    "description": "Rep to filter by."
+   },
+   "period": {
+    "type": "string",
+    "description": "Fiscal period."
+   },
+   "category": {
+    "type": "string",
+    "description": "Forecast category: commit, best_case or pipeline."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "Maximum number of records to return (default 30)."
+   }
+  },
+  "additionalProperties": false
+ }
+}

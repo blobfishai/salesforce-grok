@@ -1,0 +1,2580 @@
+{
+ "vendor": "salesforce-crm",
+ "namespace": "salesforce",
+ "tables": [
+  {
+   "name": "lead_merge_log",
+   "description": "Audit trail of executed lead merges (survivorship + re-parenting).",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "master_lead_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "duplicate_lead_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "fields_filled",
+     "type": "TEXT"
+    },
+    {
+     "name": "children_reparented",
+     "type": "INTEGER"
+    },
+    {
+     "name": "merged_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": []
+  },
+  {
+   "name": "outreach_sequences",
+   "description": "Outbound sequence definitions (Outreach/Salesloft analog).",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "step_count",
+     "type": "INTEGER"
+    },
+    {
+     "name": "owner_employee_id",
+     "type": "INTEGER"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "seq_0001",
+     "name": "Enterprise Outbound — Wealth Platform",
+     "status": "active",
+     "step_count": 5,
+     "owner_employee_id": 1,
+     "created_at": "2026-01-06T09:00:00Z"
+    },
+    {
+     "id": "seq_0002",
+     "name": "Renewal Notice — T-120",
+     "status": "active",
+     "step_count": 3,
+     "owner_employee_id": 1,
+     "created_at": "2026-01-06T09:00:00Z"
+    },
+    {
+     "id": "seq_0003",
+     "name": "Closed-Lost Win-Back",
+     "status": "paused",
+     "step_count": 4,
+     "owner_employee_id": 1,
+     "created_at": "2026-01-06T09:00:00Z"
+    }
+   ]
+  },
+  {
+   "name": "outreach_sequence_steps",
+   "description": "Ordered steps of a sequence with delays, channel and A/B variant.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "sequence_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "step_number",
+     "type": "INTEGER"
+    },
+    {
+     "name": "channel",
+     "type": "TEXT"
+    },
+    {
+     "name": "delay_days",
+     "type": "INTEGER"
+    },
+    {
+     "name": "template_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "variant",
+     "type": "TEXT"
+    },
+    {
+     "name": "subject",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "seq_0001_step_1",
+     "sequence_id": "seq_0001",
+     "step_number": 1,
+     "channel": "email",
+     "delay_days": 0,
+     "template_id": "tmpl_0001",
+     "variant": "A",
+     "subject": "Enterprise Outbound — Wealth Platform — step 1"
+    },
+    {
+     "id": "seq_0001_step_2",
+     "sequence_id": "seq_0001",
+     "step_number": 2,
+     "channel": "call",
+     "delay_days": 3,
+     "template_id": "tmpl_0002",
+     "variant": "B",
+     "subject": "Enterprise Outbound — Wealth Platform — step 2"
+    },
+    {
+     "id": "seq_0001_step_3",
+     "sequence_id": "seq_0001",
+     "step_number": 3,
+     "channel": "email",
+     "delay_days": 5,
+     "template_id": "tmpl_0003",
+     "variant": "A",
+     "subject": "Enterprise Outbound — Wealth Platform — step 3"
+    },
+    {
+     "id": "seq_0001_step_4",
+     "sequence_id": "seq_0001",
+     "step_number": 4,
+     "channel": "call",
+     "delay_days": 7,
+     "template_id": "tmpl_0001",
+     "variant": "B",
+     "subject": "Enterprise Outbound — Wealth Platform — step 4"
+    },
+    {
+     "id": "seq_0001_step_5",
+     "sequence_id": "seq_0001",
+     "step_number": 5,
+     "channel": "email",
+     "delay_days": 10,
+     "template_id": "tmpl_0002",
+     "variant": "A",
+     "subject": "Enterprise Outbound — Wealth Platform — step 5"
+    },
+    {
+     "id": "seq_0002_step_1",
+     "sequence_id": "seq_0002",
+     "step_number": 1,
+     "channel": "email",
+     "delay_days": 0,
+     "template_id": "tmpl_0001",
+     "variant": "A",
+     "subject": "Renewal Notice — T-120 — step 1"
+    },
+    {
+     "id": "seq_0002_step_2",
+     "sequence_id": "seq_0002",
+     "step_number": 2,
+     "channel": "call",
+     "delay_days": 3,
+     "template_id": "tmpl_0002",
+     "variant": "B",
+     "subject": "Renewal Notice — T-120 — step 2"
+    },
+    {
+     "id": "seq_0002_step_3",
+     "sequence_id": "seq_0002",
+     "step_number": 3,
+     "channel": "email",
+     "delay_days": 5,
+     "template_id": "tmpl_0003",
+     "variant": "A",
+     "subject": "Renewal Notice — T-120 — step 3"
+    },
+    {
+     "id": "seq_0003_step_1",
+     "sequence_id": "seq_0003",
+     "step_number": 1,
+     "channel": "email",
+     "delay_days": 0,
+     "template_id": "tmpl_0001",
+     "variant": "A",
+     "subject": "Closed-Lost Win-Back — step 1"
+    },
+    {
+     "id": "seq_0003_step_2",
+     "sequence_id": "seq_0003",
+     "step_number": 2,
+     "channel": "call",
+     "delay_days": 3,
+     "template_id": "tmpl_0002",
+     "variant": "B",
+     "subject": "Closed-Lost Win-Back — step 2"
+    },
+    {
+     "id": "seq_0003_step_3",
+     "sequence_id": "seq_0003",
+     "step_number": 3,
+     "channel": "email",
+     "delay_days": 5,
+     "template_id": "tmpl_0003",
+     "variant": "A",
+     "subject": "Closed-Lost Win-Back — step 3"
+    },
+    {
+     "id": "seq_0003_step_4",
+     "sequence_id": "seq_0003",
+     "step_number": 4,
+     "channel": "call",
+     "delay_days": 7,
+     "template_id": "tmpl_0001",
+     "variant": "B",
+     "subject": "Closed-Lost Win-Back — step 4"
+    }
+   ]
+  },
+  {
+   "name": "outreach_enrollments",
+   "description": "Per-lead enrollment state in a sequence.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "sequence_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "lead_id",
+     "type": "INTEGER"
+    },
+    {
+     "name": "current_step",
+     "type": "INTEGER"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "enrolled_at",
+     "type": "TEXT"
+    },
+    {
+     "name": "last_touch_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "enr_0001",
+     "sequence_id": "seq_0001",
+     "lead_id": 1,
+     "current_step": 1,
+     "status": "active",
+     "enrolled_at": "2026-01-06T09:00:00Z",
+     "last_touch_at": "2026-01-09T09:00:00Z"
+    },
+    {
+     "id": "enr_0002",
+     "sequence_id": "seq_0002",
+     "lead_id": 8,
+     "current_step": 2,
+     "status": "active",
+     "enrolled_at": "2026-01-07T09:00:00Z",
+     "last_touch_at": "2026-01-10T09:00:00Z"
+    },
+    {
+     "id": "enr_0003",
+     "sequence_id": "seq_0003",
+     "lead_id": 15,
+     "current_step": 3,
+     "status": "replied",
+     "enrolled_at": "2026-01-08T09:00:00Z",
+     "last_touch_at": "2026-01-11T09:00:00Z"
+    },
+    {
+     "id": "enr_0004",
+     "sequence_id": "seq_0001",
+     "lead_id": 22,
+     "current_step": 1,
+     "status": "completed",
+     "enrolled_at": "2026-01-09T09:00:00Z",
+     "last_touch_at": "2026-01-12T09:00:00Z"
+    },
+    {
+     "id": "enr_0005",
+     "sequence_id": "seq_0002",
+     "lead_id": 29,
+     "current_step": 2,
+     "status": "bounced",
+     "enrolled_at": "2026-01-10T09:00:00Z",
+     "last_touch_at": "2026-01-13T09:00:00Z"
+    },
+    {
+     "id": "enr_0006",
+     "sequence_id": "seq_0003",
+     "lead_id": 36,
+     "current_step": 3,
+     "status": "active",
+     "enrolled_at": "2026-01-11T09:00:00Z",
+     "last_touch_at": "2026-01-14T09:00:00Z"
+    },
+    {
+     "id": "enr_0007",
+     "sequence_id": "seq_0001",
+     "lead_id": 43,
+     "current_step": 1,
+     "status": "active",
+     "enrolled_at": "2026-01-12T09:00:00Z",
+     "last_touch_at": "2026-01-15T09:00:00Z"
+    },
+    {
+     "id": "enr_0008",
+     "sequence_id": "seq_0002",
+     "lead_id": 50,
+     "current_step": 2,
+     "status": "replied",
+     "enrolled_at": "2026-01-13T09:00:00Z",
+     "last_touch_at": "2026-01-16T09:00:00Z"
+    },
+    {
+     "id": "enr_0009",
+     "sequence_id": "seq_0003",
+     "lead_id": 57,
+     "current_step": 3,
+     "status": "completed",
+     "enrolled_at": "2026-01-14T09:00:00Z",
+     "last_touch_at": "2026-01-17T09:00:00Z"
+    },
+    {
+     "id": "enr_0010",
+     "sequence_id": "seq_0001",
+     "lead_id": 64,
+     "current_step": 1,
+     "status": "bounced",
+     "enrolled_at": "2026-01-15T09:00:00Z",
+     "last_touch_at": "2026-01-18T09:00:00Z"
+    },
+    {
+     "id": "enr_0011",
+     "sequence_id": "seq_0002",
+     "lead_id": 71,
+     "current_step": 2,
+     "status": "active",
+     "enrolled_at": "2026-01-16T09:00:00Z",
+     "last_touch_at": "2026-01-19T09:00:00Z"
+    },
+    {
+     "id": "enr_0012",
+     "sequence_id": "seq_0003",
+     "lead_id": 78,
+     "current_step": 3,
+     "status": "active",
+     "enrolled_at": "2026-01-17T09:00:00Z",
+     "last_touch_at": "2026-01-20T09:00:00Z"
+    },
+    {
+     "id": "enr_0013",
+     "sequence_id": "seq_0001",
+     "lead_id": 85,
+     "current_step": 1,
+     "status": "replied",
+     "enrolled_at": "2026-01-18T09:00:00Z",
+     "last_touch_at": "2026-01-21T09:00:00Z"
+    },
+    {
+     "id": "enr_0014",
+     "sequence_id": "seq_0002",
+     "lead_id": 92,
+     "current_step": 2,
+     "status": "completed",
+     "enrolled_at": "2026-01-19T09:00:00Z",
+     "last_touch_at": "2026-01-22T09:00:00Z"
+    }
+   ]
+  },
+  {
+   "name": "email_threads",
+   "description": "Inbound/outbound email threads with an intent label for reply classification.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "account_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "account_name",
+     "type": "TEXT"
+    },
+    {
+     "name": "subject",
+     "type": "TEXT"
+    },
+    {
+     "name": "lead_id",
+     "type": "INTEGER"
+    },
+    {
+     "name": "intent_label",
+     "type": "TEXT"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "last_message_at",
+     "type": "TEXT"
+    },
+    {
+     "name": "assigned_employee_id",
+     "type": "INTEGER"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "thr_0001",
+     "account_id": "account_001",
+     "account_name": "Summit Group",
+     "subject": "Re: Summit Group — Wealth Platform introduction",
+     "lead_id": 1,
+     "intent_label": "unclassified",
+     "status": "unread",
+     "last_message_at": "2026-01-06T12:00:00Z",
+     "assigned_employee_id": 1
+    },
+    {
+     "id": "thr_0002",
+     "account_id": "account_002",
+     "account_name": "Riverside Group",
+     "subject": "Re: Riverside Group — Wealth Platform introduction",
+     "lead_id": 8,
+     "intent_label": "not_now",
+     "status": "read",
+     "last_message_at": "2026-01-07T12:00:00Z",
+     "assigned_employee_id": 3
+    },
+    {
+     "id": "thr_0003",
+     "account_id": "account_003",
+     "account_name": "Meridian Capital",
+     "subject": "Re: Meridian Capital — Wealth Platform introduction",
+     "lead_id": 15,
+     "intent_label": "unsubscribe",
+     "status": "read",
+     "last_message_at": "2026-01-08T12:00:00Z",
+     "assigned_employee_id": 5
+    },
+    {
+     "id": "thr_0004",
+     "account_id": "account_004",
+     "account_name": "Ironwood Holdings",
+     "subject": "Re: Ironwood Holdings — Wealth Platform introduction",
+     "lead_id": 22,
+     "intent_label": "unclassified",
+     "status": "read",
+     "last_message_at": "2026-01-09T12:00:00Z",
+     "assigned_employee_id": 7
+    },
+    {
+     "id": "thr_0005",
+     "account_id": "account_005",
+     "account_name": "Harborview Partners",
+     "subject": "Re: Harborview Partners — Wealth Platform introduction",
+     "lead_id": 29,
+     "intent_label": "pricing_question",
+     "status": "unread",
+     "last_message_at": "2026-01-10T12:00:00Z",
+     "assigned_employee_id": 1
+    },
+    {
+     "id": "thr_0006",
+     "account_id": "account_006",
+     "account_name": "Atlas Advisory",
+     "subject": "Re: Atlas Advisory — Wealth Platform introduction",
+     "lead_id": 36,
+     "intent_label": "out_of_office",
+     "status": "read",
+     "last_message_at": "2026-01-11T12:00:00Z",
+     "assigned_employee_id": 3
+    },
+    {
+     "id": "thr_0007",
+     "account_id": "account_007",
+     "account_name": "Crestline Trust",
+     "subject": "Re: Crestline Trust — Wealth Platform introduction",
+     "lead_id": 43,
+     "intent_label": "unclassified",
+     "status": "read",
+     "last_message_at": "2026-01-12T12:00:00Z",
+     "assigned_employee_id": 5
+    },
+    {
+     "id": "thr_0008",
+     "account_id": "account_001",
+     "account_name": "Summit Group",
+     "subject": "Re: Summit Group — Wealth Platform introduction",
+     "lead_id": 50,
+     "intent_label": "not_now",
+     "status": "read",
+     "last_message_at": "2026-01-13T12:00:00Z",
+     "assigned_employee_id": 7
+    },
+    {
+     "id": "thr_0009",
+     "account_id": "account_002",
+     "account_name": "Riverside Group",
+     "subject": "Re: Riverside Group — Wealth Platform introduction",
+     "lead_id": 57,
+     "intent_label": "unsubscribe",
+     "status": "unread",
+     "last_message_at": "2026-01-14T12:00:00Z",
+     "assigned_employee_id": 1
+    },
+    {
+     "id": "thr_0010",
+     "account_id": "account_003",
+     "account_name": "Meridian Capital",
+     "subject": "Re: Meridian Capital — Wealth Platform introduction",
+     "lead_id": 64,
+     "intent_label": "unclassified",
+     "status": "read",
+     "last_message_at": "2026-01-15T12:00:00Z",
+     "assigned_employee_id": 3
+    },
+    {
+     "id": "thr_0011",
+     "account_id": "account_004",
+     "account_name": "Ironwood Holdings",
+     "subject": "Re: Ironwood Holdings — Wealth Platform introduction",
+     "lead_id": 71,
+     "intent_label": "pricing_question",
+     "status": "read",
+     "last_message_at": "2026-01-16T12:00:00Z",
+     "assigned_employee_id": 5
+    },
+    {
+     "id": "thr_0012",
+     "account_id": "account_005",
+     "account_name": "Harborview Partners",
+     "subject": "Re: Harborview Partners — Wealth Platform introduction",
+     "lead_id": 78,
+     "intent_label": "out_of_office",
+     "status": "read",
+     "last_message_at": "2026-01-17T12:00:00Z",
+     "assigned_employee_id": 7
+    },
+    {
+     "id": "thr_0013",
+     "account_id": "account_006",
+     "account_name": "Atlas Advisory",
+     "subject": "Re: Atlas Advisory — Wealth Platform introduction",
+     "lead_id": 85,
+     "intent_label": "unclassified",
+     "status": "unread",
+     "last_message_at": "2026-01-18T12:00:00Z",
+     "assigned_employee_id": 1
+    },
+    {
+     "id": "thr_0014",
+     "account_id": "account_007",
+     "account_name": "Crestline Trust",
+     "subject": "Re: Crestline Trust — Wealth Platform introduction",
+     "lead_id": 92,
+     "intent_label": "not_now",
+     "status": "read",
+     "last_message_at": "2026-01-19T12:00:00Z",
+     "assigned_employee_id": 3
+    },
+    {
+     "id": "thr_0015",
+     "account_id": "account_001",
+     "account_name": "Summit Group",
+     "subject": "Re: Summit Group — Wealth Platform introduction",
+     "lead_id": 1,
+     "intent_label": "unsubscribe",
+     "status": "read",
+     "last_message_at": "2026-01-20T12:00:00Z",
+     "assigned_employee_id": 5
+    },
+    {
+     "id": "thr_0016",
+     "account_id": "account_002",
+     "account_name": "Riverside Group",
+     "subject": "Re: Riverside Group — Wealth Platform introduction",
+     "lead_id": 8,
+     "intent_label": "unclassified",
+     "status": "read",
+     "last_message_at": "2026-01-21T12:00:00Z",
+     "assigned_employee_id": 7
+    },
+    {
+     "id": "thr_0017",
+     "account_id": "account_003",
+     "account_name": "Meridian Capital",
+     "subject": "Re: Meridian Capital — Wealth Platform introduction",
+     "lead_id": 15,
+     "intent_label": "pricing_question",
+     "status": "unread",
+     "last_message_at": "2026-01-22T12:00:00Z",
+     "assigned_employee_id": 1
+    },
+    {
+     "id": "thr_0018",
+     "account_id": "account_004",
+     "account_name": "Ironwood Holdings",
+     "subject": "Re: Ironwood Holdings — Wealth Platform introduction",
+     "lead_id": 22,
+     "intent_label": "out_of_office",
+     "status": "read",
+     "last_message_at": "2026-01-23T12:00:00Z",
+     "assigned_employee_id": 3
+    }
+   ]
+  },
+  {
+   "name": "email_messages",
+   "description": "Individual messages inside an email thread.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "thread_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "direction",
+     "type": "TEXT"
+    },
+    {
+     "name": "from_address",
+     "type": "TEXT"
+    },
+    {
+     "name": "to_address",
+     "type": "TEXT"
+    },
+    {
+     "name": "body",
+     "type": "TEXT"
+    },
+    {
+     "name": "sent_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "msg_0001",
+     "thread_id": "thr_0001",
+     "direction": "outbound",
+     "from_address": "mei.huang@morganstanleysimulated.com",
+     "to_address": "contact0@summit.example",
+     "body": "Following up on the platform overview I sent last week.",
+     "sent_at": "2026-01-06T09:00:00Z"
+    },
+    {
+     "id": "msg_0002",
+     "thread_id": "thr_0001",
+     "direction": "inbound",
+     "from_address": "contact0@summit.example",
+     "to_address": "mei.huang@morganstanleysimulated.com",
+     "body": "This is timely — we're kicking off a platform evaluation this quarter. Happy to find time to talk.",
+     "sent_at": "2026-01-06T12:00:00Z"
+    },
+    {
+     "id": "msg_0003",
+     "thread_id": "thr_0002",
+     "direction": "outbound",
+     "from_address": "mei.huang@morganstanleysimulated.com",
+     "to_address": "contact1@riverside.example",
+     "body": "Following up on the platform overview I sent last week.",
+     "sent_at": "2026-01-07T09:00:00Z"
+    },
+    {
+     "id": "msg_0004",
+     "thread_id": "thr_0002",
+     "direction": "inbound",
+     "from_address": "contact1@riverside.example",
+     "to_address": "mei.huang@morganstanleysimulated.com",
+     "body": "Not a priority until our fiscal year rolls over in Q3. Try me then.",
+     "sent_at": "2026-01-07T12:00:00Z"
+    },
+    {
+     "id": "msg_0005",
+     "thread_id": "thr_0003",
+     "direction": "outbound",
+     "from_address": "mei.huang@morganstanleysimulated.com",
+     "to_address": "contact2@meridian.example",
+     "body": "Following up on the platform overview I sent last week.",
+     "sent_at": "2026-01-08T09:00:00Z"
+    },
+    {
+     "id": "msg_0006",
+     "thread_id": "thr_0003",
+     "direction": "inbound",
+     "from_address": "contact2@meridian.example",
+     "to_address": "mei.huang@morganstanleysimulated.com",
+     "body": "Please remove me from your list and do not contact me again.",
+     "sent_at": "2026-01-08T12:00:00Z"
+    },
+    {
+     "id": "msg_0007",
+     "thread_id": "thr_0004",
+     "direction": "outbound",
+     "from_address": "mei.huang@morganstanleysimulated.com",
+     "to_address": "contact3@ironwood.example",
+     "body": "Following up on the platform overview I sent last week.",
+     "sent_at": "2026-01-09T09:00:00Z"
+    },
+    {
+     "id": "msg_0008",
+     "thread_id": "thr_0004",
+     "direction": "inbound",
+     "from_address": "contact3@ironwood.example",
+     "to_address": "mei.huang@morganstanleysimulated.com",
+     "body": "Wrong person — my colleague in operations owns this. Copying them here.",
+     "sent_at": "2026-01-09T12:00:00Z"
+    },
+    {
+     "id": "msg_0009",
+     "thread_id": "thr_0005",
+     "direction": "outbound",
+     "from_address": "mei.huang@morganstanleysimulated.com",
+     "to_address": "contact4@harborview.example",
+     "body": "Following up on the platform overview I sent last week.",
+     "sent_at": "2026-01-10T09:00:00Z"
+    },
+    {
+     "id": "msg_0010",
+     "thread_id": "thr_0005",
+     "direction": "inbound",
+     "from_address": "contact4@harborview.example",
+     "to_address": "mei.huang@morganstanleysimulated.com",
+     "body": "What does the data feed add on top of the platform license, and how is it priced?",
+     "sent_at": "2026-01-10T12:00:00Z"
+    },
+    {
+     "id": "msg_0011",
+     "thread_id": "thr_0006",
+     "direction": "outbound",
+     "from_address": "mei.huang@morganstanleysimulated.com",
+     "to_address": "contact5@atlas.example",
+     "body": "Following up on the platform overview I sent last week.",
+     "sent_at": "2026-01-11T09:00:00Z"
+    },
+    {
+     "id": "msg_0012",
+     "thread_id": "thr_0006",
+     "direction": "inbound",
+     "from_address": "contact5@atlas.example",
+     "to_address": "mei.huang@morganstanleysimulated.com",
+     "body": "I am out of the office until the 22nd with limited email access.",
+     "sent_at": "2026-01-11T12:00:00Z"
+    },
+    {
+     "id": "msg_0013",
+     "thread_id": "thr_0007",
+     "direction": "outbound",
+     "from_address": "mei.huang@morganstanleysimulated.com",
+     "to_address": "contact6@crestline.example",
+     "body": "Following up on the platform overview I sent last week.",
+     "sent_at": "2026-01-12T09:00:00Z"
+    },
+    {
+     "id": "msg_0014",
+     "thread_id": "thr_0007",
+     "direction": "inbound",
+     "from_address": "contact6@crestline.example",
+     "to_address": "mei.huang@morganstanleysimulated.com",
+     "body": "This is timely — we're kicking off a platform evaluation this quarter. Happy to find time to talk.",
+     "sent_at": "2026-01-12T12:00:00Z"
+    },
+    {
+     "id": "msg_0015",
+     "thread_id": "thr_0008",
+     "direction": "outbound",
+     "from_address": "mei.huang@morganstanleysimulated.com",
+     "to_address": "contact7@summit.example",
+     "body": "Following up on the platform overview I sent last week.",
+     "sent_at": "2026-01-13T09:00:00Z"
+    },
+    {
+     "id": "msg_0016",
+     "thread_id": "thr_0008",
+     "direction": "inbound",
+     "from_address": "contact7@summit.example",
+     "to_address": "mei.huang@morganstanleysimulated.com",
+     "body": "Not a priority until our fiscal year rolls over in Q3. Try me then.",
+     "sent_at": "2026-01-13T12:00:00Z"
+    },
+    {
+     "id": "msg_0017",
+     "thread_id": "thr_0009",
+     "direction": "outbound",
+     "from_address": "mei.huang@morganstanleysimulated.com",
+     "to_address": "contact8@riverside.example",
+     "body": "Following up on the platform overview I sent last week.",
+     "sent_at": "2026-01-14T09:00:00Z"
+    },
+    {
+     "id": "msg_0018",
+     "thread_id": "thr_0009",
+     "direction": "inbound",
+     "from_address": "contact8@riverside.example",
+     "to_address": "mei.huang@morganstanleysimulated.com",
+     "body": "Please remove me from your list and do not contact me again.",
+     "sent_at": "2026-01-14T12:00:00Z"
+    },
+    {
+     "id": "msg_0019",
+     "thread_id": "thr_0010",
+     "direction": "outbound",
+     "from_address": "mei.huang@morganstanleysimulated.com",
+     "to_address": "contact9@meridian.example",
+     "body": "Following up on the platform overview I sent last week.",
+     "sent_at": "2026-01-15T09:00:00Z"
+    },
+    {
+     "id": "msg_0020",
+     "thread_id": "thr_0010",
+     "direction": "inbound",
+     "from_address": "contact9@meridian.example",
+     "to_address": "mei.huang@morganstanleysimulated.com",
+     "body": "Wrong person — my colleague in operations owns this. Copying them here.",
+     "sent_at": "2026-01-15T12:00:00Z"
+    },
+    {
+     "id": "msg_0021",
+     "thread_id": "thr_0011",
+     "direction": "outbound",
+     "from_address": "mei.huang@morganstanleysimulated.com",
+     "to_address": "contact10@ironwood.example",
+     "body": "Following up on the platform overview I sent last week.",
+     "sent_at": "2026-01-16T09:00:00Z"
+    },
+    {
+     "id": "msg_0022",
+     "thread_id": "thr_0011",
+     "direction": "inbound",
+     "from_address": "contact10@ironwood.example",
+     "to_address": "mei.huang@morganstanleysimulated.com",
+     "body": "What does the data feed add on top of the platform license, and how is it priced?",
+     "sent_at": "2026-01-16T12:00:00Z"
+    },
+    {
+     "id": "msg_0023",
+     "thread_id": "thr_0012",
+     "direction": "outbound",
+     "from_address": "mei.huang@morganstanleysimulated.com",
+     "to_address": "contact11@harborview.example",
+     "body": "Following up on the platform overview I sent last week.",
+     "sent_at": "2026-01-17T09:00:00Z"
+    },
+    {
+     "id": "msg_0024",
+     "thread_id": "thr_0012",
+     "direction": "inbound",
+     "from_address": "contact11@harborview.example",
+     "to_address": "mei.huang@morganstanleysimulated.com",
+     "body": "I am out of the office until the 22nd with limited email access.",
+     "sent_at": "2026-01-17T12:00:00Z"
+    },
+    {
+     "id": "msg_0025",
+     "thread_id": "thr_0013",
+     "direction": "outbound",
+     "from_address": "mei.huang@morganstanleysimulated.com",
+     "to_address": "contact12@atlas.example",
+     "body": "Following up on the platform overview I sent last week.",
+     "sent_at": "2026-01-18T09:00:00Z"
+    },
+    {
+     "id": "msg_0026",
+     "thread_id": "thr_0013",
+     "direction": "inbound",
+     "from_address": "contact12@atlas.example",
+     "to_address": "mei.huang@morganstanleysimulated.com",
+     "body": "This is timely — we're kicking off a platform evaluation this quarter. Happy to find time to talk.",
+     "sent_at": "2026-01-18T12:00:00Z"
+    },
+    {
+     "id": "msg_0027",
+     "thread_id": "thr_0014",
+     "direction": "outbound",
+     "from_address": "mei.huang@morganstanleysimulated.com",
+     "to_address": "contact13@crestline.example",
+     "body": "Following up on the platform overview I sent last week.",
+     "sent_at": "2026-01-19T09:00:00Z"
+    },
+    {
+     "id": "msg_0028",
+     "thread_id": "thr_0014",
+     "direction": "inbound",
+     "from_address": "contact13@crestline.example",
+     "to_address": "mei.huang@morganstanleysimulated.com",
+     "body": "Not a priority until our fiscal year rolls over in Q3. Try me then.",
+     "sent_at": "2026-01-19T12:00:00Z"
+    },
+    {
+     "id": "msg_0029",
+     "thread_id": "thr_0015",
+     "direction": "outbound",
+     "from_address": "mei.huang@morganstanleysimulated.com",
+     "to_address": "contact14@summit.example",
+     "body": "Following up on the platform overview I sent last week.",
+     "sent_at": "2026-01-20T09:00:00Z"
+    },
+    {
+     "id": "msg_0030",
+     "thread_id": "thr_0015",
+     "direction": "inbound",
+     "from_address": "contact14@summit.example",
+     "to_address": "mei.huang@morganstanleysimulated.com",
+     "body": "Please remove me from your list and do not contact me again.",
+     "sent_at": "2026-01-20T12:00:00Z"
+    },
+    {
+     "id": "msg_0031",
+     "thread_id": "thr_0016",
+     "direction": "outbound",
+     "from_address": "mei.huang@morganstanleysimulated.com",
+     "to_address": "contact15@riverside.example",
+     "body": "Following up on the platform overview I sent last week.",
+     "sent_at": "2026-01-21T09:00:00Z"
+    },
+    {
+     "id": "msg_0032",
+     "thread_id": "thr_0016",
+     "direction": "inbound",
+     "from_address": "contact15@riverside.example",
+     "to_address": "mei.huang@morganstanleysimulated.com",
+     "body": "Wrong person — my colleague in operations owns this. Copying them here.",
+     "sent_at": "2026-01-21T12:00:00Z"
+    },
+    {
+     "id": "msg_0033",
+     "thread_id": "thr_0017",
+     "direction": "outbound",
+     "from_address": "mei.huang@morganstanleysimulated.com",
+     "to_address": "contact16@meridian.example",
+     "body": "Following up on the platform overview I sent last week.",
+     "sent_at": "2026-01-22T09:00:00Z"
+    },
+    {
+     "id": "msg_0034",
+     "thread_id": "thr_0017",
+     "direction": "inbound",
+     "from_address": "contact16@meridian.example",
+     "to_address": "mei.huang@morganstanleysimulated.com",
+     "body": "What does the data feed add on top of the platform license, and how is it priced?",
+     "sent_at": "2026-01-22T12:00:00Z"
+    },
+    {
+     "id": "msg_0035",
+     "thread_id": "thr_0018",
+     "direction": "outbound",
+     "from_address": "mei.huang@morganstanleysimulated.com",
+     "to_address": "contact17@ironwood.example",
+     "body": "Following up on the platform overview I sent last week.",
+     "sent_at": "2026-01-23T09:00:00Z"
+    },
+    {
+     "id": "msg_0036",
+     "thread_id": "thr_0018",
+     "direction": "inbound",
+     "from_address": "contact17@ironwood.example",
+     "to_address": "mei.huang@morganstanleysimulated.com",
+     "body": "I am out of the office until the 22nd with limited email access.",
+     "sent_at": "2026-01-23T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "name": "rep_quotas",
+   "description": "Per-rep, per-period quota and attainment.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "employee_id",
+     "type": "INTEGER"
+    },
+    {
+     "name": "employee_name",
+     "type": "TEXT"
+    },
+    {
+     "name": "period",
+     "type": "TEXT"
+    },
+    {
+     "name": "quota_amount",
+     "type": "REAL"
+    },
+    {
+     "name": "attainment_amount",
+     "type": "REAL"
+    },
+    {
+     "name": "currency",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "quota_1_2026-Q1",
+     "employee_id": 1,
+     "employee_name": "Mei Huang",
+     "period": "2026-Q1",
+     "quota_amount": 750000.0,
+     "attainment_amount": 323848.99,
+     "currency": "usd"
+    },
+    {
+     "id": "quota_1_2026-Q2",
+     "employee_id": 1,
+     "employee_name": "Mei Huang",
+     "period": "2026-Q2",
+     "quota_amount": 750000.0,
+     "attainment_amount": 375791.86,
+     "currency": "usd"
+    },
+    {
+     "id": "quota_1_2026-Q3",
+     "employee_id": 1,
+     "employee_name": "Mei Huang",
+     "period": "2026-Q3",
+     "quota_amount": 750000.0,
+     "attainment_amount": 405691.28,
+     "currency": "usd"
+    },
+    {
+     "id": "quota_3_2026-Q1",
+     "employee_id": 3,
+     "employee_name": "Diego Alvarez",
+     "period": "2026-Q1",
+     "quota_amount": 875000.0,
+     "attainment_amount": 567341.16,
+     "currency": "usd"
+    },
+    {
+     "id": "quota_3_2026-Q2",
+     "employee_id": 3,
+     "employee_name": "Diego Alvarez",
+     "period": "2026-Q2",
+     "quota_amount": 875000.0,
+     "attainment_amount": 415967.09,
+     "currency": "usd"
+    },
+    {
+     "id": "quota_3_2026-Q3",
+     "employee_id": 3,
+     "employee_name": "Diego Alvarez",
+     "period": "2026-Q3",
+     "quota_amount": 875000.0,
+     "attainment_amount": 622910.51,
+     "currency": "usd"
+    },
+    {
+     "id": "quota_5_2026-Q1",
+     "employee_id": 5,
+     "employee_name": "James Park",
+     "period": "2026-Q1",
+     "quota_amount": 1000000.0,
+     "attainment_amount": 683443.92,
+     "currency": "usd"
+    },
+    {
+     "id": "quota_5_2026-Q2",
+     "employee_id": 5,
+     "employee_name": "James Park",
+     "period": "2026-Q2",
+     "quota_amount": 1000000.0,
+     "attainment_amount": 626859.58,
+     "currency": "usd"
+    },
+    {
+     "id": "quota_5_2026-Q3",
+     "employee_id": 5,
+     "employee_name": "James Park",
+     "period": "2026-Q3",
+     "quota_amount": 1000000.0,
+     "attainment_amount": 1073405.72,
+     "currency": "usd"
+    },
+    {
+     "id": "quota_7_2026-Q1",
+     "employee_id": 7,
+     "employee_name": "Alex Rivera",
+     "period": "2026-Q1",
+     "quota_amount": 1125000.0,
+     "attainment_amount": 892455.4,
+     "currency": "usd"
+    },
+    {
+     "id": "quota_7_2026-Q2",
+     "employee_id": 7,
+     "employee_name": "Alex Rivera",
+     "period": "2026-Q2",
+     "quota_amount": 1125000.0,
+     "attainment_amount": 568173.57,
+     "currency": "usd"
+    },
+    {
+     "id": "quota_7_2026-Q3",
+     "employee_id": 7,
+     "employee_name": "Alex Rivera",
+     "period": "2026-Q3",
+     "quota_amount": 1125000.0,
+     "attainment_amount": 1335486.95,
+     "currency": "usd"
+    }
+   ]
+  },
+  {
+   "name": "forecast_submissions",
+   "description": "Submitted forecast categories per rep per period.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "employee_id",
+     "type": "INTEGER"
+    },
+    {
+     "name": "employee_name",
+     "type": "TEXT"
+    },
+    {
+     "name": "period",
+     "type": "TEXT"
+    },
+    {
+     "name": "category",
+     "type": "TEXT"
+    },
+    {
+     "name": "amount",
+     "type": "REAL"
+    },
+    {
+     "name": "submitted_at",
+     "type": "TEXT"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "fc_1_2026-Q3",
+     "employee_id": 1,
+     "employee_name": "Mei Huang",
+     "period": "2026-Q3",
+     "category": "commit",
+     "amount": 415117.54,
+     "submitted_at": "2026-03-07T09:00:00Z",
+     "status": "submitted"
+    },
+    {
+     "id": "fc_3_2026-Q3",
+     "employee_id": 3,
+     "employee_name": "Diego Alvarez",
+     "period": "2026-Q3",
+     "category": "best_case",
+     "amount": 841829.75,
+     "submitted_at": "2026-03-08T09:00:00Z",
+     "status": "submitted"
+    },
+    {
+     "id": "fc_5_2026-Q3",
+     "employee_id": 5,
+     "employee_name": "James Park",
+     "period": "2026-Q3",
+     "category": "pipeline",
+     "amount": 269849.26,
+     "submitted_at": "2026-03-09T09:00:00Z",
+     "status": "submitted"
+    },
+    {
+     "id": "fc_7_2026-Q3",
+     "employee_id": 7,
+     "employee_name": "Alex Rivera",
+     "period": "2026-Q3",
+     "category": "commit",
+     "amount": 586676.49,
+     "submitted_at": "2026-03-10T09:00:00Z",
+     "status": "submitted"
+    }
+   ]
+  },
+  {
+   "name": "account_usage",
+   "description": "Per-account product usage telemetry feeding health scores.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "account_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "account_name",
+     "type": "TEXT"
+    },
+    {
+     "name": "period",
+     "type": "TEXT"
+    },
+    {
+     "name": "licensed_seats",
+     "type": "INTEGER"
+    },
+    {
+     "name": "active_seats",
+     "type": "INTEGER"
+    },
+    {
+     "name": "logins_30d",
+     "type": "INTEGER"
+    },
+    {
+     "name": "feature_adoption_pct",
+     "type": "REAL"
+    },
+    {
+     "name": "support_tickets_90d",
+     "type": "INTEGER"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "usage_0001",
+     "account_id": "account_001",
+     "account_name": "Summit Group",
+     "period": "2026-07",
+     "licensed_seats": 40,
+     "active_seats": 36,
+     "logins_30d": 216,
+     "feature_adoption_pct": 90.0,
+     "support_tickets_90d": 0
+    },
+    {
+     "id": "usage_0002",
+     "account_id": "account_002",
+     "account_name": "Riverside Group",
+     "period": "2026-07",
+     "licensed_seats": 55,
+     "active_seats": 39,
+     "logins_30d": 741,
+     "feature_adoption_pct": 70.9,
+     "support_tickets_90d": 4
+    },
+    {
+     "id": "usage_0003",
+     "account_id": "account_003",
+     "account_name": "Meridian Capital",
+     "period": "2026-07",
+     "licensed_seats": 70,
+     "active_seats": 23,
+     "logins_30d": 437,
+     "feature_adoption_pct": 32.9,
+     "support_tickets_90d": 5
+    },
+    {
+     "id": "usage_0004",
+     "account_id": "account_004",
+     "account_name": "Ironwood Holdings",
+     "period": "2026-07",
+     "licensed_seats": 85,
+     "active_seats": 74,
+     "logins_30d": 592,
+     "feature_adoption_pct": 87.1,
+     "support_tickets_90d": 6
+    },
+    {
+     "id": "usage_0005",
+     "account_id": "account_005",
+     "account_name": "Harborview Partners",
+     "period": "2026-07",
+     "licensed_seats": 100,
+     "active_seats": 22,
+     "logins_30d": 462,
+     "feature_adoption_pct": 22.0,
+     "support_tickets_90d": 0
+    },
+    {
+     "id": "usage_0006",
+     "account_id": "account_006",
+     "account_name": "Atlas Advisory",
+     "period": "2026-07",
+     "licensed_seats": 115,
+     "active_seats": 72,
+     "logins_30d": 1440,
+     "feature_adoption_pct": 62.6,
+     "support_tickets_90d": 8
+    },
+    {
+     "id": "usage_0007",
+     "account_id": "account_007",
+     "account_name": "Crestline Trust",
+     "period": "2026-07",
+     "licensed_seats": 130,
+     "active_seats": 102,
+     "logins_30d": 1428,
+     "feature_adoption_pct": 78.5,
+     "support_tickets_90d": 4
+    }
+   ]
+  },
+  {
+   "name": "account_health",
+   "description": "Weighted account health scores with renewal date, ARR and primary risk.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "account_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "account_name",
+     "type": "TEXT"
+    },
+    {
+     "name": "score",
+     "type": "REAL"
+    },
+    {
+     "name": "band",
+     "type": "TEXT"
+    },
+    {
+     "name": "renewal_date",
+     "type": "TEXT"
+    },
+    {
+     "name": "arr_usd",
+     "type": "REAL"
+    },
+    {
+     "name": "primary_risk",
+     "type": "TEXT"
+    },
+    {
+     "name": "scored_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "health_0001",
+     "account_id": "account_001",
+     "account_name": "Summit Group",
+     "score": 74.3,
+     "band": "green",
+     "renewal_date": "2026-05-06",
+     "arr_usd": 180000.0,
+     "primary_risk": "none",
+     "scored_at": "2026-07-25T09:00:00Z"
+    },
+    {
+     "id": "health_0002",
+     "account_id": "account_002",
+     "account_name": "Riverside Group",
+     "score": 50.7,
+     "band": "yellow",
+     "renewal_date": "2026-05-31",
+     "arr_usd": 245000.0,
+     "primary_risk": "low adoption",
+     "scored_at": "2026-07-25T09:00:00Z"
+    },
+    {
+     "id": "health_0003",
+     "account_id": "account_003",
+     "account_name": "Meridian Capital",
+     "score": 30.1,
+     "band": "red",
+     "renewal_date": "2026-06-25",
+     "arr_usd": 310000.0,
+     "primary_risk": "champion departed",
+     "scored_at": "2026-07-25T09:00:00Z"
+    },
+    {
+     "id": "health_0004",
+     "account_id": "account_004",
+     "account_name": "Ironwood Holdings",
+     "score": 85.3,
+     "band": "green",
+     "renewal_date": "2026-07-20",
+     "arr_usd": 375000.0,
+     "primary_risk": "none",
+     "scored_at": "2026-07-25T09:00:00Z"
+    },
+    {
+     "id": "health_0005",
+     "account_id": "account_005",
+     "account_name": "Harborview Partners",
+     "score": 27.0,
+     "band": "red",
+     "renewal_date": "2026-08-14",
+     "arr_usd": 440000.0,
+     "primary_risk": "usage collapse",
+     "scored_at": "2026-07-25T09:00:00Z"
+    },
+    {
+     "id": "health_0006",
+     "account_id": "account_006",
+     "account_name": "Atlas Advisory",
+     "score": 65.0,
+     "band": "yellow",
+     "renewal_date": "2026-09-08",
+     "arr_usd": 505000.0,
+     "primary_risk": "pricing pressure",
+     "scored_at": "2026-07-25T09:00:00Z"
+    },
+    {
+     "id": "health_0007",
+     "account_id": "account_007",
+     "account_name": "Crestline Trust",
+     "score": 57.1,
+     "band": "yellow",
+     "renewal_date": "2026-10-03",
+     "arr_usd": 570000.0,
+     "primary_risk": "none",
+     "scored_at": "2026-07-25T09:00:00Z"
+    }
+   ]
+  },
+  {
+   "name": "campaign_touches",
+   "description": "Campaign touch graph (CampaignMember analog) for multi-touch attribution.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "campaign_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "lead_id",
+     "type": "INTEGER"
+    },
+    {
+     "name": "account_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "channel",
+     "type": "TEXT"
+    },
+    {
+     "name": "touched_at",
+     "type": "TEXT"
+    },
+    {
+     "name": "position",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "touch_0001",
+     "campaign_id": "campaign_001",
+     "lead_id": 1,
+     "account_id": "account_001",
+     "channel": "email",
+     "touched_at": "2026-01-06T09:00:00Z",
+     "position": "first"
+    },
+    {
+     "id": "touch_0002",
+     "campaign_id": "campaign_002",
+     "lead_id": 2,
+     "account_id": "account_001",
+     "channel": "event",
+     "touched_at": "2026-01-07T09:00:00Z",
+     "position": "middle"
+    },
+    {
+     "id": "touch_0003",
+     "campaign_id": "campaign_003",
+     "lead_id": 3,
+     "account_id": "account_001",
+     "channel": "webinar",
+     "touched_at": "2026-01-08T09:00:00Z",
+     "position": "last"
+    },
+    {
+     "id": "touch_0004",
+     "campaign_id": "campaign_001",
+     "lead_id": 14,
+     "account_id": "account_002",
+     "channel": "email",
+     "touched_at": "2026-01-10T09:00:00Z",
+     "position": "first"
+    },
+    {
+     "id": "touch_0005",
+     "campaign_id": "campaign_002",
+     "lead_id": 15,
+     "account_id": "account_002",
+     "channel": "event",
+     "touched_at": "2026-01-11T09:00:00Z",
+     "position": "middle"
+    },
+    {
+     "id": "touch_0006",
+     "campaign_id": "campaign_003",
+     "lead_id": 16,
+     "account_id": "account_002",
+     "channel": "webinar",
+     "touched_at": "2026-01-12T09:00:00Z",
+     "position": "last"
+    },
+    {
+     "id": "touch_0007",
+     "campaign_id": "campaign_001",
+     "lead_id": 27,
+     "account_id": "account_003",
+     "channel": "email",
+     "touched_at": "2026-01-14T09:00:00Z",
+     "position": "first"
+    },
+    {
+     "id": "touch_0008",
+     "campaign_id": "campaign_002",
+     "lead_id": 28,
+     "account_id": "account_003",
+     "channel": "event",
+     "touched_at": "2026-01-15T09:00:00Z",
+     "position": "middle"
+    },
+    {
+     "id": "touch_0009",
+     "campaign_id": "campaign_003",
+     "lead_id": 29,
+     "account_id": "account_003",
+     "channel": "webinar",
+     "touched_at": "2026-01-16T09:00:00Z",
+     "position": "last"
+    },
+    {
+     "id": "touch_0010",
+     "campaign_id": "campaign_001",
+     "lead_id": 40,
+     "account_id": "account_004",
+     "channel": "email",
+     "touched_at": "2026-01-18T09:00:00Z",
+     "position": "first"
+    },
+    {
+     "id": "touch_0011",
+     "campaign_id": "campaign_002",
+     "lead_id": 41,
+     "account_id": "account_004",
+     "channel": "event",
+     "touched_at": "2026-01-19T09:00:00Z",
+     "position": "middle"
+    },
+    {
+     "id": "touch_0012",
+     "campaign_id": "campaign_003",
+     "lead_id": 42,
+     "account_id": "account_004",
+     "channel": "webinar",
+     "touched_at": "2026-01-20T09:00:00Z",
+     "position": "last"
+    },
+    {
+     "id": "touch_0013",
+     "campaign_id": "campaign_001",
+     "lead_id": 53,
+     "account_id": "account_005",
+     "channel": "email",
+     "touched_at": "2026-01-22T09:00:00Z",
+     "position": "first"
+    },
+    {
+     "id": "touch_0014",
+     "campaign_id": "campaign_002",
+     "lead_id": 54,
+     "account_id": "account_005",
+     "channel": "event",
+     "touched_at": "2026-01-23T09:00:00Z",
+     "position": "middle"
+    },
+    {
+     "id": "touch_0015",
+     "campaign_id": "campaign_003",
+     "lead_id": 55,
+     "account_id": "account_005",
+     "channel": "webinar",
+     "touched_at": "2026-01-24T09:00:00Z",
+     "position": "last"
+    },
+    {
+     "id": "touch_0016",
+     "campaign_id": "campaign_001",
+     "lead_id": 66,
+     "account_id": "account_006",
+     "channel": "email",
+     "touched_at": "2026-01-26T09:00:00Z",
+     "position": "first"
+    },
+    {
+     "id": "touch_0017",
+     "campaign_id": "campaign_002",
+     "lead_id": 67,
+     "account_id": "account_006",
+     "channel": "event",
+     "touched_at": "2026-01-27T09:00:00Z",
+     "position": "middle"
+    },
+    {
+     "id": "touch_0018",
+     "campaign_id": "campaign_003",
+     "lead_id": 68,
+     "account_id": "account_006",
+     "channel": "webinar",
+     "touched_at": "2026-01-28T09:00:00Z",
+     "position": "last"
+    },
+    {
+     "id": "touch_0019",
+     "campaign_id": "campaign_001",
+     "lead_id": 79,
+     "account_id": "account_007",
+     "channel": "email",
+     "touched_at": "2026-01-30T09:00:00Z",
+     "position": "first"
+    },
+    {
+     "id": "touch_0020",
+     "campaign_id": "campaign_002",
+     "lead_id": 80,
+     "account_id": "account_007",
+     "channel": "event",
+     "touched_at": "2026-01-31T09:00:00Z",
+     "position": "middle"
+    },
+    {
+     "id": "touch_0021",
+     "campaign_id": "campaign_003",
+     "lead_id": 81,
+     "account_id": "account_007",
+     "channel": "webinar",
+     "touched_at": "2026-02-01T09:00:00Z",
+     "position": "last"
+    }
+   ]
+  },
+  {
+   "name": "signature_envelopes",
+   "description": "E-signature envelopes with signer order and completion timestamps.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "account_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "account_name",
+     "type": "TEXT"
+    },
+    {
+     "name": "document_title",
+     "type": "TEXT"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "signer_order",
+     "type": "TEXT"
+    },
+    {
+     "name": "customer_signed_at",
+     "type": "TEXT"
+    },
+    {
+     "name": "countersigned_at",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "env_0001",
+     "account_id": "account_001",
+     "account_name": "Summit Group",
+     "document_title": "Summit Group — Order Form FY26",
+     "status": "sent",
+     "signer_order": "customer_first",
+     "customer_signed_at": null,
+     "countersigned_at": null,
+     "created_at": "2026-01-31T09:00:00Z"
+    },
+    {
+     "id": "env_0002",
+     "account_id": "account_002",
+     "account_name": "Riverside Group",
+     "document_title": "Riverside Group — Order Form FY26",
+     "status": "completed",
+     "signer_order": "customer_first",
+     "customer_signed_at": "2026-02-06T09:00:00Z",
+     "countersigned_at": "2026-02-08T09:00:00Z",
+     "created_at": "2026-02-01T09:00:00Z"
+    },
+    {
+     "id": "env_0003",
+     "account_id": "account_003",
+     "account_name": "Meridian Capital",
+     "document_title": "Meridian Capital — Order Form FY26",
+     "status": "sent",
+     "signer_order": "customer_first",
+     "customer_signed_at": null,
+     "countersigned_at": null,
+     "created_at": "2026-02-02T09:00:00Z"
+    },
+    {
+     "id": "env_0004",
+     "account_id": "account_004",
+     "account_name": "Ironwood Holdings",
+     "document_title": "Ironwood Holdings — Order Form FY26",
+     "status": "declined",
+     "signer_order": "customer_first",
+     "customer_signed_at": "2026-02-08T09:00:00Z",
+     "countersigned_at": "2026-02-10T09:00:00Z",
+     "created_at": "2026-02-03T09:00:00Z"
+    },
+    {
+     "id": "env_0005",
+     "account_id": "account_005",
+     "account_name": "Harborview Partners",
+     "document_title": "Harborview Partners — Order Form FY26",
+     "status": "draft",
+     "signer_order": "customer_first",
+     "customer_signed_at": null,
+     "countersigned_at": null,
+     "created_at": "2026-02-04T09:00:00Z"
+    },
+    {
+     "id": "env_0006",
+     "account_id": "account_006",
+     "account_name": "Atlas Advisory",
+     "document_title": "Atlas Advisory — Order Form FY26",
+     "status": "completed",
+     "signer_order": "customer_first",
+     "customer_signed_at": "2026-02-10T09:00:00Z",
+     "countersigned_at": "2026-02-12T09:00:00Z",
+     "created_at": "2026-02-05T09:00:00Z"
+    },
+    {
+     "id": "env_0007",
+     "account_id": "account_007",
+     "account_name": "Crestline Trust",
+     "document_title": "Crestline Trust — Order Form FY26",
+     "status": "sent",
+     "signer_order": "customer_first",
+     "customer_signed_at": null,
+     "countersigned_at": null,
+     "created_at": "2026-02-06T09:00:00Z"
+    }
+   ]
+  }
+ ],
+ "tools": [
+  {
+   "name": "aggregate_query",
+   "op": "custom",
+   "type": "read",
+   "table": "sales_opportunities",
+   "extra_tables": [
+    "service_cases",
+    "sales_leads",
+    "support_tickets"
+   ],
+   "description": "Run a SOQL-style aggregate (COUNT/SUM/AVG/MIN/MAX) over one object with optional GROUP BY and filter (GET /services/data/v62.0/query?q=SELECT+COUNT(Id)+FROM+X+GROUP+BY+Y).",
+   "required": [
+    "sobject"
+   ],
+   "params": {
+    "sobject": {
+     "type": "string",
+     "description": "API name of the object to aggregate, e.g. sales_opportunities or service_cases."
+    },
+    "function": {
+     "type": "string",
+     "description": "Aggregate function: COUNT, SUM, AVG, MIN or MAX. Defaults to COUNT."
+    },
+    "field": {
+     "type": "string",
+     "description": "Field the aggregate applies to. Required for everything except COUNT."
+    },
+    "group_by": {
+     "type": "string",
+     "description": "Field to group the results by."
+    },
+    "where_field": {
+     "type": "string",
+     "description": "Field for an optional equality filter."
+    },
+    "where_value": {
+     "type": "string",
+     "description": "Value the where_field must equal."
+    },
+    "group_by_function": {
+     "type": "string",
+     "description": "Optional SOQL date bucket applied to group_by: CALENDAR_MONTH, CALENDAR_YEAR or DAY_ONLY."
+    },
+    "order_by": {
+     "type": "string",
+     "description": "Sort by 'value' (default) or 'grouping'."
+    },
+    "direction": {
+     "type": "string",
+     "description": "Sort direction: desc (default) or asc."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of grouped rows to return (default 200)."
+    }
+   },
+   "custom_source": "\ndef aggregate_query(db_path='state.db', **kwargs):\n    '''Run a SOQL-style aggregate over one object: COUNT/SUM/AVG/MIN/MAX with an\n    optional GROUP BY and equality filter (GET /services/data/v62.0/query?q=SELECT+COUNT(Id)+FROM+X+GROUP+BY+Y).'''\n    import sqlite3\n    sobject = kwargs.get('sobject')\n    func = str(kwargs.get('function') or 'COUNT').upper()\n    if not sobject:\n        return [{'message': 'missing required parameters: sobject', 'errorCode': 'REQUIRED_FIELD_MISSING'}]\n    if func not in ('COUNT', 'SUM', 'AVG', 'MIN', 'MAX'):\n        return [{'message': 'function must be one of COUNT, SUM, AVG, MIN, MAX', 'errorCode': 'INVALID_TYPE'}]\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    try:\n        names = [r[0] for r in conn.execute(\n            \"SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'\").fetchall()]\n        if sobject not in names:\n            return [{'message': \"sObject type '\" + str(sobject) + \"' is not supported\",\n                     'errorCode': 'INVALID_TYPE'}]\n        cols = [r[1] for r in conn.execute('PRAGMA table_info(\"' + sobject + '\")').fetchall()]\n        field = kwargs.get('field')\n        group_by = kwargs.get('group_by')\n        bucket = str(kwargs.get('group_by_function') or '').upper()\n        where_field = kwargs.get('where_field')\n        for label, ident in (('field', field), ('group_by', group_by), ('where_field', where_field)):\n            if ident is not None and ident not in cols:\n                return [{'message': \"No such column '\" + str(ident) + \"' on entity '\" + str(sobject) + \"'\",\n                         'errorCode': 'INVALID_FIELD'}]\n        if func != 'COUNT' and not field:\n            return [{'message': func + ' requires a numeric field', 'errorCode': 'REQUIRED_FIELD_MISSING'}]\n        expr = 'COUNT(*)' if func == 'COUNT' else func + '(\"' + field + '\")'\n        # SOQL date functions: bucket a timestamp column instead of grouping on\n        # the raw value (CALENDAR_MONTH -> YYYY-MM, CALENDAR_YEAR -> YYYY, DAY_ONLY -> YYYY-MM-DD)\n        _widths = {'CALENDAR_MONTH': 7, 'CALENDAR_YEAR': 4, 'DAY_ONLY': 10}\n        if bucket and bucket not in _widths:\n            return [{'message': 'group_by_function must be CALENDAR_MONTH, CALENDAR_YEAR or DAY_ONLY',\n                     'errorCode': 'INVALID_TYPE'}]\n        if group_by:\n            group_expr = ('substr(\"' + group_by + '\", 1, ' + str(_widths[bucket]) + ')') if bucket else ('\"' + group_by + '\"')\n        else:\n            group_expr = None\n        sql = 'SELECT ' + ((group_expr + ' AS grouping, ') if group_expr else '') + expr + ' AS value FROM \"' + sobject + '\"'\n        args = []\n        if where_field is not None and kwargs.get('where_value') is not None:\n            sql += ' WHERE \"' + where_field + '\" = ?'\n            args.append(str(kwargs['where_value']))\n        if group_expr:\n            sql += ' GROUP BY ' + group_expr\n        order = str(kwargs.get('order_by') or 'value').lower()\n        direction = 'ASC' if str(kwargs.get('direction') or 'desc').lower() == 'asc' else 'DESC'\n        sql += ' ORDER BY ' + ('grouping' if (order == 'grouping' and group_by) else 'value') + ' ' + direction\n        limit = int(kwargs.get('limit') or 200)\n        sql += ' LIMIT ?'\n        args.append(limit)\n        rows = []\n        for r in conn.execute(sql, args).fetchall():\n            d = dict(r)\n            if isinstance(d.get('value'), float):\n                d['value'] = round(d['value'], 2)\n            rows.append(d)\n        return {'totalSize': len(rows), 'done': True, 'records': rows}\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "lead_create",
+   "op": "create",
+   "table": "sales_leads",
+   "id_prefix": "",
+   "description": "Create a lead from an inbound form or list import (POST /services/data/v62.0/sobjects/Lead).",
+   "fields": [
+    "company_name",
+    "contact_name",
+    "source",
+    "estimated_value",
+    "owner_employee_id",
+    "status"
+   ],
+   "required": [
+    "company_name",
+    "contact_name"
+   ],
+   "defaults": {
+    "status": "new"
+   },
+   "params": {
+    "company_name": {
+     "type": "string",
+     "description": "Company the lead belongs to."
+    },
+    "contact_name": {
+     "type": "string",
+     "description": "Primary contact name on the lead."
+    },
+    "source": {
+     "type": "string",
+     "description": "Lead source, e.g. event, web, referral."
+    },
+    "estimated_value": {
+     "type": "number",
+     "description": "Estimated deal value in USD."
+    },
+    "owner_employee_id": {
+     "type": "integer",
+     "description": "Employee id to own the lead."
+    },
+    "status": {
+     "type": "string",
+     "description": "Lead status; defaults to new."
+    }
+   }
+  },
+  {
+   "name": "lead_update_fields",
+   "op": "update",
+   "table": "sales_leads",
+   "id_param": "lead_id",
+   "set_fields": [
+    "company_name",
+    "contact_name",
+    "source",
+    "estimated_value",
+    "owner_employee_id",
+    "status"
+   ],
+   "description": "Update lead fields including owner assignment — routing, enrichment and recycling (PATCH /services/data/v62.0/sobjects/Lead/{id}).",
+   "params": {
+    "lead_id": {
+     "type": "string",
+     "description": "The lead record id."
+    },
+    "company_name": {
+     "type": "string",
+     "description": "Corrected company name."
+    },
+    "contact_name": {
+     "type": "string",
+     "description": "Corrected contact name."
+    },
+    "source": {
+     "type": "string",
+     "description": "Corrected lead source."
+    },
+    "estimated_value": {
+     "type": "number",
+     "description": "Updated estimated value."
+    },
+    "owner_employee_id": {
+     "type": "integer",
+     "description": "Employee id to route the lead to."
+    },
+    "status": {
+     "type": "string",
+     "description": "New lead status."
+    }
+   }
+  },
+  {
+   "name": "lead_find_duplicates",
+   "op": "custom",
+   "type": "read",
+   "table": "sales_leads",
+   "description": "Find candidate duplicate leads for one lead, or every company with more than one lead (POST /services/data/v62.0/composite/sobjects/Lead/duplicates).",
+   "params": {
+    "lead_id": {
+     "type": "string",
+     "description": "Anchor lead to find duplicates of. Omit to scan for all duplicate companies."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return (default 30)."
+    }
+   },
+   "custom_source": "\ndef lead_find_duplicates(db_path='state.db', **kwargs):\n    '''Find candidate duplicate leads by matching company name or contact name\n    (POST /services/data/v62.0/composite/sobjects/Lead/duplicates).'''\n    import sqlite3\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    try:\n        lead_id = kwargs.get('lead_id')\n        if lead_id:\n            base = conn.execute('SELECT * FROM sales_leads WHERE id = ?', (str(lead_id),)).fetchone()\n            if base is None:\n                return [{'message': 'lead not found', 'errorCode': 'NOT_FOUND'}]\n            base = dict(base)\n            rows = [dict(r) for r in conn.execute(\n                'SELECT * FROM sales_leads WHERE id != ? AND (company_name = ? OR contact_name = ?) '\n                'ORDER BY id LIMIT ?',\n                (str(lead_id), base.get('company_name'), base.get('contact_name'),\n                 int(kwargs.get('limit') or 30))).fetchall()]\n            return {'totalSize': len(rows), 'done': True, 'records': rows,\n                    'matchedOn': ['company_name', 'contact_name']}\n        # no anchor lead: report every company_name with more than one lead\n        rows = [dict(r) for r in conn.execute(\n            'SELECT company_name, COUNT(*) AS lead_count, MIN(id) AS master_candidate '\n            'FROM sales_leads GROUP BY company_name HAVING COUNT(*) > 1 '\n            'ORDER BY lead_count DESC, company_name LIMIT ?',\n            (int(kwargs.get('limit') or 30),)).fetchall()]\n        return {'totalSize': len(rows), 'done': True, 'records': rows, 'matchedOn': ['company_name']}\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "lead_merge",
+   "op": "custom",
+   "type": "write",
+   "table": "sales_leads",
+   "extra_tables": [
+    "sales_opportunities",
+    "lead_merge_log"
+   ],
+   "description": "Merge a duplicate lead into a master: master wins conflicts, blanks are filled from the duplicate, child opportunities are re-parented, and the duplicate is deleted (POST /services/data/v62.0/composite/sobjects/Lead/merge).",
+   "required": [
+    "master_lead_id",
+    "duplicate_lead_id"
+   ],
+   "params": {
+    "master_lead_id": {
+     "type": "string",
+     "description": "Lead that survives the merge."
+    },
+    "duplicate_lead_id": {
+     "type": "string",
+     "description": "Lead that is merged away and deleted."
+    }
+   },
+   "custom_source": "\ndef lead_merge(db_path='state.db', **kwargs):\n    '''Merge a duplicate lead into a master lead, re-parenting child records and\n    deleting the loser (POST /services/data/v62.0/composite/sobjects/Lead/merge).'''\n    import sqlite3, datetime\n    master = kwargs.get('master_lead_id')\n    victim = kwargs.get('duplicate_lead_id')\n    if not master or not victim:\n        return [{'message': 'missing required parameters: master_lead_id, duplicate_lead_id',\n                 'errorCode': 'REQUIRED_FIELD_MISSING'}]\n    if str(master) == str(victim):\n        return [{'message': 'a lead cannot be merged into itself', 'errorCode': 'INVALID_CROSS_REFERENCE_KEY'}]\n    conn = sqlite3.connect(db_path)\n    conn.row_factory = sqlite3.Row\n    try:\n        m = conn.execute('SELECT * FROM sales_leads WHERE id = ?', (str(master),)).fetchone()\n        v = conn.execute('SELECT * FROM sales_leads WHERE id = ?', (str(victim),)).fetchone()\n        if m is None or v is None:\n            return [{'message': 'lead not found', 'errorCode': 'NOT_FOUND'}]\n        m, v = dict(m), dict(v)\n        # survivorship: master wins on conflict, but fills its blanks from the victim\n        updates, filled = [], []\n        for key, val in v.items():\n            if key in ('id', 'lead_number'):\n                continue\n            if (m.get(key) in (None, '', 0)) and val not in (None, ''):\n                updates.append(key)\n                filled.append((key, val))\n        if updates:\n            conn.execute('UPDATE sales_leads SET ' + ', '.join('\"' + k + '\" = ?' for k in updates) +\n                         ' WHERE id = ?', [val for _, val in filled] + [str(master)])\n        # re-parent children before the delete so nothing is orphaned\n        reparented = conn.execute('UPDATE sales_opportunities SET lead_id = ? WHERE lead_id = ?',\n                                  (str(master), str(victim))).rowcount\n        conn.execute('DELETE FROM sales_leads WHERE id = ?', (str(victim),))\n        conn.execute('INSERT INTO lead_merge_log (id, master_lead_id, duplicate_lead_id, fields_filled, '\n                     'children_reparented, merged_at) VALUES (?, ?, ?, ?, ?, ?)',\n                     ('mrg_' + str(master) + '_' + str(victim), str(master), str(victim),\n                      ','.join(k for k, _ in filled), reparented,\n                      datetime.datetime.now(datetime.timezone.utc).isoformat()))\n        conn.commit()\n        row = dict(conn.execute('SELECT * FROM sales_leads WHERE id = ?', (str(master),)).fetchone())\n        row['merged'] = {'duplicate_lead_id': str(victim), 'fields_filled': [k for k, _ in filled],\n                         'children_reparented': reparented}\n        return row\n    finally:\n        conn.close()\n"
+  },
+  {
+   "name": "sequences_list",
+   "op": "list",
+   "table": "outreach_sequences",
+   "filters": [
+    "status"
+   ],
+   "description": "List outbound sequences (GET /api/v2/sequences).",
+   "params": {
+    "status": {
+     "type": "string",
+     "description": "Filter by sequence status: active or paused."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return (default 30)."
+    }
+   }
+  },
+  {
+   "name": "sequence_steps_list",
+   "op": "list",
+   "table": "outreach_sequence_steps",
+   "filters": [
+    "sequence_id",
+    "channel",
+    "variant"
+   ],
+   "description": "List the ordered steps of a sequence with delays and A/B variants (GET /api/v2/sequenceSteps).",
+   "params": {
+    "sequence_id": {
+     "type": "string",
+     "description": "Sequence whose steps to return."
+    },
+    "channel": {
+     "type": "string",
+     "description": "Filter by channel: email or call."
+    },
+    "variant": {
+     "type": "string",
+     "description": "Filter by A/B variant."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return (default 30)."
+    }
+   }
+  },
+  {
+   "name": "sequence_enrollments_list",
+   "op": "list",
+   "table": "outreach_enrollments",
+   "filters": [
+    "sequence_id",
+    "status",
+    "lead_id"
+   ],
+   "description": "List per-lead sequence enrollments and their current step (GET /api/v2/sequenceStates).",
+   "params": {
+    "sequence_id": {
+     "type": "string",
+     "description": "Sequence to filter by."
+    },
+    "status": {
+     "type": "string",
+     "description": "Enrollment status: active, replied, completed or bounced."
+    },
+    "lead_id": {
+     "type": "integer",
+     "description": "Lead to filter by."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return (default 30)."
+    }
+   }
+  },
+  {
+   "name": "sequence_enroll_lead",
+   "op": "create",
+   "table": "outreach_enrollments",
+   "id_prefix": "enr_",
+   "description": "Enroll a lead into a sequence at a given step (POST /api/v2/sequenceStates).",
+   "fields": [
+    "sequence_id",
+    "lead_id",
+    "current_step",
+    "status"
+   ],
+   "required": [
+    "sequence_id",
+    "lead_id"
+   ],
+   "defaults": {
+    "status": "active",
+    "current_step": 1
+   },
+   "params": {
+    "sequence_id": {
+     "type": "string",
+     "description": "Sequence to enroll into."
+    },
+    "lead_id": {
+     "type": "integer",
+     "description": "Lead being enrolled."
+    },
+    "current_step": {
+     "type": "integer",
+     "description": "Step to start at; defaults to 1."
+    },
+    "status": {
+     "type": "string",
+     "description": "Enrollment status; defaults to active."
+    }
+   }
+  },
+  {
+   "name": "sequence_enrollment_update",
+   "op": "update",
+   "table": "outreach_enrollments",
+   "id_param": "enrollment_id",
+   "set_fields": [
+    "status",
+    "current_step"
+   ],
+   "description": "Advance or stop a lead's sequence enrollment (PUT /api/v2/sequenceStates/{id}).",
+   "params": {
+    "enrollment_id": {
+     "type": "string",
+     "description": "The enrollment record id."
+    },
+    "status": {
+     "type": "string",
+     "description": "New status: active, replied, completed or bounced."
+    },
+    "current_step": {
+     "type": "integer",
+     "description": "New current step."
+    }
+   }
+  },
+  {
+   "name": "email_threads_list",
+   "op": "list",
+   "table": "email_threads",
+   "filters": [
+    "status",
+    "intent_label",
+    "account_id",
+    "assigned_employee_id"
+   ],
+   "description": "List inbound email threads awaiting triage (GET /gmail/v1/users/me/threads).",
+   "params": {
+    "status": {
+     "type": "string",
+     "description": "Filter by read or unread."
+    },
+    "intent_label": {
+     "type": "string",
+     "description": "Filter by classified intent label."
+    },
+    "account_id": {
+     "type": "string",
+     "description": "Account to filter by."
+    },
+    "assigned_employee_id": {
+     "type": "integer",
+     "description": "Owner to filter by."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return (default 30)."
+    }
+   }
+  },
+  {
+   "name": "email_messages_list",
+   "op": "list",
+   "table": "email_messages",
+   "filters": [
+    "thread_id",
+    "direction"
+   ],
+   "description": "List the messages inside an email thread (GET /gmail/v1/users/me/messages).",
+   "params": {
+    "thread_id": {
+     "type": "string",
+     "description": "Thread whose messages to return."
+    },
+    "direction": {
+     "type": "string",
+     "description": "Filter to inbound or outbound."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return (default 30)."
+    }
+   }
+  },
+  {
+   "name": "email_thread_classify",
+   "op": "update",
+   "table": "email_threads",
+   "id_param": "thread_id",
+   "set_fields": [
+    "intent_label",
+    "status",
+    "assigned_employee_id"
+   ],
+   "description": "Apply a reply-intent label, mark a thread read, or route it to an owner (POST /gmail/v1/users/me/threads/{id}/modify).",
+   "params": {
+    "thread_id": {
+     "type": "string",
+     "description": "The thread record id."
+    },
+    "intent_label": {
+     "type": "string",
+     "description": "Intent label: interested, not_now, unsubscribe, referral, pricing_question or out_of_office."
+    },
+    "status": {
+     "type": "string",
+     "description": "Thread status: read or unread."
+    },
+    "assigned_employee_id": {
+     "type": "integer",
+     "description": "Employee to route the thread to."
+    }
+   }
+  },
+  {
+   "name": "rep_quotas_list",
+   "op": "list",
+   "table": "rep_quotas",
+   "filters": [
+    "employee_id",
+    "period"
+   ],
+   "description": "List per-rep quota and attainment by period (GET /services/data/v62.0/query?q=SELECT+FROM+Quota).",
+   "params": {
+    "employee_id": {
+     "type": "integer",
+     "description": "Rep to filter by."
+    },
+    "period": {
+     "type": "string",
+     "description": "Fiscal period, e.g. 2026-Q3."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return (default 30)."
+    }
+   }
+  },
+  {
+   "name": "forecast_submissions_list",
+   "op": "list",
+   "table": "forecast_submissions",
+   "filters": [
+    "employee_id",
+    "period",
+    "category"
+   ],
+   "description": "List submitted forecast categories per rep (GET /services/data/v62.0/query?q=SELECT+FROM+ForecastingItem).",
+   "params": {
+    "employee_id": {
+     "type": "integer",
+     "description": "Rep to filter by."
+    },
+    "period": {
+     "type": "string",
+     "description": "Fiscal period."
+    },
+    "category": {
+     "type": "string",
+     "description": "Forecast category: commit, best_case or pipeline."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return (default 30)."
+    }
+   }
+  },
+  {
+   "name": "forecast_submit",
+   "op": "create",
+   "table": "forecast_submissions",
+   "id_prefix": "fc_",
+   "description": "Submit a forecast number in a category for a rep and period (POST /services/data/v62.0/sobjects/ForecastingItem).",
+   "fields": [
+    "employee_id",
+    "employee_name",
+    "period",
+    "category",
+    "amount",
+    "status"
+   ],
+   "required": [
+    "employee_id",
+    "period",
+    "category",
+    "amount"
+   ],
+   "defaults": {
+    "status": "submitted"
+   },
+   "params": {
+    "employee_id": {
+     "type": "integer",
+     "description": "Rep the forecast belongs to."
+    },
+    "employee_name": {
+     "type": "string",
+     "description": "Rep display name."
+    },
+    "period": {
+     "type": "string",
+     "description": "Fiscal period, e.g. 2026-Q3."
+    },
+    "category": {
+     "type": "string",
+     "description": "Forecast category: commit, best_case or pipeline."
+    },
+    "amount": {
+     "type": "number",
+     "description": "Forecast amount in USD."
+    },
+    "status": {
+     "type": "string",
+     "description": "Submission status; defaults to submitted."
+    }
+   }
+  },
+  {
+   "name": "account_usage_list",
+   "op": "list",
+   "table": "account_usage",
+   "filters": [
+    "account_id",
+    "period"
+   ],
+   "description": "List per-account product usage telemetry (GET /analytics/v1/accounts/usage).",
+   "params": {
+    "account_id": {
+     "type": "string",
+     "description": "Account to filter by."
+    },
+    "period": {
+     "type": "string",
+     "description": "Reporting period, e.g. 2026-07."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return (default 30)."
+    }
+   }
+  },
+  {
+   "name": "account_health_list",
+   "op": "list",
+   "table": "account_health",
+   "filters": [
+    "account_id",
+    "band"
+   ],
+   "description": "List account health scores, bands, renewal dates and primary risks (GET /analytics/v1/accounts/health).",
+   "params": {
+    "account_id": {
+     "type": "string",
+     "description": "Account to filter by."
+    },
+    "band": {
+     "type": "string",
+     "description": "Health band: green, yellow or red."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return (default 30)."
+    }
+   }
+  },
+  {
+   "name": "account_health_update",
+   "op": "update",
+   "table": "account_health",
+   "id_param": "health_id",
+   "set_fields": [
+    "score",
+    "band",
+    "primary_risk"
+   ],
+   "description": "Re-score an account's health after a save play or usage change (PATCH /analytics/v1/accounts/health/{id}).",
+   "params": {
+    "health_id": {
+     "type": "string",
+     "description": "The health record id."
+    },
+    "score": {
+     "type": "number",
+     "description": "New weighted health score."
+    },
+    "band": {
+     "type": "string",
+     "description": "New band: green, yellow or red."
+    },
+    "primary_risk": {
+     "type": "string",
+     "description": "Updated primary risk description."
+    }
+   }
+  },
+  {
+   "name": "campaign_touches_list",
+   "op": "list",
+   "table": "campaign_touches",
+   "filters": [
+    "campaign_id",
+    "lead_id",
+    "account_id",
+    "position"
+   ],
+   "description": "List campaign touches for multi-touch attribution (GET /services/data/v62.0/query?q=SELECT+FROM+CampaignMember).",
+   "params": {
+    "campaign_id": {
+     "type": "string",
+     "description": "Campaign to filter by."
+    },
+    "lead_id": {
+     "type": "integer",
+     "description": "Lead to filter by."
+    },
+    "account_id": {
+     "type": "string",
+     "description": "Account to filter by."
+    },
+    "position": {
+     "type": "string",
+     "description": "Touch position: first, middle or last."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return (default 30)."
+    }
+   }
+  },
+  {
+   "name": "signature_envelopes_list",
+   "op": "list",
+   "table": "signature_envelopes",
+   "filters": [
+    "account_id",
+    "status"
+   ],
+   "description": "List e-signature envelopes and their status (GET /restapi/v2.1/accounts/{accountId}/envelopes).",
+   "params": {
+    "account_id": {
+     "type": "string",
+     "description": "Account to filter by."
+    },
+    "status": {
+     "type": "string",
+     "description": "Envelope status: draft, sent, completed or declined."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return (default 30)."
+    }
+   }
+  },
+  {
+   "name": "signature_envelope_create",
+   "op": "create",
+   "table": "signature_envelopes",
+   "id_prefix": "env_",
+   "description": "Create an e-signature envelope for a document with a signer order (POST /restapi/v2.1/accounts/{accountId}/envelopes).",
+   "fields": [
+    "account_id",
+    "account_name",
+    "document_title",
+    "status",
+    "signer_order"
+   ],
+   "required": [
+    "account_id",
+    "document_title"
+   ],
+   "defaults": {
+    "status": "draft",
+    "signer_order": "customer_first"
+   },
+   "params": {
+    "account_id": {
+     "type": "string",
+     "description": "Account the envelope belongs to."
+    },
+    "account_name": {
+     "type": "string",
+     "description": "Account display name."
+    },
+    "document_title": {
+     "type": "string",
+     "description": "Title of the document to be signed."
+    },
+    "status": {
+     "type": "string",
+     "description": "Initial status; defaults to draft."
+    },
+    "signer_order": {
+     "type": "string",
+     "description": "Signer order; the SOP mandates customer_first."
+    }
+   }
+  },
+  {
+   "name": "signature_envelope_update",
+   "op": "update",
+   "table": "signature_envelopes",
+   "id_param": "envelope_id",
+   "set_fields": [
+    "status",
+    "customer_signed_at",
+    "countersigned_at"
+   ],
+   "description": "Advance an envelope's signature state (PUT /restapi/v2.1/accounts/{accountId}/envelopes/{envelopeId}).",
+   "params": {
+    "envelope_id": {
+     "type": "string",
+     "description": "The envelope record id."
+    },
+    "status": {
+     "type": "string",
+     "description": "New status: sent, completed or declined."
+    },
+    "customer_signed_at": {
+     "type": "string",
+     "description": "Timestamp the customer signed."
+    },
+    "countersigned_at": {
+     "type": "string",
+     "description": "Timestamp your firm countersigned."
+    }
+   }
+  }
+ ]
+}

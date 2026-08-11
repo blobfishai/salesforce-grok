@@ -1,0 +1,32 @@
+{
+ "task_id": "wf_006",
+ "prompt": "Submit the 2026-Q3 commit forecast for Mei Huang (employee 1). The commit number is the total of their closed-won opportunities: 8994592.93. Create exactly one forecast submission in category 'commit' for period 2026-Q3 and change nothing else.",
+ "goal": "Workflow — forecast_rollup_commit",
+ "complexity": "medium",
+ "method": "workflow_pack",
+ "provenance": {
+  "source_benchmark": "RevOps / sales workflow canon (see research/answers/sales-workflow-canon.md)",
+  "workflow_type": "forecast_rollup_commit",
+  "cloned_by": "scripts/build-workflow-tasks.py",
+  "grading": "multi"
+ },
+ "difficulty_tier": "reference",
+ "required_tools": [
+  "rep_quotas_list",
+  "aggregate_query",
+  "forecast_submit"
+ ],
+ "tables_affected": [
+  "forecast_submissions"
+ ],
+ "expected_state_changes": [
+  {
+   "table": "forecast_submissions",
+   "check": "forecast_created"
+  },
+  {
+   "table": "forecast_submissions",
+   "check": "forecast_correct"
+  }
+ ]
+}

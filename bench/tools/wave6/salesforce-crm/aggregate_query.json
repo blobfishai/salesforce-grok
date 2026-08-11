@@ -1,0 +1,74 @@
+{
+ "name": "aggregate_query",
+ "mcp_name": "salesforce.aggregate_query",
+ "asset_namespace": "salesforce",
+ "description": "Run a SOQL-style aggregate (COUNT/SUM/AVG/MIN/MAX) over one object with optional GROUP BY and filter (GET /services/data/v62.0/query?q=SELECT+COUNT(Id)+FROM+X+GROUP+BY+Y).",
+ "type": "read",
+ "target_tables": [
+  "sales_opportunities",
+  "service_cases",
+  "sales_leads",
+  "support_tickets"
+ ],
+ "parameters": {
+  "sobject": "string",
+  "function": "string",
+  "field": "string",
+  "group_by": "string",
+  "where_field": "string",
+  "where_value": "string",
+  "group_by_function": "string",
+  "order_by": "string",
+  "direction": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "sobject": {
+    "type": "string",
+    "description": "API name of the object to aggregate, e.g. sales_opportunities or service_cases."
+   },
+   "function": {
+    "type": "string",
+    "description": "Aggregate function: COUNT, SUM, AVG, MIN or MAX. Defaults to COUNT."
+   },
+   "field": {
+    "type": "string",
+    "description": "Field the aggregate applies to. Required for everything except COUNT."
+   },
+   "group_by": {
+    "type": "string",
+    "description": "Field to group the results by."
+   },
+   "where_field": {
+    "type": "string",
+    "description": "Field for an optional equality filter."
+   },
+   "where_value": {
+    "type": "string",
+    "description": "Value the where_field must equal."
+   },
+   "group_by_function": {
+    "type": "string",
+    "description": "Optional SOQL date bucket applied to group_by: CALENDAR_MONTH, CALENDAR_YEAR or DAY_ONLY."
+   },
+   "order_by": {
+    "type": "string",
+    "description": "Sort by 'value' (default) or 'grouping'."
+   },
+   "direction": {
+    "type": "string",
+    "description": "Sort direction: desc (default) or asc."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "Maximum number of grouped rows to return (default 200)."
+   }
+  },
+  "required": [
+   "sobject"
+  ],
+  "additionalProperties": false
+ }
+}

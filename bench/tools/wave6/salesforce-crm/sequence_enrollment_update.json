@@ -1,0 +1,36 @@
+{
+ "name": "sequence_enrollment_update",
+ "mcp_name": "salesforce.sequence_enrollment_update",
+ "asset_namespace": "salesforce",
+ "description": "Advance or stop a lead's sequence enrollment (PUT /api/v2/sequenceStates/{id}).",
+ "type": "write",
+ "target_tables": [
+  "outreach_enrollments"
+ ],
+ "parameters": {
+  "enrollment_id": "string",
+  "status": "string",
+  "current_step": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "enrollment_id": {
+    "type": "string",
+    "description": "The enrollment record id."
+   },
+   "status": {
+    "type": "string",
+    "description": "New status: active, replied, completed or bounced."
+   },
+   "current_step": {
+    "type": "integer",
+    "description": "New current step."
+   }
+  },
+  "required": [
+   "enrollment_id"
+  ],
+  "additionalProperties": false
+ }
+}

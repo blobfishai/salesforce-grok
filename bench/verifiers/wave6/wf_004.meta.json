@@ -1,0 +1,28 @@
+{
+ "task_id": "wf_004",
+ "assertions": [
+  "state_changed",
+  "thread_marked_unsubscribe",
+  "sequence_stopped",
+  "no_offtask_table_changes"
+ ],
+ "initial_state_check": "thread thr_0003 carries the unsubscribe reply; enrollment enr_0003 is its lead's active sequence",
+ "field_policies": [],
+ "positive_case": {
+  "description": "Agent completes the unsubscribe_optout_enforcement workflow",
+  "expected": "pass"
+ },
+ "negative_cases": [
+  {
+   "description": "Only part of the outcome achieved",
+   "fails_assertion": "thread_marked_unsubscribe",
+   "expected": "fail"
+  },
+  {
+   "description": "Collateral writes elsewhere",
+   "fails_assertion": "no_offtask_table_changes",
+   "expected": "fail"
+  }
+ ],
+ "discrimination": 2
+}

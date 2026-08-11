@@ -1,4 +1,4 @@
-# wave6 — 420 MCP tools
+# wave6 — 443 MCP tools
 
 | vendor server | tool | type | target tables |
 |---|---|---|---|
@@ -283,7 +283,12 @@
 | revops-core | `vendors_list` | read | vendors |
 | salesforce-crm | `account_create` | write | accounts |
 | salesforce-crm | `account_get` | read | accounts |
+| salesforce-crm | `account_health_list` | read | account_health |
+| salesforce-crm | `account_health_update` | write | account_health |
+| salesforce-crm | `account_usage_list` | read | account_usage |
 | salesforce-crm | `accounts_list` | read | accounts |
+| salesforce-crm | `aggregate_query` | read | sales_opportunities, service_cases, sales_leads |
+| salesforce-crm | `campaign_touches_list` | read | campaign_touches |
 | salesforce-crm | `case_history_list` | read | case_history |
 | salesforce-crm | `case_messages_list` | read | case_messages |
 | salesforce-crm | `contact_create` | write | contacts |
@@ -293,9 +298,18 @@
 | salesforce-crm | `core_workflow_agent` | write | accept_all, account_tiering_standard, activity_logging_standards |
 | salesforce-crm | `customer_profile_get` | read | customer_profiles |
 | salesforce-crm | `customer_profiles_list` | read | customer_profiles |
+| salesforce-crm | `email_messages_list` | read | email_messages |
+| salesforce-crm | `email_thread_classify` | write | email_threads |
+| salesforce-crm | `email_threads_list` | read | email_threads |
+| salesforce-crm | `forecast_submissions_list` | read | forecast_submissions |
+| salesforce-crm | `forecast_submit` | write | forecast_submissions |
 | salesforce-crm | `get_contactdb_segments_segment_id` | read | contactdb_segments |
 | salesforce-crm | `get_mc_contacts_exports_id` | read | contact_exports |
 | salesforce-crm | `issue_taxonomy_list` | read | issue_taxonomy |
+| salesforce-crm | `lead_create` | write | sales_leads |
+| salesforce-crm | `lead_find_duplicates` | read | sales_leads |
+| salesforce-crm | `lead_merge` | write | sales_leads, sales_opportunities, lead_merge_log |
+| salesforce-crm | `lead_update_fields` | write | sales_leads |
 | salesforce-crm | `lookup_sales_lead_with_employees` | read | employees, sales_leads |
 | salesforce-crm | `lookup_sales_opportunity_with_sales_leads` | read | sales_leads, sales_opportunities |
 | salesforce-crm | `marketing_records_agent` | read | all_segments_responses, api_keys, automations_link_stats_responses |
@@ -309,11 +323,20 @@
 | salesforce-crm | `quote_lines_list` | read | sales_quote_lines |
 | salesforce-crm | `quote_update_status` | write | sales_quotes |
 | salesforce-crm | `quotes_list` | read | sales_quotes |
+| salesforce-crm | `rep_quotas_list` | read | rep_quotas |
 | salesforce-crm | `sales_records_agent` | read | accounts, cases, company_sales_handoffs |
 | salesforce-crm | `sales_workflow_agent` | write | accounts, cases, company_sales_handoffs |
+| salesforce-crm | `sequence_enroll_lead` | write | outreach_enrollments |
+| salesforce-crm | `sequence_enrollment_update` | write | outreach_enrollments |
+| salesforce-crm | `sequence_enrollments_list` | read | outreach_enrollments |
+| salesforce-crm | `sequence_steps_list` | read | outreach_sequence_steps |
+| salesforce-crm | `sequences_list` | read | outreach_sequences |
 | salesforce-crm | `service_case_get` | read | service_cases |
 | salesforce-crm | `service_case_update_status` | write | service_cases |
 | salesforce-crm | `service_cases_list` | read | service_cases |
+| salesforce-crm | `signature_envelope_create` | write | signature_envelopes |
+| salesforce-crm | `signature_envelope_update` | write | signature_envelopes |
+| salesforce-crm | `signature_envelopes_list` | read | signature_envelopes |
 | salesforce-crm | `sourcing_records_agent` | read | company_sourcing_handoffs, customers, journal_entries |
 | salesforce-crm | `sourcing_workflow_agent` | write | company_sourcing_handoffs, customers, journal_entries |
 | salesforce-crm | `update_sales_leads_status` | write | sales_leads |

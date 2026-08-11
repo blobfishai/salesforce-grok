@@ -1,0 +1,22 @@
+{
+ "task_id": "wf_011",
+ "prompt": "Pipeline inspection: how many sales opportunities are currently sitting in the 'negotiation' stage? Answer with the number.",
+ "goal": "Workflow — pipeline_inspection_stalled",
+ "complexity": "medium",
+ "method": "workflow_pack",
+ "provenance": {
+  "source_benchmark": "RevOps / sales workflow canon (see research/answers/sales-workflow-canon.md)",
+  "workflow_type": "pipeline_inspection_stalled",
+  "cloned_by": "scripts/build-workflow-tasks.py",
+  "grading": "answer"
+ },
+ "difficulty_tier": "reference",
+ "required_tools": [
+  "aggregate_query",
+  "query_sales_opportunities"
+ ],
+ "tables_affected": [],
+ "expected_state_changes": [],
+ "answer_graded": true,
+ "gold_answer": "146"
+}

@@ -1,0 +1,31 @@
+{
+ "task_id": "wf_002",
+ "prompt": "A webinar attendee from Beacon Hill Advisors submitted the contact form: Priya Raman, estimated value $85,000. Create the lead with source 'webinar' and route it to employee 3 as owner. Create exactly one lead and change nothing else.",
+ "goal": "Workflow — inbound_lead_capture_routing",
+ "complexity": "medium",
+ "method": "workflow_pack",
+ "provenance": {
+  "source_benchmark": "open-source sales automation canon (see research/answers/oss-sales-automation.md)",
+  "workflow_type": "inbound_lead_capture_routing",
+  "cloned_by": "scripts/build-workflow-tasks.py",
+  "grading": "multi"
+ },
+ "difficulty_tier": "reference",
+ "required_tools": [
+  "lead_create",
+  "query_sales_leads"
+ ],
+ "tables_affected": [
+  "sales_leads"
+ ],
+ "expected_state_changes": [
+  {
+   "table": "sales_leads",
+   "check": "lead_created"
+  },
+  {
+   "table": "sales_leads",
+   "check": "lead_fields_correct"
+  }
+ ]
+}

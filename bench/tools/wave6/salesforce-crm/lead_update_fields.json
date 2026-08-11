@@ -1,0 +1,56 @@
+{
+ "name": "lead_update_fields",
+ "mcp_name": "salesforce.lead_update_fields",
+ "asset_namespace": "salesforce",
+ "description": "Update lead fields including owner assignment — routing, enrichment and recycling (PATCH /services/data/v62.0/sobjects/Lead/{id}).",
+ "type": "write",
+ "target_tables": [
+  "sales_leads"
+ ],
+ "parameters": {
+  "lead_id": "string",
+  "company_name": "string",
+  "contact_name": "string",
+  "source": "string",
+  "estimated_value": "number",
+  "owner_employee_id": "integer",
+  "status": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "lead_id": {
+    "type": "string",
+    "description": "The lead record id."
+   },
+   "company_name": {
+    "type": "string",
+    "description": "Corrected company name."
+   },
+   "contact_name": {
+    "type": "string",
+    "description": "Corrected contact name."
+   },
+   "source": {
+    "type": "string",
+    "description": "Corrected lead source."
+   },
+   "estimated_value": {
+    "type": "number",
+    "description": "Updated estimated value."
+   },
+   "owner_employee_id": {
+    "type": "integer",
+    "description": "Employee id to route the lead to."
+   },
+   "status": {
+    "type": "string",
+    "description": "New lead status."
+   }
+  },
+  "required": [
+   "lead_id"
+  ],
+  "additionalProperties": false
+ }
+}

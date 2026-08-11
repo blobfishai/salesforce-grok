@@ -1,0 +1,52 @@
+{
+ "name": "lead_create",
+ "mcp_name": "salesforce.lead_create",
+ "asset_namespace": "salesforce",
+ "description": "Create a lead from an inbound form or list import (POST /services/data/v62.0/sobjects/Lead).",
+ "type": "write",
+ "target_tables": [
+  "sales_leads"
+ ],
+ "parameters": {
+  "company_name": "string",
+  "contact_name": "string",
+  "source": "string",
+  "estimated_value": "number",
+  "owner_employee_id": "integer",
+  "status": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "company_name": {
+    "type": "string",
+    "description": "Company the lead belongs to."
+   },
+   "contact_name": {
+    "type": "string",
+    "description": "Primary contact name on the lead."
+   },
+   "source": {
+    "type": "string",
+    "description": "Lead source, e.g. event, web, referral."
+   },
+   "estimated_value": {
+    "type": "number",
+    "description": "Estimated deal value in USD."
+   },
+   "owner_employee_id": {
+    "type": "integer",
+    "description": "Employee id to own the lead."
+   },
+   "status": {
+    "type": "string",
+    "description": "Lead status; defaults to new."
+   }
+  },
+  "required": [
+   "company_name",
+   "contact_name"
+  ],
+  "additionalProperties": false
+ }
+}

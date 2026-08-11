@@ -1,0 +1,35 @@
+{
+ "task_id": "wf_004",
+ "prompt": "The contact on email thread thr_0003 (Meridian Capital) has asked to be removed and never contacted again. Honour it: mark that thread's intent_label as 'unsubscribe' and stop their outbound sequence by setting enrollment enr_0003 to status 'completed'. Touch nothing else.",
+ "goal": "Workflow — unsubscribe_optout_enforcement",
+ "complexity": "medium",
+ "method": "workflow_pack",
+ "provenance": {
+  "source_benchmark": "RevOps / sales workflow canon (see research/answers/sales-workflow-canon.md)",
+  "workflow_type": "unsubscribe_optout_enforcement",
+  "cloned_by": "scripts/build-workflow-tasks.py",
+  "grading": "multi"
+ },
+ "difficulty_tier": "reference",
+ "required_tools": [
+  "email_threads_list",
+  "email_messages_list",
+  "email_thread_classify",
+  "sequence_enrollments_list",
+  "sequence_enrollment_update"
+ ],
+ "tables_affected": [
+  "email_threads",
+  "outreach_enrollments"
+ ],
+ "expected_state_changes": [
+  {
+   "table": "email_threads",
+   "check": "thread_marked_unsubscribe"
+  },
+  {
+   "table": "outreach_enrollments",
+   "check": "sequence_stopped"
+  }
+ ]
+}

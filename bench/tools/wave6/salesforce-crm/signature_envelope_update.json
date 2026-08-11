@@ -1,0 +1,41 @@
+{
+ "name": "signature_envelope_update",
+ "mcp_name": "salesforce.signature_envelope_update",
+ "asset_namespace": "salesforce",
+ "description": "Advance an envelope's signature state (PUT /restapi/v2.1/accounts/{accountId}/envelopes/{envelopeId}).",
+ "type": "write",
+ "target_tables": [
+  "signature_envelopes"
+ ],
+ "parameters": {
+  "envelope_id": "string",
+  "status": "string",
+  "customer_signed_at": "string",
+  "countersigned_at": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "envelope_id": {
+    "type": "string",
+    "description": "The envelope record id."
+   },
+   "status": {
+    "type": "string",
+    "description": "New status: sent, completed or declined."
+   },
+   "customer_signed_at": {
+    "type": "string",
+    "description": "Timestamp the customer signed."
+   },
+   "countersigned_at": {
+    "type": "string",
+    "description": "Timestamp your firm countersigned."
+   }
+  },
+  "required": [
+   "envelope_id"
+  ],
+  "additionalProperties": false
+ }
+}

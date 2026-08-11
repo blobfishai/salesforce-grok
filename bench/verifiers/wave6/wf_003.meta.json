@@ -1,0 +1,30 @@
+{
+ "task_id": "wf_003",
+ "assertions": [
+  "state_changed",
+  "reads_before_writes",
+  "target_row_correct",
+  "no_offtask_table_changes",
+  "no_rows_destroyed",
+  "no_undeclared_rows_created"
+ ],
+ "initial_state_check": "intent derived from the inbound reply text of thread thr_0004: 'Wrong person — my colleague in operations owns this. Copying them here'",
+ "field_policies": [],
+ "positive_case": {
+  "description": "Agent completes the reply_intent_classification workflow",
+  "expected": "pass"
+ },
+ "negative_cases": [
+  {
+   "description": "Wrong row or value",
+   "fails_assertion": "target_row_correct",
+   "expected": "fail"
+  },
+  {
+   "description": "Collateral writes elsewhere",
+   "fails_assertion": "no_offtask_table_changes",
+   "expected": "fail"
+  }
+ ],
+ "discrimination": 2
+}

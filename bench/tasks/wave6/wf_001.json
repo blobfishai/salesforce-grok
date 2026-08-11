@@ -1,0 +1,38 @@
+{
+ "task_id": "wf_001",
+ "prompt": "Crestline Trust appears twice in the lead database as leads 903 and 904. Merge them, keeping lead 903 as the master record. The surviving lead must end up with the estimated value that only the duplicate carried, any child opportunity must follow the master, and the duplicate record must be gone.",
+ "goal": "Workflow — lead_dedupe_merge",
+ "complexity": "medium",
+ "method": "workflow_pack",
+ "provenance": {
+  "source_benchmark": "open-source sales automation canon (see research/answers/oss-sales-automation.md)",
+  "workflow_type": "lead_dedupe_merge",
+  "cloned_by": "scripts/build-workflow-tasks.py",
+  "grading": "multi"
+ },
+ "difficulty_tier": "reference",
+ "required_tools": [
+  "lead_find_duplicates",
+  "lead_merge",
+  "query_sales_leads"
+ ],
+ "tables_affected": [
+  "sales_leads",
+  "sales_opportunities",
+  "lead_merge_log"
+ ],
+ "expected_state_changes": [
+  {
+   "table": "sales_leads",
+   "check": "duplicate_removed"
+  },
+  {
+   "table": "sales_leads",
+   "check": "survivorship_filled"
+  },
+  {
+   "table": "sales_opportunities",
+   "check": "child_reparented"
+  }
+ ]
+}

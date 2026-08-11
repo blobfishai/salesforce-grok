@@ -1,0 +1,43 @@
+{
+ "name": "campaign_touches_list",
+ "mcp_name": "salesforce.campaign_touches_list",
+ "asset_namespace": "salesforce",
+ "description": "List campaign touches for multi-touch attribution (GET /services/data/v62.0/query?q=SELECT+FROM+CampaignMember).",
+ "type": "read",
+ "target_tables": [
+  "campaign_touches"
+ ],
+ "parameters": {
+  "campaign_id": "string",
+  "lead_id": "integer",
+  "account_id": "string",
+  "position": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "campaign_id": {
+    "type": "string",
+    "description": "Campaign to filter by."
+   },
+   "lead_id": {
+    "type": "integer",
+    "description": "Lead to filter by."
+   },
+   "account_id": {
+    "type": "string",
+    "description": "Account to filter by."
+   },
+   "position": {
+    "type": "string",
+    "description": "Touch position: first, middle or last."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "Maximum number of records to return (default 30)."
+   }
+  },
+  "additionalProperties": false
+ }
+}

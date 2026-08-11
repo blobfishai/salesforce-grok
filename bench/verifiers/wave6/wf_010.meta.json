@@ -1,0 +1,28 @@
+{
+ "task_id": "wf_010",
+ "assertions": [
+  "state_changed",
+  "envelope_created",
+  "signer_order_correct",
+  "no_offtask_table_changes"
+ ],
+ "initial_state_check": "signer_order policy value 'customer_first' from the seeded envelope corpus",
+ "field_policies": [],
+ "positive_case": {
+  "description": "Agent completes the quote_document_generation_esignature workflow",
+  "expected": "pass"
+ },
+ "negative_cases": [
+  {
+   "description": "Only part of the outcome achieved",
+   "fails_assertion": "envelope_created",
+   "expected": "fail"
+  },
+  {
+   "description": "Collateral writes elsewhere",
+   "fails_assertion": "no_offtask_table_changes",
+   "expected": "fail"
+  }
+ ],
+ "discrimination": 2
+}

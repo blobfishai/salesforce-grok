@@ -1,0 +1,28 @@
+{
+ "name": "sequences_list",
+ "mcp_name": "salesforce.sequences_list",
+ "asset_namespace": "salesforce",
+ "description": "List outbound sequences (GET /api/v2/sequences).",
+ "type": "read",
+ "target_tables": [
+  "outreach_sequences"
+ ],
+ "parameters": {
+  "status": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "description": "Filter by sequence status: active or paused."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "Maximum number of records to return (default 30)."
+   }
+  },
+  "additionalProperties": false
+ }
+}

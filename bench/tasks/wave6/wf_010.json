@@ -1,0 +1,31 @@
+{
+ "task_id": "wf_010",
+ "prompt": "Meridian Capital's FY26 order form is ready for signature. Create an e-signature envelope for account_003 titled 'Meridian Capital — Order Form FY26' following the mandated signer order in which the customer signs before your firm countersigns. Create exactly one envelope and change nothing else.",
+ "goal": "Workflow — quote_document_generation_esignature",
+ "complexity": "medium",
+ "method": "workflow_pack",
+ "provenance": {
+  "source_benchmark": "RevOps / sales workflow canon (see research/answers/sales-workflow-canon.md)",
+  "workflow_type": "quote_document_generation_esignature",
+  "cloned_by": "scripts/build-workflow-tasks.py",
+  "grading": "multi"
+ },
+ "difficulty_tier": "reference",
+ "required_tools": [
+  "signature_envelopes_list",
+  "signature_envelope_create"
+ ],
+ "tables_affected": [
+  "signature_envelopes"
+ ],
+ "expected_state_changes": [
+  {
+   "table": "signature_envelopes",
+   "check": "envelope_created"
+  },
+  {
+   "table": "signature_envelopes",
+   "check": "signer_order_correct"
+  }
+ ]
+}

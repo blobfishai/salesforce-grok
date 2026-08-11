@@ -1,0 +1,30 @@
+{
+ "task_id": "wf_008",
+ "prompt": "Harborview Partners is in the red health band (score 27.0, risk: usage collapse). The save play has run and adoption recovered. Re-score their health record health_0005 to band 'yellow'. Change nothing else.",
+ "goal": "Workflow — churn_risk_save_workflow",
+ "complexity": "medium",
+ "method": "workflow_pack",
+ "provenance": {
+  "source_benchmark": "RevOps / sales workflow canon (see research/answers/sales-workflow-canon.md)",
+  "workflow_type": "churn_risk_save_workflow",
+  "cloned_by": "scripts/build-workflow-tasks.py",
+  "grading": "state"
+ },
+ "difficulty_tier": "reference",
+ "required_tools": [
+  "account_health_list",
+  "account_usage_list",
+  "account_health_update"
+ ],
+ "tables_affected": [
+  "account_health"
+ ],
+ "expected_state_changes": [
+  {
+   "table": "account_health",
+   "id": "health_0005",
+   "field": "band",
+   "to": "yellow"
+  }
+ ]
+}

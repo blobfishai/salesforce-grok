@@ -1,0 +1,41 @@
+{
+ "name": "email_thread_classify",
+ "mcp_name": "salesforce.email_thread_classify",
+ "asset_namespace": "salesforce",
+ "description": "Apply a reply-intent label, mark a thread read, or route it to an owner (POST /gmail/v1/users/me/threads/{id}/modify).",
+ "type": "write",
+ "target_tables": [
+  "email_threads"
+ ],
+ "parameters": {
+  "thread_id": "string",
+  "intent_label": "string",
+  "status": "string",
+  "assigned_employee_id": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "thread_id": {
+    "type": "string",
+    "description": "The thread record id."
+   },
+   "intent_label": {
+    "type": "string",
+    "description": "Intent label: interested, not_now, unsubscribe, referral, pricing_question or out_of_office."
+   },
+   "status": {
+    "type": "string",
+    "description": "Thread status: read or unread."
+   },
+   "assigned_employee_id": {
+    "type": "integer",
+    "description": "Employee to route the thread to."
+   }
+  },
+  "required": [
+   "thread_id"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "task_id": "wf_003",
+ "prompt": "Read email thread thr_0004 from Ironwood Holdings and classify the prospect's reply. Set its intent_label to whichever of these fits: interested, not_now, unsubscribe, referral, pricing_question, out_of_office. Change nothing else.",
+ "goal": "Workflow — reply_intent_classification",
+ "complexity": "medium",
+ "method": "workflow_pack",
+ "provenance": {
+  "source_benchmark": "open-source sales automation canon (see research/answers/oss-sales-automation.md)",
+  "workflow_type": "reply_intent_classification",
+  "cloned_by": "scripts/build-workflow-tasks.py",
+  "grading": "state"
+ },
+ "difficulty_tier": "reference",
+ "required_tools": [
+  "email_threads_list",
+  "email_messages_list",
+  "email_thread_classify"
+ ],
+ "tables_affected": [
+  "email_threads"
+ ],
+ "expected_state_changes": [
+  {
+   "table": "email_threads",
+   "id": "thr_0004",
+   "field": "intent_label",
+   "to": "referral"
+  }
+ ]
+}

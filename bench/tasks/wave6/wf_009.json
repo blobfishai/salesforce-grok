@@ -1,0 +1,22 @@
+{
+ "task_id": "wf_009",
+ "prompt": "Using first-touch attribution, which campaign is credited with originating the most leads? Answer with the campaign id.",
+ "goal": "Workflow — campaign_attribution",
+ "complexity": "medium",
+ "method": "workflow_pack",
+ "provenance": {
+  "source_benchmark": "RevOps / sales workflow canon (see research/answers/sales-workflow-canon.md)",
+  "workflow_type": "campaign_attribution",
+  "cloned_by": "scripts/build-workflow-tasks.py",
+  "grading": "answer"
+ },
+ "difficulty_tier": "reference",
+ "required_tools": [
+  "campaign_touches_list",
+  "aggregate_query"
+ ],
+ "tables_affected": [],
+ "expected_state_changes": [],
+ "answer_graded": true,
+ "gold_answer": "campaign_001"
+}

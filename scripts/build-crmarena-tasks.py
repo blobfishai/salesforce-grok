@@ -112,6 +112,31 @@ def verify(initial_state, final_state, trace):
 
     norm = _norm(answer)
     hit = any(_norm(a) == norm for a in ACCEPTED) or any(_norm(a) in norm for a in ACCEPTED)
+    # Numeric answers: agents write 35,101,715.30 or $35101715.3 for the same
+    # value. Compare NUMBERS numerically rather than as strings.
+    if not hit:
+        def _nums(text):
+            out, buf = [], ""
+            for ch in str(text) + " ":
+                if ch.isdigit() or (ch == "." and buf and "." not in buf) or (ch == "-" and not buf):
+                    buf += ch
+                elif ch == ",":
+                    continue          # thousands separator inside a number
+                else:
+                    if buf not in ("", "-", "."):
+                        try:
+                            out.append(float(buf))
+                        except ValueError:
+                            pass
+                    buf = ""
+            return out
+        gold_nums = _nums(GOLD)
+        if gold_nums:
+            g = gold_nums[0]
+            # 0.011 absorbs 2-dp rounding; the relative term stays tiny so a
+            # genuinely different number (off by one) still fails.
+            tol = max(0.011, abs(g) * 1e-9)
+            hit = any(abs(v - g) <= tol for v in _nums(answer))
     if not hit and ORDERED_TOKENS:
         pos, ordered_ok = -1, True
         for tok in ORDERED_TOKENS:
@@ -425,9 +450,11 @@ def build_tasks():
         amt = one(sql)
     T.append(answer_task(
         nid(), "sales_amount_understanding", PRO,
-        "What is the total value of all closed-won sales opportunities? Answer with the number rounded to "
-        "two decimals." if "closed_won" in sql else
-        "What is the total value of all sales opportunities in the pipeline? Answer with the number rounded to two decimals.",
+        "What is the total value of all closed-won records in the sales_opportunities pipeline (the 500-row "
+        "pipeline table, NOT the legacy opportunities table)? Answer with the number rounded to two decimals."
+        if "closed_won" in sql else
+        "What is the total value of all records in the sales_opportunities pipeline (the 500-row pipeline "
+        "table, NOT the legacy opportunities table)? Answer with the number rounded to two decimals.",
         amt["total"], sql, accepted=[str(amt["total"]), f"${amt['total']}"],
         tools=["query_sales_opportunities"], tables=["sales_opportunities"]))
 

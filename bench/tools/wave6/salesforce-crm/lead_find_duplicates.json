@@ -1,0 +1,28 @@
+{
+ "name": "lead_find_duplicates",
+ "mcp_name": "salesforce.lead_find_duplicates",
+ "asset_namespace": "salesforce",
+ "description": "Find candidate duplicate leads for one lead, or every company with more than one lead (POST /services/data/v62.0/composite/sobjects/Lead/duplicates).",
+ "type": "read",
+ "target_tables": [
+  "sales_leads"
+ ],
+ "parameters": {
+  "lead_id": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "lead_id": {
+    "type": "string",
+    "description": "Anchor lead to find duplicates of. Omit to scan for all duplicate companies."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "Maximum number of records to return (default 30)."
+   }
+  },
+  "additionalProperties": false
+ }
+}

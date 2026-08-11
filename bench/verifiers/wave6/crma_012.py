@@ -4,8 +4,8 @@ Grading: exact-match on the agent's final answer (normalized), plus a read-only
 guard. Gold was computed from the world database at build time:
     SELECT ROUND(100.0*SUM(CASE WHEN status='qualified' THEN 1 ELSE 0 END)/COUNT(*),2) pct FROM sales_leads
 """
-GOLD = '22.2'
-ACCEPTED = ['22.2', '22.2%']
+GOLD = '22.02'
+ACCEPTED = ['22.02', '22.02%']
 # For multi-part answers (e.g. an approval sequence) the agent legitimately
 # replies in prose. Grade the ORDER of the required tokens rather than demanding
 # one literal string — still deterministic, no judge.
@@ -61,6 +61,31 @@ def verify(initial_state, final_state, trace):
 
     norm = _norm(answer)
     hit = any(_norm(a) == norm for a in ACCEPTED) or any(_norm(a) in norm for a in ACCEPTED)
+    # Numeric answers: agents write 35,101,715.30 or $35101715.3 for the same
+    # value. Compare NUMBERS numerically rather than as strings.
+    if not hit:
+        def _nums(text):
+            out, buf = [], ""
+            for ch in str(text) + " ":
+                if ch.isdigit() or (ch == "." and buf and "." not in buf) or (ch == "-" and not buf):
+                    buf += ch
+                elif ch == ",":
+                    continue          # thousands separator inside a number
+                else:
+                    if buf not in ("", "-", "."):
+                        try:
+                            out.append(float(buf))
+                        except ValueError:
+                            pass
+                    buf = ""
+            return out
+        gold_nums = _nums(GOLD)
+        if gold_nums:
+            g = gold_nums[0]
+            # 0.011 absorbs 2-dp rounding; the relative term stays tiny so a
+            # genuinely different number (off by one) still fails.
+            tol = max(0.011, abs(g) * 1e-9)
+            hit = any(abs(v - g) <= tol for v in _nums(answer))
     if not hit and ORDERED_TOKENS:
         pos, ordered_ok = -1, True
         for tok in ORDERED_TOKENS:

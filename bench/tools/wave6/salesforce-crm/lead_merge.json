@@ -1,0 +1,34 @@
+{
+ "name": "lead_merge",
+ "mcp_name": "salesforce.lead_merge",
+ "asset_namespace": "salesforce",
+ "description": "Merge a duplicate lead into a master: master wins conflicts, blanks are filled from the duplicate, child opportunities are re-parented, and the duplicate is deleted (POST /services/data/v62.0/composite/sobjects/Lead/merge).",
+ "type": "write",
+ "target_tables": [
+  "sales_leads",
+  "sales_opportunities",
+  "lead_merge_log"
+ ],
+ "parameters": {
+  "master_lead_id": "string",
+  "duplicate_lead_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "master_lead_id": {
+    "type": "string",
+    "description": "Lead that survives the merge."
+   },
+   "duplicate_lead_id": {
+    "type": "string",
+    "description": "Lead that is merged away and deleted."
+   }
+  },
+  "required": [
+   "master_lead_id",
+   "duplicate_lead_id"
+  ],
+  "additionalProperties": false
+ }
+}

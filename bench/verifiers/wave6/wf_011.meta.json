@@ -1,0 +1,28 @@
+{
+ "task_id": "wf_011",
+ "assertions": [
+  "used_tools",
+  "answer_present",
+  "answer_matches_gold",
+  "read_only_no_mutation"
+ ],
+ "initial_state_check": "COUNT(*) FROM sales_opportunities WHERE status='negotiation'",
+ "field_policies": [],
+ "positive_case": {
+  "description": "Agent completes the pipeline_inspection_stalled workflow",
+  "expected": "pass"
+ },
+ "negative_cases": [
+  {
+   "description": "Wrong value",
+   "fails_assertion": "answer_matches_gold",
+   "expected": "fail"
+  },
+  {
+   "description": "Mutates state on a read-only question",
+   "fails_assertion": "read_only_no_mutation",
+   "expected": "fail"
+  }
+ ],
+ "discrimination": 2
+}

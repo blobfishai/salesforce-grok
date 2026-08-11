@@ -1,0 +1,41 @@
+{
+ "name": "account_health_update",
+ "mcp_name": "salesforce.account_health_update",
+ "asset_namespace": "salesforce",
+ "description": "Re-score an account's health after a save play or usage change (PATCH /analytics/v1/accounts/health/{id}).",
+ "type": "write",
+ "target_tables": [
+  "account_health"
+ ],
+ "parameters": {
+  "health_id": "string",
+  "score": "number",
+  "band": "string",
+  "primary_risk": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "health_id": {
+    "type": "string",
+    "description": "The health record id."
+   },
+   "score": {
+    "type": "number",
+    "description": "New weighted health score."
+   },
+   "band": {
+    "type": "string",
+    "description": "New band: green, yellow or red."
+   },
+   "primary_risk": {
+    "type": "string",
+    "description": "Updated primary risk description."
+   }
+  },
+  "required": [
+   "health_id"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -1,0 +1,28 @@
+{
+ "task_id": "wf_005",
+ "assertions": [
+  "state_changed",
+  "enrollment_created",
+  "enrollment_correct",
+  "no_offtask_table_changes"
+ ],
+ "initial_state_check": "active sequence seq_0001, qualified lead 3",
+ "field_policies": [],
+ "positive_case": {
+  "description": "Agent completes the sequence_enrollment workflow",
+  "expected": "pass"
+ },
+ "negative_cases": [
+  {
+   "description": "Only part of the outcome achieved",
+   "fails_assertion": "enrollment_created",
+   "expected": "fail"
+  },
+  {
+   "description": "Collateral writes elsewhere",
+   "fails_assertion": "no_offtask_table_changes",
+   "expected": "fail"
+  }
+ ],
+ "discrimination": 2
+}

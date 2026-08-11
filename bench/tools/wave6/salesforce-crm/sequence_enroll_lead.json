@@ -1,0 +1,42 @@
+{
+ "name": "sequence_enroll_lead",
+ "mcp_name": "salesforce.sequence_enroll_lead",
+ "asset_namespace": "salesforce",
+ "description": "Enroll a lead into a sequence at a given step (POST /api/v2/sequenceStates).",
+ "type": "write",
+ "target_tables": [
+  "outreach_enrollments"
+ ],
+ "parameters": {
+  "sequence_id": "string",
+  "lead_id": "integer",
+  "current_step": "integer",
+  "status": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "sequence_id": {
+    "type": "string",
+    "description": "Sequence to enroll into."
+   },
+   "lead_id": {
+    "type": "integer",
+    "description": "Lead being enrolled."
+   },
+   "current_step": {
+    "type": "integer",
+    "description": "Step to start at; defaults to 1."
+   },
+   "status": {
+    "type": "string",
+    "description": "Enrollment status; defaults to active."
+   }
+  },
+  "required": [
+   "sequence_id",
+   "lead_id"
+  ],
+  "additionalProperties": false
+ }
+}

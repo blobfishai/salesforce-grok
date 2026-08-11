@@ -1,0 +1,32 @@
+{
+ "task_id": "wf_005",
+ "prompt": "Lead 3 (Meridian Company) is qualified and should start outbound. Enroll it in the active sequence 'Enterprise Outbound — Wealth Platform' (seq_0001) at step 1. Create exactly one enrollment and change nothing else.",
+ "goal": "Workflow — sequence_enrollment",
+ "complexity": "medium",
+ "method": "workflow_pack",
+ "provenance": {
+  "source_benchmark": "open-source sales automation canon (see research/answers/oss-sales-automation.md)",
+  "workflow_type": "sequence_enrollment",
+  "cloned_by": "scripts/build-workflow-tasks.py",
+  "grading": "multi"
+ },
+ "difficulty_tier": "reference",
+ "required_tools": [
+  "sequences_list",
+  "sequence_steps_list",
+  "sequence_enroll_lead"
+ ],
+ "tables_affected": [
+  "outreach_enrollments"
+ ],
+ "expected_state_changes": [
+  {
+   "table": "outreach_enrollments",
+   "check": "enrollment_created"
+  },
+  {
+   "table": "outreach_enrollments",
+   "check": "enrollment_correct"
+  }
+ ]
+}

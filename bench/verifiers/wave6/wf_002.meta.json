@@ -1,0 +1,28 @@
+{
+ "task_id": "wf_002",
+ "assertions": [
+  "state_changed",
+  "lead_created",
+  "lead_fields_correct",
+  "no_offtask_table_changes"
+ ],
+ "initial_state_check": "new lead row asserted by field match, not by id (the agent mints the id)",
+ "field_policies": [],
+ "positive_case": {
+  "description": "Agent completes the inbound_lead_capture_routing workflow",
+  "expected": "pass"
+ },
+ "negative_cases": [
+  {
+   "description": "Only part of the outcome achieved",
+   "fails_assertion": "lead_created",
+   "expected": "fail"
+  },
+  {
+   "description": "Collateral writes elsewhere",
+   "fails_assertion": "no_offtask_table_changes",
+   "expected": "fail"
+  }
+ ],
+ "discrimination": 2
+}
