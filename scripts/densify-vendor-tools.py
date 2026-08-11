@@ -619,6 +619,7 @@ def main():
 
     new_tools, new_tables, per_vendor = [], [], {}
     skipped_tools = skipped_tables = 0
+    refreshed_tables = []
     for fname in spec_files:
         spec = json.load(open(os.path.join(SPECS_DIR, fname)))
         vendor, ns = spec["vendor"], spec["namespace"]
@@ -628,7 +629,16 @@ def main():
         for tb in spec.get("tables", []):
             check_ident(tb["name"], "table")
             if tb["name"] in taken_tables:
-                skipped_tables += 1   # already applied: this pass is a delta
+                # The table exists, but the spec still OWNS its seed data: refresh
+                # the rows so a data correction in the spec reaches the world.
+                # (Schema changes are not migrated — those need a new table.)
+                existing = next((x for x in world["tables"] if x["name"] == tb["name"]), None)
+                if existing is not None and tb.get("sample_rows") and existing.get("sample_rows") != tb["sample_rows"]:
+                    existing["sample_rows"] = tb["sample_rows"]
+                    existing["row_count"] = len(tb["sample_rows"])
+                    refreshed_tables.append(tb["name"])
+                else:
+                    skipped_tables += 1   # already applied: this pass is a delta
                 continue
             for c in tb["columns"]:
                 check_ident(c["name"], f"column in {tb['name']}")
@@ -681,7 +691,9 @@ def main():
     open(assets_path, "w").write(dump_matching(assets, assets_raw))
 
     print(f"pruned {len(pruned_entries)} tools; added {len(new_tools)} tools, {len(new_tables)} tables "
-          f"(skipped {skipped_tools} tools / {skipped_tables} tables already applied) -> "
+          f"(skipped {skipped_tools} tools / {skipped_tables} tables already applied"
+          + (f", refreshed rows in {len(refreshed_tables)}: {', '.join(refreshed_tables)}" if refreshed_tables else "")
+          + ") -> "
           f"{len(world['tools'])} tools, {len(world['tables'])} tables total")
     for vendor in sorted(per_vendor):
         print(f"  {vendor}: +{per_vendor[vendor]}")
