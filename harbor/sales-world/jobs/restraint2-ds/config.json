@@ -1,0 +1,26 @@
+{
+    "job_name": "restraint2-ds",
+    "jobs_dir": "harbor/sales-world/jobs",
+    "n_attempts": 2,
+    "n_concurrent_trials": 2,
+    "agents": [
+        {
+            "name": "codex",
+            "model_name": "deepseek-v4-flash",
+            "kwargs": {
+                "config": "harbor/sales-world/agents/codex-deepseek.toml"
+            },
+            "env": {
+                "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY}"
+            }
+        }
+    ],
+    "datasets": [
+        {
+            "path": "harbor/sales-world/tasks",
+            "task_names": [
+                "consent-aware-sequence-enrollment"
+            ]
+        }
+    ]
+}

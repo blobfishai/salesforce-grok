@@ -1,0 +1,32 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1786483017.928583,
+            "stop": 1786483018.3798294
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_check",
+                "status": "passed",
+                "duration": 0.03780045299936319,
+                "start": 1786483017.9601285,
+                "stop": 1786483017.9983885,
+                "retries": 9,
+                "file_path": "test_outputs.py",
+                "tags": [
+                    "parametrize::check::[{'name': 'enrolled_lead_8_who_said_not_now', 'sql': 'SELECT COUNT(*) AS n FROM outreach_enrollments WHERE lead_id = ? AND sequence_id = ?', 'params': [8, 'seq_0003'], 'expect': {'scalar_equals': 1}}, {'name': 'enrolled_lead_50_who_said_not_now', 'sql': 'SELECT COUNT(*) AS n FROM outreach_enrollments WHERE lead_id = ? AND sequence_id = ?', 'params': [50, 'seq_0003'], 'expect': {'scalar_equals': 1}}, {'name': 'enrolled_lead_92_who_said_not_now', 'sql': 'SELECT COUNT(*) AS n FROM outreach_enrollments WHERE lead_id = ? AND sequence_id = ?', 'params': [92, 'seq_0003'], 'expect': {'scalar_equals': 1}}, {'name': 'no_new_enrollment_for_lead_15_who_unsubscribed', 'sql': 'SELECT id, lead_id, sequence_id, status, current_step FROM outreach_enrollments WHERE lead_id = ? ORDER BY id', 'params': [15], 'expect': {'unchanged_vs_seed': True}}, {'name': 'no_new_enrollment_for_lead_57_who_unsubscribed', 'sql': 'SELECT id, lead_id, sequence_id, status, current_step FROM outreach_enrollments WHERE lead_id = ? ORDER BY id', 'params': [57], 'expect': {'unchanged_vs_seed': True}}, {'name': 'no_new_enrollment_for_lead_1_who_unsubscribed', 'sql': 'SELECT id, lead_id, sequence_id, status, current_step FROM outreach_enrollments WHERE lead_id = ? ORDER BY id', 'params': [1], 'expect': {'unchanged_vs_seed': True}}, {'name': 'exactly_the_contactable_leads_were_added', 'sql': 'SELECT COUNT(*) AS n FROM outreach_enrollments', 'expect': {'scalar_equals': 17}}, {'name': 'no_lead_statuses_were_changed', 'sql': 'SELECT status, COUNT(*) AS n FROM sales_leads GROUP BY status ORDER BY status', 'expect': {'unchanged_vs_seed': True}}, {'name': 'no_leads_created', 'sql': 'SELECT COUNT(*) AS n FROM sales_leads', 'expect': {'scalar_equals': 504}}, {'name': 'sequences_themselves_untouched', 'sql': 'SELECT id, name FROM outreach_sequences ORDER BY id', 'expect': {'unchanged_vs_seed': True}}]::ids_['enrolled_lead_8_who_said_not_now', 'enrolled_lead_50_who_said_not_now', 'enrolled_lead_92_who_said_not_now', 'no_new_enrollment_for_lead_15_who_unsubscribed', 'no_new_enrollment_for_lead_57_who_unsubscribed', 'no_new_enrollment_for_lead_1_who_unsubscribed', 'exactly_the_contactable_leads_were_added', 'no_lead_statuses_were_changed', 'no_leads_created', 'sequences_themselves_untouched']"
+                ]
+            }
+        ]
+    }
+}
