@@ -1,0 +1,94 @@
+[
+  {
+    "name": "flagged_atlas",
+    "sql": "SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?",
+    "params": [
+      "%Atlas Advisory%"
+    ],
+    "expect": {
+      "scalar_equals": 1
+    }
+  },
+  {
+    "name": "flagged_harborview",
+    "sql": "SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?",
+    "params": [
+      "%Harborview Partners%"
+    ],
+    "expect": {
+      "scalar_equals": 1
+    }
+  },
+  {
+    "name": "flagged_meridian",
+    "sql": "SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?",
+    "params": [
+      "%Meridian Capital%"
+    ],
+    "expect": {
+      "scalar_equals": 1
+    }
+  },
+  {
+    "name": "not_flagged_crestline_is_healthy",
+    "sql": "SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?",
+    "params": [
+      "%Crestline Trust%"
+    ],
+    "expect": {
+      "scalar_equals": 0
+    }
+  },
+  {
+    "name": "not_flagged_ironwood_is_healthy",
+    "sql": "SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?",
+    "params": [
+      "%Ironwood Holdings%"
+    ],
+    "expect": {
+      "scalar_equals": 0
+    }
+  },
+  {
+    "name": "not_flagged_riverside_is_healthy",
+    "sql": "SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?",
+    "params": [
+      "%Riverside Group%"
+    ],
+    "expect": {
+      "scalar_equals": 0
+    }
+  },
+  {
+    "name": "not_flagged_summit_is_healthy",
+    "sql": "SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?",
+    "params": [
+      "%Summit Group%"
+    ],
+    "expect": {
+      "scalar_equals": 0
+    }
+  },
+  {
+    "name": "health_scores_not_edited",
+    "sql": "SELECT id, score, band, primary_risk FROM account_health ORDER BY id",
+    "expect": {
+      "unchanged_vs_seed": true
+    }
+  },
+  {
+    "name": "usage_records_untouched",
+    "sql": "SELECT id, licensed_seats, active_seats FROM account_usage ORDER BY id",
+    "expect": {
+      "unchanged_vs_seed": true
+    }
+  },
+  {
+    "name": "followups_were_actually_written",
+    "sql": "SELECT 1",
+    "expect": {
+      "tool_called": "crm_followup_create",
+      "min_calls": 3
+    }
+  }
+]

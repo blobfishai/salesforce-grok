@@ -1,0 +1,38 @@
+schema_version = "1.1"
+
+[task]
+name = "sales-world/renewal-risk-triage"
+description = "Flag the renewals at risk from health band and seat utilisation together"
+authors = [{ name = "salesforce-grok sales-world" }]
+keywords = ["renewal", "health-score", "adoption", "cross-table"]
+
+[metadata]
+family = "customer-success"
+persona = "Customer Success Manager"
+difficulty = "medium"
+citations = ["docs/anchors/wave6/27-customer-success-health-model.md", "research/answers/workflow-task-census.md#family 3"]
+
+[verifier]
+timeout_sec = 600.0
+
+[verifier.env]
+HARBOR_VERIFIER_TOKEN = "harbor-verifier-token"
+WORLD_URL = "http://world:8080"
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 900.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 10240
+gpus = 0
+
+[environment.env]
+
+[[environment.mcp_servers]]
+name = "salesforce"
+transport = "streamable-http"
+url = "http://salesforce:8000/mcp"
+args = []

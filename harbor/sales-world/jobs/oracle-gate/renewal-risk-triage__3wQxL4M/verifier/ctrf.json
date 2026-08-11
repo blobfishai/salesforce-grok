@@ -1,0 +1,32 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1786473734.112129,
+            "stop": 1786473735.5122964
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_check",
+                "status": "passed",
+                "duration": 0.08224296800000275,
+                "start": 1786473734.1821356,
+                "stop": 1786473734.2648733,
+                "retries": 9,
+                "file_path": "test_outputs.py",
+                "tags": [
+                    "parametrize::check::[{'name': 'flagged_atlas', 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?', 'params': ['%Atlas Advisory%'], 'expect': {'scalar_equals': 1}}, {'name': 'flagged_harborview', 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?', 'params': ['%Harborview Partners%'], 'expect': {'scalar_equals': 1}}, {'name': 'flagged_meridian', 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?', 'params': ['%Meridian Capital%'], 'expect': {'scalar_equals': 1}}, {'name': 'not_flagged_crestline_is_healthy', 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?', 'params': ['%Crestline Trust%'], 'expect': {'scalar_equals': 0}}, {'name': 'not_flagged_ironwood_is_healthy', 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?', 'params': ['%Ironwood Holdings%'], 'expect': {'scalar_equals': 0}}, {'name': 'not_flagged_riverside_is_healthy', 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?', 'params': ['%Riverside Group%'], 'expect': {'scalar_equals': 0}}, {'name': 'not_flagged_summit_is_healthy', 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?', 'params': ['%Summit Group%'], 'expect': {'scalar_equals': 0}}, {'name': 'health_scores_not_edited', 'sql': 'SELECT id, score, band, primary_risk FROM account_health ORDER BY id', 'expect': {'unchanged_vs_seed': True}}, {'name': 'usage_records_untouched', 'sql': 'SELECT id, licensed_seats, active_seats FROM account_usage ORDER BY id', 'expect': {'unchanged_vs_seed': True}}, {'name': 'followups_were_actually_written', 'sql': 'SELECT 1', 'expect': {'tool_called': 'crm_followup_create', 'min_calls': 3}}]::ids_['flagged_atlas', 'flagged_harborview', 'flagged_meridian', 'not_flagged_crestline_is_healthy', 'not_flagged_ironwood_is_healthy', 'not_flagged_riverside_is_healthy', 'not_flagged_summit_is_healthy', 'health_scores_not_edited', 'usage_records_untouched', 'followups_were_actually_written']"
+                ]
+            }
+        ]
+    }
+}

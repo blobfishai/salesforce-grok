@@ -1,0 +1,57 @@
+# Merged on top of Harbor's base compose. `main` is the agent container.
+services:
+  main:
+    depends_on:
+      salesforce:
+        condition: service_healthy
+      notion:
+        condition: service_healthy
+      slack:
+        condition: service_healthy
+
+  world:
+    image: sales-world:w6
+    pull_policy: never
+    expose:
+      - "8080"
+    environment:
+      HARBOR_VERIFIER_TOKEN: harbor-verifier-token
+
+  salesforce:
+    image: sales-world-gateway:w6
+    pull_policy: never
+    depends_on:
+      world:
+        condition: service_healthy
+    environment:
+      UPSTREAM: http://world:8080/mcp
+      NAMESPACE: salesforce
+      VENDOR: salesforce
+    expose:
+      - "8000"
+
+  notion:
+    image: sales-world-gateway:w6
+    pull_policy: never
+    depends_on:
+      world:
+        condition: service_healthy
+    environment:
+      UPSTREAM: http://world:8080/mcp
+      NAMESPACE: notion
+      VENDOR: notion
+    expose:
+      - "8000"
+
+  slack:
+    image: sales-world-gateway:w6
+    pull_policy: never
+    depends_on:
+      world:
+        condition: service_healthy
+    environment:
+      UPSTREAM: http://world:8080/mcp
+      NAMESPACE: slack
+      VENDOR: slack
+    expose:
+      - "8000"

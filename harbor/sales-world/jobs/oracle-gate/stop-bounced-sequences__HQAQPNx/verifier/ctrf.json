@@ -1,0 +1,32 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1786473787.5775547,
+            "stop": 1786473788.129088
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_check",
+                "status": "passed",
+                "duration": 0.13831385000000296,
+                "start": 1786473787.6771102,
+                "stop": 1786473787.8234596,
+                "retries": 5,
+                "file_path": "test_outputs.py",
+                "tags": [
+                    "parametrize::check::[{'name': 'bounced_enrollment_enr_0005_stopped', 'sql': 'SELECT status FROM outreach_enrollments WHERE id = ?', 'params': ['enr_0005'], 'expect': {'scalar_equals': 'completed'}}, {'name': 'bounced_enrollment_enr_0010_stopped', 'sql': 'SELECT status FROM outreach_enrollments WHERE id = ?', 'params': ['enr_0010'], 'expect': {'scalar_equals': 'completed'}}, {'name': 'no_bounced_enrollment_left_running', 'sql': \"SELECT COUNT(*) AS n FROM outreach_enrollments WHERE status = 'bounced'\", 'expect': {'scalar_equals': 0}}, {'name': 'active_and_replied_enrollments_untouched', 'sql': \"SELECT id, status, current_step FROM outreach_enrollments WHERE id NOT IN ('enr_0005','enr_0010') ORDER BY id\", 'expect': {'unchanged_vs_seed': True}}, {'name': 'no_enrollments_created_or_deleted', 'sql': 'SELECT COUNT(*) AS n FROM outreach_enrollments', 'expect': {'scalar_equals': 14}}, {'name': 'sequences_themselves_untouched', 'sql': 'SELECT id, name FROM outreach_sequences ORDER BY id', 'expect': {'unchanged_vs_seed': True}}]::ids_['bounced_enrollment_enr_0005_stopped', 'bounced_enrollment_enr_0010_stopped', 'no_bounced_enrollment_left_running', 'active_and_replied_enrollments_untouched', 'no_enrollments_created_or_deleted', 'sequences_themselves_untouched']"
+                ]
+            }
+        ]
+    }
+}

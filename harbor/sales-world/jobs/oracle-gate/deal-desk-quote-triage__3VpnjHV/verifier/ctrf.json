@@ -1,0 +1,32 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1786473838.1913395,
+            "stop": 1786473839.7286217
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_check",
+                "status": "passed",
+                "duration": 0.12159332100000597,
+                "start": 1786473838.3055873,
+                "stop": 1786473838.4293776,
+                "retries": 8,
+                "file_path": "test_outputs.py",
+                "tags": [
+                    "parametrize::check::[{'name': 'riverside_group_12.5pct_is_approved', 'sql': 'SELECT status FROM sales_quotes WHERE id = ?', 'params': ['quote_0002'], 'expect': {'scalar_equals': 'approved'}}, {'name': 'meridian_capital_18.0pct_is_in_review', 'sql': 'SELECT status FROM sales_quotes WHERE id = ?', 'params': ['quote_0003'], 'expect': {'scalar_equals': 'in_review'}}, {'name': 'ironwood_holdings_24.0pct_is_approved', 'sql': 'SELECT status FROM sales_quotes WHERE id = ?', 'params': ['quote_0004'], 'expect': {'scalar_equals': 'approved'}}, {'name': 'atlas_advisory_34.0pct_is_rejected', 'sql': 'SELECT status FROM sales_quotes WHERE id = ?', 'params': ['quote_0006'], 'expect': {'scalar_equals': 'rejected'}}, {'name': 'harborview_partners_31.0pct_is_rejected', 'sql': 'SELECT status FROM sales_quotes WHERE id = ?', 'params': ['quote_0011'], 'expect': {'scalar_equals': 'rejected'}}, {'name': 'no_discount_was_rewritten', 'sql': 'SELECT id, discount_pct FROM sales_quotes ORDER BY id', 'expect': {'unchanged_vs_seed': True}}, {'name': 'drafts_and_decided_quotes_untouched', 'sql': \"SELECT id, status FROM sales_quotes WHERE status IN ('draft','approved','rejected') AND id NOT IN ('quote_0002','quote_0003','quote_0004','quote_0006','quote_0011') ORDER BY id\", 'expect': {'unchanged_vs_seed': True}}, {'name': 'no_quotes_created_or_deleted', 'sql': 'SELECT COUNT(*) AS n FROM sales_quotes', 'expect': {'scalar_equals': 12}}, {'name': 'quote_lines_untouched', 'sql': 'SELECT id, quote_id, product_code FROM sales_quote_lines ORDER BY id', 'expect': {'unchanged_vs_seed': True}}]::ids_['riverside_group_12.5pct_is_approved', 'meridian_capital_18.0pct_is_in_review', 'ironwood_holdings_24.0pct_is_approved', 'atlas_advisory_34.0pct_is_rejected', 'harborview_partners_31.0pct_is_rejected', 'no_discount_was_rewritten', 'drafts_and_decided_quotes_untouched', 'no_quotes_created_or_deleted', 'quote_lines_untouched']"
+                ]
+            }
+        ]
+    }
+}
