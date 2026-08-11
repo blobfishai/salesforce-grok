@@ -1,0 +1,38 @@
+schema_version = "1.1"
+
+[task]
+name = "sales-world/stop-bounced-sequences"
+description = "Stop sequences that are still running against bounced contacts"
+authors = [{ name = "salesforce-grok sales-world" }]
+keywords = ["outbound", "deliverability", "suppression", "hygiene"]
+
+[metadata]
+family = "outbound-hygiene"
+persona = "SDR manager"
+difficulty = "easy"
+citations = ["research/repos/workflow/TomGranot__hubspot-admin-skills/skills/suppress-hard-bounced/SKILL.md", "research/answers/workflow-task-census.md#family 1"]
+
+[verifier]
+timeout_sec = 600.0
+
+[verifier.env]
+HARBOR_VERIFIER_TOKEN = "harbor-verifier-token"
+WORLD_URL = "http://world:8080"
+
+[agent]
+timeout_sec = 1200.0
+
+[environment]
+build_timeout_sec = 900.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 10240
+gpus = 0
+
+[environment.env]
+
+[[environment.mcp_servers]]
+name = "salesforce"
+transport = "streamable-http"
+url = "http://salesforce:8000/mcp"
+args = []

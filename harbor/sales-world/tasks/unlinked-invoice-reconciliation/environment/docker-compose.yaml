@@ -1,0 +1,42 @@
+# Merged on top of Harbor's base compose. `main` is the agent container.
+services:
+  main:
+    depends_on:
+      erp:
+        condition: service_healthy
+      jira:
+        condition: service_healthy
+
+  world:
+    image: sales-world:w6
+    pull_policy: never
+    expose:
+      - "8080"
+    environment:
+      HARBOR_VERIFIER_TOKEN: harbor-verifier-token
+
+  erp:
+    image: sales-world-gateway:w6
+    pull_policy: never
+    depends_on:
+      world:
+        condition: service_healthy
+    environment:
+      UPSTREAM: http://world:8080/mcp
+      NAMESPACE: erp
+      VENDOR: erp
+    expose:
+      - "8000"
+
+  jira:
+    image: sales-world-gateway:w6
+    pull_policy: never
+    depends_on:
+      world:
+        condition: service_healthy
+    environment:
+      UPSTREAM: http://world:8080/mcp
+      NAMESPACE: jira
+      VENDOR: jira
+    expose:
+      - "8000"

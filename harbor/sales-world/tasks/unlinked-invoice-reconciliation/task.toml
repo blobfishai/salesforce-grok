@@ -1,0 +1,44 @@
+schema_version = "1.1"
+
+[task]
+name = "sales-world/unlinked-invoice-reconciliation"
+description = "Find invoices that tie to no sales order and open a reconciliation ticket for each"
+authors = [{ name = "salesforce-grok sales-world" }]
+keywords = ["reconciliation", "erp", "jira", "revops", "multi-system"]
+
+[metadata]
+family = "revenue-reconciliation"
+persona = "Revenue Operations"
+difficulty = "hard"
+citations = ["research/answers/data-chaos-catalog.md#drift mechanisms", "research/answers/eval-task-census.md#what no public eval covers"]
+
+[verifier]
+timeout_sec = 600.0
+
+[verifier.env]
+HARBOR_VERIFIER_TOKEN = "harbor-verifier-token"
+WORLD_URL = "http://world:8080"
+
+[agent]
+timeout_sec = 2400.0
+
+[environment]
+build_timeout_sec = 900.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 10240
+gpus = 0
+
+[environment.env]
+
+[[environment.mcp_servers]]
+name = "erp"
+transport = "streamable-http"
+url = "http://erp:8000/mcp"
+args = []
+
+[[environment.mcp_servers]]
+name = "jira"
+transport = "streamable-http"
+url = "http://jira:8000/mcp"
+args = []

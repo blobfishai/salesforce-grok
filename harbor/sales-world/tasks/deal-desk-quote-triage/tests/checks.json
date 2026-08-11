@@ -1,6 +1,6 @@
 [
   {
-    "name": "riverside_1.58m_at_12.5pct_approved",
+    "name": "riverside_group_12.5pct_is_approved",
     "sql": "SELECT status FROM sales_quotes WHERE id = ?",
     "params": [
       "quote_0002"
@@ -10,7 +10,7 @@
     }
   },
   {
-    "name": "meridian_2.09m_list_escalated_not_approved",
+    "name": "meridian_capital_18.0pct_is_in_review",
     "sql": "SELECT status FROM sales_quotes WHERE id = ?",
     "params": [
       "quote_0003"
@@ -20,7 +20,7 @@
     }
   },
   {
-    "name": "ironwood_24pct_under_2m_approved",
+    "name": "ironwood_holdings_24.0pct_is_approved",
     "sql": "SELECT status FROM sales_quotes WHERE id = ?",
     "params": [
       "quote_0004"
@@ -30,7 +30,7 @@
     }
   },
   {
-    "name": "atlas_invalid_config_rejected",
+    "name": "atlas_advisory_34.0pct_is_rejected",
     "sql": "SELECT status FROM sales_quotes WHERE id = ?",
     "params": [
       "quote_0006"
@@ -40,7 +40,7 @@
     }
   },
   {
-    "name": "harborview_invalid_config_rejected",
+    "name": "harborview_partners_31.0pct_is_rejected",
     "sql": "SELECT status FROM sales_quotes WHERE id = ?",
     "params": [
       "quote_0011"
@@ -58,7 +58,7 @@
   },
   {
     "name": "drafts_and_decided_quotes_untouched",
-    "sql": "SELECT id, status FROM sales_quotes WHERE id IN ('quote_0001','quote_0005','quote_0007','quote_0008','quote_0009','quote_0010','quote_0012') ORDER BY id",
+    "sql": "SELECT id, status FROM sales_quotes WHERE status IN ('draft','approved','rejected') AND id NOT IN ('quote_0002','quote_0003','quote_0004','quote_0006','quote_0011') ORDER BY id",
     "expect": {
       "unchanged_vs_seed": true
     }

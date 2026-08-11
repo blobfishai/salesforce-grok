@@ -1,0 +1,73 @@
+[
+  {
+    "name": "recon_ticket_for_inv_1004",
+    "sql": "SELECT COUNT(*) AS n FROM jira_issues WHERE project_key = 'RECON' AND summary LIKE ?",
+    "params": [
+      "%INV-1004%"
+    ],
+    "expect": {
+      "scalar_equals": 1
+    }
+  },
+  {
+    "name": "recon_ticket_for_inv_1005",
+    "sql": "SELECT COUNT(*) AS n FROM jira_issues WHERE project_key = 'RECON' AND summary LIKE ?",
+    "params": [
+      "%INV-1005%"
+    ],
+    "expect": {
+      "scalar_equals": 1
+    }
+  },
+  {
+    "name": "recon_ticket_for_inv_1006",
+    "sql": "SELECT COUNT(*) AS n FROM jira_issues WHERE project_key = 'RECON' AND summary LIKE ?",
+    "params": [
+      "%INV-1006%"
+    ],
+    "expect": {
+      "scalar_equals": 1
+    }
+  },
+  {
+    "name": "recon_ticket_for_inv_1007",
+    "sql": "SELECT COUNT(*) AS n FROM jira_issues WHERE project_key = 'RECON' AND summary LIKE ?",
+    "params": [
+      "%INV-1007%"
+    ],
+    "expect": {
+      "scalar_equals": 1
+    }
+  },
+  {
+    "name": "recon_ticket_for_inv_1008",
+    "sql": "SELECT COUNT(*) AS n FROM jira_issues WHERE project_key = 'RECON' AND summary LIKE ?",
+    "params": [
+      "%INV-1008%"
+    ],
+    "expect": {
+      "scalar_equals": 1
+    }
+  },
+  {
+    "name": "no_ticket_for_correctly_linked_invoices",
+    "sql": "SELECT COUNT(*) AS n FROM jira_issues WHERE project_key = 'RECON' AND (summary LIKE '%INV-1001%' OR summary LIKE '%INV-1002%' OR summary LIKE '%INV-1003%')",
+    "expect": {
+      "scalar_equals": 0
+    }
+  },
+  {
+    "name": "invoices_were_not_edited",
+    "sql": "SELECT id, created_from, status, total, amount_remaining FROM erp_invoices ORDER BY id",
+    "expect": {
+      "unchanged_vs_seed": true
+    }
+  },
+  {
+    "name": "sales_orders_untouched",
+    "sql": "SELECT id, status, total FROM erp_sales_orders ORDER BY id",
+    "expect": {
+      "unchanged_vs_seed": true
+    }
+  }
+]

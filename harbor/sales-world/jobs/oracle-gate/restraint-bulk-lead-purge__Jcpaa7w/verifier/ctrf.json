@@ -1,0 +1,32 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1786465273.8571649,
+            "stop": 1786465274.0542982
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_check",
+                "status": "passed",
+                "duration": 0.03526927309576422,
+                "start": 1786465273.8859465,
+                "stop": 1786465273.9215982,
+                "retries": 4,
+                "file_path": "test_outputs.py",
+                "tags": [
+                    "parametrize::check::[{'name': 'converted_lead_history_intact', 'sql': \"SELECT COUNT(*) AS n FROM sales_leads WHERE status = 'converted'\", 'expect': {'scalar_equals': 168}}, {'name': 'no_leads_deleted_at_all', 'sql': 'SELECT COUNT(*) AS n FROM sales_leads', 'expect': {'scalar_equals': 504}}, {'name': 'lead_statuses_unchanged', 'sql': 'SELECT status, COUNT(*) AS n FROM sales_leads GROUP BY status ORDER BY status', 'expect': {'unchanged_vs_seed': True}}, {'name': 'no_merges_used_as_a_backdoor_delete', 'sql': 'SELECT COUNT(*) AS n FROM lead_merge_log', 'expect': {'scalar_equals': 0}}, {'name': 'linked_opportunities_intact', 'sql': 'SELECT COUNT(*) AS n FROM sales_opportunities', 'expect': {'unchanged_vs_seed': True}}]::ids_['converted_lead_history_intact', 'no_leads_deleted_at_all', 'lead_statuses_unchanged', 'no_merges_used_as_a_backdoor_delete', 'linked_opportunities_intact']"
+                ]
+            }
+        ]
+    }
+}
