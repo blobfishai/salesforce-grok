@@ -30,3 +30,7 @@ harbor/sales-world/images/world/payload/
 # world package backups + runtime friction files
 world/*/package/*/*.bak
 world/*/package/*/state.db.bf-friction
+
+# Harbor agent transcripts: these capture container `env` output, which has
+# leaked live API keys into commits before. Results of record live in verifier/.
+harbor/sales-world/jobs/**/agent/
