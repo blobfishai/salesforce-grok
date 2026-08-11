@@ -210,6 +210,24 @@ $7.20, 0 infra errors — `data/flake/w6-densified-flash.json`) vs the
   context. Whether the frontier model's flicker band moves at 407 tools is the
   open question for the next grok-4.5 sweep.
 
+## Provider ceiling: the surface now exceeds xAI's limit
+
+Measured 2026-08-10 (`scripts/probe-tool-limits.mjs`, binary search over the
+real MCP-normalized surface):
+
+| provider / model | max tools per request | runs the 407-tool world? |
+|---|---|---|
+| xAI grok-4.5, grok-4.3 | **350** (351 rejected) | **no** |
+| Anthropic claude-sonnet-5, claude-haiku-4-5 | ≥407 | yes |
+| DeepSeek deepseek-v4-pro, deepseek-v4-flash | ≥407 | yes |
+
+Densification pushed the world past xAI's hard cap, so the planned grok-4.5
+frontier sweep could not run (46/46 trials rejected before reaching the API, $0
+spent; the empty report was discarded). Options and their benchmark-semantics
+trade-offs are tabulated in `docs/GROK-4.5-LIMITS.md` — the choice is a scope
+decision, not a bug fix, because every way of getting under 350 changes either
+distractor pressure or coverage.
+
 ## The one-sentence answer
 
 Each vendor server exists because the thesis prompt names its lifecycle leg, its

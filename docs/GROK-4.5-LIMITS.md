@@ -9,6 +9,7 @@ Queried directly from the xAI API with this project's key
 | Limit | Value |
 |---|---|
 | **Context window** | **500,000 tokens** |
+| **Max tools per request** | **350** (measured 2026-08-10 — see below) |
 | Long-context pricing threshold | 200,000 tokens (input above this bills at 2x) |
 | Rate limit — requests (this key/team) | 7,200 requests/min |
 | Rate limit — tokens (this key/team) | 50,000,000 tokens/min |
@@ -55,3 +56,39 @@ positioned as the build/agentic flagship rather than the long-context option.
 - `sim/run-simulation.mjs` enforces a context guard at 90% (450,000 tokens):
   beyond it, oldest tool outputs are trimmed from the conversation.
 - Probe latency for reference: TTFT 299 ms, e2e 1.58 s (`x-metrics-*` headers).
+
+## Max tools per request — 350 (measured 2026-08-10)
+
+Binary-searched with `scripts/probe-tool-limits.mjs` against the real wave-6
+tool surface (MCP-normalized schemas, 1-token completions): **350 accepted, 351
+rejected**, exactly. The API states the cap outright:
+
+```
+400 {"code":"invalid-argument",
+     "error":"Maximum tools limit reached. 407 tools have been provided but the maximum is 350."}
+```
+
+`grok-4.3` enforces the identical 350 cap. Anthropic (`claude-sonnet-5`,
+`claude-haiku-4-5`) and DeepSeek (`deepseek-v4-pro`, `deepseek-v4-flash`) accept
+the full 407-tool surface.
+
+### Consequence for this benchmark
+
+The wave-6 densification (407 tools) puts the world **past xAI's ceiling**, so
+grok cannot run it under either topology — the multi-server topology still
+surfaces all 407 tools to the model in a single request. The attempted
+grok-4.5 sweep failed 46/46 trials at $0 cost (no request reached the API);
+that empty report was discarded rather than published as a result.
+
+Getting grok onto the densified world requires cutting the per-request surface
+below 350, and the choice changes what is measured:
+
+| option | per-request tools | effect on the benchmark |
+|---|---|---|
+| Per-task vendor scoping (connect only the vendors a task needs) | ~30-150 | Lowers distractor pressure — the exact axis this world tests; not comparable to 407-tool runs by other models |
+| Drop one vendor server for grok runs (e.g. revops-core's 104) | ~303 | Keeps pressure, changes coverage; cross-model comparison needs the same surface |
+| Cap at the top-350 by relevance | 350 | Maximum pressure grok can take; needs a documented, stable ranking rule |
+| Leave grok off the densified leaderboard | — | Preserves comparability of the remaining models; loses the frontier measurement |
+
+Models whose ceiling is unknown above 407 should be re-probed before any
+future densification wave.
