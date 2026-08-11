@@ -1,0 +1,32 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1786476197.5753782,
+            "stop": 1786476198.5062747
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_check",
+                "status": "passed",
+                "duration": 0.09195066099937321,
+                "start": 1786476197.6343617,
+                "stop": 1786476197.730748,
+                "retries": 7,
+                "file_path": "test_outputs.py",
+                "tags": [
+                    "parametrize::check::[{'name': 'order_booked_for_q_2026_2000_against_right_entity', 'sql': 'SELECT COUNT(*) AS n FROM erp_sales_orders WHERE memo LIKE ? AND entity = ?', 'params': ['%Q-2026-2000%', 'customer_002'], 'expect': {'scalar_equals': 1}}, {'name': 'order_booked_for_q_2026_2007_against_right_entity', 'sql': 'SELECT COUNT(*) AS n FROM erp_sales_orders WHERE memo LIKE ? AND entity = ?', 'params': ['%Q-2026-2007%', 'customer_002'], 'expect': {'scalar_equals': 1}}, {'name': 'order_booked_for_q_2026_2009_against_right_entity', 'sql': 'SELECT COUNT(*) AS n FROM erp_sales_orders WHERE memo LIKE ? AND entity = ?', 'params': ['%Q-2026-2009%', 'customer_005'], 'expect': {'scalar_equals': 1}}, {'name': 'order_booked_for_q_2026_2011_against_right_entity', 'sql': 'SELECT COUNT(*) AS n FROM erp_sales_orders WHERE memo LIKE ? AND entity = ?', 'params': ['%Q-2026-2011%', 'customer_006'], 'expect': {'scalar_equals': 1}}, {'name': 'exactly_one_new_order_per_approved_quote', 'sql': 'SELECT COUNT(*) AS n FROM erp_sales_orders', 'expect': {'scalar_equals': 14}}, {'name': 'pre_existing_orders_untouched', 'sql': \"SELECT id, status, total, currency FROM erp_sales_orders WHERE id LIKE 'SO-2026-01%' ORDER BY id\", 'expect': {'unchanged_vs_seed': True}}, {'name': 'quotes_were_not_modified', 'sql': 'SELECT id, status, discount_pct, net_total FROM sales_quotes ORDER BY id', 'expect': {'unchanged_vs_seed': True}}, {'name': 'no_orders_booked_for_unapproved_quotes', 'sql': \"SELECT COUNT(*) AS n FROM erp_sales_orders WHERE memo LIKE '%Q-2026-2008%' OR memo LIKE '%Q-2026-2004%'\", 'expect': {'scalar_equals': 0}}]::ids_['order_booked_for_q_2026_2000_against_right_entity', 'order_booked_for_q_2026_2007_against_right_entity', 'order_booked_for_q_2026_2009_against_right_entity', 'order_booked_for_q_2026_2011_against_right_entity', 'exactly_one_new_order_per_approved_quote', 'pre_existing_orders_untouched', 'quotes_were_not_modified', 'no_orders_booked_for_unapproved_quotes']"
+                ]
+            }
+        ]
+    }
+}
