@@ -1,7 +1,13 @@
 {
-    "job_name": "oracle-baseline",
+    "job_name": "cc-probe",
     "jobs_dir": "harbor/sales-world/jobs",
     "n_concurrent_trials": 2,
+    "agents": [
+        {
+            "name": "claude-code",
+            "model_name": "anthropic/claude-sonnet-4-5"
+        }
+    ],
     "datasets": [
         {
             "path": "harbor/sales-world/tasks"

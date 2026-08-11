@@ -4,9 +4,14 @@ set -uo pipefail
 
 mkdir -p /logs/verifier
 
-pip install --quiet --no-cache-dir pytest==8.4.1 pytest-json-ctrf==0.3.5 httpx >/dev/null 2>&1
+# The image ships pytest; install only if something stripped it. Never silence
+# this -- a missing runner would score a correct trajectory 0.
+if ! python3 -m pytest --version >/dev/null 2>&1; then
+  echo "pytest missing from image, installing" >&2
+  pip3 install --no-cache-dir --break-system-packages pytest==8.4.1 pytest-json-ctrf==0.3.5 httpx
+fi
 
-pytest --ctrf /logs/verifier/ctrf.json /tests/test_outputs.py -rA
+python3 -m pytest --ctrf /logs/verifier/ctrf.json /tests/test_outputs.py -rA
 status=$?
 
 # Partial credit: Harbor takes the scalar in reward.txt, and a long-horizon sales

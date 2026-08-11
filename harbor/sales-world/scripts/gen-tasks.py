@@ -37,13 +37,20 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parents[1]
 VERIFIER_TOKEN = "harbor-verifier-token"  # scoped to [verifier.env]; not secret, just unreachable from the agent
 
-AGENT_DOCKERFILE = """FROM python:3.12-slim
+# Node ships in the base image on purpose: CLI agents (claude-code, codex, gemini-cli)
+# otherwise apt-install a full toolchain per trial, which is slow and has already
+# filled the container disk once. Python is here for the reference solutions.
+AGENT_DOCKERFILE = """FROM node:22-bookworm-slim
 
-# Agent-side workspace. The company lives in sibling containers reachable over
-# MCP; nothing about the world is available locally, which is the point.
-RUN apt-get update && apt-get install -y --no-install-recommends curl jq \\
+# Agent-side workspace. The company lives in sibling containers reachable only
+# over MCP; nothing about the world is on this filesystem, which is the point.
+RUN apt-get update && apt-get install -y --no-install-recommends \\
+        python3 python3-pip python3-venv curl jq ca-certificates procps \\
     && rm -rf /var/lib/apt/lists/*
-RUN pip install --no-cache-dir mcp httpx
+# pytest + the CTRF reporter are baked in: the verifier runs in this container,
+# and a missing test runner silently scores every task 0.
+RUN pip3 install --no-cache-dir --break-system-packages \
+        mcp httpx pytest==8.4.1 pytest-json-ctrf==0.3.5
 
 WORKDIR /app
 """
@@ -54,9 +61,14 @@ set -uo pipefail
 
 mkdir -p /logs/verifier
 
-pip install --quiet --no-cache-dir pytest==8.4.1 pytest-json-ctrf==0.3.5 httpx >/dev/null 2>&1
+# The image ships pytest; install only if something stripped it. Never silence
+# this -- a missing runner would score a correct trajectory 0.
+if ! python3 -m pytest --version >/dev/null 2>&1; then
+  echo "pytest missing from image, installing" >&2
+  pip3 install --no-cache-dir --break-system-packages pytest==8.4.1 pytest-json-ctrf==0.3.5 httpx
+fi
 
-pytest --ctrf /logs/verifier/ctrf.json /tests/test_outputs.py -rA
+python3 -m pytest --ctrf /logs/verifier/ctrf.json /tests/test_outputs.py -rA
 status=$?
 
 # Partial credit: Harbor takes the scalar in reward.txt, and a long-horizon sales
@@ -191,6 +203,7 @@ def compose(vendors: list[str], tag: str) -> str:
         "",
         "  world:",
         f"    image: sales-world:{tag}",
+        "    pull_policy: never",  # built locally by scripts/build-images.sh
         "    expose:",
         '      - "8080"',
         "    environment:",
@@ -201,6 +214,7 @@ def compose(vendors: list[str], tag: str) -> str:
         lines += [
             f"  {v}:",
             f"    image: sales-world-gateway:{tag}",
+            "    pull_policy: never",
             "    depends_on:",
             "      world:",
             "        condition: service_healthy",

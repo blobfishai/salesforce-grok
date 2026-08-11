@@ -1,0 +1,32 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1786464497.7030945,
+            "stop": 1786464497.9746943
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_check",
+                "status": "passed",
+                "duration": 0.03269006102345884,
+                "start": 1786464497.728413,
+                "stop": 1786464497.7614365,
+                "retries": 8,
+                "file_path": "test_outputs.py",
+                "tags": [
+                    "parametrize::check::[{'name': 'riverside_1.58m_at_12.5pct_approved', 'sql': 'SELECT status FROM sales_quotes WHERE id = ?', 'params': ['quote_0002'], 'expect': {'scalar_equals': 'approved'}}, {'name': 'meridian_2.09m_list_escalated_not_approved', 'sql': 'SELECT status FROM sales_quotes WHERE id = ?', 'params': ['quote_0003'], 'expect': {'scalar_equals': 'in_review'}}, {'name': 'ironwood_24pct_under_2m_approved', 'sql': 'SELECT status FROM sales_quotes WHERE id = ?', 'params': ['quote_0004'], 'expect': {'scalar_equals': 'approved'}}, {'name': 'atlas_invalid_config_rejected', 'sql': 'SELECT status FROM sales_quotes WHERE id = ?', 'params': ['quote_0006'], 'expect': {'scalar_equals': 'rejected'}}, {'name': 'harborview_invalid_config_rejected', 'sql': 'SELECT status FROM sales_quotes WHERE id = ?', 'params': ['quote_0011'], 'expect': {'scalar_equals': 'rejected'}}, {'name': 'no_discount_was_rewritten', 'sql': 'SELECT id, discount_pct FROM sales_quotes ORDER BY id', 'expect': {'unchanged_vs_seed': True}}, {'name': 'drafts_and_decided_quotes_untouched', 'sql': \"SELECT id, status FROM sales_quotes WHERE id IN ('quote_0001','quote_0005','quote_0007','quote_0008','quote_0009','quote_0010','quote_0012') ORDER BY id\", 'expect': {'unchanged_vs_seed': True}}, {'name': 'no_quotes_created_or_deleted', 'sql': 'SELECT COUNT(*) AS n FROM sales_quotes', 'expect': {'scalar_equals': 12}}, {'name': 'quote_lines_untouched', 'sql': 'SELECT id, quote_id, product_code FROM sales_quote_lines ORDER BY id', 'expect': {'unchanged_vs_seed': True}}]::ids_['riverside_1.58m_at_12.5pct_approved', 'meridian_2.09m_list_escalated_not_approved', 'ironwood_24pct_under_2m_approved', 'atlas_invalid_config_rejected', 'harborview_invalid_config_rejected', 'no_discount_was_rewritten', 'drafts_and_decided_quotes_untouched', 'no_quotes_created_or_deleted', 'quote_lines_untouched']"
+                ]
+            }
+        ]
+    }
+}

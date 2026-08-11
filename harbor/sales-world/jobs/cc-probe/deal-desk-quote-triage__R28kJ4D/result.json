@@ -1,13 +1,13 @@
 {
-    "id": "c4100cd5-abaa-4cc3-8d0d-daee992575d3",
+    "id": "d3606630-fa9f-4a36-8c41-672f2018600e",
     "task_name": "sales-world/deal-desk-quote-triage",
-    "trial_name": "deal-desk-quote-triage__orvbV6r",
-    "trial_uri": "file:///Users/samuelchien/dev/salesforce-grok/harbor/sales-world/jobs/oracle-smoke3/deal-desk-quote-triage__orvbV6r",
+    "trial_name": "deal-desk-quote-triage__R28kJ4D",
+    "trial_uri": "file:///Users/samuelchien/dev/salesforce-grok/harbor/sales-world/jobs/cc-probe/deal-desk-quote-triage__R28kJ4D",
     "task_id": {
         "path": "harbor/sales-world/tasks/deal-desk-quote-triage"
     },
     "source": "tasks",
-    "task_checksum": "c05aa4dddb8424abde976f4a4298f658b691c2b0005f82952a54996d32438b82",
+    "task_checksum": "fbc604c23262a928cd92be9eac2fdc9bd8f2b03ae4912985227d9b48b6b0909b",
     "config": {
         "task": {
             "path": "harbor/sales-world/tasks/deal-desk-quote-triage",
@@ -19,8 +19,8 @@
             "download_dir": null,
             "source": "tasks"
         },
-        "trial_name": "deal-desk-quote-triage__orvbV6r",
-        "trials_dir": "harbor/sales-world/jobs/oracle-smoke3",
+        "trial_name": "deal-desk-quote-triage__R28kJ4D",
+        "trials_dir": "harbor/sales-world/jobs/cc-probe",
         "install_only": false,
         "timeout_multiplier": 1.0,
         "agent_timeout_multiplier": null,
@@ -28,9 +28,9 @@
         "agent_setup_timeout_multiplier": null,
         "environment_build_timeout_multiplier": null,
         "agent": {
-            "name": "oracle",
+            "name": "claude-code",
             "import_path": null,
-            "model_name": null,
+            "model_name": "anthropic/claude-sonnet-4-5",
             "n_concurrent": null,
             "concurrency_group": null,
             "skills": [],
@@ -67,19 +67,22 @@
         },
         "artifacts": [],
         "extra_instruction_paths": [],
-        "job_id": "e4b0a9f5-5ba2-4122-9c0b-19334ecbdf31",
+        "job_id": "a5e7946b-eafd-44cc-bc63-eda8d403be51",
         "source_trial": null
     },
     "agent_info": {
-        "name": "oracle",
-        "version": "1.0.0",
-        "model_info": null
+        "name": "claude-code",
+        "version": "2.1.227",
+        "model_info": {
+            "name": "claude-sonnet-4-5",
+            "provider": "anthropic"
+        }
     },
     "agent_result": {
-        "n_input_tokens": null,
-        "n_cache_tokens": null,
-        "n_output_tokens": null,
-        "cost_usd": null,
+        "n_input_tokens": 129021,
+        "n_cache_tokens": 125280,
+        "n_output_tokens": 1801,
+        "cost_usd": 0.0785955,
         "rollout_details": null,
         "metadata": null
     },
@@ -90,23 +93,23 @@
     },
     "verifier_environment_mode": "shared",
     "exception_info": null,
-    "started_at": "2026-08-11T08:54:15.998471Z",
-    "finished_at": "2026-08-11T08:55:12.682050Z",
+    "started_at": "2026-08-11T16:05:32.165812Z",
+    "finished_at": "2026-08-11T16:08:49.718727Z",
     "environment_setup": {
-        "started_at": "2026-08-11T08:54:16.227246Z",
-        "finished_at": "2026-08-11T08:54:31.850968Z"
+        "started_at": "2026-08-11T16:05:32.419852Z",
+        "finished_at": "2026-08-11T16:05:48.392980Z"
     },
     "agent_setup": {
-        "started_at": "2026-08-11T08:54:31.851019Z",
-        "finished_at": "2026-08-11T08:54:31.851060Z"
+        "started_at": "2026-08-11T16:05:48.393085Z",
+        "finished_at": "2026-08-11T16:07:37.488541Z"
     },
     "agent_execution": {
-        "started_at": "2026-08-11T08:54:31.851143Z",
-        "finished_at": "2026-08-11T08:54:36.194921Z"
+        "started_at": "2026-08-11T16:07:37.489331Z",
+        "finished_at": "2026-08-11T16:08:15.391425Z"
     },
     "verifier": {
-        "started_at": "2026-08-11T08:54:37.218082Z",
-        "finished_at": "2026-08-11T08:54:40.799920Z"
+        "started_at": "2026-08-11T16:08:16.518832Z",
+        "finished_at": "2026-08-11T16:08:18.023044Z"
     },
     "step_results": null
 }
