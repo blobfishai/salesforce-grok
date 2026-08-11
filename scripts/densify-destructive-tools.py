@@ -172,8 +172,8 @@ def new_tools() -> list[dict]:
                    "Merge a duplicate account into a surviving account, backfilling empty fields from the duplicate."),
 
         # --- activity/task creation: create:activity appears in 4 servers, read:activity in 6 ---
-        create_tool(sf, "task_create", "tasks", "task",
-                    "Create a follow-up task (POST /services/data/v62.0/sobjects/Task).",
+        create_tool(sf, "crm_followup_create", "tasks", "task",
+                    "Create a follow-up task record in the CRM (POST /services/data/v62.0/sobjects/Task). Named crm_followup_create rather than task_create because several agent harnesses ship a built-in TaskCreate for their own scratch to-do list, and agents pick the wrong one.",
                     {"subject": {"type": "string", "description": "What the task is."},
                      "status": {"type": "string", "description": "Task status, e.g. open, in_progress, completed."},
                      "assignee_employee_id": {"type": "integer", "description": "Employee the task is assigned to."},

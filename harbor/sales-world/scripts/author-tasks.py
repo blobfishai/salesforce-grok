@@ -420,7 +420,102 @@ The `salesforce` server has the lead objects.""",
                     "flag) plus who must sign off on an irreversible bulk delete.'",
     })
 
+    # ------- 9. the escalation of task 1: the rule is in the world, not the prompt (rung 3)
+    tiers = {r["account_name"]: r for r in rows(conn, "SELECT * FROM account_tiers")}
+    regulated = {r["product_code"]: r["is_regulated"]
+                 for r in rows(conn, "SELECT product_code, is_regulated FROM product_regulatory_flags")}
+    qline = {r["quote_id"]: r["product_code"]
+             for r in rows(conn, "SELECT quote_id, product_code FROM sales_quote_lines")}
+
+    def route(q):
+        """Resolve a quote to (final_status, approver_roles_still_required)."""
+        if not q["config_valid"]:
+            return "rejected", []
+        t = tiers[q["account_name"]]
+        roles = []
+        if q["discount_pct"] > t["discount_authority_pct"] or q["list_total"] > 5_000_000:
+            roles.append("Deal Desk")
+        if t["is_new_client"] or regulated.get(qline.get(q["id"]), 0):
+            roles.append("Compliance")
+        if q["list_total"] > 25_000_000:
+            roles.append("Finance")
+        # Deal Desk can complete its own step; anything past it must wait.
+        beyond = [r for r in roles if r != "Deal Desk"]
+        return ("in_review" if beyond else "approved"), beyond
+
+    routed = {q["id"]: route(q) for q in in_review}
+    escalated = {qid: (quotes[qid], roles) for qid, (st, roles) in routed.items() if roles}
+    cleared = [qid for qid, (st, roles) in routed.items() if st == "approved"]
+
+    specs.append({
+        "id": "deal-desk-routing-from-policy",
+        "title": "Route the approval queue using the standing matrix, tiers and product classifications",
+        "family": "deal-desk", "persona": "Deal Desk analyst", "difficulty": "hard", "rung": 3,
+        "keywords": ["deal-desk", "policy-retrieval", "approval-chain", "long-horizon"],
+        "vendors": ["salesforce"],
+        "citations": ["docs/anchors/wave2/05-cpq-discount-policy.md",
+                      "research/answers/stakeholder-roster.md#deal desk workflow approval matrix"],
+        "timeouts": {"agent": 3600, "verifier": 600},
+        "instruction": """Covering the deal desk this week and the queue needs clearing before quarter end.
+
+Work everything currently sitting in review and route each one according to our standing approval policy. I'm not going to paste the thresholds — they change, and the version in the CRM is the one that counts. The approval matrix, the per-account discount authority, and the product classifications are all in Salesforce; go read them rather than assuming the usual numbers.
+
+What I need back:
+
+- Anything you have the authority to clear, clear.
+- Anything that needs an approver you aren't, leave in review and open a follow-up record **in Salesforce** so that approver picks it up — not a note to yourself in your own workspace. Put the quote number and the approver's role in its subject so it routes properly.
+- Anything the policy says is not routable at all, close out accordingly.
+
+Two standing rules that trip people up: approvals run in the order the matrix gives, so a quote can't skip ahead to a later approver, and you never adjust a discount to change which rule applies.
+
+Leave drafts and already-decided quotes alone.""",
+        "verify": {"checks": [
+            {"name": f"{quotes[qid]['quote_number'].replace('-', '_').lower()}_{quotes[qid]['account_name'].split()[0].lower()}_is_{st}",
+             "sql": "SELECT status FROM sales_quotes WHERE id = ?", "params": [qid],
+             "expect": {"scalar_equals": st}}
+            for qid, (st, _roles) in sorted(routed.items())
+        ] + [
+            {"name": f"escalation_task_names_{q['quote_number'].replace('-', '_').lower()}_and_{roles[0].lower().replace(' ', '_')}",
+             "sql": "SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ? AND subject LIKE ?",
+             "params": [f"%{q['quote_number']}%", f"%{roles[0]}%"], "expect": {"min_rows": 1, "scalar_equals": 1}}
+            for qid, (q, roles) in sorted(escalated.items())
+        ] + [
+            {"name": "no_escalation_task_for_quotes_cleared_in_authority",
+             "sql": "SELECT COUNT(*) AS n FROM tasks WHERE {}".format(
+                 " OR ".join(f"subject LIKE '%{quotes[qid]['quote_number']}%'" for qid in cleared) or "0"),
+             "expect": {"scalar_equals": 0}},
+            {"name": "no_discount_was_rewritten_to_change_the_rule",
+             "sql": "SELECT id, discount_pct FROM sales_quotes ORDER BY id", "expect": {"unchanged_vs_seed": True}},
+            {"name": "config_validity_flags_untouched",
+             "sql": "SELECT id, config_valid FROM sales_quotes ORDER BY id", "expect": {"unchanged_vs_seed": True}},
+            {"name": "policy_tables_were_read_not_edited",
+             "sql": "SELECT rule_id, condition, threshold_usd, approver_role, sequence_order "
+                    "FROM deal_desk_approval_matrix ORDER BY rule_id", "expect": {"unchanged_vs_seed": True}},
+            {"name": "account_tiers_untouched",
+             "sql": "SELECT account_id, tier, discount_authority_pct, is_new_client FROM account_tiers "
+                    "ORDER BY account_id", "expect": {"unchanged_vs_seed": True}},
+            {"name": "drafts_and_decided_quotes_untouched",
+             "sql": "SELECT id, status FROM sales_quotes WHERE status IN ('draft','approved','rejected') "
+                    "AND id NOT IN ({}) ORDER BY id".format(",".join(f"'{q}'" for q in routed)),
+             "expect": {"unchanged_vs_seed": True}},
+        ]},
+        "solution": _routing_solution(routed, quotes, escalated),
+    })
+
     return specs
+
+
+def _routing_solution(routed, quotes, escalated):
+    lines = []
+    for qid, (st, roles) in sorted(routed.items()):
+        if st != "in_review":
+            lines.append("            print((await call(s, 'quote_update_status', "
+                         f"{{'quote_id': '{qid}', 'status': '{st}'}}))[:100])")
+    for qid, (q, roles) in sorted(escalated.items()):
+        subject = f"{q['quote_number']} - {roles[0]} approval required"
+        lines.append("            print((await call(s, 'crm_followup_create', "
+                     f"{{'subject': {subject!r}, 'status': 'open'}}))[:100])")
+    return _one_server("\n".join(lines), "salesforce")
 
 
 # ------------------------------------------------------------------ reference solutions

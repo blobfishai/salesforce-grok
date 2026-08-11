@@ -1,0 +1,38 @@
+schema_version = "1.1"
+
+[task]
+name = "sales-world/deal-desk-routing-from-policy"
+description = "Route the approval queue using the standing matrix, tiers and product classifications"
+authors = [{ name = "salesforce-grok sales-world" }]
+keywords = ["deal-desk", "policy-retrieval", "approval-chain", "long-horizon"]
+
+[metadata]
+family = "deal-desk"
+persona = "Deal Desk analyst"
+difficulty = "hard"
+citations = ["docs/anchors/wave2/05-cpq-discount-policy.md", "research/answers/stakeholder-roster.md#deal desk workflow approval matrix"]
+
+[verifier]
+timeout_sec = 600.0
+
+[verifier.env]
+HARBOR_VERIFIER_TOKEN = "harbor-verifier-token"
+WORLD_URL = "http://world:8080"
+
+[agent]
+timeout_sec = 3600.0
+
+[environment]
+build_timeout_sec = 900.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 10240
+gpus = 0
+
+[environment.env]
+
+[[environment.mcp_servers]]
+name = "salesforce"
+transport = "streamable-http"
+url = "http://salesforce:8000/mcp"
+args = []
