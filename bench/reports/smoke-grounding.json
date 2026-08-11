@@ -1,0 +1,140 @@
+{
+  "generated_at": "2026-08-11T08:27:20.482Z",
+  "model": "grok-4.5",
+  "input": "bench/proposals/smoke.jsonl",
+  "tally": {
+    "GROUNDED": 1,
+    "PARTIAL": 1,
+    "UNSUPPORTED": 1
+  },
+  "gate_passed": false,
+  "approx_cost_usd": 0.0137,
+  "results": [
+    {
+      "id": "smoke_grounded_task",
+      "kind": "task",
+      "claim": "Reassigning CRM records away from deactivated team members to active owners is a real sales-ops task, and it can be fully automated.",
+      "citations": [
+        "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/reassign-deactivated-owners/SKILL.md"
+      ],
+      "verdict": "GROUNDED",
+      "quote": "Reassign contacts and companies from deactivated team members to active owners. Fully automated via the HubSpot Owners API and Batch Update API.",
+      "quote_verified": true,
+      "downgraded": null,
+      "unsupported_specifics": [],
+      "reason": "The excerpt explicitly frames reassignment from deactivated owners as an ops skill and states it is fully automated via HubSpot APIs.",
+      "sources_resolved": [
+        {
+          "citation": "research/repos/workflow/TomGranot__hubspot-admin-skills/skills/reassign-deactivated-owners/SKILL.md",
+          "ok": true,
+          "note": "head of file (truncated)"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 2249,
+        "completion_tokens": 75,
+        "total_tokens": 2610,
+        "prompt_tokens_details": {
+          "text_tokens": 2249,
+          "audio_tokens": 0,
+          "image_tokens": 0,
+          "cached_tokens": 384
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 286,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "num_sources_used": 0,
+        "cost_in_usd_ticks": 60112000
+      }
+    },
+    {
+      "id": "smoke_partial_chaos",
+      "kind": "chaos",
+      "claim": "Seed the world with a 22% duplicate-company rate, because pre-cleanup CRMs run 15-25% duplicates.",
+      "citations": [
+        "research/answers/data-chaos-catalog.md#duplicate rates cleanup complete"
+      ],
+      "verdict": "PARTIAL",
+      "quote": "pre-cleanup CRMs run 15–25%",
+      "quote_verified": true,
+      "downgraded": null,
+      "unsupported_specifics": [
+        "22% duplicate-company rate"
+      ],
+      "reason": "The excerpt backs seeding off-baseline and the 15–25% pre-cleanup duplicate range, but never states a 22% rate.",
+      "sources_resolved": [
+        {
+          "citation": "research/answers/data-chaos-catalog.md#duplicate rates cleanup complete",
+          "ok": true,
+          "note": "window around \"duplicate rates cleanup complete\""
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 2215,
+        "completion_tokens": 69,
+        "total_tokens": 2513,
+        "prompt_tokens_details": {
+          "text_tokens": 2215,
+          "audio_tokens": 0,
+          "image_tokens": 0,
+          "cached_tokens": 384
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 229,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "num_sources_used": 0,
+        "cost_in_usd_ticks": 55652000
+      }
+    },
+    {
+      "id": "smoke_bogus_tool",
+      "kind": "tool",
+      "claim": "The HubSpot API exposes a first-class endpoint that returns a rep's commission payout for a given quarter.",
+      "citations": [
+        "research/tools/_extracted/calypsoCodex__hubspot-mcp-extended.endpoints.txt"
+      ],
+      "verdict": "UNSUPPORTED",
+      "quote": "",
+      "quote_verified": false,
+      "downgraded": null,
+      "unsupported_specifics": [
+        "first-class endpoint for rep commission payout",
+        "commission payout",
+        "given quarter"
+      ],
+      "reason": "The endpoint list covers CRM objects, schemas, associations, invoices, quotes, and properties, with no commission or payout-related paths.",
+      "sources_resolved": [
+        {
+          "citation": "research/tools/_extracted/calypsoCodex__hubspot-mcp-extended.endpoints.txt",
+          "ok": true,
+          "note": "whole file"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 1819,
+        "completion_tokens": 64,
+        "total_tokens": 2046,
+        "prompt_tokens_details": {
+          "text_tokens": 1819,
+          "audio_tokens": 0,
+          "image_tokens": 0,
+          "cached_tokens": 384
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 163,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "num_sources_used": 0,
+        "cost_in_usd_ticks": 43472000
+      }
+    }
+  ]
+}
