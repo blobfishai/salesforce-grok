@@ -21,6 +21,9 @@ Does three things in one deterministic, additive-except-prune pass:
    Custom sources pass through untouched unless they return the recognizable
    built-in shapes ({'items','count'} / {'error','status'}), which get enveloped.
 
+   Idempotent: spec entries already present in world.json are skipped, so a new
+   spec applies as a delta against an already-densified world.
+
 3. MIRROR — patches world.json (package + top-level copy, byte-stable
    serialization), regenerates tools/<ns>.py + tools.py, updates
    mcp-assets.json tool_names/target_tables.
@@ -168,6 +171,15 @@ ENVELOPES = {
         "mp": "{{'message': 'Validation Failed', 'errors': [{{'message': str(_r.get('error', ''))}}], 'status': '422'}}",
         "deleted": "{{}}",
         "single": None,
+    },
+    "salesforce": {
+        # Salesforce REST: query results carry totalSize/done/records; sobject
+        # reads return the bare record; errors are an array of {message,errorCode}.
+        "list": "{{'totalSize': _r['count'], 'done': True, 'records': _r['items']}}",
+        "nf": "[{{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}}]",
+        "mp": "[{{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}}]",
+        "deleted": "{{'id': _r.get('{idc}'), 'success': True, 'errors': []}}",
+        "single": "_r['attributes'] = {{'type': '{sing}', 'url': '/services/data/v62.0/sobjects/{sing}/' + str(_r.get('{idc}', ''))}}",
     },
     "notion": {
         "list": "{{'object': 'list', 'results': _r['items'], 'next_cursor': None, 'has_more': False}}",
@@ -606,6 +618,7 @@ def main():
     taken_tables = set(table_cols)
 
     new_tools, new_tables, per_vendor = [], [], {}
+    skipped_tools = skipped_tables = 0
     for fname in spec_files:
         spec = json.load(open(os.path.join(SPECS_DIR, fname)))
         vendor, ns = spec["vendor"], spec["namespace"]
@@ -615,7 +628,8 @@ def main():
         for tb in spec.get("tables", []):
             check_ident(tb["name"], "table")
             if tb["name"] in taken_tables:
-                die(f"{fname}: table {tb['name']!r} already exists")
+                skipped_tables += 1   # already applied: this pass is a delta
+                continue
             for c in tb["columns"]:
                 check_ident(c["name"], f"column in {tb['name']}")
             taken_tables.add(tb["name"])
@@ -628,7 +642,8 @@ def main():
         for t in spec["tools"]:
             check_ident(t["name"], "tool")
             if t["name"] in taken_tools:
-                die(f"{fname}: tool {t['name']!r} already exists")
+                skipped_tools += 1    # already applied: this pass is a delta
+                continue
             taken_tools.add(t["name"])
             src = generate_source(t, ns, table_cols, table_types)
             entry = tool_entry(t, ns, src)
@@ -665,7 +680,8 @@ def main():
             asset["target_tables"] = list(seen)
     open(assets_path, "w").write(dump_matching(assets, assets_raw))
 
-    print(f"pruned {len(pruned_entries)} tools; added {len(new_tools)} tools, {len(new_tables)} tables -> "
+    print(f"pruned {len(pruned_entries)} tools; added {len(new_tools)} tools, {len(new_tables)} tables "
+          f"(skipped {skipped_tools} tools / {skipped_tables} tables already applied) -> "
           f"{len(world['tools'])} tools, {len(world['tables'])} tables total")
     for vendor in sorted(per_vendor):
         print(f"  {vendor}: +{per_vendor[vendor]}")

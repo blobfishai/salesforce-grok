@@ -24,7 +24,11 @@ stdioServe({
   onList: () => TOOLS,
   onCall: async (name, args) => {
     if (name === "verify_task") {
-      const trace = up.readTrace().map(({ vendor, ts, ...rest }) => rest); // verifier shape
+      const trace = up.readTrace().map(({ vendor, ts, ...rest }) => rest);
+      // Answer-graded verifiers read the agent's reply from this step.
+      if (args.final_answer != null && String(args.final_answer).length) {
+        trace.push({ tool: "_final_answer", arguments: { answer: String(args.final_answer) }, observation: null, ok: true });
+      } // verifier shape
       const path = up.LOCAL ? `/verify/${encodeURIComponent(args.task_id)}` : "/verify";
       const body = up.LOCAL ? { trace } : { task_id: args.task_id, trace };
       // Task-seeded episodes: the post-seed pre-agent snapshot is the true

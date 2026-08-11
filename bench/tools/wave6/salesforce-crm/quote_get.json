@@ -1,0 +1,26 @@
+{
+ "name": "quote_get",
+ "mcp_name": "salesforce.quote_get",
+ "asset_namespace": "salesforce",
+ "description": "Retrieve one quote by id (GET /services/data/v62.0/sobjects/Quote/{id}).",
+ "type": "read",
+ "target_tables": [
+  "sales_quotes"
+ ],
+ "parameters": {
+  "quote_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "quote_id": {
+    "type": "string",
+    "description": "The quote record id."
+   }
+  },
+  "required": [
+   "quote_id"
+  ],
+  "additionalProperties": false
+ }
+}

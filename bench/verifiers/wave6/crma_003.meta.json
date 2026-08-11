@@ -1,0 +1,33 @@
+{
+ "task_id": "crma_003",
+ "assertions": [
+  "used_tools",
+  "answer_present",
+  "answer_matches_gold",
+  "read_only_no_mutation"
+ ],
+ "initial_state_check": "SELECT substr(created_at,1,7) m, COUNT(*) n FROM service_cases GROUP BY 1 ORDER BY n DESC LIMIT 1",
+ "field_policies": [],
+ "positive_case": {
+  "description": "Agent completes the monthly_trend_analysis task correctly",
+  "expected": "pass"
+ },
+ "negative_cases": [
+  {
+   "description": "Agent answers with a plausible but wrong value",
+   "fails_assertion": "answer_matches_gold",
+   "expected": "fail"
+  },
+  {
+   "description": "Agent mutates records while answering a read-only analytics question",
+   "fails_assertion": "read_only_no_mutation",
+   "expected": "fail"
+  },
+  {
+   "description": "Agent produces no final answer",
+   "fails_assertion": "answer_present",
+   "expected": "fail"
+  }
+ ],
+ "discrimination": 3
+}

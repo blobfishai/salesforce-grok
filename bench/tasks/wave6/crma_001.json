@@ -1,0 +1,22 @@
+{
+ "task_id": "crma_001",
+ "prompt": "Across all service cases in the system, which issue type accounts for the most cases? Answer with the issue type label exactly as it appears in the issue taxonomy.",
+ "goal": "CRMArena clone — top_issue_identification",
+ "complexity": "medium",
+ "method": "crmarena_clone",
+ "provenance": {
+  "source_benchmark": "CRMArena (arXiv:2411.02305, NAACL 2025)",
+  "crmarena_task_type": "top_issue_identification",
+  "cloned_by": "scripts/build-crmarena-tasks.py",
+  "grading": "answer"
+ },
+ "difficulty_tier": "reference",
+ "required_tools": [
+  "service_cases_list",
+  "issue_taxonomy_list"
+ ],
+ "tables_affected": [],
+ "expected_state_changes": [],
+ "answer_graded": true,
+ "gold_answer": "Billing Discrepancy"
+}

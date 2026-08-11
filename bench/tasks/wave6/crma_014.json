@@ -1,0 +1,23 @@
+{
+ "task_id": "crma_014",
+ "prompt": "Audit the quotes against their line items: a valid quote's line total must equal quantity x unit list price x (1 - discount). Name the FIRST quote number, in alphabetical order, whose configuration fails that check.",
+ "goal": "CRMArena clone — invalid_config",
+ "complexity": "medium",
+ "method": "crmarena_clone",
+ "provenance": {
+  "source_benchmark": "CRMArena-Pro (arXiv:2505.18878)",
+  "crmarena_task_type": "invalid_config",
+  "cloned_by": "scripts/build-crmarena-tasks.py",
+  "grading": "answer"
+ },
+ "difficulty_tier": "reference",
+ "required_tools": [
+  "quotes_list",
+  "quote_lines_list",
+  "product_catalog_list"
+ ],
+ "tables_affected": [],
+ "expected_state_changes": [],
+ "answer_graded": true,
+ "gold_answer": "Q-2026-2005"
+}

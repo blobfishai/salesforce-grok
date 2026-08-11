@@ -1,0 +1,29 @@
+{
+ "task_id": "crma_016",
+ "prompt": "Case case_svc_0081 (Report Accuracy for Ironwood Holdings) needs to be escalated. Set that case's status to 'escalated'. Change nothing else.",
+ "goal": "CRMArena clone — case_routing",
+ "complexity": "medium",
+ "method": "crmarena_clone",
+ "provenance": {
+  "source_benchmark": "CRMArena (arXiv:2411.02305, NAACL 2025)",
+  "crmarena_task_type": "case_routing",
+  "cloned_by": "scripts/build-crmarena-tasks.py",
+  "grading": "state"
+ },
+ "difficulty_tier": "reference",
+ "required_tools": [
+  "service_case_get",
+  "service_case_update_status"
+ ],
+ "tables_affected": [
+  "service_cases"
+ ],
+ "expected_state_changes": [
+  {
+   "table": "service_cases",
+   "id": "case_svc_0081",
+   "field": "status",
+   "to": "escalated"
+  }
+ ]
+}

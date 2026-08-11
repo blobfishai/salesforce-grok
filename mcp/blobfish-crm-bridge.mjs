@@ -24,7 +24,7 @@ const HARNESS_TOOLS = [
   {
     name: "verify_task",
     description: "HARNESS ONLY: score the current world state + rollout trace against a task's ground truth using blobfish's VCode verifier. Call once at the end of a rollout with the task_id.",
-    inputSchema: { type: "object", properties: { task_id: { type: "string" } }, required: ["task_id"] },
+    inputSchema: { type: "object", properties: { task_id: { type: "string" }, final_answer: { type: "string" } }, required: ["task_id"] },
   },
   {
     name: "reset_session",
@@ -52,6 +52,10 @@ stdioServe({
   onCall: async (name, args) => {
     if (name === "verify_task") {
       const trace = up.readTrace().map(({ vendor, ts, ...rest }) => rest);
+      // Answer-graded verifiers read the agent's reply from this step.
+      if (args.final_answer != null && String(args.final_answer).length) {
+        trace.push({ tool: "_final_answer", arguments: { answer: String(args.final_answer) }, observation: null, ok: true });
+      }
       const path = up.LOCAL ? `/verify/${encodeURIComponent(args.task_id)}` : "/verify";
       const body = up.LOCAL ? { trace } : { task_id: args.task_id, trace };
       const r = await up.rest(path, { method: "POST", body: JSON.stringify(body) });

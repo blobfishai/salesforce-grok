@@ -1,0 +1,30 @@
+{
+ "task_id": "crma_018",
+ "prompt": "Lead 11 (Ironwood Company 11, estimated value 88500.0) meets the lead-scoring policy's bar for qualification. Set its status to 'qualified'. Change nothing else.",
+ "goal": "CRMArena clone — lead_qualification",
+ "complexity": "medium",
+ "method": "crmarena_clone",
+ "provenance": {
+  "source_benchmark": "CRMArena-Pro (arXiv:2505.18878)",
+  "crmarena_task_type": "lead_qualification",
+  "cloned_by": "scripts/build-crmarena-tasks.py",
+  "grading": "state"
+ },
+ "difficulty_tier": "reference",
+ "required_tools": [
+  "query_sales_leads",
+  "update_sales_leads_status",
+  "query_documents"
+ ],
+ "tables_affected": [
+  "sales_leads"
+ ],
+ "expected_state_changes": [
+  {
+   "table": "sales_leads",
+   "id": 11,
+   "field": "status",
+   "to": "qualified"
+  }
+ ]
+}

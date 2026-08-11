@@ -1,0 +1,23 @@
+{
+ "task_id": "crma_013",
+ "prompt": "Per the CPQ Discount Policy, the highest account tier (Platinum) may approve up to 15% without escalation; anything above that requires Deal Desk approval. Which quote carries the single largest discount above that authority? Answer with the quote number.",
+ "goal": "CRMArena clone — quote_approval",
+ "complexity": "medium",
+ "method": "crmarena_clone",
+ "provenance": {
+  "source_benchmark": "CRMArena-Pro (arXiv:2505.18878)",
+  "crmarena_task_type": "quote_approval",
+  "cloned_by": "scripts/build-crmarena-tasks.py",
+  "grading": "answer"
+ },
+ "difficulty_tier": "reference",
+ "required_tools": [
+  "quotes_list",
+  "quote_get",
+  "query_documents"
+ ],
+ "tables_affected": [],
+ "expected_state_changes": [],
+ "answer_graded": true,
+ "gold_answer": "Q-2026-2006"
+}

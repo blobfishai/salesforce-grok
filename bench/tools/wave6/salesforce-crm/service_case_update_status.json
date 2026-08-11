@@ -1,0 +1,41 @@
+{
+ "name": "service_case_update_status",
+ "mcp_name": "salesforce.service_case_update_status",
+ "asset_namespace": "salesforce",
+ "description": "Update a service case's status, priority or owner (PATCH /services/data/v62.0/sobjects/Case/{id}).",
+ "type": "write",
+ "target_tables": [
+  "service_cases"
+ ],
+ "parameters": {
+  "case_id": "string",
+  "status": "string",
+  "priority": "string",
+  "owner_employee_id": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "case_id": {
+    "type": "string",
+    "description": "The case record id."
+   },
+   "status": {
+    "type": "string",
+    "description": "New case status."
+   },
+   "priority": {
+    "type": "string",
+    "description": "New case priority."
+   },
+   "owner_employee_id": {
+    "type": "integer",
+    "description": "Employee id to assign the case to."
+   }
+  },
+  "required": [
+   "case_id"
+  ],
+  "additionalProperties": false
+ }
+}

@@ -61,10 +61,14 @@ def items_of(ns, r, rk):
         return r.get(rk)
     if ns == "notion":
         return r.get("results")
+    if ns == "salesforce":
+        return r.get("records")
     return None
 
 
 def is_not_found(ns, r):
+    if ns == "salesforce":
+        return isinstance(r, list) and bool(r) and r[0].get("errorCode") == "NOT_FOUND"
     if not isinstance(r, dict):
         return False
     if ns == "stripe":
@@ -89,6 +93,8 @@ def is_not_found(ns, r):
 
 
 def is_missing_params(ns, r):
+    if ns == "salesforce":
+        return isinstance(r, list) and bool(r) and r[0].get("errorCode") == "REQUIRED_FIELD_MISSING"
     if not isinstance(r, dict):
         return False
     if ns == "stripe":

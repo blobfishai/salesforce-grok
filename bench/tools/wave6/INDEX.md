@@ -1,4 +1,4 @@
-# wave6 — 407 MCP tools
+# wave6 — 420 MCP tools
 
 | vendor server | tool | type | target tables |
 |---|---|---|---|
@@ -284,13 +284,18 @@
 | salesforce-crm | `account_create` | write | accounts |
 | salesforce-crm | `account_get` | read | accounts |
 | salesforce-crm | `accounts_list` | read | accounts |
+| salesforce-crm | `case_history_list` | read | case_history |
+| salesforce-crm | `case_messages_list` | read | case_messages |
 | salesforce-crm | `contact_create` | write | contacts |
 | salesforce-crm | `contact_get` | read | contacts |
 | salesforce-crm | `contacts_list` | read | contacts |
 | salesforce-crm | `core_records_agent` | read | accept_all, account_tiering_standard, activity_logging_standards |
 | salesforce-crm | `core_workflow_agent` | write | accept_all, account_tiering_standard, activity_logging_standards |
+| salesforce-crm | `customer_profile_get` | read | customer_profiles |
+| salesforce-crm | `customer_profiles_list` | read | customer_profiles |
 | salesforce-crm | `get_contactdb_segments_segment_id` | read | contactdb_segments |
 | salesforce-crm | `get_mc_contacts_exports_id` | read | contact_exports |
+| salesforce-crm | `issue_taxonomy_list` | read | issue_taxonomy |
 | salesforce-crm | `lookup_sales_lead_with_employees` | read | employees, sales_leads |
 | salesforce-crm | `lookup_sales_opportunity_with_sales_leads` | read | sales_leads, sales_opportunities |
 | salesforce-crm | `marketing_records_agent` | read | all_segments_responses, api_keys, automations_link_stats_responses |
@@ -298,9 +303,17 @@
 | salesforce-crm | `opportunity_create` | write | opportunities |
 | salesforce-crm | `opportunity_get` | read | opportunities |
 | salesforce-crm | `post_marketing_contacts_batch` | write | batches |
+| salesforce-crm | `product_catalog_list` | read | product_catalog_items |
 | salesforce-crm | `query_sales_leads` | read | sales_leads |
+| salesforce-crm | `quote_get` | read | sales_quotes |
+| salesforce-crm | `quote_lines_list` | read | sales_quote_lines |
+| salesforce-crm | `quote_update_status` | write | sales_quotes |
+| salesforce-crm | `quotes_list` | read | sales_quotes |
 | salesforce-crm | `sales_records_agent` | read | accounts, cases, company_sales_handoffs |
 | salesforce-crm | `sales_workflow_agent` | write | accounts, cases, company_sales_handoffs |
+| salesforce-crm | `service_case_get` | read | service_cases |
+| salesforce-crm | `service_case_update_status` | write | service_cases |
+| salesforce-crm | `service_cases_list` | read | service_cases |
 | salesforce-crm | `sourcing_records_agent` | read | company_sourcing_handoffs, customers, journal_entries |
 | salesforce-crm | `sourcing_workflow_agent` | write | company_sourcing_handoffs, customers, journal_entries |
 | salesforce-crm | `update_sales_leads_status` | write | sales_leads |

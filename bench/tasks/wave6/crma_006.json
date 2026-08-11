@@ -1,0 +1,22 @@
+{
+ "task_id": "crma_006",
+ "prompt": "Service cases reference products by code. Which PRODUCT NAME (not code) has the most cases filed against it? Answer with the product name from the catalog.",
+ "goal": "CRMArena clone — named_entity_disambiguation",
+ "complexity": "medium",
+ "method": "crmarena_clone",
+ "provenance": {
+  "source_benchmark": "CRMArena (arXiv:2411.02305, NAACL 2025)",
+  "crmarena_task_type": "named_entity_disambiguation",
+  "cloned_by": "scripts/build-crmarena-tasks.py",
+  "grading": "answer"
+ },
+ "difficulty_tier": "reference",
+ "required_tools": [
+  "service_cases_list",
+  "product_catalog_list"
+ ],
+ "tables_affected": [],
+ "expected_state_changes": [],
+ "answer_graded": true,
+ "gold_answer": "Wealth Platform License"
+}

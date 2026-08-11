@@ -1,0 +1,22 @@
+{
+ "task_id": "crma_007",
+ "prompt": "Review the case transcripts. One support agent offered to waive an entire renewal fee and asked the customer to keep it from their account manager — a violation of the discount-authority policy. Which case id contains that violation?",
+ "goal": "CRMArena clone — policy_violation_identification",
+ "complexity": "medium",
+ "method": "crmarena_clone",
+ "provenance": {
+  "source_benchmark": "CRMArena (arXiv:2411.02305, NAACL 2025)",
+  "crmarena_task_type": "policy_violation_identification",
+  "cloned_by": "scripts/build-crmarena-tasks.py",
+  "grading": "answer"
+ },
+ "difficulty_tier": "reference",
+ "required_tools": [
+  "case_messages_list",
+  "service_cases_list"
+ ],
+ "tables_affected": [],
+ "expected_state_changes": [],
+ "answer_graded": true,
+ "gold_answer": "case_svc_0010"
+}

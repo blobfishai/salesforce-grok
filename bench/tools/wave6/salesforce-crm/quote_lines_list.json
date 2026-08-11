@@ -1,0 +1,33 @@
+{
+ "name": "quote_lines_list",
+ "mcp_name": "salesforce.quote_lines_list",
+ "asset_namespace": "salesforce",
+ "description": "List the line items on a quote (GET /services/data/v62.0/query?q=SELECT+FROM+QuoteLineItem).",
+ "type": "read",
+ "target_tables": [
+  "sales_quote_lines"
+ ],
+ "parameters": {
+  "quote_id": "string",
+  "product_code": "string",
+  "limit": "integer"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "quote_id": {
+    "type": "string",
+    "description": "Quote whose lines to return."
+   },
+   "product_code": {
+    "type": "string",
+    "description": "Filter to one product."
+   },
+   "limit": {
+    "type": "integer",
+    "description": "Maximum number of records to return (default 30)."
+   }
+  },
+  "additionalProperties": false
+ }
+}

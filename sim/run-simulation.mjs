@@ -262,11 +262,13 @@ async function mainBlobfish() {
   // the turn cap from the task's own reference walk length.
   const refWalk = Array.isArray(task.walk) ? task.walk.length : 0;
   const maxTurns = Math.max(config.engine.maxAgentTurns, refWalk * 3 + 6);
-  const { usage, toolCallCount } = await runAgent(mcp, llmTools, messages, { maxTurns, codec, route });
+  const { usage, toolCallCount, finalText } = await runAgent(mcp, llmTools, messages, { maxTurns, codec, route });
   printStats(usage, toolCallCount);
 
   console.log(`\n=== Verifying task ${taskId} via blobfish VCode ===`);
-  const v = await mcp.callTool("verify_task", { task_id: taskId }, 60000);
+  // Answer-graded tasks (the CRMArena clones) score the agent's final reply, so
+  // it must reach the verifier as the trace's _final_answer step.
+  const v = await mcp.callTool("verify_task", { task_id: taskId, final_answer: finalText ?? null }, 60000);
   console.log(v.text);
   log({ type: "verify", taskId, result: v.text });
   if (MULTI) await cleanupEpisode(); else mcp.close();

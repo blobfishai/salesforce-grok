@@ -1,0 +1,33 @@
+{
+ "task_id": "crma_010",
+ "assertions": [
+  "used_tools",
+  "answer_present",
+  "answer_matches_gold",
+  "read_only_no_mutation"
+ ],
+ "initial_state_check": "verbatim clause in agent_documents['CPQ Discount Policy']",
+ "field_policies": [],
+ "positive_case": {
+  "description": "Agent completes the policy_knowledge_qa task correctly",
+  "expected": "pass"
+ },
+ "negative_cases": [
+  {
+   "description": "Agent answers with a plausible but wrong value",
+   "fails_assertion": "answer_matches_gold",
+   "expected": "fail"
+  },
+  {
+   "description": "Agent mutates records while answering a read-only analytics question",
+   "fails_assertion": "read_only_no_mutation",
+   "expected": "fail"
+  },
+  {
+   "description": "Agent produces no final answer",
+   "fails_assertion": "answer_present",
+   "expected": "fail"
+  }
+ ],
+ "discrimination": 3
+}

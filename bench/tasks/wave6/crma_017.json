@@ -1,0 +1,29 @@
+{
+ "task_id": "crma_017",
+ "prompt": "Sales opportunity OPP-902092 (Riverside Group) — the record in the sales_opportunities pipeline, id 1, NOT the legacy opportunities table — was left in the wrong stage after the deal closed successfully. Correct that record's status to 'closed_won'. Do not modify any other record or table.",
+ "goal": "CRMArena clone — wrong_stage_rectification",
+ "complexity": "medium",
+ "method": "crmarena_clone",
+ "provenance": {
+  "source_benchmark": "CRMArena-Pro (arXiv:2505.18878)",
+  "crmarena_task_type": "wrong_stage_rectification",
+  "cloned_by": "scripts/build-crmarena-tasks.py",
+  "grading": "state"
+ },
+ "difficulty_tier": "reference",
+ "required_tools": [
+  "query_sales_opportunities",
+  "update_sales_opportunities_status"
+ ],
+ "tables_affected": [
+  "sales_opportunities"
+ ],
+ "expected_state_changes": [
+  {
+   "table": "sales_opportunities",
+   "id": 1,
+   "field": "status",
+   "to": "closed_won"
+  }
+ ]
+}

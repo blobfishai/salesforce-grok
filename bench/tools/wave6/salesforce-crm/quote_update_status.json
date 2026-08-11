@@ -1,0 +1,36 @@
+{
+ "name": "quote_update_status",
+ "mcp_name": "salesforce.quote_update_status",
+ "asset_namespace": "salesforce",
+ "description": "Update a quote's approval status or discount (PATCH /services/data/v62.0/sobjects/Quote/{id}).",
+ "type": "write",
+ "target_tables": [
+  "sales_quotes"
+ ],
+ "parameters": {
+  "quote_id": "string",
+  "status": "string",
+  "discount_pct": "number"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "quote_id": {
+    "type": "string",
+    "description": "The quote record id."
+   },
+   "status": {
+    "type": "string",
+    "description": "New status: draft, in_review, approved or rejected."
+   },
+   "discount_pct": {
+    "type": "number",
+    "description": "New discount percentage applied to the quote."
+   }
+  },
+  "required": [
+   "quote_id"
+  ],
+  "additionalProperties": false
+ }
+}

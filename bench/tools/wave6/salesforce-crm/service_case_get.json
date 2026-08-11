@@ -1,0 +1,26 @@
+{
+ "name": "service_case_get",
+ "mcp_name": "salesforce.service_case_get",
+ "asset_namespace": "salesforce",
+ "description": "Retrieve one service case by id (GET /services/data/v62.0/sobjects/Case/{id}).",
+ "type": "read",
+ "target_tables": [
+  "service_cases"
+ ],
+ "parameters": {
+  "case_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "case_id": {
+    "type": "string",
+    "description": "The case record id."
+   }
+  },
+  "required": [
+   "case_id"
+  ],
+  "additionalProperties": false
+ }
+}

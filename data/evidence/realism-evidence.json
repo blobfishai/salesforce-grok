@@ -1,0 +1,1052 @@
+{
+ "world_base": "http://127.0.0.1:8971",
+ "session": "bfs_3df2aa1970644947a5093eb47d6f778f",
+ "vendors": {
+  "salesforce-crm (Service Cloud)": [
+   {
+    "tool": "salesforce.service_cases_list",
+    "arguments": {
+     "issue_type": "Billing Discrepancy",
+     "region": "West",
+     "limit": 3
+    },
+    "response": {
+     "totalSize": 3,
+     "done": true,
+     "records": [
+      {
+       "id": "case_svc_0003",
+       "case_number": "SVC-100002",
+       "account_id": "account_003",
+       "account_name": "Meridian Capital",
+       "subject": "Billing Discrepancy — Meridian Capital",
+       "issue_type_id": "ISS-01",
+       "issue_type": "Billing Discrepancy",
+       "product_code": "PROD-PLAT",
+       "region": "West",
+       "status": "closed",
+       "priority": "medium",
+       "owner_employee_id": 6,
+       "owner_name": "Dana Okafor",
+       "created_at": "2026-03-27T16:30:00Z",
+       "first_response_at": "2026-03-27T17:35:00Z",
+       "closed_at": "2026-03-27T22:00:59Z",
+       "handle_time_hours": 5.52
+      },
+      {
+       "id": "case_svc_0108",
+       "case_number": "SVC-100107",
+       "account_id": "account_003",
+       "account_name": "Meridian Capital",
+       "subject": "Billing Discrepancy — Meridian Capital",
+       "issue_type_id": "ISS-01",
+       "issue_type": "Billing Discrepancy",
+       "product_code": "PROD-PLAT",
+       "region": "West",
+       "status": "closed",
+       "priority": "medium",
+       "owner_employee_id": 4,
+       "owner_name": "Priya Natarajan",
+       "created_at": "2026-02-10T16:15:00Z",
+       "first_response_at": "2026-02-10T18:51:00Z",
+       "closed_at": "2026-02-10T22:11:54Z",
+       "handle_time_hours": 5.95
+      },
+      {
+       "id": "case_svc_0165",
+       "case_number": "SVC-100164",
+       "account_id": "account_004",
+       "account_name": "Ironwood Holdings",
+       "subject": "Billing Discrepancy — Ironwood Holdings",
+       "issue_type_id": "ISS-01",
+       "issue_type": "Billing Discrepancy",
+       "product_code": "PROD-FEED",
+       "region": "West",
+       "status": "escalated",
+       "priority": "low",
+       "owner_employee_id": 4,
+       "owner_name": "Priya Natarajan",
+       "created_at": "2026-01-11T12:45:00Z",
+       "first_response_at": "2026-01-11T13:05:00Z",
+       "closed_at": null,
+       "handle_time_hours": null
+      }
+     ]
+    }
+   },
+   {
+    "tool": "salesforce.case_history_list",
+    "arguments": {
+     "case_id": "case_svc_0002",
+     "field_name": "OwnerId",
+     "limit": 5
+    },
+    "response": {
+     "totalSize": 3,
+     "done": true,
+     "records": [
+      {
+       "id": "cht_00001",
+       "case_id": "case_svc_0002",
+       "field_name": "OwnerId",
+       "old_value_employee_id": 5,
+       "new_value_employee_id": 7,
+       "changed_at": "2026-03-28T02:38:22Z",
+       "changed_by_employee_id": 6,
+       "reason": "escalation to tier 2"
+      },
+      {
+       "id": "cht_00002",
+       "case_id": "case_svc_0002",
+       "field_name": "OwnerId",
+       "old_value_employee_id": 7,
+       "new_value_employee_id": 4,
+       "changed_at": "2026-03-28T00:05:09Z",
+       "changed_by_employee_id": 8,
+       "reason": "escalation to tier 2"
+      },
+      {
+       "id": "cht_00003",
+       "case_id": "case_svc_0002",
+       "field_name": "OwnerId",
+       "old_value_employee_id": 4,
+       "new_value_employee_id": 7,
+       "changed_at": "2026-03-27T20:57:51Z",
+       "changed_by_employee_id": 8,
+       "reason": "escalation to tier 2"
+      }
+     ]
+    }
+   },
+   {
+    "tool": "salesforce.service_case_get",
+    "arguments": {
+     "case_id": "does_not_exist"
+    },
+    "response": {
+     "rows": [
+      {
+       "message": "service_case not found",
+       "errorCode": "NOT_FOUND"
+      }
+     ],
+     "count": 1
+    }
+   }
+  ],
+  "salesforce-crm (Sales Cloud / CPQ)": [
+   {
+    "tool": "salesforce.quotes_list",
+    "arguments": {
+     "status": "in_review",
+     "limit": 3
+    },
+    "response": {
+     "totalSize": 3,
+     "done": true,
+     "records": [
+      {
+       "id": "quote_0002",
+       "quote_number": "Q-2026-2001",
+       "account_id": "account_002",
+       "account_name": "Riverside Group",
+       "opportunity_id": "opportunity_002",
+       "status": "in_review",
+       "discount_pct": 12.5,
+       "list_total": 1584000.0,
+       "net_total": 1386000.0,
+       "currency": "usd",
+       "prepared_by_employee_id": 2,
+       "expires_at": "2026-02-05T09:00:00Z",
+       "created_at": "2026-01-06T09:00:00Z",
+       "config_valid": 1
+      },
+      {
+       "id": "quote_0003",
+       "quote_number": "Q-2026-2002",
+       "account_id": "account_003",
+       "account_name": "Meridian Capital",
+       "opportunity_id": "opportunity_003",
+       "status": "in_review",
+       "discount_pct": 18.0,
+       "list_total": 2088000.0,
+       "net_total": 1712160.0,
+       "currency": "usd",
+       "prepared_by_employee_id": 3,
+       "expires_at": "2026-02-06T09:00:00Z",
+       "created_at": "2026-01-07T09:00:00Z",
+       "config_valid": 1
+      },
+      {
+       "id": "quote_0004",
+       "quote_number": "Q-2026-2003",
+       "account_id": "account_004",
+       "account_name": "Ironwood Holdings",
+       "opportunity_id": "opportunity_004",
+       "status": "in_review",
+       "discount_pct": 24.0,
+       "list_total": 575000.0,
+       "net_total": 437000.0,
+       "currency": "usd",
+       "prepared_by_employee_id": 4,
+       "expires_at": "2026-02-07T09:00:00Z",
+       "created_at": "2026-01-08T09:00:00Z",
+       "config_valid": 1
+      }
+     ]
+    }
+   },
+   {
+    "tool": "salesforce.quote_lines_list",
+    "arguments": {
+     "quote_id": "quote_0006",
+     "limit": 3
+    },
+    "response": {
+     "totalSize": 1,
+     "done": true,
+     "records": [
+      {
+       "id": "qline_0006",
+       "quote_id": "quote_0006",
+       "product_code": "PROD-PLAT",
+       "product_name": "Wealth Platform License",
+       "quantity": 34,
+       "unit_list_price": 120000.0,
+       "discount_pct": 34.0,
+       "line_total": 2504304.0
+      }
+     ]
+    }
+   },
+   {
+    "tool": "salesforce.quote_update_status",
+    "arguments": {
+     "quote_id": "quote_0006",
+     "status": "rejected"
+    },
+    "response": {
+     "id": "quote_0006",
+     "quote_number": "Q-2026-2005",
+     "account_id": "account_006",
+     "account_name": "Atlas Advisory",
+     "opportunity_id": "opportunity_006",
+     "status": "rejected",
+     "discount_pct": 34.0,
+     "list_total": 4080000.0,
+     "net_total": 2692800.0,
+     "currency": "usd",
+     "prepared_by_employee_id": 6,
+     "expires_at": "2026-02-09T09:00:00Z",
+     "created_at": "2026-01-10T09:00:00Z",
+     "config_valid": 0,
+     "attributes": {
+      "type": "sales_quote",
+      "url": "/services/data/v62.0/sobjects/sales_quote/quote_0006"
+     }
+    }
+   }
+  ],
+  "stripe-billing": [
+   {
+    "tool": "stripe.get_subscriptions",
+    "arguments": {
+     "limit": 2
+    },
+    "response": {
+     "object": "list",
+     "url": "/v1/subscriptions",
+     "has_more": false,
+     "data": [
+      {
+       "id": "sub_00000000000001",
+       "object": "subscription",
+       "customer": "cus_00000000000001",
+       "status": "active",
+       "price": "price_00000000000001",
+       "quantity": 1,
+       "currency": "usd",
+       "cancel_at_period_end": 0,
+       "canceled_at": null,
+       "collection_method": "send_invoice",
+       "current_period_start": "2026-08-01T00:00:00Z",
+       "current_period_end": "2026-09-01T00:00:00Z",
+       "start_date": "2026-01-15T00:00:00Z",
+       "trial_end": null,
+       "default_payment_method": "pm_00000000000021",
+       "latest_invoice": "in_00000000000001",
+       "metadata": "{\"account\": \"Summit Group Account\"}",
+       "created_at": "2026-01-15T14:00:00Z"
+      },
+      {
+       "id": "sub_00000000000002",
+       "object": "subscription",
+       "customer": "cus_00000000000003",
+       "status": "active",
+       "price": "price_00000000000002",
+       "quantity": 1,
+       "currency": "usd",
+       "cancel_at_period_end": 0,
+       "canceled_at": null,
+       "collection_method": "charge_automatically",
+       "current_period_start": "2026-02-01T00:00:00Z",
+       "current_period_end": "2027-02-01T00:00:00Z",
+       "start_date": "2026-02-01T00:00:00Z",
+       "trial_end": null,
+       "default_payment_method": "pm_00000000000010",
+       "latest_invoice": "in_00000000000002",
+       "metadata": "{\"account\": \"Meridian\"}",
+       "created_at": "2026-02-01T09:00:00Z"
+      }
+     ]
+    }
+   },
+   {
+    "tool": "stripe.post_invoices",
+    "arguments": {
+     "customer": "cus_00000000000001",
+     "currency": "usd"
+    },
+    "response": {
+     "id": "in_0011",
+     "amount_due": 0,
+     "amount_overpaid": null,
+     "amount_paid": 0,
+     "amount_paid_off_stripe": null,
+     "amount_remaining": 0,
+     "amount_shipping": null,
+     "attempt_count": 0,
+     "attempted": 0,
+     "auto_advance": null,
+     "automatic_tax": null,
+     "collection_method": null,
+     "created": "2026-08-11T01:38:13.900252+00:00",
+     "currency": "usd",
+     "customer": "cus_00000000000001",
+     "default_tax_rates": null,
+     "discounts": null,
+     "issuer": null,
+     "lines": null,
+     "livemode": 0,
+     "object": "invoice",
+     "payment_settings": null,
+     "period_end": null,
+     "period_start": null,
+     "post_payment_credit_notes_amount": null,
+     "pre_payment_credit_notes_amount": null,
+     "starting_balance": null,
+     "status_transitions": null,
+     "subtotal": 0,
+     "total": 0,
+     "status": "draft",
+     "account_country": null,
+     "account_name": null,
+     "account_tax_ids": null,
+     "application": null,
+     "automatically_finalizes_at": null,
+     "billing_reason": "manual",
+     "confirmation_secret": null,
+     "custom_fields": null,
+     "customer_account": null,
+     "customer_address": null,
+     "customer_email": null,
+     "customer_name": null,
+     "customer_phone": null,
+     "customer_shipping": null,
+     "customer_tax_exempt": null,
+     "customer_tax_ids": null,
+     "default_payment_method": null
+    }
+   },
+   {
+    "tool": "stripe.get_customers_customer",
+    "arguments": {
+     "customer": "cus_nope"
+    },
+    "response": {
+     "error": {
+      "type": "invalid_request_error",
+      "code": "resource_missing",
+      "message": "customer not found"
+     }
+    }
+   }
+  ],
+  "slack": [
+   {
+    "tool": "slack.conversations_list",
+    "arguments": {
+     "limit": 3
+    },
+    "response": {
+     "ok": true,
+     "channels": [
+      {
+       "id": "C0000001",
+       "name": "launch-room",
+       "is_channel": 1,
+       "is_private": 0,
+       "is_archived": 0,
+       "is_general": 1,
+       "is_mpim": 0,
+       "is_shared": 1,
+       "is_org_shared": 0,
+       "num_members": 2,
+       "topic": null,
+       "purpose": null,
+       "created": 62
+      },
+      {
+       "id": "C0000005",
+       "name": "random",
+       "is_channel": 0,
+       "is_private": 0,
+       "is_archived": 1,
+       "is_general": 1,
+       "is_mpim": 0,
+       "is_shared": 1,
+       "is_org_shared": 0,
+       "num_members": 56,
+       "topic": null,
+       "purpose": null,
+       "created": 88
+      },
+      {
+       "id": "C0000007",
+       "name": "incidents",
+       "is_channel": 0,
+       "is_private": 0,
+       "is_archived": 0,
+       "is_general": 1,
+       "is_mpim": 0,
+       "is_shared": 0,
+       "is_org_shared": 1,
+       "num_members": 75,
+       "topic": null,
+       "purpose": null,
+       "created": 26
+      }
+     ],
+     "response_metadata": {
+      "next_cursor": ""
+     }
+    }
+   },
+   {
+    "tool": "slack.chat_post_message",
+    "arguments": {
+     "channel": "C0000001",
+     "text": "Deal Desk rejected Q-2026-2005 (34% > 15% tier authority)."
+    },
+    "response": {
+     "ok": true,
+     "channel": "C0000001",
+     "ts": "1786412294.100040",
+     "message": {
+      "type": "message",
+      "subtype": "bot_message",
+      "text": "Deal Desk rejected Q-2026-2005 (34% > 15% tier authority).",
+      "ts": "1786412294.100040",
+      "thread_ts": null,
+      "user": "U0000099",
+      "username": "ms-crm-agent",
+      "bot_id": "B0000099",
+      "team": "T0000001",
+      "permalink": "https://morganstanleysimulated.slack.com/archives/C0000001/p1786412294100040"
+     }
+    }
+   },
+   {
+    "tool": "slack.conversations_info",
+    "arguments": {
+     "channel": "C0NOPE"
+    },
+    "response": {
+     "error": "channel_not_found",
+     "ok": false
+    }
+   }
+  ],
+  "sendgrid-email": [
+   {
+    "tool": "email.post_mail_send",
+    "arguments": {
+     "to": "cfo@summitgroup.example",
+     "from": "renewals@morganstanleysimulated.com",
+     "subject": "Summit renewal — order form attached",
+     "body": "Attached is the countersigned order form."
+    },
+    "response": {
+     "id": "msg_7df02c38894a5f72",
+     "to_email": "cfo@summitgroup.example",
+     "from_email": "renewals@morganstanleysimulated.com",
+     "subject": "Summit renewal — order form attached",
+     "body": "Attached is the countersigned order form.",
+     "template_id": null,
+     "categories": null,
+     "status": "delivered",
+     "sent_at": "2026-08-11T01:38:14Z",
+     "message_id": "msg_7df02c38894a5f72"
+    }
+   },
+   {
+    "tool": "email.sg_mail_sends_list",
+    "arguments": {
+     "limit": 2
+    },
+    "response": {
+     "result": [
+      {
+       "id": "msg_09d3e4f5a6b7c812",
+       "to_email": "s.whitfield@crestline.example",
+       "from_email": "renewals@morganstanleysimulated.com",
+       "subject": "Final notice: Crestline agreement renews in 30 days",
+       "body": "Simone, this is the 30-day notice for Crestline's advisory agreement renewal on 2026-03-04. Reply to lock the renewal call.",
+       "template_id": "d-2b7e91c4d5f643a8b9c0d1e2f3a4b5c6",
+       "categories": "renewal,transactional",
+       "status": "delivered",
+       "sent_at": "2026-02-02T16:08:00Z"
+      },
+      {
+       "id": "msg_1a2b3c4d5e6f7089",
+       "to_email": "omar.haddad@riverside-group.example",
+       "from_email": "onboarding@morganstanleysimulated.com",
+       "subject": "Welcome to Morgan Stanley (SIMULATED) Wealth Advisory",
+       "body": "Omar, welcome aboard. Here is your onboarding checklist and your named team for Riverside Group.",
+       "template_id": "d-0192a3b4c5d6e7f80912a3b4c5d6e7f8",
+       "categories": "onboarding,transactional",
+       "status": "delivered",
+       "sent_at": "2026-02-03T13:55:00Z"
+      }
+     ],
+     "_metadata": {
+      "count": 2
+     }
+    }
+   }
+  ],
+  "pagerduty-support": [
+   {
+    "tool": "pagerduty.pd_incidents_list",
+    "arguments": {
+     "status": "triggered",
+     "limit": 2
+    },
+    "response": {
+     "incidents": [
+      {
+       "id": "PT4KHLK",
+       "incident_number": 4231,
+       "title": "Stripe webhook delivery failures spiking on invoice.payment_failed events",
+       "description": "Webhook gateway rejecting ~18% of Stripe invoice.payment_failed deliveries with 502; retries queueing. Billing alerts for Summit Group Account and Atlas are delayed.",
+       "status": "triggered",
+       "urgency": "high",
+       "priority_id": "PPRI001",
+       "service_id": "PSTRWBH",
+       "escalation_policy_id": "PEPBILL",
+       "assignee": "PNAKAT1",
+       "created_at": "2026-08-10T06:42:11Z",
+       "resolved_at": null
+      }
+     ],
+     "total": 1
+    }
+   },
+   {
+    "tool": "pagerduty.pd_incident_manage",
+    "arguments": {
+     "id": "PT4KHLK",
+     "status": "acknowledged",
+     "from": "contact77709@morganstanleysimulated.com"
+    },
+    "response": {
+     "incident": {
+      "id": "PT4KHLK",
+      "incident_number": 4231,
+      "title": "Stripe webhook delivery failures spiking on invoice.payment_failed events",
+      "description": "Webhook gateway rejecting ~18% of Stripe invoice.payment_failed deliveries with 502; retries queueing. Billing alerts for Summit Group Account and Atlas are delayed.",
+      "status": "acknowledged",
+      "urgency": "high",
+      "priority_id": "PPRI001",
+      "service_id": "PSTRWBH",
+      "escalation_policy_id": "PEPBILL",
+      "assignee": "PNAKAT1",
+      "created_at": "2026-08-10T06:42:11Z",
+      "resolved_at": null
+     }
+    }
+   }
+  ],
+  "jira": [
+   {
+    "tool": "jira.jira_search",
+    "arguments": {
+     "jql": "billing",
+     "max_results": 3
+    },
+    "response": {
+     "startAt": 0,
+     "maxResults": 3,
+     "total": 1,
+     "issues": [
+      {
+       "key": "RECON-102",
+       "summary": "Automate the daily reconciliation export for the Riverside Group billing account",
+       "description": "Replace the manual CSV pull with a scheduled export job so the recon dashboard picks up Riverside Group balances before the 09:00 close review.",
+       "issue_type": "Task",
+       "status": "To Do",
+       "priority": "High",
+       "assignee": "Priya Natarajan",
+       "assignee_email": "priya.natarajan@morganstanleysimulated.com",
+       "reporter": "Aisha Bello",
+       "reporter_email": "aisha.bello@morganstanleysimulated.com",
+       "project_key": "RECON",
+       "sprint_id": 5,
+       "labels": "billing,automation",
+       "created": "2026-07-30T11:00:00.000-0400",
+       "updated": "2026-08-04T10:22:00.000-0400"
+      }
+     ]
+    }
+   }
+  ],
+  "netsuite-erp": [
+   {
+    "tool": "erp.erp_sales_orders_list",
+    "arguments": {
+     "limit": 2
+    },
+    "response": {
+     "items": [
+      {
+       "id": "SO-2026-0101",
+       "entity": "customer_002",
+       "entity_name": "Summit Group Account",
+       "trandate": "2026-01-05",
+       "status": "billed",
+       "memo": "Atlas Platform enterprise license renewal + premium support",
+       "subsidiary": "3",
+       "currency": "gbp",
+       "total": 142000.0,
+       "created_at": "2026-01-05T09:12:00Z"
+      },
+      {
+       "id": "SO-2026-0102",
+       "entity": "customer_006",
+       "entity_name": "Riverside Group Account",
+       "trandate": "2026-01-06",
+       "status": "pendingFulfillment",
+       "memo": "Market Data Feed L2 rollout - 2 trading desks",
+       "subsidiary": "4",
+       "currency": "eur",
+       "total": 84000.0,
+       "created_at": "2026-01-06T10:04:00Z"
+      }
+     ],
+     "count": 2,
+     "hasMore": false,
+     "totalResults": 2,
+     "offset": 0
+    }
+   },
+   {
+    "tool": "erp.erp_invoices_list",
+    "arguments": {
+     "limit": 2
+    },
+    "response": {
+     "items": [
+      {
+       "id": "INV-1001",
+       "created_from": "SO-2026-0101",
+       "entity": "customer_002",
+       "entity_name": "Summit Group Account",
+       "trandate": "2026-01-05",
+       "due_date": "2026-02-04",
+       "status": "paid",
+       "memo": "Billed from SO-2026-0101 (license renewal + support)",
+       "subsidiary": "3",
+       "currency": "gbp",
+       "subtotal": 142000.0,
+       "tax_total": 28400.0,
+       "total": 170400.0,
+       "amount_remaining": 0.0,
+       "created_at": "2026-01-05T16:20:00Z"
+      },
+      {
+       "id": "INV-1002",
+       "created_from": "SO-2026-0105",
+       "entity": "customer_007",
+       "entity_name": "Harborview",
+       "trandate": "2026-01-06",
+       "due_date": "2026-02-05",
+       "status": "open",
+       "memo": "Billed from SO-2026-0105 (enterprise onboarding + training)",
+       "subsidiary": "4",
+       "currency": "eur",
+       "subtotal": 99000.0,
+       "tax_total": 18810.0,
+       "total": 117810.0,
+       "amount_remaining": 57810.0,
+       "created_at": "2026-01-06T09:31:00Z"
+      }
+     ],
+     "count": 2,
+     "hasMore": false,
+     "totalResults": 2,
+     "offset": 0
+    }
+   }
+  ],
+  "google-calendar": [
+   {
+    "tool": "calendar.calendar_events_list",
+    "arguments": {
+     "calendar_id": "primary",
+     "max_results": 3
+    },
+    "response": {
+     "error": "service_unavailable",
+     "success": false,
+     "message": "The service is temporarily unavailable (upstream timeout while processing the request). Please retry.",
+     "retryable": true
+    }
+   }
+  ],
+  "notion-docs": [
+   {
+    "tool": "notion.notion_search",
+    "arguments": {
+     "query": "renewal",
+     "page_size": 3
+    },
+    "response": {
+     "object": "list",
+     "results": [
+      {
+       "id": "d4c3b2a1-f6e5-4b1a-9d2c-3f4e5a6b7c03",
+       "title": "Renewal Tracker",
+       "description": "FY2026 renewal pipeline: renewal date, ARR, risk color, CSM owner, playbook stage.",
+       "parent_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c01",
+       "properties": "{\"Name\": {\"type\": \"title\"}, \"Account\": {\"type\": \"select\"}, \"Renewal Date\": {\"type\": \"date\"}, \"ARR\": {\"type\": \"number\"}, \"Risk\": {\"type\": \"select\"}, \"CSM\": {\"type\": \"people\"}, \"Playbook Stage\": {\"type\": \"rich_text\"}}",
+       "created_time": "2026-05-12T14:00:00.000Z",
+       "last_edited_time": "2026-08-06T11:00:00.000Z",
+       "object": "database"
+      },
+      {
+       "id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c07",
+       "title": "Meeting Notes: Ironwood Renewal Sync 2026-08-05",
+       "parent_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c01",
+       "archived": 0,
+       "created_time": "2026-08-05T16:00:00.000Z",
+       "last_edited_time": "2026-08-06T10:15:00.000Z",
+       "created_by": "4c5d6e7f-8091-4a23-c4d5-e6f7a8b9c504",
+       "object": "page"
+      },
+      {
+       "id": "d4c3b2a1-f6e5-4b1a-9d2c-3f4e5a6b7c02",
+       "title": "Meeting Notes",
+       "description": "Customer-facing meeting notes: QBRs, renewal syncs, deal-room scoping calls.",
+       "parent_id": "a1b2c3d4-e5f6-4a0b-8c1d-2e3f4a5b6c01",
+       "properties": "{\"Name\": {\"type\": \"title\"}, \"Account\": {\"type\": \"select\"}, \"Date\": {\"type\": \"date\"}, \"Attendees\": {\"type\": \"rich_text\"}, \"Next Steps\": {\"type\": \"rich_text\"}}",
+       "created_time": "2026-05-15T09:00:00.000Z",
+       "last_edited_time": "2026-08-06T10:15:00.000Z",
+       "object": "database"
+      }
+     ],
+     "has_more": true,
+     "next_cursor": "3",
+     "type": "page_or_database"
+    }
+   }
+  ],
+  "github": [
+   {
+    "tool": "github.gh_workflow_runs_list",
+    "arguments": {
+     "repo": "revops/stripe-webhooks",
+     "limit": 2
+    },
+    "response": {
+     "rows": [
+      {
+       "id": 91277001,
+       "repo": "revops/stripe-webhooks",
+       "workflow": "ci.yml",
+       "run_number": 214,
+       "event": "pull_request",
+       "status": "completed",
+       "conclusion": "failure",
+       "head_branch": "fix/webhook-retry-backoff",
+       "head_sha": "d1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0",
+       "actor": "dana-okafor",
+       "run_attempt": 1,
+       "created_at": "2026-08-08T10:12:00Z",
+       "updated_at": "2026-08-08T10:19:34Z"
+      },
+      {
+       "id": 91277002,
+       "repo": "revops/stripe-webhooks",
+       "workflow": "ci.yml",
+       "run_number": 213,
+       "event": "push",
+       "status": "completed",
+       "conclusion": "success",
+       "head_branch": "main",
+       "head_sha": "c9d4e1f2a6b83750c2e9d1f4a7b0c3e6d9f2a5b8",
+       "actor": "dana-okafor",
+       "run_attempt": 1,
+       "created_at": "2026-07-29T11:03:00Z",
+       "updated_at": "2026-07-29T11:09:41Z"
+      }
+     ],
+     "count": 2
+    }
+   }
+  ]
+ },
+ "documents": [
+  {
+   "query": "CPQ Discount Policy",
+   "title": "CPQ Discount Policy",
+   "excerpt": "# CPQ Discount Policy\n> SIMULATION ONLY — synthetic corpus for the \"Morgan Stanley (SIMULATED)\" sandbox.\n> Not affiliated with or representative of Morgan Stanley.\n\nList prices come from 13-product-catalog.md. Discount authority by account tier\n(03-account-tiering.md): Platinum up to 15%, Gold 10%, Silver 5% without escalation.\nAny discount above authority, or quote TCV > $5,000,000, requires Deal Desk approval\n(06-deal-desk-charter.md). New-client or regulated-product quotes add Compliance review\n(07-compliance-review-checklist.md). TCV > $25,000,000 adds Finance sign-off\n(08-finance-approval",
+   "chars": 724
+  },
+  {
+   "query": "Renewal Playbook",
+   "title": "Renewal Playbook",
+   "excerpt": "# Renewal Playbook\n> SIMULATION ONLY — synthetic corpus for the \"Morgan Stanley (SIMULATED)\" sandbox.\n> Not affiliated with or representative of Morgan Stanley.\n\nRenewal opportunities open 120 days before order anniversary (09-order-activation-runbook.md)\nat Proposal stage with last-signed pricing as the baseline (05-cpq-discount-policy.md).\nAccounts with an SLA breach in the trailing two quarters (10-case-management-sla.md)\nget an executive sponsor call logged per 11-activity-logging-standards.md before any\nquote goes out. Renewal discounts above 5% incremental require Deal Desk review.\nRenew",
+   "chars": 692
+  },
+  {
+   "query": "Lead Scoring",
+   "title": "Lead Scoring Policy",
+   "excerpt": "# Lead Scoring Policy\n> SIMULATION ONLY — synthetic corpus for the \"Morgan Stanley (SIMULATED)\" sandbox.\n> Not affiliated with or representative of Morgan Stanley.\n\nScore = segment fit (0-40) + product interest strength (0-30) + region priority (0-30).\nSegment fit: Sovereign Wealth 40, Pension 35, Hedge Fund 30, Insurance 25, Private\nEquity 25, Family Office 20. Region priority follows 15-territory-model.md. Product\ninterest maps to the catalog in 13-product-catalog.md; regulated products add +10 but\ntrigger the Compliance pre-screen in 07-compliance-review-checklist.md at conversion.\nScores >",
+   "chars": 678
+  },
+  {
+   "query": "Deal Desk Charter",
+   "title": "Deal Desk Charter",
+   "excerpt": "# Deal Desk Charter\n> SIMULATION ONLY — synthetic corpus for the \"Morgan Stanley (SIMULATED)\" sandbox.\n> Not affiliated with or representative of Morgan Stanley.\n\nDeal Desk reviews pricing exceptions: over-authority discounts (05-cpq-discount-policy.md),\nTCV > $5M, non-standard payment terms, and two-tier account upgrades (03-account-tiering.md).\nDecision SLA: 1 business day. Every decision records actor, timestamp, and a one-line\nrationale. Deal Desk may impose conditions (e.g., cap discount at 12%) which the owning\nAE must apply before resubmission. Escalations beyond charter go to Finance p",
+   "chars": 638
+  },
+  {
+   "query": "Finance Approval Thresholds",
+   "title": "Finance Approval Thresholds",
+   "excerpt": "# Finance Approval Thresholds\n> SIMULATION ONLY — synthetic corpus for the \"Morgan Stanley (SIMULATED)\" sandbox.\n> Not affiliated with or representative of Morgan Stanley.\n\nFinance signs quotes with TCV > $25,000,000, multi-year commitments > 24 months, or\nnon-standard revenue terms. Finance validates rev-rec treatment and credit exposure\nagainst the account tier (03-account-tiering.md). Finance is always the LAST approval\nstep (05-cpq-discount-policy.md). Approved-by-Finance quotes are locked: any edit\nvoids all approvals and restarts the chain at Deal Desk.\n",
+   "chars": 566
+  }
+ ],
+ "workflow": [
+  {
+   "tool": "notion.query_documents",
+   "arguments": {
+    "query": "CPQ Discount Policy",
+    "limit": 1
+   },
+   "response": {
+    "table": "agent_documents",
+    "query": "CPQ Discount Policy",
+    "count": 1,
+    "rows": [
+     {
+      "id": 7,
+      "title": "CPQ Discount Policy",
+      "body": "# CPQ Discount Policy\n> SIMULATION ONLY — synthetic corpus for the \"Morgan Stanley (SIMULATED)\" sandbox.\n> Not affiliated with or representative of Morgan Stanley.\n\nList prices come from 13-product-catalog.md. Discount authority by account tier\n(03-account-tiering.md): Platinum up to 15%, Gold 10%, Silver 5% without escalation.\nAny discount above authority, or quote TCV > $5,000,000, requires Deal Desk approval\n(06-deal-desk-charter.md). New-client or regulated-product quotes add Compliance review\n(07-compliance-review-checklist.md). TCV > $25,000,000 adds Finance sign-off\n(08-finance-approval-thresholds.md). Approvals execute strictly in the order\nDeal Desk -> Compliance -> Finance; any rejection halts the quote.\n",
+      "updated_at": "2026-08-10T12:00:00Z"
+     }
+    ]
+   },
+   "why": "read the governing policy"
+  },
+  {
+   "tool": "salesforce.quotes_list",
+   "arguments": {
+    "status": "in_review",
+    "limit": 5
+   },
+   "response": {
+    "totalSize": 4,
+    "done": true,
+    "records": [
+     {
+      "id": "quote_0002",
+      "quote_number": "Q-2026-2001",
+      "account_id": "account_002",
+      "account_name": "Riverside Group",
+      "opportunity_id": "opportunity_002",
+      "status": "in_review",
+      "discount_pct": 12.5,
+      "list_total": 1584000.0,
+      "net_total": 1386000.0,
+      "currency": "usd",
+      "prepared_by_employee_id": 2,
+      "expires_at": "2026-02-05T09:00:00Z",
+      "created_at": "2026-01-06T09:00:00Z",
+      "config_valid": 1
+     },
+     {
+      "id": "quote_0003",
+      "quote_number": "Q-2026-2002",
+      "account_id": "account_003",
+      "account_name": "Meridian Capital",
+      "opportunity_id": "opportunity_003",
+      "status": "in_review",
+      "discount_pct": 18.0,
+      "list_total": 2088000.0,
+      "net_total": 1712160.0,
+      "currency": "usd",
+      "prepared_by_employee_id": 3,
+      "expires_at": "2026-02-06T09:00:00Z",
+      "created_at": "2026-01-07T09:00:00Z",
+      "config_valid": 1
+     },
+     {
+      "id": "quote_0004",
+      "quote_number": "Q-2026-2003",
+      "account_id": "account_004",
+      "account_name": "Ironwood Holdings",
+      "opportunity_id": "opportunity_004",
+      "status": "in_review",
+      "discount_pct": 24.0,
+      "list_total": 575000.0,
+      "net_total": 437000.0,
+      "currency": "usd",
+      "prepared_by_employee_id": 4,
+      "expires_at": "2026-02-07T09:00:00Z",
+      "created_at": "2026-01-08T09:00:00Z",
+      "config_valid": 1
+     },
+     {
+      "id": "quote_0011",
+      "quote_number": "Q-2026-2010",
+      "account_id": "account_005",
+      "account_name": "Harborview Partners",
+      "opportunity_id": "opportunity_001",
+      "status": "in_review",
+      "discount_pct": 31.0,
+      "list_total": 1440000.0,
+      "net_total": 993600.0,
+      "currency": "usd",
+      "prepared_by_employee_id": 3,
+      "expires_at": "2026-02-14T09:00:00Z",
+      "created_at": "2026-01-15T09:00:00Z",
+      "config_valid": 0
+     }
+    ]
+   },
+   "why": "find the over-authority quote"
+  },
+  {
+   "tool": "salesforce.quote_lines_list",
+   "arguments": {
+    "quote_id": "quote_0011",
+    "limit": 3
+   },
+   "response": {
+    "totalSize": 1,
+    "done": true,
+    "records": [
+     {
+      "id": "qline_0011",
+      "quote_id": "quote_0011",
+      "product_code": "PROD-PLAT",
+      "product_name": "Wealth Platform License",
+      "quantity": 12,
+      "unit_list_price": 120000.0,
+      "discount_pct": 31.0,
+      "line_total": 924048.0
+     }
+    ]
+   },
+   "why": "inspect its line items"
+  },
+  {
+   "tool": "salesforce.quote_update_status",
+   "arguments": {
+    "quote_id": "quote_0011",
+    "status": "rejected"
+   },
+   "response": {
+    "id": "quote_0011",
+    "quote_number": "Q-2026-2010",
+    "account_id": "account_005",
+    "account_name": "Harborview Partners",
+    "opportunity_id": "opportunity_001",
+    "status": "rejected",
+    "discount_pct": 31.0,
+    "list_total": 1440000.0,
+    "net_total": 993600.0,
+    "currency": "usd",
+    "prepared_by_employee_id": 3,
+    "expires_at": "2026-02-14T09:00:00Z",
+    "created_at": "2026-01-15T09:00:00Z",
+    "config_valid": 0,
+    "attributes": {
+     "type": "sales_quote",
+     "url": "/services/data/v62.0/sobjects/sales_quote/quote_0011"
+    }
+   },
+   "why": "reject it per policy"
+  },
+  {
+   "tool": "slack.chat_post_message",
+   "arguments": {
+    "channel": "C0000001",
+    "text": "Q-2026-2010 rejected: 31% exceeds the 15% Platinum authority."
+   },
+   "response": {
+    "ok": true,
+    "channel": "C0000001",
+    "ts": "1786412297.100041",
+    "message": {
+     "type": "message",
+     "subtype": "bot_message",
+     "text": "Q-2026-2010 rejected: 31% exceeds the 15% Platinum authority.",
+     "ts": "1786412297.100041",
+     "thread_ts": null,
+     "user": "U0000099",
+     "username": "ms-crm-agent",
+     "bot_id": "B0000099",
+     "team": "T0000001",
+     "permalink": "https://morganstanleysimulated.slack.com/archives/C0000001/p1786412297100041"
+    }
+   },
+   "why": "announce in the deal room"
+  },
+  {
+   "tool": "salesforce.quote_get",
+   "arguments": {
+    "quote_id": "quote_0011"
+   },
+   "response": {
+    "id": "quote_0011",
+    "quote_number": "Q-2026-2010",
+    "account_id": "account_005",
+    "account_name": "Harborview Partners",
+    "opportunity_id": "opportunity_001",
+    "status": "rejected",
+    "discount_pct": 31.0,
+    "list_total": 1440000.0,
+    "net_total": 993600.0,
+    "currency": "usd",
+    "prepared_by_employee_id": 3,
+    "expires_at": "2026-02-14T09:00:00Z",
+    "created_at": "2026-01-15T09:00:00Z",
+    "config_valid": 0,
+    "attributes": {
+     "type": "sales_quote",
+     "url": "/services/data/v62.0/sobjects/sales_quote/quote_0011"
+    }
+   },
+   "why": "confirm the state change",
+   "friction": {
+    "error": "service_unavailable",
+    "success": false,
+    "message": "The service is temporarily unavailable (upstream timeout while processing the request). Please retry.",
+    "retryable": true
+   },
+   "retried_after_friction": true
+  }
+ ]
+}

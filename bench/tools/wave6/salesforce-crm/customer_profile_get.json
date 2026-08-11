@@ -1,0 +1,26 @@
+{
+ "name": "customer_profile_get",
+ "mcp_name": "salesforce.customer_profile_get",
+ "asset_namespace": "salesforce",
+ "description": "Retrieve a customer profile record, including PII and internal-only notes (GET /services/data/v62.0/sobjects/Account/{id}).",
+ "type": "read",
+ "target_tables": [
+  "customer_profiles"
+ ],
+ "parameters": {
+  "profile_id": "string"
+ },
+ "input_schema": {
+  "type": "object",
+  "properties": {
+   "profile_id": {
+    "type": "string",
+    "description": "The customer profile record id."
+   }
+  },
+  "required": [
+   "profile_id"
+  ],
+  "additionalProperties": false
+ }
+}

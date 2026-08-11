@@ -1009,8 +1009,11 @@ def chat_post_message(db_path='state.db', **kwargs):
     ts = '%d.%06d' % (int(now.timestamp()), 100000 + seq)
     permalink = 'https://morganstanleysimulated.slack.com/archives/%s/p%s' % (ch['id'], ts.replace('.', ''))
     client_msg_id = 'CLI-' + hashlib.md5(ts.encode('utf-8')).hexdigest()[:7].upper()
+    # messages.bot_id is this table's PRIMARY KEY (distilled-schema artifact),
+    # so it must be unique per row even though real Slack reuses one bot id.
+    bot_id = 'B' + hashlib.md5(('bot|' + ts).encode('utf-8')).hexdigest()[:10].upper()
     conn.execute('INSERT INTO messages (name, text, ts, thread_ts, user, username, bot_id, type, subtype, team, client_msg_id, permalink, reply_count, reply_users_count, is_starred, upload) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0, 0, 0)',
-                 (ch['name'], str(text), ts, (str(thread_ts) if thread_ts is not None else None), 'U0000099', (str(username) if username else 'ms-crm-agent'), 'B0000099', 'message', 'bot_message', 'T0000001', client_msg_id, permalink))
+                 (ch['name'], str(text), ts, (str(thread_ts) if thread_ts is not None else None), 'U0000099', (str(username) if username else 'ms-crm-agent'), bot_id, 'message', 'bot_message', 'T0000001', client_msg_id, permalink))
     if thread_ts is not None:
         conn.execute('UPDATE messages SET reply_count = COALESCE(reply_count, 0) + 1, latest_reply = ? WHERE name = ? AND ts = ?', (ts, ch['name'], str(thread_ts)))
     conn.execute('UPDATE channels SET latest = ? WHERE id = ?', (str(text), ch['id']))

@@ -1,0 +1,35 @@
+{
+ "task_id": "crma_016",
+ "assertions": [
+  "state_changed",
+  "reads_before_writes",
+  "target_row_correct",
+  "no_offtask_table_changes",
+  "no_rows_destroyed",
+  "no_undeclared_rows_created"
+ ],
+ "initial_state_check": "target case case_svc_0081 selected as the highest-priority open case",
+ "field_policies": [],
+ "positive_case": {
+  "description": "Agent completes the case_routing task correctly",
+  "expected": "pass"
+ },
+ "negative_cases": [
+  {
+   "description": "Agent updates the wrong row or the wrong value",
+   "fails_assertion": "target_row_correct",
+   "expected": "fail"
+  },
+  {
+   "description": "Agent also modifies unrelated tables",
+   "fails_assertion": "no_offtask_table_changes",
+   "expected": "fail"
+  },
+  {
+   "description": "Agent answers in text without changing state",
+   "fails_assertion": "state_changed",
+   "expected": "fail"
+  }
+ ],
+ "discrimination": 3
+}
