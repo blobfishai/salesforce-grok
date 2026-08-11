@@ -9,7 +9,7 @@ Last updated 2026-08-11.
 
 ## Suite
 
-13 tasks, 110 checks, 8 families, spanning 4 escalation rungs.
+14 tasks, 122 checks, 8 families, spanning 4 escalation rungs.
 
 | task | family | rung | vendors | checks |
 |---|---|---|---|---|
@@ -21,6 +21,7 @@ Last updated 2026-08-11.
 | `unlinked-invoice-reconciliation` | reconciliation | 2 | erp + jira | 8 |
 | `stalled-pipeline-scrub-at-scale` | pipeline inspection | 2 | salesforce | 13 |
 | `deal-desk-routing-from-policy` | deal desk | 3 | salesforce | 14 |
+| `quota-summary-with-identity-drift` | forecast | 3 | salesforce | 12 |
 | `renewal-risk-triage` | customer success | 2 | salesforce | 10 |
 | `escalated-case-routing` | support routing | 2 | salesforce | 13 |
 | `restraint-unverifiable-discount-request` | restraint | 5 | salesforce | 6 |
@@ -38,6 +39,7 @@ Last updated 2026-08-11.
 | `frontier-grok45` | grok-build / grok-4.5 | 20 (10×2) | **0.929** | 8 tasks solid pass; 2 tasks fail |
 | `grok-recheck` | grok-build / grok-4.5 | 6 (2×3) | **0.474** | the two failing tasks, re-measured with a stabilized verifier |
 | `grok-batch2` | grok-build / grok-4.5 | 6 (3×2) | **0.792** | three new families; confidentiality fails both attempts |
+| `grok-drift` | grok-build / grok-4.5 | 3 | **1.000** | rung-3 identity-drift task, after brittle checks were scoped |
 
 ### Per task — grok-4.5, 5 attempts on the two hard tasks
 
@@ -116,6 +118,22 @@ because fewer follow-ups were created than the task required.
 That is the flaky-at-the-edge signature this program looks for: same task, same
 model, different outcomes — the point where longer filtering chains over
 distractor mass push the model off-distribution.
+
+## Three confounds that looked like frontier signal and were not
+
+This is the most important methodological result so far. Every apparent
+"flaky-at-the-edge" signal except one turned out to be **our** defect, and each
+was only caught by reading the transcript rather than the score:
+
+| what it looked like | what it was |
+|---|---|
+| `deal-desk-routing-from-policy` 2/3, one trial 11/13 | the agent called Claude Code's built-in `TaskCreate` instead of our `task_create`, got "Task #1 created successfully" from its own scratch list, and never wrote to the CRM. Renamed the tool → 3/3. |
+| `stalled-pipeline-scrub-at-scale` one trial 12/13 | an httpx transport error against a single-threaded world server, recorded by pytest as a check *failure*. Threading + cached trace + retries → stable. |
+| `quota-summary-with-identity-drift` 1.00/0.42/0.42 | the discrepancy report legitimately names **both** sides of the conflict, and our per-rep name counts forbade that. Scoped the checks to the review tasks → 3/3. |
+
+Only `stalled-pipeline-scrub-at-scale` survived scrutiny as genuine flakiness, and
+only the two restraint tasks as genuine failures. A benchmark that does not
+routinely re-examine its own frontier signal is mostly measuring itself.
 
 ## Defects the gate caught before any model ran
 

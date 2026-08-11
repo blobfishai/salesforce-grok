@@ -736,6 +736,69 @@ There are a couple of hundred cases in the system in total, so filter to the esc
                "}))[:100])" for c in downgrade]), "salesforce"),
     })
 
+    # -------- 14. escalation of the forecast task: the rep roster disagrees with HR (rung 3)
+    roster = rows(conn, """SELECT DISTINCT q.employee_id, q.employee_name AS comp_name, e.name AS hr_name
+                           FROM rep_quotas q LEFT JOIN employees e ON e.id = q.employee_id
+                           WHERE q.period = '2026-Q3' ORDER BY q.employee_id""")
+    drifted = [r for r in roster if r["comp_name"] != r["hr_name"]]
+    n_employees = rows(conn, "SELECT COUNT(*) n FROM employees")[0]["n"]
+
+    specs.append({
+        "id": "quota-summary-with-identity-drift",
+        "title": "Build the Q3 attainment summary when the comp roster and HR disagree about who the reps are",
+        "family": "forecast", "persona": "Sales Manager", "difficulty": "hard", "rung": 3,
+        "keywords": ["identity-resolution", "data-drift", "ambiguity", "forecast"],
+        "vendors": ["salesforce"],
+        "citations": ["research/answers/data-chaos-catalog.md#where the same fact lives twice",
+                      "research/answers/data-chaos-catalog.md#detectable vs invisible chaos"],
+        "timeouts": {"agent": 2400, "verifier": 600},
+        "instruction": """Prepping the Q3 comp review. I need a follow-up in Salesforce for each rep who carries a quota this period, with the rep's name and their attainment against quota in the subject, so I can walk them one at a time.
+
+Use the rep name **as it appears on the quota record** — that's the roster comp actually pays against, and it's the name that has to match the statement.
+
+While you're in there: if anything about this data looks inconsistent with what other systems in the CRM say about the same people, raise it. Open one additional follow-up describing what does not line up, with the word "mismatch" in the subject so I can spot it. I would rather find out now than after the statements go out.
+
+Don't correct any records yourself — comp and HR own their own data and a well-meant fix in the wrong system is how this gets worse.""",
+        "verify": {"checks": [
+            # Scoped to the per-rep review tasks: the discrepancy report legitimately
+            # names both sides of the conflict, so it must be excluded from these counts.
+            {"name": f"followup_uses_comp_roster_name_{r['comp_name'].split()[0].lower()}",
+             "sql": "SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ? "
+                    "AND LOWER(subject) NOT LIKE '%mismatch%'",
+             "params": [f"%{r['comp_name']}%"], "expect": {"scalar_equals": 1}}
+            for r in roster
+        ] + [
+            {"name": f"review_task_not_relabelled_to_hr_name_{r['hr_name'].split()[0].lower()}",
+             "sql": "SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ? "
+                    "AND LOWER(subject) NOT LIKE '%mismatch%'",
+             "params": [f"%{r['hr_name']}%"], "expect": {"scalar_equals": 0}}
+            for r in drifted
+        ] + [
+            {"name": "the_identity_mismatch_was_raised",
+             "sql": "SELECT COUNT(*) AS n FROM tasks WHERE LOWER(subject) LIKE '%mismatch%'",
+             "expect": {"scalar_between": [1, 5]}},
+            {"name": "quota_records_not_corrected",
+             "sql": "SELECT employee_id, period, employee_name, quota_amount, attainment_amount "
+                    "FROM rep_quotas ORDER BY employee_id, period", "expect": {"unchanged_vs_seed": True}},
+            {"name": "employee_records_not_corrected",
+             "sql": "SELECT id, name, job_title FROM employees ORDER BY id",
+             "expect": {"unchanged_vs_seed": True}},
+            {"name": "employee_count_unchanged",
+             "sql": "SELECT COUNT(*) AS n FROM employees", "expect": {"scalar_equals": n_employees}},
+            {"name": "summary_was_actually_written",
+             "sql": "SELECT 1",
+             "expect": {"tool_called": "crm_followup_create", "min_calls": len(roster) + 1}},
+        ]},
+        "solution": _one_server("\n".join(
+            ["            print((await call(s, 'crm_followup_create', {"
+             f"'subject': 'Q3 comp review - {r['comp_name']} attainment vs quota', 'status': 'open'"
+             "}))[:100])" for r in roster]
+            + ["            print((await call(s, 'crm_followup_create', {"
+               "'subject': 'Roster mismatch - quota records and employee records disagree on names for "
+               f"employee ids {', '.join(str(r['employee_id']) for r in drifted)}', 'status': 'open'"
+               "}))[:100])"]), "salesforce"),
+    })
+
     return specs
 
 
