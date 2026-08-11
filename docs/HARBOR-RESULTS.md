@@ -206,32 +206,49 @@ its own metric. Compiled by `scripts/ingest/compile_tasks.py` from the WCPs.
 | dataset | tasks | validated | harness check |
 |---|---:|---:|---|
 | CRMArena (reproduced, `exact` fidelity) | 1,170 | 1,170 / 1,170 | 27 / 27 at 1.000 |
-| generated waves 1–3 (`adapted`) | 1,109 | 1,109 / 1,109 | 18 / 18 at 1.000 |
+| generated waves 1–3 (`adapted`) | 870 | 870 / 870 | 18 / 18 at 1.000 |
 
 Waves pair a natural-language prompt with the SQL that computes its answer, so
-ground truth is derived from the world rather than authored. Join depth 2–5;
-360 of the 1,109 are abstention tasks whose correct answer is `None`.
+ground truth is derived from the world rather than authored. Join depth 2–5; 360 of the 870 are abstention tasks whose correct answer is
+`None`. A further 261 candidates were dropped for having no unique answer.
 
-## grok-4.5 on a depth-stratified wave sample — 16/20 (0.800)
+## grok-4.5 on a depth-stratified wave sample — 25/25 (1.000)
 
 | join depth | pass / total |
 |---|---:|
-| depth 2 | 3 / 4 |
-| **depth 3** (`agent_most_cases_for_product`) | **2 / 5** |
-| depth 4 | 3 / 3 |
-| depth 5 | 4 / 4 |
-| abstention (correct answer is `None`) | 4 / 4 |
+| depth 2 | 5 / 5 |
+| depth 3 | 5 / 5 |
+| depth 4 | 5 / 5 |
+| depth 5 | 5 / 5 |
+| abstention (correct answer is `None`) | 5 / 5 |
 
-The interesting failure is **over-refusal**, not error. On three of the four
-misses grok-4.5 spent 14, 20 and 36 tool calls and then answered `None` — it
-abstained on questions the data *can* answer. It abstains correctly when it
-should (4/4 on the genuine abstention tasks), so this is not a blanket bias: it
-is a specific failure to convert a long multi-hop retrieval into a committed
-answer.
+**Deeper joins alone do not push this model.** It answers 5-object-join questions
+and abstains correctly on unanswerable ones, in the same run.
 
-That is the same boundary the `sales-world` suite found from the other side —
-there, the model acted when it should have declined; here it declines when it
-should act.
+### Correction: a published finding that was our defect
+
+An earlier revision of this document reported grok-4.5 scoring 16/20 with an
+"over-refusal" failure mode — spending 14–36 tool calls and then answering
+`None` on questions the data could answer. **That finding was wrong, and the
+cause was our task generator.**
+
+The argmax templates ranked with `ORDER BY n DESC, <id> ASC LIMIT 1`, which
+breaks ties arbitrarily. For "which agent has closed the most cases for Trail
+Running Shoes", the top agent had **one** closed case — and **nine agents were
+tied at one**. The question had no unique answer; the model answered `None`,
+which was correct, and we marked it wrong.
+
+The generator now requires a strict argmax: the top row must beat the runner-up
+outright, or the task is dropped. That removed **261 ambiguous tasks** across the
+three waves (1,109 → 870), and collapsed the `agent_most_cases_for_product`
+template from 60 to 18 per wave — it was mostly ties. Re-measured on the cleaned
+set: 25/25.
+
+Two lessons worth keeping. Verifying a *failure* deserves the same scrutiny as
+verifying a pass — this one survived a full write-up because the failure looked
+plausible. And "the model refused" is the single most suspicious result in this
+suite, because ambiguous ground truth and correct refusal are indistinguishable
+from the score alone.
 
 ### A packaging defect this run caught
 

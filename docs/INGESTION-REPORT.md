@@ -90,9 +90,9 @@ Vendoring data or code requires a permissive licence; deriving *facts* does not.
 
 | stage | state |
 |---|---|
-| ingested into WCPs | **3,864 tasks** (2,755 corpus + 1,109 generated waves) |
-| compiled to runnable Harbor tasks | **2,295** (1,170 CRMArena + 1,109 waves + 16 sales-world) |
-| validated by Harbor's own task validator | 2,279 / 2,279 compiled parity tasks, 0 invalid |
+| ingested into WCPs | **3,625 tasks** (2,755 corpus + 870 generated waves) |
+| compiled to runnable Harbor tasks | **2,056** (1,170 CRMArena + 870 waves + 16 sales-world) |
+| validated by Harbor's own task validator | 2,040 / 2,040 compiled parity tasks, 0 invalid |
 | harness-checked (world + answer channel + metric agree) | 27 CRMArena + 18 waves, all 1.000 |
 | measured against a model | 16 sales-world (grok-4.5, DeepSeek v4-flash) |
 

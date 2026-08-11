@@ -56,6 +56,23 @@ def one(conn, sql, params=()):
     return rows[0] if rows else None
 
 
+def argmax_unique(conn, sql, params=(), value_key="n"):
+    """Return the top row only when it strictly beats the runner-up.
+
+    A "which X has the most Y" question with a tie has no defensible answer. An
+    earlier revision broke ties on Id inside ORDER BY and shipped the winner as
+    ground truth -- for one product nine agents were tied on a single closed case
+    each, and a model that answered "None" was marked wrong for being right.
+    Callers must pass a query that returns at least the top two rows.
+    """
+    rows = q(conn, sql, params)
+    if not rows:
+        return None
+    if len(rows) > 1 and rows[0][value_key] == rows[1][value_key]:
+        return None
+    return rows[0]
+
+
 # ---------------------------------------------------------------- templates
 def t_top_issue_for_product(conn, rng, n):
     """depth 2 — Case x Issue__c, scoped to a product and a period."""
@@ -66,11 +83,11 @@ def t_top_issue_for_product(conn, rng, n):
                        GROUP BY p.Id HAVING n >= 8 ORDER BY n DESC LIMIT 60""")
     for p in rng.sample(prods, min(n, len(prods))):
         label, start, end = rng.choice(PERIODS)
-        row = one(conn, """SELECT i.Name AS issue, COUNT(*) n FROM "Case" c
+        row = argmax_unique(conn, """SELECT i.Name AS issue, COUNT(*) n FROM "Case" c
                            JOIN OrderItem oi ON oi.Id = c.OrderItemId__c
                            JOIN Issue__c i ON i.Id = c.IssueId__c
                            WHERE oi.Product2Id = ? AND substr(c.CreatedDate,1,10) BETWEEN ? AND ?
-                           GROUP BY i.Id ORDER BY n DESC, i.Name ASC LIMIT 1""", (p["Id"], start, end))
+                           GROUP BY i.Id ORDER BY n DESC LIMIT 2""", (p["Id"], start, end))
         out.append({
             "prompt": f"What was the most frequently reported issue for the product "
                       f"\"{p['Name']}\" during {label}? Return only the issue name, or None "
@@ -89,11 +106,11 @@ def t_agent_most_cases_for_product(conn, rng, n):
                        JOIN Product2 p ON p.Id = oi.Product2Id
                        WHERE c.Status = 'Closed' GROUP BY p.Id HAVING n >= 6 ORDER BY n DESC LIMIT 60""")
     for p in rng.sample(prods, min(n, len(prods))):
-        row = one(conn, """SELECT u.Id AS agent_id, COUNT(*) n FROM "Case" c
+        row = argmax_unique(conn, """SELECT u.Id AS agent_id, COUNT(*) n FROM "Case" c
                            JOIN OrderItem oi ON oi.Id = c.OrderItemId__c
                            JOIN User u ON u.Id = c.OwnerId
                            WHERE oi.Product2Id = ? AND c.Status = 'Closed'
-                           GROUP BY u.Id ORDER BY n DESC, u.Id ASC LIMIT 1""", (p["Id"],))
+                           GROUP BY u.Id ORDER BY n DESC LIMIT 2""", (p["Id"],))
         out.append({
             "prompt": f"Which agent has closed the most cases relating to the product "
                       f"\"{p['Name']}\"? Return only the agent's Id.",
@@ -109,11 +126,11 @@ def t_region_for_issue(conn, rng, n):
     issues = q(conn, "SELECT Id, Name FROM Issue__c")
     for i in rng.sample(issues, min(n, len(issues))):
         label, start, end = rng.choice(PERIODS)
-        row = one(conn, """SELECT a.ShippingState AS region, COUNT(*) n FROM "Case" c
+        row = argmax_unique(conn, """SELECT a.ShippingState AS region, COUNT(*) n FROM "Case" c
                            JOIN Account a ON a.Id = c.AccountId
                            WHERE c.IssueId__c = ? AND substr(c.CreatedDate,1,10) BETWEEN ? AND ?
                              AND a.ShippingState IS NOT NULL AND a.ShippingState <> ''
-                           GROUP BY a.ShippingState ORDER BY n DESC, a.ShippingState ASC LIMIT 1""",
+                           GROUP BY a.ShippingState ORDER BY n DESC LIMIT 2""",
                   (i["Id"], start, end))
         out.append({
             "prompt": f"Which shipping state reported the most \"{i['Name']}\" cases during "
@@ -131,14 +148,14 @@ def t_slowest_issue_for_region(conn, rng, n):
                          WHERE ShippingState IS NOT NULL AND ShippingState <> ''
                          GROUP BY ShippingState HAVING n >= 3 ORDER BY n DESC LIMIT 40""")
     for reg in rng.sample(regions, min(n, len(regions))):
-        row = one(conn, """SELECT i.Name AS issue,
+        row = argmax_unique(conn, """SELECT i.Name AS issue,
                                   AVG(julianday(substr(c.ClosedDate,1,10)) -
                                       julianday(substr(c.CreatedDate,1,10))) AS days
                            FROM "Case" c JOIN Account a ON a.Id = c.AccountId
                            JOIN Issue__c i ON i.Id = c.IssueId__c
                            WHERE a.ShippingState = ? AND c.ClosedDate IS NOT NULL AND c.ClosedDate <> ''
                            GROUP BY i.Id HAVING COUNT(*) >= 2
-                           ORDER BY days DESC, i.Name ASC LIMIT 1""", (reg["r"],))
+                           ORDER BY days DESC LIMIT 2""", (reg["r"],), value_key="days")
         out.append({
             "prompt": f"For customers shipping to {reg['r']}, which issue type took the longest on "
                       f"average to close? Consider only issue types with at least two closed cases "
@@ -157,7 +174,7 @@ def t_most_transferred_issue(conn, rng, n):
     for label, start, end in (periods * ((n // max(1, len(periods))) + 1))[:n]:
         # A transfer is a *second or later* owner assignment: the first one is
         # just initial routing. The history field is 'Owner Assignment'.
-        row = one(conn, """WITH transferred AS (
+        row = argmax_unique(conn, """WITH transferred AS (
                              SELECT h.CaseId__c AS cid, COUNT(*) AS assigns
                              FROM CaseHistory__c h
                              WHERE h.Field__c = 'Owner Assignment'
@@ -166,7 +183,7 @@ def t_most_transferred_issue(conn, rng, n):
                            SELECT i.Name AS issue, COUNT(*) n
                            FROM transferred t JOIN "Case" c ON c.Id = t.cid
                            JOIN Issue__c i ON i.Id = c.IssueId__c
-                           GROUP BY i.Id ORDER BY n DESC, i.Name ASC LIMIT 1""", (start, end))
+                           GROUP BY i.Id ORDER BY n DESC LIMIT 2""", (start, end))
         out.append({
             "prompt": f"During {label}, which issue type was transferred between agents most often? "
                       f"A transfer is a change of case owner. Return only the issue name, or None "
