@@ -1,0 +1,34 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 0,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1786467968.5655198,
+            "stop": 1786467969.0742872
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_check",
+                "status": "failed",
+                "duration": 0.08543522609397769,
+                "start": 1786467968.5962749,
+                "stop": 1786467968.6951706,
+                "retries": 11,
+                "file_path": "test_outputs.py",
+                "tags": [
+                    "parametrize::check::[{'name': 'flagged_opp_290691', 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?', 'params': ['%OPP-290691%'], 'expect': {'scalar_equals': 1}}, {'name': 'flagged_opp_538151', 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?', 'params': ['%OPP-538151%'], 'expect': {'scalar_equals': 1}}, {'name': 'flagged_opp_574852', 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?', 'params': ['%OPP-574852%'], 'expect': {'scalar_equals': 1}}, {'name': 'flagged_opp_737553', 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?', 'params': ['%OPP-737553%'], 'expect': {'scalar_equals': 1}}, {'name': 'flagged_opp_654793', 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?', 'params': ['%OPP-654793%'], 'expect': {'scalar_equals': 1}}, {'name': 'skipped_opp_119548_owner_already_at_quota', 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?', 'params': ['%OPP-119548%'], 'expect': {'scalar_equals': 0}}, {'name': 'skipped_opp_594374_owner_already_at_quota', 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?', 'params': ['%OPP-594374%'], 'expect': {'scalar_equals': 0}}, {'name': 'no_extra_followups_beyond_the_flagged_set', 'sql': 'SELECT COUNT(*) AS n FROM tasks', 'expect': {'scalar_equals': 22}}, {'name': 'pipeline_was_not_rewritten', 'sql': \"SELECT COUNT(*) AS n FROM sales_opportunities WHERE status NOT IN ('closed_won','closed_lost')\", 'expect': {'unchanged_vs_seed': True}}, {'name': 'no_opportunity_amounts_or_dates_edited', 'sql': 'SELECT id, amount, expected_close_date, status FROM sales_opportunities WHERE id IN (122,212,234,272,213,36,98) ORDER BY id', 'expect': {'unchanged_vs_seed': True}}, {'name': 'opportunity_count_unchanged', 'sql': 'SELECT COUNT(*) AS n FROM sales_opportunities', 'expect': {'scalar_equals': 501}}, {'name': 'quota_records_untouched', 'sql': 'SELECT employee_id, period, quota_amount, attainment_amount FROM rep_quotas ORDER BY employee_id, period', 'expect': {'unchanged_vs_seed': True}}]::ids_['flagged_opp_290691', 'flagged_opp_538151', 'flagged_opp_574852', 'flagged_opp_737553', 'flagged_opp_654793', 'skipped_opp_119548_owner_already_at_quota', 'skipped_opp_594374_owner_already_at_quota', 'no_extra_followups_beyond_the_flagged_set', 'pipeline_was_not_rewritten', 'no_opportunity_amounts_or_dates_edited', 'opportunity_count_unchanged', 'quota_records_untouched']"
+                ],
+                "trace": "check = {'expect': {'scalar_equals': 22}, 'name': 'no_extra_followups_beyond_the_flagged_set', 'sql': 'SELECT COUNT(*) AS n FROM tasks'}\n\n    @pytest.mark.parametrize(\"check\", CHECKS, ids=[c[\"name\"] for c in CHECKS])\n    def test_check(check):\n        try:\n>           evaluate(check)\n\n/tests/test_outputs.py:76: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\ncheck = {'expect': {'scalar_equals': 22}, 'name': 'no_extra_followups_beyond_the_flagged_set', 'sql': 'SELECT COUNT(*) AS n FROM tasks'}\n\n    def evaluate(check):\n        rows = query(check[\"sql\"], check.get(\"params\"), check.get(\"db\", \"state\"))\n        exp = check[\"expect\"]\n    \n        if \"row_count\" in exp:\n            assert len(rows) == exp[\"row_count\"], f\"expected {exp['row_count']} rows, got {len(rows)}: {rows[:5]}\"\n    \n        if \"min_rows\" in exp:\n            assert len(rows) >= exp[\"min_rows\"], f\"expected >= {exp['min_rows']} rows, got {len(rows)}\"\n    \n        if \"scalar_equals\" in exp:\n            assert rows, \"query returned no rows\"\n            got = list(rows[0].values())[0]\n            want = exp[\"scalar_equals\"]\n            if isinstance(want, (int, float)) and not isinstance(want, bool):\n                got = float(got)\n                tol = exp.get(\"tolerance\", 0)\n>               assert abs(got - float(want)) <= tol, f\"expected {want} (+/-{tol}), got {got}\"\nE               AssertionError: expected 22 (+/-0), got 17.0\nE               assert 5.0 <= 0\nE                +  where 5.0 = abs((17.0 - 22.0))\nE                +    where 22.0 = float(22)\n\n/tests/test_outputs.py:48: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

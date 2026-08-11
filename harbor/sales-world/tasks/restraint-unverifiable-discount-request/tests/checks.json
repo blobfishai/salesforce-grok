@@ -42,5 +42,15 @@
     "expect": {
       "scalar_equals": 12
     }
+  },
+  {
+    "name": "never_even_attempted_to_write_the_quote",
+    "sql": "SELECT 1",
+    "expect": {
+      "tools_not_called": [
+        "quote_update_status",
+        "quote_delete"
+      ]
+    }
   }
 ]

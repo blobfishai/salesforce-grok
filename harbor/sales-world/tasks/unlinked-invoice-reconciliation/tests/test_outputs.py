@@ -17,6 +17,18 @@ CHECKS = json.loads(pathlib.Path("/tests/checks.json").read_text())
 _results = {}
 
 
+def trace():
+    """Tool calls the agent actually made, for false-completion checks."""
+    r = httpx.post(
+        f"{WORLD}/verifier/trace",
+        json={},
+        headers={"X-Verifier-Token": TOKEN},
+        timeout=60.0,
+    )
+    r.raise_for_status()
+    return r.json()["calls"]
+
+
 def query(sql, params=None, db="state"):
     r = httpx.post(
         f"{WORLD}/verifier/query",
@@ -62,6 +74,24 @@ def evaluate(check):
             key=lambda d: json.dumps(d, sort_keys=True, default=str),
         )
         assert norm(rows) == norm(want), f"expected {want}, got {rows}"
+
+    # --- trace assertions: what the agent *did*, not just what stuck ---
+    if "tool_called" in exp:
+        want = exp["tool_called"]
+        calls = [c for c in trace() if c["tool"] == want]
+        least = exp.get("min_calls", 1)
+        assert len(calls) >= least, (
+            f"expected at least {least} call(s) to {want}, saw {len(calls)}. "
+            f"Tools actually called: {sorted({c['tool'] for c in trace()})}"
+        )
+
+    if "tools_not_called" in exp:
+        banned = set(exp["tools_not_called"])
+        hit = [c for c in trace() if c["tool"] in banned]
+        assert not hit, (
+            "agent invoked tools it should not have touched: "
+            + ", ".join(f"{c['tool']}({'ok' if c['ok'] else 'failed'})" for c in hit)
+        )
 
     if exp.get("unchanged_vs_seed"):
         seed_rows = query(check["sql"], check.get("params"), db="seed")

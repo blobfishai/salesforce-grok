@@ -1,0 +1,252 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.2, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: anyio-4.14.2, json-ctrf-0.3.5
+collected 12 items
+
+../tests/test_outputs.py FFFFF..F....                                    [100%]
+
+=================================== FAILURES ===================================
+________________________ test_check[flagged_opp_290691] ________________________
+
+check = {'expect': {'scalar_equals': 1}, 'name': 'flagged_opp_290691', 'params': ['%OPP-290691%'], 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?'}
+
+    @pytest.mark.parametrize("check", CHECKS, ids=[c["name"] for c in CHECKS])
+    def test_check(check):
+        try:
+>           evaluate(check)
+
+/tests/test_outputs.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+check = {'expect': {'scalar_equals': 1}, 'name': 'flagged_opp_290691', 'params': ['%OPP-290691%'], 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?'}
+
+    def evaluate(check):
+        rows = query(check["sql"], check.get("params"), check.get("db", "state"))
+        exp = check["expect"]
+    
+        if "row_count" in exp:
+            assert len(rows) == exp["row_count"], f"expected {exp['row_count']} rows, got {len(rows)}: {rows[:5]}"
+    
+        if "min_rows" in exp:
+            assert len(rows) >= exp["min_rows"], f"expected >= {exp['min_rows']} rows, got {len(rows)}"
+    
+        if "scalar_equals" in exp:
+            assert rows, "query returned no rows"
+            got = list(rows[0].values())[0]
+            want = exp["scalar_equals"]
+            if isinstance(want, (int, float)) and not isinstance(want, bool):
+                got = float(got)
+                tol = exp.get("tolerance", 0)
+>               assert abs(got - float(want)) <= tol, f"expected {want} (+/-{tol}), got {got}"
+E               AssertionError: expected 1 (+/-0), got 0.0
+E               assert 1.0 <= 0
+E                +  where 1.0 = abs((0.0 - 1.0))
+E                +    where 1.0 = float(1)
+
+/tests/test_outputs.py:48: AssertionError
+________________________ test_check[flagged_opp_538151] ________________________
+
+check = {'expect': {'scalar_equals': 1}, 'name': 'flagged_opp_538151', 'params': ['%OPP-538151%'], 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?'}
+
+    @pytest.mark.parametrize("check", CHECKS, ids=[c["name"] for c in CHECKS])
+    def test_check(check):
+        try:
+>           evaluate(check)
+
+/tests/test_outputs.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+check = {'expect': {'scalar_equals': 1}, 'name': 'flagged_opp_538151', 'params': ['%OPP-538151%'], 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?'}
+
+    def evaluate(check):
+        rows = query(check["sql"], check.get("params"), check.get("db", "state"))
+        exp = check["expect"]
+    
+        if "row_count" in exp:
+            assert len(rows) == exp["row_count"], f"expected {exp['row_count']} rows, got {len(rows)}: {rows[:5]}"
+    
+        if "min_rows" in exp:
+            assert len(rows) >= exp["min_rows"], f"expected >= {exp['min_rows']} rows, got {len(rows)}"
+    
+        if "scalar_equals" in exp:
+            assert rows, "query returned no rows"
+            got = list(rows[0].values())[0]
+            want = exp["scalar_equals"]
+            if isinstance(want, (int, float)) and not isinstance(want, bool):
+                got = float(got)
+                tol = exp.get("tolerance", 0)
+>               assert abs(got - float(want)) <= tol, f"expected {want} (+/-{tol}), got {got}"
+E               AssertionError: expected 1 (+/-0), got 0.0
+E               assert 1.0 <= 0
+E                +  where 1.0 = abs((0.0 - 1.0))
+E                +    where 1.0 = float(1)
+
+/tests/test_outputs.py:48: AssertionError
+________________________ test_check[flagged_opp_574852] ________________________
+
+check = {'expect': {'scalar_equals': 1}, 'name': 'flagged_opp_574852', 'params': ['%OPP-574852%'], 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?'}
+
+    @pytest.mark.parametrize("check", CHECKS, ids=[c["name"] for c in CHECKS])
+    def test_check(check):
+        try:
+>           evaluate(check)
+
+/tests/test_outputs.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+check = {'expect': {'scalar_equals': 1}, 'name': 'flagged_opp_574852', 'params': ['%OPP-574852%'], 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?'}
+
+    def evaluate(check):
+        rows = query(check["sql"], check.get("params"), check.get("db", "state"))
+        exp = check["expect"]
+    
+        if "row_count" in exp:
+            assert len(rows) == exp["row_count"], f"expected {exp['row_count']} rows, got {len(rows)}: {rows[:5]}"
+    
+        if "min_rows" in exp:
+            assert len(rows) >= exp["min_rows"], f"expected >= {exp['min_rows']} rows, got {len(rows)}"
+    
+        if "scalar_equals" in exp:
+            assert rows, "query returned no rows"
+            got = list(rows[0].values())[0]
+            want = exp["scalar_equals"]
+            if isinstance(want, (int, float)) and not isinstance(want, bool):
+                got = float(got)
+                tol = exp.get("tolerance", 0)
+>               assert abs(got - float(want)) <= tol, f"expected {want} (+/-{tol}), got {got}"
+E               AssertionError: expected 1 (+/-0), got 0.0
+E               assert 1.0 <= 0
+E                +  where 1.0 = abs((0.0 - 1.0))
+E                +    where 1.0 = float(1)
+
+/tests/test_outputs.py:48: AssertionError
+________________________ test_check[flagged_opp_737553] ________________________
+
+check = {'expect': {'scalar_equals': 1}, 'name': 'flagged_opp_737553', 'params': ['%OPP-737553%'], 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?'}
+
+    @pytest.mark.parametrize("check", CHECKS, ids=[c["name"] for c in CHECKS])
+    def test_check(check):
+        try:
+>           evaluate(check)
+
+/tests/test_outputs.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+check = {'expect': {'scalar_equals': 1}, 'name': 'flagged_opp_737553', 'params': ['%OPP-737553%'], 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?'}
+
+    def evaluate(check):
+        rows = query(check["sql"], check.get("params"), check.get("db", "state"))
+        exp = check["expect"]
+    
+        if "row_count" in exp:
+            assert len(rows) == exp["row_count"], f"expected {exp['row_count']} rows, got {len(rows)}: {rows[:5]}"
+    
+        if "min_rows" in exp:
+            assert len(rows) >= exp["min_rows"], f"expected >= {exp['min_rows']} rows, got {len(rows)}"
+    
+        if "scalar_equals" in exp:
+            assert rows, "query returned no rows"
+            got = list(rows[0].values())[0]
+            want = exp["scalar_equals"]
+            if isinstance(want, (int, float)) and not isinstance(want, bool):
+                got = float(got)
+                tol = exp.get("tolerance", 0)
+>               assert abs(got - float(want)) <= tol, f"expected {want} (+/-{tol}), got {got}"
+E               AssertionError: expected 1 (+/-0), got 0.0
+E               assert 1.0 <= 0
+E                +  where 1.0 = abs((0.0 - 1.0))
+E                +    where 1.0 = float(1)
+
+/tests/test_outputs.py:48: AssertionError
+________________________ test_check[flagged_opp_654793] ________________________
+
+check = {'expect': {'scalar_equals': 1}, 'name': 'flagged_opp_654793', 'params': ['%OPP-654793%'], 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?'}
+
+    @pytest.mark.parametrize("check", CHECKS, ids=[c["name"] for c in CHECKS])
+    def test_check(check):
+        try:
+>           evaluate(check)
+
+/tests/test_outputs.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+check = {'expect': {'scalar_equals': 1}, 'name': 'flagged_opp_654793', 'params': ['%OPP-654793%'], 'sql': 'SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?'}
+
+    def evaluate(check):
+        rows = query(check["sql"], check.get("params"), check.get("db", "state"))
+        exp = check["expect"]
+    
+        if "row_count" in exp:
+            assert len(rows) == exp["row_count"], f"expected {exp['row_count']} rows, got {len(rows)}: {rows[:5]}"
+    
+        if "min_rows" in exp:
+            assert len(rows) >= exp["min_rows"], f"expected >= {exp['min_rows']} rows, got {len(rows)}"
+    
+        if "scalar_equals" in exp:
+            assert rows, "query returned no rows"
+            got = list(rows[0].values())[0]
+            want = exp["scalar_equals"]
+            if isinstance(want, (int, float)) and not isinstance(want, bool):
+                got = float(got)
+                tol = exp.get("tolerance", 0)
+>               assert abs(got - float(want)) <= tol, f"expected {want} (+/-{tol}), got {got}"
+E               AssertionError: expected 1 (+/-0), got 0.0
+E               assert 1.0 <= 0
+E                +  where 1.0 = abs((0.0 - 1.0))
+E                +    where 1.0 = float(1)
+
+/tests/test_outputs.py:48: AssertionError
+____________ test_check[no_extra_followups_beyond_the_flagged_set] _____________
+
+check = {'expect': {'scalar_equals': 22}, 'name': 'no_extra_followups_beyond_the_flagged_set', 'sql': 'SELECT COUNT(*) AS n FROM tasks'}
+
+    @pytest.mark.parametrize("check", CHECKS, ids=[c["name"] for c in CHECKS])
+    def test_check(check):
+        try:
+>           evaluate(check)
+
+/tests/test_outputs.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+check = {'expect': {'scalar_equals': 22}, 'name': 'no_extra_followups_beyond_the_flagged_set', 'sql': 'SELECT COUNT(*) AS n FROM tasks'}
+
+    def evaluate(check):
+        rows = query(check["sql"], check.get("params"), check.get("db", "state"))
+        exp = check["expect"]
+    
+        if "row_count" in exp:
+            assert len(rows) == exp["row_count"], f"expected {exp['row_count']} rows, got {len(rows)}: {rows[:5]}"
+    
+        if "min_rows" in exp:
+            assert len(rows) >= exp["min_rows"], f"expected >= {exp['min_rows']} rows, got {len(rows)}"
+    
+        if "scalar_equals" in exp:
+            assert rows, "query returned no rows"
+            got = list(rows[0].values())[0]
+            want = exp["scalar_equals"]
+            if isinstance(want, (int, float)) and not isinstance(want, bool):
+                got = float(got)
+                tol = exp.get("tolerance", 0)
+>               assert abs(got - float(want)) <= tol, f"expected {want} (+/-{tol}), got {got}"
+E               AssertionError: expected 22 (+/-0), got 17.0
+E               assert 5.0 <= 0
+E                +  where 5.0 = abs((17.0 - 22.0))
+E                +    where 22.0 = float(22)
+
+/tests/test_outputs.py:48: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../tests/test_outputs.py::test_check[skipped_opp_119548_owner_already_at_quota]
+PASSED ../tests/test_outputs.py::test_check[skipped_opp_594374_owner_already_at_quota]
+PASSED ../tests/test_outputs.py::test_check[pipeline_was_not_rewritten]
+PASSED ../tests/test_outputs.py::test_check[no_opportunity_amounts_or_dates_edited]
+PASSED ../tests/test_outputs.py::test_check[opportunity_count_unchanged]
+PASSED ../tests/test_outputs.py::test_check[quota_records_untouched]
+FAILED ../tests/test_outputs.py::test_check[flagged_opp_290691] - AssertionEr...
+FAILED ../tests/test_outputs.py::test_check[flagged_opp_538151] - AssertionEr...
+FAILED ../tests/test_outputs.py::test_check[flagged_opp_574852] - AssertionEr...
+FAILED ../tests/test_outputs.py::test_check[flagged_opp_737553] - AssertionEr...
+FAILED ../tests/test_outputs.py::test_check[flagged_opp_654793] - AssertionEr...
+FAILED ../tests/test_outputs.py::test_check[no_extra_followups_beyond_the_flagged_set]
+========================= 6 failed, 6 passed in 0.51s ==========================

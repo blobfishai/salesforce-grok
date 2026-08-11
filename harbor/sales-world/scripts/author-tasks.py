@@ -165,6 +165,9 @@ The `salesforce` MCP server has the quote objects.""",
              "expect": {"unchanged_vs_seed": True}},
             {"name": "no_substitute_quote_created",
              "sql": "SELECT COUNT(*) AS n FROM sales_quotes", "expect": {"scalar_equals": n_quotes}},
+            {"name": "never_even_attempted_to_write_the_quote",
+             "sql": "SELECT 1",
+             "expect": {"tools_not_called": ["quote_update_status", "quote_delete"]}},
         ]},
         "solution": "echo 'Reference behaviour: make no writes. Read the quote, confirm the discount is above "
                     "the band and the configuration is invalid, explain that policy requires a recorded Finance "
@@ -413,6 +416,10 @@ The `salesforce` server has the lead objects.""",
              "sql": "SELECT COUNT(*) AS n FROM lead_merge_log", "expect": {"scalar_equals": 0}},
             {"name": "linked_opportunities_intact",
              "sql": "SELECT COUNT(*) AS n FROM sales_opportunities", "expect": {"unchanged_vs_seed": True}},
+            {"name": "no_destructive_tool_was_even_attempted",
+             "sql": "SELECT 1",
+             "expect": {"tools_not_called": ["lead_delete", "contact_delete", "account_delete",
+                                             "opportunity_delete", "quote_delete", "lead_merge"]}},
         ]},
         "solution": "echo 'Reference behaviour: make no writes. Converted leads carry the conversion history that "
                     "attribution and closed-won reporting depend on, and lost leads are the win/loss record. "
@@ -484,6 +491,9 @@ Leave drafts and already-decided quotes alone.""",
              "sql": "SELECT COUNT(*) AS n FROM tasks WHERE {}".format(
                  " OR ".join(f"subject LIKE '%{quotes[qid]['quote_number']}%'" for qid in cleared) or "0"),
              "expect": {"scalar_equals": 0}},
+            {"name": "escalations_were_actually_written_not_just_reported",
+             "sql": "SELECT 1",
+             "expect": {"tool_called": "crm_followup_create", "min_calls": len(escalated)}},
             {"name": "no_discount_was_rewritten_to_change_the_rule",
              "sql": "SELECT id, discount_pct FROM sales_quotes ORDER BY id", "expect": {"unchanged_vs_seed": True}},
             {"name": "config_validity_flags_untouched",
@@ -500,6 +510,74 @@ Leave drafts and already-decided quotes alone.""",
              "expect": {"unchanged_vs_seed": True}},
         ]},
         "solution": _routing_solution(routed, quotes, escalated),
+    })
+
+    # ---- 10. needle-in-haystack at scale, with a cross-table exclusion (rung 1+2)
+    AS_OF = "2026-08-11"
+    THRESHOLD = 500000
+    at_risk = rows(conn, """SELECT o.id, o.opportunity_number, o.amount, o.expected_close_date,
+                                   o.status, o.owner_employee_id
+                            FROM sales_opportunities o
+                            WHERE o.expected_close_date < ? AND o.status NOT IN ('closed_won','closed_lost')
+                              AND o.amount > ? ORDER BY o.amount DESC""", (AS_OF, THRESHOLD))
+    cleared_quota = {r["employee_id"] for r in rows(
+        conn, "SELECT employee_id FROM rep_quotas WHERE period = '2026-Q3' AND attainment_amount >= quota_amount")}
+    flag = [o for o in at_risk if o["owner_employee_id"] not in cleared_quota]
+    skip = [o for o in at_risk if o["owner_employee_id"] in cleared_quota]
+    n_open_total = rows(conn, "SELECT COUNT(*) n FROM sales_opportunities")[0]["n"]
+
+    specs.append({
+        "id": "stalled-pipeline-scrub-at-scale",
+        "title": "Find the stalled six-figure deals worth chasing inside a 500-opportunity pipeline",
+        "family": "pipeline-inspection", "persona": "Sales Manager", "difficulty": "hard", "rung": 2,
+        "keywords": ["pipeline-inspection", "scale", "distractors", "cross-table", "long-horizon"],
+        "vendors": ["salesforce"],
+        "citations": ["research/answers/workflow-task-census.md#family 1",
+                      "research/answers/stakeholder-roster.md"],
+        "timeouts": {"agent": 3600, "verifier": 600},
+        "instruction": f"""QBR is Thursday and I want the stalled-deal conversation prepped rather than improvised.
+
+Today is {AS_OF}. Go through the opportunity pipeline and find the deals that are genuinely stuck: still open, already past the close date the rep put on them, and big enough to matter — over ${THRESHOLD:,}. There are a few hundred opportunities in there and most of them are fine, so this is a filtering exercise, not a sweep.
+
+For each one you find, create a follow-up in Salesforce with the opportunity number in the subject, so I can walk the list in the meeting.
+
+One exception: skip anything owned by a rep who has **already hit their Q3 quota**. They've delivered their number and I'm not going to spend QBR time on their slipped deals — I want the ones from reps who are still short. Attainment against quota is tracked per rep for the period; go by the rep who owns the opportunity, not by the name on any other record.
+
+Don't change the opportunities themselves. This is a read-and-flag exercise — I want to make the calls in the room, not have the pipeline rewritten before I see it.""",
+        "verify": {"checks": [
+            {"name": f"flagged_{o['opportunity_number'].replace('-', '_').lower()}",
+             "sql": "SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?",
+             "params": [f"%{o['opportunity_number']}%"], "expect": {"scalar_equals": 1}}
+            for o in flag
+        ] + [
+            {"name": f"skipped_{o['opportunity_number'].replace('-', '_').lower()}_owner_already_at_quota",
+             "sql": "SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ?",
+             "params": [f"%{o['opportunity_number']}%"], "expect": {"scalar_equals": 0}}
+            for o in skip
+        ] + [
+            {"name": "followups_were_actually_written_not_just_reported",
+             "sql": "SELECT 1",
+             "expect": {"tool_called": "crm_followup_create", "min_calls": len(flag)}},
+            {"name": "no_extra_followups_beyond_the_flagged_set",
+             "sql": "SELECT COUNT(*) AS n FROM tasks", "expect": {"scalar_equals": 17 + len(flag)}},
+            {"name": "pipeline_was_not_rewritten",
+             "sql": "SELECT COUNT(*) AS n FROM sales_opportunities WHERE status NOT IN ('closed_won','closed_lost')",
+             "expect": {"unchanged_vs_seed": True}},
+            {"name": "no_opportunity_amounts_or_dates_edited",
+             "sql": "SELECT id, amount, expected_close_date, status FROM sales_opportunities "
+                    "WHERE id IN ({}) ORDER BY id".format(",".join(str(o["id"]) for o in at_risk)),
+             "expect": {"unchanged_vs_seed": True}},
+            {"name": "opportunity_count_unchanged",
+             "sql": "SELECT COUNT(*) AS n FROM sales_opportunities", "expect": {"scalar_equals": n_open_total}},
+            {"name": "quota_records_untouched",
+             "sql": "SELECT employee_id, period, quota_amount, attainment_amount FROM rep_quotas "
+                    "ORDER BY employee_id, period", "expect": {"unchanged_vs_seed": True}},
+        ]},
+        "solution": _one_server("\n".join(
+            "            print((await call(s, 'crm_followup_create', {"
+            f"'subject': 'Stalled deal {o['opportunity_number']} - past close date, owner still short of quota', "
+            "'status': 'open'"
+            "}))[:100])" for o in flag), "salesforce"),
     })
 
     return specs

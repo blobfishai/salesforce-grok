@@ -1,0 +1,120 @@
+{
+    "id": "c44c539c-81f0-415f-babe-a249f3d75e1d",
+    "task_name": "sales-world/stalled-pipeline-scrub-at-scale",
+    "trial_name": "stalled-pipeline-scrub-at-scale__PefaA9c",
+    "trial_uri": "file:///Users/samuelchien/dev/salesforce-grok/harbor/sales-world/jobs/frontier-scale/stalled-pipeline-scrub-at-scale__PefaA9c",
+    "task_id": {
+        "path": "harbor/sales-world/tasks/stalled-pipeline-scrub-at-scale"
+    },
+    "source": "tasks",
+    "task_checksum": "ee5cf61b7db5a784440e12a6b4968d9faf2ad6b42a62566363b0b84dad699be6",
+    "config": {
+        "task": {
+            "path": "harbor/sales-world/tasks/stalled-pipeline-scrub-at-scale",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": "tasks"
+        },
+        "trial_name": "stalled-pipeline-scrub-at-scale__PefaA9c",
+        "trials_dir": "harbor/sales-world/jobs/frontier-scale",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "claude-code",
+            "import_path": null,
+            "model_name": "anthropic/claude-sonnet-4-5",
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {},
+            "mcp_servers": []
+        },
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": true,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {},
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "disable": false
+        },
+        "artifacts": [],
+        "extra_instruction_paths": [],
+        "job_id": "8b2b8757-423f-4d8c-a87e-a8f3b2cc9727",
+        "source_trial": null
+    },
+    "agent_info": {
+        "name": "claude-code",
+        "version": "2.1.227",
+        "model_info": {
+            "name": "claude-sonnet-4-5",
+            "provider": "anthropic"
+        }
+    },
+    "agent_result": {
+        "n_input_tokens": 493436,
+        "n_cache_tokens": 484199,
+        "n_output_tokens": 3106,
+        "cost_usd": 0.22637219999999997,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 0.5
+        }
+    },
+    "verifier_environment_mode": "shared",
+    "exception_info": {
+        "exception_type": "ApiUsageLimitError",
+        "exception_message": "Command failed (exit 1): export PATH=\"$HOME/.local/bin:$PATH\"; harbor_claude_code_instruction_9a1fc6e4d8614e069a4e6e86668d93ad=\"$HARBOR_CLAUDE_CODE_INSTRUCTION_9A1FC6E4D8614E069A4E6E86668D93AD\"; unset HARBOR_CLAUDE_CODE_INSTRUCTION_9A1FC6E4D8614E069A4E6E86668D93AD; printf \"%s\" \"$harbor_claude_code_instruction_9a1fc6e4d8614e069a4e6e86668d93ad\" | claude --verbose --output-format=stream-json --permission-mode=bypassPermissions --print 2>&1 | tee /logs/agent/claude-code.txt\nstdout: {\"type\":\"system\",\"subtype\":\"init\",\"cwd\":\"/app\",\"session_id\":\"d8373d21-6002-4667-a621-da693ad93117\",\"tools\":[\"Task\",\"Bash\",\"CronCreate\",\"CronDelete\",\"CronList\",\"Edit\",\"EnterWorktree\",\"ExitWorktree\",\"NotebookEdit\",\"Read\",\"ReportFindings\",\"ScheduleWakeu ... [85804 chars truncated] ... 82},\"inference_geo\":\"not_available\",\"iterations\":[],\"speed\":\"standard\"},\"modelUsage\":{\"claude-sonnet-4-5\":{\"inputTokens\":155,\"outputTokens\":3106,\"cacheReadInputTokens\":484199,\"cacheCreationInputTokens\":9082,\"webSearchRequests\":0,\"costUSD\":0.22637219999999997,\"contextWindow\":200000,\"maxOutputTokens\":32000,\"canonicalModel\":\"claude-sonnet-4-5\",\"provider\":\"firstParty\"}},\"permission_denials\":[],\"terminal_reason\":\"api_error\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subtype\":\"success\",\"api_error_status\":400,\"result\":\"API Error: 400 You have reached your specified API usage limits. You will regain access on 2026-09-01 at 00:00 UTC.\",\"type\":\"result\",\"duration_ms\":75227,\"uuid\":\"4e6244f1-b3f4-4c21-a8b2-fff171c9ec4a\"}\n\nstderr: None",
+        "exception_traceback": "Traceback (most recent call last):\n  File \"/Users/samuelchien/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/trial/single_step.py\", line 77, in _run_agent\n    await self._run_agent_phase(\n    ...<5 lines>...\n    )\n  File \"/Users/samuelchien/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/trial/trial.py\", line 480, in _run_agent_phase\n    await asyncio.wait_for(\n    ...<6 lines>...\n    )\n  File \"/Users/samuelchien/.local/share/uv/python/cpython-3.13.11-macos-aarch64-none/lib/python3.13/asyncio/tasks.py\", line 507, in wait_for\n    return await fut\n           ^^^^^^^^^\n  File \"/Users/samuelchien/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/agents/installed/base.py\", line 175, in wrapper\n    return await fn(self, instruction, *args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/samuelchien/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/agents/installed/claude_code.py\", line 1771, in run\n    await self.exec_as_agent(\n    ...<14 lines>...\n    )\n  File \"/Users/samuelchien/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/agents/installed/base.py\", line 884, in exec_as_agent\n    return await self._exec(\n           ^^^^^^^^^^^^^^^^^\n        environment, command, env=env, cwd=cwd, timeout_sec=timeout_sec\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/Users/samuelchien/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/agents/installed/base.py\", line 851, in _exec\n    raise self._classify_exec_error(command, result)\nharbor.agents.installed.base.ApiUsageLimitError: Command failed (exit 1): export PATH=\"$HOME/.local/bin:$PATH\"; harbor_claude_code_instruction_9a1fc6e4d8614e069a4e6e86668d93ad=\"$HARBOR_CLAUDE_CODE_INSTRUCTION_9A1FC6E4D8614E069A4E6E86668D93AD\"; unset HARBOR_CLAUDE_CODE_INSTRUCTION_9A1FC6E4D8614E069A4E6E86668D93AD; printf \"%s\" \"$harbor_claude_code_instruction_9a1fc6e4d8614e069a4e6e86668d93ad\" | claude --verbose --output-format=stream-json --permission-mode=bypassPermissions --print 2>&1 | tee /logs/agent/claude-code.txt\nstdout: {\"type\":\"system\",\"subtype\":\"init\",\"cwd\":\"/app\",\"session_id\":\"d8373d21-6002-4667-a621-da693ad93117\",\"tools\":[\"Task\",\"Bash\",\"CronCreate\",\"CronDelete\",\"CronList\",\"Edit\",\"EnterWorktree\",\"ExitWorktree\",\"NotebookEdit\",\"Read\",\"ReportFindings\",\"ScheduleWakeu ... [85804 chars truncated] ... 82},\"inference_geo\":\"not_available\",\"iterations\":[],\"speed\":\"standard\"},\"modelUsage\":{\"claude-sonnet-4-5\":{\"inputTokens\":155,\"outputTokens\":3106,\"cacheReadInputTokens\":484199,\"cacheCreationInputTokens\":9082,\"webSearchRequests\":0,\"costUSD\":0.22637219999999997,\"contextWindow\":200000,\"maxOutputTokens\":32000,\"canonicalModel\":\"claude-sonnet-4-5\",\"provider\":\"firstParty\"}},\"permission_denials\":[],\"terminal_reason\":\"api_error\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subtype\":\"success\",\"api_error_status\":400,\"result\":\"API Error: 400 You have reached your specified API usage limits. You will regain access on 2026-09-01 at 00:00 UTC.\",\"type\":\"result\",\"duration_ms\":75227,\"uuid\":\"4e6244f1-b3f4-4c21-a8b2-fff171c9ec4a\"}\n\nstderr: None\n",
+        "occurred_at": "2026-08-11T17:06:03.861543Z"
+    },
+    "started_at": "2026-08-11T17:02:31.561782Z",
+    "finished_at": "2026-08-11T17:06:40.487026Z",
+    "environment_setup": {
+        "started_at": "2026-08-11T17:02:32.036620Z",
+        "finished_at": "2026-08-11T17:02:49.057758Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-08-11T17:02:49.057798Z",
+        "finished_at": "2026-08-11T17:04:46.741859Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-08-11T17:04:46.742085Z",
+        "finished_at": "2026-08-11T17:06:03.766523Z"
+    },
+    "verifier": {
+        "started_at": "2026-08-11T17:06:06.792954Z",
+        "finished_at": "2026-08-11T17:06:08.606677Z"
+    },
+    "step_results": null
+}

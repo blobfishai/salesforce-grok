@@ -61,10 +61,40 @@ class HarborHandler(server.Handler):
             return
         self._json({"rows": rows, "count": len(rows)})
 
+    def _verifier_trace(self):
+        """Every tool the agent actually invoked, for false-completion checks.
+
+        R2A-Sales' sharpest finding: a customer-visible sentence such as "I sent
+        the PDF" is not a tool event. State assertions alone cannot tell apart an
+        agent that correctly declined from one that tried, failed, and narrated
+        success — nor one that reports work it never attempted. This exposes the
+        trace so a verifier can assert on what was *called*, not just what stuck.
+        """
+        if TOKEN and (self.headers.get("X-Verifier-Token") or "").strip() != TOKEN:
+            self._json({"error": "forbidden"}, 403)
+            return
+        calls = []
+        for t in server.current_traces():
+            if t.get("type") != "mcp_tool_call":
+                continue
+            result = t.get("result") if isinstance(t.get("result"), dict) else {}
+            calls.append({
+                "tool": (t.get("tool") or "").split(".")[-1],
+                "qualified": t.get("tool"),
+                "ok": bool(result.get("ok", True)),
+                "timestamp": t.get("timestamp"),
+            })
+        self._json({"calls": calls, "count": len(calls)})
+
     def do_POST(self):  # noqa: N802 - BaseHTTPRequestHandler naming
-        if urlparse(self.path).path.rstrip("/") == "/verifier/query":
+        path = urlparse(self.path).path.rstrip("/")
+        if path == "/verifier/query":
             self._reset_request_context()
             self._verifier_query()
+            return
+        if path == "/verifier/trace":
+            self._reset_request_context()
+            self._verifier_trace()
             return
         super().do_POST()
 

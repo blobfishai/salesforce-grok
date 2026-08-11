@@ -1,0 +1,32 @@
+Traceback (most recent call last):
+  File "/Users/samuelchien/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/trial/single_step.py", line 77, in _run_agent
+    await self._run_agent_phase(
+    ...<5 lines>...
+    )
+  File "/Users/samuelchien/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/trial/trial.py", line 480, in _run_agent_phase
+    await asyncio.wait_for(
+    ...<6 lines>...
+    )
+  File "/Users/samuelchien/.local/share/uv/python/cpython-3.13.11-macos-aarch64-none/lib/python3.13/asyncio/tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/Users/samuelchien/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/agents/installed/base.py", line 175, in wrapper
+    return await fn(self, instruction, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samuelchien/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/agents/installed/claude_code.py", line 1771, in run
+    await self.exec_as_agent(
+    ...<14 lines>...
+    )
+  File "/Users/samuelchien/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/agents/installed/base.py", line 884, in exec_as_agent
+    return await self._exec(
+           ^^^^^^^^^^^^^^^^^
+        environment, command, env=env, cwd=cwd, timeout_sec=timeout_sec
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/samuelchien/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/agents/installed/base.py", line 851, in _exec
+    raise self._classify_exec_error(command, result)
+harbor.agents.installed.base.ApiUsageLimitError: Command failed (exit 1): export PATH="$HOME/.local/bin:$PATH"; harbor_claude_code_instruction_28a3626cb31141beb4ec0824f1724fe3="$HARBOR_CLAUDE_CODE_INSTRUCTION_28A3626CB31141BEB4EC0824F1724FE3"; unset HARBOR_CLAUDE_CODE_INSTRUCTION_28A3626CB31141BEB4EC0824F1724FE3; printf "%s" "$harbor_claude_code_instruction_28a3626cb31141beb4ec0824f1724fe3" | claude --verbose --output-format=stream-json --permission-mode=bypassPermissions --print 2>&1 | tee /logs/agent/claude-code.txt
+stdout: {"type":"system","subtype":"init","cwd":"/app","session_id":"78f03758-5e69-45fb-92ca-5d887013a430","tools":["Task","Bash","CronCreate","CronDelete","CronList","Edit","EnterWorktree","ExitWorktree","NotebookEdit","Read","ReportFindings","ScheduleWakeu ... [33587 chars truncated] ... 339},"inference_geo":"not_available","iterations":[],"speed":"standard"},"modelUsage":{"claude-sonnet-4-5":{"inputTokens":57,"outputTokens":1108,"cacheReadInputTokens":152332,"cacheCreationInputTokens":3339,"webSearchRequests":0,"costUSD":0.07501184999999999,"contextWindow":200000,"maxOutputTokens":32000,"canonicalModel":"claude-sonnet-4-5","provider":"firstParty"}},"permission_denials":[],"terminal_reason":"api_error","fast_mode_state":"off","fast_mode_disabled_reason":"sdk_opt_in_required","subtype":"success","api_error_status":400,"result":"API Error: 400 You have reached your specified API usage limits. You will regain access on 2026-09-01 at 00:00 UTC.","type":"result","duration_ms":28889,"uuid":"4e64bd5b-fc71-4fd8-b33a-5e56c96325da"}
+
+stderr: None
