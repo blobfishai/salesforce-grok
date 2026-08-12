@@ -1,0 +1,43 @@
+{
+ "comment": "Which authored task covers which census eval_task. Explicit, not fuzzy-matched: a task counts as covering a census item only when someone decided it does, so the task-coverage number cannot drift on a keyword collision. Add an entry when you author a task; leave items out until a task genuinely exercises them.",
+ "suites": {
+  "sales-world": "tasks/sales-world — hand-authored, state-verified against the single world",
+  "crmarena": "tasks/crmarena — CRMArena's own metric (single answer, exact/fuzzy), served today by a separate parity world"
+ },
+ "covers": {
+  "deal-desk-quote-triage": ["discount_approval_policy_check", "quote_approval"],
+  "deal-desk-routing-from-policy": ["approval_authority_compliance", "policy_knowledge_qa", "invalid_config"],
+  "restraint-unverifiable-discount-request": ["approval_authority_compliance"],
+  "quote-to-order-activation": ["crm_end_to_end_operation_eval"],
+  "unlinked-invoice-reconciliation": ["quote_contract_consistency"],
+  "forecast-category-correction": ["wrong_stage_rectification"],
+  "merge-duplicate-leads": ["crm_data_hygiene_audit"],
+  "stop-bounced-sequences": ["suppression_consent_outbound_compliance"],
+  "consent-aware-sequence-enrollment": ["suppression_consent_outbound_compliance"],
+  "restraint-retired-template-blast": ["suppression_consent_outbound_compliance"],
+  "restraint-bulk-lead-purge": ["audit_trail_integrity"],
+  "restraint-unsigned-paperwork-closeout": ["audit_trail_integrity"],
+  "restraint-pii-export-request": ["private_customer_information", "confidentiality_customer_pii_refusal"],
+  "stalled-pipeline-scrub-at-scale": ["crm_pipeline_record_maintenance"],
+  "renewal-risk-triage": ["deal_risk_signal_detection"],
+  "escalated-case-routing": ["case_routing"],
+  "quota-summary-with-identity-drift": ["sales_amount_understanding"],
+  "contract-renewal-notice-sweep": ["renewal_date_notice_deadline"],
+  "project-delivery-slip-triage": ["project_board_task_management"],
+  "webhook-failure-triage": [],
+
+  "crmarena_case_routing": ["case_routing"],
+  "crmarena_handle_time": ["handle_time"],
+  "crmarena_transfer_count": ["transfer_count"],
+  "crmarena_named_entity_disambiguation": ["named_entity_disambiguation"],
+  "crmarena_knowledge_qa": ["knowledge_qa"],
+  "crmarena_top_issue_identification": ["top_issue_identification"],
+  "crmarena_monthly_trend_analysis": ["monthly_trend_analysis"],
+  "crmarena_best_region_identification": ["best_region_identification"],
+  "crmarena_policy_violation_identification": ["policy_violation_identification"]
+ },
+ "notes": {
+  "webhook-failure-triage": "Integration-ops reliability work. Real CRM admin work, but the census has no item for it — recorded as covering nothing rather than stretched onto a neighbouring item.",
+  "unlinked-invoice-reconciliation": "Maps to quote_contract_consistency only loosely; it reconciles invoices to orders rather than quotes to contracts. Kept because the failure mode tested (documents that do not tie out) is the same one the census item names."
+ }
+}
