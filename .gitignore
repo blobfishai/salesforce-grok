@@ -34,9 +34,14 @@ world/*/package/*/state.db.bf-friction
 # Harbor agent transcripts: these capture container `env` output, which has
 # leaked live API keys into commits before. Results of record live in verifier/.
 harbor/sales-world/jobs/**/agent/
+# Same hazard, same rule: the crmarena-parity slice-grok transcripts carry the
+# live XAI_API_KEY 44 times. Results of record live in docs/HARBOR-RESULTS.md.
+harbor/crmarena-parity/jobs/**/agent/
 
 # CRMArena dataset mirror (re-downloadable from HuggingFace; see ingest adapter)
 research/parity/crmarena/*.json
+# CRMArena-Pro mirror, same provenance (HF Salesforce/CRMArenaPro)
+research/parity/crmarena-pro/*.json
 
 harbor/crmarena-parity/images/world/crmarena_data.db
 
