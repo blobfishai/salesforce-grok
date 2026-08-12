@@ -35,6 +35,11 @@ import stat
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parents[1]
+# Task suites live at the repo root (tasks/<suite>/), not inside the dataset dir:
+# they are the artifact people come here to read, and burying them three levels
+# down under harbor/ made them hard to find. Harbor takes the path as -p, so the
+# dataset contract is unaffected.
+REPO = Path(__file__).resolve().parents[3]
 VERIFIER_TOKEN = "harbor-verifier-token"  # scoped to [verifier.env]; not secret, just unreachable from the agent
 
 # Node ships in the base image on purpose: CLI agents (claude-code, codex, gemini-cli)
@@ -331,7 +336,7 @@ def write_exec(path: Path, content: str) -> None:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--spec", default=str(HERE / "tasks.spec.jsonl"))
-    ap.add_argument("--out", default=str(HERE / "tasks"))
+    ap.add_argument("--out", default=str(REPO / "tasks" / "sales-world"))
     ap.add_argument("--tag", default="w6")
     ap.add_argument("--clean", action="store_true", help="remove generated tasks first")
     args = ap.parse_args()

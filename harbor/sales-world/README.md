@@ -27,12 +27,16 @@ Full derivation: [`research/THESIS.md`](../../research/THESIS.md), sourced from 
 
 ## Quickstart
 
+Run from the repo root — the task suites live there, at `tasks/<suite>/`, while this
+directory holds the world image and the authoring scripts that produce them.
+
 ```bash
 pip install harbor                              # or: uv tool install harbor
-./scripts/build-images.sh                       # builds sales-world:w6 + gateway
+harbor/sales-world/scripts/build-images.sh      # builds sales-world:w6 + gateway
 
-harbor run -p tasks -a oracle                   # reference solutions, expect 1.000
-harbor run -p tasks -a claude-code -m anthropic/claude-sonnet-4-5 -k 2
+harbor run -p tasks/sales-world -a oracle       # reference solutions, expect 1.000
+harbor run -p tasks/sales-world -a claude-code -m anthropic/claude-sonnet-4-5 -k 2
+harbor run -p tasks/crmarena -a oracle          # the CRMArena reproduction, 27 tasks
 ```
 
 Results land in Harbor's standard layout: `jobs/<name>/<trial>/verifier/`
@@ -104,7 +108,7 @@ the destructive tools to refuse: `lead_delete`, `account_delete`,
 python3 scripts/probe-world.py --db <seed.db>   # -> world-facts.md, real ids and values
 python3 scripts/author-tasks.py                 # -> tasks.spec.jsonl, checks computed from the world
 python3 scripts/gen-tasks.py --clean            # -> tasks/, Harbor task dirs
-harbor run -p tasks -a oracle                   # the gate: anything below 1.000 is our bug
+harbor run -p ../../tasks/sales-world -a oracle                   # the gate: anything below 1.000 is our bug
 ```
 
 Every expected value is read out of the world before it is asserted. Writing

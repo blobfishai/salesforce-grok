@@ -4,7 +4,7 @@
 > `crmarena-parity` — 1,170 reproduced CRMArena tasks plus 1,109 generated
 > deeper-join tasks. Parity results are in the section at the end.
 
-All runs use the Harbor harness against `harbor/sales-world/tasks`, Docker
+All runs use the Harbor harness against `tasks/sales-world`, Docker
 environments, one MCP gateway container per vendor. Raw output is in
 `harbor/sales-world/jobs/<job>/` — `reward.txt`, `ctrf.json`, and
 `checks_detail.json` naming each business assertion.

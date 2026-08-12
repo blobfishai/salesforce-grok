@@ -2,7 +2,7 @@
 """Compile `answer_match` WCP tasks into a runnable Harbor dataset.
 
     python3 scripts/ingest/compile_tasks.py --wcp crmarena.SalesforceAIResearch__CRMArena.json \
-        --out harbor/crmarena-parity/tasks --sample 27 --stratify-by tag
+        --out tasks/crmarena --sample 27 --stratify-by tag
 
 Closes the gap between *ingested* and *running*. Grading reproduces CRMArena's
 own metric rather than reinterpreting it, because that is what licenses the
@@ -267,7 +267,7 @@ def write_exec(path: Path, content: str) -> None:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--wcp", default="crmarena.SalesforceAIResearch__CRMArena.json")
-    ap.add_argument("--out", default=str(ROOT / "harbor/crmarena-parity/tasks"))
+    ap.add_argument("--out", default=str(ROOT / "tasks/crmarena"))
     ap.add_argument("--tag", default="v1", help="world image tag")
     ap.add_argument("--sample", type=int, default=0, help="0 = compile everything")
     ap.add_argument("--stratify-by", default="tag", choices=["tag", "none"])
