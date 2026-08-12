@@ -212,6 +212,50 @@ Waves pair a natural-language prompt with the SQL that computes its answer, so
 ground truth is derived from the world rather than authored. Join depth 2–5; 360 of the 870 are abstention tasks whose correct answer is
 `None`. A further 261 candidates were dropped for having no unique answer.
 
+## CRMArena reproduced — grok-4.5 scores 36.7%, in range with the published result
+
+90-task stratified slice (10 per category) of the 1,170 reproduced tasks, graded
+with CRMArena's own metric.
+
+| category | pass / 10 |
+|---|---:|
+| top_issue_identification | 7 |
+| named_entity_disambiguation | 6 |
+| best_region_identification | 5 |
+| handle_time | 4 |
+| transfer_count | 4 |
+| knowledge_qa | 3 |
+| monthly_trend_analysis | 2 |
+| policy_violation_identification | 2 |
+| **case_routing** | **0** |
+| **total** | **33 / 90 = 36.7%** |
+
+Harbor mean reward 0.407 (higher than strict accuracy because fuzzy_match tasks
+earn partial credit as token F1). **Median 26 tool calls per task**; case_routing
+ran 41–137.
+
+**The comparison that matters.** CRMArena reports that "state-of-the-art LLM
+agents succeed in less than 40% of the tasks with ReAct prompting, and less than
+55% even with function-calling abilities" (arXiv 2411.02305). Our agent has
+function-calling via MCP and lands at **36.7%** — inside the published band, at
+the lower end. That is the evidence that this is a real reproduction: a broken
+port would score near zero, and a trivialised one would score near ceiling.
+
+Caveat kept deliberately: the per-task baseline files shipped in the CRMArena
+repo are Git-LFS pointers and cover the Pro/b2b org, not the original split
+reproduced here, so this is compared against the paper's headline band rather
+than against a re-run of a specific published model.
+
+### case_routing 0/10 is difficulty, not a harness bug
+
+A whole category at zero is exactly the shape that has meant "our defect" five
+times in this program, so it was checked. The model **responded on every
+trial** with a well-formed agent Id after 41–137 tool calls — it simply picked
+the wrong agent. One miss differed from the answer by a single character
+(`...xYl3IAE` vs `...xYl4IAE`). The routing policy requires ranking every agent
+by issue expertise and workload; that is the task being hard, which is also what
+CRMArena reports for this category.
+
 ## grok-4.5 on a depth-stratified wave sample — 25/25 (1.000)
 
 | join depth | pass / total |

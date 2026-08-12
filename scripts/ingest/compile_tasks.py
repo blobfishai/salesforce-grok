@@ -324,7 +324,8 @@ def main() -> int:
                    SOLVE_SH.replace('{answer_json!r}', repr(json.dumps(t['verifier']['expected']))))
         by_cat[(t.get("tags") or ["?"])[0]] += 1
 
-    print(f"compiled {len(tasks)} tasks -> {out.relative_to(ROOT)}")
+    rel = out.relative_to(ROOT) if out.is_absolute() and out.is_relative_to(ROOT) else out
+    print(f"compiled {len(tasks)} tasks -> {rel}")
     for c, n in sorted(by_cat.items()):
         print(f"  {c:<34} {n}")
     n_abstain = sum(1 for t in tasks if str(t["verifier"]["expected"]) == "None")
