@@ -10,23 +10,23 @@
     }
   },
   {
-    "name": "q_2026_2002_meridian_is_in_review",
+    "name": "q_2026_2002_meridian_is_approved",
     "sql": "SELECT status FROM sales_quotes WHERE id = ?",
     "params": [
       "quote_0003"
     ],
     "expect": {
-      "scalar_equals": "in_review"
+      "scalar_equals": "approved"
     }
   },
   {
-    "name": "q_2026_2003_ironwood_is_approved",
+    "name": "q_2026_2003_ironwood_is_in_review",
     "sql": "SELECT status FROM sales_quotes WHERE id = ?",
     "params": [
       "quote_0004"
     ],
     "expect": {
-      "scalar_equals": "approved"
+      "scalar_equals": "in_review"
     }
   },
   {
@@ -62,10 +62,10 @@
     }
   },
   {
-    "name": "escalation_task_names_q_2026_2002_and_compliance",
+    "name": "escalation_task_names_q_2026_2003_and_compliance",
     "sql": "SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE ? AND subject LIKE ?",
     "params": [
-      "%Q-2026-2002%",
+      "%Q-2026-2003%",
       "%Compliance%"
     ],
     "expect": {
@@ -75,7 +75,7 @@
   },
   {
     "name": "no_escalation_task_for_quotes_cleared_in_authority",
-    "sql": "SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE '%Q-2026-2003%'",
+    "sql": "SELECT COUNT(*) AS n FROM tasks WHERE subject LIKE '%Q-2026-2002%'",
     "expect": {
       "scalar_equals": 0
     }

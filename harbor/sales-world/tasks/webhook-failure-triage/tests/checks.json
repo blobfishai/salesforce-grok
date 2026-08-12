@@ -1,0 +1,33 @@
+[
+  {
+    "name": "failing_hook_wh_0003_is_disabled",
+    "sql": "SELECT status FROM crm_webhooks WHERE id = ?",
+    "params": [
+      "wh_0003"
+    ],
+    "expect": {
+      "scalar_equals": "disabled"
+    }
+  },
+  {
+    "name": "no_webhook_was_deleted",
+    "sql": "SELECT COUNT(*) AS n FROM crm_webhooks",
+    "expect": {
+      "scalar_equals": 5
+    }
+  },
+  {
+    "name": "healthy_subscriptions_still_active",
+    "sql": "SELECT id, name, target_url, event_types, status FROM crm_webhooks WHERE id IN ('wh_0001','wh_0002','wh_0004') ORDER BY id",
+    "expect": {
+      "unchanged_vs_seed": true
+    }
+  },
+  {
+    "name": "no_failing_subscription_left_retrying",
+    "sql": "SELECT COUNT(*) AS n FROM crm_webhooks WHERE status = 'failing'",
+    "expect": {
+      "scalar_equals": 0
+    }
+  }
+]

@@ -1,0 +1,53 @@
+[
+  {
+    "name": "reminder_raised_for_ms_2025_0041",
+    "sql": "SELECT COUNT(*) AS n FROM crm_reminders WHERE related_type = 'contract' AND related_id = ?",
+    "params": [
+      "ctr_0001"
+    ],
+    "expect": {
+      "min_rows": 1
+    }
+  },
+  {
+    "name": "reminder_raised_for_ms_2025_0088",
+    "sql": "SELECT COUNT(*) AS n FROM crm_reminders WHERE related_type = 'contract' AND related_id = ?",
+    "params": [
+      "ctr_0003"
+    ],
+    "expect": {
+      "min_rows": 1
+    }
+  },
+  {
+    "name": "no_contract_was_altered_to_dodge_the_window",
+    "sql": "SELECT id, status, end_date, term_months, total_value, auto_renew, notice_days FROM crm_contracts ORDER BY id",
+    "expect": {
+      "unchanged_vs_seed": true
+    }
+  },
+  {
+    "name": "no_contracts_created_or_deleted",
+    "sql": "SELECT COUNT(*) AS n FROM crm_contracts",
+    "expect": {
+      "scalar_equals": 5
+    }
+  },
+  {
+    "name": "no_reminder_raised_for_a_contract_outside_its_window",
+    "sql": "SELECT COUNT(*) AS n FROM crm_reminders WHERE related_type = 'contract' AND related_id IN ('ctr_0002','ctr_0004','ctr_0005')",
+    "expect": {
+      "scalar_equals": 0
+    }
+  },
+  {
+    "name": "pre_existing_reminders_untouched",
+    "sql": "SELECT id, subject, status FROM crm_reminders WHERE id IN (SELECT id FROM crm_reminders ORDER BY id LIMIT ?) ORDER BY id",
+    "params": [
+      5
+    ],
+    "expect": {
+      "unchanged_vs_seed": true
+    }
+  }
+]

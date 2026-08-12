@@ -24,11 +24,11 @@ async def main():
     async with http_client('http://salesforce:8000/mcp') as (r, w, *_):
         async with ClientSession(r, w) as s:
             await s.initialize()
-            print((await call(s, 'quote_update_status', {'quote_id': 'quote_0004', 'status': 'approved'}))[:100])
+            print((await call(s, 'quote_update_status', {'quote_id': 'quote_0003', 'status': 'approved'}))[:100])
             print((await call(s, 'quote_update_status', {'quote_id': 'quote_0006', 'status': 'rejected'}))[:100])
             print((await call(s, 'quote_update_status', {'quote_id': 'quote_0011', 'status': 'rejected'}))[:100])
             print((await call(s, 'crm_followup_create', {'subject': 'Q-2026-2001 - Compliance approval required', 'status': 'open'}))[:100])
-            print((await call(s, 'crm_followup_create', {'subject': 'Q-2026-2002 - Compliance approval required', 'status': 'open'}))[:100])
+            print((await call(s, 'crm_followup_create', {'subject': 'Q-2026-2003 - Compliance approval required', 'status': 'open'}))[:100])
 
 asyncio.run(main())
 PY

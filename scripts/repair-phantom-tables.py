@@ -45,87 +45,114 @@ def col(name, typ="TEXT", pk=False):
     return d
 
 
+# The schemas are NOT invented. `harbor/sales-world/scripts/author-tasks.py` already
+# consumes all three tables and states their exact contract:
+#
+#   tiers = {r["account_name"]: r for r in rows(conn, "SELECT * FROM account_tiers")}
+#   t["discount_authority_pct"] ... t["is_new_client"]
+#   "SELECT product_code, is_regulated FROM product_regulatory_flags"
+#   "SELECT rule_id, condition, threshold_usd, approver_role, sequence_order
+#    FROM deal_desk_approval_matrix"
+#
+# An earlier version of this file guessed plausible-looking schemas instead (tier
+# definitions keyed by ARR band, a discount/TCV matrix) and every one of them was
+# the wrong shape, which surfaced immediately as `KeyError: 'account_name'`. The
+# lesson is cheap and worth writing down: when a table already has a consumer, the
+# consumer is the specification.
+#
+# Row coverage matters as much as shape. `tiers[q["account_name"]]` is an unguarded
+# lookup over every account that appears on a quote, so a missing account is a crash,
+# not a soft miss. All seven are present below.
 REPAIRS = {
     "account_tiers": {
-        "description": "Account tier definitions: the ARR bands that drive support SLA, "
-                       "CSM coverage and QBR cadence. Referenced by the account tiering standard.",
+        "description": "Per-account tier assignment with the discount authority that tier carries "
+                       "and whether the account is still inside its new-client window. The deal-desk "
+                       "routing task reads its rule from here rather than from the prompt.",
         "columns": [
-            col("id", pk=True), col("tier_name"), col("min_arr", "REAL"), col("max_arr", "REAL"),
-            col("support_sla_hours", "INTEGER"), col("named_csm", "INTEGER"),
-            col("qbr_frequency"), col("renewal_notice_days", "INTEGER"),
+            col("account_id", pk=True), col("account_name"), col("tier"),
+            col("discount_authority_pct", "REAL"), col("is_new_client", "INTEGER"),
+            col("named_csm", "INTEGER"), col("qbr_frequency"),
         ],
         "sample_rows": [
-            {"id": "tier_1", "tier_name": "Tier 1", "min_arr": 500000.0, "max_arr": None,
-             "support_sla_hours": 1, "named_csm": 1, "qbr_frequency": "quarterly",
-             "renewal_notice_days": 120},
-            {"id": "tier_2", "tier_name": "Tier 2", "min_arr": 100000.0, "max_arr": 499999.99,
-             "support_sla_hours": 4, "named_csm": 1, "qbr_frequency": "semi-annual",
-             "renewal_notice_days": 90},
-            {"id": "tier_3", "tier_name": "Tier 3", "min_arr": 25000.0, "max_arr": 99999.99,
-             "support_sla_hours": 8, "named_csm": 0, "qbr_frequency": "annual",
-             "renewal_notice_days": 60},
-            {"id": "tier_4", "tier_name": "Tier 4", "min_arr": 0.0, "max_arr": 24999.99,
-             "support_sla_hours": 24, "named_csm": 0, "qbr_frequency": "none",
-             "renewal_notice_days": 30},
+            {"account_id": "account_001", "account_name": "Summit Group", "tier": "Tier 1",
+             "discount_authority_pct": 25.0, "is_new_client": 0, "named_csm": 1,
+             "qbr_frequency": "quarterly"},
+            {"account_id": "account_002", "account_name": "Riverside Group", "tier": "Tier 1",
+             "discount_authority_pct": 25.0, "is_new_client": 0, "named_csm": 1,
+             "qbr_frequency": "quarterly"},
+            {"account_id": "account_003", "account_name": "Meridian Capital", "tier": "Tier 2",
+             "discount_authority_pct": 15.0, "is_new_client": 0, "named_csm": 1,
+             "qbr_frequency": "semi-annual"},
+            {"account_id": "account_004", "account_name": "Ironwood Holdings", "tier": "Tier 2",
+             "discount_authority_pct": 15.0, "is_new_client": 1, "named_csm": 1,
+             "qbr_frequency": "semi-annual"},
+            {"account_id": "account_005", "account_name": "Harborview Partners", "tier": "Tier 3",
+             "discount_authority_pct": 10.0, "is_new_client": 0, "named_csm": 0,
+             "qbr_frequency": "annual"},
+            {"account_id": "account_006", "account_name": "Atlas Advisory", "tier": "Tier 3",
+             "discount_authority_pct": 10.0, "is_new_client": 0, "named_csm": 0,
+             "qbr_frequency": "annual"},
+            {"account_id": "account_007", "account_name": "Crestline Trust", "tier": "Tier 2",
+             "discount_authority_pct": 15.0, "is_new_client": 1, "named_csm": 1,
+             "qbr_frequency": "semi-annual"},
         ],
     },
     "deal_desk_approval_matrix": {
-        "description": "Discount and TCV bands mapped to the approving authority. This is the "
-                       "matrix the deal desk runs: deal-desk authority inside both thresholds, "
-                       "Finance above either, and invalid configurations rejected outright.",
+        "description": "The standing approval matrix: which condition pulls in which approver, and "
+                       "in what order. Sequence 0 is terminal (an invalid configuration is rejected "
+                       "outright); Deal Desk completes its own step, anything beyond it must wait.",
         "columns": [
-            col("id", pk=True), col("min_discount_pct", "REAL"), col("max_discount_pct", "REAL"),
-            col("max_tcv", "REAL"), col("approver_role"), col("sla_hours", "INTEGER"),
-            col("requires_written_record", "INTEGER"), col("notes"),
+            col("rule_id", pk=True), col("condition"), col("threshold_usd", "REAL"),
+            col("approver_role"), col("sequence_order", "INTEGER"), col("notes"),
         ],
         "sample_rows": [
-            {"id": "apr_0001", "min_discount_pct": 0.0, "max_discount_pct": 25.0,
-             "max_tcv": 2000000.0, "approver_role": "Deal Desk", "sla_hours": 24,
-             "requires_written_record": 0,
-             "notes": "Inside deal desk authority. Approve without escalation."},
-            {"id": "apr_0002", "min_discount_pct": 25.01, "max_discount_pct": 40.0,
-             "max_tcv": None, "approver_role": "Finance", "sla_hours": 48,
-             "requires_written_record": 1,
-             "notes": "Above the discount band. Finance approval must be recorded before approval."},
-            {"id": "apr_0003", "min_discount_pct": 40.01, "max_discount_pct": 100.0,
-             "max_tcv": None, "approver_role": "CFO", "sla_hours": 72,
-             "requires_written_record": 1,
-             "notes": "Exceptional discount. CFO sign-off required in writing."},
-            {"id": "apr_0004", "min_discount_pct": 0.0, "max_discount_pct": 25.0,
-             "max_tcv": None, "approver_role": "Finance", "sla_hours": 48,
-             "requires_written_record": 1,
-             "notes": "Discount inside band but list total above $2,000,000: Finance still approves."},
+            {"rule_id": "R0", "condition": "invalid_configuration", "threshold_usd": None,
+             "approver_role": "Reject", "sequence_order": 0,
+             "notes": "A quote that does not configure cannot be approved at any discount."},
+            {"rule_id": "R1", "condition": "discount_above_tier_authority", "threshold_usd": None,
+             "approver_role": "Deal Desk", "sequence_order": 1,
+             "notes": "Discount exceeds the authority carried by the account's tier."},
+            {"rule_id": "R2", "condition": "list_total_above_threshold", "threshold_usd": 5000000.0,
+             "approver_role": "Deal Desk", "sequence_order": 1,
+             "notes": "Large-value quotes enter deal desk regardless of discount."},
+            {"rule_id": "R3", "condition": "new_client", "threshold_usd": None,
+             "approver_role": "Compliance", "sequence_order": 2,
+             "notes": "First paper with a new client requires onboarding review."},
+            {"rule_id": "R4", "condition": "regulated_product", "threshold_usd": None,
+             "approver_role": "Compliance", "sequence_order": 2,
+             "notes": "Regulated SKUs require a licensing and disclosure check."},
+            {"rule_id": "R5", "condition": "list_total_above_threshold", "threshold_usd": 25000000.0,
+             "approver_role": "Finance", "sequence_order": 3,
+             "notes": "Above this value Finance signs before the quote leaves."},
         ],
     },
     "product_regulatory_flags": {
-        "description": "Per-product regulatory restrictions by jurisdiction. Products carrying a "
-                       "restriction cannot be quoted into that jurisdiction without review.",
+        "description": "Per-SKU regulatory classification. A regulated product pulls Compliance into "
+                       "the approval chain regardless of discount or value.",
         "columns": [
-            col("id", pk=True), col("product_code"), col("product_name"), col("jurisdiction"),
-            col("restriction"), col("requires_review", "INTEGER"), col("review_owner"), col("notes"),
+            col("product_code", pk=True), col("product_name"), col("is_regulated", "INTEGER"),
+            col("regime"), col("review_owner"), col("notes"),
         ],
+        # Exactly one SKU on an in-review quote is regulated, and that is deliberate.
+        # With PROD-FEED and PROD-RISK both regulated, every valid quote escalated to
+        # Compliance and the routing task became degenerate: no quote could ever reach
+        # `approved`, so an agent that escalated everything scored full marks. As set
+        # below the five in-review quotes resolve to four outcomes by three different
+        # rules — approved (deal-desk authority only), in_review via regulated product,
+        # in_review via new client, and rejected on invalid configuration.
         "sample_rows": [
-            {"id": "reg_0001", "product_code": "MDF-L2", "product_name": "Market Data Feed L2",
-             "jurisdiction": "EU", "restriction": "redistribution_prohibited", "requires_review": 1,
-             "review_owner": "Compliance",
-             "notes": "Exchange licence forbids onward redistribution without a venue agreement."},
-            {"id": "reg_0002", "product_code": "MDF-L2", "product_name": "Market Data Feed L2",
-             "jurisdiction": "US", "restriction": "none", "requires_review": 0,
-             "review_owner": None, "notes": "No restriction."},
-            {"id": "reg_0003", "product_code": "ATL-PLAT", "product_name": "Atlas Platform",
-             "jurisdiction": "APAC", "restriction": "data_residency", "requires_review": 1,
-             "review_owner": "Legal",
-             "notes": "Customer data must remain in-region; requires the APAC hosting addendum."},
-            {"id": "reg_0004", "product_code": "RSK-ANALYTICS", "product_name": "Risk Analytics Suite",
-             "jurisdiction": "EU", "restriction": "model_disclosure", "requires_review": 1,
-             "review_owner": "Compliance",
-             "notes": "EU AI Act transparency obligations apply to the scoring models."},
-            {"id": "reg_0005", "product_code": "ATL-PLAT", "product_name": "Atlas Platform",
-             "jurisdiction": "US", "restriction": "none", "requires_review": 0,
-             "review_owner": None, "notes": "No restriction."},
-            {"id": "reg_0006", "product_code": "PRM-SUPPORT", "product_name": "Premium Support",
-             "jurisdiction": "EU", "restriction": "none", "requires_review": 0,
-             "review_owner": None, "notes": "No restriction."},
+            {"product_code": "PROD-FEED", "product_name": "Market Data Feed L2", "is_regulated": 1,
+             "regime": "exchange_licensing", "review_owner": "Compliance",
+             "notes": "Venue agreement governs redistribution; onward supply needs review."},
+            {"product_code": "PROD-RISK", "product_name": "Risk Analytics Suite", "is_regulated": 0,
+             "regime": None, "review_owner": None,
+             "notes": "Internal analytics tooling; carries no licensing regime of its own."},
+            {"product_code": "PROD-PLAT", "product_name": "Atlas Platform", "is_regulated": 0,
+             "regime": None, "review_owner": None, "notes": "No restriction."},
+            {"product_code": "PROD-SUPP", "product_name": "Premium Support", "is_regulated": 0,
+             "regime": None, "review_owner": None, "notes": "No restriction."},
+            {"product_code": "PROD-ONBD", "product_name": "Onboarding Services", "is_regulated": 0,
+             "regime": None, "review_owner": None, "notes": "No restriction."},
         ],
     },
 }
@@ -137,8 +164,18 @@ def repair(path):
     changed = []
     for table in world.get("tables", []):
         fix = REPAIRS.get(table["name"])
-        if not fix or table.get("columns"):
-            continue  # not ours, or already repaired
+        if not fix:
+            continue
+        want = [c["name"] for c in fix["columns"]]
+        have = [c["name"] for c in table.get("columns", [])]
+        if have == want and table.get("sample_rows") == fix["sample_rows"]:
+            continue  # already repaired, shape AND data
+        # Re-apply on either a shape or a data mismatch. Comparing column names alone
+        # silently skipped a corrected regulatory flag, which left the routing task
+        # degenerate while the script reported success.
+        # Re-apply on a shape mismatch, not just on an empty column list: an earlier
+        # run of this script filled these tables with guessed schemas, and "has some
+        # columns" is not the same as "has the right ones".
         table["columns"] = fix["columns"]
         table["sample_rows"] = fix["sample_rows"]
         table["row_count"] = len(fix["sample_rows"])

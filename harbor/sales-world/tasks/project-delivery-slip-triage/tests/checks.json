@@ -1,0 +1,50 @@
+[
+  {
+    "name": "slipping_project_prj_0002_flagged_red",
+    "sql": "SELECT health FROM crm_projects WHERE id = ?",
+    "params": [
+      "prj_0002"
+    ],
+    "expect": {
+      "scalar_equals": "red"
+    }
+  },
+  {
+    "name": "slipping_project_prj_0003_flagged_red",
+    "sql": "SELECT health FROM crm_projects WHERE id = ?",
+    "params": [
+      "prj_0003"
+    ],
+    "expect": {
+      "scalar_equals": "red"
+    }
+  },
+  {
+    "name": "projects_that_are_not_slipping_were_left_alone",
+    "sql": "SELECT id, status, health, target_end_date, percent_complete FROM crm_projects WHERE id IN ('prj_0001','prj_0004') ORDER BY id",
+    "expect": {
+      "unchanged_vs_seed": true
+    }
+  },
+  {
+    "name": "no_target_dates_or_completion_were_massaged",
+    "sql": "SELECT id, target_end_date, percent_complete, budget FROM crm_projects ORDER BY id",
+    "expect": {
+      "unchanged_vs_seed": true
+    }
+  },
+  {
+    "name": "no_projects_created_or_deleted",
+    "sql": "SELECT COUNT(*) AS n FROM crm_projects",
+    "expect": {
+      "scalar_equals": 4
+    }
+  },
+  {
+    "name": "project_tasks_untouched",
+    "sql": "SELECT id, project_id, status, estimated_hours, actual_hours FROM crm_project_tasks ORDER BY id",
+    "expect": {
+      "unchanged_vs_seed": true
+    }
+  }
+]
