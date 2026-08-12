@@ -1,0 +1,65 @@
+{
+ "source": {
+  "repo": "ringcentral/rc-unified-crm-extension",
+  "commit": "acda64e0c5753666aa12bd80fb4c119bbc307af8",
+  "path": "research/repos/schema/ringcentral__rc-unified-crm-extension",
+  "url": "https://github.com/ringcentral/rc-unified-crm-extension",
+  "license": "UNKNOWN"
+ },
+ "adapter": {
+  "name": "schema",
+  "version": "1.0"
+ },
+ "fidelity": "reference",
+ "tables": [
+  {
+   "name": "callLogs",
+   "columns": [
+    {
+     "name": "contactId"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "extensionNumber"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "platform"
+    },
+    {
+     "name": "sessionId"
+    },
+    {
+     "name": "thirdPartyLogId"
+    },
+    {
+     "name": "updatedAt"
+    },
+    {
+     "name": "userId"
+    }
+   ],
+   "provenance": {
+    "repo": "ringcentral/rc-unified-crm-extension",
+    "formats": [
+     "sql"
+    ]
+   }
+  }
+ ],
+ "tools": [],
+ "policies": [],
+ "tasks": [],
+ "refusals": [
+  {
+   "kind": "tools",
+   "what": "executable behaviour",
+   "why": "a schema states what is stored, not what can be done with it; tools must be authored against the world's own surface",
+   "count": 1
+  }
+ ]
+}

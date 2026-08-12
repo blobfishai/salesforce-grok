@@ -1,0 +1,2968 @@
+{
+ "source": {
+  "repo": "DominateAi/Dominate-AI",
+  "commit": "98e5b139913f3ff116e9dbabd0dfc53219c9fd77",
+  "path": "research/repos/schema/DominateAi__Dominate-AI",
+  "url": "https://github.com/DominateAi/Dominate-AI",
+  "license": "GPL"
+ },
+ "adapter": {
+  "name": "schema",
+  "version": "1.0"
+ },
+ "fidelity": "reference",
+ "tables": [
+  {
+   "name": "account.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "accountname"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "primaryContactPerson"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "secondaryContactPerson"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "unique"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "achievement.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "lead"
+    },
+    {
+     "name": "onDate"
+    },
+    {
+     "name": "ref"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "user"
+    },
+    {
+     "name": "value"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "activity.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "activityType"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "data"
+    },
+    {
+     "name": "default"
+    },
+    {
+     "name": "entityId"
+    },
+    {
+     "name": "entityType"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "ref"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "user"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "billing.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "data"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "organizationId"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "transactionId"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "unique"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "call.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "callDuration"
+    },
+    {
+     "name": "callSid"
+    },
+    {
+     "name": "callerId"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "data"
+    },
+    {
+     "name": "direction"
+    },
+    {
+     "name": "endTime"
+    },
+    {
+     "name": "entityId"
+    },
+    {
+     "name": "entityType"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "from"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "recordingUrl"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "startTime"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "to"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "campaign.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "campaignId"
+    },
+    {
+     "name": "campaignScheduled"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "data"
+    },
+    {
+     "name": "isEnabled"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "profileComplete"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "unique"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "chat.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "files"
+    },
+    {
+     "name": "from"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "isRead"
+    },
+    {
+     "name": "message"
+    },
+    {
+     "name": "messageType"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "to"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "connect.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "access_token"
+    },
+    {
+     "name": "integrated_email"
+    },
+    {
+     "name": "isConnectDefaultClient"
+    },
+    {
+     "name": "profile"
+    },
+    {
+     "name": "provider"
+    },
+    {
+     "name": "refresh_token"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "tokens"
+    },
+    {
+     "name": "userId"
+    },
+    {
+     "name": "user_email"
+    },
+    {
+     "name": "workspaceId"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "contact.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "additionalInfo"
+    },
+    {
+     "name": "city"
+    },
+    {
+     "name": "companyName"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "designation"
+    },
+    {
+     "name": "email"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "phone"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "validation_attempted"
+    },
+    {
+     "name": "verified"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "customer.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "about"
+    },
+    {
+     "name": "billingAddress"
+    },
+    {
+     "name": "company"
+    },
+    {
+     "name": "country"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "email"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "followups"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "lead"
+    },
+    {
+     "name": "media"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "phone"
+    },
+    {
+     "name": "profileImage"
+    },
+    {
+     "name": "ref"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "shippingAddress"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "tags"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "unique"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "dashboard.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "ref"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "unique"
+    },
+    {
+     "name": "user"
+    },
+    {
+     "name": "widgets"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "deal.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "account"
+    },
+    {
+     "name": "additionalInfo"
+    },
+    {
+     "name": "closingDate"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "dealname"
+    },
+    {
+     "name": "emoji"
+    },
+    {
+     "name": "endDate"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "frequency"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "lead"
+    },
+    {
+     "name": "reasonForDealcancel"
+    },
+    {
+     "name": "ref"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "salesperson"
+    },
+    {
+     "name": "startDate"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "tags"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "value"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "dealachieve.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "deal"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "onDate"
+    },
+    {
+     "name": "ref"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "user"
+    },
+    {
+     "name": "value"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "elist.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "contacts"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "unique"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "email.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "body"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "entityId"
+    },
+    {
+     "name": "entityType"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "organizer"
+    },
+    {
+     "name": "ref"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "subject"
+    },
+    {
+     "name": "to"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "emailTemplate.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "content"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "subject"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "event.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "eventId"
+    },
+    {
+     "name": "eventPayload"
+    },
+    {
+     "name": "eventSource"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "unique"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "field.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "additionalInfo"
+    },
+    {
+     "name": "category"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "entity"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "options"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "file.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "file"
+    },
+    {
+     "name": "folderId"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "ref"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "folder.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "unique"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "followup.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "assigned"
+    },
+    {
+     "name": "assignedPipelead"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "entityId"
+    },
+    {
+     "name": "entityType"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "followupAtDate"
+    },
+    {
+     "name": "followupAtTime"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "notification"
+    },
+    {
+     "name": "organizer"
+    },
+    {
+     "name": "ref"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "fvalue.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "additionalInfo"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "entity_Id"
+    },
+    {
+     "name": "field"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "ref"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "value"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "idealtarget.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "assigned"
+    },
+    {
+     "name": "closedDeals"
+    },
+    {
+     "name": "closedDealsDollars"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "newDeals"
+    },
+    {
+     "name": "newDealsDollars"
+    },
+    {
+     "name": "ref"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "targetData"
+    },
+    {
+     "name": "targetDate"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "itarget.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "assigned"
+    },
+    {
+     "name": "contactedLeads"
+    },
+    {
+     "name": "contactedLeadsDollars"
+    },
+    {
+     "name": "convertedLeads"
+    },
+    {
+     "name": "convertedLeadsDollars"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "newLeads"
+    },
+    {
+     "name": "newLeadsDollars"
+    },
+    {
+     "name": "ref"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "targetData"
+    },
+    {
+     "name": "targetDate"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "item.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "code"
+    },
+    {
+     "name": "cost"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "tax"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "vendor"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "lead.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "about"
+    },
+    {
+     "name": "account_id"
+    },
+    {
+     "name": "additionalInfo"
+    },
+    {
+     "name": "assigned"
+    },
+    {
+     "name": "closingDate"
+    },
+    {
+     "name": "convertedDate"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "degree"
+    },
+    {
+     "name": "email"
+    },
+    {
+     "name": "emoji"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "isHidden"
+    },
+    {
+     "name": "isKanban"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "media"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "phone"
+    },
+    {
+     "name": "phoneCode"
+    },
+    {
+     "name": "profileImage"
+    },
+    {
+     "name": "reason_for_drop"
+    },
+    {
+     "name": "ref"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "source"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "tags"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "worth"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "leadPipeline.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "additionalInfo"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "leadPipelineName"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "leadStage.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "additionalInfo"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "leadStageName"
+    },
+    {
+     "name": "pipeline"
+    },
+    {
+     "name": "ref"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "leave.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "fromDate"
+    },
+    {
+     "name": "hidden"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "leaveStatus"
+    },
+    {
+     "name": "leaveType"
+    },
+    {
+     "name": "reason"
+    },
+    {
+     "name": "ref"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "toDate"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "user"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "log.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "date"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "files"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "lead"
+    },
+    {
+     "name": "logName"
+    },
+    {
+     "name": "notes"
+    },
+    {
+     "name": "ref"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "meeting.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "assigned"
+    },
+    {
+     "name": "assignedPipelead"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "location"
+    },
+    {
+     "name": "meetingDate"
+    },
+    {
+     "name": "meetingEndTime"
+    },
+    {
+     "name": "meetingTime"
+    },
+    {
+     "name": "organizer"
+    },
+    {
+     "name": "ref"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "subject"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "note.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "data"
+    },
+    {
+     "name": "default"
+    },
+    {
+     "name": "entityId"
+    },
+    {
+     "name": "entityType"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "title"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "notification.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "from"
+    },
+    {
+     "name": "isRead"
+    },
+    {
+     "name": "notification"
+    },
+    {
+     "name": "notificationType"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "to"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "odealtarget.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "closedDeals"
+    },
+    {
+     "name": "closedDealsDollars"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "newDeals"
+    },
+    {
+     "name": "newDealsDollars"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "targetData"
+    },
+    {
+     "name": "targetDate"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "organization.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "address"
+    },
+    {
+     "name": "billingId"
+    },
+    {
+     "name": "billingInfo"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "customerId"
+    },
+    {
+     "name": "deactivatedOn"
+    },
+    {
+     "name": "default"
+    },
+    {
+     "name": "defaultUserEmailId"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "expirationDate"
+    },
+    {
+     "name": "features"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "isRefundRequested"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "logo"
+    },
+    {
+     "name": "nextSubscription"
+    },
+    {
+     "name": "organizationName"
+    },
+    {
+     "name": "organizationType"
+    },
+    {
+     "name": "planStatus"
+    },
+    {
+     "name": "priceId"
+    },
+    {
+     "name": "productId"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "subscriptionId"
+    },
+    {
+     "name": "subscriptionStarted"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "unique"
+    },
+    {
+     "name": "workspaceId"
+    },
+    {
+     "name": "workspaceUrl"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "otarget.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "contactedLeads"
+    },
+    {
+     "name": "contactedLeadsDollars"
+    },
+    {
+     "name": "convertedLeads"
+    },
+    {
+     "name": "convertedLeadsDollars"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "newLeads"
+    },
+    {
+     "name": "newLeadsDollars"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "targetData"
+    },
+    {
+     "name": "targetDate"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "pipeLead.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "about"
+    },
+    {
+     "name": "account_id"
+    },
+    {
+     "name": "additionalInfo"
+    },
+    {
+     "name": "assigned"
+    },
+    {
+     "name": "closingDate"
+    },
+    {
+     "name": "convertedDate"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "degree"
+    },
+    {
+     "name": "email"
+    },
+    {
+     "name": "emoji"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "isHidden"
+    },
+    {
+     "name": "isKanban"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "media"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "phone"
+    },
+    {
+     "name": "phoneCode"
+    },
+    {
+     "name": "pipeline"
+    },
+    {
+     "name": "profileImage"
+    },
+    {
+     "name": "reason_for_drop"
+    },
+    {
+     "name": "ref"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "source"
+    },
+    {
+     "name": "stage"
+    },
+    {
+     "name": "tags"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "worth"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "pipeline.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "additionalInfo"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "try"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "pipelineList.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "additionalInfo"
+    },
+    {
+     "name": "cards"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "pipeline"
+    },
+    {
+     "name": "ref"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "presentation.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "attachment"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "data"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "entityId"
+    },
+    {
+     "name": "entityType"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "proposal.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "attachment"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "data"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "entityId"
+    },
+    {
+     "name": "entityType"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "quotation.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "additionalInfo"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "currency"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "items"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "lead"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "quoteId"
+    },
+    {
+     "name": "ref"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "subTotal"
+    },
+    {
+     "name": "taxes"
+    },
+    {
+     "name": "total"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "unique"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "refCode.model",
+   "columns": [
+    {
+     "name": "URL"
+    },
+    {
+     "name": "_id"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "ref"
+    },
+    {
+     "name": "referralCode"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "unique"
+    },
+    {
+     "name": "userId"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "referral.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "fromID"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "paidOn"
+    },
+    {
+     "name": "planPurchased"
+    },
+    {
+     "name": "ref"
+    },
+    {
+     "name": "refCodeId"
+    },
+    {
+     "name": "referralCode"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "signedUpOn"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "toEmail"
+    },
+    {
+     "name": "toID"
+    },
+    {
+     "name": "toWorkspaceID"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "unique"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "regdemail.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "appliedOn"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "email"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "unique"
+    },
+    {
+     "name": "verified"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "revenue.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "deal"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "revenueAmount"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "role.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "category"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "internal"
+    },
+    {
+     "name": "isdefault"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "permissions"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "url"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "subscription.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "costPerMonth"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "dueDate"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "plan"
+    },
+    {
+     "name": "planImages"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "target.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "closed_leads_dollar_value"
+    },
+    {
+     "name": "closed_leads_lead_value"
+    },
+    {
+     "name": "contacted_leads_dollar_value"
+    },
+    {
+     "name": "contacted_leads_lead_value"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "default"
+    },
+    {
+     "name": "entityId"
+    },
+    {
+     "name": "fromDate"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "new_leads_dollar_value"
+    },
+    {
+     "name": "new_leads_lead_value"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "targetType"
+    },
+    {
+     "name": "toDate"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "task.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "assignedBy"
+    },
+    {
+     "name": "assignee"
+    },
+    {
+     "name": "completedDate"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "fromDate"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "ref"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "toDate"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "user.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "dateOfJoining"
+    },
+    {
+     "name": "demo"
+    },
+    {
+     "name": "email"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "firstName"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "jobTitle"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "lastName"
+    },
+    {
+     "name": "location"
+    },
+    {
+     "name": "loggedOff"
+    },
+    {
+     "name": "minlength"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "password"
+    },
+    {
+     "name": "phone"
+    },
+    {
+     "name": "profileImage"
+    },
+    {
+     "name": "ref"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "role"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "targetedLeads"
+    },
+    {
+     "name": "timezone"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "verified"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "userAuthCode.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "authCode"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "email"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "workspaceId"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "vault.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "archived"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "entityId"
+    },
+    {
+     "name": "entityType"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "isFile"
+    },
+    {
+     "name": "lastAccessed"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "originalName"
+    },
+    {
+     "name": "parent"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "starred"
+    },
+    {
+     "name": "systemName"
+    },
+    {
+     "name": "tags"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "url"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "verifiedemail.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "attemptedOn"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "emailsAttempted"
+    },
+    {
+     "name": "emailsVerified"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "widget.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "index"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "title"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "unique"
+    },
+    {
+     "name": "url"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  },
+  {
+   "name": "workactivity.model",
+   "columns": [
+    {
+     "name": "_id"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "date"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "enum"
+    },
+    {
+     "name": "lastModifiedBy"
+    },
+    {
+     "name": "ref"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "user"
+    }
+   ],
+   "provenance": {
+    "repo": "DominateAi/Dominate-AI",
+    "formats": [
+     "mongoose"
+    ]
+   }
+  }
+ ],
+ "tools": [],
+ "policies": [],
+ "tasks": [],
+ "refusals": [
+  {
+   "kind": "tools",
+   "what": "executable behaviour",
+   "why": "a schema states what is stored, not what can be done with it; tools must be authored against the world's own surface",
+   "count": 56
+  }
+ ]
+}

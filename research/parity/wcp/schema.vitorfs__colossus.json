@@ -1,0 +1,563 @@
+{
+ "source": {
+  "repo": "vitorfs/colossus",
+  "commit": "45275766a9be3e1fc6928e229298de38fc29ca80",
+  "path": "research/repos/schema/vitorfs__colossus",
+  "url": "https://github.com/vitorfs/colossus",
+  "license": "MIT"
+ },
+ "adapter": {
+  "name": "schema",
+  "version": "1.0"
+ },
+ "fidelity": "reference",
+ "tables": [
+  {
+   "name": "Activity",
+   "columns": [
+    {
+     "name": "activity_type"
+    },
+    {
+     "name": "date"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "ip_address"
+    }
+   ],
+   "provenance": {
+    "repo": "vitorfs/colossus",
+    "formats": [
+     "django"
+    ]
+   }
+  },
+  {
+   "name": "Campaign",
+   "columns": [
+    {
+     "name": "campaign_type"
+    },
+    {
+     "name": "click_rate"
+    },
+    {
+     "name": "create_date"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "open_rate"
+    },
+    {
+     "name": "recipients_count"
+    },
+    {
+     "name": "send_date"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "total_clicks_count"
+    },
+    {
+     "name": "total_opens_count"
+    },
+    {
+     "name": "track_clicks"
+    },
+    {
+     "name": "track_opens"
+    },
+    {
+     "name": "unique_clicks_count"
+    },
+    {
+     "name": "unique_opens_count"
+    },
+    {
+     "name": "update_date"
+    },
+    {
+     "name": "uuid"
+    }
+   ],
+   "provenance": {
+    "repo": "vitorfs/colossus",
+    "formats": [
+     "django"
+    ]
+   }
+  },
+  {
+   "name": "City",
+   "columns": [
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "vitorfs/colossus",
+    "formats": [
+     "django"
+    ]
+   }
+  },
+  {
+   "name": "Country",
+   "columns": [
+    {
+     "name": "code"
+    },
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "vitorfs/colossus",
+    "formats": [
+     "django"
+    ]
+   }
+  },
+  {
+   "name": "Domain",
+   "columns": [
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "vitorfs/colossus",
+    "formats": [
+     "django"
+    ]
+   }
+  },
+  {
+   "name": "Email",
+   "columns": [
+    {
+     "name": "content"
+    },
+    {
+     "name": "content_html"
+    },
+    {
+     "name": "content_text"
+    },
+    {
+     "name": "from_email"
+    },
+    {
+     "name": "from_name"
+    },
+    {
+     "name": "preview"
+    },
+    {
+     "name": "subject"
+    },
+    {
+     "name": "template_content"
+    },
+    {
+     "name": "total_clicks_count"
+    },
+    {
+     "name": "total_opens_count"
+    },
+    {
+     "name": "unique_clicks_count"
+    },
+    {
+     "name": "unique_opens_count"
+    },
+    {
+     "name": "uuid"
+    }
+   ],
+   "provenance": {
+    "repo": "vitorfs/colossus",
+    "formats": [
+     "django"
+    ]
+   }
+  },
+  {
+   "name": "EmailTemplate",
+   "columns": [
+    {
+     "name": "content"
+    },
+    {
+     "name": "create_date"
+    },
+    {
+     "name": "last_used_date"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "update_date"
+    }
+   ],
+   "provenance": {
+    "repo": "vitorfs/colossus",
+    "formats": [
+     "django"
+    ]
+   }
+  },
+  {
+   "name": "Link",
+   "columns": [
+    {
+     "name": "index"
+    },
+    {
+     "name": "total_clicks_count"
+    },
+    {
+     "name": "unique_clicks_count"
+    },
+    {
+     "name": "url"
+    },
+    {
+     "name": "uuid"
+    }
+   ],
+   "provenance": {
+    "repo": "vitorfs/colossus",
+    "formats": [
+     "django"
+    ]
+   }
+  },
+  {
+   "name": "MailingList",
+   "columns": [
+    {
+     "name": "campaign_default_email_subject"
+    },
+    {
+     "name": "campaign_default_from_email"
+    },
+    {
+     "name": "campaign_default_from_name"
+    },
+    {
+     "name": "click_rate"
+    },
+    {
+     "name": "contact_email_address"
+    },
+    {
+     "name": "date_created"
+    },
+    {
+     "name": "enable_recaptcha"
+    },
+    {
+     "name": "forms_custom_css"
+    },
+    {
+     "name": "forms_custom_header"
+    },
+    {
+     "name": "list_manager"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "open_rate"
+    },
+    {
+     "name": "recaptcha_secret_key"
+    },
+    {
+     "name": "recaptcha_site_key"
+    },
+    {
+     "name": "slug"
+    },
+    {
+     "name": "smtp_host"
+    },
+    {
+     "name": "smtp_password"
+    },
+    {
+     "name": "smtp_port"
+    },
+    {
+     "name": "smtp_ssl_certfile"
+    },
+    {
+     "name": "smtp_ssl_keyfile"
+    },
+    {
+     "name": "smtp_timeout"
+    },
+    {
+     "name": "smtp_use_ssl"
+    },
+    {
+     "name": "smtp_use_tls"
+    },
+    {
+     "name": "smtp_username"
+    },
+    {
+     "name": "subscribers_count"
+    },
+    {
+     "name": "uuid"
+    },
+    {
+     "name": "website_url"
+    }
+   ],
+   "provenance": {
+    "repo": "vitorfs/colossus",
+    "formats": [
+     "django"
+    ]
+   }
+  },
+  {
+   "name": "Notification",
+   "columns": [
+    {
+     "name": "action"
+    },
+    {
+     "name": "date"
+    },
+    {
+     "name": "is_read"
+    },
+    {
+     "name": "is_seen"
+    },
+    {
+     "name": "object_id"
+    },
+    {
+     "name": "text"
+    }
+   ],
+   "provenance": {
+    "repo": "vitorfs/colossus",
+    "formats": [
+     "django"
+    ]
+   }
+  },
+  {
+   "name": "Option",
+   "columns": [
+    {
+     "name": "key"
+    },
+    {
+     "name": "value"
+    }
+   ],
+   "provenance": {
+    "repo": "vitorfs/colossus",
+    "formats": [
+     "django"
+    ]
+   }
+  },
+  {
+   "name": "Subscriber",
+   "columns": [
+    {
+     "name": "click_rate"
+    },
+    {
+     "name": "confirm_date"
+    },
+    {
+     "name": "confirm_ip_address"
+    },
+    {
+     "name": "email"
+    },
+    {
+     "name": "last_seen_date"
+    },
+    {
+     "name": "last_seen_ip_address"
+    },
+    {
+     "name": "last_sent"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "open_rate"
+    },
+    {
+     "name": "optin_date"
+    },
+    {
+     "name": "optin_ip_address"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "tags"
+    },
+    {
+     "name": "update_date"
+    },
+    {
+     "name": "uuid"
+    }
+   ],
+   "provenance": {
+    "repo": "vitorfs/colossus",
+    "formats": [
+     "django"
+    ]
+   }
+  },
+  {
+   "name": "SubscriberImport",
+   "columns": [
+    {
+     "name": "columns_mapping"
+    },
+    {
+     "name": "file"
+    },
+    {
+     "name": "size"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "strategy"
+    },
+    {
+     "name": "subscriber_status"
+    },
+    {
+     "name": "upload_date"
+    }
+   ],
+   "provenance": {
+    "repo": "vitorfs/colossus",
+    "formats": [
+     "django"
+    ]
+   }
+  },
+  {
+   "name": "SubscriptionFormTemplate",
+   "columns": [
+    {
+     "name": "content_html"
+    },
+    {
+     "name": "content_text"
+    },
+    {
+     "name": "from_email"
+    },
+    {
+     "name": "from_name"
+    },
+    {
+     "name": "key"
+    },
+    {
+     "name": "redirect_url"
+    },
+    {
+     "name": "send_email"
+    },
+    {
+     "name": "subject"
+    }
+   ],
+   "provenance": {
+    "repo": "vitorfs/colossus",
+    "formats": [
+     "django"
+    ]
+   }
+  },
+  {
+   "name": "Tag",
+   "columns": [
+    {
+     "name": "description"
+    },
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "vitorfs/colossus",
+    "formats": [
+     "django"
+    ]
+   }
+  },
+  {
+   "name": "Token",
+   "columns": [
+    {
+     "name": "date_created"
+    },
+    {
+     "name": "date_used"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "expires"
+    },
+    {
+     "name": "object_id"
+    },
+    {
+     "name": "text"
+    }
+   ],
+   "provenance": {
+    "repo": "vitorfs/colossus",
+    "formats": [
+     "django"
+    ]
+   }
+  }
+ ],
+ "tools": [],
+ "policies": [],
+ "tasks": [],
+ "refusals": [
+  {
+   "kind": "tools",
+   "what": "executable behaviour",
+   "why": "a schema states what is stored, not what can be done with it; tools must be authored against the world's own surface",
+   "count": 16
+  }
+ ]
+}

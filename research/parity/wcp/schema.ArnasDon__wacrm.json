@@ -1,0 +1,1380 @@
+{
+ "source": {
+  "repo": "ArnasDon/wacrm",
+  "commit": "5b616290022fb341640c7813055f5a50f4210ce9",
+  "path": "research/repos/schema/ArnasDon__wacrm",
+  "url": "https://github.com/ArnasDon/wacrm",
+  "license": "MIT"
+ },
+ "adapter": {
+  "name": "schema",
+  "version": "1.0"
+ },
+ "fidelity": "reference",
+ "tables": [
+  {
+   "name": "account_invitations",
+   "columns": [
+    {
+     "name": "accepted_at"
+    },
+    {
+     "name": "accepted_by_user_id"
+    },
+    {
+     "name": "account_id"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "created_by_user_id"
+    },
+    {
+     "name": "expires_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "label"
+    },
+    {
+     "name": "token_hash"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "accounts",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "owner_user_id"
+    },
+    {
+     "name": "updated_at"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "ai_configs",
+   "columns": [
+    {
+     "name": "account_id"
+    },
+    {
+     "name": "api_key"
+    },
+    {
+     "name": "auto_reply_enabled"
+    },
+    {
+     "name": "auto_reply_max_per_conversation"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "created_by"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "is_active"
+    },
+    {
+     "name": "model"
+    },
+    {
+     "name": "provider"
+    },
+    {
+     "name": "system_prompt"
+    },
+    {
+     "name": "updated_at"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "ai_knowledge_chunks",
+   "columns": [
+    {
+     "name": "account_id"
+    },
+    {
+     "name": "chunk_index"
+    },
+    {
+     "name": "content"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "document_id"
+    },
+    {
+     "name": "id"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "ai_knowledge_documents",
+   "columns": [
+    {
+     "name": "account_id"
+    },
+    {
+     "name": "content"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "created_by"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "title"
+    },
+    {
+     "name": "updated_at"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "ai_usage_log",
+   "columns": [
+    {
+     "name": "account_id"
+    },
+    {
+     "name": "completion_tokens"
+    },
+    {
+     "name": "conversation_id"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "mode"
+    },
+    {
+     "name": "model"
+    },
+    {
+     "name": "prompt_tokens"
+    },
+    {
+     "name": "provider"
+    },
+    {
+     "name": "total_tokens"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "api_keys",
+   "columns": [
+    {
+     "name": "account_id"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "created_by"
+    },
+    {
+     "name": "expires_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "key_hash"
+    },
+    {
+     "name": "key_prefix"
+    },
+    {
+     "name": "last_used_at"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "revoked_at"
+    },
+    {
+     "name": "scopes"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "automation_logs",
+   "columns": [
+    {
+     "name": "automation_id"
+    },
+    {
+     "name": "contact_id"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "error_message"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "steps_executed"
+    },
+    {
+     "name": "trigger_event"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "automation_pending_executions",
+   "columns": [
+    {
+     "name": "automation_id"
+    },
+    {
+     "name": "branch"
+    },
+    {
+     "name": "contact_id"
+    },
+    {
+     "name": "context"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "log_id"
+    },
+    {
+     "name": "next_step_position"
+    },
+    {
+     "name": "parent_step_id"
+    },
+    {
+     "name": "run_at"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "automation_steps",
+   "columns": [
+    {
+     "name": "automation_id"
+    },
+    {
+     "name": "branch"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "parent_step_id"
+    },
+    {
+     "name": "position"
+    },
+    {
+     "name": "step_config"
+    },
+    {
+     "name": "step_type"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "automations",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "execution_count"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "is_active"
+    },
+    {
+     "name": "last_executed_at"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "trigger_config"
+    },
+    {
+     "name": "trigger_type"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "broadcast_recipients",
+   "columns": [
+    {
+     "name": "broadcast_id"
+    },
+    {
+     "name": "contact_id"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "delivered_at"
+    },
+    {
+     "name": "error_message"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "read_at"
+    },
+    {
+     "name": "replied_at"
+    },
+    {
+     "name": "sent_at"
+    },
+    {
+     "name": "status"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "broadcasts",
+   "columns": [
+    {
+     "name": "audience_filter"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "delivered_count"
+    },
+    {
+     "name": "failed_count"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "read_count"
+    },
+    {
+     "name": "replied_count"
+    },
+    {
+     "name": "scheduled_at"
+    },
+    {
+     "name": "sent_count"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "template_language"
+    },
+    {
+     "name": "template_name"
+    },
+    {
+     "name": "template_variables"
+    },
+    {
+     "name": "total_recipients"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "contact_custom_values",
+   "columns": [
+    {
+     "name": "contact_id"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "custom_field_id"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "value"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "contact_notes",
+   "columns": [
+    {
+     "name": "contact_id"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "note_text"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "contact_tags",
+   "columns": [
+    {
+     "name": "contact_id"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "tag_id"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "contacts",
+   "columns": [
+    {
+     "name": "avatar_url"
+    },
+    {
+     "name": "company"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "email"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "phone"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "conversations",
+   "columns": [
+    {
+     "name": "assigned_agent_id"
+    },
+    {
+     "name": "contact_id"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "last_message_at"
+    },
+    {
+     "name": "last_message_text"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "unread_count"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "custom_fields",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "field_name"
+    },
+    {
+     "name": "field_options"
+    },
+    {
+     "name": "field_type"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "deals",
+   "columns": [
+    {
+     "name": "contact_id"
+    },
+    {
+     "name": "conversation_id"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "currency"
+    },
+    {
+     "name": "expected_close_date"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "notes"
+    },
+    {
+     "name": "pipeline_id"
+    },
+    {
+     "name": "stage_id"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "title"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "user_id"
+    },
+    {
+     "name": "value"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "flow_nodes",
+   "columns": [
+    {
+     "name": "config"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "flow_id"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "node_key"
+    },
+    {
+     "name": "node_type"
+    },
+    {
+     "name": "position_x"
+    },
+    {
+     "name": "position_y"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "flow_run_events",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "event_type"
+    },
+    {
+     "name": "flow_run_id"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "node_key"
+    },
+    {
+     "name": "payload"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "flow_runs",
+   "columns": [
+    {
+     "name": "contact_id"
+    },
+    {
+     "name": "conversation_id"
+    },
+    {
+     "name": "current_node_key"
+    },
+    {
+     "name": "end_reason"
+    },
+    {
+     "name": "ended_at"
+    },
+    {
+     "name": "flow_id"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "last_advanced_at"
+    },
+    {
+     "name": "last_prompt_message_id"
+    },
+    {
+     "name": "reprompt_count"
+    },
+    {
+     "name": "started_at"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "user_id"
+    },
+    {
+     "name": "vars"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "flows",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "entry_node_id"
+    },
+    {
+     "name": "execution_count"
+    },
+    {
+     "name": "fallback_policy"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "last_executed_at"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "trigger_config"
+    },
+    {
+     "name": "trigger_type"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "member_presence",
+   "columns": [
+    {
+     "name": "account_id"
+    },
+    {
+     "name": "last_seen_at"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "message_reactions",
+   "columns": [
+    {
+     "name": "actor_id"
+    },
+    {
+     "name": "actor_type"
+    },
+    {
+     "name": "conversation_id"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "emoji"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "message_id"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "message_templates",
+   "columns": [
+    {
+     "name": "body_text"
+    },
+    {
+     "name": "buttons"
+    },
+    {
+     "name": "category"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "footer_text"
+    },
+    {
+     "name": "header_content"
+    },
+    {
+     "name": "header_type"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "language"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "messages",
+   "columns": [
+    {
+     "name": "content_text"
+    },
+    {
+     "name": "content_type"
+    },
+    {
+     "name": "conversation_id"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "media_url"
+    },
+    {
+     "name": "message_id"
+    },
+    {
+     "name": "sender_id"
+    },
+    {
+     "name": "sender_type"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "template_name"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "notifications",
+   "columns": [
+    {
+     "name": "account_id"
+    },
+    {
+     "name": "actor_user_id"
+    },
+    {
+     "name": "body"
+    },
+    {
+     "name": "contact_id"
+    },
+    {
+     "name": "conversation_id"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "read_at"
+    },
+    {
+     "name": "title"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "pipeline_stages",
+   "columns": [
+    {
+     "name": "color"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "pipeline_id"
+    },
+    {
+     "name": "position"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "pipelines",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "profiles",
+   "columns": [
+    {
+     "name": "avatar_url"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "email"
+    },
+    {
+     "name": "full_name"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "role"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "quick_replies",
+   "columns": [
+    {
+     "name": "account_id"
+    },
+    {
+     "name": "content_text"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "interactive_payload"
+    },
+    {
+     "name": "kind"
+    },
+    {
+     "name": "title"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "tags",
+   "columns": [
+    {
+     "name": "color"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "webhook_endpoints",
+   "columns": [
+    {
+     "name": "account_id"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "created_by"
+    },
+    {
+     "name": "events"
+    },
+    {
+     "name": "failure_count"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "is_active"
+    },
+    {
+     "name": "last_delivery_at"
+    },
+    {
+     "name": "secret"
+    },
+    {
+     "name": "url"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "whatsapp_config",
+   "columns": [
+    {
+     "name": "access_token"
+    },
+    {
+     "name": "connected_at"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "phone_number_id"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "user_id"
+    },
+    {
+     "name": "verify_token"
+    },
+    {
+     "name": "waba_id"
+    }
+   ],
+   "provenance": {
+    "repo": "ArnasDon/wacrm",
+    "formats": [
+     "sql"
+    ]
+   }
+  }
+ ],
+ "tools": [],
+ "policies": [],
+ "tasks": [],
+ "refusals": [
+  {
+   "kind": "tools",
+   "what": "executable behaviour",
+   "why": "a schema states what is stored, not what can be done with it; tools must be authored against the world's own surface",
+   "count": 36
+  }
+ ]
+}

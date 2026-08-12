@@ -324,6 +324,235 @@ def adapt_skillpacks(_: Path | None = None) -> list[dict]:
     return pkgs
 
 
+# --------------------------------------------------------------- schema adapter
+# Real production CRM/ERP data models. This is the denominator for the claim that
+# the world covers its domain: not what one benchmark models, but what shipping
+# CRMs actually store. Each stack states its schema differently, so there is one
+# extractor per format and an explicit refusal when none of them bites.
+
+_SQL_TABLE = re.compile(
+    r"CREATE\s+TABLE\s+(?:IF\s+NOT\s+EXISTS\s+)?[`\"\[]?([A-Za-z_][\w]*)[`\"\]]?\s*\((.*?)\)\s*(?:ENGINE|;)",
+    re.I | re.S)
+_SQL_COL = re.compile(r"^\s*[`\"\[]?([A-Za-z_][\w]*)[`\"\]]?\s+(?:INT|BIGINT|SMALLINT|TINYINT|VARCHAR|CHAR|TEXT|"
+                      r"DATE|DATETIME|TIMESTAMP|DECIMAL|NUMERIC|FLOAT|DOUBLE|BOOL|BLOB|JSON|ENUM|UUID|SERIAL)",
+                      re.I | re.M)
+_LARAVEL_CREATE = re.compile(r"Schema::create\(\s*['\"]([\w]+)['\"](.*?)(?=Schema::create\(|\Z)", re.S)
+_LARAVEL_COL = re.compile(r"\$table->\w+\(\s*['\"]([\w]+)['\"]")
+_TS_ENTITY = re.compile(r"@Entity\([^)]*\)\s*(?:@\w+\([^)]*\)\s*)*export\s+class\s+(\w+)", re.S)
+_TS_COL = re.compile(r"@(?:Column|ManyToOne|OneToMany|ManyToMany|OneToOne|PrimaryColumn|"
+                     r"PrimaryGeneratedColumn|CreateDateColumn|UpdateDateColumn)\([^;]*?\)\s*(\w+)\s*[?!]?\s*:")
+_MONGOOSE = re.compile(r"new\s+(?:mongoose\.)?Schema\(\s*\{(.*?)\n\}\s*[,)]", re.S)
+_MONGOOSE_KEY = re.compile(r"^\s{2,4}(\w+)\s*:", re.M)
+
+_SUITE_TABLE = re.compile(r"['\"]table['\"]\s*=>\s*['\"](\w+)['\"]")
+_SUITE_FIELD = re.compile(r"['\"](\w+)['\"]\s*=>\s*array\s*\(\s*['\"]name['\"]\s*=>\s*['\"]\1['\"]")
+
+_MAX_BYTES = 4_000_000
+_MAX_FILES = 1500
+
+# File discovery is grep/find-driven, not rglob-with-a-cap. An earlier version
+# capped the ITERATION rather than the matches, so on a large repo the cap was
+# spent on thousands of irrelevant files before the target directory was reached:
+# EspoCRM yielded 2 entities of 110, Frappe 0 of 59, Twenty 0 of 41. Selecting the
+# candidate files up front is both correct and much faster.
+
+
+def _read(p: Path) -> str:
+    try:
+        if p.stat().st_size > _MAX_BYTES:
+            return ""
+        return p.read_text(errors="ignore")
+    except OSError:
+        return ""
+
+
+def _prune(paths):
+    out = []
+    for p in paths:
+        if not p:
+            continue
+        q = Path(p)
+        if any(part in (".git", "node_modules", "vendor", "dist", "build") for part in q.parts):
+            continue
+        out.append(q)
+    return out[:_MAX_FILES]
+
+
+def _find(repo: Path, args: list[str]) -> list[Path]:
+    try:
+        r = subprocess.run(["find", str(repo), "-type", "f", *args],
+                           capture_output=True, text=True, timeout=90)
+        return _prune(r.stdout.split("\n"))
+    except Exception:
+        return []
+
+
+def _grep_files(repo: Path, needle: str, include: str | None = None) -> list[Path]:
+    """Files containing `needle` — far cheaper than reading every candidate."""
+    cmd = ["grep", "-rl", "--binary-files=without-match", needle, str(repo)]
+    if include:
+        cmd.insert(2, f"--include={include}")
+    try:
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+        return _prune(r.stdout.split("\n"))
+    except Exception:
+        return []
+
+
+def _espo(repo):
+    """EspoCRM: metadata/entityDefs/<Entity>.json, fields keyed by name."""
+    tables = {}
+    for p in _find(repo, ["-path", "*entityDefs*", "-name", "*.json"]):
+        try:
+            d = json.loads(_read(p) or "{}")
+        except ValueError:
+            continue
+        if isinstance(d.get("fields"), dict) and d["fields"]:
+            tables[p.stem] = sorted(d["fields"])
+    return tables
+
+
+def _frappe(repo):
+    """Frappe: doctype/<name>/<name>.json with a fields[] array."""
+    tables = {}
+    for p in _find(repo, ["-path", "*doctype*", "-name", "*.json"]):
+        try:
+            d = json.loads(_read(p) or "{}")
+        except ValueError:
+            continue
+        if not isinstance(d, dict):
+            continue
+        if d.get("doctype") == "DocType" or (d.get("name") and isinstance(d.get("fields"), list)):
+            cols = [f.get("fieldname") for f in d.get("fields", [])
+                    if isinstance(f, dict) and f.get("fieldname")]
+            if cols:
+                tables[str(d.get("name") or p.stem)] = sorted(set(cols))
+    return tables
+
+
+def _django(repo):
+    """Django: class X(models.Model) with Field() assignments."""
+    tables = {}
+    for p in _find(repo, ["-name", "models.py"]):
+        try:
+            tree = ast.parse(_read(p))
+        except (SyntaxError, ValueError):
+            continue
+        for node in ast.walk(tree):
+            if not isinstance(node, ast.ClassDef):
+                continue
+            if not any("Model" in ast.unparse(b) for b in node.bases):
+                continue
+            cols = [t.id for stmt in node.body if isinstance(stmt, ast.Assign)
+                    for t in stmt.targets if isinstance(t, ast.Name)
+                    and isinstance(stmt.value, ast.Call) and "Field" in ast.unparse(stmt.value.func)]
+            if cols:
+                tables[node.name] = sorted(set(cols))
+    return tables
+
+
+def _laravel(repo):
+    """Laravel migrations: Schema::create('t', fn) with $table->type('col')."""
+    tables = {}
+    for p in _grep_files(repo, "Schema::create", "*.php"):
+        for name, body in _LARAVEL_CREATE.findall(_read(p)):
+            cols = set(_LARAVEL_COL.findall(body))
+            if cols:
+                tables.setdefault(name, set()).update(cols)
+    return {k: sorted(v) for k, v in tables.items()}
+
+
+def _typeorm(repo):
+    """TypeORM: @Entity() export class X with decorated properties."""
+    tables = {}
+    for p in _grep_files(repo, "@Entity(", "*.ts"):
+        text = _read(p)
+        cols = sorted(set(_TS_COL.findall(text)))
+        for name in _TS_ENTITY.findall(text):
+            if cols:
+                tables[name] = cols
+    return tables
+
+
+def _mongoose(repo):
+    """Mongoose: new Schema({ key: ... }) — entity named for its file."""
+    tables = {}
+    for p in _grep_files(repo, "Schema(", "*.js"):
+        for body in _MONGOOSE.findall(_read(p)):
+            cols = sorted(set(_MONGOOSE_KEY.findall(body)))
+            if cols:
+                tables[p.stem] = cols
+    return tables
+
+
+def _suitecrm(repo):
+    """SugarCRM/SuiteCRM vardefs.php: 'table' => 'x' with a fields array."""
+    tables = {}
+    for p in _find(repo, ["-name", "vardefs.php"]):
+        text = _read(p)
+        m = _SUITE_TABLE.search(text)
+        if not m:
+            continue
+        cols = sorted(set(_SUITE_FIELD.findall(text)))
+        if cols:
+            tables[m.group(1)] = cols
+    return tables
+
+
+def _sql(repo):
+    """Any CREATE TABLE, wherever it lives — the most portable signal there is."""
+    tables = {}
+    for p in _grep_files(repo, "CREATE TABLE"):
+        for name, body in _SQL_TABLE.findall(_read(p)):
+            cols = sorted(set(_SQL_COL.findall(body)))
+            if cols:
+                tables.setdefault(name, cols)
+    return tables
+
+
+_EXTRACTORS = (("espo", _espo), ("frappe", _frappe), ("django", _django),
+               ("laravel", _laravel), ("typeorm", _typeorm), ("mongoose", _mongoose),
+               ("suitecrm", _suitecrm), ("sql", _sql))
+
+
+@adapter("schema")
+def adapt_schemas(_: Path | None = None) -> list[dict]:
+    """Production CRM/ERP data models — the domain's real entity vocabulary."""
+    base = REPOS / "schema"
+    if not base.exists():
+        return []
+    pkgs = []
+    for repo_dir in sorted(d for d in base.iterdir() if d.is_dir()):
+        pkg = wcp(repo_dir, "schema", "reference")
+        found, formats = {}, []
+        for fmt_name, fn in _EXTRACTORS:
+            try:
+                got = fn(repo_dir)
+            except Exception:
+                got = {}
+            if got:
+                formats.append(fmt_name)
+                for t, cols in got.items():
+                    found.setdefault(t, cols)
+        for name, cols in sorted(found.items()):
+            pkg["tables"].append({
+                "name": name,
+                "columns": [{"name": c} for c in cols],
+                "provenance": {"repo": pkg["source"]["repo"], "formats": formats},
+            })
+        if not found:
+            refuse(pkg, "tables", "schema definition",
+                   "no CREATE TABLE, ORM model, migration or entity-definition file matched any "
+                   "known extractor; the repo may define its schema at runtime or ship none", 1)
+        else:
+            # A data model is evidence about the domain, never a runnable capability.
+            refuse(pkg, "tools", "executable behaviour",
+                   "a schema states what is stored, not what can be done with it; tools must be "
+                   "authored against the world's own surface", len(found))
+        pkgs.append(pkg)
+    return pkgs
+
+
 # ------------------------------------------------------------------------- main
 def main() -> int:
     ap = argparse.ArgumentParser()

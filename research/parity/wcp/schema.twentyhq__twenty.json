@@ -1,0 +1,1861 @@
+{
+ "source": {
+  "repo": "twentyhq/twenty",
+  "commit": "da02b26ef9b6a143b441d51e6798ecbaa4513006",
+  "path": "research/repos/schema/twentyhq__twenty",
+  "url": "https://github.com/twentyhq/twenty",
+  "license": "MIT"
+ },
+ "adapter": {
+  "name": "schema",
+  "version": "1.0"
+ },
+ "fidelity": "reference",
+ "tables": [
+  {
+   "name": "AgentChatThreadEntity",
+   "columns": [
+    {
+     "name": "activeStreamId"
+    },
+    {
+     "name": "contextWindowTokens"
+    },
+    {
+     "name": "conversationSize"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "deletedAt"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "lastStreamError"
+    },
+    {
+     "name": "messages"
+    },
+    {
+     "name": "pendingQuestionMessageId"
+    },
+    {
+     "name": "title"
+    },
+    {
+     "name": "totalCacheCreationTokens"
+    },
+    {
+     "name": "totalCacheReadTokens"
+    },
+    {
+     "name": "totalInputCredits"
+    },
+    {
+     "name": "totalInputTokens"
+    },
+    {
+     "name": "totalOutputCredits"
+    },
+    {
+     "name": "totalOutputTokens"
+    },
+    {
+     "name": "turns"
+    },
+    {
+     "name": "updatedAt"
+    },
+    {
+     "name": "userWorkspace"
+    },
+    {
+     "name": "userWorkspaceId"
+    },
+    {
+     "name": "workspace"
+    },
+    {
+     "name": "workspaceId"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "AgentEntity",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "evaluationInputs"
+    },
+    {
+     "name": "icon"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "isCustom"
+    },
+    {
+     "name": "label"
+    },
+    {
+     "name": "modelConfiguration"
+    },
+    {
+     "name": "modelId"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "prompt"
+    },
+    {
+     "name": "responseFormat"
+    },
+    {
+     "name": "updatedAt"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "AgentMessageEntity",
+   "columns": [
+    {
+     "name": "agentId"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "isHidden"
+    },
+    {
+     "name": "parts"
+    },
+    {
+     "name": "processedAt"
+    },
+    {
+     "name": "role"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "thread"
+    },
+    {
+     "name": "threadId"
+    },
+    {
+     "name": "turn"
+    },
+    {
+     "name": "turnId"
+    },
+    {
+     "name": "workspace"
+    },
+    {
+     "name": "workspaceId"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "AgentMessagePartEntity",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "errorDetails"
+    },
+    {
+     "name": "errorMessage"
+    },
+    {
+     "name": "file"
+    },
+    {
+     "name": "fileFilename"
+    },
+    {
+     "name": "fileId"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "message"
+    },
+    {
+     "name": "messageId"
+    },
+    {
+     "name": "orderIndex"
+    },
+    {
+     "name": "providerExecuted"
+    },
+    {
+     "name": "providerMetadata"
+    },
+    {
+     "name": "reasoningContent"
+    },
+    {
+     "name": "sourceDocumentFilename"
+    },
+    {
+     "name": "sourceDocumentMediaType"
+    },
+    {
+     "name": "sourceDocumentSourceId"
+    },
+    {
+     "name": "sourceDocumentTitle"
+    },
+    {
+     "name": "sourceUrlSourceId"
+    },
+    {
+     "name": "sourceUrlTitle"
+    },
+    {
+     "name": "sourceUrlUrl"
+    },
+    {
+     "name": "state"
+    },
+    {
+     "name": "textContent"
+    },
+    {
+     "name": "toolCallId"
+    },
+    {
+     "name": "toolInput"
+    },
+    {
+     "name": "toolName"
+    },
+    {
+     "name": "toolOutput"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "workspace"
+    },
+    {
+     "name": "workspaceId"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "AgentTurnEntity",
+   "columns": [
+    {
+     "name": "agentId"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "evaluations"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "messages"
+    },
+    {
+     "name": "thread"
+    },
+    {
+     "name": "threadId"
+    },
+    {
+     "name": "workspace"
+    },
+    {
+     "name": "workspaceId"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "AgentTurnEvaluationEntity",
+   "columns": [
+    {
+     "name": "comment"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "score"
+    },
+    {
+     "name": "turn"
+    },
+    {
+     "name": "turnId"
+    },
+    {
+     "name": "workspace"
+    },
+    {
+     "name": "workspaceId"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "CalendarChannelEntity",
+   "columns": [
+    {
+     "name": "connectedAccount"
+    },
+    {
+     "name": "connectedAccountId"
+    },
+    {
+     "name": "contactAutoCreationPolicy"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "handle"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "isContactAutoCreationEnabled"
+    },
+    {
+     "name": "isSyncEnabled"
+    },
+    {
+     "name": "syncCursor"
+    },
+    {
+     "name": "syncStage"
+    },
+    {
+     "name": "syncStageStartedAt"
+    },
+    {
+     "name": "syncStatus"
+    },
+    {
+     "name": "syncedAt"
+    },
+    {
+     "name": "throttleFailureCount"
+    },
+    {
+     "name": "updatedAt"
+    },
+    {
+     "name": "visibility"
+    },
+    {
+     "name": "webhookSubscriptionClientState"
+    },
+    {
+     "name": "webhookSubscriptionExpiresAt"
+    },
+    {
+     "name": "webhookSubscriptionExternalId"
+    },
+    {
+     "name": "webhookSubscriptionExternalResourceId"
+    },
+    {
+     "name": "webhookSubscriptionStatus"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "DataSourceEntity",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "isRemote"
+    },
+    {
+     "name": "label"
+    },
+    {
+     "name": "schema"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "updatedAt"
+    },
+    {
+     "name": "url"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "FieldPermissionEntity",
+   "columns": [
+    {
+     "name": "canReadFieldValue"
+    },
+    {
+     "name": "canUpdateFieldValue"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "fieldMetadata"
+    },
+    {
+     "name": "fieldMetadataId"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "objectMetadata"
+    },
+    {
+     "name": "objectMetadataId"
+    },
+    {
+     "name": "role"
+    },
+    {
+     "name": "roleId"
+    },
+    {
+     "name": "updatedAt"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "FrontComponentEntity",
+   "columns": [
+    {
+     "name": "builtComponentChecksum"
+    },
+    {
+     "name": "builtComponentPath"
+    },
+    {
+     "name": "componentName"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "isHeadless"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "sourceComponentPath"
+    },
+    {
+     "name": "updatedAt"
+    },
+    {
+     "name": "usesSdkClient"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "IndexFieldMetadataEntity",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "fieldMetadata"
+    },
+    {
+     "name": "fieldMetadataId"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "indexMetadata"
+    },
+    {
+     "name": "indexMetadataId"
+    },
+    {
+     "name": "order"
+    },
+    {
+     "name": "subFieldName"
+    },
+    {
+     "name": "updatedAt"
+    },
+    {
+     "name": "workspace"
+    },
+    {
+     "name": "workspaceId"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "IndexMetadataEntity",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "indexFieldMetadatas"
+    },
+    {
+     "name": "indexType"
+    },
+    {
+     "name": "indexWhereClause"
+    },
+    {
+     "name": "isCustom"
+    },
+    {
+     "name": "isSystemSideEffect"
+    },
+    {
+     "name": "isUnique"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "objectMetadata"
+    },
+    {
+     "name": "objectMetadataId"
+    },
+    {
+     "name": "updatedAt"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "LogicFunctionEntity",
+   "columns": [
+    {
+     "name": "builtHandlerPath"
+    },
+    {
+     "name": "checksum"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "cronTriggerSettings"
+    },
+    {
+     "name": "databaseEventTriggerSettings"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "executionMode"
+    },
+    {
+     "name": "handlerName"
+    },
+    {
+     "name": "httpRouteTriggerSettings"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "isBuildUpToDate"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "runtime"
+    },
+    {
+     "name": "serverRouteTriggerSettings"
+    },
+    {
+     "name": "sourceHandlerPath"
+    },
+    {
+     "name": "timeoutSeconds"
+    },
+    {
+     "name": "toolTriggerSettings"
+    },
+    {
+     "name": "updatedAt"
+    },
+    {
+     "name": "workflowActionTriggerSettings"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "LogicFunctionLayerEntity",
+   "columns": [
+    {
+     "name": "availablePackages"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "packageJson"
+    },
+    {
+     "name": "packageJsonChecksum"
+    },
+    {
+     "name": "updatedAt"
+    },
+    {
+     "name": "yarnLock"
+    },
+    {
+     "name": "yarnLockChecksum"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "MessageChannelEntity",
+   "columns": [
+    {
+     "name": "connectedAccount"
+    },
+    {
+     "name": "connectedAccountId"
+    },
+    {
+     "name": "contactAutoCreationPolicy"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "displayName"
+    },
+    {
+     "name": "excludeGroupEmails"
+    },
+    {
+     "name": "excludeNonProfessionalEmails"
+    },
+    {
+     "name": "handle"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "isContactAutoCreationEnabled"
+    },
+    {
+     "name": "isSyncEnabled"
+    },
+    {
+     "name": "messageFolderImportPolicy"
+    },
+    {
+     "name": "messageFolders"
+    },
+    {
+     "name": "pendingGroupEmailsAction"
+    },
+    {
+     "name": "syncCursor"
+    },
+    {
+     "name": "syncStage"
+    },
+    {
+     "name": "syncStageStartedAt"
+    },
+    {
+     "name": "syncStatus"
+    },
+    {
+     "name": "syncedAt"
+    },
+    {
+     "name": "throttleFailureCount"
+    },
+    {
+     "name": "throttleRetryAfter"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "updatedAt"
+    },
+    {
+     "name": "visibility"
+    },
+    {
+     "name": "webhookSubscriptionClientState"
+    },
+    {
+     "name": "webhookSubscriptionExpiresAt"
+    },
+    {
+     "name": "webhookSubscriptionExternalId"
+    },
+    {
+     "name": "webhookSubscriptionStatus"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "MessageFolderEntity",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "externalId"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "isSentFolder"
+    },
+    {
+     "name": "isSynced"
+    },
+    {
+     "name": "messageChannel"
+    },
+    {
+     "name": "messageChannelId"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "parentFolderId"
+    },
+    {
+     "name": "pendingSyncAction"
+    },
+    {
+     "name": "syncCursor"
+    },
+    {
+     "name": "updatedAt"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "ObjectMetadataEntity",
+   "columns": [
+    {
+     "name": "color"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "dataSourceId"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "duplicateCriteria"
+    },
+    {
+     "name": "fieldPermissions"
+    },
+    {
+     "name": "fields"
+    },
+    {
+     "name": "icon"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "imageIdentifierFieldMetadataId"
+    },
+    {
+     "name": "indexMetadatas"
+    },
+    {
+     "name": "isActive"
+    },
+    {
+     "name": "isAuditLogged"
+    },
+    {
+     "name": "isCustom"
+    },
+    {
+     "name": "isLabelSyncedWithName"
+    },
+    {
+     "name": "isRemote"
+    },
+    {
+     "name": "isSearchable"
+    },
+    {
+     "name": "isSystem"
+    },
+    {
+     "name": "isUICreatable"
+    },
+    {
+     "name": "isUIEditable"
+    },
+    {
+     "name": "isUIReadOnly"
+    },
+    {
+     "name": "labelIdentifierFieldMetadataId"
+    },
+    {
+     "name": "labelPlural"
+    },
+    {
+     "name": "labelSingular"
+    },
+    {
+     "name": "namePlural"
+    },
+    {
+     "name": "nameSingular"
+    },
+    {
+     "name": "objectPermissions"
+    },
+    {
+     "name": "openRecordIn"
+    },
+    {
+     "name": "overrides"
+    },
+    {
+     "name": "searchFieldMetadatas"
+    },
+    {
+     "name": "shortcut"
+    },
+    {
+     "name": "standardOverrides"
+    },
+    {
+     "name": "targetTableName"
+    },
+    {
+     "name": "updatedAt"
+    },
+    {
+     "name": "views"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "ObjectPermissionEntity",
+   "columns": [
+    {
+     "name": "canDestroyObjectRecords"
+    },
+    {
+     "name": "canReadObjectRecords"
+    },
+    {
+     "name": "canSoftDeleteObjectRecords"
+    },
+    {
+     "name": "canUpdateObjectRecords"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "objectMetadata"
+    },
+    {
+     "name": "objectMetadataId"
+    },
+    {
+     "name": "role"
+    },
+    {
+     "name": "roleId"
+    },
+    {
+     "name": "updatedAt"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "PageLayoutEntity",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "defaultTabToFocusOnMobileAndSidePanel"
+    },
+    {
+     "name": "defaultTabToFocusOnMobileAndSidePanelId"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "isSystemSideEffect"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "objectMetadata"
+    },
+    {
+     "name": "objectMetadataId"
+    },
+    {
+     "name": "tabs"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "updatedAt"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "PageLayoutTabEntity",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "icon"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "isSystemSideEffect"
+    },
+    {
+     "name": "layoutMode"
+    },
+    {
+     "name": "pageLayout"
+    },
+    {
+     "name": "pageLayoutId"
+    },
+    {
+     "name": "position"
+    },
+    {
+     "name": "title"
+    },
+    {
+     "name": "updatedAt"
+    },
+    {
+     "name": "widgets"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "PageLayoutWidgetEntity",
+   "columns": [
+    {
+     "name": "conditionalAvailabilityExpression"
+    },
+    {
+     "name": "conditionalDisplay"
+    },
+    {
+     "name": "configuration"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "gridPosition"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "isSystemSideEffect"
+    },
+    {
+     "name": "objectMetadata"
+    },
+    {
+     "name": "objectMetadataId"
+    },
+    {
+     "name": "pageLayoutTab"
+    },
+    {
+     "name": "pageLayoutTabId"
+    },
+    {
+     "name": "position"
+    },
+    {
+     "name": "title"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "updatedAt"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "PermissionFlagEntity",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "icon"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "key"
+    },
+    {
+     "name": "label"
+    },
+    {
+     "name": "permissionType"
+    },
+    {
+     "name": "rolePermissionFlags"
+    },
+    {
+     "name": "updatedAt"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "RoleEntity",
+   "columns": [
+    {
+     "name": "canAccessAllTools"
+    },
+    {
+     "name": "canBeAssignedToAgents"
+    },
+    {
+     "name": "canBeAssignedToApiKeys"
+    },
+    {
+     "name": "canBeAssignedToUsers"
+    },
+    {
+     "name": "canDestroyAllObjectRecords"
+    },
+    {
+     "name": "canReadAllObjectRecords"
+    },
+    {
+     "name": "canSoftDeleteAllObjectRecords"
+    },
+    {
+     "name": "canUpdateAllObjectRecords"
+    },
+    {
+     "name": "canUpdateAllSettings"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "fieldPermissions"
+    },
+    {
+     "name": "icon"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "isEditable"
+    },
+    {
+     "name": "label"
+    },
+    {
+     "name": "objectPermissions"
+    },
+    {
+     "name": "rolePermissionFlags"
+    },
+    {
+     "name": "roleTargets"
+    },
+    {
+     "name": "rowLevelPermissionPredicateGroups"
+    },
+    {
+     "name": "rowLevelPermissionPredicates"
+    },
+    {
+     "name": "updatedAt"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "RolePermissionFlagEntity",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "flag"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "permissionFlag"
+    },
+    {
+     "name": "permissionFlagId"
+    },
+    {
+     "name": "role"
+    },
+    {
+     "name": "roleId"
+    },
+    {
+     "name": "updatedAt"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "RowLevelPermissionPredicateEntity",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "fieldMetadata"
+    },
+    {
+     "name": "fieldMetadataId"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "objectMetadata"
+    },
+    {
+     "name": "objectMetadataId"
+    },
+    {
+     "name": "operand"
+    },
+    {
+     "name": "positionInRowLevelPermissionPredicateGroup"
+    },
+    {
+     "name": "role"
+    },
+    {
+     "name": "roleId"
+    },
+    {
+     "name": "rowLevelPermissionPredicateGroup"
+    },
+    {
+     "name": "rowLevelPermissionPredicateGroupId"
+    },
+    {
+     "name": "subFieldName"
+    },
+    {
+     "name": "updatedAt"
+    },
+    {
+     "name": "value"
+    },
+    {
+     "name": "workspaceMemberFieldMetadata"
+    },
+    {
+     "name": "workspaceMemberFieldMetadataId"
+    },
+    {
+     "name": "workspaceMemberSubFieldName"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "RowLevelPermissionPredicateGroupEntity",
+   "columns": [
+    {
+     "name": "childRowLevelPermissionPredicateGroups"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "logicalOperator"
+    },
+    {
+     "name": "objectMetadata"
+    },
+    {
+     "name": "objectMetadataId"
+    },
+    {
+     "name": "parentRowLevelPermissionPredicateGroup"
+    },
+    {
+     "name": "parentRowLevelPermissionPredicateGroupId"
+    },
+    {
+     "name": "positionInRowLevelPermissionPredicateGroup"
+    },
+    {
+     "name": "role"
+    },
+    {
+     "name": "roleId"
+    },
+    {
+     "name": "rowLevelPermissionPredicates"
+    },
+    {
+     "name": "updatedAt"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "SearchFieldMetadataEntity",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "fieldMetadata"
+    },
+    {
+     "name": "fieldMetadataId"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "isSystemSideEffect"
+    },
+    {
+     "name": "objectMetadata"
+    },
+    {
+     "name": "objectMetadataId"
+    },
+    {
+     "name": "position"
+    },
+    {
+     "name": "tsVectorFieldMetadata"
+    },
+    {
+     "name": "tsVectorFieldMetadataId"
+    },
+    {
+     "name": "updatedAt"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "SkillEntity",
+   "columns": [
+    {
+     "name": "content"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "icon"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "isActive"
+    },
+    {
+     "name": "isCustom"
+    },
+    {
+     "name": "label"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "updatedAt"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "ViewFieldEntity",
+   "columns": [
+    {
+     "name": "aggregateOperation"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "fieldMetadata"
+    },
+    {
+     "name": "fieldMetadataId"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "isSystemSideEffect"
+    },
+    {
+     "name": "isVisible"
+    },
+    {
+     "name": "position"
+    },
+    {
+     "name": "size"
+    },
+    {
+     "name": "updatedAt"
+    },
+    {
+     "name": "view"
+    },
+    {
+     "name": "viewFieldGroup"
+    },
+    {
+     "name": "viewFieldGroupId"
+    },
+    {
+     "name": "viewId"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "ViewFieldGroupEntity",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "isVisible"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "position"
+    },
+    {
+     "name": "updatedAt"
+    },
+    {
+     "name": "view"
+    },
+    {
+     "name": "viewFields"
+    },
+    {
+     "name": "viewId"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "ViewFilterEntity",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "fieldMetadata"
+    },
+    {
+     "name": "fieldMetadataId"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "operand"
+    },
+    {
+     "name": "positionInViewFilterGroup"
+    },
+    {
+     "name": "relationTargetFieldMetadata"
+    },
+    {
+     "name": "relationTargetFieldMetadataId"
+    },
+    {
+     "name": "subFieldName"
+    },
+    {
+     "name": "updatedAt"
+    },
+    {
+     "name": "value"
+    },
+    {
+     "name": "view"
+    },
+    {
+     "name": "viewFilterGroup"
+    },
+    {
+     "name": "viewFilterGroupId"
+    },
+    {
+     "name": "viewId"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "ViewFilterGroupEntity",
+   "columns": [
+    {
+     "name": "childViewFilterGroups"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "logicalOperator"
+    },
+    {
+     "name": "parentViewFilterGroup"
+    },
+    {
+     "name": "parentViewFilterGroupId"
+    },
+    {
+     "name": "positionInViewFilterGroup"
+    },
+    {
+     "name": "updatedAt"
+    },
+    {
+     "name": "view"
+    },
+    {
+     "name": "viewFilters"
+    },
+    {
+     "name": "viewId"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "ViewGroupEntity",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "fieldValue"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "isVisible"
+    },
+    {
+     "name": "position"
+    },
+    {
+     "name": "updatedAt"
+    },
+    {
+     "name": "view"
+    },
+    {
+     "name": "viewId"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "ViewSortEntity",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "direction"
+    },
+    {
+     "name": "fieldMetadata"
+    },
+    {
+     "name": "fieldMetadataId"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "subFieldName"
+    },
+    {
+     "name": "updatedAt"
+    },
+    {
+     "name": "view"
+    },
+    {
+     "name": "viewId"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  },
+  {
+   "name": "WebhookEntity",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "operations"
+    },
+    {
+     "name": "secret"
+    },
+    {
+     "name": "targetUrl"
+    },
+    {
+     "name": "updatedAt"
+    }
+   ],
+   "provenance": {
+    "repo": "twentyhq/twenty",
+    "formats": [
+     "typeorm"
+    ]
+   }
+  }
+ ],
+ "tools": [],
+ "policies": [],
+ "tasks": [],
+ "refusals": [
+  {
+   "kind": "tools",
+   "what": "executable behaviour",
+   "why": "a schema states what is stored, not what can be done with it; tools must be authored against the world's own surface",
+   "count": 35
+  }
+ ]
+}

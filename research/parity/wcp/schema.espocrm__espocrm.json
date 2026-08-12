@@ -1,0 +1,5386 @@
+{
+ "source": {
+  "repo": "espocrm/espocrm",
+  "commit": "23244f037ab4730880c441fc9f7fb88bad16bcc1",
+  "path": "research/repos/schema/espocrm__espocrm",
+  "url": "https://github.com/espocrm/espocrm",
+  "license": "GPL"
+ },
+ "adapter": {
+  "name": "schema",
+  "version": "1.0"
+ },
+ "fidelity": "reference",
+ "tables": [
+  {
+   "name": "Account",
+   "columns": [
+    {
+     "name": "assignedUser"
+    },
+    {
+     "name": "billingAddress"
+    },
+    {
+     "name": "billingAddressCity"
+    },
+    {
+     "name": "billingAddressCountry"
+    },
+    {
+     "name": "billingAddressPostalCode"
+    },
+    {
+     "name": "billingAddressState"
+    },
+    {
+     "name": "billingAddressStreet"
+    },
+    {
+     "name": "campaign"
+    },
+    {
+     "name": "contactIsInactive"
+    },
+    {
+     "name": "contactRole"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "emailAddress"
+    },
+    {
+     "name": "industry"
+    },
+    {
+     "name": "isLocked"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "originalLead"
+    },
+    {
+     "name": "phoneNumber"
+    },
+    {
+     "name": "shippingAddress"
+    },
+    {
+     "name": "shippingAddressCity"
+    },
+    {
+     "name": "shippingAddressCountry"
+    },
+    {
+     "name": "shippingAddressPostalCode"
+    },
+    {
+     "name": "shippingAddressState"
+    },
+    {
+     "name": "shippingAddressStreet"
+    },
+    {
+     "name": "sicCode"
+    },
+    {
+     "name": "targetList"
+    },
+    {
+     "name": "targetListIsOptedOut"
+    },
+    {
+     "name": "targetLists"
+    },
+    {
+     "name": "teams"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "website"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "ActionHistoryRecord",
+   "columns": [
+    {
+     "name": "action"
+    },
+    {
+     "name": "authLogRecord"
+    },
+    {
+     "name": "authToken"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "data"
+    },
+    {
+     "name": "ipAddress"
+    },
+    {
+     "name": "number"
+    },
+    {
+     "name": "target"
+    },
+    {
+     "name": "targetType"
+    },
+    {
+     "name": "user"
+    },
+    {
+     "name": "userType"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "AddressCountry",
+   "columns": [
+    {
+     "name": "code"
+    },
+    {
+     "name": "isPreferred"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "preferredName"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "AppLogRecord",
+   "columns": [
+    {
+     "name": "code"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "exceptionClass"
+    },
+    {
+     "name": "file"
+    },
+    {
+     "name": "level"
+    },
+    {
+     "name": "line"
+    },
+    {
+     "name": "message"
+    },
+    {
+     "name": "number"
+    },
+    {
+     "name": "requestMethod"
+    },
+    {
+     "name": "requestResourcePath"
+    },
+    {
+     "name": "requestUrl"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "AppSecret",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "value"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "ArrayValue",
+   "columns": [
+    {
+     "name": "attribute"
+    },
+    {
+     "name": "entity"
+    },
+    {
+     "name": "value"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Attachment",
+   "columns": [
+    {
+     "name": "contents"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "field"
+    },
+    {
+     "name": "global"
+    },
+    {
+     "name": "isBeingUploaded"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "parent"
+    },
+    {
+     "name": "related"
+    },
+    {
+     "name": "role"
+    },
+    {
+     "name": "size"
+    },
+    {
+     "name": "source"
+    },
+    {
+     "name": "storage"
+    },
+    {
+     "name": "storageFilePath"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "AuthLogRecord",
+   "columns": [
+    {
+     "name": "authToken"
+    },
+    {
+     "name": "authTokenIsActive"
+    },
+    {
+     "name": "authenticationMethod"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "denialReason"
+    },
+    {
+     "name": "ipAddress"
+    },
+    {
+     "name": "isDenied"
+    },
+    {
+     "name": "portal"
+    },
+    {
+     "name": "requestMethod"
+    },
+    {
+     "name": "requestTime"
+    },
+    {
+     "name": "requestUrl"
+    },
+    {
+     "name": "user"
+    },
+    {
+     "name": "username"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "AuthToken",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "hash"
+    },
+    {
+     "name": "ipAddress"
+    },
+    {
+     "name": "isActive"
+    },
+    {
+     "name": "lastAccess"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "passwordVersion"
+    },
+    {
+     "name": "portal"
+    },
+    {
+     "name": "secret"
+    },
+    {
+     "name": "token"
+    },
+    {
+     "name": "user"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "AuthenticationProvider",
+   "columns": [
+    {
+     "name": "method"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "oidcAuthorizationEndpoint"
+    },
+    {
+     "name": "oidcAuthorizationPkce"
+    },
+    {
+     "name": "oidcAuthorizationPrompt"
+    },
+    {
+     "name": "oidcAuthorizationRedirectUri"
+    },
+    {
+     "name": "oidcClientId"
+    },
+    {
+     "name": "oidcClientSecret"
+    },
+    {
+     "name": "oidcCreateUser"
+    },
+    {
+     "name": "oidcJwksEndpoint"
+    },
+    {
+     "name": "oidcJwtSignatureAlgorithmList"
+    },
+    {
+     "name": "oidcLogoutUrl"
+    },
+    {
+     "name": "oidcScopes"
+    },
+    {
+     "name": "oidcSync"
+    },
+    {
+     "name": "oidcTokenEndpoint"
+    },
+    {
+     "name": "oidcUserInfoEndpoint"
+    },
+    {
+     "name": "oidcUsernameClaim"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Autofollow",
+   "columns": [
+    {
+     "name": "entityType"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "user"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Call",
+   "columns": [
+    {
+     "name": "acceptanceStatus"
+    },
+    {
+     "name": "account"
+    },
+    {
+     "name": "assignedUser"
+    },
+    {
+     "name": "contacts"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "dateEnd"
+    },
+    {
+     "name": "dateStart"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "direction"
+    },
+    {
+     "name": "duration"
+    },
+    {
+     "name": "leads"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "parent"
+    },
+    {
+     "name": "phoneNumbersMap"
+    },
+    {
+     "name": "reminders"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "teams"
+    },
+    {
+     "name": "uid"
+    },
+    {
+     "name": "users"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Campaign",
+   "columns": [
+    {
+     "name": "accountsTemplate"
+    },
+    {
+     "name": "assignedUser"
+    },
+    {
+     "name": "bouncedCount"
+    },
+    {
+     "name": "bouncedPercentage"
+    },
+    {
+     "name": "budget"
+    },
+    {
+     "name": "clickedCount"
+    },
+    {
+     "name": "clickedPercentage"
+    },
+    {
+     "name": "contactsTemplate"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "endDate"
+    },
+    {
+     "name": "excludingTargetLists"
+    },
+    {
+     "name": "hardBouncedCount"
+    },
+    {
+     "name": "leadCreatedCount"
+    },
+    {
+     "name": "leadsTemplate"
+    },
+    {
+     "name": "mailMergeOnlyWithAddress"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "openedCount"
+    },
+    {
+     "name": "openedPercentage"
+    },
+    {
+     "name": "optedInCount"
+    },
+    {
+     "name": "optedOutCount"
+    },
+    {
+     "name": "optedOutPercentage"
+    },
+    {
+     "name": "revenue"
+    },
+    {
+     "name": "sentCount"
+    },
+    {
+     "name": "softBouncedCount"
+    },
+    {
+     "name": "startDate"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "targetLists"
+    },
+    {
+     "name": "teams"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "usersTemplate"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "CampaignLogRecord",
+   "columns": [
+    {
+     "name": "action"
+    },
+    {
+     "name": "actionDate"
+    },
+    {
+     "name": "application"
+    },
+    {
+     "name": "campaign"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "data"
+    },
+    {
+     "name": "isTest"
+    },
+    {
+     "name": "object"
+    },
+    {
+     "name": "parent"
+    },
+    {
+     "name": "queueItem"
+    },
+    {
+     "name": "stringAdditionalData"
+    },
+    {
+     "name": "stringData"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "CampaignTrackingUrl",
+   "columns": [
+    {
+     "name": "action"
+    },
+    {
+     "name": "campaign"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "message"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "url"
+    },
+    {
+     "name": "urlToUse"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Case",
+   "columns": [
+    {
+     "name": "account"
+    },
+    {
+     "name": "assignedUser"
+    },
+    {
+     "name": "attachments"
+    },
+    {
+     "name": "collaborators"
+    },
+    {
+     "name": "contact"
+    },
+    {
+     "name": "contacts"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "inboundEmail"
+    },
+    {
+     "name": "isInternal"
+    },
+    {
+     "name": "lead"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "number"
+    },
+    {
+     "name": "originalEmail"
+    },
+    {
+     "name": "priority"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "teams"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Contact",
+   "columns": [
+    {
+     "name": "acceptanceStatus"
+    },
+    {
+     "name": "acceptanceStatusCalls"
+    },
+    {
+     "name": "acceptanceStatusMeetings"
+    },
+    {
+     "name": "account"
+    },
+    {
+     "name": "accountAnyId"
+    },
+    {
+     "name": "accountIsInactive"
+    },
+    {
+     "name": "accountRole"
+    },
+    {
+     "name": "accountType"
+    },
+    {
+     "name": "accounts"
+    },
+    {
+     "name": "address"
+    },
+    {
+     "name": "addressCity"
+    },
+    {
+     "name": "addressCountry"
+    },
+    {
+     "name": "addressPostalCode"
+    },
+    {
+     "name": "addressState"
+    },
+    {
+     "name": "addressStreet"
+    },
+    {
+     "name": "assignedUser"
+    },
+    {
+     "name": "campaign"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "doNotCall"
+    },
+    {
+     "name": "emailAddress"
+    },
+    {
+     "name": "firstName"
+    },
+    {
+     "name": "hasPortalUser"
+    },
+    {
+     "name": "lastName"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "opportunityRole"
+    },
+    {
+     "name": "originalEmail"
+    },
+    {
+     "name": "originalLead"
+    },
+    {
+     "name": "phoneNumber"
+    },
+    {
+     "name": "portalUser"
+    },
+    {
+     "name": "salutationName"
+    },
+    {
+     "name": "targetList"
+    },
+    {
+     "name": "targetListIsOptedOut"
+    },
+    {
+     "name": "targetLists"
+    },
+    {
+     "name": "teams"
+    },
+    {
+     "name": "title"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Currency",
+   "columns": [
+    {
+     "name": "id"
+    },
+    {
+     "name": "rate"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "CurrencyRecord",
+   "columns": [
+    {
+     "name": "code"
+    },
+    {
+     "name": "isBase"
+    },
+    {
+     "name": "label"
+    },
+    {
+     "name": "rate"
+    },
+    {
+     "name": "rateDate"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "symbol"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "CurrencyRecordRate",
+   "columns": [
+    {
+     "name": "baseCode"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "date"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "rate"
+    },
+    {
+     "name": "record"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "DashboardTemplate",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "dashletsOptions"
+    },
+    {
+     "name": "layout"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Document",
+   "columns": [
+    {
+     "name": "accounts"
+    },
+    {
+     "name": "assignedUser"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "expirationDate"
+    },
+    {
+     "name": "file"
+    },
+    {
+     "name": "folder"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "publishDate"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "teams"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "DocumentFolder",
+   "columns": [
+    {
+     "name": "childList"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "parent"
+    },
+    {
+     "name": "teams"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Email",
+   "columns": [
+    {
+     "name": "account"
+    },
+    {
+     "name": "parent"
+    },
+    {
+     "name": "tasks"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "EmailAccount",
+   "columns": [
+    {
+     "name": "assignedUser"
+    },
+    {
+     "name": "connectedAt"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "emailAddress"
+    },
+    {
+     "name": "emailFolder"
+    },
+    {
+     "name": "fetchData"
+    },
+    {
+     "name": "fetchSince"
+    },
+    {
+     "name": "fetchValidityNumber"
+    },
+    {
+     "name": "folderMap"
+    },
+    {
+     "name": "host"
+    },
+    {
+     "name": "imapHandler"
+    },
+    {
+     "name": "keepFetchedEmailsUnread"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "monitoredFolders"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "password"
+    },
+    {
+     "name": "port"
+    },
+    {
+     "name": "security"
+    },
+    {
+     "name": "sentFolder"
+    },
+    {
+     "name": "smtpAuth"
+    },
+    {
+     "name": "smtpAuthMechanism"
+    },
+    {
+     "name": "smtpHandler"
+    },
+    {
+     "name": "smtpHost"
+    },
+    {
+     "name": "smtpPassword"
+    },
+    {
+     "name": "smtpPort"
+    },
+    {
+     "name": "smtpSecurity"
+    },
+    {
+     "name": "smtpUsername"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "storeSentEmails"
+    },
+    {
+     "name": "useImap"
+    },
+    {
+     "name": "useSmtp"
+    },
+    {
+     "name": "username"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "EmailAddress",
+   "columns": [
+    {
+     "name": "invalid"
+    },
+    {
+     "name": "lower"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "optOut"
+    },
+    {
+     "name": "primary"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "EmailFilter",
+   "columns": [
+    {
+     "name": "action"
+    },
+    {
+     "name": "bodyContains"
+    },
+    {
+     "name": "bodyContainsAll"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "emailFolder"
+    },
+    {
+     "name": "from"
+    },
+    {
+     "name": "groupEmailFolder"
+    },
+    {
+     "name": "isGlobal"
+    },
+    {
+     "name": "markAsRead"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "parent"
+    },
+    {
+     "name": "skipNotification"
+    },
+    {
+     "name": "subject"
+    },
+    {
+     "name": "to"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "EmailFolder",
+   "columns": [
+    {
+     "name": "assignedUser"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "order"
+    },
+    {
+     "name": "skipNotifications"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "EmailQueueItem",
+   "columns": [
+    {
+     "name": "attemptCount"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "emailAddress"
+    },
+    {
+     "name": "isTest"
+    },
+    {
+     "name": "massEmail"
+    },
+    {
+     "name": "sentAt"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "target"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "EmailTemplate",
+   "columns": [
+    {
+     "name": "assignedUser"
+    },
+    {
+     "name": "attachments"
+    },
+    {
+     "name": "body"
+    },
+    {
+     "name": "category"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "isHtml"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "oneOff"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "subject"
+    },
+    {
+     "name": "teams"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "EmailTemplateCategory",
+   "columns": [
+    {
+     "name": "childList"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "order"
+    },
+    {
+     "name": "parent"
+    },
+    {
+     "name": "teams"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Export",
+   "columns": [
+    {
+     "name": "attachment"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "notifyOnFinish"
+    },
+    {
+     "name": "params"
+    },
+    {
+     "name": "status"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Extension",
+   "columns": [
+    {
+     "name": "checkVersionUrl"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "fileList"
+    },
+    {
+     "name": "isInstalled"
+    },
+    {
+     "name": "licenseStatus"
+    },
+    {
+     "name": "licenseStatusMessage"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "version"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "ExternalAccount",
+   "columns": [
+    {
+     "name": "data"
+    },
+    {
+     "name": "enabled"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "isLocked"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "GroupEmailFolder",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "order"
+    },
+    {
+     "name": "teams"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Import",
+   "columns": [
+    {
+     "name": "attributeList"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "duplicateCount"
+    },
+    {
+     "name": "entityType"
+    },
+    {
+     "name": "file"
+    },
+    {
+     "name": "importedCount"
+    },
+    {
+     "name": "lastIndex"
+    },
+    {
+     "name": "params"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "updatedCount"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "ImportEml",
+   "columns": [
+    {
+     "name": "file"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "ImportEntity",
+   "columns": [
+    {
+     "name": "entity"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "import"
+    },
+    {
+     "name": "isDuplicate"
+    },
+    {
+     "name": "isImported"
+    },
+    {
+     "name": "isUpdated"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "ImportError",
+   "columns": [
+    {
+     "name": "entityType"
+    },
+    {
+     "name": "exportLineNumber"
+    },
+    {
+     "name": "exportRowIndex"
+    },
+    {
+     "name": "import"
+    },
+    {
+     "name": "lineNumber"
+    },
+    {
+     "name": "row"
+    },
+    {
+     "name": "rowIndex"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "validationFailures"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "InboundEmail",
+   "columns": [
+    {
+     "name": "addAllTeamUsers"
+    },
+    {
+     "name": "assignToUser"
+    },
+    {
+     "name": "caseDistribution"
+    },
+    {
+     "name": "connectedAt"
+    },
+    {
+     "name": "createCase"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "emailAddress"
+    },
+    {
+     "name": "excludeFromReply"
+    },
+    {
+     "name": "fetchData"
+    },
+    {
+     "name": "fetchSince"
+    },
+    {
+     "name": "fetchValidityNumber"
+    },
+    {
+     "name": "fromName"
+    },
+    {
+     "name": "groupEmailFolder"
+    },
+    {
+     "name": "host"
+    },
+    {
+     "name": "imapHandler"
+    },
+    {
+     "name": "isSystem"
+    },
+    {
+     "name": "keepFetchedEmailsUnread"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "monitoredFolders"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "password"
+    },
+    {
+     "name": "port"
+    },
+    {
+     "name": "reply"
+    },
+    {
+     "name": "replyEmailTemplate"
+    },
+    {
+     "name": "replyFromAddress"
+    },
+    {
+     "name": "replyFromName"
+    },
+    {
+     "name": "replyToAddress"
+    },
+    {
+     "name": "security"
+    },
+    {
+     "name": "sentFolder"
+    },
+    {
+     "name": "smtpAuth"
+    },
+    {
+     "name": "smtpAuthMechanism"
+    },
+    {
+     "name": "smtpHandler"
+    },
+    {
+     "name": "smtpHost"
+    },
+    {
+     "name": "smtpIsForMassEmail"
+    },
+    {
+     "name": "smtpIsShared"
+    },
+    {
+     "name": "smtpPassword"
+    },
+    {
+     "name": "smtpPort"
+    },
+    {
+     "name": "smtpSecurity"
+    },
+    {
+     "name": "smtpUsername"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "storeSentEmails"
+    },
+    {
+     "name": "targetUserPosition"
+    },
+    {
+     "name": "team"
+    },
+    {
+     "name": "teams"
+    },
+    {
+     "name": "useImap"
+    },
+    {
+     "name": "useSmtp"
+    },
+    {
+     "name": "username"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Integration",
+   "columns": [
+    {
+     "name": "data"
+    },
+    {
+     "name": "enabled"
+    },
+    {
+     "name": "id"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Job",
+   "columns": [
+    {
+     "name": "attempts"
+    },
+    {
+     "name": "className"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "data"
+    },
+    {
+     "name": "executeTime"
+    },
+    {
+     "name": "executedAt"
+    },
+    {
+     "name": "failedAttempts"
+    },
+    {
+     "name": "group"
+    },
+    {
+     "name": "job"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "number"
+    },
+    {
+     "name": "pid"
+    },
+    {
+     "name": "queue"
+    },
+    {
+     "name": "scheduledJob"
+    },
+    {
+     "name": "scheduledJobJob"
+    },
+    {
+     "name": "startedAt"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "targetGroup"
+    },
+    {
+     "name": "targetId"
+    },
+    {
+     "name": "targetType"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "KanbanOrder",
+   "columns": [
+    {
+     "name": "entity"
+    },
+    {
+     "name": "group"
+    },
+    {
+     "name": "order"
+    },
+    {
+     "name": "user"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "KnowledgeBaseArticle",
+   "columns": [
+    {
+     "name": "assignedUser"
+    },
+    {
+     "name": "attachments"
+    },
+    {
+     "name": "body"
+    },
+    {
+     "name": "bodyPlain"
+    },
+    {
+     "name": "categories"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "expirationDate"
+    },
+    {
+     "name": "language"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "order"
+    },
+    {
+     "name": "portals"
+    },
+    {
+     "name": "publishDate"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "teams"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "KnowledgeBaseCategory",
+   "columns": [
+    {
+     "name": "childList"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "order"
+    },
+    {
+     "name": "parent"
+    },
+    {
+     "name": "teams"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "LayoutRecord",
+   "columns": [
+    {
+     "name": "data"
+    },
+    {
+     "name": "layoutSet"
+    },
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "LayoutSet",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "layoutList"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Lead",
+   "columns": [
+    {
+     "name": "acceptanceStatus"
+    },
+    {
+     "name": "acceptanceStatusCalls"
+    },
+    {
+     "name": "acceptanceStatusMeetings"
+    },
+    {
+     "name": "accountName"
+    },
+    {
+     "name": "address"
+    },
+    {
+     "name": "addressCity"
+    },
+    {
+     "name": "addressCountry"
+    },
+    {
+     "name": "addressPostalCode"
+    },
+    {
+     "name": "addressState"
+    },
+    {
+     "name": "addressStreet"
+    },
+    {
+     "name": "assignedUser"
+    },
+    {
+     "name": "campaign"
+    },
+    {
+     "name": "convertedAt"
+    },
+    {
+     "name": "createdAccount"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "createdContact"
+    },
+    {
+     "name": "createdOpportunity"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "doNotCall"
+    },
+    {
+     "name": "emailAddress"
+    },
+    {
+     "name": "firstName"
+    },
+    {
+     "name": "industry"
+    },
+    {
+     "name": "lastName"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "opportunityAmount"
+    },
+    {
+     "name": "opportunityAmountConverted"
+    },
+    {
+     "name": "originalEmail"
+    },
+    {
+     "name": "phoneNumber"
+    },
+    {
+     "name": "salutationName"
+    },
+    {
+     "name": "source"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "targetList"
+    },
+    {
+     "name": "targetListIsOptedOut"
+    },
+    {
+     "name": "targetLists"
+    },
+    {
+     "name": "teams"
+    },
+    {
+     "name": "title"
+    },
+    {
+     "name": "website"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "LeadCapture",
+   "columns": [
+    {
+     "name": "apiKey"
+    },
+    {
+     "name": "campaign"
+    },
+    {
+     "name": "createLeadBeforeOptInConfirmation"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "duplicateCheck"
+    },
+    {
+     "name": "exampleRequestHeaders"
+    },
+    {
+     "name": "exampleRequestMethod"
+    },
+    {
+     "name": "exampleRequestPayload"
+    },
+    {
+     "name": "exampleRequestUrl"
+    },
+    {
+     "name": "fieldList"
+    },
+    {
+     "name": "fieldParams"
+    },
+    {
+     "name": "formCaptcha"
+    },
+    {
+     "name": "formEnabled"
+    },
+    {
+     "name": "formFrameAncestors"
+    },
+    {
+     "name": "formId"
+    },
+    {
+     "name": "formLanguage"
+    },
+    {
+     "name": "formSuccessRedirectUrl"
+    },
+    {
+     "name": "formSuccessText"
+    },
+    {
+     "name": "formText"
+    },
+    {
+     "name": "formTheme"
+    },
+    {
+     "name": "formTitle"
+    },
+    {
+     "name": "formUrl"
+    },
+    {
+     "name": "inboundEmail"
+    },
+    {
+     "name": "isActive"
+    },
+    {
+     "name": "leadSource"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "optInConfirmation"
+    },
+    {
+     "name": "optInConfirmationEmailTemplate"
+    },
+    {
+     "name": "optInConfirmationLifetime"
+    },
+    {
+     "name": "optInConfirmationSuccessMessage"
+    },
+    {
+     "name": "phoneNumberCountry"
+    },
+    {
+     "name": "pipeline"
+    },
+    {
+     "name": "skipOptInConfirmationIfSubscribed"
+    },
+    {
+     "name": "smtpAccount"
+    },
+    {
+     "name": "subscribeContactToTargetList"
+    },
+    {
+     "name": "subscribeToTargetList"
+    },
+    {
+     "name": "targetList"
+    },
+    {
+     "name": "targetTeam"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "LeadCaptureLogRecord",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "data"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "isCreated"
+    },
+    {
+     "name": "leadCapture"
+    },
+    {
+     "name": "number"
+    },
+    {
+     "name": "target"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "MassAction",
+   "columns": [
+    {
+     "name": "action"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "data"
+    },
+    {
+     "name": "entityType"
+    },
+    {
+     "name": "notifyOnFinish"
+    },
+    {
+     "name": "params"
+    },
+    {
+     "name": "processedCount"
+    },
+    {
+     "name": "status"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "MassEmail",
+   "columns": [
+    {
+     "name": "campaign"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "emailTemplate"
+    },
+    {
+     "name": "excludingTargetLists"
+    },
+    {
+     "name": "fromAddress"
+    },
+    {
+     "name": "fromName"
+    },
+    {
+     "name": "inboundEmail"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "optOutEntirely"
+    },
+    {
+     "name": "replyToAddress"
+    },
+    {
+     "name": "replyToName"
+    },
+    {
+     "name": "smtpAccount"
+    },
+    {
+     "name": "startAt"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "storeSentEmails"
+    },
+    {
+     "name": "targetLists"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Meeting",
+   "columns": [
+    {
+     "name": "acceptanceStatus"
+    },
+    {
+     "name": "account"
+    },
+    {
+     "name": "assignedUser"
+    },
+    {
+     "name": "contacts"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "dateEnd"
+    },
+    {
+     "name": "dateStart"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "duration"
+    },
+    {
+     "name": "externalService"
+    },
+    {
+     "name": "isAllDay"
+    },
+    {
+     "name": "joinUrl"
+    },
+    {
+     "name": "leads"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "parent"
+    },
+    {
+     "name": "reminders"
+    },
+    {
+     "name": "sourceEmail"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "teams"
+    },
+    {
+     "name": "uid"
+    },
+    {
+     "name": "users"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "NextNumber",
+   "columns": [
+    {
+     "name": "entityType"
+    },
+    {
+     "name": "fieldName"
+    },
+    {
+     "name": "value"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Note",
+   "columns": [
+    {
+     "name": "attachments"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "createdByGender"
+    },
+    {
+     "name": "data"
+    },
+    {
+     "name": "isGlobal"
+    },
+    {
+     "name": "isInternal"
+    },
+    {
+     "name": "isPinned"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "myReactions"
+    },
+    {
+     "name": "notifiedUserIdList"
+    },
+    {
+     "name": "number"
+    },
+    {
+     "name": "parent"
+    },
+    {
+     "name": "portals"
+    },
+    {
+     "name": "post"
+    },
+    {
+     "name": "reactionCounts"
+    },
+    {
+     "name": "related"
+    },
+    {
+     "name": "targetType"
+    },
+    {
+     "name": "teams"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "users"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Notification",
+   "columns": [
+    {
+     "name": "actionId"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "data"
+    },
+    {
+     "name": "emailIsProcessed"
+    },
+    {
+     "name": "groupType"
+    },
+    {
+     "name": "groupedCount"
+    },
+    {
+     "name": "groupedUnreadCount"
+    },
+    {
+     "name": "isFeatured"
+    },
+    {
+     "name": "message"
+    },
+    {
+     "name": "noteData"
+    },
+    {
+     "name": "number"
+    },
+    {
+     "name": "read"
+    },
+    {
+     "name": "related"
+    },
+    {
+     "name": "relatedParent"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "user"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "OAuthAccount",
+   "columns": [
+    {
+     "name": "accessToken"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "data"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "expiresAt"
+    },
+    {
+     "name": "hasAccessToken"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "provider"
+    },
+    {
+     "name": "providerIsActive"
+    },
+    {
+     "name": "refreshToken"
+    },
+    {
+     "name": "user"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "OAuthProvider",
+   "columns": [
+    {
+     "name": "authorizationEndpoint"
+    },
+    {
+     "name": "authorizationParams"
+    },
+    {
+     "name": "authorizationPrompt"
+    },
+    {
+     "name": "authorizationRedirectUri"
+    },
+    {
+     "name": "clientId"
+    },
+    {
+     "name": "clientSecret"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "isActive"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "scopeSeparator"
+    },
+    {
+     "name": "scopes"
+    },
+    {
+     "name": "tokenEndpoint"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Opportunity",
+   "columns": [
+    {
+     "name": "account"
+    },
+    {
+     "name": "amount"
+    },
+    {
+     "name": "amountConverted"
+    },
+    {
+     "name": "amountWeightedConverted"
+    },
+    {
+     "name": "assignedUser"
+    },
+    {
+     "name": "campaign"
+    },
+    {
+     "name": "closeDate"
+    },
+    {
+     "name": "contact"
+    },
+    {
+     "name": "contactRole"
+    },
+    {
+     "name": "contacts"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "lastStage"
+    },
+    {
+     "name": "leadSource"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "originalLead"
+    },
+    {
+     "name": "probability"
+    },
+    {
+     "name": "stage"
+    },
+    {
+     "name": "teams"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "PasswordChangeRequest",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "requestId"
+    },
+    {
+     "name": "url"
+    },
+    {
+     "name": "user"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "PhoneNumber",
+   "columns": [
+    {
+     "name": "invalid"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "numeric"
+    },
+    {
+     "name": "optOut"
+    },
+    {
+     "name": "primary"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Pipeline",
+   "columns": [
+    {
+     "name": "color"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "entityType"
+    },
+    {
+     "name": "field"
+    },
+    {
+     "name": "isAvailableForAll"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "order"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "teams"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "PipelineStage",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "entityType"
+    },
+    {
+     "name": "field"
+    },
+    {
+     "name": "mappedStatus"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "order"
+    },
+    {
+     "name": "pipeline"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Portal",
+   "columns": [
+    {
+     "name": "applicationName"
+    },
+    {
+     "name": "authTokenLifetime"
+    },
+    {
+     "name": "authTokenMaxIdleTime"
+    },
+    {
+     "name": "authenticationProvider"
+    },
+    {
+     "name": "companyLogo"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "customId"
+    },
+    {
+     "name": "customUrl"
+    },
+    {
+     "name": "dashboardLayout"
+    },
+    {
+     "name": "dashletsOptions"
+    },
+    {
+     "name": "dateFormat"
+    },
+    {
+     "name": "defaultCurrency"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "isActive"
+    },
+    {
+     "name": "isDefault"
+    },
+    {
+     "name": "language"
+    },
+    {
+     "name": "layoutSet"
+    },
+    {
+     "name": "logo"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "portalRoles"
+    },
+    {
+     "name": "quickCreateList"
+    },
+    {
+     "name": "tabList"
+    },
+    {
+     "name": "theme"
+    },
+    {
+     "name": "themeParams"
+    },
+    {
+     "name": "timeFormat"
+    },
+    {
+     "name": "timeZone"
+    },
+    {
+     "name": "url"
+    },
+    {
+     "name": "weekStart"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "PortalRole",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "data"
+    },
+    {
+     "name": "exportPermission"
+    },
+    {
+     "name": "fieldData"
+    },
+    {
+     "name": "massUpdatePermission"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Preferences",
+   "columns": [
+    {
+     "name": "addCustomTabs"
+    },
+    {
+     "name": "assignmentEmailNotificationsIgnoreEntityTypeList"
+    },
+    {
+     "name": "assignmentNotificationsIgnoreEntityTypeList"
+    },
+    {
+     "name": "autoFollowEntityTypeList"
+    },
+    {
+     "name": "calendarScrollHour"
+    },
+    {
+     "name": "calendarSlotDuration"
+    },
+    {
+     "name": "calendarViewDataList"
+    },
+    {
+     "name": "dashboardLayout"
+    },
+    {
+     "name": "dashboardLocked"
+    },
+    {
+     "name": "dashletsOptions"
+    },
+    {
+     "name": "dateFormat"
+    },
+    {
+     "name": "decimalMark"
+    },
+    {
+     "name": "defaultCurrency"
+    },
+    {
+     "name": "defaultReminders"
+    },
+    {
+     "name": "defaultRemindersTask"
+    },
+    {
+     "name": "doNotFillAssignedUserIfNotRequired"
+    },
+    {
+     "name": "emailReplyForceHtml"
+    },
+    {
+     "name": "emailReplyToAllByDefault"
+    },
+    {
+     "name": "emailUseExternalClient"
+    },
+    {
+     "name": "exportDelimiter"
+    },
+    {
+     "name": "followAsCollaborator"
+    },
+    {
+     "name": "followCreatedEntities"
+    },
+    {
+     "name": "followCreatedEntityTypeList"
+    },
+    {
+     "name": "followEntityOnStreamPost"
+    },
+    {
+     "name": "importParams"
+    },
+    {
+     "name": "isPortalUser"
+    },
+    {
+     "name": "language"
+    },
+    {
+     "name": "notificationGrouping"
+    },
+    {
+     "name": "notificationSound"
+    },
+    {
+     "name": "pageContentWidth"
+    },
+    {
+     "name": "presetFilters"
+    },
+    {
+     "name": "reactionNotifications"
+    },
+    {
+     "name": "reactionNotificationsNotFollowed"
+    },
+    {
+     "name": "receiveAssignmentEmailNotifications"
+    },
+    {
+     "name": "receiveMentionEmailNotifications"
+    },
+    {
+     "name": "receiveStreamEmailNotifications"
+    },
+    {
+     "name": "scopeColorsDisabled"
+    },
+    {
+     "name": "sharedCalendarUserList"
+    },
+    {
+     "name": "signature"
+    },
+    {
+     "name": "tabColorsDisabled"
+    },
+    {
+     "name": "tabList"
+    },
+    {
+     "name": "textSearchStoringDisabled"
+    },
+    {
+     "name": "theme"
+    },
+    {
+     "name": "themeParams"
+    },
+    {
+     "name": "thousandSeparator"
+    },
+    {
+     "name": "timeFormat"
+    },
+    {
+     "name": "timeZone"
+    },
+    {
+     "name": "useCustomTabList"
+    },
+    {
+     "name": "weekStart"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Reminder",
+   "columns": [
+    {
+     "name": "entity"
+    },
+    {
+     "name": "isSubmitted"
+    },
+    {
+     "name": "remindAt"
+    },
+    {
+     "name": "seconds"
+    },
+    {
+     "name": "startAt"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "user"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Role",
+   "columns": [
+    {
+     "name": "assignmentPermission"
+    },
+    {
+     "name": "auditPermission"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "data"
+    },
+    {
+     "name": "dataPrivacyPermission"
+    },
+    {
+     "name": "exportPermission"
+    },
+    {
+     "name": "fieldData"
+    },
+    {
+     "name": "followerManagementPermission"
+    },
+    {
+     "name": "groupEmailAccountPermission"
+    },
+    {
+     "name": "info"
+    },
+    {
+     "name": "lockPermission"
+    },
+    {
+     "name": "massUpdatePermission"
+    },
+    {
+     "name": "mentionPermission"
+    },
+    {
+     "name": "messagePermission"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "portalPermission"
+    },
+    {
+     "name": "userCalendarPermission"
+    },
+    {
+     "name": "userPermission"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "ScheduledJob",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "isInternal"
+    },
+    {
+     "name": "job"
+    },
+    {
+     "name": "lastRun"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "scheduling"
+    },
+    {
+     "name": "status"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "ScheduledJobLogRecord",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "executionTime"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "scheduledJob"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "target"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Settings",
+   "columns": [
+    {
+     "name": "aclAllowDeleteCreated"
+    },
+    {
+     "name": "activitiesEntityList"
+    },
+    {
+     "name": "addressCityList"
+    },
+    {
+     "name": "addressFormat"
+    },
+    {
+     "name": "addressPreview"
+    },
+    {
+     "name": "addressStateList"
+    },
+    {
+     "name": "adminNotifications"
+    },
+    {
+     "name": "adminNotificationsNewExtensionVersion"
+    },
+    {
+     "name": "adminNotificationsNewVersion"
+    },
+    {
+     "name": "adminPanelIframeUrl"
+    },
+    {
+     "name": "applicationName"
+    },
+    {
+     "name": "assignmentEmailNotifications"
+    },
+    {
+     "name": "assignmentEmailNotificationsEntityList"
+    },
+    {
+     "name": "assignmentNotificationsEntityList"
+    },
+    {
+     "name": "attachmentUploadChunkSize"
+    },
+    {
+     "name": "attachmentUploadMaxSize"
+    },
+    {
+     "name": "auth2FA"
+    },
+    {
+     "name": "auth2FAForced"
+    },
+    {
+     "name": "auth2FAInPortal"
+    },
+    {
+     "name": "auth2FAMethodList"
+    },
+    {
+     "name": "authIpAddressCheck"
+    },
+    {
+     "name": "authIpAddressCheckExcludedUsers"
+    },
+    {
+     "name": "authIpAddressWhitelist"
+    },
+    {
+     "name": "authTokenLifetime"
+    },
+    {
+     "name": "authTokenMaxIdleTime"
+    },
+    {
+     "name": "authTokenPreventConcurrent"
+    },
+    {
+     "name": "authenticationMethod"
+    },
+    {
+     "name": "availableReactions"
+    },
+    {
+     "name": "avatarsDisabled"
+    },
+    {
+     "name": "awsS3Storage"
+    },
+    {
+     "name": "b2cMode"
+    },
+    {
+     "name": "baseCurrency"
+    },
+    {
+     "name": "baselineRole"
+    },
+    {
+     "name": "busyRangesEntityList"
+    },
+    {
+     "name": "calendarEntityList"
+    },
+    {
+     "name": "cleanupDeletedRecords"
+    },
+    {
+     "name": "companyLogo"
+    },
+    {
+     "name": "cronDisabled"
+    },
+    {
+     "name": "currencyDecimalPlaces"
+    },
+    {
+     "name": "currencyFormat"
+    },
+    {
+     "name": "currencyList"
+    },
+    {
+     "name": "currencyRates"
+    },
+    {
+     "name": "daemonInterval"
+    },
+    {
+     "name": "daemonMaxProcessNumber"
+    },
+    {
+     "name": "daemonProcessTimeout"
+    },
+    {
+     "name": "dashboardLayout"
+    },
+    {
+     "name": "dashletsOptions"
+    },
+    {
+     "name": "dateFormat"
+    },
+    {
+     "name": "decimalMark"
+    },
+    {
+     "name": "defaultCurrency"
+    },
+    {
+     "name": "displayListViewRecordCount"
+    },
+    {
+     "name": "emailAddressIsOptedOutByDefault"
+    },
+    {
+     "name": "emailAddressLookupEntityTypeList"
+    },
+    {
+     "name": "emailAddressSelectEntityTypeList"
+    },
+    {
+     "name": "emailMessageMaxSize"
+    },
+    {
+     "name": "emailNotificationsDelay"
+    },
+    {
+     "name": "emailScheduledBatchCount"
+    },
+    {
+     "name": "exportDelimiter"
+    },
+    {
+     "name": "exportDisabled"
+    },
+    {
+     "name": "fiscalYearShift"
+    },
+    {
+     "name": "followCreatedEntities"
+    },
+    {
+     "name": "globalSearchEntityList"
+    },
+    {
+     "name": "googleMapsApiKey"
+    },
+    {
+     "name": "historyEntityList"
+    },
+    {
+     "name": "inboundEmailMaxPortionSize"
+    },
+    {
+     "name": "jobForceUtc"
+    },
+    {
+     "name": "jobMaxPortion"
+    },
+    {
+     "name": "jobPoolConcurrencyNumber"
+    },
+    {
+     "name": "jobRunInParallel"
+    },
+    {
+     "name": "language"
+    },
+    {
+     "name": "lastViewedCount"
+    },
+    {
+     "name": "ldapAccountCanonicalForm"
+    },
+    {
+     "name": "ldapAccountDomainName"
+    },
+    {
+     "name": "ldapAccountDomainNameShort"
+    },
+    {
+     "name": "ldapAccountFilterFormat"
+    },
+    {
+     "name": "ldapAuth"
+    },
+    {
+     "name": "ldapBaseDn"
+    },
+    {
+     "name": "ldapBindRequiresDn"
+    },
+    {
+     "name": "ldapCreateEspoUser"
+    },
+    {
+     "name": "ldapHost"
+    },
+    {
+     "name": "ldapOptReferrals"
+    },
+    {
+     "name": "ldapPassword"
+    },
+    {
+     "name": "ldapPort"
+    },
+    {
+     "name": "ldapPortalUserLdapAuth"
+    },
+    {
+     "name": "ldapPortalUserPortals"
+    },
+    {
+     "name": "ldapPortalUserRoles"
+    },
+    {
+     "name": "ldapSecurity"
+    },
+    {
+     "name": "ldapTryUsernameSplit"
+    },
+    {
+     "name": "ldapUserDefaultTeam"
+    },
+    {
+     "name": "ldapUserEmailAddressAttribute"
+    },
+    {
+     "name": "ldapUserFirstNameAttribute"
+    },
+    {
+     "name": "ldapUserLastNameAttribute"
+    },
+    {
+     "name": "ldapUserLoginFilter"
+    },
+    {
+     "name": "ldapUserNameAttribute"
+    },
+    {
+     "name": "ldapUserObjectClass"
+    },
+    {
+     "name": "ldapUserPhoneNumberAttribute"
+    },
+    {
+     "name": "ldapUserTeams"
+    },
+    {
+     "name": "ldapUserTitleAttribute"
+    },
+    {
+     "name": "ldapUsername"
+    },
+    {
+     "name": "maintenanceMode"
+    },
+    {
+     "name": "massEmailDisableMandatoryOptOutLink"
+    },
+    {
+     "name": "massEmailMaxPerBatchCount"
+    },
+    {
+     "name": "massEmailMaxPerHourCount"
+    },
+    {
+     "name": "massEmailOpenTracking"
+    },
+    {
+     "name": "massEmailVerp"
+    },
+    {
+     "name": "maxEmailAccountCount"
+    },
+    {
+     "name": "mentionEmailNotifications"
+    },
+    {
+     "name": "newNotificationCountInTitle"
+    },
+    {
+     "name": "oidcAllowAdminUser"
+    },
+    {
+     "name": "oidcAllowRegularUserFallback"
+    },
+    {
+     "name": "oidcAuthorizationEndpoint"
+    },
+    {
+     "name": "oidcAuthorizationPkce"
+    },
+    {
+     "name": "oidcAuthorizationPrompt"
+    },
+    {
+     "name": "oidcClientId"
+    },
+    {
+     "name": "oidcClientSecret"
+    },
+    {
+     "name": "oidcCreateUser"
+    },
+    {
+     "name": "oidcFallback"
+    },
+    {
+     "name": "oidcGroupClaim"
+    },
+    {
+     "name": "oidcJwksEndpoint"
+    },
+    {
+     "name": "oidcJwtSignatureAlgorithmList"
+    },
+    {
+     "name": "oidcLogoutUrl"
+    },
+    {
+     "name": "oidcScopes"
+    },
+    {
+     "name": "oidcSync"
+    },
+    {
+     "name": "oidcSyncTeams"
+    },
+    {
+     "name": "oidcTeams"
+    },
+    {
+     "name": "oidcTokenEndpoint"
+    },
+    {
+     "name": "oidcUserInfoEndpoint"
+    },
+    {
+     "name": "oidcUsernameClaim"
+    },
+    {
+     "name": "outboundEmailBccAddress"
+    },
+    {
+     "name": "outboundEmailFromAddress"
+    },
+    {
+     "name": "outboundEmailFromName"
+    },
+    {
+     "name": "outboundEmailIsShared"
+    },
+    {
+     "name": "outboundSmsFromNumber"
+    },
+    {
+     "name": "passwordGenerateLength"
+    },
+    {
+     "name": "passwordRecoveryDisabled"
+    },
+    {
+     "name": "passwordRecoveryForAdminDisabled"
+    },
+    {
+     "name": "passwordRecoveryForInternalUsersDisabled"
+    },
+    {
+     "name": "passwordRecoveryNoExposure"
+    },
+    {
+     "name": "passwordStrengthBothCases"
+    },
+    {
+     "name": "passwordStrengthLength"
+    },
+    {
+     "name": "passwordStrengthLetterCount"
+    },
+    {
+     "name": "passwordStrengthNumberCount"
+    },
+    {
+     "name": "passwordStrengthSpecialCharacterCount"
+    },
+    {
+     "name": "pdfEngine"
+    },
+    {
+     "name": "personNameFormat"
+    },
+    {
+     "name": "personalEmailMaxPortionSize"
+    },
+    {
+     "name": "phoneNumberExtensions"
+    },
+    {
+     "name": "phoneNumberInternational"
+    },
+    {
+     "name": "phoneNumberNumericSearch"
+    },
+    {
+     "name": "phoneNumberPreferredCountryList"
+    },
+    {
+     "name": "portalStreamEmailNotifications"
+    },
+    {
+     "name": "postEmailNotifications"
+    },
+    {
+     "name": "quickCreateList"
+    },
+    {
+     "name": "quickSearchFullTextAppendWildcard"
+    },
+    {
+     "name": "readableDateFormatDisabled"
+    },
+    {
+     "name": "recordsPerPage"
+    },
+    {
+     "name": "recordsPerPageKanban"
+    },
+    {
+     "name": "recordsPerPageSelect"
+    },
+    {
+     "name": "recordsPerPageSmall"
+    },
+    {
+     "name": "scopeColorsDisabled"
+    },
+    {
+     "name": "siteUrl"
+    },
+    {
+     "name": "smsProvider"
+    },
+    {
+     "name": "smtpAuth"
+    },
+    {
+     "name": "smtpPassword"
+    },
+    {
+     "name": "smtpPort"
+    },
+    {
+     "name": "smtpSecurity"
+    },
+    {
+     "name": "smtpServer"
+    },
+    {
+     "name": "smtpUsername"
+    },
+    {
+     "name": "streamEmailNotifications"
+    },
+    {
+     "name": "streamEmailNotificationsEntityList"
+    },
+    {
+     "name": "streamEmailNotificationsTypeList"
+    },
+    {
+     "name": "streamEmailWithContentEntityTypeList"
+    },
+    {
+     "name": "tabColorsDisabled"
+    },
+    {
+     "name": "tabIconsDisabled"
+    },
+    {
+     "name": "tabList"
+    },
+    {
+     "name": "textFilterUseContainsForVarchar"
+    },
+    {
+     "name": "theme"
+    },
+    {
+     "name": "themeParams"
+    },
+    {
+     "name": "thousandSeparator"
+    },
+    {
+     "name": "timeFormat"
+    },
+    {
+     "name": "timeZone"
+    },
+    {
+     "name": "updateEmailNotifications"
+    },
+    {
+     "name": "useCache"
+    },
+    {
+     "name": "useWebSocket"
+    },
+    {
+     "name": "userThemesDisabled"
+    },
+    {
+     "name": "weekStart"
+    },
+    {
+     "name": "workingTimeCalendar"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Sms",
+   "columns": [
+    {
+     "name": "body"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "dateSent"
+    },
+    {
+     "name": "from"
+    },
+    {
+     "name": "fromName"
+    },
+    {
+     "name": "fromPhoneNumber"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "parent"
+    },
+    {
+     "name": "replied"
+    },
+    {
+     "name": "replies"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "teams"
+    },
+    {
+     "name": "to"
+    },
+    {
+     "name": "toPhoneNumbers"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "StarSubscription",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "entity"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "user"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "StreamSubscription",
+   "columns": [
+    {
+     "name": "entity"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "user"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "SystemData",
+   "columns": [
+    {
+     "name": "id"
+    },
+    {
+     "name": "lastPasswordRecoveryDate"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "SystemState",
+   "columns": [
+    {
+     "name": "id"
+    },
+    {
+     "name": "versionNumber"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Target",
+   "columns": [
+    {
+     "name": "accountName"
+    },
+    {
+     "name": "address"
+    },
+    {
+     "name": "addressCity"
+    },
+    {
+     "name": "addressCountry"
+    },
+    {
+     "name": "addressPostalCode"
+    },
+    {
+     "name": "addressState"
+    },
+    {
+     "name": "addressStreet"
+    },
+    {
+     "name": "assignedUser"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "doNotCall"
+    },
+    {
+     "name": "emailAddress"
+    },
+    {
+     "name": "firstName"
+    },
+    {
+     "name": "lastName"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "phoneNumber"
+    },
+    {
+     "name": "salutationName"
+    },
+    {
+     "name": "teams"
+    },
+    {
+     "name": "title"
+    },
+    {
+     "name": "website"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "TargetList",
+   "columns": [
+    {
+     "name": "assignedUser"
+    },
+    {
+     "name": "category"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "entryCount"
+    },
+    {
+     "name": "excludingActionList"
+    },
+    {
+     "name": "includingActionList"
+    },
+    {
+     "name": "isOptedOut"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "optedOutCount"
+    },
+    {
+     "name": "sourceCampaign"
+    },
+    {
+     "name": "targetStatus"
+    },
+    {
+     "name": "teams"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "TargetListCategory",
+   "columns": [
+    {
+     "name": "childList"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "order"
+    },
+    {
+     "name": "parent"
+    },
+    {
+     "name": "teams"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Task",
+   "columns": [
+    {
+     "name": "account"
+    },
+    {
+     "name": "assignedUser"
+    },
+    {
+     "name": "attachments"
+    },
+    {
+     "name": "collaborators"
+    },
+    {
+     "name": "contact"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "dateCompleted"
+    },
+    {
+     "name": "dateEnd"
+    },
+    {
+     "name": "dateEndDate"
+    },
+    {
+     "name": "dateStart"
+    },
+    {
+     "name": "dateStartDate"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "isOverdue"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "originalEmail"
+    },
+    {
+     "name": "parent"
+    },
+    {
+     "name": "priority"
+    },
+    {
+     "name": "reminders"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "teams"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Team",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "layoutSet"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "positionList"
+    },
+    {
+     "name": "roles"
+    },
+    {
+     "name": "userRole"
+    },
+    {
+     "name": "workingTimeCalendar"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Template",
+   "columns": [
+    {
+     "name": "body"
+    },
+    {
+     "name": "bottomMargin"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "entityType"
+    },
+    {
+     "name": "filename"
+    },
+    {
+     "name": "fontFace"
+    },
+    {
+     "name": "footer"
+    },
+    {
+     "name": "footerPosition"
+    },
+    {
+     "name": "header"
+    },
+    {
+     "name": "headerPosition"
+    },
+    {
+     "name": "leftMargin"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "pageFormat"
+    },
+    {
+     "name": "pageHeight"
+    },
+    {
+     "name": "pageOrientation"
+    },
+    {
+     "name": "pageWidth"
+    },
+    {
+     "name": "printFooter"
+    },
+    {
+     "name": "printHeader"
+    },
+    {
+     "name": "rightMargin"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "style"
+    },
+    {
+     "name": "teams"
+    },
+    {
+     "name": "title"
+    },
+    {
+     "name": "topMargin"
+    },
+    {
+     "name": "variables"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Test",
+   "columns": [
+    {
+     "name": "assignedUser"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "teams"
+    },
+    {
+     "name": "testAddress"
+    },
+    {
+     "name": "testArray"
+    },
+    {
+     "name": "testBoolean"
+    },
+    {
+     "name": "testCurrency"
+    },
+    {
+     "name": "testDate"
+    },
+    {
+     "name": "testDateTime"
+    },
+    {
+     "name": "testFile"
+    },
+    {
+     "name": "testFloat"
+    },
+    {
+     "name": "testInteger"
+    },
+    {
+     "name": "testText"
+    },
+    {
+     "name": "testVarchar"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "TwoFactorCode",
+   "columns": [
+    {
+     "name": "attemptsLeft"
+    },
+    {
+     "name": "code"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "isActive"
+    },
+    {
+     "name": "method"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "UniqueId",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "data"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "target"
+    },
+    {
+     "name": "terminateAt"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "User",
+   "columns": [
+    {
+     "name": "targetListIsOptedOut"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "UserData",
+   "columns": [
+    {
+     "name": "auth2FA"
+    },
+    {
+     "name": "auth2FAEmailAddress"
+    },
+    {
+     "name": "auth2FAMethod"
+    },
+    {
+     "name": "auth2FATotpSecret"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "UserReaction",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "parent"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "user"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "UserState",
+   "columns": [
+    {
+     "name": "emailFiltersVersionNumber"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "user"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "Webhook",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "entityType"
+    },
+    {
+     "name": "event"
+    },
+    {
+     "name": "field"
+    },
+    {
+     "name": "isActive"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "secretKey"
+    },
+    {
+     "name": "skipOwn"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "url"
+    },
+    {
+     "name": "user"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "WebhookEventQueueItem",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "data"
+    },
+    {
+     "name": "event"
+    },
+    {
+     "name": "isProcessed"
+    },
+    {
+     "name": "number"
+    },
+    {
+     "name": "target"
+    },
+    {
+     "name": "user"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "WebhookQueueItem",
+   "columns": [
+    {
+     "name": "attempts"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "data"
+    },
+    {
+     "name": "event"
+    },
+    {
+     "name": "number"
+    },
+    {
+     "name": "processAt"
+    },
+    {
+     "name": "processedAt"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "target"
+    },
+    {
+     "name": "webhook"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "WorkingTimeCalendar",
+   "columns": [
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "isDefault"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "teams"
+    },
+    {
+     "name": "timeRanges"
+    },
+    {
+     "name": "timeZone"
+    },
+    {
+     "name": "weekday0"
+    },
+    {
+     "name": "weekday0TimeRanges"
+    },
+    {
+     "name": "weekday1"
+    },
+    {
+     "name": "weekday1TimeRanges"
+    },
+    {
+     "name": "weekday2"
+    },
+    {
+     "name": "weekday2TimeRanges"
+    },
+    {
+     "name": "weekday3"
+    },
+    {
+     "name": "weekday3TimeRanges"
+    },
+    {
+     "name": "weekday4"
+    },
+    {
+     "name": "weekday4TimeRanges"
+    },
+    {
+     "name": "weekday5"
+    },
+    {
+     "name": "weekday5TimeRanges"
+    },
+    {
+     "name": "weekday6"
+    },
+    {
+     "name": "weekday6TimeRanges"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "WorkingTimeRange",
+   "columns": [
+    {
+     "name": "calendars"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "dateEnd"
+    },
+    {
+     "name": "dateStart"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "timeRanges"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "users"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  },
+  {
+   "name": "entityDefs",
+   "columns": [
+    {
+     "name": "assignedUser"
+    },
+    {
+     "name": "billingAddress"
+    },
+    {
+     "name": "billingAddressCity"
+    },
+    {
+     "name": "billingAddressCountry"
+    },
+    {
+     "name": "billingAddressPostalCode"
+    },
+    {
+     "name": "billingAddressState"
+    },
+    {
+     "name": "billingAddressStreet"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "createdBy"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "emailAddress"
+    },
+    {
+     "name": "modifiedAt"
+    },
+    {
+     "name": "modifiedBy"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "phoneNumber"
+    },
+    {
+     "name": "shippingAddress"
+    },
+    {
+     "name": "shippingAddressCity"
+    },
+    {
+     "name": "shippingAddressCountry"
+    },
+    {
+     "name": "shippingAddressPostalCode"
+    },
+    {
+     "name": "shippingAddressState"
+    },
+    {
+     "name": "shippingAddressStreet"
+    },
+    {
+     "name": "teams"
+    },
+    {
+     "name": "website"
+    }
+   ],
+   "provenance": {
+    "repo": "espocrm/espocrm",
+    "formats": [
+     "espo"
+    ]
+   }
+  }
+ ],
+ "tools": [],
+ "policies": [],
+ "tasks": [],
+ "refusals": [
+  {
+   "kind": "tools",
+   "what": "executable behaviour",
+   "why": "a schema states what is stored, not what can be done with it; tools must be authored against the world's own surface",
+   "count": 95
+  }
+ ]
+}

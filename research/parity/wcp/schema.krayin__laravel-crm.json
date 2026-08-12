@@ -1,0 +1,1717 @@
+{
+ "source": {
+  "repo": "krayin/laravel-crm",
+  "commit": "13d6988cda8d69ece45ee1890effc90a7f21cdc1",
+  "path": "research/repos/schema/krayin__laravel-crm",
+  "url": "https://github.com/krayin/laravel-crm",
+  "license": "MIT"
+ },
+ "adapter": {
+  "name": "schema",
+  "version": "1.0"
+ },
+ "fidelity": "reference",
+ "tables": [
+  {
+   "name": "activities",
+   "columns": [
+    {
+     "name": "additional"
+    },
+    {
+     "name": "comment"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "is_done"
+    },
+    {
+     "name": "schedule_from"
+    },
+    {
+     "name": "schedule_to"
+    },
+    {
+     "name": "title"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "activity_files",
+   "columns": [
+    {
+     "name": "activity_id"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "path"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "activity_participants",
+   "columns": [
+    {
+     "name": "activity_id"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "person_id"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "attribute_options",
+   "columns": [
+    {
+     "name": "attribute_id"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "sort_order"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "attribute_values",
+   "columns": [
+    {
+     "name": "attribute_id"
+    },
+    {
+     "name": "boolean_value"
+    },
+    {
+     "name": "date_value"
+    },
+    {
+     "name": "datetime_value"
+    },
+    {
+     "name": "entity_id"
+    },
+    {
+     "name": "entity_type"
+    },
+    {
+     "name": "float_value"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "integer_value"
+    },
+    {
+     "name": "json_value"
+    },
+    {
+     "name": "text_value"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "attributes",
+   "columns": [
+    {
+     "name": "code"
+    },
+    {
+     "name": "entity_type"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "is_required"
+    },
+    {
+     "name": "is_unique"
+    },
+    {
+     "name": "is_user_defined"
+    },
+    {
+     "name": "lookup_type"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "quick_add"
+    },
+    {
+     "name": "sort_order"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "validation"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "contact_export_batch_items",
+   "columns": [
+    {
+     "name": "batch_id"
+    },
+    {
+     "name": "error_message"
+    },
+    {
+     "name": "google_resource_name"
+    },
+    {
+     "name": "person_id"
+    },
+    {
+     "name": "status"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "contact_export_batches",
+   "columns": [
+    {
+     "name": "completed_at"
+    },
+    {
+     "name": "duplicate_count"
+    },
+    {
+     "name": "error_file_path"
+    },
+    {
+     "name": "exported_count"
+    },
+    {
+     "name": "failed_count"
+    },
+    {
+     "name": "started_at"
+    },
+    {
+     "name": "state"
+    },
+    {
+     "name": "total_count"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "core_config",
+   "columns": [
+    {
+     "name": "code"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "value"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "countries",
+   "columns": [
+    {
+     "name": "code"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "country_states",
+   "columns": [
+    {
+     "name": "code"
+    },
+    {
+     "name": "country_code"
+    },
+    {
+     "name": "country_id"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "datagrid_saved_filters",
+   "columns": [
+    {
+     "name": "applied"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "src"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "email_attachments",
+   "columns": [
+    {
+     "name": "content_id"
+    },
+    {
+     "name": "content_type"
+    },
+    {
+     "name": "email_id"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "path"
+    },
+    {
+     "name": "size"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "email_tags",
+   "columns": [
+    {
+     "name": "email_id"
+    },
+    {
+     "name": "tag_id"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "email_templates",
+   "columns": [
+    {
+     "name": "content"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "subject"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "emails",
+   "columns": [
+    {
+     "name": "bcc"
+    },
+    {
+     "name": "cc"
+    },
+    {
+     "name": "folders"
+    },
+    {
+     "name": "from"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "is_read"
+    },
+    {
+     "name": "lead_id"
+    },
+    {
+     "name": "message_id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "parent_id"
+    },
+    {
+     "name": "person_id"
+    },
+    {
+     "name": "reference_ids"
+    },
+    {
+     "name": "reply"
+    },
+    {
+     "name": "reply_to"
+    },
+    {
+     "name": "sender"
+    },
+    {
+     "name": "source"
+    },
+    {
+     "name": "subject"
+    },
+    {
+     "name": "unique_id"
+    },
+    {
+     "name": "user_type"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "failed_jobs",
+   "columns": [
+    {
+     "name": "connection"
+    },
+    {
+     "name": "exception"
+    },
+    {
+     "name": "failed_at"
+    },
+    {
+     "name": "payload"
+    },
+    {
+     "name": "queue"
+    },
+    {
+     "name": "uuid"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "google_contact_accounts",
+   "columns": [
+    {
+     "name": "access_token"
+    },
+    {
+     "name": "expires_at"
+    },
+    {
+     "name": "google_email"
+    },
+    {
+     "name": "refresh_token"
+    },
+    {
+     "name": "scopes"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "groups",
+   "columns": [
+    {
+     "name": "description"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "import_batches",
+   "columns": [
+    {
+     "name": "data"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "import_id"
+    },
+    {
+     "name": "state"
+    },
+    {
+     "name": "summary"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "imports",
+   "columns": [
+    {
+     "name": "action"
+    },
+    {
+     "name": "allowed_errors"
+    },
+    {
+     "name": "completed_at"
+    },
+    {
+     "name": "error_file_path"
+    },
+    {
+     "name": "errors"
+    },
+    {
+     "name": "errors_count"
+    },
+    {
+     "name": "field_separator"
+    },
+    {
+     "name": "file_path"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "invalid_rows_count"
+    },
+    {
+     "name": "process_in_queue"
+    },
+    {
+     "name": "processed_rows_count"
+    },
+    {
+     "name": "started_at"
+    },
+    {
+     "name": "state"
+    },
+    {
+     "name": "summary"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "validation_strategy"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "job_batches",
+   "columns": [
+    {
+     "name": "cancelled_at"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "failed_job_ids"
+    },
+    {
+     "name": "failed_jobs"
+    },
+    {
+     "name": "finished_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "options"
+    },
+    {
+     "name": "pending_jobs"
+    },
+    {
+     "name": "total_jobs"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "jobs",
+   "columns": [
+    {
+     "name": "attempts"
+    },
+    {
+     "name": "available_at"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "payload"
+    },
+    {
+     "name": "queue"
+    },
+    {
+     "name": "reserved_at"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "lead_activities",
+   "columns": [
+    {
+     "name": "activity_id"
+    },
+    {
+     "name": "lead_id"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "lead_pipeline_stages",
+   "columns": [
+    {
+     "name": "id"
+    },
+    {
+     "name": "lead_pipeline_id"
+    },
+    {
+     "name": "lead_stage_id"
+    },
+    {
+     "name": "probability"
+    },
+    {
+     "name": "sort_order"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "lead_pipelines",
+   "columns": [
+    {
+     "name": "id"
+    },
+    {
+     "name": "is_default"
+    },
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "lead_products",
+   "columns": [
+    {
+     "name": "amount"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "lead_id"
+    },
+    {
+     "name": "price"
+    },
+    {
+     "name": "product_id"
+    },
+    {
+     "name": "quantity"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "lead_quotes",
+   "columns": [
+    {
+     "name": "lead_id"
+    },
+    {
+     "name": "quote_id"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "lead_sources",
+   "columns": [
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "lead_stages",
+   "columns": [
+    {
+     "name": "code"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "is_user_defined"
+    },
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "lead_tags",
+   "columns": [
+    {
+     "name": "lead_id"
+    },
+    {
+     "name": "tag_id"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "lead_types",
+   "columns": [
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "leads",
+   "columns": [
+    {
+     "name": "closed_at"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "lead_pipeline_id"
+    },
+    {
+     "name": "lead_source_id"
+    },
+    {
+     "name": "lead_stage_id"
+    },
+    {
+     "name": "lead_type_id"
+    },
+    {
+     "name": "lead_value"
+    },
+    {
+     "name": "lost_reason"
+    },
+    {
+     "name": "person_id"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "title"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "marketing_campaigns",
+   "columns": [
+    {
+     "name": "id"
+    },
+    {
+     "name": "mail_to"
+    },
+    {
+     "name": "marketing_event_id"
+    },
+    {
+     "name": "marketing_template_id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "spooling"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "subject"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "marketing_events",
+   "columns": [
+    {
+     "name": "date"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "organizations",
+   "columns": [
+    {
+     "name": "address"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "person_activities",
+   "columns": [
+    {
+     "name": "activity_id"
+    },
+    {
+     "name": "person_id"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "person_tags",
+   "columns": [
+    {
+     "name": "person_id"
+    },
+    {
+     "name": "tag_id"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "personal_access_tokens",
+   "columns": [
+    {
+     "name": "abilities"
+    },
+    {
+     "name": "expires_at"
+    },
+    {
+     "name": "last_used_at"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "token"
+    },
+    {
+     "name": "tokenable"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "persons",
+   "columns": [
+    {
+     "name": "contact_numbers"
+    },
+    {
+     "name": "emails"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "organization_id"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "product_activities",
+   "columns": [
+    {
+     "name": "activity_id"
+    },
+    {
+     "name": "product_id"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "product_inventories",
+   "columns": [
+    {
+     "name": "allocated"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "in_stock"
+    },
+    {
+     "name": "product_id"
+    },
+    {
+     "name": "warehouse_id"
+    },
+    {
+     "name": "warehouse_location_id"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "product_tags",
+   "columns": [
+    {
+     "name": "product_id"
+    },
+    {
+     "name": "tag_id"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "products",
+   "columns": [
+    {
+     "name": "description"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "price"
+    },
+    {
+     "name": "quantity"
+    },
+    {
+     "name": "sku"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "quote_items",
+   "columns": [
+    {
+     "name": "coupon_code"
+    },
+    {
+     "name": "discount_amount"
+    },
+    {
+     "name": "discount_percent"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "price"
+    },
+    {
+     "name": "product_id"
+    },
+    {
+     "name": "quantity"
+    },
+    {
+     "name": "quote_id"
+    },
+    {
+     "name": "sku"
+    },
+    {
+     "name": "tax_amount"
+    },
+    {
+     "name": "tax_percent"
+    },
+    {
+     "name": "total"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "quotes",
+   "columns": [
+    {
+     "name": "adjustment_amount"
+    },
+    {
+     "name": "billing_address"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "discount_amount"
+    },
+    {
+     "name": "discount_percent"
+    },
+    {
+     "name": "expired_at"
+    },
+    {
+     "name": "grand_total"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "person_id"
+    },
+    {
+     "name": "shipping_address"
+    },
+    {
+     "name": "sub_total"
+    },
+    {
+     "name": "subject"
+    },
+    {
+     "name": "tax_amount"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "roles",
+   "columns": [
+    {
+     "name": "description"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "permission_type"
+    },
+    {
+     "name": "permissions"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "tags",
+   "columns": [
+    {
+     "name": "color"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "user_groups",
+   "columns": [
+    {
+     "name": "group_id"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "user_password_resets",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "email"
+    },
+    {
+     "name": "token"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "users",
+   "columns": [
+    {
+     "name": "email"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "password"
+    },
+    {
+     "name": "role_id"
+    },
+    {
+     "name": "status"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "warehouse_activities",
+   "columns": [
+    {
+     "name": "activity_id"
+    },
+    {
+     "name": "warehouse_id"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "warehouse_locations",
+   "columns": [
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "warehouse_id"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "warehouse_tags",
+   "columns": [
+    {
+     "name": "tag_id"
+    },
+    {
+     "name": "warehouse_id"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "warehouses",
+   "columns": [
+    {
+     "name": "contact_address"
+    },
+    {
+     "name": "contact_emails"
+    },
+    {
+     "name": "contact_name"
+    },
+    {
+     "name": "contact_numbers"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "web_form_attributes",
+   "columns": [
+    {
+     "name": "attribute_id"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "is_hidden"
+    },
+    {
+     "name": "is_required"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "placeholder"
+    },
+    {
+     "name": "sort_order"
+    },
+    {
+     "name": "web_form_id"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "web_forms",
+   "columns": [
+    {
+     "name": "attribute_label_color"
+    },
+    {
+     "name": "background_color"
+    },
+    {
+     "name": "create_lead"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "form_background_color"
+    },
+    {
+     "name": "form_id"
+    },
+    {
+     "name": "form_submit_button_color"
+    },
+    {
+     "name": "form_title_color"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "submit_button_label"
+    },
+    {
+     "name": "submit_success_action"
+    },
+    {
+     "name": "submit_success_content"
+    },
+    {
+     "name": "title"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "webhooks",
+   "columns": [
+    {
+     "name": "description"
+    },
+    {
+     "name": "end_point"
+    },
+    {
+     "name": "entity_type"
+    },
+    {
+     "name": "headers"
+    },
+    {
+     "name": "method"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "payload"
+    },
+    {
+     "name": "payload_type"
+    },
+    {
+     "name": "query_params"
+    },
+    {
+     "name": "raw_payload_type"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "workflows",
+   "columns": [
+    {
+     "name": "actions"
+    },
+    {
+     "name": "condition_type"
+    },
+    {
+     "name": "conditions"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "entity_type"
+    },
+    {
+     "name": "event"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "krayin/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  }
+ ],
+ "tools": [],
+ "policies": [],
+ "tasks": [],
+ "refusals": [
+  {
+   "kind": "tools",
+   "what": "executable behaviour",
+   "why": "a schema states what is stored, not what can be done with it; tools must be authored against the world's own surface",
+   "count": 59
+  }
+ ]
+}

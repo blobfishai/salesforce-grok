@@ -1,0 +1,346 @@
+{
+ "source": {
+  "repo": "MattJerson/Smart-CRM-Lead-Intelligence",
+  "commit": "6a9702ada304972b917ee60ad82ba19d4e35908f",
+  "path": "research/repos/schema/MattJerson__Smart-CRM-Lead-Intelligence",
+  "url": "https://github.com/MattJerson/Smart-CRM-Lead-Intelligence",
+  "license": "UNKNOWN"
+ },
+ "adapter": {
+  "name": "schema",
+  "version": "1.0"
+ },
+ "fidelity": "reference",
+ "tables": [
+  {
+   "name": "campaigns",
+   "columns": [
+    {
+     "name": "campaign_budget"
+    },
+    {
+     "name": "campaign_id"
+    },
+    {
+     "name": "campaign_name"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "end_date"
+    },
+    {
+     "name": "source_channel"
+    },
+    {
+     "name": "start_date"
+    }
+   ],
+   "provenance": {
+    "repo": "MattJerson/Smart-CRM-Lead-Intelligence",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "follow_ups",
+   "columns": [
+    {
+     "name": "completed_at"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "due_date"
+    },
+    {
+     "name": "follow_up_id"
+    },
+    {
+     "name": "follow_up_type"
+    },
+    {
+     "name": "lead_id"
+    },
+    {
+     "name": "notes"
+    },
+    {
+     "name": "sales_rep_id"
+    },
+    {
+     "name": "status"
+    }
+   ],
+   "provenance": {
+    "repo": "MattJerson/Smart-CRM-Lead-Intelligence",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "lead_scores",
+   "columns": [
+    {
+     "name": "budget_score"
+    },
+    {
+     "name": "completeness_score"
+    },
+    {
+     "name": "conversion_likelihood"
+    },
+    {
+     "name": "engagement_score"
+    },
+    {
+     "name": "lead_id"
+    },
+    {
+     "name": "lead_quality"
+    },
+    {
+     "name": "lead_score_id"
+    },
+    {
+     "name": "scored_at"
+    },
+    {
+     "name": "scoring_notes"
+    },
+    {
+     "name": "source_score"
+    },
+    {
+     "name": "total_score"
+    },
+    {
+     "name": "urgency_score"
+    }
+   ],
+   "provenance": {
+    "repo": "MattJerson/Smart-CRM-Lead-Intelligence",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "leads",
+   "columns": [
+    {
+     "name": "assigned_sales_rep_id"
+    },
+    {
+     "name": "budget_range"
+    },
+    {
+     "name": "campaign_id"
+    },
+    {
+     "name": "company"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "email"
+    },
+    {
+     "name": "first_name"
+    },
+    {
+     "name": "inquiry_details"
+    },
+    {
+     "name": "last_name"
+    },
+    {
+     "name": "lead_id"
+    },
+    {
+     "name": "lead_status"
+    },
+    {
+     "name": "location"
+    },
+    {
+     "name": "phone"
+    },
+    {
+     "name": "service_category"
+    },
+    {
+     "name": "source_channel"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "urgency_level"
+    }
+   ],
+   "provenance": {
+    "repo": "MattJerson/Smart-CRM-Lead-Intelligence",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "opportunities",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "estimated_value"
+    },
+    {
+     "name": "expected_close_date"
+    },
+    {
+     "name": "is_closed"
+    },
+    {
+     "name": "is_won"
+    },
+    {
+     "name": "lead_id"
+    },
+    {
+     "name": "opportunity_id"
+    },
+    {
+     "name": "opportunity_name"
+    },
+    {
+     "name": "probability"
+    },
+    {
+     "name": "stage"
+    }
+   ],
+   "provenance": {
+    "repo": "MattJerson/Smart-CRM-Lead-Intelligence",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "routing_logs",
+   "columns": [
+    {
+     "name": "assigned_sales_rep_id"
+    },
+    {
+     "name": "lead_id"
+    },
+    {
+     "name": "responded_at"
+    },
+    {
+     "name": "response_status"
+    },
+    {
+     "name": "routed_at"
+    },
+    {
+     "name": "routing_log_id"
+    },
+    {
+     "name": "routing_priority"
+    },
+    {
+     "name": "routing_reason"
+    }
+   ],
+   "provenance": {
+    "repo": "MattJerson/Smart-CRM-Lead-Intelligence",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "sales_reps",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "email"
+    },
+    {
+     "name": "full_name"
+    },
+    {
+     "name": "is_active"
+    },
+    {
+     "name": "region"
+    },
+    {
+     "name": "sales_rep_id"
+    },
+    {
+     "name": "specialization"
+    }
+   ],
+   "provenance": {
+    "repo": "MattJerson/Smart-CRM-Lead-Intelligence",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "salesforce_sync_logs",
+   "columns": [
+    {
+     "name": "lead_id"
+    },
+    {
+     "name": "salesforce_object_type"
+    },
+    {
+     "name": "salesforce_record_id"
+    },
+    {
+     "name": "sync_id"
+    },
+    {
+     "name": "sync_message"
+    },
+    {
+     "name": "sync_status"
+    },
+    {
+     "name": "synced_at"
+    }
+   ],
+   "provenance": {
+    "repo": "MattJerson/Smart-CRM-Lead-Intelligence",
+    "formats": [
+     "sql"
+    ]
+   }
+  }
+ ],
+ "tools": [],
+ "policies": [],
+ "tasks": [],
+ "refusals": [
+  {
+   "kind": "tools",
+   "what": "executable behaviour",
+   "why": "a schema states what is stored, not what can be done with it; tools must be authored against the world's own surface",
+   "count": 8
+  }
+ ]
+}

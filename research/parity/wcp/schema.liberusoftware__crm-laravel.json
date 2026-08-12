@@ -1,0 +1,2334 @@
+{
+ "source": {
+  "repo": "liberusoftware/crm-laravel",
+  "commit": "b105608c4d14ef836788f5a6d8c7f71f58173269",
+  "path": "research/repos/schema/liberusoftware__crm-laravel",
+  "url": "https://github.com/liberusoftware/crm-laravel",
+  "license": "UNKNOWN"
+ },
+ "adapter": {
+  "name": "schema",
+  "version": "1.0"
+ },
+ "fidelity": "reference",
+ "tables": [
+  {
+   "name": "accounting_integrations",
+   "columns": [
+    {
+     "name": "connection_details"
+    },
+    {
+     "name": "last_synced"
+    },
+    {
+     "name": "platform"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "activations",
+   "columns": [
+    {
+     "name": "ip_address"
+    },
+    {
+     "name": "token"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "activities",
+   "columns": [
+    {
+     "name": "activitable"
+    },
+    {
+     "name": "date"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "outcome"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "ad_sets",
+   "columns": [
+    {
+     "name": "advertising_account_id"
+    },
+    {
+     "name": "budget"
+    },
+    {
+     "name": "budget_type"
+    },
+    {
+     "name": "campaign_id"
+    },
+    {
+     "name": "external_id"
+    },
+    {
+     "name": "metadata"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "targeting"
+    },
+    {
+     "name": "team_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "ads",
+   "columns": [
+    {
+     "name": "ad_set_id"
+    },
+    {
+     "name": "advertising_account_id"
+    },
+    {
+     "name": "campaign_id"
+    },
+    {
+     "name": "creative_url"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "destination_url"
+    },
+    {
+     "name": "external_id"
+    },
+    {
+     "name": "headline"
+    },
+    {
+     "name": "metadata"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "team_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "advertising_accounts",
+   "columns": [
+    {
+     "name": "access_token"
+    },
+    {
+     "name": "account_id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "platform"
+    },
+    {
+     "name": "refresh_token"
+    },
+    {
+     "name": "status"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "audit_logs",
+   "columns": [
+    {
+     "name": "action"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "ip_address"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "call_logs",
+   "columns": [
+    {
+     "name": "call_sid"
+    },
+    {
+     "name": "contact_id"
+    },
+    {
+     "name": "direction"
+    },
+    {
+     "name": "duration"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "team_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "call_settings",
+   "columns": [
+    {
+     "name": "description"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "value"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "campaign_recipients",
+   "columns": [
+    {
+     "name": "email"
+    },
+    {
+     "name": "marketing_campaign_id"
+    },
+    {
+     "name": "phone"
+    },
+    {
+     "name": "recipient_id"
+    },
+    {
+     "name": "recipient_type"
+    },
+    {
+     "name": "status"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "campaigns",
+   "columns": [
+    {
+     "name": "advertising_account_id"
+    },
+    {
+     "name": "budget"
+    },
+    {
+     "name": "budget_type"
+    },
+    {
+     "name": "end_date"
+    },
+    {
+     "name": "external_id"
+    },
+    {
+     "name": "metadata"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "objective"
+    },
+    {
+     "name": "start_date"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "team_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "chat_messages",
+   "columns": [
+    {
+     "name": "chat_id"
+    },
+    {
+     "name": "content"
+    },
+    {
+     "name": "sender"
+    },
+    {
+     "name": "sender_id"
+    },
+    {
+     "name": "team_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "chatbot_interactions",
+   "columns": [
+    {
+     "name": "chatbot_id"
+    },
+    {
+     "name": "completed"
+    },
+    {
+     "name": "contact_id"
+    },
+    {
+     "name": "conversation"
+    },
+    {
+     "name": "converted_to_lead"
+    },
+    {
+     "name": "current_step"
+    },
+    {
+     "name": "metadata"
+    },
+    {
+     "name": "visitor_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "chatbots",
+   "columns": [
+    {
+     "name": "description"
+    },
+    {
+     "name": "fallback_message"
+    },
+    {
+     "name": "flow"
+    },
+    {
+     "name": "integrations"
+    },
+    {
+     "name": "is_active"
+    },
+    {
+     "name": "metadata"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "trigger_rules"
+    },
+    {
+     "name": "welcome_message"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "companies",
+   "columns": [
+    {
+     "name": "address"
+    },
+    {
+     "name": "city"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "industry"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "phone_number"
+    },
+    {
+     "name": "state"
+    },
+    {
+     "name": "website"
+    },
+    {
+     "name": "zip"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "connected_accounts",
+   "columns": [
+    {
+     "name": "avatar_path"
+    },
+    {
+     "name": "email"
+    },
+    {
+     "name": "expires_at"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "nickname"
+    },
+    {
+     "name": "provider"
+    },
+    {
+     "name": "provider_id"
+    },
+    {
+     "name": "refresh_token"
+    },
+    {
+     "name": "secret"
+    },
+    {
+     "name": "telephone"
+    },
+    {
+     "name": "token"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "contacts",
+   "columns": [
+    {
+     "name": "email"
+    },
+    {
+     "name": "last_name"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "phone_number"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "custom_fields",
+   "columns": [
+    {
+     "name": "model_type"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "team_id"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "dashboard_widgets",
+   "columns": [
+    {
+     "name": "position"
+    },
+    {
+     "name": "settings"
+    },
+    {
+     "name": "user_id"
+    },
+    {
+     "name": "widget_type"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "deals",
+   "columns": [
+    {
+     "name": "close_date"
+    },
+    {
+     "name": "contact_id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "pipeline_id"
+    },
+    {
+     "name": "probability"
+    },
+    {
+     "name": "stage"
+    },
+    {
+     "name": "stage_id"
+    },
+    {
+     "name": "user_id"
+    },
+    {
+     "name": "value"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "documents",
+   "columns": [
+    {
+     "name": "documentable"
+    },
+    {
+     "name": "file_path"
+    },
+    {
+     "name": "version"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "email_link_clicks",
+   "columns": [
+    {
+     "name": "clicked_at"
+    },
+    {
+     "name": "email_tracking_id"
+    },
+    {
+     "name": "ip_address"
+    },
+    {
+     "name": "metadata"
+    },
+    {
+     "name": "url"
+    },
+    {
+     "name": "user_agent"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "email_templates",
+   "columns": [
+    {
+     "name": "body"
+    },
+    {
+     "name": "category"
+    },
+    {
+     "name": "created_by"
+    },
+    {
+     "name": "html_body"
+    },
+    {
+     "name": "is_active"
+    },
+    {
+     "name": "metadata"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "subject"
+    },
+    {
+     "name": "variables"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "email_trackings",
+   "columns": [
+    {
+     "name": "bounce_reason"
+    },
+    {
+     "name": "bounce_type"
+    },
+    {
+     "name": "bounced_at"
+    },
+    {
+     "name": "click_count"
+    },
+    {
+     "name": "clicked_at"
+    },
+    {
+     "name": "contact_id"
+    },
+    {
+     "name": "email_id"
+    },
+    {
+     "name": "first_clicked_at"
+    },
+    {
+     "name": "first_opened_at"
+    },
+    {
+     "name": "ip_address"
+    },
+    {
+     "name": "last_clicked_at"
+    },
+    {
+     "name": "last_opened_at"
+    },
+    {
+     "name": "metadata"
+    },
+    {
+     "name": "open_count"
+    },
+    {
+     "name": "opened_at"
+    },
+    {
+     "name": "sent_at"
+    },
+    {
+     "name": "spam_reported_at"
+    },
+    {
+     "name": "subject"
+    },
+    {
+     "name": "tracking_id"
+    },
+    {
+     "name": "unsubscribed_at"
+    },
+    {
+     "name": "user_agent"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "emails",
+   "columns": [
+    {
+     "name": "content"
+    },
+    {
+     "name": "is_sent"
+    },
+    {
+     "name": "message_id"
+    },
+    {
+     "name": "recipient"
+    },
+    {
+     "name": "sender"
+    },
+    {
+     "name": "subject"
+    },
+    {
+     "name": "timestamp"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "exports",
+   "columns": [
+    {
+     "name": "completed_at"
+    },
+    {
+     "name": "exporter"
+    },
+    {
+     "name": "file_disk"
+    },
+    {
+     "name": "file_name"
+    },
+    {
+     "name": "processed_rows"
+    },
+    {
+     "name": "successful_rows"
+    },
+    {
+     "name": "total_rows"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "facebook_messenger_messages",
+   "columns": [
+    {
+     "name": "is_read"
+    },
+    {
+     "name": "message"
+    },
+    {
+     "name": "message_id"
+    },
+    {
+     "name": "sender_id"
+    },
+    {
+     "name": "sender_name"
+    },
+    {
+     "name": "sent_at"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "failed_jobs",
+   "columns": [
+    {
+     "name": "connection"
+    },
+    {
+     "name": "exception"
+    },
+    {
+     "name": "failed_at"
+    },
+    {
+     "name": "payload"
+    },
+    {
+     "name": "queue"
+    },
+    {
+     "name": "uuid"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "form_builders",
+   "columns": [
+    {
+     "name": "description"
+    },
+    {
+     "name": "fields"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "team_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "kb_article_votes",
+   "columns": [
+    {
+     "name": "knowledge_base_article_id"
+    },
+    {
+     "name": "user_id"
+    },
+    {
+     "name": "vote"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "knowledge_base_articles",
+   "columns": [
+    {
+     "name": "category"
+    },
+    {
+     "name": "content"
+    },
+    {
+     "name": "title"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "landing_pages",
+   "columns": [
+    {
+     "name": "content"
+    },
+    {
+     "name": "metadata"
+    },
+    {
+     "name": "published_at"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "title"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "lead_forms",
+   "columns": [
+    {
+     "name": "fields"
+    },
+    {
+     "name": "landing_page_id"
+    },
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "leads",
+   "columns": [
+    {
+     "name": "contact_id"
+    },
+    {
+     "name": "custom_fields"
+    },
+    {
+     "name": "expected_close_date"
+    },
+    {
+     "name": "lifecycle_stage"
+    },
+    {
+     "name": "potential_value"
+    },
+    {
+     "name": "score"
+    },
+    {
+     "name": "source"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "live_chats",
+   "columns": [
+    {
+     "name": "contact_id"
+    },
+    {
+     "name": "ended_at"
+    },
+    {
+     "name": "feedback"
+    },
+    {
+     "name": "metadata"
+    },
+    {
+     "name": "page_url"
+    },
+    {
+     "name": "rating"
+    },
+    {
+     "name": "referrer"
+    },
+    {
+     "name": "started_at"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "user_id"
+    },
+    {
+     "name": "visitor_email"
+    },
+    {
+     "name": "visitor_id"
+    },
+    {
+     "name": "visitor_ip"
+    },
+    {
+     "name": "visitor_location"
+    },
+    {
+     "name": "visitor_name"
+    },
+    {
+     "name": "visitor_user_agent"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "mailchimp_campaigns",
+   "columns": [
+    {
+     "name": "mailchimp_id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "subject_line"
+    },
+    {
+     "name": "subject_line_a"
+    },
+    {
+     "name": "subject_line_b"
+    },
+    {
+     "name": "team_id"
+    },
+    {
+     "name": "test_size"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "winner_criteria"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "marketing_campaigns",
+   "columns": [
+    {
+     "name": "content"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "scheduled_at"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "subject"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "menus",
+   "columns": [
+    {
+     "name": "name"
+    },
+    {
+     "name": "order"
+    },
+    {
+     "name": "parent_id"
+    },
+    {
+     "name": "url"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "messages",
+   "columns": [
+    {
+     "name": "account_id"
+    },
+    {
+     "name": "channel"
+    },
+    {
+     "name": "content"
+    },
+    {
+     "name": "metadata"
+    },
+    {
+     "name": "priority"
+    },
+    {
+     "name": "sender"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "thread_id"
+    },
+    {
+     "name": "timestamp"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "modules",
+   "columns": [
+    {
+     "name": "installed_at"
+    },
+    {
+     "name": "is_enabled"
+    },
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "notes",
+   "columns": [
+    {
+     "name": "company_id"
+    },
+    {
+     "name": "contact_id"
+    },
+    {
+     "name": "content"
+    },
+    {
+     "name": "opportunity_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "notifications",
+   "columns": [
+    {
+     "name": "data"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "notifiable"
+    },
+    {
+     "name": "read_at"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "oauth_configurations",
+   "columns": [
+    {
+     "name": "additional_settings"
+    },
+    {
+     "name": "client_id"
+    },
+    {
+     "name": "client_secret"
+    },
+    {
+     "name": "service_name"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "opportunities",
+   "columns": [
+    {
+     "name": "closing_date"
+    },
+    {
+     "name": "deal_size"
+    },
+    {
+     "name": "opportunity_id"
+    },
+    {
+     "name": "stage"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "password_reset_tokens",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "email"
+    },
+    {
+     "name": "token"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "personal_access_tokens",
+   "columns": [
+    {
+     "name": "abilities"
+    },
+    {
+     "name": "expires_at"
+    },
+    {
+     "name": "last_used_at"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "token"
+    },
+    {
+     "name": "tokenable"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "pipelines",
+   "columns": [
+    {
+     "name": "description"
+    },
+    {
+     "name": "is_active"
+    },
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "quote_requests",
+   "columns": [
+    {
+     "name": "email"
+    },
+    {
+     "name": "message"
+    },
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "reminder_settings",
+   "columns": [
+    {
+     "name": "days_before_reminder"
+    },
+    {
+     "name": "is_active"
+    },
+    {
+     "name": "max_reminders"
+    },
+    {
+     "name": "reminder_frequency_days"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "report_builders",
+   "columns": [
+    {
+     "name": "aggregations"
+    },
+    {
+     "name": "chart_type"
+    },
+    {
+     "name": "columns"
+    },
+    {
+     "name": "created_by"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "entity_type"
+    },
+    {
+     "name": "filters"
+    },
+    {
+     "name": "group_by"
+    },
+    {
+     "name": "is_public"
+    },
+    {
+     "name": "is_scheduled"
+    },
+    {
+     "name": "metadata"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "schedule_frequency"
+    },
+    {
+     "name": "schedule_recipients"
+    },
+    {
+     "name": "sort_by"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "sales_forecasts",
+   "columns": [
+    {
+     "name": "actual_revenue"
+    },
+    {
+     "name": "confidence_level"
+    },
+    {
+     "name": "deal_count"
+    },
+    {
+     "name": "forecast_type"
+    },
+    {
+     "name": "metadata"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "period_end"
+    },
+    {
+     "name": "period_start"
+    },
+    {
+     "name": "pipeline_id"
+    },
+    {
+     "name": "predicted_revenue"
+    },
+    {
+     "name": "team_id"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "saml_connections",
+   "columns": [
+    {
+     "name": "enabled"
+    },
+    {
+     "name": "idp_entity_id"
+    },
+    {
+     "name": "idp_sso_url"
+    },
+    {
+     "name": "idp_x509_cert"
+    },
+    {
+     "name": "team_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "sessions",
+   "columns": [
+    {
+     "name": "id"
+    },
+    {
+     "name": "ip_address"
+    },
+    {
+     "name": "last_activity"
+    },
+    {
+     "name": "payload"
+    },
+    {
+     "name": "user_agent"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "settings",
+   "columns": [
+    {
+     "name": "group"
+    },
+    {
+     "name": "locked"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "payload"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "social_media_posts",
+   "columns": [
+    {
+     "name": "clicks"
+    },
+    {
+     "name": "comments"
+    },
+    {
+     "name": "content"
+    },
+    {
+     "name": "impressions"
+    },
+    {
+     "name": "likes"
+    },
+    {
+     "name": "platforms"
+    },
+    {
+     "name": "reach"
+    },
+    {
+     "name": "scheduled_at"
+    },
+    {
+     "name": "shares"
+    },
+    {
+     "name": "status"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "sso_connections",
+   "columns": [
+    {
+     "name": "client_id"
+    },
+    {
+     "name": "client_secret"
+    },
+    {
+     "name": "enabled"
+    },
+    {
+     "name": "issuer_url"
+    },
+    {
+     "name": "provider"
+    },
+    {
+     "name": "team_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "stages",
+   "columns": [
+    {
+     "name": "name"
+    },
+    {
+     "name": "order"
+    },
+    {
+     "name": "pipeline_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "taggables",
+   "columns": [
+    {
+     "name": "tag_id"
+    },
+    {
+     "name": "taggable_id"
+    },
+    {
+     "name": "taggable_type"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "tags",
+   "columns": [
+    {
+     "name": "name"
+    },
+    {
+     "name": "team_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "tasks",
+   "columns": [
+    {
+     "name": "assigned_to"
+    },
+    {
+     "name": "calendar_type"
+    },
+    {
+     "name": "company_id"
+    },
+    {
+     "name": "contact_id"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "due_date"
+    },
+    {
+     "name": "google_event_id"
+    },
+    {
+     "name": "lead_id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "opportunity_id"
+    },
+    {
+     "name": "outlook_event_id"
+    },
+    {
+     "name": "reminder_date"
+    },
+    {
+     "name": "reminder_sent"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "team_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "team_backups",
+   "columns": [
+    {
+     "name": "created_by"
+    },
+    {
+     "name": "disk"
+    },
+    {
+     "name": "error"
+    },
+    {
+     "name": "path"
+    },
+    {
+     "name": "size_bytes"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "team_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "team_invitations",
+   "columns": [
+    {
+     "name": "email"
+    },
+    {
+     "name": "role"
+    },
+    {
+     "name": "team_id"
+    },
+    {
+     "name": "token"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "team_subscriptions",
+   "columns": [
+    {
+     "name": "ends_at"
+    },
+    {
+     "name": "quantity"
+    },
+    {
+     "name": "stripe_id"
+    },
+    {
+     "name": "stripe_price"
+    },
+    {
+     "name": "stripe_status"
+    },
+    {
+     "name": "team_id"
+    },
+    {
+     "name": "trial_ends_at"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "team_user",
+   "columns": [
+    {
+     "name": "role"
+    },
+    {
+     "name": "team_id"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "teams",
+   "columns": [
+    {
+     "name": "name"
+    },
+    {
+     "name": "personal_team"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "tenants",
+   "columns": [
+    {
+     "name": "data"
+    },
+    {
+     "name": "id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "territories",
+   "columns": [
+    {
+     "name": "name"
+    },
+    {
+     "name": "team_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "territory_user",
+   "columns": [
+    {
+     "name": "territory_id"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "tickets",
+   "columns": [
+    {
+     "name": "body"
+    },
+    {
+     "name": "email_id"
+    },
+    {
+     "name": "priority"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "subject"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "users",
+   "columns": [
+    {
+     "name": "current_team_id"
+    },
+    {
+     "name": "email"
+    },
+    {
+     "name": "email_verified_at"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "password"
+    },
+    {
+     "name": "profile_photo_path"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "webhook_deliveries",
+   "columns": [
+    {
+     "name": "error"
+    },
+    {
+     "name": "event"
+    },
+    {
+     "name": "status_code"
+    },
+    {
+     "name": "success"
+    },
+    {
+     "name": "team_id"
+    },
+    {
+     "name": "webhook_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "webhooks",
+   "columns": [
+    {
+     "name": "events"
+    },
+    {
+     "name": "failure_count"
+    },
+    {
+     "name": "is_active"
+    },
+    {
+     "name": "last_triggered_at"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "secret"
+    },
+    {
+     "name": "team_id"
+    },
+    {
+     "name": "url"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "whats_app_numbers",
+   "columns": [
+    {
+     "name": "display_name"
+    },
+    {
+     "name": "is_active"
+    },
+    {
+     "name": "number"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "workflow_actions",
+   "columns": [
+    {
+     "name": "config"
+    },
+    {
+     "name": "delay_amount"
+    },
+    {
+     "name": "delay_unit"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "is_active"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "order"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "workflow_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "workflow_conditions",
+   "columns": [
+    {
+     "name": "field"
+    },
+    {
+     "name": "logical_operator"
+    },
+    {
+     "name": "operator"
+    },
+    {
+     "name": "value"
+    },
+    {
+     "name": "workflow_action_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "workflow_executions",
+   "columns": [
+    {
+     "name": "completed_at"
+    },
+    {
+     "name": "entity_id"
+    },
+    {
+     "name": "entity_type"
+    },
+    {
+     "name": "error_message"
+    },
+    {
+     "name": "failed_at"
+    },
+    {
+     "name": "metadata"
+    },
+    {
+     "name": "started_at"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "workflow_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "workflow_triggers",
+   "columns": [
+    {
+     "name": "config"
+    },
+    {
+     "name": "is_active"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "workflow_id"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "workflows",
+   "columns": [
+    {
+     "name": "actions"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "triggers"
+    }
+   ],
+   "provenance": {
+    "repo": "liberusoftware/crm-laravel",
+    "formats": [
+     "laravel"
+    ]
+   }
+  }
+ ],
+ "tools": [],
+ "policies": [],
+ "tasks": [],
+ "refusals": [
+  {
+   "kind": "tools",
+   "what": "executable behaviour",
+   "why": "a schema states what is stored, not what can be done with it; tools must be authored against the world's own surface",
+   "count": 78
+  }
+ ]
+}

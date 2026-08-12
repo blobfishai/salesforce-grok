@@ -1,0 +1,53 @@
+{
+ "source": {
+  "repo": "AymaanPathan/Zindle.Ai",
+  "commit": "1257e586c5ac7518e937b12100298bcb5f497290",
+  "path": "research/repos/schema/AymaanPathan__Zindle.Ai",
+  "url": "https://github.com/AymaanPathan/Zindle.Ai",
+  "license": "UNKNOWN"
+ },
+ "adapter": {
+  "name": "schema",
+  "version": "1.0"
+ },
+ "fidelity": "reference",
+ "tables": [
+  {
+   "name": "email_events",
+   "columns": [
+    {
+     "name": "created"
+    },
+    {
+     "name": "email"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "raw"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "AymaanPathan/Zindle.Ai",
+    "formats": [
+     "sql"
+    ]
+   }
+  }
+ ],
+ "tools": [],
+ "policies": [],
+ "tasks": [],
+ "refusals": [
+  {
+   "kind": "tools",
+   "what": "executable behaviour",
+   "why": "a schema states what is stored, not what can be done with it; tools must be authored against the world's own surface",
+   "count": 1
+  }
+ ]
+}

@@ -1,0 +1,2186 @@
+{
+ "source": {
+  "repo": "getbeton/inspector",
+  "commit": "ec503e1eb380c923253f88cc92d55457da172ed2",
+  "path": "research/repos/schema/getbeton__inspector",
+  "url": "https://github.com/getbeton/inspector",
+  "license": "GPL"
+ },
+ "adapter": {
+  "name": "schema",
+  "version": "1.0"
+ },
+ "fidelity": "reference",
+ "tables": [
+  {
+   "name": "account_clusters",
+   "columns": [
+    {
+     "name": "account_id"
+    },
+    {
+     "name": "cluster_id"
+    },
+    {
+     "name": "cluster_label"
+    },
+    {
+     "name": "confidence_score"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "features"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "account_users",
+   "columns": [
+    {
+     "name": "account_id"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "email"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "role"
+    },
+    {
+     "name": "title"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "accounts",
+   "columns": [
+    {
+     "name": "arr"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "domain"
+    },
+    {
+     "name": "fit_score"
+    },
+    {
+     "name": "health_score"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "last_activity_at"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "plan"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "agent_fetch_cache",
+   "columns": [
+    {
+     "name": "content"
+    },
+    {
+     "name": "content_size_bytes"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "operation"
+    },
+    {
+     "name": "session_id"
+    },
+    {
+     "name": "url"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "api_keys",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "expires_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "key_hash"
+    },
+    {
+     "name": "last_used_at"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "user_id"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "attio_field_mappings",
+   "columns": [
+    {
+     "name": "attio_attribute_id"
+    },
+    {
+     "name": "attio_attribute_slug"
+    },
+    {
+     "name": "attio_attribute_type"
+    },
+    {
+     "name": "attio_object_slug"
+    },
+    {
+     "name": "beton_field"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "is_auto_created"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "billing_events",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "event_data"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "idempotency_key"
+    },
+    {
+     "name": "stripe_event_id"
+    },
+    {
+     "name": "stripe_object_id"
+    },
+    {
+     "name": "stripe_object_type"
+    },
+    {
+     "name": "user_id"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "business_model_edit_log",
+   "columns": [
+    {
+     "name": "changed_by_email"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "field_name"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "new_value"
+    },
+    {
+     "name": "old_value"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "cached_posthog_events",
+   "columns": [
+    {
+     "name": "cached_at"
+    },
+    {
+     "name": "event_name"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "is_system"
+    },
+    {
+     "name": "volume_30_day"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "dashboard_registry",
+   "columns": [
+    {
+     "name": "beton_dashboard_type"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "folder_path"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "insights_count"
+    },
+    {
+     "name": "last_synced_at"
+    },
+    {
+     "name": "posthog_dashboard_id"
+    },
+    {
+     "name": "posthog_dashboard_url"
+    },
+    {
+     "name": "posthog_dashboard_uuid"
+    },
+    {
+     "name": "schema_version"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "data_sources",
+   "columns": [
+    {
+     "name": "config_json"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "database_name"
+    },
+    {
+     "name": "host"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "is_active"
+    },
+    {
+     "name": "last_error"
+    },
+    {
+     "name": "last_validated_at"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "password_encrypted"
+    },
+    {
+     "name": "port"
+    },
+    {
+     "name": "source_type"
+    },
+    {
+     "name": "ssl_mode"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "username"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "eda_results",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "join_suggestions"
+    },
+    {
+     "name": "metrics_discovery"
+    },
+    {
+     "name": "summary_text"
+    },
+    {
+     "name": "table_id"
+    },
+    {
+     "name": "table_stats"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "field_mappings",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "destination"
+    },
+    {
+     "name": "field_id"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "match_on"
+    },
+    {
+     "name": "object_id"
+    },
+    {
+     "name": "source_formula"
+    },
+    {
+     "name": "source_option"
+    },
+    {
+     "name": "source_prop"
+    },
+    {
+     "name": "source_prop_kind"
+    },
+    {
+     "name": "source_transform"
+    },
+    {
+     "name": "source_type"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "heuristic_scores",
+   "columns": [
+    {
+     "name": "account_id"
+    },
+    {
+     "name": "calculated_at"
+    },
+    {
+     "name": "component_scores"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "score_type"
+    },
+    {
+     "name": "score_value"
+    },
+    {
+     "name": "valid_until"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "insight_registry",
+   "columns": [
+    {
+     "name": "beton_insight_type"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "dashboard_id"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "last_synced_at"
+    },
+    {
+     "name": "posthog_insight_id"
+    },
+    {
+     "name": "posthog_insight_uuid"
+    },
+    {
+     "name": "query_hash"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "integration_configs",
+   "columns": [
+    {
+     "name": "api_key_encrypted"
+    },
+    {
+     "name": "config_json"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "integration_name"
+    },
+    {
+     "name": "is_active"
+    },
+    {
+     "name": "last_validated_at"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "integration_definitions",
+   "columns": [
+    {
+     "name": "category"
+    },
+    {
+     "name": "config_schema"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "display_name"
+    },
+    {
+     "name": "display_order"
+    },
+    {
+     "name": "icon_url"
+    },
+    {
+     "name": "icon_url_light"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "required"
+    },
+    {
+     "name": "setup_step_key"
+    },
+    {
+     "name": "supports_self_hosted"
+    },
+    {
+     "name": "updated_at"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "join_candidate_edit_log",
+   "columns": [
+    {
+     "name": "change_type"
+    },
+    {
+     "name": "changed_by_email"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "new_col1"
+    },
+    {
+     "name": "new_col2"
+    },
+    {
+     "name": "old_col1"
+    },
+    {
+     "name": "old_col2"
+    },
+    {
+     "name": "table1"
+    },
+    {
+     "name": "table2"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "mcp_auth_codes",
+   "columns": [
+    {
+     "name": "access_token"
+    },
+    {
+     "name": "client_id"
+    },
+    {
+     "name": "code"
+    },
+    {
+     "name": "code_challenge"
+    },
+    {
+     "name": "code_challenge_method"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "expires_at"
+    },
+    {
+     "name": "redirect_uri"
+    },
+    {
+     "name": "refresh_token"
+    },
+    {
+     "name": "used_at"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "mcp_oauth_clients",
+   "columns": [
+    {
+     "name": "client_id"
+    },
+    {
+     "name": "client_name"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "redirect_uris"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "mcp_request_logs",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "duration_ms"
+    },
+    {
+     "name": "error_message"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "request_params"
+    },
+    {
+     "name": "session_id"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "status_code"
+    },
+    {
+     "name": "tool_name"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "metric_snapshots",
+   "columns": [
+    {
+     "name": "account_id"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "metric_name"
+    },
+    {
+     "name": "metric_value"
+    },
+    {
+     "name": "snapshot_date"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "mtu_tracking",
+   "columns": [
+    {
+     "name": "billing_cycle_end"
+    },
+    {
+     "name": "billing_cycle_start"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "cycle_total_mtu"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "mtu_by_source"
+    },
+    {
+     "name": "mtu_count"
+    },
+    {
+     "name": "reported_at"
+    },
+    {
+     "name": "reported_to_stripe"
+    },
+    {
+     "name": "stripe_usage_record_id"
+    },
+    {
+     "name": "tracking_date"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "opportunities",
+   "columns": [
+    {
+     "name": "account_id"
+    },
+    {
+     "name": "ai_summary"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "value"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "posthog_dashboards",
+   "columns": [
+    {
+     "name": "config"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "is_active"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "posthog_dashboard_id"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "posthog_queries",
+   "columns": [
+    {
+     "name": "completed_at"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "error_message"
+    },
+    {
+     "name": "execution_time_ms"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "query_hash"
+    },
+    {
+     "name": "query_text"
+    },
+    {
+     "name": "started_at"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "posthog_query_results",
+   "columns": [
+    {
+     "name": "cached_at"
+    },
+    {
+     "name": "columns"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "expires_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "query_hash"
+    },
+    {
+     "name": "query_id"
+    },
+    {
+     "name": "results"
+    },
+    {
+     "name": "row_count"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "posthog_saved_queries",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "is_active"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "posthog_query_id"
+    },
+    {
+     "name": "query_text"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "posthog_workspace_config",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "is_active"
+    },
+    {
+     "name": "is_validated"
+    },
+    {
+     "name": "last_sync"
+    },
+    {
+     "name": "posthog_api_key"
+    },
+    {
+     "name": "posthog_project_id"
+    },
+    {
+     "name": "posthog_workspace_name"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "validated_at"
+    },
+    {
+     "name": "validation_error"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "query_cache",
+   "columns": [
+    {
+     "name": "cache_key"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "expires_at"
+    },
+    {
+     "name": "hit_count"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "last_accessed_at"
+    },
+    {
+     "name": "query_hash"
+    },
+    {
+     "name": "result_json"
+    },
+    {
+     "name": "result_size_bytes"
+    },
+    {
+     "name": "ttl_seconds"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "rate_limit_tracking",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "integration_name"
+    },
+    {
+     "name": "query_count"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "window_start"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "signal_aggregates",
+   "columns": [
+    {
+     "name": "avg_conversion_rate"
+    },
+    {
+     "name": "avg_days_to_close"
+    },
+    {
+     "name": "avg_deal_size"
+    },
+    {
+     "name": "avg_f1_score"
+    },
+    {
+     "name": "avg_lift"
+    },
+    {
+     "name": "avg_precision"
+    },
+    {
+     "name": "avg_recall"
+    },
+    {
+     "name": "calculation_window_days"
+    },
+    {
+     "name": "confidence_score"
+    },
+    {
+     "name": "count_last_30d"
+    },
+    {
+     "name": "count_last_7d"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "last_calculated_at"
+    },
+    {
+     "name": "quality_grade"
+    },
+    {
+     "name": "sample_size"
+    },
+    {
+     "name": "signal_type"
+    },
+    {
+     "name": "total_arr_influenced"
+    },
+    {
+     "name": "total_count"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "win_rate"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "signal_definitions",
+   "columns": [
+    {
+     "name": "condition_operator"
+    },
+    {
+     "name": "condition_value"
+    },
+    {
+     "name": "conversion_event"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "event_name"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "is_active"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "time_window_days"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "signal_delivery_configs",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "destination_config"
+    },
+    {
+     "name": "destination_type"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "is_active"
+    },
+    {
+     "name": "signal_type"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "signal_sync_configs",
+   "columns": [
+    {
+     "name": "condition_value"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "event_names"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "last_synced_at"
+    },
+    {
+     "name": "signal_id"
+    },
+    {
+     "name": "time_window_days"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "signal_sync_targets",
+   "columns": [
+    {
+     "name": "auto_update"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "external_id"
+    },
+    {
+     "name": "external_name"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "last_synced_at"
+    },
+    {
+     "name": "sync_config_id"
+    },
+    {
+     "name": "sync_error"
+    },
+    {
+     "name": "updated_at"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "signals",
+   "columns": [
+    {
+     "name": "account_id"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "details"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "source"
+    },
+    {
+     "name": "timestamp"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "value"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "stat_test_runs",
+   "columns": [
+    {
+     "name": "completed_at"
+    },
+    {
+     "name": "conversion_rate"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "duration_seconds"
+    },
+    {
+     "name": "error_message"
+    },
+    {
+     "name": "f1_score"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "lift"
+    },
+    {
+     "name": "parameters_json"
+    },
+    {
+     "name": "precision"
+    },
+    {
+     "name": "recall"
+    },
+    {
+     "name": "results_json"
+    },
+    {
+     "name": "sample_size"
+    },
+    {
+     "name": "signal_id"
+    },
+    {
+     "name": "started_at"
+    },
+    {
+     "name": "test_name"
+    },
+    {
+     "name": "test_type"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "user_id"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "sync_states",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "cursor_data"
+    },
+    {
+     "name": "error_summary"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "integration_name"
+    },
+    {
+     "name": "last_sync_completed_at"
+    },
+    {
+     "name": "last_sync_started_at"
+    },
+    {
+     "name": "records_failed"
+    },
+    {
+     "name": "records_processed"
+    },
+    {
+     "name": "records_succeeded"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "system_settings",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "key"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "value"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "threshold_notifications",
+   "columns": [
+    {
+     "name": "billing_cycle_start"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "delivery_status"
+    },
+    {
+     "name": "email_provider_id"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "mtu_at_notification"
+    },
+    {
+     "name": "sent_at"
+    },
+    {
+     "name": "sent_to_email"
+    },
+    {
+     "name": "threshold_percentage"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "tracked_identities",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "email"
+    },
+    {
+     "name": "first_seen_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "is_active"
+    },
+    {
+     "name": "last_seen_at"
+    },
+    {
+     "name": "person_id"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "user_signal_preferences",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "custom_threshold"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "is_enabled"
+    },
+    {
+     "name": "last_signal_at"
+    },
+    {
+     "name": "notification_enabled"
+    },
+    {
+     "name": "priority"
+    },
+    {
+     "name": "signal_type"
+    },
+    {
+     "name": "signals_acted_on_count"
+    },
+    {
+     "name": "signals_received_count"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "user_avg_response_time_hours"
+    },
+    {
+     "name": "user_conversion_rate"
+    },
+    {
+     "name": "user_id"
+    },
+    {
+     "name": "user_win_rate"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "vault_secrets",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "secret"
+    },
+    {
+     "name": "secret_metadata"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "website_exploration_results",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "icp_description"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "is_b2b"
+    },
+    {
+     "name": "pricing_model"
+    },
+    {
+     "name": "product_assumptions"
+    },
+    {
+     "name": "product_description"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "website_url"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "workspace_agent_sessions",
+   "columns": [
+    {
+     "name": "agent_app_name"
+    },
+    {
+     "name": "completed_at"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "error_message"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "session_id"
+    },
+    {
+     "name": "started_at"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "workspace_billing",
+   "columns": [
+    {
+     "name": "billing_cycle_end"
+    },
+    {
+     "name": "billing_cycle_start"
+    },
+    {
+     "name": "card_brand"
+    },
+    {
+     "name": "card_exp_month"
+    },
+    {
+     "name": "card_exp_year"
+    },
+    {
+     "name": "card_last_four"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "current_cycle_mtu"
+    },
+    {
+     "name": "free_tier_mtu_limit"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "last_90_threshold_sent_at"
+    },
+    {
+     "name": "last_95_threshold_sent_at"
+    },
+    {
+     "name": "last_exceeded_threshold_sent_at"
+    },
+    {
+     "name": "peak_mtu_date"
+    },
+    {
+     "name": "peak_mtu_this_cycle"
+    },
+    {
+     "name": "stripe_customer_id"
+    },
+    {
+     "name": "stripe_payment_method_id"
+    },
+    {
+     "name": "stripe_subscription_id"
+    },
+    {
+     "name": "updated_at"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "workspace_domains",
+   "columns": [
+    {
+     "name": "added_by"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "domain"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "workspace_invites",
+   "columns": [
+    {
+     "name": "accepted_at"
+    },
+    {
+     "name": "accepted_by"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "email"
+    },
+    {
+     "name": "expires_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "invite_type"
+    },
+    {
+     "name": "invited_by"
+    },
+    {
+     "name": "max_uses"
+    },
+    {
+     "name": "role"
+    },
+    {
+     "name": "token"
+    },
+    {
+     "name": "use_count"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "workspace_members",
+   "columns": [
+    {
+     "name": "joined_at"
+    },
+    {
+     "name": "role"
+    },
+    {
+     "name": "user_id"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "workspace_sync_log",
+   "columns": [
+    {
+     "name": "completed_at"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "error"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "result"
+    },
+    {
+     "name": "started_at"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "sync_type"
+    },
+    {
+     "name": "triggered_by"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  },
+  {
+   "name": "workspaces",
+   "columns": [
+    {
+     "name": "billing_cycle_start"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "next_billing_date"
+    },
+    {
+     "name": "slug"
+    },
+    {
+     "name": "stripe_customer_id"
+    },
+    {
+     "name": "stripe_subscription_id"
+    },
+    {
+     "name": "subscription_status"
+    },
+    {
+     "name": "updated_at"
+    }
+   ],
+   "provenance": {
+    "repo": "getbeton/inspector",
+    "formats": [
+     "sql"
+    ]
+   }
+  }
+ ],
+ "tools": [],
+ "policies": [],
+ "tasks": [],
+ "refusals": [
+  {
+   "kind": "tools",
+   "what": "executable behaviour",
+   "why": "a schema states what is stored, not what can be done with it; tools must be authored against the world's own surface",
+   "count": 52
+  }
+ ]
+}

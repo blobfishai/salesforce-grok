@@ -1,0 +1,191 @@
+{
+ "source": {
+  "repo": "mettle/sendportal",
+  "commit": "6652906992cd7b7e5d4bb2b1f64dba6a8b953293",
+  "path": "research/repos/schema/mettle__sendportal",
+  "url": "https://github.com/mettle/sendportal",
+  "license": "MIT"
+ },
+ "adapter": {
+  "name": "schema",
+  "version": "1.0"
+ },
+ "fidelity": "reference",
+ "tables": [
+  {
+   "name": "api_tokens",
+   "columns": [
+    {
+     "name": "api_token"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "mettle/sendportal",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "failed_jobs",
+   "columns": [
+    {
+     "name": "connection"
+    },
+    {
+     "name": "exception"
+    },
+    {
+     "name": "failed_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "payload"
+    },
+    {
+     "name": "queue"
+    }
+   ],
+   "provenance": {
+    "repo": "mettle/sendportal",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "invitations",
+   "columns": [
+    {
+     "name": "email"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "role"
+    },
+    {
+     "name": "token"
+    },
+    {
+     "name": "user_id"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "mettle/sendportal",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "password_resets",
+   "columns": [
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "email"
+    },
+    {
+     "name": "token"
+    }
+   ],
+   "provenance": {
+    "repo": "mettle/sendportal",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "users",
+   "columns": [
+    {
+     "name": "email"
+    },
+    {
+     "name": "email_verified_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "password"
+    }
+   ],
+   "provenance": {
+    "repo": "mettle/sendportal",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "workspace_users",
+   "columns": [
+    {
+     "name": "role"
+    },
+    {
+     "name": "user_id"
+    },
+    {
+     "name": "workspace_id"
+    }
+   ],
+   "provenance": {
+    "repo": "mettle/sendportal",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "workspaces",
+   "columns": [
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "owner_id"
+    }
+   ],
+   "provenance": {
+    "repo": "mettle/sendportal",
+    "formats": [
+     "laravel"
+    ]
+   }
+  }
+ ],
+ "tools": [],
+ "policies": [],
+ "tasks": [],
+ "refusals": [
+  {
+   "kind": "tools",
+   "what": "executable behaviour",
+   "why": "a schema states what is stored, not what can be done with it; tools must be authored against the world's own surface",
+   "count": 7
+  }
+ ]
+}

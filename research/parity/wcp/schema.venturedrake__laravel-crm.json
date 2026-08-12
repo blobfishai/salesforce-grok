@@ -1,0 +1,250 @@
+{
+ "source": {
+  "repo": "venturedrake/laravel-crm",
+  "commit": "e0908c2b9008aea15e246a3f43ae3c8125523fa3",
+  "path": "research/repos/schema/venturedrake__laravel-crm",
+  "url": "https://github.com/venturedrake/laravel-crm",
+  "license": "MIT"
+ },
+ "adapter": {
+  "name": "schema",
+  "version": "1.0"
+ },
+ "fidelity": "reference",
+ "tables": [
+  {
+   "name": "crm_team_user",
+   "columns": [
+    {
+     "name": "crm_team_id"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "venturedrake/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "crm_teams",
+   "columns": [
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "team_id"
+    },
+    {
+     "name": "team_owner_id"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "venturedrake/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "model_has_roles",
+   "columns": [
+    {
+     "name": "model_id"
+    },
+    {
+     "name": "model_type"
+    },
+    {
+     "name": "role_id"
+    },
+    {
+     "name": "team_id"
+    }
+   ],
+   "provenance": {
+    "repo": "venturedrake/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "permissions",
+   "columns": [
+    {
+     "name": "guard_name"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "venturedrake/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "personal_access_tokens",
+   "columns": [
+    {
+     "name": "abilities"
+    },
+    {
+     "name": "expires_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "last_used_at"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "token"
+    },
+    {
+     "name": "tokenable"
+    }
+   ],
+   "provenance": {
+    "repo": "venturedrake/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "roles",
+   "columns": [
+    {
+     "name": "crm_role"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "guard_name"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "team_id"
+    }
+   ],
+   "provenance": {
+    "repo": "venturedrake/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "team_user",
+   "columns": [
+    {
+     "name": "id"
+    },
+    {
+     "name": "role"
+    },
+    {
+     "name": "team_id"
+    },
+    {
+     "name": "user_id"
+    }
+   ],
+   "provenance": {
+    "repo": "venturedrake/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "users",
+   "columns": [
+    {
+     "name": "crm_access"
+    },
+    {
+     "name": "crm_permissions"
+    },
+    {
+     "name": "crm_roles"
+    },
+    {
+     "name": "current_crm_team_id"
+    },
+    {
+     "name": "current_team_id"
+    },
+    {
+     "name": "email"
+    },
+    {
+     "name": "email_verified_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "last_online_at"
+    },
+    {
+     "name": "mailing_list"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "password"
+    },
+    {
+     "name": "team_ids"
+    }
+   ],
+   "provenance": {
+    "repo": "venturedrake/laravel-crm",
+    "formats": [
+     "laravel"
+    ]
+   }
+  }
+ ],
+ "tools": [],
+ "policies": [],
+ "tasks": [],
+ "refusals": [
+  {
+   "kind": "tools",
+   "what": "executable behaviour",
+   "why": "a schema states what is stored, not what can be done with it; tools must be authored against the world's own surface",
+   "count": 8
+  }
+ ]
+}

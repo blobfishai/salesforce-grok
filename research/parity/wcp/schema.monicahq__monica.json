@@ -1,0 +1,2171 @@
+{
+ "source": {
+  "repo": "monicahq/monica",
+  "commit": "e08e91734170b6bbd582cb578532c3948196124e",
+  "path": "research/repos/schema/monicahq__monica",
+  "url": "https://github.com/monicahq/monica",
+  "license": "GPL"
+ },
+ "adapter": {
+  "name": "schema",
+  "version": "1.0"
+ },
+ "fidelity": "reference",
+ "tables": [
+  {
+   "name": "account_currency",
+   "columns": [
+    {
+     "name": "active"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "accounts",
+   "columns": [
+    {
+     "name": "id"
+    },
+    {
+     "name": "storage_limit_in_mb"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "address_types",
+   "columns": [
+    {
+     "name": "name"
+    },
+    {
+     "name": "name_translation_key"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "addressbook_subscriptions",
+   "columns": [
+    {
+     "name": "active"
+    },
+    {
+     "name": "capabilities"
+    },
+    {
+     "name": "current_logid"
+    },
+    {
+     "name": "distant_sync_token"
+    },
+    {
+     "name": "frequency"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "last_batch"
+    },
+    {
+     "name": "last_synchronized_at"
+    },
+    {
+     "name": "password"
+    },
+    {
+     "name": "sync_way"
+    },
+    {
+     "name": "uri"
+    },
+    {
+     "name": "username"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "addresses",
+   "columns": [
+    {
+     "name": "city"
+    },
+    {
+     "name": "country"
+    },
+    {
+     "name": "latitude"
+    },
+    {
+     "name": "line_1"
+    },
+    {
+     "name": "line_2"
+    },
+    {
+     "name": "longitude"
+    },
+    {
+     "name": "postal_code"
+    },
+    {
+     "name": "province"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "cache",
+   "columns": [
+    {
+     "name": "expiration"
+    },
+    {
+     "name": "key"
+    },
+    {
+     "name": "value"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "cache_locks",
+   "columns": [
+    {
+     "name": "expiration"
+    },
+    {
+     "name": "key"
+    },
+    {
+     "name": "owner"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "call_reason_types",
+   "columns": [
+    {
+     "name": "label"
+    },
+    {
+     "name": "label_translation_key"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "call_reasons",
+   "columns": [
+    {
+     "name": "label"
+    },
+    {
+     "name": "label_translation_key"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "calls",
+   "columns": [
+    {
+     "name": "answered"
+    },
+    {
+     "name": "author_name"
+    },
+    {
+     "name": "called_at"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "duration"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "who_initiated"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "companies",
+   "columns": [
+    {
+     "name": "name"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "contact_address",
+   "columns": [
+    {
+     "name": "is_past_address"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "contact_feed_items",
+   "columns": [
+    {
+     "name": "action"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "feedable"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "contact_important_date_types",
+   "columns": [
+    {
+     "name": "can_be_deleted"
+    },
+    {
+     "name": "internal_type"
+    },
+    {
+     "name": "label"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "contact_important_dates",
+   "columns": [
+    {
+     "name": "day"
+    },
+    {
+     "name": "label"
+    },
+    {
+     "name": "month"
+    },
+    {
+     "name": "year"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "contact_information",
+   "columns": [
+    {
+     "name": "data"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "contact_information_types",
+   "columns": [
+    {
+     "name": "can_be_deleted"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "name_translation_key"
+    },
+    {
+     "name": "protocol"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "contact_reminder_scheduled",
+   "columns": [
+    {
+     "name": "scheduled_at"
+    },
+    {
+     "name": "triggered_at"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "contact_reminders",
+   "columns": [
+    {
+     "name": "day"
+    },
+    {
+     "name": "frequency_number"
+    },
+    {
+     "name": "label"
+    },
+    {
+     "name": "last_triggered_at"
+    },
+    {
+     "name": "month"
+    },
+    {
+     "name": "number_times_triggered"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "year"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "contact_tasks",
+   "columns": [
+    {
+     "name": "author_name"
+    },
+    {
+     "name": "completed"
+    },
+    {
+     "name": "completed_at"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "due_at"
+    },
+    {
+     "name": "label"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "contact_vault_user",
+   "columns": [
+    {
+     "name": "is_favorite"
+    },
+    {
+     "name": "number_of_views"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "contacts",
+   "columns": [
+    {
+     "name": "can_be_deleted"
+    },
+    {
+     "name": "distant_etag"
+    },
+    {
+     "name": "distant_uri"
+    },
+    {
+     "name": "distant_uuid"
+    },
+    {
+     "name": "first_name"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "job_position"
+    },
+    {
+     "name": "last_name"
+    },
+    {
+     "name": "last_updated_at"
+    },
+    {
+     "name": "listed"
+    },
+    {
+     "name": "maiden_name"
+    },
+    {
+     "name": "middle_name"
+    },
+    {
+     "name": "nickname"
+    },
+    {
+     "name": "prefix"
+    },
+    {
+     "name": "suffix"
+    },
+    {
+     "name": "vcard"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "crons",
+   "columns": [
+    {
+     "name": "command"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "last_run_at"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "currencies",
+   "columns": [
+    {
+     "name": "code"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "emotions",
+   "columns": [
+    {
+     "name": "name"
+    },
+    {
+     "name": "name_translation_key"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "failed_jobs",
+   "columns": [
+    {
+     "name": "connection"
+    },
+    {
+     "name": "exception"
+    },
+    {
+     "name": "failed_at"
+    },
+    {
+     "name": "payload"
+    },
+    {
+     "name": "queue"
+    },
+    {
+     "name": "uuid"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "files",
+   "columns": [
+    {
+     "name": "cdn_url"
+    },
+    {
+     "name": "file_id"
+    },
+    {
+     "name": "fileable"
+    },
+    {
+     "name": "mime_type"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "original_url"
+    },
+    {
+     "name": "size"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "ufileable_id"
+    },
+    {
+     "name": "uuid"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "genders",
+   "columns": [
+    {
+     "name": "name"
+    },
+    {
+     "name": "name_translation_key"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "gift_occasions",
+   "columns": [
+    {
+     "name": "label"
+    },
+    {
+     "name": "label_translation_key"
+    },
+    {
+     "name": "position"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "gift_states",
+   "columns": [
+    {
+     "name": "label"
+    },
+    {
+     "name": "label_translation_key"
+    },
+    {
+     "name": "position"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "gifts",
+   "columns": [
+    {
+     "name": "bought_at"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "estimated_price"
+    },
+    {
+     "name": "given_at"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "received_at"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "goals",
+   "columns": [
+    {
+     "name": "active"
+    },
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "group_type_roles",
+   "columns": [
+    {
+     "name": "label"
+    },
+    {
+     "name": "label_translation_key"
+    },
+    {
+     "name": "position"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "group_types",
+   "columns": [
+    {
+     "name": "label"
+    },
+    {
+     "name": "label_translation_key"
+    },
+    {
+     "name": "position"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "groups",
+   "columns": [
+    {
+     "name": "distant_etag"
+    },
+    {
+     "name": "distant_uri"
+    },
+    {
+     "name": "distant_uuid"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "uuid"
+    },
+    {
+     "name": "vcard"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "job_batches",
+   "columns": [
+    {
+     "name": "cancelled_at"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "failed_job_ids"
+    },
+    {
+     "name": "failed_jobs"
+    },
+    {
+     "name": "finished_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "options"
+    },
+    {
+     "name": "pending_jobs"
+    },
+    {
+     "name": "total_jobs"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "jobs",
+   "columns": [
+    {
+     "name": "attempts"
+    },
+    {
+     "name": "available_at"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "payload"
+    },
+    {
+     "name": "queue"
+    },
+    {
+     "name": "reserved_at"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "journal_metrics",
+   "columns": [
+    {
+     "name": "journal_id"
+    },
+    {
+     "name": "label"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "journals",
+   "columns": [
+    {
+     "name": "description"
+    },
+    {
+     "name": "name"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "labels",
+   "columns": [
+    {
+     "name": "bg_color"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "slug"
+    },
+    {
+     "name": "text_color"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "life_event_categories",
+   "columns": [
+    {
+     "name": "can_be_deleted"
+    },
+    {
+     "name": "label"
+    },
+    {
+     "name": "label_translation_key"
+    },
+    {
+     "name": "position"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "life_event_types",
+   "columns": [
+    {
+     "name": "can_be_deleted"
+    },
+    {
+     "name": "label"
+    },
+    {
+     "name": "label_translation_key"
+    },
+    {
+     "name": "position"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "life_events",
+   "columns": [
+    {
+     "name": "collapsed"
+    },
+    {
+     "name": "costs"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "distance"
+    },
+    {
+     "name": "distance_unit"
+    },
+    {
+     "name": "duration_in_minutes"
+    },
+    {
+     "name": "from_place"
+    },
+    {
+     "name": "happened_at"
+    },
+    {
+     "name": "place"
+    },
+    {
+     "name": "summary"
+    },
+    {
+     "name": "to_place"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "life_metrics",
+   "columns": [
+    {
+     "name": "label"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "loans",
+   "columns": [
+    {
+     "name": "amount_lent"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "loaned_at"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "settled"
+    },
+    {
+     "name": "settled_at"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "logs",
+   "columns": [
+    {
+     "name": "channel"
+    },
+    {
+     "name": "context"
+    },
+    {
+     "name": "extra"
+    },
+    {
+     "name": "formatted"
+    },
+    {
+     "name": "group_id"
+    },
+    {
+     "name": "level"
+    },
+    {
+     "name": "level_name"
+    },
+    {
+     "name": "loggable"
+    },
+    {
+     "name": "logged_at"
+    },
+    {
+     "name": "message"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "module_row_fields",
+   "columns": [
+    {
+     "name": "label"
+    },
+    {
+     "name": "module_field_type"
+    },
+    {
+     "name": "position"
+    },
+    {
+     "name": "required"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "module_rows",
+   "columns": [
+    {
+     "name": "position"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "module_template_page",
+   "columns": [
+    {
+     "name": "position"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "modules",
+   "columns": [
+    {
+     "name": "can_be_deleted"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "name_translation_key"
+    },
+    {
+     "name": "pagination"
+    },
+    {
+     "name": "reserved_to_contact_information"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "mood_tracking_events",
+   "columns": [
+    {
+     "name": "note"
+    },
+    {
+     "name": "number_of_hours_slept"
+    },
+    {
+     "name": "rated_at"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "mood_tracking_parameters",
+   "columns": [
+    {
+     "name": "hex_color"
+    },
+    {
+     "name": "label"
+    },
+    {
+     "name": "label_translation_key"
+    },
+    {
+     "name": "position"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "notes",
+   "columns": [
+    {
+     "name": "body"
+    },
+    {
+     "name": "title"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "personal_access_tokens",
+   "columns": [
+    {
+     "name": "abilities"
+    },
+    {
+     "name": "expires_at"
+    },
+    {
+     "name": "last_used_at"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "token"
+    },
+    {
+     "name": "tokenable"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "pet_categories",
+   "columns": [
+    {
+     "name": "name"
+    },
+    {
+     "name": "name_translation_key"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "pets",
+   "columns": [
+    {
+     "name": "name"
+    },
+    {
+     "name": "uuid"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "post_metrics",
+   "columns": [
+    {
+     "name": "journal_metric_id"
+    },
+    {
+     "name": "label"
+    },
+    {
+     "name": "post_id"
+    },
+    {
+     "name": "value"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "post_sections",
+   "columns": [
+    {
+     "name": "content"
+    },
+    {
+     "name": "label"
+    },
+    {
+     "name": "position"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "post_template_sections",
+   "columns": [
+    {
+     "name": "can_be_deleted"
+    },
+    {
+     "name": "label"
+    },
+    {
+     "name": "label_translation_key"
+    },
+    {
+     "name": "position"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "post_templates",
+   "columns": [
+    {
+     "name": "can_be_deleted"
+    },
+    {
+     "name": "label"
+    },
+    {
+     "name": "label_translation_key"
+    },
+    {
+     "name": "position"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "posts",
+   "columns": [
+    {
+     "name": "published"
+    },
+    {
+     "name": "title"
+    },
+    {
+     "name": "view_count"
+    },
+    {
+     "name": "written_at"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "pronouns",
+   "columns": [
+    {
+     "name": "name"
+    },
+    {
+     "name": "name_translation_key"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "pulse_aggregates",
+   "columns": [
+    {
+     "name": "aggregate"
+    },
+    {
+     "name": "bucket"
+    },
+    {
+     "name": "count"
+    },
+    {
+     "name": "key"
+    },
+    {
+     "name": "key_hash"
+    },
+    {
+     "name": "period"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "value"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "pulse_entries",
+   "columns": [
+    {
+     "name": "key"
+    },
+    {
+     "name": "key_hash"
+    },
+    {
+     "name": "timestamp"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "value"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "pulse_values",
+   "columns": [
+    {
+     "name": "key"
+    },
+    {
+     "name": "key_hash"
+    },
+    {
+     "name": "timestamp"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "value"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "quick_facts",
+   "columns": [
+    {
+     "name": "content"
+    },
+    {
+     "name": "show_quick_facts"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "relationship_group_types",
+   "columns": [
+    {
+     "name": "can_be_deleted"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "name_translation_key"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "relationship_types",
+   "columns": [
+    {
+     "name": "can_be_deleted"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "name_reverse_relationship"
+    },
+    {
+     "name": "name_reverse_relationship_translation_key"
+    },
+    {
+     "name": "name_translation_key"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "religions",
+   "columns": [
+    {
+     "name": "name"
+    },
+    {
+     "name": "position"
+    },
+    {
+     "name": "translation_key"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "sessions",
+   "columns": [
+    {
+     "name": "id"
+    },
+    {
+     "name": "ip_address"
+    },
+    {
+     "name": "last_activity"
+    },
+    {
+     "name": "payload"
+    },
+    {
+     "name": "user_agent"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "slice_of_lives",
+   "columns": [
+    {
+     "name": "description"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "slice_of_life_id"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "streaks",
+   "columns": [
+    {
+     "name": "happened_at"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "sync_tokens",
+   "columns": [
+    {
+     "name": "name"
+    },
+    {
+     "name": "timestamp"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "tags",
+   "columns": [
+    {
+     "name": "name"
+    },
+    {
+     "name": "slug"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "telescope_entries",
+   "columns": [
+    {
+     "name": "batch_id"
+    },
+    {
+     "name": "content"
+    },
+    {
+     "name": "created_at"
+    },
+    {
+     "name": "family_hash"
+    },
+    {
+     "name": "sequence"
+    },
+    {
+     "name": "should_display_on_index"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "uuid"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "telescope_entries_tags",
+   "columns": [
+    {
+     "name": "entry_uuid"
+    },
+    {
+     "name": "tag"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "telescope_monitoring",
+   "columns": [
+    {
+     "name": "tag"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "template_pages",
+   "columns": [
+    {
+     "name": "can_be_deleted"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "name_translation_key"
+    },
+    {
+     "name": "position"
+    },
+    {
+     "name": "slug"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "templates",
+   "columns": [
+    {
+     "name": "name"
+    },
+    {
+     "name": "name_translation_key"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "timeline_events",
+   "columns": [
+    {
+     "name": "collapsed"
+    },
+    {
+     "name": "label"
+    },
+    {
+     "name": "started_at"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "user_notification_channels",
+   "columns": [
+    {
+     "name": "active"
+    },
+    {
+     "name": "content"
+    },
+    {
+     "name": "label"
+    },
+    {
+     "name": "preferred_time"
+    },
+    {
+     "name": "type"
+    },
+    {
+     "name": "verification_token"
+    },
+    {
+     "name": "verified_at"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "user_notification_sent",
+   "columns": [
+    {
+     "name": "payload"
+    },
+    {
+     "name": "sent_at"
+    },
+    {
+     "name": "subject_line"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "user_tokens",
+   "columns": [
+    {
+     "name": "driver"
+    },
+    {
+     "name": "driver_id"
+    },
+    {
+     "name": "email"
+    },
+    {
+     "name": "expires_in"
+    },
+    {
+     "name": "format"
+    },
+    {
+     "name": "refresh_token"
+    },
+    {
+     "name": "token"
+    },
+    {
+     "name": "token_secret"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "user_vault",
+   "columns": [
+    {
+     "name": "permission"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "users",
+   "columns": [
+    {
+     "name": "date_format"
+    },
+    {
+     "name": "default_map_site"
+    },
+    {
+     "name": "distance_format"
+    },
+    {
+     "name": "email"
+    },
+    {
+     "name": "email_verified_at"
+    },
+    {
+     "name": "first_name"
+    },
+    {
+     "name": "help_shown"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "invitation_accepted_at"
+    },
+    {
+     "name": "invitation_code"
+    },
+    {
+     "name": "is_account_administrator"
+    },
+    {
+     "name": "last_name"
+    },
+    {
+     "name": "locale"
+    },
+    {
+     "name": "name_order"
+    },
+    {
+     "name": "number_format"
+    },
+    {
+     "name": "password"
+    },
+    {
+     "name": "timezone"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "vault_quick_facts_templates",
+   "columns": [
+    {
+     "name": "label"
+    },
+    {
+     "name": "label_translation_key"
+    },
+    {
+     "name": "position"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "vaults",
+   "columns": [
+    {
+     "name": "default_activity_tab"
+    },
+    {
+     "name": "description"
+    },
+    {
+     "name": "id"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "show_calendar_tab"
+    },
+    {
+     "name": "show_companies_tab"
+    },
+    {
+     "name": "show_files_tab"
+    },
+    {
+     "name": "show_group_tab"
+    },
+    {
+     "name": "show_journal_tab"
+    },
+    {
+     "name": "show_reports_tab"
+    },
+    {
+     "name": "show_tasks_tab"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  },
+  {
+   "name": "webauthn_keys",
+   "columns": [
+    {
+     "name": "aaguid"
+    },
+    {
+     "name": "attestationType"
+    },
+    {
+     "name": "counter"
+    },
+    {
+     "name": "credentialId"
+    },
+    {
+     "name": "credentialPublicKey"
+    },
+    {
+     "name": "name"
+    },
+    {
+     "name": "transports"
+    },
+    {
+     "name": "trustPath"
+    },
+    {
+     "name": "type"
+    }
+   ],
+   "provenance": {
+    "repo": "monicahq/monica",
+    "formats": [
+     "laravel"
+    ]
+   }
+  }
+ ],
+ "tools": [],
+ "policies": [],
+ "tasks": [],
+ "refusals": [
+  {
+   "kind": "tools",
+   "what": "executable behaviour",
+   "why": "a schema states what is stored, not what can be done with it; tools must be authored against the world's own surface",
+   "count": 88
+  }
+ ]
+}
