@@ -136,11 +136,7 @@ function printStats(usage, toolCallCount) {
 const taskField = (t, ...names) => names.map((n) => t[n]).find((v) => v !== undefined && v !== null);
 
 async function mainBlobfish() {
-  const worldPath = worldFileFlag
-    ? worldFileFlag
-    : existsSync(join(ROOT, config.blobfish.worldFile))
-      ? join(ROOT, config.blobfish.worldFile)
-      : join(ROOT, config.blobfish.previewWorldFile);
+  const worldPath = worldFileFlag ? worldFileFlag : join(ROOT, config.blobfish.worldFile);
   if (!existsSync(worldPath)) {
     console.error(`No blobfish world file found (${config.blobfish.worldFile}). Run the generation job first, or use --local.`);
     process.exit(1);

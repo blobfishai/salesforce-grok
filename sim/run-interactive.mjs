@@ -39,8 +39,8 @@ const API_KEY = env.XAI_API_KEY;
 if (!API_KEY) { console.error("XAI_API_KEY missing"); process.exit(1); }
 const MODEL = env.XAI_MODEL ?? config.engine.model;
 
-const worldPath = opt("--world-file",
-  existsSync(join(ROOT, config.blobfish.worldFile)) ? join(ROOT, config.blobfish.worldFile) : join(ROOT, config.blobfish.previewWorldFile));
+const worldPath = opt("--world-file", join(ROOT, config.blobfish.worldFile));
+if (!existsSync(worldPath)) { console.error(`No world file at ${worldPath}. Pass --world-file, or check config.blobfish.worldFile.`); process.exit(1); }
 const world = (() => { const r = JSON.parse(readFileSync(worldPath, "utf8")); return r.world ?? r; })();
 const task = taskFlag ? (world.tasks ?? []).find((t) => (t.task_id ?? t.id) === taskFlag) : (world.tasks ?? [])[0];
 if (!task) { console.error("task not found"); process.exit(1); }

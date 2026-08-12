@@ -42,22 +42,27 @@ exposed over **MCP**, and driven/evaluated with an **xAI grok-4.5** agent.
 
 ## Worlds
 
+The tree carries **one** world. The seven below it were the experimental trail that
+produced it; they were removed when the repo consolidated (300 MB → 103 MB) and are
+recoverable from git history. The sandbox ids are the provenance — `data/flake/`
+records which world produced which number, so none of them were renamed.
+
 | World | id | Provenance |
 |---|---|---|
-| **Canonical (deep)** | `sbx_7d7d8fedcecb4458` | research-backed job `job_f214127215c947495a0e86dd` (target failure rate 0.5, anchored to `docs/anchors/ms-crm-anchor.md`) — **33 tables · 104 tools · 27 calibrated tasks/verifiers · 2,377 seeded rows**, mean discrimination 0.93, 0 degenerate tasks |
-| Preview (CRM) | `sbx_70c53d3467d54e5b` | quick preview; 32 tables / 121 tools / 20 tasks; created anonymously → hosted `/verify` cannot score it |
-| Preview (ERP, first iteration) | `sbx_8a6d6c92f5a64425` | pre-correction ERP-flavored world; superseded |
+| **Live** | `sbx_291042075d7547f4` | job `job_c0e26be7c403614e8f272a99` — **339 tables · 597 tools · 66 tasks · 66 verifiers**. Sole input to `harbor/sales-world/scripts/build-images.sh` and to the densify, coverage, smoke-test and task-authoring pipelines. Coverage proof: [`docs/COVERAGE.md`](docs/COVERAGE.md) |
+| Retired (deep) | `sbx_7d7d8fedcecb4458` | research-backed job `job_f214127215c947495a0e86dd` (target failure rate 0.5, anchored to `docs/anchors/ms-crm-anchor.md`) — 33 tables · 104 tools · 27 calibrated tasks/verifiers · 2,377 seeded rows, mean discrimination 0.93, 0 degenerate tasks; passed 27/27 calibration trajectories |
+| Retired preview (CRM) | `sbx_70c53d3467d54e5b` | quick preview; 32 tables / 121 tools / 20 tasks; created anonymously → hosted `/verify` cannot score it |
+| Retired preview (ERP, first iteration) | `sbx_8a6d6c92f5a64425` | pre-correction ERP-flavored world; superseded |
+| Retired (waves 2–5, arena) | — | intermediate hardening waves and the arena parity world |
 
-Downloaded artifacts: `world/blobfish/world.json`, `world/blobfish/quality.json`,
-and the **self-contained runnable package** `world/blobfish/package/sbx_7d7d8fedcecb4458/`
-(SQLite seed, `server.py` world server, namespaced tools incl. `tools/salesforce.py`,
-tasks.jsonl, VCode verifiers, calibration trajectories, Dockerfile, RL training kit).
-Blobfish's `training_ready` stamp is false only because its release gate wants ≥15
-grounding sources (we anchored one PRD); the sandbox itself passed 27/27 calibration
-trajectories.
+Live artifacts: `world/blobfish-wave6/world.json`, `world/blobfish-wave6/quality.json`,
+and the **self-contained runnable package** `world/blobfish-wave6/package/sbx_291042075d7547f4/`
+(SQLite seed, `server.py` world server, namespaced tools across 11 vendor modules incl.
+`tools/salesforce.py`, tasks.jsonl, VCode verifiers, Dockerfile, RL training kit).
+Serve it with `npm run world:serve`.
 
 Depth vs CRMArena for reference: CRMArena ~16 objects / 9 task types, CRMArena-Pro
-~25 objects / 19 task types — this world: 33 tables / 27 verifier-backed tasks.
+~25 objects / 19 task types — this world: 339 tables / 66 verifier-backed tasks.
 
 ## grok-4.5 model limits (measured live)
 

@@ -27,8 +27,8 @@ const LABEL = opt("--label", "scan");
 const MODEL = opt("--model", process.env.SIM_MODEL ?? process.env.XAI_MODEL ?? config.engine.model);
 const TRIAL_TIMEOUT_MIN = Number(opt("--trial-timeout-min", "10"));
 const MULTI = argv.includes("--multi-server");
-const WORLD_FILE = opt("--world-file",
-  existsSync(join(ROOT, config.blobfish.worldFile)) ? join(ROOT, config.blobfish.worldFile) : join(ROOT, config.blobfish.previewWorldFile));
+const WORLD_FILE = opt("--world-file", join(ROOT, config.blobfish.worldFile));
+if (!existsSync(WORLD_FILE)) { console.error(`No world file at ${WORLD_FILE}. Pass --world-file, or check config.blobfish.worldFile.`); process.exit(1); }
 
 const raw = JSON.parse(readFileSync(WORLD_FILE, "utf8"));
 const world = raw.world ?? raw;
