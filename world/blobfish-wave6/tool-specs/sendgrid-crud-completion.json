@@ -1,0 +1,300 @@
+{
+ "vendor": "sendgrid-email",
+ "namespace": "email",
+ "tables": [
+  {
+   "name": "marketing_segments",
+   "description": "Marketing contact segments (SendGrid segments / CRM list views) with their filter definition and materialized contact count. Replaces the mis-seeded contactdb_segments, whose `name` column holds person names and whose `recipient_count` holds strings — it cannot back a real segment CRUD surface.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "list_id",
+     "type": "INTEGER"
+    },
+    {
+     "name": "query_dsl",
+     "type": "TEXT"
+    },
+    {
+     "name": "contact_count",
+     "type": "INTEGER"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    },
+    {
+     "name": "updated_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "seg_0001",
+     "name": "Enterprise — Tier 1 Accounts",
+     "list_id": 1,
+     "query_dsl": "account.tier = 'Tier 1' AND contact.status = 'active'",
+     "contact_count": 412,
+     "status": "active",
+     "created_at": "2026-01-08T09:00:00Z",
+     "updated_at": "2026-02-10T09:00:00Z"
+    },
+    {
+     "id": "seg_0002",
+     "name": "Renewal Window — Next 120 Days",
+     "list_id": 1,
+     "query_dsl": "subscription.current_period_end <= now + 120d",
+     "contact_count": 138,
+     "status": "active",
+     "created_at": "2026-01-08T09:00:00Z",
+     "updated_at": "2026-02-12T09:00:00Z"
+    },
+    {
+     "id": "seg_0003",
+     "name": "Opted-In Prospects — North America",
+     "list_id": 2,
+     "query_dsl": "lead.consent_basis = 'Opt-in' AND lead.region = 'NA'",
+     "contact_count": 1240,
+     "status": "active",
+     "created_at": "2026-01-08T09:00:00Z",
+     "updated_at": "2026-02-01T09:00:00Z"
+    },
+    {
+     "id": "seg_0004",
+     "name": "Bounced — Suppress",
+     "list_id": 2,
+     "query_dsl": "contact.email IN bounces",
+     "contact_count": 87,
+     "status": "active",
+     "created_at": "2026-01-08T09:00:00Z",
+     "updated_at": "2026-02-14T09:00:00Z"
+    },
+    {
+     "id": "seg_0005",
+     "name": "Closed-Lost Win-Back FY25",
+     "list_id": 3,
+     "query_dsl": "opportunity.status = 'closed_lost' AND opportunity.close_date >= '2025-01-01'",
+     "contact_count": 203,
+     "status": "archived",
+     "created_at": "2025-06-02T09:00:00Z",
+     "updated_at": "2025-12-31T09:00:00Z"
+    },
+    {
+     "id": "seg_0006",
+     "name": "Do Not Sequence",
+     "list_id": 3,
+     "query_dsl": "contact.Do_Not_Sequence__c = true",
+     "contact_count": 54,
+     "status": "active",
+     "created_at": "2026-01-08T09:00:00Z",
+     "updated_at": "2026-02-09T09:00:00Z"
+    }
+   ]
+  }
+ ],
+ "tools": [
+  {
+   "name": "campaign_create",
+   "description": "Create a single-send marketing campaign (POST /v3/marketing/singlesends).",
+   "op": "create",
+   "table": "campaigns",
+   "fields": [
+    "title",
+    "subject",
+    "status",
+    "sender_id",
+    "suppression_group_id",
+    "categories",
+    "html_content",
+    "plain_content",
+    "list_ids",
+    "segment_ids"
+   ],
+   "params": {
+    "title": {
+     "type": "string",
+     "description": "Value for title."
+    },
+    "subject": {
+     "type": "string",
+     "description": "Value for subject."
+    },
+    "status": {
+     "type": "string",
+     "description": "Value for status."
+    },
+    "sender_id": {
+     "type": "string",
+     "description": "Value for sender_id."
+    },
+    "suppression_group_id": {
+     "type": "string",
+     "description": "Value for suppression_group_id."
+    },
+    "categories": {
+     "type": "string",
+     "description": "Value for categories."
+    },
+    "html_content": {
+     "type": "string",
+     "description": "Value for html_content."
+    },
+    "plain_content": {
+     "type": "string",
+     "description": "Value for plain_content."
+    },
+    "list_ids": {
+     "type": "string",
+     "description": "Value for list_ids."
+    },
+    "segment_ids": {
+     "type": "string",
+     "description": "Value for segment_ids."
+    }
+   },
+   "required": [
+    "title"
+   ]
+  },
+  {
+   "name": "campaign_delete",
+   "description": "Delete a marketing campaign (DELETE /v3/marketing/singlesends/{id}).",
+   "op": "delete",
+   "table": "campaigns",
+   "id_param": "campaign_id",
+   "id_column": "id",
+   "required": [
+    "campaign_id"
+   ],
+   "params": {
+    "campaign_id": {
+     "type": "string",
+     "description": "Identifier of the record to delete."
+    }
+   }
+  },
+  {
+   "name": "segments_list",
+   "description": "List marketing contact segments (GET /v3/marketing/segments).",
+   "op": "list",
+   "table": "marketing_segments",
+   "params": {
+    "list_id": {
+     "type": "string",
+     "description": "Filter by list_id."
+    },
+    "status": {
+     "type": "string",
+     "description": "Filter by status."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return."
+    }
+   },
+   "filters": [
+    "list_id",
+    "status"
+   ]
+  },
+  {
+   "name": "segment_update",
+   "description": "Rename or update a contact segment (PATCH /v3/marketing/segments/{segment_id}).",
+   "op": "update",
+   "table": "marketing_segments",
+   "id_param": "segment_id",
+   "id_column": "id",
+   "set_fields": [
+    "name",
+    "query_dsl",
+    "status",
+    "contact_count"
+   ],
+   "required": [
+    "segment_id"
+   ],
+   "params": {
+    "segment_id": {
+     "type": "string",
+     "description": "Identifier of the record to update."
+    },
+    "name": {
+     "type": "string",
+     "description": "New value for name."
+    },
+    "query_dsl": {
+     "type": "string",
+     "description": "New value for query_dsl."
+    },
+    "status": {
+     "type": "string",
+     "description": "New value for status."
+    },
+    "contact_count": {
+     "type": "string",
+     "description": "New value for contact_count."
+    }
+   }
+  },
+  {
+   "name": "segment_delete",
+   "description": "Delete a contact segment (DELETE /v3/marketing/segments/{segment_id}).",
+   "op": "delete",
+   "table": "marketing_segments",
+   "id_param": "segment_id",
+   "id_column": "id",
+   "required": [
+    "segment_id"
+   ],
+   "params": {
+    "segment_id": {
+     "type": "string",
+     "description": "Identifier of the record to delete."
+    }
+   }
+  },
+  {
+   "name": "segments_search",
+   "description": "Search contact segments by name or filter definition (GET /v3/marketing/segments).",
+   "op": "search",
+   "table": "marketing_segments",
+   "query_param": "query",
+   "search_columns": [
+    "name",
+    "query_dsl"
+   ],
+   "required": [
+    "query"
+   ],
+   "params": {
+    "query": {
+     "type": "string",
+     "description": "Free-text search string."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return."
+    },
+    "status": {
+     "type": "string",
+     "description": "Restrict results to this status."
+    }
+   },
+   "filters": [
+    "status"
+   ]
+  }
+ ]
+}

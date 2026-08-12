@@ -6,33 +6,33 @@ tool list, matched on a normalized `action:object` form so `create_deal`,
 `deals_create` and `post_deals` count once — and so HubSpot's *deal* and
 Salesforce's *opportunity* are recognized as the same object.
 
-- world tools: **453** across 11 namespaces
+- world tools: **524** across 11 namespaces
 - distinct domain verbs in the corpus: **129**
-- covered by the world: **66** (51%)
-- not yet covered: **63**
+- covered by the world: **129** (100%)
+- not yet covered: **0**
 
 ## Coverage per vendor server
 
 | server | verbs | covered | % |
 |---|---:|---:|---:|
-| `comma-compliance__pipedrive-mcp` | 55 | 37 | 67% |
-| `shinzo-labs__hubspot-mcp` | 51 | 29 | 57% |
-| `ckalima__pipedrive-mcp-server` | 50 | 30 | 60% |
-| `BusyBee3333__close-crm-mcp-2026-complete` | 42 | 28 | 67% |
-| `nubiia-dev__mcp-pipedrive` | 40 | 23 | 58% |
-| `kesslerio__attio-mcp-server` | 32 | 23 | 72% |
-| `spread-ai__salesloft-mcp-server` | 24 | 15 | 62% |
-| `Biftekic__PerfexCRM-MCP` | 21 | 13 | 62% |
-| `KonstiDoll__twenty-crm-mcp-server` | 21 | 14 | 67% |
-| `mhenry3164__twenty-crm-mcp-server` | 21 | 17 | 81% |
-| `MattSezgin__unofficial-smartlead-cli` | 20 | 15 | 75% |
-| `LeadMagic__smartlead-mcp-server` | 19 | 14 | 74% |
-| `lrtherond__SuiteCRM_MCP` | 12 | 10 | 83% |
-| `WillDent__pipedrive-mcp-server` | 11 | 9 | 82% |
-| `avisangle__method-crm-mcp` | 10 | 8 | 80% |
-| `kylastech__kylas-crm-mcp-server` | 8 | 7 | 88% |
+| `comma-compliance__pipedrive-mcp` | 55 | 55 | 100% |
+| `shinzo-labs__hubspot-mcp` | 51 | 51 | 100% |
+| `ckalima__pipedrive-mcp-server` | 50 | 50 | 100% |
+| `BusyBee3333__close-crm-mcp-2026-complete` | 42 | 42 | 100% |
+| `nubiia-dev__mcp-pipedrive` | 40 | 40 | 100% |
+| `kesslerio__attio-mcp-server` | 32 | 32 | 100% |
+| `spread-ai__salesloft-mcp-server` | 24 | 24 | 100% |
+| `Biftekic__PerfexCRM-MCP` | 21 | 21 | 100% |
+| `KonstiDoll__twenty-crm-mcp-server` | 21 | 21 | 100% |
+| `mhenry3164__twenty-crm-mcp-server` | 21 | 21 | 100% |
+| `MattSezgin__unofficial-smartlead-cli` | 20 | 20 | 100% |
+| `LeadMagic__smartlead-mcp-server` | 19 | 19 | 100% |
+| `lrtherond__SuiteCRM_MCP` | 12 | 12 | 100% |
+| `WillDent__pipedrive-mcp-server` | 11 | 11 | 100% |
+| `avisangle__method-crm-mcp` | 10 | 10 | 100% |
+| `kylastech__kylas-crm-mcp-server` | 8 | 8 | 100% |
 | `storehausai__mcp-server-ecount` | 7 | 7 | 100% |
-| `JustinBeckwith__gongio-mcp` | 5 | 4 | 80% |
+| `JustinBeckwith__gongio-mcp` | 5 | 5 | 100% |
 | `advancedcommunities__salesforce-mcp-server` | 5 | 5 | 100% |
 | `lkm1developer__apollo-io-mcp-server` | 4 | 4 | 100% |
 | `realfastAI__salesforce-mcp-server` | 3 | 3 | 100% |
@@ -47,88 +47,83 @@ server ships is that vendor's idiosyncrasy. This ranking is the densification ba
 
 | verb | servers implementing it |
 |---|---:|
-| `convert:lead` | 2 |
-| `convert:opportunity` | 1 |
-| `create:activity` | 4 |
-| `create:campaign` | 2 |
-| `create:field` | 2 |
-| `create:meeting` | 2 |
-| `create:pipeline` | 2 |
-| `create:sequence` | 2 |
-| `delete:activity` | 3 |
-| `delete:campaign` | 2 |
-| `delete:customer` | 1 |
-| `delete:email` | 5 |
-| `delete:field` | 2 |
-| `delete:file` | 1 |
-| `delete:note` | 5 |
-| `delete:pipeline` | 2 |
-| `delete:product` | 4 |
-| `delete:stage` | 1 |
-| `list:activity` | 2 |
-| `list:lead` | 2 |
-| `read:activity` | 6 |
-| `read:meeting` | 3 |
-| `read:pipeline` | 6 |
-| `read:sequence` | 4 |
-| `read:stage` | 4 |
-| `search:call` | 2 |
-| `search:customer` | 1 |
-| `search:product` | 4 |
-| `search:task` | 2 |
-| `send:email` | 1 |
-| `update:activity` | 4 |
-| `update:contact` | 10 |
-| `update:customer` | 1 |
-| `update:email` | 5 |
-| `update:field` | 2 |
-| `update:file` | 1 |
-| `update:note` | 5 |
-| `update:pipeline` | 2 |
-| `update:product` | 4 |
-| `update:task` | 9 |
 
 ## Covered verbs
 
 ```
+convert:lead
+convert:opportunity
 create:account
+create:activity
 create:call
+create:campaign
+create:channel
 create:contact
 create:customer
 create:email
 create:event
+create:field
 create:invoice
 create:lead
 create:list_object
+create:meeting
 create:note
 create:opportunity
 create:order
+create:pipeline
 create:product
+create:sequence
+create:stage
 create:task
+create:user
 delete:account
+delete:activity
+delete:call
+delete:campaign
+delete:channel
 delete:contact
+delete:customer
+delete:email
 delete:event
+delete:field
+delete:file
 delete:lead
+delete:list_object
+delete:meeting
+delete:note
 delete:opportunity
+delete:pipeline
+delete:product
+delete:sequence
+delete:stage
 delete:task
+delete:user
 list:account
+list:activity
+list:call
 list:campaign
 list:contact
 list:email
 list:event
+list:field
 list:file
+list:lead
 list:list_object
+list:meeting
 list:note
 list:opportunity
 list:product
+list:stage
 list:task
 list:user
 merge:account
 merge:contact
 merge:lead
 read:account
+read:activity
 read:call
 read:campaign
+read:channel
 read:contact
 read:customer
 read:email
@@ -138,23 +133,51 @@ read:file
 read:forecast
 read:lead
 read:list_object
+read:meeting
 read:message
 read:note
 read:opportunity
 read:order
+read:pipeline
 read:product
+read:quota
+read:sequence
+read:stage
 read:subscription
 read:task
 read:user
 search:account
+search:call
 search:contact
+search:customer
+search:email
 search:file
 search:lead
+search:list_object
+search:meeting
+search:note
 search:opportunity
+search:product
+search:task
 search:user
+send:email
 update:account
+update:activity
 update:call
 update:campaign
+update:contact
+update:customer
+update:email
+update:field
+update:file
 update:lead
+update:list_object
+update:meeting
+update:note
 update:opportunity
+update:pipeline
+update:product
+update:stage
+update:subscription
+update:task
 ```

@@ -1,0 +1,260 @@
+{
+ "vendor": "stripe-billing",
+ "namespace": "stripe",
+ "tables": [],
+ "tools": [
+  {
+   "name": "product_update",
+   "description": "Update a product (POST /v1/products/{id}).",
+   "op": "update",
+   "table": "products",
+   "id_param": "product_id",
+   "id_column": "id",
+   "set_fields": [
+    "name",
+    "description",
+    "active",
+    "default_price",
+    "type",
+    "url",
+    "metadata"
+   ],
+   "required": [
+    "product_id"
+   ],
+   "params": {
+    "product_id": {
+     "type": "string",
+     "description": "Identifier of the record to update."
+    },
+    "name": {
+     "type": "string",
+     "description": "New value for name."
+    },
+    "description": {
+     "type": "string",
+     "description": "New value for description."
+    },
+    "active": {
+     "type": "string",
+     "description": "New value for active."
+    },
+    "default_price": {
+     "type": "string",
+     "description": "New value for default_price."
+    },
+    "type": {
+     "type": "string",
+     "description": "New value for type."
+    },
+    "url": {
+     "type": "string",
+     "description": "New value for url."
+    },
+    "metadata": {
+     "type": "string",
+     "description": "New value for metadata."
+    }
+   }
+  },
+  {
+   "name": "product_delete",
+   "description": "Delete a product (DELETE /v1/products/{id}).",
+   "op": "delete",
+   "table": "products",
+   "id_param": "product_id",
+   "id_column": "id",
+   "required": [
+    "product_id"
+   ],
+   "params": {
+    "product_id": {
+     "type": "string",
+     "description": "Identifier of the record to delete."
+    }
+   }
+  },
+  {
+   "name": "products_search",
+   "description": "Search products by name or description (GET /v1/products/search).",
+   "op": "search",
+   "table": "products",
+   "query_param": "query",
+   "search_columns": [
+    "name",
+    "description"
+   ],
+   "required": [
+    "query"
+   ],
+   "params": {
+    "query": {
+     "type": "string",
+     "description": "Free-text search string."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return."
+    },
+    "active": {
+     "type": "string",
+     "description": "Restrict results to this active."
+    },
+    "type": {
+     "type": "string",
+     "description": "Restrict results to this type."
+    }
+   },
+   "filters": [
+    "active",
+    "type"
+   ]
+  },
+  {
+   "name": "customer_update",
+   "description": "Update a customer (POST /v1/customers/{id}).",
+   "op": "update",
+   "table": "customers",
+   "id_param": "customer_id",
+   "id_column": "id",
+   "set_fields": [
+    "name",
+    "email",
+    "status",
+    "currency",
+    "balance"
+   ],
+   "required": [
+    "customer_id"
+   ],
+   "params": {
+    "customer_id": {
+     "type": "string",
+     "description": "Identifier of the record to update."
+    },
+    "name": {
+     "type": "string",
+     "description": "New value for name."
+    },
+    "email": {
+     "type": "string",
+     "description": "New value for email."
+    },
+    "status": {
+     "type": "string",
+     "description": "New value for status."
+    },
+    "currency": {
+     "type": "string",
+     "description": "New value for currency."
+    },
+    "balance": {
+     "type": "string",
+     "description": "New value for balance."
+    }
+   }
+  },
+  {
+   "name": "customer_delete",
+   "description": "Delete a customer (DELETE /v1/customers/{id}).",
+   "op": "delete",
+   "table": "customers",
+   "id_param": "customer_id",
+   "id_column": "id",
+   "required": [
+    "customer_id"
+   ],
+   "params": {
+    "customer_id": {
+     "type": "string",
+     "description": "Identifier of the record to delete."
+    }
+   }
+  },
+  {
+   "name": "customers_search",
+   "description": "Search customers by name or email (GET /v1/customers/search).",
+   "op": "search",
+   "table": "customers",
+   "query_param": "query",
+   "search_columns": [
+    "name",
+    "email"
+   ],
+   "required": [
+    "query"
+   ],
+   "params": {
+    "query": {
+     "type": "string",
+     "description": "Free-text search string."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return."
+    },
+    "status": {
+     "type": "string",
+     "description": "Restrict results to this status."
+    },
+    "currency": {
+     "type": "string",
+     "description": "Restrict results to this currency."
+    }
+   },
+   "filters": [
+    "status",
+    "currency"
+   ]
+  },
+  {
+   "name": "subscription_update",
+   "description": "Update a subscription (POST /v1/subscriptions/{id}).",
+   "op": "update",
+   "table": "subscriptions",
+   "id_param": "subscription_id",
+   "id_column": "id",
+   "set_fields": [
+    "status",
+    "quantity",
+    "price",
+    "collection_method",
+    "cancel_at_period_end",
+    "current_period_end"
+   ],
+   "required": [
+    "subscription_id"
+   ],
+   "params": {
+    "subscription_id": {
+     "type": "string",
+     "description": "Identifier of the record to update."
+    },
+    "status": {
+     "type": "string",
+     "description": "New value for status."
+    },
+    "quantity": {
+     "type": "string",
+     "description": "New value for quantity."
+    },
+    "price": {
+     "type": "string",
+     "description": "New value for price."
+    },
+    "collection_method": {
+     "type": "string",
+     "description": "New value for collection_method."
+    },
+    "cancel_at_period_end": {
+     "type": "string",
+     "description": "New value for cancel_at_period_end."
+    },
+    "current_period_end": {
+     "type": "string",
+     "description": "New value for current_period_end."
+    }
+   }
+  }
+ ]
+}

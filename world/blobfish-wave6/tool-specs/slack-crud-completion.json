@@ -1,0 +1,242 @@
+{
+ "vendor": "slack",
+ "namespace": "slack",
+ "tables": [],
+ "tools": [
+  {
+   "name": "channel_create",
+   "description": "Create a channel (POST /api/conversations.create).",
+   "op": "create",
+   "table": "channels",
+   "fields": [
+    "name",
+    "is_private",
+    "topic",
+    "purpose"
+   ],
+   "params": {
+    "name": {
+     "type": "string",
+     "description": "Value for name."
+    },
+    "is_private": {
+     "type": "string",
+     "description": "Value for is_private."
+    },
+    "topic": {
+     "type": "string",
+     "description": "Value for topic."
+    },
+    "purpose": {
+     "type": "string",
+     "description": "Value for purpose."
+    }
+   },
+   "required": [
+    "name"
+   ],
+   "id_prefix": "C0"
+  },
+  {
+   "name": "channel_get",
+   "description": "Retrieve channel metadata (GET /api/conversations.info).",
+   "op": "get",
+   "table": "channels",
+   "id_param": "channel",
+   "id_column": "id",
+   "required": [
+    "channel"
+   ],
+   "params": {
+    "channel": {
+     "type": "string",
+     "description": "Identifier of the record to retrieve."
+    }
+   }
+  },
+  {
+   "name": "channel_delete",
+   "description": "Archive and remove a channel (POST /api/conversations.delete).",
+   "op": "delete",
+   "table": "channels",
+   "id_param": "channel",
+   "id_column": "id",
+   "required": [
+    "channel"
+   ],
+   "params": {
+    "channel": {
+     "type": "string",
+     "description": "Identifier of the record to delete."
+    }
+   }
+  },
+  {
+   "name": "file_update",
+   "description": "Update file metadata (POST /api/files.update).",
+   "op": "update",
+   "table": "files",
+   "id_param": "file",
+   "id_column": "id",
+   "set_fields": [
+    "name",
+    "filetype",
+    "mode",
+    "is_public"
+   ],
+   "required": [
+    "file"
+   ],
+   "params": {
+    "file": {
+     "type": "string",
+     "description": "Identifier of the record to update."
+    },
+    "name": {
+     "type": "string",
+     "description": "New value for name."
+    },
+    "filetype": {
+     "type": "string",
+     "description": "New value for filetype."
+    },
+    "mode": {
+     "type": "string",
+     "description": "New value for mode."
+    },
+    "is_public": {
+     "type": "string",
+     "description": "New value for is_public."
+    }
+   }
+  },
+  {
+   "name": "file_delete",
+   "description": "Delete a file (POST /api/files.delete).",
+   "op": "delete",
+   "table": "files",
+   "id_param": "file",
+   "id_column": "id",
+   "required": [
+    "file"
+   ],
+   "params": {
+    "file": {
+     "type": "string",
+     "description": "Identifier of the record to delete."
+    }
+   }
+  },
+  {
+   "name": "calls_list",
+   "description": "List recorded calls (GET /api/calls.list).",
+   "op": "list",
+   "table": "calls",
+   "params": {
+    "created_by": {
+     "type": "string",
+     "description": "Filter by created_by."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return."
+    }
+   },
+   "filters": [
+    "created_by"
+   ]
+  },
+  {
+   "name": "calls_search",
+   "description": "Search calls by title or external id (GET /api/calls.search).",
+   "op": "search",
+   "table": "calls",
+   "query_param": "query",
+   "search_columns": [
+    "title",
+    "external_display_id"
+   ],
+   "required": [
+    "query"
+   ],
+   "params": {
+    "query": {
+     "type": "string",
+     "description": "Free-text search string."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return."
+    }
+   }
+  },
+  {
+   "name": "call_delete",
+   "description": "Delete a call record (POST /api/calls.end).",
+   "op": "delete",
+   "table": "calls",
+   "id_param": "id",
+   "id_column": "id",
+   "required": [
+    "id"
+   ],
+   "params": {
+    "id": {
+     "type": "string",
+     "description": "Identifier of the record to delete."
+    }
+   }
+  },
+  {
+   "name": "user_create",
+   "description": "Invite a user into the workspace (POST /api/admin.users.invite).",
+   "op": "create",
+   "table": "slack_users",
+   "fields": [
+    "name",
+    "real_name",
+    "email",
+    "is_admin"
+   ],
+   "params": {
+    "name": {
+     "type": "string",
+     "description": "Value for name."
+    },
+    "real_name": {
+     "type": "string",
+     "description": "Value for real_name."
+    },
+    "email": {
+     "type": "string",
+     "description": "Value for email."
+    },
+    "is_admin": {
+     "type": "string",
+     "description": "Value for is_admin."
+    }
+   },
+   "required": [
+    "email"
+   ],
+   "id_prefix": "U0"
+  },
+  {
+   "name": "user_delete",
+   "description": "Deactivate and remove a user (POST /api/admin.users.remove).",
+   "op": "delete",
+   "table": "slack_users",
+   "id_param": "user_id",
+   "id_column": "id",
+   "required": [
+    "user_id"
+   ],
+   "params": {
+    "user_id": {
+     "type": "string",
+     "description": "Identifier of the record to delete."
+    }
+   }
+  }
+ ]
+}

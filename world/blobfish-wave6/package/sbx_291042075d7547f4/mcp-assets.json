@@ -351,7 +351,13 @@
     "email.sg_senders_get",
     "email.sg_domains_list",
     "email.sg_domain_authenticate",
-    "email.sg_api_keys_list"
+    "email.sg_api_keys_list",
+    "email.campaign_create",
+    "email.campaign_delete",
+    "email.segments_list",
+    "email.segment_update",
+    "email.segment_delete",
+    "email.segments_search"
    ],
    "target_tables": [
     "category_stats",
@@ -372,7 +378,9 @@
     "bounces",
     "sg_senders",
     "authentication_domains",
-    "sg_api_keys"
+    "sg_api_keys",
+    "campaigns",
+    "marketing_segments"
    ]
   },
   {
@@ -876,7 +884,57 @@
     "salesforce.signature_envelopes_list",
     "salesforce.signature_envelope_create",
     "salesforce.signature_envelope_update",
-    "salesforce.lead_merge_log_list"
+    "salesforce.lead_merge_log_list",
+    "salesforce.activities_list",
+    "salesforce.activity_get",
+    "salesforce.activity_create",
+    "salesforce.activity_update",
+    "salesforce.activity_delete",
+    "salesforce.pipelines_list",
+    "salesforce.pipeline_get",
+    "salesforce.pipeline_create",
+    "salesforce.pipeline_update",
+    "salesforce.pipeline_delete",
+    "salesforce.stages_list",
+    "salesforce.stage_get",
+    "salesforce.stage_create",
+    "salesforce.stage_update",
+    "salesforce.stage_delete",
+    "salesforce.meetings_list",
+    "salesforce.meeting_get",
+    "salesforce.meeting_create",
+    "salesforce.meeting_update",
+    "salesforce.meeting_delete",
+    "salesforce.meetings_search",
+    "salesforce.notes_list",
+    "salesforce.note_get",
+    "salesforce.note_create",
+    "salesforce.note_update",
+    "salesforce.note_delete",
+    "salesforce.notes_search",
+    "salesforce.custom_fields_list",
+    "salesforce.custom_field_create",
+    "salesforce.custom_field_update",
+    "salesforce.custom_field_delete",
+    "salesforce.contact_update",
+    "salesforce.task_update",
+    "salesforce.tasks_search",
+    "salesforce.leads_list",
+    "salesforce.email_message_update",
+    "salesforce.email_message_delete",
+    "salesforce.email_messages_search",
+    "salesforce.sequence_create",
+    "salesforce.sequence_get",
+    "salesforce.sequence_delete",
+    "salesforce.quota_get",
+    "salesforce.lead_convert",
+    "salesforce.opportunity_convert_to_order",
+    "salesforce.email_send",
+    "salesforce.account_delete",
+    "salesforce.contact_delete",
+    "salesforce.lead_delete",
+    "salesforce.opportunity_delete",
+    "salesforce.task_delete"
    ],
    "target_tables": [
     "accept_all",
@@ -977,7 +1035,14 @@
     "account_usage",
     "account_health",
     "campaign_touches",
-    "signature_envelopes"
+    "signature_envelopes",
+    "crm_activities",
+    "crm_pipelines",
+    "crm_pipeline_stages",
+    "crm_meetings",
+    "crm_notes",
+    "crm_custom_fields",
+    "erp_sales_orders"
    ],
    "source": {
     "kind": "synthetic",
@@ -1803,7 +1868,17 @@
     "slack.usergroups_create",
     "slack.usergroups_update",
     "slack.team_info",
-    "slack.emoji_list"
+    "slack.emoji_list",
+    "slack.channel_create",
+    "slack.channel_get",
+    "slack.channel_delete",
+    "slack.file_update",
+    "slack.file_delete",
+    "slack.calls_list",
+    "slack.calls_search",
+    "slack.call_delete",
+    "slack.user_create",
+    "slack.user_delete"
    ],
    "target_tables": [
     "admin_conversations",
@@ -1818,7 +1893,9 @@
     "slack_pins",
     "slack_usergroups",
     "slack_team",
-    "admin_emojis"
+    "admin_emojis",
+    "files",
+    "calls"
    ],
    "source": {
     "kind": "openapi",
@@ -6882,7 +6959,14 @@
     "stripe.post_coupons",
     "stripe.get_balance",
     "stripe.get_events",
-    "stripe.get_disputes"
+    "stripe.get_disputes",
+    "stripe.product_update",
+    "stripe.product_delete",
+    "stripe.products_search",
+    "stripe.customer_update",
+    "stripe.customer_delete",
+    "stripe.customers_search",
+    "stripe.subscription_update"
    ],
    "target_tables": [
     "amount_details_line_items",

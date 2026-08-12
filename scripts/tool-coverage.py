@@ -134,7 +134,10 @@ def main() -> int:
         "| verb | servers implementing it |",
         "|---|---:|",
     ]
-    for verb, srcs in sorted(missing_ranked := Counter({v: len(s) for v, s in verb_sources.items() if v in missing}).most_common(40)):
+    # Show the WHOLE backlog. This table is the densification worklist, so a
+    # silent top-N would make the gap look smaller than it is.
+    missing_ranked = Counter({v: len(s) for v, s in verb_sources.items() if v in missing})
+    for verb, srcs in sorted(missing_ranked.most_common(), key=lambda kv: (-kv[1], kv[0])):
         out.append(f"| `{verb}` | {srcs} |")
 
     out += ["", "## Covered verbs", "", "```", *sorted(covered), "```", ""]

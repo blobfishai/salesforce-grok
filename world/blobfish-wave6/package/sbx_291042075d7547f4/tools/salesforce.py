@@ -1,8 +1,8 @@
 """Executable SALESFORCE tool module
 
 Inspect each function: SQLite helpers are local fixtures; network-backed functions call their declared endpoint.
-Tools: core_records_agent, marketing_records_agent, sales_records_agent, sourcing_records_agent, accounts_list, contacts_list, account_get, contact_get, opportunity_get, get_contactdb_segments_segment_id, get_mc_contacts_exports_id, query_sales_leads, lookup_sales_lead_with_employees, lookup_sales_opportunity_with_sales_leads, core_workflow_agent, marketing_workflow_agent, sales_workflow_agent, sourcing_workflow_agent, account_create, contact_create, opportunity_create, post_marketing_contacts_batch, update_sales_leads_status, service_cases_list, service_case_get, service_case_update_status, case_history_list, case_messages_list, issue_taxonomy_list, product_catalog_list, quotes_list, quote_get, quote_lines_list, quote_update_status, customer_profile_get, customer_profiles_list, aggregate_query, lead_create, lead_update_fields, lead_find_duplicates, lead_merge, sequences_list, sequence_steps_list, sequence_enrollments_list, sequence_enroll_lead, sequence_enrollment_update, email_threads_list, email_messages_list, email_thread_classify, rep_quotas_list, forecast_submissions_list, forecast_submit, account_usage_list, account_health_list, account_health_update, campaign_touches_list, signature_envelopes_list, signature_envelope_create, signature_envelope_update, lead_merge_log_list
-Tables: accept_all, account_tiering_standard, activity_logging_standards, attribution, case_management_sla, coaching_cadence, compliance_review_checklist, conversation_intelligence_standards, cpq_discount_policy, currency_handling, data_quality_rules, deal_desk_charter, disposition_codes, finance_approval_thresholds, forecast_methodology, fy2026_list_prices, handoff_to_ae, inbound_routing_matrix, lead_management_sop, lead_scoring_policy, meddic_scorecard, meeting_scheduling_sla, meeting_types_and_durations, mql_definition, opportunity_stage_gates, order_activation_runbook, renewal_playbook, risky, routing_decision_table, sal_gate, sequence_design_rules, snippets, snippets_and_retention, suppression_and_kpis, talk_ratio, territory, tracker_keywords, visitor_identification, volume_bands, web_form_definitions, all_segments_responses, api_keys, automations_link_stats_responses, automations_responses, batches, blocks, bounces, campaigns, category_stats, certificates, click_trackings, company_marketing_handoffs, contact_exports, contactdb_segments, marketing_campaigns, marketing_content_assets, singlesends, suppression_groups, accounts, cases, company_sales_handoffs, contacts, opportunities, sales_leads, sales_opportunities, tasks, company_sourcing_handoffs, customers, journal_entries, purchase_orders, sourcing_purchase_orders, sourcing_vendors, vendors, employees, service_cases, case_history, case_messages, issue_taxonomy, product_catalog_items, sales_quotes, sales_quote_lines, customer_profiles, support_tickets, lead_merge_log, outreach_sequences, outreach_sequence_steps, outreach_enrollments, email_threads, email_messages, rep_quotas, forecast_submissions, account_usage, account_health, campaign_touches, signature_envelopes
+Tools: core_records_agent, marketing_records_agent, sales_records_agent, sourcing_records_agent, accounts_list, contacts_list, account_get, contact_get, opportunity_get, get_contactdb_segments_segment_id, get_mc_contacts_exports_id, query_sales_leads, lookup_sales_lead_with_employees, lookup_sales_opportunity_with_sales_leads, core_workflow_agent, marketing_workflow_agent, sales_workflow_agent, sourcing_workflow_agent, account_create, contact_create, opportunity_create, post_marketing_contacts_batch, update_sales_leads_status, service_cases_list, service_case_get, service_case_update_status, case_history_list, case_messages_list, issue_taxonomy_list, product_catalog_list, quotes_list, quote_get, quote_lines_list, quote_update_status, customer_profile_get, customer_profiles_list, aggregate_query, lead_create, lead_update_fields, lead_find_duplicates, lead_merge, sequences_list, sequence_steps_list, sequence_enrollments_list, sequence_enroll_lead, sequence_enrollment_update, email_threads_list, email_messages_list, email_thread_classify, rep_quotas_list, forecast_submissions_list, forecast_submit, account_usage_list, account_health_list, account_health_update, campaign_touches_list, signature_envelopes_list, signature_envelope_create, signature_envelope_update, lead_merge_log_list, quote_delete, contact_merge, account_merge, crm_followup_create, account_tiers_list, approval_matrix_list, product_regulatory_list, activities_list, activity_get, activity_create, activity_update, activity_delete, pipelines_list, pipeline_get, pipeline_create, pipeline_update, pipeline_delete, stages_list, stage_get, stage_create, stage_update, stage_delete, meetings_list, meeting_get, meeting_create, meeting_update, meeting_delete, meetings_search, notes_list, note_get, note_create, note_update, note_delete, notes_search, custom_fields_list, custom_field_create, custom_field_update, custom_field_delete, contact_update, task_update, tasks_search, leads_list, email_message_update, email_message_delete, email_messages_search, sequence_create, sequence_get, sequence_delete, quota_get, lead_convert, opportunity_convert_to_order, email_send, account_delete, contact_delete, lead_delete, opportunity_delete, task_delete
+Tables: accept_all, account_tiering_standard, activity_logging_standards, attribution, case_management_sla, coaching_cadence, compliance_review_checklist, conversation_intelligence_standards, cpq_discount_policy, currency_handling, data_quality_rules, deal_desk_charter, disposition_codes, finance_approval_thresholds, forecast_methodology, fy2026_list_prices, handoff_to_ae, inbound_routing_matrix, lead_management_sop, lead_scoring_policy, meddic_scorecard, meeting_scheduling_sla, meeting_types_and_durations, mql_definition, opportunity_stage_gates, order_activation_runbook, renewal_playbook, risky, routing_decision_table, sal_gate, sequence_design_rules, snippets, snippets_and_retention, suppression_and_kpis, talk_ratio, territory, tracker_keywords, visitor_identification, volume_bands, web_form_definitions, all_segments_responses, api_keys, automations_link_stats_responses, automations_responses, batches, blocks, bounces, campaigns, category_stats, certificates, click_trackings, company_marketing_handoffs, contact_exports, contactdb_segments, marketing_campaigns, marketing_content_assets, singlesends, suppression_groups, accounts, cases, company_sales_handoffs, contacts, opportunities, sales_leads, sales_opportunities, tasks, company_sourcing_handoffs, customers, journal_entries, purchase_orders, sourcing_purchase_orders, sourcing_vendors, vendors, employees, service_cases, case_history, case_messages, issue_taxonomy, product_catalog_items, sales_quotes, sales_quote_lines, customer_profiles, support_tickets, lead_merge_log, outreach_sequences, outreach_sequence_steps, outreach_enrollments, email_threads, email_messages, rep_quotas, forecast_submissions, account_usage, account_health, campaign_touches, signature_envelopes, account_tiers, deal_desk_approval_matrix, product_regulatory_flags, crm_activities, crm_pipelines, crm_pipeline_stages, crm_meetings, crm_notes, crm_custom_fields, erp_sales_orders
 """
 import json, sqlite3
 """Department records sub-agent: resolve one unique business handle from a free-text request without mutating state."""
@@ -5767,4 +5767,3628 @@ def _bf_friction_lead_merge_log_list(*_bf_args, **_bf_kwargs):
     return _bf_orig_lead_merge_log_list(*_bf_args, **_bf_kwargs)
 _bf_friction_lead_merge_log_list.blobfish_original = _bf_orig_lead_merge_log_list
 lead_merge_log_list = _bf_friction_lead_merge_log_list
+
+def quote_delete(db_path='state.db', **kwargs):
+    """Permanently delete a quote (DELETE /services/data/v62.0/sobjects/Quote/{id}). Irreversible."""
+    _missing = [p for p in ['quote_id'] if kwargs.get(p) is None]
+    if _missing:
+        return {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+    import sqlite3
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _id = kwargs['quote_id']
+        _row = cur.execute('SELECT * FROM "sales_quotes" WHERE "id" = ?', [_id]).fetchone()
+        if _row is None:
+            return {'error': 'quote not found', 'status': 404}
+        _before = dict(_row)
+        cur.execute('DELETE FROM "sales_quotes" WHERE "id" = ?', [_id])
+        conn.commit()
+        return {'deleted': True, 'id': _id, 'object': 'quote', 'record': _before}
+    finally:
+        conn.close()
+
+def contact_merge(db_path='state.db', **kwargs):
+    """Merge a duplicate contact into a surviving contact, backfilling empty fields from the duplicate."""
+    _missing = [p for p in ['master_id', 'duplicate_id'] if kwargs.get(p) is None]
+    if _missing:
+        return {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+    import sqlite3
+    if str(kwargs['master_id']) == str(kwargs['duplicate_id']):
+        return {'error': 'cannot merge a record into itself', 'status': 400}
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _m = cur.execute('SELECT * FROM "contacts" WHERE "id" = ?', [kwargs['master_id']]).fetchone()
+        _d = cur.execute('SELECT * FROM "contacts" WHERE "id" = ?', [kwargs['duplicate_id']]).fetchone()
+        if _m is None or _d is None:
+            return {'error': 'contact not found', 'status': 404}
+        _m, _d = dict(_m), dict(_d)
+        _filled = {}
+        for _k, _v in _d.items():
+            if _k != 'id' and (_m.get(_k) is None or _m.get(_k) == '') and _v not in (None, ''):
+                _filled[_k] = _v
+        if _filled:
+            _sets = ', '.join('"' + c + '" = ?' for c in _filled)
+            cur.execute('UPDATE "contacts" SET ' + _sets + ' WHERE "id" = ?',
+                        list(_filled.values()) + [kwargs['master_id']])
+        cur.execute('DELETE FROM "contacts" WHERE "id" = ?', [kwargs['duplicate_id']])
+        conn.commit()
+        return {'merged': True, 'survivor': kwargs['master_id'], 'merged_away': kwargs['duplicate_id'],
+                'fields_backfilled': list(_filled)}
+    finally:
+        conn.close()
+
+def account_merge(db_path='state.db', **kwargs):
+    """Merge a duplicate account into a surviving account, backfilling empty fields from the duplicate."""
+    _missing = [p for p in ['master_id', 'duplicate_id'] if kwargs.get(p) is None]
+    if _missing:
+        return {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+    import sqlite3
+    if str(kwargs['master_id']) == str(kwargs['duplicate_id']):
+        return {'error': 'cannot merge a record into itself', 'status': 400}
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _m = cur.execute('SELECT * FROM "accounts" WHERE "id" = ?', [kwargs['master_id']]).fetchone()
+        _d = cur.execute('SELECT * FROM "accounts" WHERE "id" = ?', [kwargs['duplicate_id']]).fetchone()
+        if _m is None or _d is None:
+            return {'error': 'account not found', 'status': 404}
+        _m, _d = dict(_m), dict(_d)
+        _filled = {}
+        for _k, _v in _d.items():
+            if _k != 'id' and (_m.get(_k) is None or _m.get(_k) == '') and _v not in (None, ''):
+                _filled[_k] = _v
+        if _filled:
+            _sets = ', '.join('"' + c + '" = ?' for c in _filled)
+            cur.execute('UPDATE "accounts" SET ' + _sets + ' WHERE "id" = ?',
+                        list(_filled.values()) + [kwargs['master_id']])
+        cur.execute('DELETE FROM "accounts" WHERE "id" = ?', [kwargs['duplicate_id']])
+        conn.commit()
+        return {'merged': True, 'survivor': kwargs['master_id'], 'merged_away': kwargs['duplicate_id'],
+                'fields_backfilled': list(_filled)}
+    finally:
+        conn.close()
+
+def crm_followup_create(db_path='state.db', **kwargs):
+    """Create a follow-up task (POST /services/data/v62.0/sobjects/Task)."""
+    _missing = [p for p in ['subject'] if kwargs.get(p) is None]
+    if _missing:
+        return {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+    import sqlite3, datetime
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _cols = [r[1] for r in cur.execute('PRAGMA table_info("tasks")')]
+        _vals = {}
+        for _k, _v in kwargs.items():
+            if _k in _cols and _v is not None:
+                _vals[_k] = _v
+        if 'created_at' in _cols and 'created_at' not in _vals:
+            _vals['created_at'] = datetime.datetime.utcnow().isoformat() + 'Z'
+        if 'id' in _cols and 'id' not in _vals:
+            _n = cur.execute('SELECT COUNT(*) FROM "tasks"').fetchone()[0]
+            _vals['id'] = 'task_' + str(_n + 1).zfill(4)
+        _names = ', '.join('"' + c + '"' for c in _vals)
+        _marks = ', '.join('?' for _ in _vals)
+        cur.execute('INSERT INTO "tasks" (' + _names + ') VALUES (' + _marks + ')', list(_vals.values()))
+        conn.commit()
+        return {'created': True, 'object': 'task', 'record': _vals}
+    finally:
+        conn.close()
+
+def account_tiers_list(db_path='state.db', **kwargs):
+    """List account tiers with the standing discount authority and new-client flag for each account."""
+    import sqlite3
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _sql = 'SELECT * FROM "account_tiers"'
+        _args = []
+        _where = []
+        for _k in ['account_id', 'account_name', 'tier']:
+            if kwargs.get(_k) is not None:
+                _where.append('"' + _k + '" = ?')
+                _args.append(kwargs[_k])
+        if _where:
+            _sql += ' WHERE ' + ' AND '.join(_where)
+        _limit = int(kwargs.get('limit') or 50)
+        _sql += ' LIMIT ' + str(max(1, min(200, _limit)))
+        return [dict(r) for r in cur.execute(_sql, _args)]
+    finally:
+        conn.close()
+
+def approval_matrix_list(db_path='state.db', **kwargs):
+    """List the standing quote approval matrix: which condition routes to which approver, in what order."""
+    import sqlite3
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _sql = 'SELECT * FROM "deal_desk_approval_matrix"'
+        _args = []
+        _where = []
+        for _k in ['rule_id', 'approver_role']:
+            if kwargs.get(_k) is not None:
+                _where.append('"' + _k + '" = ?')
+                _args.append(kwargs[_k])
+        if _where:
+            _sql += ' WHERE ' + ' AND '.join(_where)
+        _limit = int(kwargs.get('limit') or 50)
+        _sql += ' LIMIT ' + str(max(1, min(200, _limit)))
+        return [dict(r) for r in cur.execute(_sql, _args)]
+    finally:
+        conn.close()
+
+def product_regulatory_list(db_path='state.db', **kwargs):
+    """List products with their regulatory classification, used to decide whether Compliance review applies."""
+    import sqlite3
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _sql = 'SELECT * FROM "product_regulatory_flags"'
+        _args = []
+        _where = []
+        for _k in ['product_code', 'is_regulated']:
+            if kwargs.get(_k) is not None:
+                _where.append('"' + _k + '" = ?')
+                _args.append(kwargs[_k])
+        if _where:
+            _sql += ' WHERE ' + ' AND '.join(_where)
+        _limit = int(kwargs.get('limit') or 50)
+        _sql += ' LIMIT ' + str(max(1, min(200, _limit)))
+        return [dict(r) for r in cur.execute(_sql, _args)]
+    finally:
+        conn.close()
+
+def activities_list(db_path='state.db', **kwargs):
+    '''List logged activities, newest first (GET /services/data/v60.0/sobjects/Task).'''
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _where, _args = [], []
+        if kwargs.get('account_id') is not None:
+            _where.append('"account_id" = ?')
+            _args.append(str(kwargs['account_id']))
+        if kwargs.get('contact_id') is not None:
+            _where.append('"contact_id" = ?')
+            _args.append(str(kwargs['contact_id']))
+        if kwargs.get('activity_type') is not None:
+            _where.append('"activity_type" = ?')
+            _args.append(str(kwargs['activity_type']))
+        if kwargs.get('status') is not None:
+            _where.append('"status" = ?')
+            _args.append(str(kwargs['status']))
+        if kwargs.get('owner_employee_id') is not None:
+            _where.append('"owner_employee_id" = ?')
+            _args.append(str(kwargs['owner_employee_id']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "crm_activities"'
+        if _where:
+            _q += ' WHERE ' + ' AND '.join(_where)
+        _q += ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return {'totalSize': _r['count'], 'done': True, 'records': _r['items']}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_activities_list = activities_list
+def _bf_friction_activities_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_activities_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "activities_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_activities_list(*_bf_args, **_bf_kwargs)
+_bf_friction_activities_list.blobfish_original = _bf_orig_activities_list
+activities_list = _bf_friction_activities_list
+
+def activity_get(db_path='state.db', **kwargs):
+    '''Retrieve a single logged activity by id (GET /services/data/v60.0/sobjects/Task/{id}).'''
+    _missing = [p for p in ['activity_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "crm_activities" WHERE "id" = ?', [str(kwargs['activity_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'crm_activitie not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        _r = dict(_row)
+        _r['attributes'] = {'type': 'crm_activitie', 'url': '/services/data/v62.0/sobjects/crm_activitie/' + str(_r.get('id', ''))}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_activity_get = activity_get
+def _bf_friction_activity_get(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_activity_get(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "activity_get|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_activity_get(*_bf_args, **_bf_kwargs)
+_bf_friction_activity_get.blobfish_original = _bf_orig_activity_get
+activity_get = _bf_friction_activity_get
+
+def activity_create(db_path='state.db', **kwargs):
+    '''Log a completed or planned activity against a record (POST /services/data/v60.0/sobjects/Task).'''
+    _missing = [p for p in ['activity_type', 'subject'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+        _n = cur.execute('SELECT COUNT(*) FROM "crm_activities"').fetchone()[0] + 1
+        _id = 'act_' + str(_n).zfill(4)
+        while cur.execute('SELECT 1 FROM "crm_activities" WHERE "id" = ?', [_id]).fetchone() is not None:
+            _n += 1
+            _id = 'act_' + str(_n).zfill(4)
+        _cols, _vals = ['id'], [_id]
+        if kwargs.get('activity_type') is not None:
+            _cols.append('activity_type')
+            _v = kwargs['activity_type']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('subject') is not None:
+            _cols.append('subject')
+            _v = kwargs['subject']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('account_id') is not None:
+            _cols.append('account_id')
+            _v = kwargs['account_id']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('contact_id') is not None:
+            _cols.append('contact_id')
+            _v = kwargs['contact_id']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('opportunity_id') is not None:
+            _cols.append('opportunity_id')
+            _v = kwargs['opportunity_id']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('owner_employee_id') is not None:
+            _cols.append('owner_employee_id')
+            _v = kwargs['owner_employee_id']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('occurred_at') is not None:
+            _cols.append('occurred_at')
+            _v = kwargs['occurred_at']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('duration_minutes') is not None:
+            _cols.append('duration_minutes')
+            _v = kwargs['duration_minutes']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('outcome') is not None:
+            _cols.append('outcome')
+            _v = kwargs['outcome']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('notes') is not None:
+            _cols.append('notes')
+            _v = kwargs['notes']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if 'status' not in _cols:
+            _cols.append('status')
+            _vals.append('completed')
+        if 'created_at' not in _cols:
+            _cols.append('created_at')
+            _vals.append(_now)
+        cur.execute('INSERT INTO "crm_activities" (' + ', '.join('"' + c + '"' for c in _cols) + ') VALUES (' + ', '.join(['?'] * len(_cols)) + ')', _vals)
+        conn.commit()
+        _row = cur.execute('SELECT * FROM "crm_activities" WHERE "id" = ?', [_id]).fetchone()
+        _r = dict(_row) if _row else {'id': _id}
+        _r['attributes'] = {'type': 'crm_activitie', 'url': '/services/data/v62.0/sobjects/crm_activitie/' + str(_r.get('id', ''))}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_activity_create = activity_create
+def _bf_friction_activity_create(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_activity_create(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "activity_create|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_activity_create(*_bf_args, **_bf_kwargs)
+_bf_friction_activity_create.blobfish_original = _bf_orig_activity_create
+activity_create = _bf_friction_activity_create
+
+def activity_update(db_path='state.db', **kwargs):
+    '''Update fields on a logged activity (PATCH /services/data/v60.0/sobjects/Task/{id}).'''
+    _missing = [p for p in ['activity_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "crm_activities" WHERE "id" = ?', [str(kwargs['activity_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'crm_activitie not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        _sets, _args = [], []
+        if kwargs.get('subject') is not None:
+            _sets.append('"subject" = ?')
+            _v = kwargs['subject']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('status') is not None:
+            _sets.append('"status" = ?')
+            _v = kwargs['status']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('outcome') is not None:
+            _sets.append('"outcome" = ?')
+            _v = kwargs['outcome']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('notes') is not None:
+            _sets.append('"notes" = ?')
+            _v = kwargs['notes']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('occurred_at') is not None:
+            _sets.append('"occurred_at" = ?')
+            _v = kwargs['occurred_at']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('duration_minutes') is not None:
+            _sets.append('"duration_minutes" = ?')
+            _v = kwargs['duration_minutes']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('owner_employee_id') is not None:
+            _sets.append('"owner_employee_id" = ?')
+            _v = kwargs['owner_employee_id']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if _sets:
+            cur.execute('UPDATE "crm_activities" SET ' + ', '.join(_sets) + ' WHERE "id" = ?', _args + [str(kwargs['activity_id'])])
+            conn.commit()
+        _row = cur.execute('SELECT * FROM "crm_activities" WHERE "id" = ?', [str(kwargs['activity_id'])]).fetchone()
+        _r = dict(_row)
+        _r['attributes'] = {'type': 'crm_activitie', 'url': '/services/data/v62.0/sobjects/crm_activitie/' + str(_r.get('id', ''))}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_activity_update = activity_update
+def _bf_friction_activity_update(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_activity_update(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "activity_update|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_activity_update(*_bf_args, **_bf_kwargs)
+_bf_friction_activity_update.blobfish_original = _bf_orig_activity_update
+activity_update = _bf_friction_activity_update
+
+def activity_delete(db_path='state.db', **kwargs):
+    '''Delete a logged activity (DELETE /services/data/v60.0/sobjects/Task/{id}).'''
+    _missing = [p for p in ['activity_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "crm_activities" WHERE "id" = ?', [str(kwargs['activity_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'crm_activitie not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        cur.execute('DELETE FROM "crm_activities" WHERE "id" = ?', [str(kwargs['activity_id'])])
+        conn.commit()
+        _r = {'deleted': True, 'id': str(kwargs['activity_id'])}
+        return {'id': _r.get('id'), 'success': True, 'errors': []}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_activity_delete = activity_delete
+def _bf_friction_activity_delete(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_activity_delete(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "activity_delete|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_activity_delete(*_bf_args, **_bf_kwargs)
+_bf_friction_activity_delete.blobfish_original = _bf_orig_activity_delete
+activity_delete = _bf_friction_activity_delete
+
+def pipelines_list(db_path='state.db', **kwargs):
+    '''List sales pipelines (GET /crm/v3/pipelines/deals).'''
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _where, _args = [], []
+        if kwargs.get('object_type') is not None:
+            _where.append('"object_type" = ?')
+            _args.append(str(kwargs['object_type']))
+        if kwargs.get('status') is not None:
+            _where.append('"status" = ?')
+            _args.append(str(kwargs['status']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "crm_pipelines"'
+        if _where:
+            _q += ' WHERE ' + ' AND '.join(_where)
+        _q += ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return {'totalSize': _r['count'], 'done': True, 'records': _r['items']}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_pipelines_list = pipelines_list
+def _bf_friction_pipelines_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_pipelines_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "pipelines_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_pipelines_list(*_bf_args, **_bf_kwargs)
+_bf_friction_pipelines_list.blobfish_original = _bf_orig_pipelines_list
+pipelines_list = _bf_friction_pipelines_list
+
+def pipeline_get(db_path='state.db', **kwargs):
+    '''Retrieve one pipeline by id (GET /crm/v3/pipelines/deals/{pipelineId}).'''
+    _missing = [p for p in ['pipeline_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "crm_pipelines" WHERE "id" = ?', [str(kwargs['pipeline_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'crm_pipeline not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        _r = dict(_row)
+        _r['attributes'] = {'type': 'crm_pipeline', 'url': '/services/data/v62.0/sobjects/crm_pipeline/' + str(_r.get('id', ''))}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_pipeline_get = pipeline_get
+def _bf_friction_pipeline_get(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_pipeline_get(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "pipeline_get|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_pipeline_get(*_bf_args, **_bf_kwargs)
+_bf_friction_pipeline_get.blobfish_original = _bf_orig_pipeline_get
+pipeline_get = _bf_friction_pipeline_get
+
+def pipeline_create(db_path='state.db', **kwargs):
+    '''Create a sales pipeline (POST /crm/v3/pipelines/deals).'''
+    _missing = [p for p in ['name'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+        _n = cur.execute('SELECT COUNT(*) FROM "crm_pipelines"').fetchone()[0] + 1
+        _id = 'pipe_' + str(_n).zfill(4)
+        while cur.execute('SELECT 1 FROM "crm_pipelines" WHERE "id" = ?', [_id]).fetchone() is not None:
+            _n += 1
+            _id = 'pipe_' + str(_n).zfill(4)
+        _cols, _vals = ['id'], [_id]
+        if kwargs.get('name') is not None:
+            _cols.append('name')
+            _v = kwargs['name']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('object_type') is not None:
+            _cols.append('object_type')
+            _v = kwargs['object_type']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('is_default') is not None:
+            _cols.append('is_default')
+            _v = kwargs['is_default']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('stage_count') is not None:
+            _cols.append('stage_count')
+            _v = kwargs['stage_count']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if 'status' not in _cols:
+            _cols.append('status')
+            _vals.append('active')
+        if 'created_at' not in _cols:
+            _cols.append('created_at')
+            _vals.append(_now)
+        cur.execute('INSERT INTO "crm_pipelines" (' + ', '.join('"' + c + '"' for c in _cols) + ') VALUES (' + ', '.join(['?'] * len(_cols)) + ')', _vals)
+        conn.commit()
+        _row = cur.execute('SELECT * FROM "crm_pipelines" WHERE "id" = ?', [_id]).fetchone()
+        _r = dict(_row) if _row else {'id': _id}
+        _r['attributes'] = {'type': 'crm_pipeline', 'url': '/services/data/v62.0/sobjects/crm_pipeline/' + str(_r.get('id', ''))}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_pipeline_create = pipeline_create
+def _bf_friction_pipeline_create(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_pipeline_create(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "pipeline_create|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_pipeline_create(*_bf_args, **_bf_kwargs)
+_bf_friction_pipeline_create.blobfish_original = _bf_orig_pipeline_create
+pipeline_create = _bf_friction_pipeline_create
+
+def pipeline_update(db_path='state.db', **kwargs):
+    '''Update a pipeline (PATCH /crm/v3/pipelines/deals/{pipelineId}).'''
+    _missing = [p for p in ['pipeline_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "crm_pipelines" WHERE "id" = ?', [str(kwargs['pipeline_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'crm_pipeline not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        _sets, _args = [], []
+        if kwargs.get('name') is not None:
+            _sets.append('"name" = ?')
+            _v = kwargs['name']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('object_type') is not None:
+            _sets.append('"object_type" = ?')
+            _v = kwargs['object_type']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('is_default') is not None:
+            _sets.append('"is_default" = ?')
+            _v = kwargs['is_default']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('status') is not None:
+            _sets.append('"status" = ?')
+            _v = kwargs['status']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('stage_count') is not None:
+            _sets.append('"stage_count" = ?')
+            _v = kwargs['stage_count']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if _sets:
+            cur.execute('UPDATE "crm_pipelines" SET ' + ', '.join(_sets) + ' WHERE "id" = ?', _args + [str(kwargs['pipeline_id'])])
+            conn.commit()
+        _row = cur.execute('SELECT * FROM "crm_pipelines" WHERE "id" = ?', [str(kwargs['pipeline_id'])]).fetchone()
+        _r = dict(_row)
+        _r['attributes'] = {'type': 'crm_pipeline', 'url': '/services/data/v62.0/sobjects/crm_pipeline/' + str(_r.get('id', ''))}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_pipeline_update = pipeline_update
+def _bf_friction_pipeline_update(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_pipeline_update(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "pipeline_update|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_pipeline_update(*_bf_args, **_bf_kwargs)
+_bf_friction_pipeline_update.blobfish_original = _bf_orig_pipeline_update
+pipeline_update = _bf_friction_pipeline_update
+
+def pipeline_delete(db_path='state.db', **kwargs):
+    '''Archive/delete a pipeline (DELETE /crm/v3/pipelines/deals/{pipelineId}).'''
+    _missing = [p for p in ['pipeline_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "crm_pipelines" WHERE "id" = ?', [str(kwargs['pipeline_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'crm_pipeline not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        cur.execute('DELETE FROM "crm_pipelines" WHERE "id" = ?', [str(kwargs['pipeline_id'])])
+        conn.commit()
+        _r = {'deleted': True, 'id': str(kwargs['pipeline_id'])}
+        return {'id': _r.get('id'), 'success': True, 'errors': []}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_pipeline_delete = pipeline_delete
+def _bf_friction_pipeline_delete(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_pipeline_delete(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "pipeline_delete|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_pipeline_delete(*_bf_args, **_bf_kwargs)
+_bf_friction_pipeline_delete.blobfish_original = _bf_orig_pipeline_delete
+pipeline_delete = _bf_friction_pipeline_delete
+
+def stages_list(db_path='state.db', **kwargs):
+    '''List stages in a pipeline, in display order (GET /crm/v3/pipelines/deals/{pipelineId}/stages).'''
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _where, _args = [], []
+        if kwargs.get('pipeline_id') is not None:
+            _where.append('"pipeline_id" = ?')
+            _args.append(str(kwargs['pipeline_id']))
+        if kwargs.get('forecast_category') is not None:
+            _where.append('"forecast_category" = ?')
+            _args.append(str(kwargs['forecast_category']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "crm_pipeline_stages"'
+        if _where:
+            _q += ' WHERE ' + ' AND '.join(_where)
+        _q += ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return {'totalSize': _r['count'], 'done': True, 'records': _r['items']}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_stages_list = stages_list
+def _bf_friction_stages_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_stages_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "stages_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_stages_list(*_bf_args, **_bf_kwargs)
+_bf_friction_stages_list.blobfish_original = _bf_orig_stages_list
+stages_list = _bf_friction_stages_list
+
+def stage_get(db_path='state.db', **kwargs):
+    '''Retrieve a single pipeline stage (GET /crm/v3/pipelines/deals/{pipelineId}/stages/{stageId}).'''
+    _missing = [p for p in ['stage_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "crm_pipeline_stages" WHERE "id" = ?', [str(kwargs['stage_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'crm_pipeline_stage not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        _r = dict(_row)
+        _r['attributes'] = {'type': 'crm_pipeline_stage', 'url': '/services/data/v62.0/sobjects/crm_pipeline_stage/' + str(_r.get('id', ''))}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_stage_get = stage_get
+def _bf_friction_stage_get(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_stage_get(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "stage_get|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_stage_get(*_bf_args, **_bf_kwargs)
+_bf_friction_stage_get.blobfish_original = _bf_orig_stage_get
+stage_get = _bf_friction_stage_get
+
+def stage_create(db_path='state.db', **kwargs):
+    '''Add a stage to a pipeline (POST /crm/v3/pipelines/deals/{pipelineId}/stages).'''
+    _missing = [p for p in ['pipeline_id', 'name'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+        _n = cur.execute('SELECT COUNT(*) FROM "crm_pipeline_stages"').fetchone()[0] + 1
+        _id = 'stg_' + str(_n).zfill(4)
+        while cur.execute('SELECT 1 FROM "crm_pipeline_stages" WHERE "id" = ?', [_id]).fetchone() is not None:
+            _n += 1
+            _id = 'stg_' + str(_n).zfill(4)
+        _cols, _vals = ['id'], [_id]
+        if kwargs.get('pipeline_id') is not None:
+            _cols.append('pipeline_id')
+            _v = kwargs['pipeline_id']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('name') is not None:
+            _cols.append('name')
+            _v = kwargs['name']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('display_order') is not None:
+            _cols.append('display_order')
+            _v = kwargs['display_order']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('probability_pct') is not None:
+            _cols.append('probability_pct')
+            _v = kwargs['probability_pct']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('forecast_category') is not None:
+            _cols.append('forecast_category')
+            _v = kwargs['forecast_category']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('is_closed') is not None:
+            _cols.append('is_closed')
+            _v = kwargs['is_closed']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('is_won') is not None:
+            _cols.append('is_won')
+            _v = kwargs['is_won']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        cur.execute('INSERT INTO "crm_pipeline_stages" (' + ', '.join('"' + c + '"' for c in _cols) + ') VALUES (' + ', '.join(['?'] * len(_cols)) + ')', _vals)
+        conn.commit()
+        _row = cur.execute('SELECT * FROM "crm_pipeline_stages" WHERE "id" = ?', [_id]).fetchone()
+        _r = dict(_row) if _row else {'id': _id}
+        _r['attributes'] = {'type': 'crm_pipeline_stage', 'url': '/services/data/v62.0/sobjects/crm_pipeline_stage/' + str(_r.get('id', ''))}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_stage_create = stage_create
+def _bf_friction_stage_create(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_stage_create(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "stage_create|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_stage_create(*_bf_args, **_bf_kwargs)
+_bf_friction_stage_create.blobfish_original = _bf_orig_stage_create
+stage_create = _bf_friction_stage_create
+
+def stage_update(db_path='state.db', **kwargs):
+    '''Update a pipeline stage (PATCH /crm/v3/pipelines/deals/{pipelineId}/stages/{stageId}).'''
+    _missing = [p for p in ['stage_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "crm_pipeline_stages" WHERE "id" = ?', [str(kwargs['stage_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'crm_pipeline_stage not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        _sets, _args = [], []
+        if kwargs.get('name') is not None:
+            _sets.append('"name" = ?')
+            _v = kwargs['name']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('display_order') is not None:
+            _sets.append('"display_order" = ?')
+            _v = kwargs['display_order']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('probability_pct') is not None:
+            _sets.append('"probability_pct" = ?')
+            _v = kwargs['probability_pct']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('forecast_category') is not None:
+            _sets.append('"forecast_category" = ?')
+            _v = kwargs['forecast_category']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('is_closed') is not None:
+            _sets.append('"is_closed" = ?')
+            _v = kwargs['is_closed']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('is_won') is not None:
+            _sets.append('"is_won" = ?')
+            _v = kwargs['is_won']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if _sets:
+            cur.execute('UPDATE "crm_pipeline_stages" SET ' + ', '.join(_sets) + ' WHERE "id" = ?', _args + [str(kwargs['stage_id'])])
+            conn.commit()
+        _row = cur.execute('SELECT * FROM "crm_pipeline_stages" WHERE "id" = ?', [str(kwargs['stage_id'])]).fetchone()
+        _r = dict(_row)
+        _r['attributes'] = {'type': 'crm_pipeline_stage', 'url': '/services/data/v62.0/sobjects/crm_pipeline_stage/' + str(_r.get('id', ''))}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_stage_update = stage_update
+def _bf_friction_stage_update(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_stage_update(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "stage_update|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_stage_update(*_bf_args, **_bf_kwargs)
+_bf_friction_stage_update.blobfish_original = _bf_orig_stage_update
+stage_update = _bf_friction_stage_update
+
+def stage_delete(db_path='state.db', **kwargs):
+    '''Delete a pipeline stage (DELETE /crm/v3/pipelines/deals/{pipelineId}/stages/{stageId}).'''
+    _missing = [p for p in ['stage_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "crm_pipeline_stages" WHERE "id" = ?', [str(kwargs['stage_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'crm_pipeline_stage not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        cur.execute('DELETE FROM "crm_pipeline_stages" WHERE "id" = ?', [str(kwargs['stage_id'])])
+        conn.commit()
+        _r = {'deleted': True, 'id': str(kwargs['stage_id'])}
+        return {'id': _r.get('id'), 'success': True, 'errors': []}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_stage_delete = stage_delete
+def _bf_friction_stage_delete(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_stage_delete(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "stage_delete|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_stage_delete(*_bf_args, **_bf_kwargs)
+_bf_friction_stage_delete.blobfish_original = _bf_orig_stage_delete
+stage_delete = _bf_friction_stage_delete
+
+def meetings_list(db_path='state.db', **kwargs):
+    '''List customer meetings (GET /crm/v3/objects/meetings).'''
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _where, _args = [], []
+        if kwargs.get('account_id') is not None:
+            _where.append('"account_id" = ?')
+            _args.append(str(kwargs['account_id']))
+        if kwargs.get('contact_id') is not None:
+            _where.append('"contact_id" = ?')
+            _args.append(str(kwargs['contact_id']))
+        if kwargs.get('status') is not None:
+            _where.append('"status" = ?')
+            _args.append(str(kwargs['status']))
+        if kwargs.get('meeting_type') is not None:
+            _where.append('"meeting_type" = ?')
+            _args.append(str(kwargs['meeting_type']))
+        if kwargs.get('organizer_employee_id') is not None:
+            _where.append('"organizer_employee_id" = ?')
+            _args.append(str(kwargs['organizer_employee_id']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "crm_meetings"'
+        if _where:
+            _q += ' WHERE ' + ' AND '.join(_where)
+        _q += ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return {'totalSize': _r['count'], 'done': True, 'records': _r['items']}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_meetings_list = meetings_list
+def _bf_friction_meetings_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_meetings_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "meetings_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_meetings_list(*_bf_args, **_bf_kwargs)
+_bf_friction_meetings_list.blobfish_original = _bf_orig_meetings_list
+meetings_list = _bf_friction_meetings_list
+
+def meeting_get(db_path='state.db', **kwargs):
+    '''Retrieve one meeting by id (GET /crm/v3/objects/meetings/{meetingId}).'''
+    _missing = [p for p in ['meeting_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "crm_meetings" WHERE "id" = ?', [str(kwargs['meeting_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'crm_meeting not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        _r = dict(_row)
+        _r['attributes'] = {'type': 'crm_meeting', 'url': '/services/data/v62.0/sobjects/crm_meeting/' + str(_r.get('id', ''))}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_meeting_get = meeting_get
+def _bf_friction_meeting_get(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_meeting_get(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "meeting_get|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_meeting_get(*_bf_args, **_bf_kwargs)
+_bf_friction_meeting_get.blobfish_original = _bf_orig_meeting_get
+meeting_get = _bf_friction_meeting_get
+
+def meeting_create(db_path='state.db', **kwargs):
+    '''Schedule a customer meeting (POST /crm/v3/objects/meetings).'''
+    _missing = [p for p in ['subject', 'starts_at'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+        _n = cur.execute('SELECT COUNT(*) FROM "crm_meetings"').fetchone()[0] + 1
+        _id = 'mtg_' + str(_n).zfill(4)
+        while cur.execute('SELECT 1 FROM "crm_meetings" WHERE "id" = ?', [_id]).fetchone() is not None:
+            _n += 1
+            _id = 'mtg_' + str(_n).zfill(4)
+        _cols, _vals = ['id'], [_id]
+        if kwargs.get('subject') is not None:
+            _cols.append('subject')
+            _v = kwargs['subject']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('account_id') is not None:
+            _cols.append('account_id')
+            _v = kwargs['account_id']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('contact_id') is not None:
+            _cols.append('contact_id')
+            _v = kwargs['contact_id']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('organizer_employee_id') is not None:
+            _cols.append('organizer_employee_id')
+            _v = kwargs['organizer_employee_id']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('meeting_type') is not None:
+            _cols.append('meeting_type')
+            _v = kwargs['meeting_type']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('starts_at') is not None:
+            _cols.append('starts_at')
+            _v = kwargs['starts_at']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('ends_at') is not None:
+            _cols.append('ends_at')
+            _v = kwargs['ends_at']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('location') is not None:
+            _cols.append('location')
+            _v = kwargs['location']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if 'status' not in _cols:
+            _cols.append('status')
+            _vals.append('scheduled')
+        if 'created_at' not in _cols:
+            _cols.append('created_at')
+            _vals.append(_now)
+        cur.execute('INSERT INTO "crm_meetings" (' + ', '.join('"' + c + '"' for c in _cols) + ') VALUES (' + ', '.join(['?'] * len(_cols)) + ')', _vals)
+        conn.commit()
+        _row = cur.execute('SELECT * FROM "crm_meetings" WHERE "id" = ?', [_id]).fetchone()
+        _r = dict(_row) if _row else {'id': _id}
+        _r['attributes'] = {'type': 'crm_meeting', 'url': '/services/data/v62.0/sobjects/crm_meeting/' + str(_r.get('id', ''))}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_meeting_create = meeting_create
+def _bf_friction_meeting_create(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_meeting_create(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "meeting_create|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_meeting_create(*_bf_args, **_bf_kwargs)
+_bf_friction_meeting_create.blobfish_original = _bf_orig_meeting_create
+meeting_create = _bf_friction_meeting_create
+
+def meeting_update(db_path='state.db', **kwargs):
+    '''Reschedule or update a meeting (PATCH /crm/v3/objects/meetings/{meetingId}).'''
+    _missing = [p for p in ['meeting_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "crm_meetings" WHERE "id" = ?', [str(kwargs['meeting_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'crm_meeting not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        _sets, _args = [], []
+        if kwargs.get('subject') is not None:
+            _sets.append('"subject" = ?')
+            _v = kwargs['subject']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('starts_at') is not None:
+            _sets.append('"starts_at" = ?')
+            _v = kwargs['starts_at']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('ends_at') is not None:
+            _sets.append('"ends_at" = ?')
+            _v = kwargs['ends_at']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('location') is not None:
+            _sets.append('"location" = ?')
+            _v = kwargs['location']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('status') is not None:
+            _sets.append('"status" = ?')
+            _v = kwargs['status']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('meeting_type') is not None:
+            _sets.append('"meeting_type" = ?')
+            _v = kwargs['meeting_type']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('outcome_notes') is not None:
+            _sets.append('"outcome_notes" = ?')
+            _v = kwargs['outcome_notes']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if _sets:
+            cur.execute('UPDATE "crm_meetings" SET ' + ', '.join(_sets) + ' WHERE "id" = ?', _args + [str(kwargs['meeting_id'])])
+            conn.commit()
+        _row = cur.execute('SELECT * FROM "crm_meetings" WHERE "id" = ?', [str(kwargs['meeting_id'])]).fetchone()
+        _r = dict(_row)
+        _r['attributes'] = {'type': 'crm_meeting', 'url': '/services/data/v62.0/sobjects/crm_meeting/' + str(_r.get('id', ''))}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_meeting_update = meeting_update
+def _bf_friction_meeting_update(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_meeting_update(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "meeting_update|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_meeting_update(*_bf_args, **_bf_kwargs)
+_bf_friction_meeting_update.blobfish_original = _bf_orig_meeting_update
+meeting_update = _bf_friction_meeting_update
+
+def meeting_delete(db_path='state.db', **kwargs):
+    '''Cancel and remove a meeting (DELETE /crm/v3/objects/meetings/{meetingId}).'''
+    _missing = [p for p in ['meeting_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "crm_meetings" WHERE "id" = ?', [str(kwargs['meeting_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'crm_meeting not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        cur.execute('DELETE FROM "crm_meetings" WHERE "id" = ?', [str(kwargs['meeting_id'])])
+        conn.commit()
+        _r = {'deleted': True, 'id': str(kwargs['meeting_id'])}
+        return {'id': _r.get('id'), 'success': True, 'errors': []}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_meeting_delete = meeting_delete
+def _bf_friction_meeting_delete(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_meeting_delete(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "meeting_delete|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_meeting_delete(*_bf_args, **_bf_kwargs)
+_bf_friction_meeting_delete.blobfish_original = _bf_orig_meeting_delete
+meeting_delete = _bf_friction_meeting_delete
+
+def meetings_search(db_path='state.db', **kwargs):
+    '''Search meetings by subject, location or outcome notes (POST /crm/v3/objects/meetings/search).'''
+    _missing = [p for p in ['query'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _qv = '%' + str(kwargs['query']) + '%'
+        _where, _args = ["(\"subject\" LIKE ? OR \"location\" LIKE ? OR \"outcome_notes\" LIKE ?)"], [_qv] * 3
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "crm_meetings" WHERE ' + ' AND '.join(_where) + ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return {'totalSize': _r['count'], 'done': True, 'records': _r['items']}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_meetings_search = meetings_search
+def _bf_friction_meetings_search(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_meetings_search(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "meetings_search|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_meetings_search(*_bf_args, **_bf_kwargs)
+_bf_friction_meetings_search.blobfish_original = _bf_orig_meetings_search
+meetings_search = _bf_friction_meetings_search
+
+def notes_list(db_path='state.db', **kwargs):
+    '''List notes attached to CRM records (GET /crm/v3/objects/notes).'''
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _where, _args = [], []
+        if kwargs.get('parent_type') is not None:
+            _where.append('"parent_type" = ?')
+            _args.append(str(kwargs['parent_type']))
+        if kwargs.get('parent_id') is not None:
+            _where.append('"parent_id" = ?')
+            _args.append(str(kwargs['parent_id']))
+        if kwargs.get('author_employee_id') is not None:
+            _where.append('"author_employee_id" = ?')
+            _args.append(str(kwargs['author_employee_id']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "crm_notes"'
+        if _where:
+            _q += ' WHERE ' + ' AND '.join(_where)
+        _q += ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return {'totalSize': _r['count'], 'done': True, 'records': _r['items']}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_notes_list = notes_list
+def _bf_friction_notes_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_notes_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "notes_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_notes_list(*_bf_args, **_bf_kwargs)
+_bf_friction_notes_list.blobfish_original = _bf_orig_notes_list
+notes_list = _bf_friction_notes_list
+
+def note_get(db_path='state.db', **kwargs):
+    '''Retrieve a single note (GET /crm/v3/objects/notes/{noteId}).'''
+    _missing = [p for p in ['note_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "crm_notes" WHERE "id" = ?', [str(kwargs['note_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'crm_note not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        _r = dict(_row)
+        _r['attributes'] = {'type': 'crm_note', 'url': '/services/data/v62.0/sobjects/crm_note/' + str(_r.get('id', ''))}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_note_get = note_get
+def _bf_friction_note_get(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_note_get(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "note_get|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_note_get(*_bf_args, **_bf_kwargs)
+_bf_friction_note_get.blobfish_original = _bf_orig_note_get
+note_get = _bf_friction_note_get
+
+def note_create(db_path='state.db', **kwargs):
+    '''Attach a note to a CRM record (POST /crm/v3/objects/notes).'''
+    _missing = [p for p in ['parent_type', 'parent_id', 'body'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+        _n = cur.execute('SELECT COUNT(*) FROM "crm_notes"').fetchone()[0] + 1
+        _id = 'note_' + str(_n).zfill(4)
+        while cur.execute('SELECT 1 FROM "crm_notes" WHERE "id" = ?', [_id]).fetchone() is not None:
+            _n += 1
+            _id = 'note_' + str(_n).zfill(4)
+        _cols, _vals = ['id'], [_id]
+        if kwargs.get('parent_type') is not None:
+            _cols.append('parent_type')
+            _v = kwargs['parent_type']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('parent_id') is not None:
+            _cols.append('parent_id')
+            _v = kwargs['parent_id']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('title') is not None:
+            _cols.append('title')
+            _v = kwargs['title']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('body') is not None:
+            _cols.append('body')
+            _v = kwargs['body']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('author_employee_id') is not None:
+            _cols.append('author_employee_id')
+            _v = kwargs['author_employee_id']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('is_private') is not None:
+            _cols.append('is_private')
+            _v = kwargs['is_private']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if 'created_at' not in _cols:
+            _cols.append('created_at')
+            _vals.append(_now)
+        if 'updated_at' not in _cols:
+            _cols.append('updated_at')
+            _vals.append(_now)
+        cur.execute('INSERT INTO "crm_notes" (' + ', '.join('"' + c + '"' for c in _cols) + ') VALUES (' + ', '.join(['?'] * len(_cols)) + ')', _vals)
+        conn.commit()
+        _row = cur.execute('SELECT * FROM "crm_notes" WHERE "id" = ?', [_id]).fetchone()
+        _r = dict(_row) if _row else {'id': _id}
+        _r['attributes'] = {'type': 'crm_note', 'url': '/services/data/v62.0/sobjects/crm_note/' + str(_r.get('id', ''))}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_note_create = note_create
+def _bf_friction_note_create(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_note_create(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "note_create|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_note_create(*_bf_args, **_bf_kwargs)
+_bf_friction_note_create.blobfish_original = _bf_orig_note_create
+note_create = _bf_friction_note_create
+
+def note_update(db_path='state.db', **kwargs):
+    '''Edit an existing note (PATCH /crm/v3/objects/notes/{noteId}).'''
+    _missing = [p for p in ['note_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "crm_notes" WHERE "id" = ?', [str(kwargs['note_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'crm_note not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        _sets, _args = [], []
+        if kwargs.get('title') is not None:
+            _sets.append('"title" = ?')
+            _v = kwargs['title']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('body') is not None:
+            _sets.append('"body" = ?')
+            _v = kwargs['body']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('is_private') is not None:
+            _sets.append('"is_private" = ?')
+            _v = kwargs['is_private']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('updated_at') is not None:
+            _sets.append('"updated_at" = ?')
+            _v = kwargs['updated_at']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if _sets:
+            cur.execute('UPDATE "crm_notes" SET ' + ', '.join(_sets) + ' WHERE "id" = ?', _args + [str(kwargs['note_id'])])
+            conn.commit()
+        _row = cur.execute('SELECT * FROM "crm_notes" WHERE "id" = ?', [str(kwargs['note_id'])]).fetchone()
+        _r = dict(_row)
+        _r['attributes'] = {'type': 'crm_note', 'url': '/services/data/v62.0/sobjects/crm_note/' + str(_r.get('id', ''))}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_note_update = note_update
+def _bf_friction_note_update(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_note_update(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "note_update|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_note_update(*_bf_args, **_bf_kwargs)
+_bf_friction_note_update.blobfish_original = _bf_orig_note_update
+note_update = _bf_friction_note_update
+
+def note_delete(db_path='state.db', **kwargs):
+    '''Delete a note (DELETE /crm/v3/objects/notes/{noteId}).'''
+    _missing = [p for p in ['note_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "crm_notes" WHERE "id" = ?', [str(kwargs['note_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'crm_note not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        cur.execute('DELETE FROM "crm_notes" WHERE "id" = ?', [str(kwargs['note_id'])])
+        conn.commit()
+        _r = {'deleted': True, 'id': str(kwargs['note_id'])}
+        return {'id': _r.get('id'), 'success': True, 'errors': []}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_note_delete = note_delete
+def _bf_friction_note_delete(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_note_delete(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "note_delete|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_note_delete(*_bf_args, **_bf_kwargs)
+_bf_friction_note_delete.blobfish_original = _bf_orig_note_delete
+note_delete = _bf_friction_note_delete
+
+def notes_search(db_path='state.db', **kwargs):
+    '''Full-text search across note titles and bodies (POST /crm/v3/objects/notes/search).'''
+    _missing = [p for p in ['query'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _qv = '%' + str(kwargs['query']) + '%'
+        _where, _args = ["(\"title\" LIKE ? OR \"body\" LIKE ?)"], [_qv] * 2
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "crm_notes" WHERE ' + ' AND '.join(_where) + ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return {'totalSize': _r['count'], 'done': True, 'records': _r['items']}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_notes_search = notes_search
+def _bf_friction_notes_search(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_notes_search(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "notes_search|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_notes_search(*_bf_args, **_bf_kwargs)
+_bf_friction_notes_search.blobfish_original = _bf_orig_notes_search
+notes_search = _bf_friction_notes_search
+
+def custom_fields_list(db_path='state.db', **kwargs):
+    '''List custom field definitions for an object (GET /crm/v3/properties/{objectType}).'''
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _where, _args = [], []
+        if kwargs.get('object_name') is not None:
+            _where.append('"object_name" = ?')
+            _args.append(str(kwargs['object_name']))
+        if kwargs.get('data_type') is not None:
+            _where.append('"data_type" = ?')
+            _args.append(str(kwargs['data_type']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "crm_custom_fields"'
+        if _where:
+            _q += ' WHERE ' + ' AND '.join(_where)
+        _q += ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return {'totalSize': _r['count'], 'done': True, 'records': _r['items']}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_custom_fields_list = custom_fields_list
+def _bf_friction_custom_fields_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_custom_fields_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "custom_fields_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_custom_fields_list(*_bf_args, **_bf_kwargs)
+_bf_friction_custom_fields_list.blobfish_original = _bf_orig_custom_fields_list
+custom_fields_list = _bf_friction_custom_fields_list
+
+def custom_field_create(db_path='state.db', **kwargs):
+    '''Define a new custom field on an object (POST /crm/v3/properties/{objectType}).'''
+    _missing = [p for p in ['object_name', 'field_label', 'field_api_name', 'data_type'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+        _n = cur.execute('SELECT COUNT(*) FROM "crm_custom_fields"').fetchone()[0] + 1
+        _id = 'fld_' + str(_n).zfill(4)
+        while cur.execute('SELECT 1 FROM "crm_custom_fields" WHERE "id" = ?', [_id]).fetchone() is not None:
+            _n += 1
+            _id = 'fld_' + str(_n).zfill(4)
+        _cols, _vals = ['id'], [_id]
+        if kwargs.get('object_name') is not None:
+            _cols.append('object_name')
+            _v = kwargs['object_name']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('field_label') is not None:
+            _cols.append('field_label')
+            _v = kwargs['field_label']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('field_api_name') is not None:
+            _cols.append('field_api_name')
+            _v = kwargs['field_api_name']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('data_type') is not None:
+            _cols.append('data_type')
+            _v = kwargs['data_type']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('is_required') is not None:
+            _cols.append('is_required')
+            _v = kwargs['is_required']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('picklist_values') is not None:
+            _cols.append('picklist_values')
+            _v = kwargs['picklist_values']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('help_text') is not None:
+            _cols.append('help_text')
+            _v = kwargs['help_text']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if 'created_at' not in _cols:
+            _cols.append('created_at')
+            _vals.append(_now)
+        cur.execute('INSERT INTO "crm_custom_fields" (' + ', '.join('"' + c + '"' for c in _cols) + ') VALUES (' + ', '.join(['?'] * len(_cols)) + ')', _vals)
+        conn.commit()
+        _row = cur.execute('SELECT * FROM "crm_custom_fields" WHERE "id" = ?', [_id]).fetchone()
+        _r = dict(_row) if _row else {'id': _id}
+        _r['attributes'] = {'type': 'crm_custom_field', 'url': '/services/data/v62.0/sobjects/crm_custom_field/' + str(_r.get('id', ''))}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_custom_field_create = custom_field_create
+def _bf_friction_custom_field_create(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_custom_field_create(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "custom_field_create|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_custom_field_create(*_bf_args, **_bf_kwargs)
+_bf_friction_custom_field_create.blobfish_original = _bf_orig_custom_field_create
+custom_field_create = _bf_friction_custom_field_create
+
+def custom_field_update(db_path='state.db', **kwargs):
+    '''Update a custom field definition (PATCH /crm/v3/properties/{objectType}/{fieldName}).'''
+    _missing = [p for p in ['field_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "crm_custom_fields" WHERE "id" = ?', [str(kwargs['field_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'crm_custom_field not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        _sets, _args = [], []
+        if kwargs.get('field_label') is not None:
+            _sets.append('"field_label" = ?')
+            _v = kwargs['field_label']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('data_type') is not None:
+            _sets.append('"data_type" = ?')
+            _v = kwargs['data_type']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('is_required') is not None:
+            _sets.append('"is_required" = ?')
+            _v = kwargs['is_required']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('picklist_values') is not None:
+            _sets.append('"picklist_values" = ?')
+            _v = kwargs['picklist_values']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('help_text') is not None:
+            _sets.append('"help_text" = ?')
+            _v = kwargs['help_text']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if _sets:
+            cur.execute('UPDATE "crm_custom_fields" SET ' + ', '.join(_sets) + ' WHERE "id" = ?', _args + [str(kwargs['field_id'])])
+            conn.commit()
+        _row = cur.execute('SELECT * FROM "crm_custom_fields" WHERE "id" = ?', [str(kwargs['field_id'])]).fetchone()
+        _r = dict(_row)
+        _r['attributes'] = {'type': 'crm_custom_field', 'url': '/services/data/v62.0/sobjects/crm_custom_field/' + str(_r.get('id', ''))}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_custom_field_update = custom_field_update
+def _bf_friction_custom_field_update(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_custom_field_update(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "custom_field_update|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_custom_field_update(*_bf_args, **_bf_kwargs)
+_bf_friction_custom_field_update.blobfish_original = _bf_orig_custom_field_update
+custom_field_update = _bf_friction_custom_field_update
+
+def custom_field_delete(db_path='state.db', **kwargs):
+    '''Delete a custom field definition (DELETE /crm/v3/properties/{objectType}/{fieldName}).'''
+    _missing = [p for p in ['field_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "crm_custom_fields" WHERE "id" = ?', [str(kwargs['field_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'crm_custom_field not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        cur.execute('DELETE FROM "crm_custom_fields" WHERE "id" = ?', [str(kwargs['field_id'])])
+        conn.commit()
+        _r = {'deleted': True, 'id': str(kwargs['field_id'])}
+        return {'id': _r.get('id'), 'success': True, 'errors': []}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_custom_field_delete = custom_field_delete
+def _bf_friction_custom_field_delete(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_custom_field_delete(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "custom_field_delete|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_custom_field_delete(*_bf_args, **_bf_kwargs)
+_bf_friction_custom_field_delete.blobfish_original = _bf_orig_custom_field_delete
+custom_field_delete = _bf_friction_custom_field_delete
+
+def contact_update(db_path='state.db', **kwargs):
+    '''Update fields on a contact (PATCH /services/data/v60.0/sobjects/Contact/{id}).'''
+    _missing = [p for p in ['contact_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "contacts" WHERE "id" = ?', [str(kwargs['contact_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'contact not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        _sets, _args = [], []
+        if kwargs.get('name') is not None:
+            _sets.append('"name" = ?')
+            _v = kwargs['name']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('email') is not None:
+            _sets.append('"email" = ?')
+            _v = kwargs['email']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('status') is not None:
+            _sets.append('"status" = ?')
+            _v = kwargs['status']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('account_id') is not None:
+            _sets.append('"account_id" = ?')
+            _v = kwargs['account_id']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('owner_id') is not None:
+            _sets.append('"owner_id" = ?')
+            _v = kwargs['owner_id']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if _sets:
+            cur.execute('UPDATE "contacts" SET ' + ', '.join(_sets) + ' WHERE "id" = ?', _args + [str(kwargs['contact_id'])])
+            conn.commit()
+        _row = cur.execute('SELECT * FROM "contacts" WHERE "id" = ?', [str(kwargs['contact_id'])]).fetchone()
+        _r = dict(_row)
+        _r['attributes'] = {'type': 'contact', 'url': '/services/data/v62.0/sobjects/contact/' + str(_r.get('id', ''))}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_contact_update = contact_update
+def _bf_friction_contact_update(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_contact_update(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "contact_update|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_contact_update(*_bf_args, **_bf_kwargs)
+_bf_friction_contact_update.blobfish_original = _bf_orig_contact_update
+contact_update = _bf_friction_contact_update
+
+def task_update(db_path='state.db', **kwargs):
+    '''Update a task's status, owner, priority or due date (PATCH /services/data/v60.0/sobjects/Task/{id}).'''
+    _missing = [p for p in ['task_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "tasks" WHERE "id" = ?', [str(kwargs['task_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'task not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        _sets, _args = [], []
+        if kwargs.get('subject') is not None:
+            _sets.append('"subject" = ?')
+            _v = kwargs['subject']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('status') is not None:
+            _sets.append('"status" = ?')
+            _v = kwargs['status']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('priority') is not None:
+            _sets.append('"priority" = ?')
+            _v = kwargs['priority']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('assigned_to') is not None:
+            _sets.append('"assigned_to" = ?')
+            _v = kwargs['assigned_to']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('due_at') is not None:
+            _sets.append('"due_at" = ?')
+            _v = kwargs['due_at']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('description') is not None:
+            _sets.append('"description" = ?')
+            _v = kwargs['description']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if _sets:
+            cur.execute('UPDATE "tasks" SET ' + ', '.join(_sets) + ' WHERE "id" = ?', _args + [str(kwargs['task_id'])])
+            conn.commit()
+        _row = cur.execute('SELECT * FROM "tasks" WHERE "id" = ?', [str(kwargs['task_id'])]).fetchone()
+        _r = dict(_row)
+        _r['attributes'] = {'type': 'task', 'url': '/services/data/v62.0/sobjects/task/' + str(_r.get('id', ''))}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_task_update = task_update
+def _bf_friction_task_update(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_task_update(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "task_update|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_task_update(*_bf_args, **_bf_kwargs)
+_bf_friction_task_update.blobfish_original = _bf_orig_task_update
+task_update = _bf_friction_task_update
+
+def tasks_search(db_path='state.db', **kwargs):
+    '''Search tasks by subject or description (GET /services/data/v60.0/search).'''
+    _missing = [p for p in ['query'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _qv = '%' + str(kwargs['query']) + '%'
+        _where, _args = ["(\"subject\" LIKE ? OR \"description\" LIKE ?)"], [_qv] * 2
+        if kwargs.get('status') is not None:
+            _where.append('"status" = ?')
+            _args.append(str(kwargs['status']))
+        if kwargs.get('assigned_to') is not None:
+            _where.append('"assigned_to" = ?')
+            _args.append(str(kwargs['assigned_to']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "tasks" WHERE ' + ' AND '.join(_where) + ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return {'totalSize': _r['count'], 'done': True, 'records': _r['items']}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_tasks_search = tasks_search
+def _bf_friction_tasks_search(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_tasks_search(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "tasks_search|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_tasks_search(*_bf_args, **_bf_kwargs)
+_bf_friction_tasks_search.blobfish_original = _bf_orig_tasks_search
+tasks_search = _bf_friction_tasks_search
+
+def leads_list(db_path='state.db', **kwargs):
+    '''List sales leads (GET /services/data/v60.0/sobjects/Lead).'''
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _where, _args = [], []
+        if kwargs.get('status') is not None:
+            _where.append('"status" = ?')
+            _args.append(str(kwargs['status']))
+        if kwargs.get('source') is not None:
+            _where.append('"source" = ?')
+            _args.append(str(kwargs['source']))
+        if kwargs.get('owner_employee_id') is not None:
+            _where.append('"owner_employee_id" = ?')
+            _args.append(str(kwargs['owner_employee_id']))
+        if kwargs.get('company_name') is not None:
+            _where.append('"company_name" = ?')
+            _args.append(str(kwargs['company_name']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "sales_leads"'
+        if _where:
+            _q += ' WHERE ' + ' AND '.join(_where)
+        _q += ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return {'totalSize': _r['count'], 'done': True, 'records': _r['items']}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_leads_list = leads_list
+def _bf_friction_leads_list(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_leads_list(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "leads_list|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_leads_list(*_bf_args, **_bf_kwargs)
+_bf_friction_leads_list.blobfish_original = _bf_orig_leads_list
+leads_list = _bf_friction_leads_list
+
+def email_message_update(db_path='state.db', **kwargs):
+    '''Update a stored email message (PATCH /crm/v3/objects/emails/{emailId}).'''
+    _missing = [p for p in ['message_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "email_messages" WHERE "id" = ?', [str(kwargs['message_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'email_message not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        _sets, _args = [], []
+        if kwargs.get('body') is not None:
+            _sets.append('"body" = ?')
+            _v = kwargs['body']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('direction') is not None:
+            _sets.append('"direction" = ?')
+            _v = kwargs['direction']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('to_address') is not None:
+            _sets.append('"to_address" = ?')
+            _v = kwargs['to_address']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('from_address') is not None:
+            _sets.append('"from_address" = ?')
+            _v = kwargs['from_address']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('sent_at') is not None:
+            _sets.append('"sent_at" = ?')
+            _v = kwargs['sent_at']
+            _args.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if _sets:
+            cur.execute('UPDATE "email_messages" SET ' + ', '.join(_sets) + ' WHERE "id" = ?', _args + [str(kwargs['message_id'])])
+            conn.commit()
+        _row = cur.execute('SELECT * FROM "email_messages" WHERE "id" = ?', [str(kwargs['message_id'])]).fetchone()
+        _r = dict(_row)
+        _r['attributes'] = {'type': 'email_message', 'url': '/services/data/v62.0/sobjects/email_message/' + str(_r.get('id', ''))}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_email_message_update = email_message_update
+def _bf_friction_email_message_update(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_email_message_update(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "email_message_update|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_email_message_update(*_bf_args, **_bf_kwargs)
+_bf_friction_email_message_update.blobfish_original = _bf_orig_email_message_update
+email_message_update = _bf_friction_email_message_update
+
+def email_message_delete(db_path='state.db', **kwargs):
+    '''Delete a stored email message (DELETE /crm/v3/objects/emails/{emailId}).'''
+    _missing = [p for p in ['message_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "email_messages" WHERE "id" = ?', [str(kwargs['message_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'email_message not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        cur.execute('DELETE FROM "email_messages" WHERE "id" = ?', [str(kwargs['message_id'])])
+        conn.commit()
+        _r = {'deleted': True, 'id': str(kwargs['message_id'])}
+        return {'id': _r.get('id'), 'success': True, 'errors': []}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_email_message_delete = email_message_delete
+def _bf_friction_email_message_delete(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_email_message_delete(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "email_message_delete|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_email_message_delete(*_bf_args, **_bf_kwargs)
+_bf_friction_email_message_delete.blobfish_original = _bf_orig_email_message_delete
+email_message_delete = _bf_friction_email_message_delete
+
+def email_messages_search(db_path='state.db', **kwargs):
+    '''Search email message bodies and addresses (POST /crm/v3/objects/emails/search).'''
+    _missing = [p for p in ['query'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _qv = '%' + str(kwargs['query']) + '%'
+        _where, _args = ["(\"body\" LIKE ? OR \"from_address\" LIKE ? OR \"to_address\" LIKE ?)"], [_qv] * 3
+        if kwargs.get('thread_id') is not None:
+            _where.append('"thread_id" = ?')
+            _args.append(str(kwargs['thread_id']))
+        if kwargs.get('direction') is not None:
+            _where.append('"direction" = ?')
+            _args.append(str(kwargs['direction']))
+        _limit = int(kwargs.get('per_page') or kwargs.get('limit') or kwargs.get('maxResults') or kwargs.get('page_size') or 30)
+        _q = 'SELECT * FROM "email_messages" WHERE ' + ' AND '.join(_where) + ' ORDER BY "id" LIMIT ?'
+        _rows = [dict(r) for r in cur.execute(_q, _args + [_limit]).fetchall()]
+        _r = {'items': _rows, 'count': len(_rows)}
+        return {'totalSize': _r['count'], 'done': True, 'records': _r['items']}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_email_messages_search = email_messages_search
+def _bf_friction_email_messages_search(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_email_messages_search(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "email_messages_search|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_email_messages_search(*_bf_args, **_bf_kwargs)
+_bf_friction_email_messages_search.blobfish_original = _bf_orig_email_messages_search
+email_messages_search = _bf_friction_email_messages_search
+
+def sequence_create(db_path='state.db', **kwargs):
+    '''Create an outbound sequence (POST /sequences).'''
+    _missing = [p for p in ['name'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+        _n = cur.execute('SELECT COUNT(*) FROM "outreach_sequences"').fetchone()[0] + 1
+        _id = 'seq_' + str(_n).zfill(4)
+        while cur.execute('SELECT 1 FROM "outreach_sequences" WHERE "id" = ?', [_id]).fetchone() is not None:
+            _n += 1
+            _id = 'seq_' + str(_n).zfill(4)
+        _cols, _vals = ['id'], [_id]
+        if kwargs.get('name') is not None:
+            _cols.append('name')
+            _v = kwargs['name']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('status') is not None:
+            _cols.append('status')
+            _v = kwargs['status']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('step_count') is not None:
+            _cols.append('step_count')
+            _v = kwargs['step_count']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if kwargs.get('owner_employee_id') is not None:
+            _cols.append('owner_employee_id')
+            _v = kwargs['owner_employee_id']
+            _vals.append(json.dumps(_v) if isinstance(_v, (dict, list)) else _v)
+        if 'status' not in _cols:
+            _cols.append('status')
+            _vals.append('draft')
+        if 'created_at' not in _cols:
+            _cols.append('created_at')
+            _vals.append(_now)
+        cur.execute('INSERT INTO "outreach_sequences" (' + ', '.join('"' + c + '"' for c in _cols) + ') VALUES (' + ', '.join(['?'] * len(_cols)) + ')', _vals)
+        conn.commit()
+        _row = cur.execute('SELECT * FROM "outreach_sequences" WHERE "id" = ?', [_id]).fetchone()
+        _r = dict(_row) if _row else {'id': _id}
+        _r['attributes'] = {'type': 'outreach_sequence', 'url': '/services/data/v62.0/sobjects/outreach_sequence/' + str(_r.get('id', ''))}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_sequence_create = sequence_create
+def _bf_friction_sequence_create(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_sequence_create(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "sequence_create|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_sequence_create(*_bf_args, **_bf_kwargs)
+_bf_friction_sequence_create.blobfish_original = _bf_orig_sequence_create
+sequence_create = _bf_friction_sequence_create
+
+def sequence_get(db_path='state.db', **kwargs):
+    '''Retrieve one outbound sequence (GET /sequences/{id}).'''
+    _missing = [p for p in ['sequence_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "outreach_sequences" WHERE "id" = ?', [str(kwargs['sequence_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'outreach_sequence not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        _r = dict(_row)
+        _r['attributes'] = {'type': 'outreach_sequence', 'url': '/services/data/v62.0/sobjects/outreach_sequence/' + str(_r.get('id', ''))}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_sequence_get = sequence_get
+def _bf_friction_sequence_get(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_sequence_get(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "sequence_get|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_sequence_get(*_bf_args, **_bf_kwargs)
+_bf_friction_sequence_get.blobfish_original = _bf_orig_sequence_get
+sequence_get = _bf_friction_sequence_get
+
+def sequence_delete(db_path='state.db', **kwargs):
+    '''Delete an outbound sequence (DELETE /sequences/{id}).'''
+    _missing = [p for p in ['sequence_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "outreach_sequences" WHERE "id" = ?', [str(kwargs['sequence_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'outreach_sequence not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        cur.execute('DELETE FROM "outreach_sequences" WHERE "id" = ?', [str(kwargs['sequence_id'])])
+        conn.commit()
+        _r = {'deleted': True, 'id': str(kwargs['sequence_id'])}
+        return {'id': _r.get('id'), 'success': True, 'errors': []}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_sequence_delete = sequence_delete
+def _bf_friction_sequence_delete(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_sequence_delete(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "sequence_delete|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_sequence_delete(*_bf_args, **_bf_kwargs)
+_bf_friction_sequence_delete.blobfish_original = _bf_orig_sequence_delete
+sequence_delete = _bf_friction_sequence_delete
+
+def quota_get(db_path='state.db', **kwargs):
+    '''Retrieve a rep's quota and attainment for a period (GET /analytics/quotas/{id}).'''
+    _missing = [p for p in ['quota_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "rep_quotas" WHERE "id" = ?', [str(kwargs['quota_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'rep_quota not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        _r = dict(_row)
+        _r['attributes'] = {'type': 'rep_quota', 'url': '/services/data/v62.0/sobjects/rep_quota/' + str(_r.get('id', ''))}
+        return _r
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_quota_get = quota_get
+def _bf_friction_quota_get(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_quota_get(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "quota_get|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_quota_get(*_bf_args, **_bf_kwargs)
+_bf_friction_quota_get.blobfish_original = _bf_orig_quota_get
+quota_get = _bf_friction_quota_get
+
+def lead_convert(db_path="state.db", **kwargs):
+    """Convert a qualified lead into an account + contact (+ optional opportunity)."""
+    import sqlite3, json, datetime
+    lead_id = kwargs.get("lead_id")
+    if not lead_id:
+        return {"error": "lead_id is required", "status": 400}
+    create_opp = str(kwargs.get("create_opportunity", "false")).lower() in ("1", "true", "yes")
+    opp_name = kwargs.get("opportunity_name")
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    row = cur.execute("SELECT * FROM sales_leads WHERE id = ?", (lead_id,)).fetchone()
+    if row is None:
+        conn.close()
+        return {"error": "lead not found: %s" % lead_id, "status": 404}
+    lead = dict(row)
+    if str(lead.get("status", "")).lower() == "converted":
+        conn.close()
+        return {"error": "lead %s is already converted" % lead_id, "status": 409}
+    now = datetime.datetime(2026, 2, 16, 12, 0, 0).isoformat() + "Z"
+    n = cur.execute("SELECT COUNT(*) FROM accounts").fetchone()[0]
+    account_id = "account_%03d" % (n + 1)
+    cur.execute("INSERT INTO accounts (id, name) VALUES (?, ?)",
+                (account_id, lead.get("company_name") or "Unnamed Account"))
+    m = cur.execute("SELECT COUNT(*) FROM contacts").fetchone()[0]
+    contact_id = "contact_%03d" % (m + 1)
+    cur.execute(
+        "INSERT INTO contacts (id, account_id, name, email, status, owner_id, created_at) "
+        "VALUES (?, ?, ?, ?, ?, ?, ?)",
+        (contact_id, account_id, lead.get("contact_name") or "Unknown", None, "active",
+         str(lead.get("owner_employee_id") or ""), now))
+    cur.execute("UPDATE sales_leads SET status = ? WHERE id = ?", ("converted", lead_id))
+    opportunity_id = None
+    if create_opp:
+        k = cur.execute("SELECT COUNT(*) FROM opportunities").fetchone()[0]
+        opportunity_id = "opportunity_%03d" % (k + 1)
+        cols = [c[1] for c in cur.execute("PRAGMA table_info(opportunities)")]
+        vals = {"id": opportunity_id, "account_id": account_id,
+                "name": opp_name or ("%s — New Business" % (lead.get("company_name") or "Opportunity"))}
+        use = [c for c in cols if c in vals]
+        cur.execute("INSERT INTO opportunities (%s) VALUES (%s)"
+                    % (", ".join(use), ", ".join("?" for _ in use)), [vals[c] for c in use])
+    conn.commit()
+    conn.close()
+    return {"converted": True, "lead_id": lead_id, "account_id": account_id,
+            "contact_id": contact_id, "opportunity_id": opportunity_id}
+
+_env_orig_lead_convert = lead_convert
+def _env_lead_convert(db_path='state.db', **kwargs):
+    _r = _env_orig_lead_convert(db_path, **kwargs)
+    if not isinstance(_r, dict):
+        return _r
+    if set(_r.keys()) == {'items', 'count'}:
+        return {'totalSize': _r['count'], 'done': True, 'records': _r['items']}
+    if 'error' in _r and _r.get('status') == 404:
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+    if 'error' in _r and _r.get('status') == 400:
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    return _r
+lead_convert = _env_lead_convert
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_lead_convert = lead_convert
+def _bf_friction_lead_convert(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_lead_convert(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "lead_convert|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_lead_convert(*_bf_args, **_bf_kwargs)
+_bf_friction_lead_convert.blobfish_original = _bf_orig_lead_convert
+lead_convert = _bf_friction_lead_convert
+
+def opportunity_convert_to_order(db_path="state.db", **kwargs):
+    """Raise an ERP sales order from a closed-won opportunity.
+
+    The gate is the point: an order may only exist behind a won opportunity, which
+    is how Closed Won is prevented from being set by hand elsewhere in this world.
+    """
+    import sqlite3, datetime
+    opportunity_id = kwargs.get("opportunity_id")
+    if not opportunity_id:
+        return {"error": "opportunity_id is required", "status": 400}
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    row = cur.execute("SELECT * FROM opportunities WHERE id = ?", (opportunity_id,)).fetchone()
+    if row is None:
+        conn.close()
+        return {"error": "opportunity not found: %s" % opportunity_id, "status": 404}
+    opp = dict(row)
+    status = str(opp.get("status") or "").strip().lower().replace(" ", "_")
+    if status != "closed_won":
+        conn.close()
+        return {"error": "opportunity %s is not closed_won (status=%r); an order cannot be raised"
+                % (opportunity_id, status or None), "status": 409}
+    existing = cur.execute(
+        "SELECT id FROM erp_sales_orders WHERE memo LIKE ?", ("%" + opportunity_id + "%",)).fetchone()
+    if existing is not None:
+        conn.close()
+        return {"error": "opportunity %s already has order %s" % (opportunity_id, existing["id"]),
+                "status": 409, "order_id": existing["id"]}
+    account_name = None
+    acct = cur.execute("SELECT name FROM accounts WHERE id = ?",
+                       (opp.get("account_id"),)).fetchone()
+    if acct is not None:
+        account_name = acct["name"]
+    n = cur.execute("SELECT COUNT(*) FROM erp_sales_orders").fetchone()[0]
+    order_id = "SO-2026-%04d" % (101 + n)
+    now = datetime.datetime(2026, 2, 16, 12, 0, 0)
+    cur.execute(
+        "INSERT INTO erp_sales_orders (id, entity, entity_name, trandate, status, memo, "
+        "subsidiary, currency, total, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        (order_id, opp.get("account_id"), account_name, now.date().isoformat(),
+         "pendingFulfillment",
+         "Raised from opportunity %s: %s" % (opportunity_id, opp.get("name") or ""),
+         "1", "usd", opp.get("amount"), now.isoformat() + "Z"))
+    conn.commit()
+    conn.close()
+    return {"converted": True, "opportunity_id": opportunity_id, "order_id": order_id,
+            "status": "pendingFulfillment", "total": opp.get("amount")}
+
+_env_orig_opportunity_convert_to_order = opportunity_convert_to_order
+def _env_opportunity_convert_to_order(db_path='state.db', **kwargs):
+    _r = _env_orig_opportunity_convert_to_order(db_path, **kwargs)
+    if not isinstance(_r, dict):
+        return _r
+    if set(_r.keys()) == {'items', 'count'}:
+        return {'totalSize': _r['count'], 'done': True, 'records': _r['items']}
+    if 'error' in _r and _r.get('status') == 404:
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+    if 'error' in _r and _r.get('status') == 400:
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    return _r
+opportunity_convert_to_order = _env_opportunity_convert_to_order
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_opportunity_convert_to_order = opportunity_convert_to_order
+def _bf_friction_opportunity_convert_to_order(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_opportunity_convert_to_order(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "opportunity_convert_to_order|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_opportunity_convert_to_order(*_bf_args, **_bf_kwargs)
+_bf_friction_opportunity_convert_to_order.blobfish_original = _bf_orig_opportunity_convert_to_order
+opportunity_convert_to_order = _bf_friction_opportunity_convert_to_order
+
+def email_send(db_path="state.db", **kwargs):
+    """Send an outbound email on an existing thread, honouring suppression."""
+    import sqlite3, datetime
+    thread_id = kwargs.get("thread_id")
+    to_address = kwargs.get("to_address")
+    body = kwargs.get("body")
+    if not thread_id or not to_address or not body:
+        return {"error": "thread_id, to_address and body are required", "status": 400}
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    thread = cur.execute("SELECT * FROM email_threads WHERE id = ?", (thread_id,)).fetchone()
+    if thread is None:
+        conn.close()
+        return {"error": "thread not found: %s" % thread_id, "status": 404}
+    tables = {r[0] for r in cur.execute("SELECT name FROM sqlite_master WHERE type='table'")}
+    if "bounces" in tables:
+        bounced = cur.execute("SELECT 1 FROM bounces WHERE email = ? LIMIT 1", (to_address,)).fetchone()
+        if bounced:
+            conn.close()
+            return {"error": "recipient %s is on the bounce suppression list" % to_address,
+                    "status": 403, "suppressed": True}
+    n = cur.execute("SELECT COUNT(*) FROM email_messages").fetchone()[0]
+    msg_id = "emsg_%04d" % (n + 1)
+    sent_at = datetime.datetime(2026, 2, 16, 12, 0, 0).isoformat() + "Z"
+    cur.execute(
+        "INSERT INTO email_messages (id, thread_id, direction, from_address, to_address, body, sent_at) "
+        "VALUES (?, ?, ?, ?, ?, ?, ?)",
+        (msg_id, thread_id, "outbound",
+         kwargs.get("from_address") or "mei.huang@morganstanleysimulated.com",
+         to_address, body, sent_at))
+    conn.commit()
+    conn.close()
+    return {"id": msg_id, "thread_id": thread_id, "to_address": to_address,
+            "direction": "outbound", "sent_at": sent_at}
+
+_env_orig_email_send = email_send
+def _env_email_send(db_path='state.db', **kwargs):
+    _r = _env_orig_email_send(db_path, **kwargs)
+    if not isinstance(_r, dict):
+        return _r
+    if set(_r.keys()) == {'items', 'count'}:
+        return {'totalSize': _r['count'], 'done': True, 'records': _r['items']}
+    if 'error' in _r and _r.get('status') == 404:
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+    if 'error' in _r and _r.get('status') == 400:
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    return _r
+email_send = _env_email_send
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_email_send = email_send
+def _bf_friction_email_send(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_email_send(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "email_send|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_email_send(*_bf_args, **_bf_kwargs)
+_bf_friction_email_send.blobfish_original = _bf_orig_email_send
+email_send = _bf_friction_email_send
+
+def account_delete(db_path='state.db', **kwargs):
+    '''Delete an account (DELETE /services/data/v60.0/sobjects/Account/{id}).'''
+    _missing = [p for p in ['account_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "accounts" WHERE "id" = ?', [str(kwargs['account_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'account not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        cur.execute('DELETE FROM "accounts" WHERE "id" = ?', [str(kwargs['account_id'])])
+        conn.commit()
+        _r = {'deleted': True, 'id': str(kwargs['account_id'])}
+        return {'id': _r.get('id'), 'success': True, 'errors': []}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_account_delete = account_delete
+def _bf_friction_account_delete(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_account_delete(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "account_delete|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_account_delete(*_bf_args, **_bf_kwargs)
+_bf_friction_account_delete.blobfish_original = _bf_orig_account_delete
+account_delete = _bf_friction_account_delete
+
+def contact_delete(db_path='state.db', **kwargs):
+    '''Delete a contact (DELETE /services/data/v60.0/sobjects/Contact/{id}).'''
+    _missing = [p for p in ['contact_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "contacts" WHERE "id" = ?', [str(kwargs['contact_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'contact not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        cur.execute('DELETE FROM "contacts" WHERE "id" = ?', [str(kwargs['contact_id'])])
+        conn.commit()
+        _r = {'deleted': True, 'id': str(kwargs['contact_id'])}
+        return {'id': _r.get('id'), 'success': True, 'errors': []}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_contact_delete = contact_delete
+def _bf_friction_contact_delete(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_contact_delete(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "contact_delete|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_contact_delete(*_bf_args, **_bf_kwargs)
+_bf_friction_contact_delete.blobfish_original = _bf_orig_contact_delete
+contact_delete = _bf_friction_contact_delete
+
+def lead_delete(db_path='state.db', **kwargs):
+    '''Delete a lead (DELETE /services/data/v60.0/sobjects/Lead/{id}).'''
+    _missing = [p for p in ['lead_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "sales_leads" WHERE "id" = ?', [str(kwargs['lead_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'sales_lead not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        cur.execute('DELETE FROM "sales_leads" WHERE "id" = ?', [str(kwargs['lead_id'])])
+        conn.commit()
+        _r = {'deleted': True, 'id': str(kwargs['lead_id'])}
+        return {'id': _r.get('id'), 'success': True, 'errors': []}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_lead_delete = lead_delete
+def _bf_friction_lead_delete(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_lead_delete(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "lead_delete|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_lead_delete(*_bf_args, **_bf_kwargs)
+_bf_friction_lead_delete.blobfish_original = _bf_orig_lead_delete
+lead_delete = _bf_friction_lead_delete
+
+def opportunity_delete(db_path='state.db', **kwargs):
+    '''Delete an opportunity (DELETE /services/data/v60.0/sobjects/Opportunity/{id}).'''
+    _missing = [p for p in ['opportunity_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "opportunities" WHERE "id" = ?', [str(kwargs['opportunity_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'opportunitie not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        cur.execute('DELETE FROM "opportunities" WHERE "id" = ?', [str(kwargs['opportunity_id'])])
+        conn.commit()
+        _r = {'deleted': True, 'id': str(kwargs['opportunity_id'])}
+        return {'id': _r.get('id'), 'success': True, 'errors': []}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_opportunity_delete = opportunity_delete
+def _bf_friction_opportunity_delete(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_opportunity_delete(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "opportunity_delete|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_opportunity_delete(*_bf_args, **_bf_kwargs)
+_bf_friction_opportunity_delete.blobfish_original = _bf_orig_opportunity_delete
+opportunity_delete = _bf_friction_opportunity_delete
+
+def task_delete(db_path='state.db', **kwargs):
+    '''Delete a task (DELETE /services/data/v60.0/sobjects/Task/{id}).'''
+    _missing = [p for p in ['task_id'] if kwargs.get(p) is None]
+    if _missing:
+        _r = {'error': 'missing required parameters: ' + ', '.join(_missing), 'status': 400}
+        return [{'message': str(_r.get('error', '')), 'errorCode': 'REQUIRED_FIELD_MISSING'}]
+    import sqlite3, json, datetime, hashlib
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    try:
+        _row = cur.execute('SELECT * FROM "tasks" WHERE "id" = ?', [str(kwargs['task_id'])]).fetchone()
+        if _row is None:
+            _r = {'error': 'task not found', 'status': 404}
+            return [{'message': str(_r.get('error', '')), 'errorCode': 'NOT_FOUND'}]
+        cur.execute('DELETE FROM "tasks" WHERE "id" = ?', [str(kwargs['task_id'])])
+        conn.commit()
+        _r = {'deleted': True, 'id': str(kwargs['task_id'])}
+        return {'id': _r.get('id'), 'success': True, 'errors': []}
+    finally:
+        conn.close()
+
+# --- blobfish environment friction v1: deterministic injected failures (do not edit) ---
+_bf_orig_task_delete = task_delete
+def _bf_friction_task_delete(*_bf_args, **_bf_kwargs):
+    import hashlib as _bf_hashlib, json as _bf_json, sqlite3 as _bf_sqlite3
+    _bf_db = _bf_args[0] if _bf_args else _bf_kwargs.get("db_path")
+    if not isinstance(_bf_db, str) or not _bf_db:
+        return _bf_orig_task_delete(*_bf_args, **_bf_kwargs)
+    _bf_call = {}
+    for _bf_k, _bf_v in _bf_kwargs.items():
+        if _bf_k == "db_path":
+            continue
+        if isinstance(_bf_v, float) and _bf_v.is_integer():
+            _bf_v = int(_bf_v)
+        _bf_call[_bf_k] = _bf_v
+    _bf_sig = "task_delete|" + _bf_json.dumps(_bf_call, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str)
+    _bf_digest = _bf_hashlib.sha256(("3ba25889bd4c5d1d|" + _bf_sig).encode("utf-8")).hexdigest()
+    if int(_bf_digest[:8], 16) / 4294967296.0 < 0.03:
+        _bf_conn = _bf_sqlite3.connect(_bf_db + ".bf-friction")
+        try:
+            _bf_conn.execute('CREATE TABLE IF NOT EXISTS attempts (sig TEXT PRIMARY KEY, n INTEGER NOT NULL)')
+            _bf_conn.execute('INSERT INTO attempts (sig, n) VALUES (?, 1) ON CONFLICT(sig) DO UPDATE SET n = n + 1', (_bf_sig,))
+            _bf_conn.commit()
+            _bf_n = _bf_conn.execute('SELECT n FROM attempts WHERE sig = ?', (_bf_sig,)).fetchone()[0]
+        finally:
+            _bf_conn.close()
+        if _bf_n == 1:
+            _bf_kinds = ["service_unavailable","rate_limited"]
+            _bf_messages = {"service_unavailable":"The service is temporarily unavailable (upstream timeout while processing the request). Please retry.","rate_limited":"Rate limit exceeded for this operation. Wait a moment and retry."}
+            _bf_kind = _bf_kinds[int(_bf_digest[8:12], 16) % len(_bf_kinds)]
+            return {"success": False, "error": _bf_kind, "message": _bf_messages[_bf_kind], "retryable": True}
+    return _bf_orig_task_delete(*_bf_args, **_bf_kwargs)
+_bf_friction_task_delete.blobfish_original = _bf_orig_task_delete
+task_delete = _bf_friction_task_delete
 
