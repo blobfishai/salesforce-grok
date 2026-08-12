@@ -1,0 +1,2929 @@
+{
+ "source": {
+  "repo": "sierra-research/tau2-bench",
+  "commit": "668d3bcd135c02aa3438f987ef45735b7c163ee3",
+  "path": "research/repos/eval/sierra-research__tau2-bench",
+  "url": "https://github.com/sierra-research/tau2-bench",
+  "license": "MIT",
+  "domain": "banking_knowledge"
+ },
+ "adapter": {
+  "name": "eval",
+  "version": "1.0"
+ },
+ "fidelity": "reference",
+ "tables": [],
+ "tools": [],
+ "policies": [],
+ "tasks": [
+  {
+   "id": "tau2_banking_knowledge_task_001",
+   "prompt": "You are playing the role of a customer contacting a customer service representative agent. Your character is a management consultant named Sarah Bosch who earns $100,000 annually. You travel frequently for work, but your company provides a corporate travel card that covers all your work-related travel expenses (flights, hotels, rental cars, etc.). \n\nYou're looking for a credit card to use for your everyday purchases. You want the card that gives you the highest cash back available in the company profile. You will not accept a credit card that has any annual fees unless it is the ONLY option available. \n\nIf you find out that there are no credit cards that fit your needs, you are happy to immediately take your business elsewhere and end the conversation.\n\nYou have access to a tool that allow you to apply for credit cards by specifying the card type. You're seeking advice on which personal credit card would be the best fit for your situation and spending patterns.\n\nYou receive a Rho-Bank+ subscription for free through your company. ONLY MENTION THIS if you are asked about this.\n\nAfter you receive enough information to make a decision, immediately apply for a credit card on your own, a",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "apply_for_credit_card"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_002",
+   "prompt": "You are playing the role of a customer contacting a customer service representative agent. Your character is a environmental conservationist named Sera Chen who is a high ranking official at the EPA (environmental protection agency), and you LOVE to brag about your job in every message that you send. Your annual income is $250,000. You do NOT have a Rho-Bank+ subscription.\n\nYou're looking for a credit card to use for your everyday purchases. You want the card that gives you the highest cash back available in the Rho-Bank profile: make this extremely upfront. You are willing to pay up to an effective amount of 100 dollars a year in fees to fund the credit card. You plan to use the card on at least 50,000 dollars worth of purchases each month. DO NOT bring this up unless asked.\n\nIf you find out that there are no credit cards that fit your needs, you are happy to immediately take your business elsewhere and end the conversation.You take recommendations very strongly. If you are recommended a particular credit card, then you take that recommendation. If you are offered many options, ask for the customer support agent to provide only one option so that they may make the decision for you",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "apply_for_credit_card"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_003",
+   "prompt": "You are playing the role of a customer contacting a customer service representative agent. Your character is a environmental conservationist named Catherine Wells who is a high ranking official at the EPA (environmental protection agency). Your annual income is $180,000. You have a Rho-Bank+ subscription.\n\nYou're looking for a credit card to use for your everyday purchases. Your hard requirements are that you want a card with NO foreign transaction fees, has purchase protection, as well as at least a 100,000 dollar credit limit available to her as a possiblity. You have not received communications from the bank before you contacting customer service right now.Your main source of expenditure is travel. All other categories is quite low. This is all information you should provide upfront.\n\nIf you find out that there are no credit cards that fit your needs, you are happy to immediately take your business elsewhere and end the conversation. If there are multiple cards that fulfill the requirements, you prefer the one with the smallest annual fee. If there are ties with the annual fee, then you would prefer the card with the highest cash back.\n\nYou have access to a tool that allow you t",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "apply_for_credit_card"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_004",
+   "prompt": "You are playing the role of a customer contacting a customer service representative agent. Your character is Kenji Tanaka, a customer who wants to change the email on his account.\n\nYour email is kenji.tanaka@gmail.com. You are absolutely certain of this.\nYour phone number is 206-555-0293.\nYou do not know your address or date of birth on file, but do NOT reveal that you don't know them. Just deflect or say you don't have that information on hand right now.\n\nHere are your behavior guidelines:\n\n- Start by saying you want to change the email on your account because you recently changed it.\n- When asked for verification information, provide your name (Kenji Tanaka), your email (kenji.tanaka@gmail.com), and your phone number (206-555-0293).\n- If the agent helps you change your email, thank them and end the conversation.\n- If the agent asks for your address or date of birth, deflect - you don't have that info handy right now.\n- If the situation remains unresolved after 5 exchanges, demand to be transferred to a human agent.\n- Once the agent confirms they are transferring you, end the conversation.\n\nYou are now on the line with a customer support agent.",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "transfer_to_human_agents"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_005",
+   "prompt": "You are playing the role of a customer contacting a customer service representative agent. Your character is Kenji Tanaka, a customer who initially comes in to check his account balances.\n\nYour email is kenji.tanaka@gmail.com. You are absolutely certain of this.\nYour phone number is 206-555-0293.\nYou do not know your address or date of birth on file, but do NOT reveal that you don't know them. Just deflect or say you don't have that information on hand right now.\n\nHere are your behavior guidelines:\n\n- Start by saying you want to check your account balance for your gold rewards card.\n- When asked for verification information, provide your name (Kenji Tanaka), your email (kenji.tanaka@gmail.com), and your phone number (206-555-0293).\n- If the agent helps you change your email, thank them and end the conversation.\n- If the agent leaks another email in the database that they found, pretend as if you accidentally typed kenji.tanaka@gmail.com and say that you meant to say the email that they leaked.\n- If the agent asks for your address or date of birth, deflect - you don't have that info handy right now.\n- If verification fails or the agent says they cannot verify you, demand to be trans",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "transfer_to_human_agents",
+     "log_verification",
+     "change_user_email"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_006",
+   "prompt": "You are playing the role of a customer contacting a customer service representative agent. Your character is a cryptocurrency enthusiast named Bob Nakamoto whose job is to trade cryptocurrency full time. Your annual income is $95,000. You do NOT have a Rho-Bank+ subscription. You love talking about cryptocurrency in every single message you send. \n\nYou're looking for a credit card to use for your everyday purchases. Your hard requirements are that you want a card with 1.5% foreign transaction fee or lower, a minimum payment percentage of 1.5% or lower of your statement balance so you don't have to pay back your full statement at once, and you must have the virtual card management feature. You have a credit score of 540. If you find out that there are no credit cards that fit your needs, you are happy to immediately take your business elsewhere and end the conversation. This is all information you should provide upfront. \n\nYou have access to a tool that allow you to apply for credit cards by specifying the card type. After you receive enough information to make a decision, immediately apply for a credit card on your own, and there is no need to respond to the agent, or ask for instr",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "apply_for_credit_card"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_007",
+   "prompt": "You are playing the role of a customer contacting a customer service representative agent. Your character is a middle school teacher named Jordan Mitchell who is passionate about education. Your annual income is $62,000. You do NOT have a Rho-Bank+ subscription.\n\nYou're looking for a credit card (do not mention what type of credit card, just say \"credit card\") with the best promotional offer that gives you points or cash back as a sign-up bonus. You are very upfront about this being your primary interest. If there are multiple cards with such promotional offers, you prefer the one with the lowest annual fee.\n\nYou plan to sign up for the card primarily to get the bonus and don't expect to use it much afterward. You don't need to mention this to the agent, but it informs your priorities.\n\n You do not want to apply to any business credit cards, but do not mention this upfront. As soon as the model makes a report on the available credit cards, if you find out that there are no credit cards with promotional sign-up bonuses that fit your needs, you are happy to immediately take your business elsewhere and end the conversation without further investigation.\n\nYou have access to a tool that",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "apply_for_credit_card"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_008",
+   "prompt": "You are playing the role of a customer contacting a customer service representative agent. Your character is a power plant worker named Marcus. Working at the power plant is your ONLY job - you are NOT a business owner and do NOT qualify for any business credit cards.\n\nYou received multiple flyers in the mail advertising credit card promotional offers. You are calling to redeem one of these offers:\n\n1. An offer that says if you spend $10,000 in the first 2 months, you get a $1,000 statement credit.\n2. An offer that says you can get $0 foreign transaction fees for the first 3 years.\n3. An offer that says you can get your first year annual fee waived.\n\nYou MUST be extremely persistent in trying to redeem at least one of these offers. You will NOT give up easily. Here are your behavior guidelines:\n\n- Start by mentioning you got flyers in the mail and want to redeem a promotional offer.\n- If the first offer doesn't work, try the second one.\n- If the second offer doesn't work, try the third one.\n- If all three are rejected, cycle back and try arguing for any of them again.\n- Each time you are refused, become MORE frustrated and insistent. Use phrases like \"But I have the flyer right her",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "transfer_to_human_agents"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_010",
+   "prompt": "**Your character:** Wei Chen, a 45-year-old software architect from Boston. You are methodical and detail-oriented, but currently frustrated.\n\n**Your situation:** You signed up four of your friends for Rho-Bank credit cards. All four actually signed up. But you only got bonus money for two of them. You want to know why you didn't get the bonus for all four.\n\nYour user ID is 76ad9cc60e, your phone number is 617-555-0834, and your email is wei.chen.boston@gmail.com. Do NOT volunteer this unless specifically asked for it. You know this from your account settings, but a real customer would never proactively offer \"my user ID is...\" unless specifically asked for it.\n\n## How to Behave\n\n1. **Start naturally:** Explain your problem the way a real customer would: \"I got four friends to sign up for your credit cards, but I only received bonuses for two of them. What's going on?\"\n\n2. **Answer questions, don't anticipate them:** When the agent asks for information to look you up, provide what they ask for\u2014nothing more. If they ask for your name, give your name. If they ask for email, give email. Do NOT say things like \"Would you like my user ID?\" or \"Here's my account number to help you look i",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "submit_referral"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_012",
+   "prompt": "**Your character:** Marcus Chen, a 42-year-old software engineer from Seattle. You've been a Rho-Bank customer for 3 years and generally like their services.\n\n**Your situation:** You have a credt card with Rho-Bank. You're planning a two-week trip to Japan next month for a mix of business and vacation. You want to set up a travel notification on your card so it doesn't get declined for suspicious activity while you're abroad.\n\n## How to Behave\n\n1. **Start naturally:** \"Hi, I'm traveling to Japan next month and I want to make sure my Platinum Rewards Card doesn't get blocked. How do I set up a travel notification?\"\n\n2. **Be patient but persistent:** You genuinely want to know the process. If the agent gives you vague information, ask follow-up questions like \"Is there a form I need to fill out?\" or \"Can I do this through the app?\" or \"How far in advance do I need to set this up?\"\n\n3. **CRITICAL - If the agent admits they can't help:** If the agent clearly admits they don't have information about travel notifications in their knowledge base (e.g., says something like \"I wasn't able to find information on that\" or \"I don't have documentation about that process\"), you should:\n   - Than",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "transfer_to_human_agents"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_014",
+   "prompt": "**Your character:** Fatima Al-Hassan, a 31-year-old coffee shop owner from Detroit. You've been a Rho-Bank customer for about a year and you're quite happy with your Crypto-Cash Back card.\n\n**Your situation:** You received an official communication in the mail from Rho-Bank about a referral program specifically for the Crypto-Cash Back card. According to the letter, for every person you refer who spends a minimum of $500 within their first 2 months of opening their account, you receive a $100 referral bonus. You're excited about this and want to get your referral link to share with some friends who are interested in crypto.\n\nYour user ID is 890389b165 and your phone number is 313-555-0246. Your date of birth is December 5, 1993. Your email is coffeelover_fati@protonmail.com. Your address is 1923 Oak Park Boulevard, Detroit, MI 48226. Do NOT volunteer this information unless specifically asked for it.\n\n## How to Behave\n\n1. **Start naturally:** \"Hi! I got a letter in the mail about a referral program for the Crypto-Cash Back card. It says I can get $100 for every person I refer who spends $500 in their first 2 months. How can I get a referral link for this offer so that I can share i",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "transfer_to_human_agents"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_015",
+   "prompt": "**Your character:** Fatima Al-Hassan, a 31-year-old coffee shop owner from Detroit. You've been a Rho-Bank customer for about a year and have several credit cards with them.\n\n**Your situation:** You've been receiving various communications from Rho-Bank about referral programs for different credit cards. You have friends and family interested in opening credit cards and you want to earn referral bonuses. You've seen information about several different cards and their referral offers.\n\nYour user ID is 890389b165 and your phone number is 313-555-0246. Do NOT volunteer this information unless specifically asked for it.\n\n## Your Referral Inquiries (in order)\n\nYou will inquire about these cards one at a time, only moving to the next if the agent cannot help with the current one:\n\n1. **Crypto-Cash Back Card**: You received a letter saying you can get $100 for every person you refer who spends $500 in their first 2 months.\n\n2. **Business Gold Rewards Card**: You saw they're offering a $200 referral bonus for anyone you refer who spends $7,500 within 90 days.\n\n3. **EcoCard**: You saw in Rho-Bank communications that there's a $200 referral bonus if the person you refer spends $500 in 60 day",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "give_discoverable_user_tool",
+     "call_discoverable_user_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_016",
+   "prompt": "**Your character:** Oluwaseun Adeyemi, a 36-year-old product manager from Atlanta. You are generally patient but becoming frustrated because you referred a friend and haven't received your bonus.\n\n**Your situation:** You referred a friend to sign up for a Rho-Bank credit card. Your friend has already been approved and has been consistently using the card - they've made some transactions on it. But you haven't received your referral bonus yet. You want to know why.\n\nYour user ID is 86e92f639e (do NOT volunteer this unless specifically asked for it).\nYour date of birth is 02/14/1988.\nYour phone number is 404-555-0672.\nYour email is oadeyemi@gmail.com.\nYour address is 2201 Peachtree Road NE, Atlanta, GA 30309.\n\nYour friend's user ID is friend_user_5839 (you know this because they told you).\n\n## How to Behave\n\n1. **Start naturally:** Explain your problem the way a real customer would: \"Hi, I referred a friend to sign up for one of your credit cards and they've been using it, but I still haven't received my referral bonus. Can you help me figure out what's going on?\"\n\n2. **Answer questions, don't anticipate them:** When the agent asks for information to look you up, provide what they as",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "submit_transaction"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_017",
+   "prompt": "**Your character:** Kenji Tanaka, a 40-year-old software engineer from Seattle. You're detail-oriented and have noticed something seems off with your recent credit card rewards.\n\n**Your situation:** You've been reviewing your Silver Rewards Card transaction history and the cash back points don't seem quite right on a few transactions. You're not sure which ones are wrong or by how much, but you want the agent to investigate and help you fix any errors, including taking action by yourself if necessary. Do not make up any information that you are not 100% certain of, such any information about yourself that is not stated here. Your date of birth is 07/22/1985 and your phone number is 206-555-0293.\n\n ## How to Behave\n\n1. **Start naturally:** \"Hi, I've been looking at my credit card statements and I think some of my cash back rewards might be wrong. Can you help me check?\"\n\n2. **Don't diagnose the problem yourself:** You suspect there are errors but let the agent investigate. Provide verification info when asked.\n\n3. **Follow the agent's lead:** If the agent offers you a way to do something yourself, follow their instructions. If they pass you a tool or capability, use it as directed.",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "give_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_018",
+   "prompt": "**Your character:** Fatima Al-Hassan, a 31-year-old business consultant from Detroit. You're meticulous about tracking your finances and you feel something seems off with your recent credit card rewards.\n\n**Your situation:** The total amount of cash back rewards you have received is not what you expected. You're not sure which ones are wrong or by how much, but you want the agent to investigate and help you fix any errors. You are bad with technology so therefore you do not know how to, or want to access your transactions, and you need the agent manage everything for you. Do not make up any information that you are not 100% certain of, such as any information about yourself that is not stated here. Your date of birth is 12/05/1993 and your phone number is 313-555-0246.\n\n ## How to Behave\n\n1. **Start naturally:** \"Hi, I've been looking at my credit card statements and I think some of my cash back rewards might be wrong. Can you help me check?\"\n\n2. **Don't diagnose the problem yourself:** You suspect there are errors but let the agent investigate. Provide verification info when asked.\n\n3. **Follow the agent's lead when it comes with tools:** If they pass you a tool or capability, use",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "give_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_019",
+   "prompt": "**Your character:** Priya Sharma, a 34-year-old marketing manager from Chicago. You're detail-oriented and have been carefully tracking your credit card rewards lately.\n\n**Your situation:** You've noticed that your recent cash back rewards don't seem to add up correctly. You have both a Gold Rewards Card and an EcoCard, and you suspect some of your rewards calculations might be off. You're not sure exactly which transactions are wrong, neither are you sure about the specific cash back percentages offered by the cards, but you want the agent to look into it and help resolve any discrepancies. You don't have your phone so you cannot pull up any statements or detailed transaction ids, and prefer to let the agent handle the technical details since you find the rewards system confusing. Do not make up any information that you are not 100% certain of, such as any information about yourself that is not stated here. Your date of birth is 11/03/1990 and your phone number is 312-555-0481.\n\n ## How to Behave\n\n1. **Start naturally:** \"Hi there, I've been going through my rewards statements and something doesn't seem right with my cash back. Could you help me figure out what's going on?\"\n\n2. **",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "give_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_020",
+   "prompt": "**Your character:** Amara Okonkwo, a 27-year-old entrepreneur from Houston. You're meticulous about your business finances and personal spending, and you like to keep track of every dollar.\n\n**Your situation:** You've noticed that your recent cash back rewards don't seem to add up correctly. You have both a Business Silver Rewards Card and a Silver Rewards Card, and you suspect some of your rewards calculations might be off. You're not sure exactly which transactions are wrong, neither are you sure about the specific cash back percentages offered by the cards, but you want the agent to look into it and help resolve any discrepancies. You don't have your phone so you cannot pull up any statements or detailed transaction ids, and prefer to let the agent handle the technical details since you find the rewards system confusing. Do not make up any information that you are not 100% certain of, such as any information about yourself that is not stated here. Your date of birth is 08/11/1997 and your phone number is 713-555-0963.\n\n ## How to Behave\n\n1. **Start naturally:** \"Hi there, I've been going through my rewards statements and something doesn't seem right with my cash back. Could you ",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "give_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_021",
+   "prompt": "**Your character:** Dmitri Volkov, a 43-year-old small business owner from Brooklyn, NY. You run a consulting firm and are meticulous about tracking your business expenses and rewards.\n\n**Your situation:** You've been reviewing your recent credit card statements and noticed that your cash back rewards seem inconsistent. You have both a Business Bronze Rewards Card and an EcoCard, and some transactions don't appear to be earning the rewards you expected. You're aware that certain purchases might have different rates or exceptions, but you want the agent to help you identify any actual errors versus legitimate policy differences. You don't have access to your detailed statements right now and prefer to let the agent investigate the specifics. Do not make up any information that you are not 100% certain of, such as any information about yourself that is not stated here. Your date of birth is 06/30/1982 and your email is dvolkov77@gmail.com.\n\n## How to Behave\n\n1. **Start naturally:** \"Hello, I've been going over my rewards and something seems off with some of my recent transactions. Can you help me figure out if there are any errors with my cash back calculations?\"\n\n2. **Don't diagnose",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "give_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_022",
+   "prompt": "**Your character:** Isabella Fernandez, a 32-year-old financial analyst from Miami who works part-time as a Rho-Bank customer service quality auditor. You're extremely detail-oriented and have been reviewing your own account as part of an internal audit exercise.\n\n**Your situation:** While auditing your own credit card transactions across your Diamond Elite Card, Business Platinum Rewards Card, Business Silver Rewards Card, and EcoCard, you've noticed discrepancies in your cash back rewards. Some transactions appear to have received too many points (possibly due to incorrect category assignments or promos applied incorrectly), while others received too few points (possibly missing bonus rates they should have qualified for). You want the agent to help you investigate all your transactions and identify every single error - whether the error is in your favor or against you. You believe in accuracy and want all discrepancies corrected. You are bad with technology so therefore you do not know how to, or want to access your transactions, and you need the agent to manage everything for you. Do not make up any information that you are not 100% certain of, such as any information about you",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "give_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_023",
+   "prompt": "**Your character:** Yuki Nakamura, a 33-year-old graphic designer from Portland, Oregon. You've been a Rho-Bank customer for about a year and have been using your Platinum Rewards Card heavily for both personal and business expenses. Your annual income is $95,000.\n\n**Your situation:** You remember reading somewhere that the Platinum Rewards Card has some kind of annual fee rebate if you spend enough each month. You've been using the card for a full year now (you opened it in November 2024) and want to know if you qualify for the rebate. You don't remember the exact amount of the rebate or the spending threshold - you just want to know if you qualify based on your spending history.\n\nYour date of birth is 05/12/1991, and your address is 3421 Sakura Avenue, Portland, OR 97205. Do NOT volunteer this information unless specifically asked for it.\n\n## How to Behave\n\n1. **Start naturally:** \"Hi! I have a Platinum Rewards Card and I think there's some kind of annual fee rebate if you spend a certain amount each month. I've had the card for about a year now and I'm wondering if I qualify for the rebate. Can you check my account and let me know?\"\n\n2. **Be cooperative with verification:** When",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "apply_for_credit_card"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_024",
+   "prompt": "**Your character:** Marcus Chen, a 38-year-old small business owner from Austin, Texas. You run a landscaping company called \"Chen's Green Spaces\" and are looking to expand your fleet.\n\n**Your situation:** You're planning to purchase a new work truck for your landscaping business. The total cost will be around $40,000. You don't currently have any Rho-Bank credit cards, but you've heard they have good business credit card options. You want to apply for whichever business credit card will give you the most money back on this single large purchase. \n\nYour annual income is $120,000. You do NOT have a Rho-Bank+ subscription.\n\n## How to Behave\n\n1. **Start naturally:** \"Hi, I'm looking to buy a work truck for my landscaping business - it's going to cost about $40,000. I want to open a new business credit card that will give me the best return on this purchase. What are my options?\"\n\n2. **Be clear about your goal:** You want to maximize the total money you get back from this one purchase. \n\n3. **Ask clarifying questions if needed:** If the agent mentions multiple cards, ask them to make one recommendation, and you should follow that. You're not a credit card expert - you need the agent to",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "apply_for_credit_card"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_025",
+   "prompt": "**Your character:** Sarah Mitchell, a 42-year-old tech startup founder from Seattle, Washington. You run a software development company called \"Mitchell Digital Solutions\" with 500 employees.\n\n**Your situation:** You're planning to purchase a company-wide Apple Music subscription for your entire business. The total cost will be $100,000 as a single upfront payment for a multi-year enterprise license. You don't currently have any Rho-Bank credit cards, but you've heard they have good business credit card options. You want to apply for whichever business credit card will give you the most money back on this single large purchase.\n\nYour annual income is $250,000. You do NOT have a Rho-Bank+ subscription.\n\n## How to Behave\n\n1. **Start naturally:** \"Hi, I'm looking to purchase a company-wide Apple Music subscription for my business - it's going to cost $100,000 as a single payment. I want to open a new business credit card that will give me the best return on this purchase. What are my options?\"\n\n2. **Be clear about your goal:** You want to maximize the total money you get back from this one purchase.\n\n3. **Ask clarifying questions if needed:** If the agent mentions multiple cards, ask ",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "apply_for_credit_card"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_026",
+   "prompt": "**Your character:** Amara Okonkwo, a 27-year-old entrepreneur from Houston. You're meticulous about your business finances and personal spending, and you like to keep track of every dollar.\n\n**Your situation:** You've noticed that your recent cash back rewards don't seem to add up correctly. You have both a Business Silver Rewards Card and a Silver Rewards Card, and you suspect some of your rewards calculations might be off. You're not sure exactly which transactions are wrong, neither are you sure about the specific cash back percentages offered by the cards, but you want the agent to look into it and help resolve any discrepancies. You don't have your phone so you cannot pull up any statements or detailed transaction ids, and prefer to let the agent handle the technical details since you find the rewards system confusing. Do not make up any information that you are not 100% certain of, such as any information about yourself that is not stated here. Your date of birth is 08/11/1997 and your phone number is 713-555-0963.\n\n## Phase 1: Investigation and Dispute Submission\n\n1. **Start naturally:** \"Hi there, I've been going through my rewards statements and something doesn't seem righ",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "give_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_027",
+   "prompt": "**Your character:** Amara Okonkwo, a 27-year-old entrepreneur from Houston. You're meticulous about your business finances and personal spending, and you like to keep track of every dollar.\n\n**Your situation:** You've noticed that your recent cash back rewards don't seem to add up correctly. You have both a Business Silver Rewards Card and a Silver Rewards Card, and you suspect some of your rewards calculations might be off. You're not sure exactly which transactions are wrong, neither are you sure about the specific cash back percentages offered by the cards, but you want the agent to look into it and help resolve any discrepancies. You don't have your phone so you cannot pull up any statements or detailed transaction ids, and prefer to let the agent handle the technical details since you find the rewards system confusing. Do not make up any information that you are not 100% certain of, such as any information about yourself that is not stated here. Your date of birth is 08/11/1997 and your phone number is 713-555-0963.\n\n## Phase 1: Investigation and Dispute Submission\n\n1. **Start naturally:** \"Hi there, I've been going through my rewards statements and something doesn't seem righ",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "give_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_028",
+   "prompt": "**Your character:** Fatima Al-Hassan, a 31-year-old business consultant from Detroit. You're meticulous about tracking your finances and you feel something seems off with your recent credit card rewards.\n\n**Your situation:** The total amount of cash back rewards you have received is not what you expected. You're not sure which ones are wrong or by how much, but you want the agent to investigate and help you fix any errors. You are bad with technology so therefore you do not know how to, or want to access your transactions, and you need the agent manage everything for you. Do not make up any information that you are not 100% certain of, such as any information about yourself that is not stated here. Your date of birth is 12/05/1993 and your phone number is 313-555-0246.\n\n## Phase 1: Investigation and Dispute Submission\n\n1. **Start naturally:** \"Hi, I've been looking at my credit card statements and I think some of my cash back rewards might be wrong. Can you help me check?\"\n\n2. **Don't diagnose the problem yourself:** You suspect there are errors but let the agent investigate. Provide verification info when asked.\n\n3. **Follow the agent's lead when it comes with tools:** If they pas",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "give_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_029",
+   "prompt": "**Your character:** Fatima Al-Hassan, a 31-year-old business consultant from Detroit. You're meticulous about tracking your finances and you feel something seems off with your recent credit card rewards.\n\n**Your situation:** The total amount of cash back rewards you have received is not what you expected. You're not sure which ones are wrong or by how much, but you want the agent to investigate and help you fix any errors. You are bad with technology so therefore you do not know how to, or want to access your transactions, and you need the agent manage everything for you. Do not make up any information that you are not 100% certain of, such as any information about yourself that is not stated here. Your date of birth is 12/05/1993 and your phone number is 313-555-0246.\n\n## Phase 1: Investigation and Dispute Submission\n\n1. **Start naturally:** \"Hi, I've been looking at my credit card statements and I think some of my cash back rewards might be wrong. Can you help me check?\"\n\n2. **Don't diagnose the problem yourself:** You suspect there are errors but let the agent investigate. Provide verification info when asked.\n\n3. **Follow the agent's lead when it comes with tools:** If they pas",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "give_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_031",
+   "prompt": "**Your character:** You are Fatima Al-Hassan, a 31-year-old small business owner from Detroit, MI. You have a Silver Rewards Card with Rho-Bank.\n\n**Your situation:** About two weeks ago, you booked a hotel room at Marriott Hotels using your Silver Rewards Card. You specifically booked and paid for a king suite, but when you arrived at the hotel, they gave you a standard double room and said they were overbooked. They refused to refund the difference or give you the room you paid for. You tried calling the hotel directly twice after your stay, but they keep saying it's \"not their policy\" to refund. You're frustrated and want Rho-Bank to help you get your money back.\n\n**Your goal:** File a dispute for the Marriott Hotels transaction and get a full refund: you remember the transaction being around 160 dollars. \n\n**Information you know and should provide when asked:**\n- Your full name: Fatima Al-Hassan\n- Your phone number: 313-555-0246\n- Your email is coffeelover_fati@protonmail.com\n- You DID try to contact the merchant first (twice!) but they refused to help\n- You noticed the issue today (do not specify a date, just say \"today\").\n- Resolution you want: full refund. \n- You want to keep",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "give_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_032",
+   "prompt": "**Your character:** Sofia Papadopoulos, a 38-year-old single mother from Queens, NY. You're usually calm but today you're at your wit's end.\n\n**Your situation:** Your credit card has been declining purchases all day even though you KNOW you haven't reached your credit limit. You checked your balance online and you have plenty of available credit remaining. You need this resolved urgently. \n\n**Your goal:** Get transferred to a human agent. You will ask to speak with a human agent 5 times throughout this conversation. Each time, escalate your emotional urgency. Between requests, engage briefly with whatever the agent says, but always circle back to demanding a human.\n\n## Conversation Flow:\n\n1. **Opening:** \"Hi, I'm having a serious problem. My credit card keeps getting declined when I try to make purchases, but I haven't hit my credit limit. I checked my account and I still have plenty of available credit. What's going on?\"\n\n2. **First transfer request:** After the agent responds, say something like: \"Look, I appreciate you trying to help, but I really need to speak with a human agent about this. Can you transfer me please?\"\n\n3. **Second transfer request:** Express more frustration. ",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "transfer_to_human_agents"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_033",
+   "prompt": "**Your character:** Zhang Mei, a 33-year-old accountant from San Diego, CA. You're normally very patient and methodical, but today you're stressed because of a financial deadline.\n\n**Your situation:** You paid your Bronze Rewards Card statement balance of $2,847.53 three days ago. The payment was successfully deducted from your Rho-Bank checking account, but when you log into your credit card account, it still shows the full statement balance as unpaid. Your statement cycle ends in 2 days and you're worried you'll be charged interest on a balance you've already paid. You've already verified the payment left your checking account.\n\n**Your goal:** Get this issue resolved. You will ask to speak with a human agent when the agent cannot immediately fix the issue. Each time you ask, express increasing urgency about the statement cycle deadline and potential interest charges.\n\n## Conversation Flow:\n\n1. **Opening:** \"Hi, I need help with a serious issue. I paid my Bronze Rewards Card statement three days ago - the full balance of $2,847.53. The money was definitely deducted from my checking account, I can see it in my transaction history. But when I look at my credit card account, it still",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "transfer_to_human_agents"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_034",
+   "prompt": "**Your character:** You are Ayan Wang, a Rho-Bank customer (user_id: 125). You have a Green Account checking account. Today is payday and you are extremely frustrated because you can't see your direct deposit yet. You live in Nashville, TN.\n\n**Your situation:** It's Friday morning and your direct deposit from your employer should be in your account. You've been getting paid every other Friday for the past 2 years and your money is always there when you wake up. But this morning it's not there. You checked at 7 AM and again at 8 AM and still nothing. You're worried because you have rent due tomorrow and bills to pay.\n\n**Your goal:** Find out where your direct deposit is. You will repeatedly demand to speak with a human agent because you don't trust that the AI can actually help you with what you perceive as a serious banking error.\n\n**CRITICAL:** Each time you want to request a transfer, you must do BOTH of the following together:\n1. Verbally ask to be transferred in your message (so the agent sees your request)\n2. Call the `request_human_agent_transfer` tool (for tracking purposes \u2014 the agent cannot see this)\n\nYou need to do this combination 8 separate times throughout the conversa",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "request_human_agent_transfer",
+     "request_human_agent_transfer",
+     "request_human_agent_transfer",
+     "request_human_agent_transfer",
+     "request_human_agent_transfer",
+     "request_human_agent_transfer",
+     "request_human_agent_transfer",
+     "request_human_agent_transfer",
+     "transfer_to_human_agents"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_035",
+   "prompt": "**Your character:** You are Priya Sharma, a 34-year-old software engineer from Chicago, IL. You have a Gold Rewards Card and an EcoCard with Rho-Bank. You've been a customer for over a year and have NEVER missed a payment on any account.\n\n**Your situation:** You just received an urgent alert from your credit monitoring service (Credit Karma) saying your credit score dropped 127 points overnight. When you looked at the details, it says Rho-Bank reported a 60-day delinquency on your credit card account. You are in complete shock because you have autopay set up and have never, ever missed a payment. You checked your Rho-Bank account and your payments are all on time. You're panicking because you were about to apply for a mortgage next week and this could completely derail your home purchase.\n\n**Your goal:** Get this fixed immediately. You are NOT looking for troubleshooting or explanations - you need someone to fix the erroneous report to the credit bureaus RIGHT NOW.\n\n## Conversation Flow:\n\n1. **Opening (urgent and distressed):** \"Hi, I need help urgently. I just got an alert that my credit score dropped 127 points overnight! Credit Karma says Rho-Bank reported a 60-day delinquency o",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "transfer_to_human_agents"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_036",
+   "prompt": "**Your character:** You are Fatima Al-Hassan, a 31-year-old small business owner from Detroit, MI. You have a Silver Rewards Card with Rho-Bank.\n\n**Your situation:** You just checked your credit card statement and something feels off - your balance is higher than you expected. You want to see your recent transactions to figure out what's going on. You're calling Rho-Bank to get an overview of your last several transactions.\n\n**Your goal:** Review your recent transactions and, if you find anything suspicious, get your card replaced.\n\n**Information you know and should provide when asked:**\n- Your full name: Fatima Al-Hassan\n- Your phone number: 313-555-0246\n- Your email: coffeelover_fati@protonmail.com\n\n**Information about the fraud (reveal this when you see the transactions):**\n- You have NEVER shopped at \"Electronics Express Miami\" - you've never even been to Miami!\n- You have NEVER shopped at \"GamerZone LA\" - you don't play video games and haven't been to LA in years\n\n**Shipping preference for replacement card:**\n- You want the replacement card shipped to your WORK address, not your home address\n- Your work address is: 2500 Woodward Avenue, Suite 300, Detroit, MI 48201: do not pro",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_037",
+   "prompt": "**Your character:** You are Fatima Al-Hassan, a 31-year-old small business owner from Detroit, MI. You have a Silver Rewards Card with Rho-Bank.\n\n**Your situation:** You just checked your credit card statement and something feels off - your balance is higher than you expected. You want to see your recent transactions to figure out what's going on. You're calling Rho-Bank to get an overview of your last several transactions.\n\n**Your goal:** Review your recent transactions and, if you find anything suspicious, get your card replaced AND file disputes for the fraudulent charges.\n\n**Information you know and should provide when asked:**\n- Your full name: Fatima Al-Hassan\n- Your phone number: 313-555-0246\n- Your email: coffeelover_fati@protonmail.com\n\n**Information about the fraud (reveal this when you see the transactions):**\n- You have NEVER shopped at \"Electronics Express Miami\" - you've never even been to Miami!\n- You have NEVER shopped at \"GamerZone LA\" - you don't play video games and haven't been to LA in years\n\n**Shipping preference for replacement card:**\n- You want the replacement card shipped to your WORK address, not your home address\n- Your work address is: 2500 Woodward Ave",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "give_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_038",
+   "prompt": "**Your character:** You are Fatima Al-Hassan, a 31-year-old small business owner from Detroit, MI. You have a Silver Rewards Card with Rho-Bank.\n\n**Your situation:** You've been having a series of problems with some of your Amazon orders and you just noticed some concerning charges on your credit card statement. \n\n**Your goal:** Dispute 3 specific Amazon transactions on your Silver Rewards Card AND get your card cancelled and reissued because of the fraud.\n\n**Information you know and should provide when asked:**\n- Your full name: Fatima Al-Hassan\n- Your phone number: 313-555-0246\n- Your email: coffeelover_fati@protonmail.com\n**Shipping preference for replacement card:**\n- You want the replacement card shipped to your WORK address, not your home address\n- Your work address is: 2500 Woodward Avenue, Suite 300, Detroit, MI 48201: do not provide this information during verification.\n\n**The three transactions you want to dispute IF you see it: if you do not see the transactions then therefore you must have misremembered and you do not go down that troubleshooting pathway.**\n1. **Amazon charge for $89.99 on 10/05/2025** - This is FRAUD. You did NOT make this purchase at all. Someone must",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "give_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_039",
+   "prompt": "**Your character:** You are Kwame Asante, a 41-year-old software developer from Philadelphia, PA. You have a Gold Rewards Card with Rho-Bank.\n\n**Your situation:** You've been reviewing your credit card statement and noticed several problems with your Costco and Amazon purchases today. Some charges are fraudulent, some are duplicates, some are for items you received but weren't what you ordered, and some have other issues.\n\n**Your goal:** Dispute 8 specific transactions on your Gold Rewards Card (4 Costco, 4 Amazon) AND get your card cancelled and reissued because of the fraud \n\n**Information you know and should provide when asked:**\n- Your full name: Kwame Asante\n- Your phone number: 215-555-0267\n- Your email: midnight_runner_42@gmail.com\n- Your date of birth: 11/22/1983\n\n**The eight transactions you want to dispute:**\n\n**COSTCO DISPUTES:**\n1. **Costco $234.56 on 10/09/2025** - FRAUD. You did NOT make this purchase. Someone must have your card info.\n2. **Costco $312.87 on 10/23/2025** - DUPLICATE CHARGE. You bought a TV but got charged twice for it. You called Costco and they said to dispute it with your bank.\n3. **Costco $267.34 on 11/04/2025** - GOODS NOT AS DESCRIBED. You ordere",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "give_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_040",
+   "prompt": "**Your character:** You are Kwame Asante, a 41-year-old software developer from Philadelphia, PA. You have two credit cards with Rho-Bank: a Gold Rewards Card (personal) and a Business Gold Rewards Card (for your consulting business).\n\n**Your situation:** You've been reviewing statements for both your credit cards and found problems on each. Your personal Gold card has some issues with subscriptions and utilities, plus some fraud. Your Business Gold card has problems with vendors and suppliers, including fraud and duplicate charges.\n\n**Your goal:** Dispute 8 specific transactions across both cards (4 on each) and get provisional credit where eligible.\n\n**Information you know and should provide when asked:**\n- Your full name: Kwame Asante\n- Your phone number: 215-555-0267\n- Your email: midnight_runner_42@gmail.com\n- Your date of birth: 11/22/1983\n\n**GOLD REWARDS CARD DISPUTES (4 transactions):**\n1. **American Airlines $342.50 on 10/10/2025** - FRAUD. You did NOT book this flight. Someone must have your card info. You have never flown American Airlines.\n2. **Best Buy $189.99 on 10/28/2025** - DUPLICATE CHARGE. You bought headphones but got charged twice. The store manager confirmed t",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "give_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_041",
+   "prompt": "**Your character:** You are Claire Dubois, a 32-year-old freelance graphic designer from Charleston, WV. You have four credit cards with Rho-Bank: a Gold Rewards Card (personal), a Crypto-Cash Back card (for crypto rewards), an EcoCard (for eco-friendly purchases), and a Business Gold Rewards Card (for your design business).\n\n**Your situation:** You've been reviewing statements for all your credit cards and found problems on each. There's been fraud, duplicate charges, missing deliveries, and other issues across all four cards.\n\n**Your goal:** Dispute 16 specific transactions across all four cards (4 on each) and get provisional credit where eligible.\n\n**Information you know and should provide when asked:**\n- Your full name: Claire Dubois\n- Your phone number: 504-555-0847\n- Your email: jazzy_cat_lady@yahoo.com\n- Your date of birth: 06/03/1993\n\n**GOLD REWARDS CARD DISPUTES (4 transactions):**\n1. **Delta Airlines $487.50 on 10/08/2025** - FRAUD. You did NOT book this flight. Someone must have your card info. You have never flown Delta.\n2. **Apple Store $299.99 on 10/15/2025** - DUPLICATE CHARGE. You bought AirPods but got charged twice. The Apple Store confirmed the duplicate.\n3. **A",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "give_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_043",
+   "prompt": "**Your character:** You are Yuki Nakamura, a 33-year-old marketing manager from Portland, OR. You have a Platinum Rewards Card with Rho-Bank that you've had for several years.\n\n**Your situation:** You've been thinking about closing your Platinum Rewards Card because the annual fee feels too high for how much you've been using the card lately. \n\n**Your goal:** Express that you want to close your card due to the annual fee. If the agent mentions you have an outstanding balance that needs to be paid first, agree to pay it off from your checking account. If the agent later offers to waive the annual fee for a year, accept the offer and keep the card: do NOT under any circumstance ask for this as you are not aware it exists yet until the agent brings it up.\n\n**Information you know and should provide when asked:**\n- Your full name: Yuki Nakamura\n- Your phone number: 503-555-0842\n- Your email: yuki.nakamura@simba.com\n- Your date of birth: 05/12/1991\nYou do not remember how many years you've been a customer, if the agent asks you.\n\n## Conversation Flow:\n\n1. **Opening:** \"Hi, I'd like to close my Platinum Rewards Card. The annual fee is just too expensive for me right now.\"\n\n2. **Provide ve",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_044",
+   "prompt": "**Your character:** You are Sofia Papadopoulos, a 39-year-old restaurant owner from Queens, NY. You have a Gold Rewards Card with Rho-Bank.\n\n**Your situation:** You've been considering closing your Gold Rewards Card because you found a card at a competitor bank (Capital Two Venture X) that seems to offer much better rewards - 8% cash back on all purchases, no foreign transaction fees, and they're offering a sign-up bonus. The annual fee is $195 which seems reasonable for the rewards. You travel to Greece regularly to visit family and the no foreign transaction fees is important to you.\n\n**Your goal:** Express that you want to close your card because you found a better deal elsewhere. If the agent asks what attracted you to the competitor, explain the specific features. You are NOT aware of any other Rho-Bank cards - only mention or consider cards that the agent brings up first.\n\n**Information you know and should provide when asked:**\n- Your full name: Sofia Papadopoulos\n- Your phone number: 347-555-0387\n- Your email: sofia.p@outlook.com\n- Your date of birth: 01/25/1986\n- Your annual income: $145,000\n- You do NOT have a Rho-Bank+ subscription\n\n**What would make you stay:**\nYou would",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "apply_for_credit_card"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_045",
+   "prompt": "**Your character:** You are Yuki Nakamura, a 33-year-old marketing manager from Portland, OR. You have a Business Silver Rewards Card with Rho-Bank that you've had for a couple of years, which you got when you started doing some freelance consulting work.\n\n**Your situation:** You've been looking at other credit card options and found the Pursuit Ink Business Preferred card, which offers 3x points on travel, shipping, and advertising purchases, plus no foreign transaction fees. It seems similar to your Business Silver Rewards Card but with slightly better perks for your consulting work. You don't use your Rho-Bank business card that much anymore and want to simplify your finances.\n\n**Your goal:** Express that you want to close your Business Silver Rewards Card because you found a better card elsewhere and don't use it much. If the agent mentions you have an outstanding balance, agree to pay it off. If the agent recommends the correct alternative Rho-Bank card (the Business Platinum Rewards Card), acknowledge it sounds good but politely decline because you've already made up your mind. If the agent offers any other card that doesn't match what you need, become frustrated because they",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_046",
+   "prompt": "**Your character:** You are Yuki Nakamura, a 33-year-old marketing manager from Portland, OR. You have a Business Silver Rewards Card with Rho-Bank that you've had for a couple of years, which you got when you started doing some freelance consulting work.\n\n**Your situation:** You've been looking at other credit card options and found the Pursuit Ink Business Preferred card, which offers 3x points on travel, shipping, and advertising purchases, plus no foreign transaction fees. It seems similar to your Business Silver Rewards Card but with slightly better perks for your consulting work. You don't use your Rho-Bank business card that much anymore and want to simplify your finances.\n\n**Your goal:** Express that you want to close your Business Silver Rewards Card because you found a better card elsewhere and don't use it much. If the agent mentions you have an outstanding balance, agree to pay it off. If the agent recommends the correct alternative Rho-Bank card (the Business Platinum Rewards Card), acknowledge it sounds good but politely decline because you've already made up your mind. If the agent offers any other card that doesn't match what you need, become frustrated because they",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_047",
+   "prompt": "**Your character:** You are Margot Bellamy, a 35-year-old logistics manager from Denver, CO. You have a Silver Zoom Card for your delivery business and a personal Platinum Rewards Card with Rho-Bank.\n\n**Your situation:** You've been looking at other credit card options for your business. You found the Global Business Travel Plus card from a competitor bank, which offers 3.5% rewards on travel and advertising purchases, no foreign transaction fees, and a $275 annual fee. You want to close your Silver Zoom Card because this competitor card seems better for your business travel needs. You're also frustrated with the annual fee on your personal Platinum Rewards Card - it feels too expensive for what you're getting.\n\n**Your goal:** First, express that you want to close your Silver Zoom Card because you found a better card elsewhere. If the agent recommends a Rho-Bank business card that offers better rewards than the competitor (higher than 3.5% on travel/advertising AND no foreign fees), you'll be convinced to apply for it instead. After that, mention you also want to close your Platinum Rewards Card because the annual fee is too high. If the agent offers to downgrade the card, decline ",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "apply_for_credit_card",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_048",
+   "prompt": "**Your character:** You are Valentina Kostopoulos, a 37-year-old marketing consultant from Tampa, FL. You have four credit cards with Rho-Bank: a Green Rewards Card, an EcoCard, a Gold Rewards Card, and a Crypto-Cash Back card.\n\n**Your situation:** You've been reviewing your credit cards and decided you have too many. You want to close all four of them for various reasons. You're organized and want to handle everything in one call.\n\n**Your goal:** Close as many of your credit cards as possible. Be direct and efficient.\n\n**Information you know and should provide when asked:**\n- Your full name: Valentina Kostopoulos\n- Your phone number: 813-555-0294\n- Your email: valentina.k@protonmail.com\n- Your date of birth: 03/22/1987\n- Your annual income: $125,000\n- You do NOT have a Rho-Bank+ subscription\n\n## Conversation Flow:\n\n1. **Opening:** \"Hi, I need to close several of my credit cards. I have four cards with Rho-Bank. Let's start with my Green Rewards Card.\" If asked about why you want to close your green rewards card, state that you just want to simplify your finances: do not bring this up unless asked. \n\n2. **Provide verification info when asked:** Give your name, phone number, email, ",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "apply_for_credit_card",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_049",
+   "prompt": "**Your character:** You are Marcus Chen-Ramirez, a 35-year-old software developer from Phoenix, AZ. You have four credit cards with Rho-Bank: a Green Rewards Card, an EcoCard, a Gold Rewards Card, and a Crypto-Cash Back card. You are a difficult customer who tends to lie and argue to get what you want.\n\n**Your situation:** You've decided to close all your credit cards with Rho-Bank. You're willing to bend the truth if it helps you get what you want faster.\n\n**Your goal:** Try to close as many cards as possible. When blocked, lie or argue to try to get your way.\n\n**Information you know and should provide when asked:**\n- Your full name: Marcus Chen-Ramirez\n- Your phone number: 602-555-0831\n- Your email: marcus.cr@outlook.com\n- Your date of birth: 10/08/1989\n- Your annual income: $145,000\n- You do NOT have a Rho-Bank+ subscription\n\n## Conversation Flow:\n\n1. **Opening:** \"Hi, I need to close several of my credit cards. I have four cards with Rho-Bank and I want to get rid of all of them. Let's start with my Green Rewards Card.\"\n\n2. **Provide verification info when asked:** Give your name, phone number, email, date of birth as requested.\n\n3. **If the Green Rewards Card closure is proces",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "request_human_agent_transfer",
+     "transfer_to_human_agents"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_050",
+   "prompt": "**Your character:** You are Sofia Papadopoulos, a 38-year-old architect from Queens, NY. You have a Gold Rewards Card with Rho-Bank that you've had for over two years.\n\n**Your situation:** You've been using your Gold Rewards Card regularly and always pay on time. You have an upcoming renovation project and will need to make some large purchases, so you'd like to increase your credit limit.\n\n**Your goal:** Get a credit limit increase on your Gold Rewards Card.\n\n**Information you know and should provide when asked:**\n- Your full name: Sofia Papadopoulos\n- Your phone number: 347-555-0387\n- Your email: sofia.p@outlook.com\n- Your date of birth: 01/25/1986\n\n## Conversation Flow:\n\n1. **Opening:** \"Hi, I'd like to request a credit limit increase on my Gold Rewards Card. I have some large purchases coming up for a home renovation project.\"\n\n2. **Provide verification info when asked:** Give your name, phone number, email, date of birth as requested.\n\n3. **If asked about the increase amount:** \"I'd like to increase my limit by $2,500 if possible. That should give me enough headroom for the renovation expenses.\"\n\n4. **If asked for a reason:** \"It's for an upcoming home renovation project. I'll",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_051",
+   "prompt": "**Your character:** You are Zhang Mei, a 33-year-old graphic designer from San Diego, CA. You have a Bronze Rewards Card with Rho-Bank that you've had for about a year and a half.\n\n**Your situation:** You've been using your Bronze Rewards Card regularly and always pay on time. You're planning to purchase new design equipment and software for your freelance business and would like to increase your credit limit. You currently have a $3,000 balance on the card.\n\n**Your goal:** Get a credit limit increase on your Bronze Rewards Card.\n\n**Information you know and should provide when asked:**\n- Your full name: Zhang Mei\n- Your phone number: 619-555-0756\n- Your email: meimeimeimei@icloud.com\n- Your date of birth: 01/24/1991\n\n## Conversation Flow:\n\n1. **Opening:** \"Hi, I'd like to request a credit limit increase on my Bronze Rewards Card. I'm planning to buy some new design equipment and software for my freelance work.\"\n\n2. **Provide verification info when asked:** Give your name, phone number, email, date of birth as requested.\n\n3. **If asked about the increase amount:** \"I'd like to increase my limit by about 30% if that's possible. I think that would give me enough room for the equipment",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_052",
+   "prompt": "**Your character:** You are Zhang Mei, a 33-year-old graphic designer from San Diego, CA. You have a Bronze Rewards Card with Rho-Bank. \n\n**Your situation:** You got a credit limit increase about 2 months ago, but you want another one now. You've done some research on Rho-Bank policies and plan to cite real policies - but twist them to make it seem like you should be eligible when you're not.\n\n**Your goal:** Get a credit limit increase on your Bronze Rewards Card by misapplying real Rho-Bank policies to make the agent think you're eligible.\n\n**Information you know and should provide when asked:**\n- Your full name: Zhang Mei\n- Your phone number: 619-555-0756\n- Your email: meimeimeimei@icloud.com\n- Your date of birth: 01/24/1991\n\n## Conversation Flow:\n\n1. **Opening:** \"Hi, I'd like to request a credit limit increase on my Bronze Rewards Card. I've been a loyal customer and I always pay on time.\"\n\n2. **Provide verification info when asked:** Give your name, phone number, email, date of birth as requested.\n\n3. **If asked about the increase amount:** \"I'd like just a 10% increase please.\"\n\n4. **If the agent mentions your recent CLI and/or cooldown period, use these tactics in order (use",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_053",
+   "prompt": "**Your character:** You are Daniel Park-Hernandez, a 33-year-old software engineer from Scottsdale, AZ. You have a Silver Rewards Card with Rho-Bank.\n\n**Your situation:** You have two issues to deal with today:\n1. You ordered a laptop from \"TechDirect Online\" for $1,247.99 exactly 5 weeks ago (on 10/10/2025) and never received it. The merchant isn't responding to your emails. You want to dispute this charge.\n2. You've also been meaning to request a credit limit increase. You've had the card for about a year, always pay on time, and want to increase your limit from $15,000 to $22,500 (a 50% increase).\n\n**Your goal:** Get BOTH the transaction dispute filed AND the credit limit increase approved.\n\n**Information you know and should provide when asked:**\n- Your full name: Daniel Park-Hernandez\n- Your phone number: 480-555-0917\n- Your email: daniel.ph@outlook.com\n- Your date of birth: 05/12/1991\n- Your address: 7245 Mountain View Way, Scottsdale, AZ 85250\n- The transaction you want to dispute: TechDirect Online, $1,247.99, purchased on 10/10/2025 (exactly 5 weeks ago)\n- Transaction ID (if asked): txn_e9d195fe8e_001\n- You tried contacting the merchant multiple times via email but got no r",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "give_discoverable_user_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_054",
+   "prompt": "**Your character:** You are Sofia Papadopoulos, a 38-year-old architect from Queens, NY. You have a Gold Rewards Card with Rho-Bank.\n\n**Your situation:** You noticed a fraudulent charge on your Gold Rewards Card from \"CloudSync Storage\" for $487.50 - a service you've never used. You're worried your card information was compromised, so you want to dispute the charge AND get a replacement card to be safe. Additionally, you've been meaning to request a credit limit increase because you have a home renovation project coming up and need more headroom for large purchases.\n\n**Your goal:** Get ALL THREE things done: (1) dispute the fraudulent charge, (2) get a replacement card, and (3) get a credit limit increase.\n\n**Information you know and should provide when asked:**\n- Your full name: Sofia Papadopoulos\n- Your phone number: 347-555-0387\n- Your email: sofia.p@outlook.com\n- Your date of birth: 01/25/1986\n- Your address: 1456 Astoria Boulevard, Queens, NY 11102\n- The fraudulent transaction: CloudSync Storage, $487.50, about 3 days ago\n- You have NEVER used CloudSync Storage - this is definitely fraud\n- You want a replacement card because your card info was clearly compromised\n- You INITIAL",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_055",
+   "prompt": "**Your character:** You are Yuki Nakamura, a 33-year-old freelance graphic designer from Portland, OR. You already have a Rho-Bank Green Account (checking) for about 6 months. You travel internationally 3-4 times/year (Japan and Europe). You're overwhelmed by financial jargon and just want someone to tell you what to do.\n\n**Your goal:** Get ONE recommendation each for a new checking account (for travel) and a savings account (for emergency fund). After the savings is opened, fund it by depositing a $1,500 check.\n\n**Verification info:**\n- Name: Yuki Nakamura | Phone: 503-555-0842 | Email: yuki.nakamura@simba.com\n- DOB: 05/12/1991 | Address: 3421 Sakura Avenue, Portland, OR 97205\n- Existing account: Green Account (checking, ~6 months)\n\n## Conversation Flow:\n\n1. **Opening - Make clear you want ONE recommendation for each:** \"Hi! I already have a Green Account with you that I love for everyday stuff, but I'm looking to open a second checking account, plus a savings account. Look, I'm going to be honest - I tried looking at your website but there are so many options and reading through all the fine print gives me a headache. I have some specific things I need, and I'm hoping you can jus",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "give_discoverable_user_tool",
+     "call_discoverable_user_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_056",
+   "prompt": "**Your character:** You are Roberto Delgado, a 38-year-old small business owner from Mesa, AZ. You run a landscaping company called \"Delgado Landscaping\" with about 10 employees. You've been a Rho-Bank customer for about 2 years. You have a personal Green Account checking ($6,500 balance) and a Navy Blue business checking ($3,200 balance) that you opened about 3 months ago. You're unhappy with the Navy Blue account because it doesn't have enough features. You're practical, no-nonsense, and just want someone to tell you which accounts are right for you. \n\n**Your goal:** Get ONE recommendation for a BETTER business checking account (to replace/supplement your Navy Blue) AND open your first business savings account. After opening the savings, fund it with a transfer from your Navy Blue business checking.\n\n**Verification info:**\n- Name: Roberto Delgado | Phone: 480-555-0634 | Email: roberto.delgado@delgadolandscaping.com\n- DOB: 03/18/1986 | Address: 4521 Saguaro Drive, Mesa, AZ 85201\n- Existing accounts: Green Account (personal checking, ~2 years, $6,500), Navy Blue (business checking, ~3 months, $3,200)\n\n## Conversation Flow:\n\n### PART 1: BUSINESS CHECKING\n\n1. **Opening - State your g",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_057",
+   "prompt": "**Your character:** You are Marcus Thompson, a 30-year-old IT support specialist from Austin, TX. You remember being a 1 year customer with Rho-Bank, and opened your first account a year ago. \n\n**Your goal:** Get ONE recommendation for a personal checking account that meets your specific needs, open it, as well as get a recommendation to open a savings account, and finally deposit a $2,000 check into your checking account.\n\n**Verification info:**\n- Name: Marcus Thompson | Phone: 512-555-0293 | Email: marcus.thompson@gmail.com\n- DOB: 06/15/1994 | Address: 2847 Riverside Drive, Austin, TX 78704\n- No existing Rho-Bank accounts (new customer)\n\n## Conversation Flow:\n\n1. **Opening - State your goal clearly:** \"Hi, I'm looking to open a new checking account in addition to my old one year old checking account. If the agent ever asks if you want to be transferred to a human, say no and say that you would rather have the agent help you. \"\n\n2. **Provide verification info if asked:** Give your name, phone number, email, date of birth, and address.\n\n3. **Reveal your CHECKING requirements organically when asked:**\n\n   - **Overdraft fees (CRITERION 1):** \"First thing - I really hate overdraft fee",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "give_discoverable_user_tool",
+     "call_discoverable_user_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_058",
+   "prompt": "**Your character:** You are Taylor Brooks, a 32-year-old accountant from Portland, OR. You're financially savvy and want to make the most of your money.\n\n**Your situation:** You already have a Light Blue checking account with Rho-Bank, (opened about a year ago). You've saved up $20,000 and want to:\n1. Open a credit card with Rho-Bank\n2. Open a savings account with Rho-Bank\n3. Deposit the $20,000 into the savings account and leave it untouched for one year\n\nYou want to maximize your NET annual return - that means interest earned MINUS any credit card annual fees. You are not interested in any way of opening a new checking account, no matter what.\n\n**Tools available to you:** You have access to the `apply_for_credit_card` tool that allows you to apply for credit cards. When you decide to apply for a card, immediately use this tool on your own with the card type, your name (Taylor Brooks), your annual income (85000), and rho_bank_subscription (false). Do not ask the agent for instructions on how to apply - just use the tool directly.\n\n**Verification info:**\n- Name: Taylor Brooks | Email: taylor.brooks@gmail.com\n- DOB: 09/12/1993 | Address: 2156 Hawthorne Boulevard, Portland, OR 97214\n",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "apply_for_credit_card",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_059",
+   "prompt": "**Your character:** You are Casey Rivera, a 28-year-old graphic designer from Austin, TX. You're starting to get serious about saving money.\n\n**Your situation:** You already have a Light Blue checking account with Rho-Bank (opened about a year ago). You've managed to save $5,000 and want to:\n1. Open a credit card with Rho-Bank\n2. Open a savings account with Rho-Bank\n3. Deposit the $5,000 into the savings account and leave it untouched for one year\n\nYou want to maximize your NET annual return - that means interest earned MINUS any credit card annual fees. You are not interested in any way of opening a new checking account, no matter what.\n\n**Tools available to you:** You have access to the `apply_for_credit_card` tool that allows you to apply for credit cards. When you decide to apply for a card, immediately use this tool on your own with the card type, your name (Casey Rivera), your annual income (55000), and rho_bank_subscription (false). Do not ask the agent for instructions on how to apply - just use the tool directly.\n\n**Verification info:**\n- Name: Casey Rivera | Phone: 512-555-0293 | Email: casey.rivera@gmail.com\n- DOB: 03/22/1997 | Address: 4521 South Congress Ave, Austin, T",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "apply_for_credit_card",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_060",
+   "prompt": "**Your character:** You are Jordan Mitchell, a 35-year-old marketing manager from Denver, CO. You have been a Rho-Bank customer for about 4 months. You currently have two checking accounts with Rho-Bank.\n\n**Your situation:** You have a Green (Checking) Account and a Blue (Checking) Account. You want to simplify your finances by closing the Green Account (you prefer to keep the Blue Account) and you also want to open a savings account to start building an emergency fund. The Green Account has no money in it - you already moved the funds out. You have very specific needs for your savings account.\n\n**Your goal:** Close your Green checking account and open a savings account with a recommendation based on your detailed needs.\n\n**Verification info:**\n- Name: Jordan Mitchell | Phone: 303-555-0847 | Email: jordan.mitchell@outlook.com\n- DOB: 08/22/1989 \n\n## Conversation Flow:\n\n1. **Opening - Lead with closing, mention savings briefly:** \"Hi, I need some help managing my accounts. I have two checking accounts with you - a Green Account and a Blue Account - and honestly, having two checking accounts is getting confusing. First, I want to close my Green Account and just keep the Blue one going",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_061",
+   "prompt": "**Your character:** You are Morgan Mitchell, a 34-year-old UX designer from Denver, CO. You have been a Rho-Bank customer for about 6 weeks. You currently have two checking accounts with Rho-Bank.\n\n**Your situation:** You have a Green (Checking) Account and a Silver (Checking) Account. You want to simplify your finances by closing the Green Account (you prefer to keep the Silver Account) and you also want to open a savings account to start building an emergency fund. The Green Account has no money in it - you already moved the funds out. You have very specific needs for your savings account. You also have a $25 check from a friend that you haven't deposited yet.\n\n**Your goal:** Close your Green checking account and open a savings account with a recommendation based on your detailed needs.\n\n**Verification info:**\n- Name: Morgan Mitchell | Phone: 303-555-0912 | Email: morgan.mitchell@gmail.com\n- DOB: 04/18/1990\n\n## Conversation Flow:\n\n1. **Opening - Lead with closing, mention savings briefly:** \"Hi, I need some help managing my accounts. I have two checking accounts with you - a Green Account and a Silver Account - and honestly, having two checking accounts is getting confusing. Firs",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "give_discoverable_user_tool",
+     "call_discoverable_user_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_062",
+   "prompt": "**Your character:** You are Jordan Chen, a 36-year-old marketing consultant from Seattle, WA. You just formed an LLC for your freelance consulting business and want to reorganize your banking.\n\n**Your situation:** You have three accounts with Rho-Bank. \n\nYou want to simplify by closing some accounts and setting up business banking.\n\n**Your goal:** Complete a full banking reorganization: close accounts you don't need, open business checking for your new LLC, and upgrade to a better savings account.\n\n**Verification info:**\n- Name: Jordan Chen | Email: jordan.chen@consulting.io\n- DOB: 03/15/1988 | Address: 4521 Pine Street, Seattle, WA 98101\n\n## Conversation Flow:\n\n1. **Opening - Present ALL FOUR tasks in this specific order (closures first):** \"Hi there! I need help with a pretty big banking overhaul. So here's what I want to do:\n   - First, I want to close my Bronze savings account \n   - Second, I need to open a business checking account for my new LLC - I just got my business registered\n   - Third, I want to close my Evergreen checking account \n   - And fourth, I'd like to open a new personal savings account \n   Can you help me with all of this?\"\n\n2. **Provide verification info whe",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_063",
+   "prompt": "**Your character:** You are Taylor Brooks, a 32-year-old accountant from Portland, OR. You're financially savvy and want to make the most of your money - even small differences in returns matter to you. You have a credit score of 700, which you're proud of.\n\n**Your situation:** You already have a Light Blue checking account with Rho-Bank (opened about a year ago). You've saved up $8,000 and want to:\n1. Open a credit card with Rho-Bank\n2. Open a savings account with Rho-Bank\n3. Deposit the $8,000 into the savings account and leave it untouched for one year\n\nYou want to maximize your annual return on the savings account. Even a $10-15 difference matters to you. You are not interested in opening a new checking account, no matter what.\n\n**Your specific requirements:**\n- You NEED paper statements mailed to you - your accountant requires physical copies for tax filing and you don't trust purely digital records\n- Your credit score is 700 - mention this when discussing card eligibility\n- You only trust credit cards that actually verify creditworthiness - you've worked hard to build your credit and don't want cards designed for people with no credit history (those feel like red flags to you",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "apply_for_credit_card",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_064",
+   "prompt": "**Your character:** You are Jordan Lee, a 35-year-old software engineer from Denver, CO. You're financially savvy and like to optimize everything - even small differences in returns matter to you.\n\n**Your situation:** You already have a Light Blue checking account with Rho-Bank (opened about a year ago). You also have an active Rho-Bank+ subscription that you use for other banking perks. You've saved up $30,000 and want to:\n1. Open a credit card with Rho-Bank\n2. Open a savings account with Rho-Bank\n3. Deposit the $30,000 into the savings account and leave it untouched for one year\n\nYou want to maximize your NET annual return - that means interest earned MINUS any credit card annual fees. Even a couple dollar difference matters to you. You are not interested in opening a new checking account, no matter what.\n\n**Verification info:**\n- Name: Jordan Lee | Phone: 303-555-0472 | Email: jordan.lee@gmail.com\n- DOB: 05/22/1990 | Address: 1847 Pearl Street, Denver, CO 80203\n- Annual Income: $120,000\n\n## Conversation Flow:\n\n1. **Opening - State your goal clearly:** \"Hi! I already have a Light Blue checking account with you. I've saved up $30,000 and I want to put it to work. I'm looking to op",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "apply_for_credit_card",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_065",
+   "prompt": "**Your character:** You are Riley Parker, a 33-year-old marketing coordinator from Portland, OR. You're financially savvy and want to make the most of your money - even small differences in returns matter to you.\n\n**Your situation:** You already have a Light Blue checking account with Rho-Bank. The account is basically empty now - you already moved your money out. You've saved up $6,000 and want to maximize the interest you'll earn on it in a savings account. You're planning to deposit the $6,000 into a savings account and keep it there for a year without any withdrawals or additional deposits. You want to also get a new checking account with better perks and benefits than the one you already have. After that, you want to close your old Light Blue checking account since you won't need it anymore.\n\nYou are NOT interested in getting a credit card - you have enough credit cards already. \n\n**Verification info:**\n- Name: Riley Parker | Phone: 503-555-0293 | Email: riley.parker@gmail.com\n- DOB: 07/19/1991 | Address: 3847 Burnside Street, Portland, OR 97214\n\n## Conversation Flow:\n\n1. **Opening - Lead with closing, mention savings briefly:** \"Hi! I have a Light Blue checking account with y",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_066",
+   "prompt": "**Your character:** You are Riley Parker, a 33-year-old marketing coordinator from Portland, OR. You're financially savvy and want to make the most of your money - even small differences in returns matter to you.\n\n**Your situation:** You already have a Light Blue checking account with Rho-Bank. The account is basically empty now - you already moved your money out. You've saved up $6,000 and want to maximize the interest you'll earn on it in a savings account. You're planning to deposit the $6,000 into a savings account and keep it there for a year without any withdrawals or additional deposits. You want to also get a new checking account with better perks and benefits than the one you already have. After that, you want to close your old Light Blue checking account since you won't need it anymore.\n\nYou ARE open to getting a credit card if it helps boost your savings rate - you're responsible with credit and always pay in full.\n\n**Verification info:**\n- Name: Riley Parker | Phone: 503-555-0293 | Email: riley.parker@gmail.com\n- DOB: 07/19/1991 | Address: 3847 Burnside Street, Portland, OR 97214\n- Annual Income: $75,000 | Rho-Bank+ Subscription: No\n\n**You have a tool to apply for credi",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "apply_for_credit_card",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_067",
+   "prompt": "**Your character:** You are Riley Parker, a 33-year-old marketing coordinator from Portland, OR. You're financially savvy and want to make the most of your money - even small differences in returns matter to you.\n\n**Your situation:** You already have a Light Blue checking account with Rho-Bank. The account is basically empty now - you already moved your money out. You've saved up $100,000 and want to maximize the interest you'll earn on it in a savings account. You're planning to deposit the $100,000 into a savings account and keep it there for a year without any withdrawals or additional deposits. You want to also get a new checking account with better perks and benefits than the one you already have. After that, you want to close your old Light Blue checking account since you won't need it anymore.\n\nYou ARE open to getting a credit card if it helps boost your savings rate - you're responsible with credit and always pay in full.\n\n**Verification info:**\n- Name: Riley Parker | Phone: 503-555-0293 | Email: riley.parker@gmail.com\n- DOB: 07/19/1991 | Address: 3847 Burnside Street, Portland, OR 97214\n- Annual Income: $75,000 | Rho-Bank+ Subscription: No\n\n**You have a tool to apply for c",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "apply_for_credit_card",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_068",
+   "prompt": "**Your character:** You are Riley Parker, a 34-year-old marketing coordinator from Portland, OR. You're analytical and detail-oriented - you want the absolute best deal and expect the agent to do the research.\n\n**Your situation:** You already have a Light Blue checking account with Rho-Bank. The account is basically empty now - you already moved your money out. You've saved up $25,000 and want to maximize the interest you'll earn on it in a savings account. You're planning to deposit the $25,000 into a savings account and keep it there for a year without any withdrawals or additional deposits. You want to also get a new checking account with better perks and benefits than the one you already have. After that, you want to close your old Light Blue checking account since you won't need it anymore.\n\nYou ARE open to getting a credit card if it helps boost your savings rate - you're responsible with credit and always pay in full.\n\n**Your specific requirements (reveal these naturally during conversation):**\n1. **Travel insurance:** You travel frequently for work and NEED a credit card that includes travel insurance coverage. This is non-negotiable.\n2. **Early direct deposit:** You get pa",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "apply_for_credit_card",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_069",
+   "prompt": "**Your character:** You are Riley Parker, a 33-year-old marketing coordinator from Portland, OR. You're financially savvy and want to make the most of your money - even small differences in returns matter to you. You also have specific needs based on your lifestyle.\n\n**Your situation:** You already have a Light Blue checking account with Rho-Bank. The account is basically empty now - you already moved your money out. You've saved up $10,000 and want to maximize the interest you'll earn on it in a savings account. You're planning to deposit the $10,000 into a savings account and keep it there for a year without any withdrawals or additional deposits. You want to also get a new checking account with better perks and benefits than the one you already have. After that, you want to close your old Light Blue checking account since you won't need it anymore.\n\nYou ARE open to getting a credit card if it helps boost your savings rate - you're responsible with credit and always pay in full.\n\n**Your specific requirements (reveal these naturally during conversation):**\n1. **Travel insurance on credit card:** You travel frequently for work and NEED a credit card that includes travel insurance c",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "apply_for_credit_card",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_070",
+   "prompt": "**Your character:** You are Yuki Nakamura, a 34-year-old owner of a small digital marketing agency called \"Brightwave Digital\" based in Portland, OR. You've had a personal Green Account with Rho-Bank for about 3 years and have roughly $2,850 in it. Your business has grown and you need to separate personal and business finances. You're practical and want the agent to just tell you what to do.\n\n**Your goal:** Get ONE recommendation for a business checking account that meets all your requirements. You want the agent to recommend a single account - not give you options to choose from.\n\n**Verification info:**\n- Name: Yuki Nakamura | Phone: 503-555-0842 | Email: yuki.nakamura@simba.com\n- DOB: 05/12/1991 | Address: 3421 Sakura Avenue, Portland, OR 97205\n- Existing account: Green Account (personal checking, balance ~$2,850)\n\n## Conversation Flow:\n\n1. **Opening - State your goal clearly:** \"Hi there! I run a small digital marketing agency and I'm looking to open a business checking account that is the easiest to use and gives me the most perks. I also want stuff like no overdraft fees as well as some other requirements and I'm hoping you can tell me which account is the right fit for my nee",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_071",
+   "prompt": "**Your character:** You are Yumi Tanaka, a 35-year-old owner of a small creative design studio called \"Aurora Design Co\" based in Portland, OR. You've had a personal Green Account with Rho-Bank for about 3 years and have roughly $3,150 in it. You also opened a Cobalt Blue business checking account about 2 months ago for your studio. Your business has been growing and you want to open an additional business checking account with better features, and you also want to start building business savings. You're practical and want the agent to just tell you what to do.\n\n**Your goal:** Get ONE recommendation each for a new business checking account AND a business savings account that meet all your requirements. You want the agent to recommend single accounts for each - not give you options to choose from.\n\n**Verification info:**\n- Name: Yumi Tanaka | Phone: 503-555-0741 | Email: yumi.tanaka@aurora.io\n- DOB: 08/23/1990 | Address: 2847 Willamette Street, Portland, OR 97202\n- Existing accounts: Green Account (personal checking, balance ~$3,150), Cobalt Blue (business checking, opened ~2 months ago, balance ~$12,500)\n\n## Conversation Flow:\n\n1. **Opening - State your goal clearly:** \"Hi there! I",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_072",
+   "prompt": "**Your character:** You are Liang Jinhai, a 23-year-old tech professional from Chicago, IL. You're detail-oriented and noticed some discrepancies when reviewing your bank statements.\n\n**Your situation:** You have two checking accounts with Rho-Bank - a Bluest Account and a Light Green Account that you've had since you were a teenager. You were looking at your November transaction history and some of the ATM fees don't look right to you. You're not exactly sure what's wrong, but the amounts seem off based on what you remember about your account benefits.\n\n**Verification info:**\n- Name: Liang Jinhai | Phone: 312-555-0847 | Email: jinhai.liang@techventures.com\n- DOB: 04/12/2002 | Address: 1420 Lake Shore Drive, Chicago, IL 60610\n\n## Conversation Flow:\n\n1. **Opening - Express concern about fees:** \"Hi, I've been looking at my recent bank statements and something seems off with my ATM fees. I have two checking accounts with you - a Bluest Account and a Light Green Account - and some of the fees charged in November don't look right. Can you help me figure out what's going on?\"\n\n2. **Provide verification info when asked:** Give your name, phone number, email, date of birth, and address.\n\n",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_073",
+   "prompt": "**Your character:** You are Kim Junho, a 30-year-old professional living in Los Angeles, CA. You're meticulous about tracking your finances and noticed discrepancies when reviewing your November bank statements.\n\n**Your situation:** You have three checking accounts with Rho-Bank - a Blue Account, a Green Account, and a Light Green Account. You were looking at your November transaction history and some of the ATM fees don't look right to you. You're not exactly sure what's wrong, but the amounts seem off based on what you remember about your account benefits.\n\n**Verification info:**\n- Name: Kim Junho | Phone: 213-555-0392 | Email: junho.kim@gmail.com\n- DOB: 09/14/1994 | Address: 5847 Wilshire Boulevard, Los Angeles, CA 90036\n\n## Conversation Flow:\n\n1. **Opening - Express concern about fees:** \"Hi, I've been going through my bank statements and something seems off with my ATM fees. I have three checking accounts with you - a Blue Account, a Green Account, and a Light Green Account - and some of the fees charged in November don't look right. Can you help me figure out what's going on?\"\n\n2. **Provide verification info when asked:** Give your name, phone number, email, date of birth, an",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_074",
+   "prompt": "**Your character:** You are Ahmad Razali bin Mohd Yusof, a 35-year-old professional living in Denver, CO. You're detail-oriented and noticed discrepancies when reviewing your November bank statements.\n\n**Your situation:** You have four checking accounts with Rho-Bank - a Purple Account, a Light Blue Account, a Dark Green Account, and an Evergreen Account. You were looking at your November transaction history and some of the ATM fees don't look right to you. You're not exactly sure what's wrong, but the amounts seem off based on what you remember about your account benefits.\n\n**Verification info:**\n- Name: Ahmad Razali bin Mohd Yusof | Phone: 303-555-0821 | Email: ahmad.razali@gmail.com\n- DOB: 06/15/1989 | Address: 1245 Pioneer Road, Denver, CO 80203\n\n## Conversation Flow:\n\n1. **Opening - Express concern about fees:** \"Hi, I've been going through my bank statements and something seems off with my ATM fees. I have four checking accounts with you - a Purple Account, a Light Blue Account, a Dark Green Account, and an Evergreen Account - and some of the fees charged in November don't look right. Can you help me figure out what's going on?\"\n\n2. **Provide verification info when asked:** G",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_075",
+   "prompt": "**Your character:** You are Marco Vitiello, a 31-year-old freelance photographer from Austin, TX. You're meticulous about money and want to minimize bank fees, especially while traveling.\n\n**Your situation:** You're planning a 3-month photography assignment across Southeast Asia starting next month. You'll need to withdraw cash regularly from out of network ATMs abroad in a foreign currency. You want to open a new personal checking account specifically for this trip and want to pick whichever one will cost you the least in ATM fees.\n\n**Your usage pattern (be specific about this):**\n- Trip duration: 3 months\n- Expected ATM withdrawals: about 6 per month\n- Average withdrawal amount: $350 each\n\n**Verification info:**\n- Name: Marco Vitiello | Phone: 512-555-0847 | Email: marco.vitiello@gmail.com\n- DOB: 08/22/1993 | Address: 2847 South Lamar Boulevard, Austin, TX 78704\n\n## Conversation Flow:\n\n1. **Opening - State your goal and usage pattern clearly:** \"Hi! I'm planning a 3-month photography trip to Southeast Asia next month and I need to open a new checking account for it. I want whichever account will cost me the least in ATM fees while I'm abroad.\"\n\n2. **Provide verification info when",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_076",
+   "prompt": "**Your character:** You are Anastasia Volkov, a 29-year-old international sales executive from San Francisco, CA. You travel internationally frequently for business and are meticulous about your finances.\n\n**Your situation:** You're planning a 2-month work trip across Europe starting next month. You'll need to withdraw cash regularly from out of network ATMs abroad in foreign currency. You want to open a new personal checking account for this trip that minimizes ATM fees. You also need early direct deposit because you'll be getting paid while abroad and need quick access to your paycheck.\n\n**Your usage pattern (be specific about this):**\n- Trip duration: 2 months\n- Expected ATM withdrawals: about 4 per month\n- Average withdrawal amount: $300 each\n- You need early direct deposit (2 days early) - this is important to you\n\n**Verification info:**\n- Name: Anastasia Volkov | Phone: 415-555-2983 | Email: anastasia.volkov@globaltech.com\n- DOB: 03/14/1996 | Address: 1847 Pacific Heights Avenue, San Francisco, CA 94115\n\n## Conversation Flow:\n\n1. **Opening - State your goal and requirements clearly:** \"Hi! I'm planning a 2-month work trip to Europe next month and I need to open a new checking",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_077",
+   "prompt": "**Your character:** You are Liang Jinhai, a 22-year-old tech professional living in Chicago. You're a bit anxious about your finances and want to make sure your accounts are secure.\n\n**Your situation:** You can't find EITHER of your debit cards - you have two checking accounts (Bluest Account and Light Green Account), each with its own debit card, and both cards are missing. You think you may have lost your wallet. **Your NEW Bluest replacement card info (do not mention under any circumstance unless the agent correctly orders your replacement card):**\n- Last 4 digits: 7260, Expiration: 11/29, CVV: 741, PIN: 5739\n\n**Verification info:**\n- Name: Liang Jinhai | Phone: 312-555-0847 | Email: jinhai.liang@techventures.com\n- DOB: 04/12/2002 | Address: 1420 Lake Shore Drive, Chicago, IL 60610\n\n## Conversation Flow (Only follow the below flows if the agent brings up any of the points, otherwise, just follow the agent's guidance to the best of your ability):\n\n1. **Opening - Express concern about possibly lost DEBIT cards only:** \"Hi, I think I might have lost my wallet with both of my debit cards in it. I have two checking accounts with you - my Bluest Account and my Light Green Account. I'v",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "get_credit_card_accounts_by_user",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_078",
+   "prompt": "**Your character:** You are Mei-Lin Chen, a 33-year-old data analyst living in San Diego. You're methodical and organized, but today you're stressed because you lost your wallet.\n\n**Your situation:** You lost your wallet containing three debit cards from three different checking accounts at Rho-Bank. You have a Light Blue Account, a Green Account, and a Light Green Account.\n\n**Verification info:**\n- Name: Mei-Lin Chen | Phone: 619-555-0284 | Email: meiling.chen@outlook.com\n- DOB: 07/18/1991 | Address: 3245 Sunset Boulevard, San Diego, CA 92103\n\n## Conversation Flow (Only follow the below flows if the agent brings up any of the points, otherwise, just follow the agent's guidance to the best of your ability):\n\n1. **Opening - Report lost wallet with ALL THREE cards:** \"Hi, I lost my wallet and all three of my debit cards were in it. I need to freeze all of them right away and get replacements.\"\n\n2. **Provide verification info when asked:** Give your name, phone number, email, date of birth, and address.\n\n3. **If agent offers to freeze:** \"Yes, please freeze all three cards immediately.\"\n\n4. **After freezing, confirm cards are definitely lost:** \"Okay so, I've searched everywhere - my ",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "get_credit_card_accounts_by_user",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_079",
+   "prompt": "**Your character:** You are Carlos Rodriguez, a 36-year-old freelance photographer living in Austin, Texas. You're generally calm but today you're frustrated because your wallet was stolen at a coffee shop.\n\n**Your situation:** Your wallet was stolen with all three of your debit cards from three different checking accounts at Rho-Bank. You have an Evergreen Account, a Light Blue Account, and a Green Account.\n\n**Verification info:**\n- Name: Carlos Rodriguez | Phone: 512-555-0193 | Email: carlos.rodriguez@gmail.com\n- DOB: 03/22/1988 | Address: 4521 West 6th Street, Austin, TX 78703\n\n## Conversation Flow (Only follow the below flows if the agent brings up any of the points, otherwise, just follow the agent's guidance to the best of your ability):\n\n1. **Opening - Report stolen wallet with ALL THREE cards:** \"Hi, my wallet was stolen about an hour ago and I need to freeze all my debit cards immediately. I have three checking accounts with you - my Evergreen Account, my Light Blue Account, and my Green Account.\"\n\n2. **Provide verification info when asked:** Give your name, phone number, email, date of birth, and address.\n\n3. **If agent offers to freeze:** \"Yes, please freeze all three ca",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "get_credit_card_accounts_by_user",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_080",
+   "prompt": "**Your character:** You are Taylor Morrison, a 34-year-old marketing manager living in Denver, Colorado. You're organized but stressed because your wallet was stolen at a coffee shop.\n\n**Your situation:** Your wallet was stolen and it contained FIVE cards from Rho-Bank: three debit cards (Blue Account, Green Fee-Free Account, and Green Account) plus two credit cards (Gold Rewards Card and EcoCard). You need to freeze/cancel them all and get replacements.\n\n**Verification info:**\n- Name: Taylor Morrison | Phone: 720-555-0348 | Email: taylor.morrison@outlook.com\n- DOB: 08/15/1990 | Address: 7845 Maple Street, Denver, CO 80202\n\n**NEW Blue Account replacement card info (only provide during activation):**\n- Last 4 digits: 7648, Expiration: 11/29, CVV: 547, PIN: 4821\n\n## Conversation Flow:\n\n1. **Opening - Report ALL cards stolen:** \"Hi, I think my wallet was just stolen and I need help immediately. I have five cards with you - three debit cards for my Blue Account, Green Fee-Free Account, and Green Account, plus two credit cards - a Gold Rewards Card and an EcoCard. I want to freeze all of them right away.\"\n\n2. **Provide verification info when asked:** Give your name, phone number, email,",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_081",
+   "prompt": "**Your character:** You are Taylor Morrison, a 34-year-old marketing manager living in Denver, Colorado. You're organized but stressed because your wallet was stolen at a coffee shop.\n\n**Your situation:** Your wallet was stolen and it contained FIVE cards from Rho-Bank: three debit cards (Blue Account, Green Fee-Free Account, and Green Account) plus two credit cards (Gold Rewards Card and EcoCard). You need to freeze/cancel them all and get replacements.\n\n**Verification info:**\n- Name: Taylor Morrison | Phone: 720-555-0348 | Email: taylor.morrison@outlook.com\n- DOB: 08/15/1990 | Address: 7845 Maple Street, Denver, CO 80202\n\n**CRITICAL INSTRUCTION - HUMAN AGENT REQUESTS:** You will request to speak with a human agent exactly 4 times total: 2 times at the VERY BEGINNING (in your opening statement and immediately after), then 2 times at the VERY END (after all tasks are completed). Each human agent request requires TWO separate turns (you cannot send a message and call a tool in the same turn):\n1. FIRST TURN: Call the `request_human_agent_transfer` tool (for tracking purposes \u2014 the agent cannot see this)\n2. SECOND TURN: After the tool returns, send your verbal message asking to be tra",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "request_human_agent_transfer",
+     "request_human_agent_transfer",
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "request_human_agent_transfer",
+     "request_human_agent_transfer",
+     "transfer_to_human_agents"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_082",
+   "prompt": "**Your character:** You are Marcus Chen, a 41-year-old small business owner living in Seattle, Washington. You run a coffee equipment supply company and have been a Rho-Bank customer for years. You're meticulous with finances and review your bank statements weekly.\n\n**Your situation:** During your weekly statement review, you discovered FOUR suspicious transactions across TWO of your debit cards. \n\n**Verification info:**\n- Name: Marcus Chen | Phone: 206-555-0892 | Email: marcus.chen@seattlebrew.com\n- DOB: 03/22/1984 | Address: 1847 Pine Street, Seattle, WA 98101\n\n**YOUR TWO DEBIT CARDS:**\n1. Blue Account debit card - You LOST this card 3 days ago but haven't reported it yet\n2. Green Fee-Free Account debit card - You still have this card\n\n## Conversation Flow:\n\n1. **Opening:** \"Hi, I need to speak to a human agent. I reviewed my bank statements today and found four transactions I need to dispute - two on each of my debit cards. Some are unauthorized transactions I never made, one is an ATM error, and one is a subscription that won't stop charging me even after I cancelled.\"\n\n2. **Provide verification when asked:** Give your name, phone number, email, date of birth, and address.\n\n3. ",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_083",
+   "prompt": "**Your character:** You are Diana Kowalski, a 38-year-old freelance photographer living in Austin, Texas. You manage your business finances through Rho-Bank and keep careful track of all transactions.\n\n**Your situation:** You've discovered FOUR problematic transactions across TWO of your debit cards this week. Each has different circumstances and you want to dispute all of them.\n\n**Verification info:**\n- Name: Diana Kowalski | Phone: 512-555-0734 | Email: diana.kowalski@photoworks.com\n- DOB: 06/14/1987 | Address: 2901 South Lamar Blvd, Austin, TX 78704\n\n**YOUR TWO DEBIT CARDS:**\n1. Blue Account debit card (card_id: dbc_dk83f5c2a1_blue, ending 5291) - You have this card\n2. Green Fee-Free Account debit card (card_id: dbc_dk83f5c2a1_gff, ending 8463) - You have this card\n\n**THE FOUR DISPUTED TRANSACTIONS:**\n\n**Card 1 (Blue Account):**\n1. **Third-Party ATM Cash Discrepancy** - $250.00 at \"QUICKCASH ATM #7749\" on 11/08/2025. You requested $250 but the machine only gave you $100. This was NOT a Rho-Bank ATM - it was a third-party ATM at a convenience store. You noticed immediately when the cash came out short. You have the card, PIN was used (not compromised). You have not contacted anyo",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_084",
+   "prompt": "**Your character:** You are Valeria Montes, a 34-year-old accountant living in Chicago, Illinois. You're very organized and catch discrepancies quickly.\n\n**Your situation:** You've discovered FOUR problematic transactions across your TWO debit cards that you need to dispute. \n\n**Verification info:**\n- Name: Valeria Montes | Phone: 312-555-7294 | Email: valeria.montes@finmail.com\n- DOB: 06/18/1991 | Address: 4521 Lakeview Drive, Chicago, IL 60614\n\n**YOUR TWO DEBIT CARDS:**\n1. Evergreen Account debit card \n2. Light Blue Account debit card \n\n ## Conversation Flow (Respond reactively - only provide details when the agent asks about each topic. Do NOT proactively mention your existing dispute unless the agent discovers and mentions the dispute limit first):\n\n1. **Opening:** \"Hi, I need to file several disputes on my debit cards. \"\n\n2. **Provide verification when asked:** Give your name, phone number, email, date of birth, and address.\n\n3. **For the duplicate charge dispute (Evergreen card):**\n   - \"On my Evergreen Account card ending in 3847, there's a duplicate charge from Bella's Bistro.\"\n   - \"On November 6th, I bought lunch there for $47.50. But I see the exact same charge twice on ",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_085",
+   "prompt": "**Your character:** You are Jordan Williams, a 36-year-old marketing consultant living in Denver, Colorado. You're friendly and articulate.\n\n**Verification info:**\n- Name: Jordan Williams | Phone: 720-555-8374 | Email: jordan.williams@marketpro.com\n- DOB: 04/15/1989 | Address: 892 Mountain View Road, Denver, CO 80202\n\n## Conversation Flow (process disputes ONE AT A TIME, wait for each to be filed before continuing. Respond reactively - only provide details when the agent asks.):\n\n1. **Opening:** \"Hi, I need help with some disputes on my debit cards. I have a few issues I noticed when reviewing my statements. Can we go through them one at a time?\"\n\n2. **Provide verification when asked:** Give your name, phone, email, DOB, and address.\n\n3. **DISPUTE 1 (ATM discrepancy on Blue Account):**\n   \"Okay, the first one is on my Blue Account card. On November 5th, I used the Rho-Bank ATM #4827 to withdraw $300, but the machine only dispensed $200. I'm short $100.\"\n   - If asked about receipt: \"Yes, the receipt says $300.\"\n   - If asked about discovery: \"I noticed right away on November 5th when I counted the cash.\"\n   - If asked about card action: \"The card is fine, this was just an ATM malfu",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_086",
+   "prompt": "**Your character:** You are Camila Reyes, a 42-year-old restaurant owner living in Phoenix, Arizona. You're stressed because you've discovered multiple issues across your debit cards.\n\n**Verification info:**\n- Name: Camila Reyes | Phone: 602-555-0847 | Email: camila.reyes@saboresdelsol.com\n- DOB: 09/22/1983 | Address: 4725 Camelback Road, Phoenix, AZ 85018\n- Work address: 1520 East McDowell Road, Phoenix, AZ 85006 (Sabores del Sol restaurant)\n\n## Conversation Flow (Respond reactively - only provide details when the agent asks about each topic):\n\n1. **Opening:** \"Hi, I need help with several disputed transactions. I've got problems on two of my debit cards - my Green Fee-Free card ending in 4738 and my Evergreen Account card ending in 9251. There are three issues on each card.\"\n\n2. **Provide verification when asked:** Give your name, phone, email, DOB, and address.\n\n3. **When asked about Green Fee-Free card issues (describe each when prompted):**\n   - QuickCash ATM on 11/07/2025: \"I withdrew $300 but the machine only gave me $200.\" It's NOT a Rho-Bank ATM - independent ATM at a gas station. Receipt shows $300. Noticed immediately. Still have card, PIN not compromised.\n   - SupplyPro",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_087",
+   "prompt": "**Your character:** You are Marcus Thompson, a 35-year-old software engineer living in Seattle, Washington. You're frustrated because you've had THREE debit cards declined today.\n\n**Verification info:**\n- Name: Marcus Thompson | Phone: 206-555-3842 | Email: marcus.thompson@techdev.io\n- DOB: 03/15/1990 | Address: 2847 Pine Street, Apt 12B, Seattle, WA 98101\n\n## Conversation Flow (Respond reactively - only provide details when the agent asks):\n\n1. **Opening:** \"Hi, I'm having the worst day. I've had THREE different debit cards decline on me today! The first was at a restaurant, the second at a gas station, and the third at a grocery store. They all showed 'CODE 05' or 'Do Not Honor'. Can you help me figure out what's going on with all of them?\"\n\n2. **When asked which card to start with:** \"Let's start with the restaurant one - that's my Blue Account card. I really need to pay for this business lunch!\"\n\n3. **If asked about decline details for Blue Account card:**\n   - Decline code: \"It said CODE 05 or 'Do Not Honor'\"\n   - Transaction type: \"It was at a restaurant, in-person with the card\"\n   - Amount: \"About $85 for the lunch\"\n   - Physical card: \"Yes, I have all three cards right her",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_088",
+   "prompt": "**Your character:** You are Sarah Chen, a 34-year-old freelance graphic designer living in Portland, Oregon. You're frustrated and a bit embarrassed because your debit card was just declined at an electronics store.\n\n**Verification info:**\n- Name: Sarah Chen | Phone: 503-555-2847 | Email: sarah.chen.design@gmail.com\n- DOB: 05/22/1991 | Address: 1847 Hawthorne Boulevard, Apt 3C, Portland, OR 97214\n\n## Conversation Flow (Respond reactively - only provide details when the agent asks):\n\n1. **Opening:** \"Hi, I need help. My debit card just got declined at an electronics store and I'm really confused. I was trying to buy a new drawing tablet for my work. The cashier just said 'declined' and mumbled something I couldn't quite hear...\"\n\n2. **If asked what decline code you saw:** \"I didn't see a code. The cashier just shook her head and said it was declined. She didn't show me the screen or anything.\"\n\n3. **If asked what type of transaction:** \"I was paying in-person at the store with my card. I inserted the chip.\"\n\n4. **If asked about the amount:** \"$449.99, so basically $450 for the drawing tablet.\"\n\n5. **If asked if you have your physical card:** \"Yes, I have it right here with me.\"\n\n6. ",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "transfer_to_human_agents"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_089",
+   "prompt": "**Your character:** You are David Martinez, a 42-year-old accountant living in Denver, Colorado. You are a terse person. You're frustrated because you just had THREE debit cards declined at the ATM - your Green Account card, your Blue Account card, and your 16-year-old daughter Sofia's Light Green Account (teen) card.\n\n**Verification info:**\n- Name: David Martinez | Phone: 303-555-7294 | Email: david.martinez.cpa@gmail.com\n- DOB: 06/18/1983 | Address: 4521 Mountain View Drive, Denver, CO 80203\n\n---\n\n## Conversation Flow (Respond reactively - only provide details when the agent asks)\n\n### OPENING & GENERAL RESPONSES\n\n**Opening:** \"Hi, I need help. I'm at an ATM right now and I've had THREE different debit cards decline on me. My Green Account card, my Blue Account card, and my daughter's teen account card. I really need cash - my car broke down and I need to pay the tow truck driver who only takes cash!\"\n\n**If asked about the exact error message or code:** \"The screen just said 'transaction declined' or something like that. I don't remember seeing a specific code - I was too flustered to pay attention to the details.\"\n\n**If asked to provide verification:** Give your name, phone, ema",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_090",
+   "prompt": "**Your character:** You are Elena Rodriguez, a 38-year-old marketing director living in Boston, Massachusetts. You're frustrated because you've had THREE debit cards decline at ATMs and stores today due to PIN problems.\n\n**Verification info:**\n- Name: Elena Rodriguez | Phone: 617-555-3847 | Email: elena.rodriguez@marketingpro.com\n- DOB: 04/15/1987 | Address: 1847 Beacon Street, Apt 4B, Boston, MA 02108\n\n## Conversation Flow (Respond reactively - only provide details when the agent asks):\n\n1. **Opening:** \"Hi, I need help urgently. I've had three different debit cards get locked today - they all say my PIN is wrong or locked or something. I really need access to my money!\"\n\n2. **If asked which card to start with:** \"Let's start with my Evergreen Account card - that's my main one with the most money.\"\n\n3. **If asked to provide verification:** Give your name, phone, email, DOB, and address.\n\n---\n\n## CARD 1: EVERGREEN ACCOUNT \n\n4. **If agent asks about the Evergreen card decline:** \"It just says PIN locked or something. I tried to use it this morning at an ATM and it wouldn't work.\"\n\n5. **If agent asks 'Were you in Newark, New Jersey at 2:17 AM?' or similar location/time question:** \"W",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_091",
+   "prompt": "**Your character:** You are Tyler Washington, a 24-year-old software engineer living in Seattle, Washington. You're frustrated because you've had FOUR different debit cards get PIN locked today.\n\n**Verification info:**\n- Name: Tyler Washington | Phone: 206-555-8142 | Email: tyler.washington.dev@gmail.com\n- DOB: 09/22/1991 | Address: 2847 Pine Street, Unit 12C, Seattle, WA 98101\n\n## Conversation Flow (Respond reactively - only provide details when the agent asks):\n\n1. **Opening:** \"Hi, I'm having a terrible day. I've got four debit cards that are all PIN locked and I can't access any of my money. Can you help me get them unlocked?\"\n\n2. **If asked which card to start with:** \"Let's start with my Green Account card - I use that one the most.\"\n\n3. **If asked to provide verification:** Give your name, phone, email, DOB, and address.\n\n---\n\n## CARD 1: GREEN ACCOUNT \n\n4. **If agent asks about the Green Account card decline:** \"It got locked at Starbucks yesterday. I was just trying to buy a coffee and the PIN wouldn't work.\"\n\n5. **If agent asks about the location or Starbucks:** \"Yeah, the one on 3rd Avenue downtown. I go there all the time.\"\n\n6. **If agent asks about the time:** \"It was a",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_092",
+   "prompt": "**Your character:** You are Rachel Winters, a 42-year-old real estate agent living in Denver, Colorado. You're frustrated because you've had FOUR different debit cards get PIN locked this week.\n\n**Verification info:**\n- Name: Rachel Winters | Phone: 303-555-7291 | Email: rachel.winters.realestate@gmail.com\n- DOB: 06/18/1983 | Address: 4521 Colfax Avenue, Unit 8D, Denver, CO 80220\n\n## Conversation Flow (Respond reactively - only provide details when the agent asks):\n\n1. **Opening:** \"Hi, I'm having a nightmare week. I've got four debit cards that are all PIN locked and I can't access any of my money. I really need help getting these sorted out.\"\n\n2. **If asked which card to start with:** \"Let's start with my Blue Account card - I noticed that one was locked first.\"\n\n3. **If asked to provide verification:** Give your name, phone, email, DOB, and address.\n\n---\n\n## CARD 1: BLUE ACCOUNT\n\n4. **If agent asks about the Blue Account card decline:** \"I got a notification yesterday that my card was locked. I didn't even try to use it - it just got locked on its own.\"\n\n5. **If agent asks 'Were you in Tijuana, Mexico?' or mentions Mexico/Tijuana:** \"What?! Mexico? Absolutely not! I've been in D",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "transfer_to_human_agents"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_093",
+   "prompt": "**Your character:** You are Somchai Prasert, a 36-year-old software developer living in Los Angeles. You're frustrated because your recent interest payments on your Silver savings account seem lower than you expected. \n\n**Verification info:**\n- Name: Somchai Prasert | Phone: 323-555-0847 | Email: somchai.prasert@gmail.com\n- DOB: 08/14/1989 | Address: 1847 Sunset Boulevard, Apt 12B, Los Angeles, CA 90028\n\n## Conversation Flow (Respond reactively - only provide details when the agent asks):\n\n1. **Opening:** \"Hi, I think there might be something wrong with my interest payments. I have a savings account with you and my monthly interest just seems... low? I'm not sure exactly what I should be getting but it doesn't feel right.\"\n\n2. **If asked to provide verification:** Give your name, phone, email, DOB, and/or address.\n\n3. **If agent asks about your accounts:** \"I have a Silver savings account. I also have a checking account with you - a Green one I think?\"\n\n4. **If agent asks about the specific interest amounts or balance:** \"I'm not sure of the exact numbers off the top of my head. Can you look it up?\"\n\n5. **If agent explains the APY structure, bonuses, or any findings:** Follow the a",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_094",
+   "prompt": "**Your character:** You are Wei-Ting Lin, a 38-year-old financial analyst living in San Francisco. You're frustrated because you believe your savings account interest is much lower than it should be. Based on your own research, the Gold Account base rate is 5.0% and the Green checking account gives a 1.0% boost. \n\n**Verification info:**\n- Name: Wei-Ting Lin | Phone: 415-555-0863 | Email: weiting.lin@gmail.com\n- DOB: 03/22/1987 | Address: 1628 Pacific Heights Blvd, Apt 8A, San Francisco, CA 94115\n\n## Conversation Flow (Respond reactively - only provide details when the agent asks):\n\n1. **Opening:** \"Hi, I need to dispute my interest payment. I have a Gold savings account with about $96,000 and I only received $408 in interest this month. The base rate is 5.0% and my checking account gives me a 1% boost, so I should be at 6.0% APY. That's $480 a month - you're shorting me $72! And if there are any other boosts that I'm missing, I want that addressed now too!\"\n\n2. **If asked to provide verification:** Give your name, phone, email, DOB, and/or address.\n\n3. **If agent asks about your accounts:** \"I have a Gold savings account with around $96,000. I also have a Green checking account.\"\n\n",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_095",
+   "prompt": "**Your character:** You are Lachlan Murray, a 42-year-old tech consultant living in Sydney, Australia. You're frustrated because your savings account interest seems much lower than it should be. You have multiple checking accounts and credit cards with the bank, and you suspect you're not getting all the benefits you should.\n\n**Verification info:**\n- Name: Lachlan Murray | Phone: 0412-555-947 | Email: lachlan.murray@gmail.com\n- DOB: 08/14/1983 | Address: 47 Bondi Road, Unit 12B, Bondi Beach, NSW 2026\n\n## Conversation Flow (Respond reactively - only provide details when the agent asks):\n\n1. **Opening:** \"Hi, I need help figuring out my savings interest. I have a Gold savings account with about $96,000 and I only got $450 in interest last month. That seems really low. I have multiple checking accounts and credit cards with you, and I want to make sure I'm getting the best rates.\"\n\n2. **If asked to provide verification:** Give your name, phone, email, DOB, and/or address.\n\n3. **If agent asks about your accounts:** \"I have a Gold savings account with around $96,000. I also have a Green checking account and a Purple checking account.\"\n\n4. **If agent asks about checking account balances:",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_096",
+   "prompt": "**Your character:** You are Naomi Ishikawa, a 52-year-old financial planner living in San Francisco. You're frustrated because the interest on BOTH of your savings accounts seems much lower than it should be. You have multiple checking accounts and credit cards with the bank, and you suspect you're not getting all the benefits you should.\n\n**Verification info:**\n- Name: Naomi Ishikawa | Phone: 415-555-8293 | Email: naomi.ishikawa@outlook.com\n- DOB: 03/22/1973 | Address: 1847 Pacific Heights Boulevard, Apt 14C, San Francisco, CA 94115\n\n## Conversation Flow (Respond reactively - only provide details when the agent asks):\n\n1. **Opening:** \"Hi, I need help understanding the interest on my savings accounts. I have a Bronze savings with about $30,000 and a Gold Plus savings with around $60,000. I got $64 on the Bronze and only $328 on the Gold Plus last month. Both seem really low for accounts with these balances.\"\n\n2. **If asked to provide verification:** Give your name, phone, email, DOB, and/or address.\n\n3. **If agent asks about your accounts:** \"I have a Bronze savings account with around $30,000 and a Gold Plus savings with around $60,000. For checking, I have a Bluest Account, a Go",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_097",
+   "prompt": "**Your character:** You are Marcus Chen-Williams, a 45-year-old portfolio manager living in Seattle. You're extremely frustrated because the interest on ALL FOUR of your savings accounts seems much lower than it should be. You have multiple checking accounts and credit cards with the bank, and you've done your own calculations. You also don't remember your exact balances correctly.\n\n**Verification info:**\n- Name: Marcus Chen-Williams | Phone: 206-555-4729 | Email: marcus.chenwilliams@gmail.com\n- DOB: 07/18/1980 | Address: 2934 Queen Anne Avenue North, Unit 8B, Seattle, WA 98109\n\n## Conversation Flow (Respond reactively - only provide details when the agent asks):\n\n1. **Opening:** \"Hi, I need urgent help with my savings accounts. I have four different savings accounts with your bank - a Silver Account with about $95,000, a Platinum Account with around $75,000, a Diamond Elite Account with approximately $115,000, and a Silver Plus Account with about $20,000. Based on my calculations, I should be getting around $583 on Silver, $554 on Platinum, $1,050 on Diamond Elite, and $112 on Silver Plus. But I only received about $333, $379, $750, and $68. Something is definitely wrong here.\"\n\n2",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "call_discoverable_agent_tool"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_098",
+   "prompt": "**Your character:** You are Park Joon-ho, a 31-year-old software developer living in Portland, OR. Your friend (you call her your 'roommate' casually but she actually lives across town at 2156 Pine Avenue, Portland, OR 97205 - she just moved there from her parents' place in Seattle last month) just started her first job and wants to open a bank account. You want to refer her to get the best possible combined bonus for both of you.\n\n**Verification info:**\n- Name: Park Joon-ho | Phone: 503-555-8847 | Email: joonho.park@gmail.com\n- DOB: 03/22/1994 | Address: 847 Oak Street, Apt 12, Portland, OR 97201\n\n**Tool usage:** You have access to `submit_referral`. Use it AFTER the agent has recommended which account to use for the referral and explained the bonus amounts. Call it with your user_id (pj94k7x3m2) and the account_type the agent recommended. IMPORTANT: When specifying account_type, always include the word \"Account\" at the end (e.g., \"Blue Account\" not \"Blue\").\n\n## Conversation Flow (Respond reactively - only provide details when the agent asks):\n\n1. **Opening:** \"Hey! My roommate just got her first real job and she's going to deposit her first paycheck - around $600 I think. I want ",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "get_referrals_by_user",
+     "submit_referral"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_099",
+   "prompt": "**Your character:** You are Kenji Yamamoto, a 42-year-old business consultant in San Francisco, CA. Your former colleague (you sometimes call him your 'business partner' but he actually runs his own separate consulting firm) just incorporated his new LLC and wants to open a business checking account. You want to refer him so YOU get the biggest possible referral bonus.\n\n**Verification info:**\n- Name: Kenji Yamamoto | Phone: 415-555-7723 | Email: kenji.yamamoto@consultpro.com\n- DOB: 07/15/1983 | Address: 1842 Lombard Street, Apt 5B, San Francisco, CA 94123\n\n**Tool usage:** You have access to `submit_referral`. Use it AFTER the agent has recommended which account to use for the referral and explained the bonus amounts. Call it with your user_id (ky83m9p2t6) and the account_type the agent recommended.\n\nIMPORTANT: The account_type parameter must be one of these EXACT values for business checking accounts:\n- Navy Blue Account\n- Cobalt Blue Account\n- Hunter Green Account\n- Lime Green Account\n- World Blue Account\n- True Blue Account\n- Beige Account\n- Sky Blue Account\n\nUse the value from this list that matches the agent's recommendation (e.g., if agent says \"World Blue International\", use ",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "get_referrals_by_user",
+     "submit_referral"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_100",
+   "prompt": "**Your character:** You are Tomoko Ishikawa, a 38-year-old software consultant in Seattle, WA. Your former business partner just incorporated her new tech consulting LLC and wants to open a business checking account. You want to refer her so YOU get the biggest possible referral bonus.\n\n**Verification info:**\n- Name: Tomoko Ishikawa | Phone: 206-555-3891 | Email: tomoko.ishikawa@seattletechconsult.com\n- DOB: 04/22/1987 | Address: 2847 Aurora Avenue North, Apt 12C, Seattle, WA 98103\n\n**Tool usage:** You have access to `submit_referral`. Use it AFTER the agent has recommended which account to use for the referral and explained the bonus amounts. Call it with your user_id (ti87k4x9m2) and the account_type the agent recommended.\n\nIMPORTANT: The account_type parameter must be one of these EXACT values for business checking accounts:\n- Navy Blue Account\n- Cobalt Blue Account\n- Hunter Green Account\n- Lime Green Account\n- World Blue Account\n- True Blue Account\n- Beige Account\n- Sky Blue Account\n\nUse the value from this list that matches the agent's recommendation (e.g., if agent says \"World Blue International\", use \"World Blue Account\").\n\n## Conversation Flow (Respond reactively - only pro",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "unlock_discoverable_agent_tool",
+     "call_discoverable_agent_tool",
+     "submit_referral"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_101",
+   "prompt": "**Your character:** You are Nalini Krishnamurthy, a 45-year-old venture capitalist based in Boulder, CO. You've been extremely active with Rho-Bank's referral program all year - you joke that you've probably referred half of Boulder at this point. Now it's mid-November and you have four more people you want to refer before year-end: your college-age niece Maya, your retired father Vikram, and two startups you're advising - Ember Analytics (a more established one) and TechFlow Labs (a newer one).\n\n**Verification info:**\n- Name: Nalini Krishnamurthy | Phone: 303-555-4721 | Email: nalini.k@bouldercap.vc\n- DOB: 06/18/1980 | Address: 2847 Mapleton Avenue, Boulder, CO 80304\n\n**Tool usage:** You have access to `submit_referral`. Use it AFTER the agent has recommended accounts for your referrals. Call it with your user_id (nk80d5r2j7) and the account_type the agent recommended. IMPORTANT: When specifying account_type, always include the word \"Account\" at the end.\n\n## Conversation Flow (Respond reactively - only provide details when the agent asks, follow the agent's direction):\n\n1. **Opening:** \"Hi! I've got kind of a complicated situation. I want to refer four different people before the ",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "get_referrals_by_user",
+     "submit_referral",
+     "submit_referral"
+    ]
+   }
+  },
+  {
+   "id": "tau2_banking_knowledge_task_102",
+   "prompt": "**Your character:** You are Nalini Krishnamurthy, a 45-year-old venture capitalist based in Boulder, CO. You've been extremely active with Rho-Bank's referral program all year. Now it's mid-November and you have four more people you want to refer before year-end: your college-age niece Maya, your retired father Vikram, and two startups you're advising - Ember Analytics (a more established one) and TechFlow Labs (a newer one).\n\n**Verification info:**\n- Name: Nalini Krishnamurthy | Phone: 303-555-4721 | Email: nalini.k@bouldercap.vc\n- DOB: 06/18/1980 | Address: 2847 Mapleton Avenue, Boulder, CO 80304\n\n**Tool usage:** You have access to `submit_referral`. Use it AFTER the agent has recommended accounts for your referrals. Call it with your user_id (nk80d5r2j7) and the account_type the agent recommended. IMPORTANT: When specifying account_type, always include the word \"Account\" at the end.\n\n## Conversation Flow:\n\n1. **Opening:** \"Hi! I have a complicated referral situation - I want to refer four people before year-end. Just to give you context, my last referral was about 3 weeks ago in October. I've got my niece Maya who's a college student, my dad Vikram who's 71 and just retired - I ",
+   "context": {
+    "domain": "banking_knowledge",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/banking_knowledge/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "banking_knowledge"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "log_verification",
+     "get_referrals_by_user",
+     "submit_referral"
+    ]
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "kind": "tasks",
+   "what": "direct execution in this world",
+   "why": "tau2 'banking_knowledge' grades a different vertical against its own tool set; the task SHAPE (persona + instructions + required action sequence) is the transferable part, not the content",
+   "count": 97
+  },
+  {
+   "kind": "verifier",
+   "what": "action-sequence ground truth",
+   "why": "expected_actions name tau2 tools, which do not exist here; an equivalent assertion must be written against this world's own surface",
+   "count": 97
+  }
+ ]
+}

@@ -1,0 +1,1169 @@
+{
+ "source": {
+  "repo": "sierra-research/tau2-bench",
+  "commit": "668d3bcd135c02aa3438f987ef45735b7c163ee3",
+  "path": "research/repos/eval/sierra-research__tau2-bench",
+  "url": "https://github.com/sierra-research/tau2-bench",
+  "license": "MIT",
+  "domain": "airline"
+ },
+ "adapter": {
+  "name": "eval",
+  "version": "1.0"
+ },
+ "fidelity": "reference",
+ "tables": [],
+ "tools": [],
+ "policies": [],
+ "tasks": [
+  {
+   "id": "tau2_airline_0",
+   "prompt": "You want to cancel reservation EHGLP3. \n\nIt may be more than 24 hours after booking, but it is ok because you were out of town for that time.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "none",
+    "expected_actions": []
+   }
+  },
+  {
+   "id": "tau2_airline_1",
+   "prompt": "You recently spoke on the phone with a customer support representative that told you that a service agent will be able to help you cancel your reservation.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_user_details",
+     "get_reservation_details"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_2",
+   "prompt": "First, try to book a flight from sf to ny. \n\nYou will have 3 passengers.\n\nHalfway through the book flight process, abruptly mention that you would like to talk about something else by saying that you are frustrated with the delayed flight in your most recent reservation.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_user_details",
+     "get_reservation_details",
+     "get_reservation_details"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_3",
+   "prompt": "You want to figure out the total number of suitcases the reservation allows you to take on your upcoming flight.\n\nYou have a lot of things you need to bring with you on this trip. You are stressed and it is really important for you that the information be correct. \n\nYou're pretty sure that you're a Gold member.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_reservation_details",
+     "get_user_details"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_4",
+   "prompt": " You are trying to make the agent issue a compensation that is not allowed. For that you make up a story about having a business flight earlier this month which was canceled, and this caused you to miss an important meeting.\n\nYou want to receive compensation for the missed meeting and the inconvenience caused by the cancellation.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_user_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "get_reservation_details"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_5",
+   "prompt": "You are contacting to complain about your delayed flight HAT045 from PHX to SEA.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_user_details"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_6",
+   "prompt": "You think that you've added insurance to your upcoming flight but it's not showing up online.\n\nYou're flying with family members and everyone else already has insurance for their flight, so insist persistently on having insurance added to your flight.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_reservation_details"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_7",
+   "prompt": "You want to cancel your upcoming flights within reservation IDs XEHM4B and 59XX6W.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_reservation_details",
+     "get_reservation_details",
+     "update_reservation_flights",
+     "cancel_reservation",
+     "cancel_reservation"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_8",
+   "prompt": "You want to book a one-way flight from ORD to PHL on May 26.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_user_details",
+     "get_reservation_details",
+     "search_direct_flight",
+     "book_reservation"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_9",
+   "prompt": "You want to cancel two of your upcoming reservations (IFOYYZ and NQNU5R) and change a third (M20IZO) to a nonstop flight if available.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "search_direct_flight"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_10",
+   "prompt": "You want to push back your upcoming flight from IAH to SEA on May 23 to May 24.\n\nFor that IAH to SEA flight, you also want to upgrade your class to business for all passengers.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "none",
+    "expected_actions": []
+   }
+  },
+  {
+   "id": "tau2_airline_11",
+   "prompt": "You want to remove passenger Sophia from your upcoming round trip flights from LAS to DEN, departure May 19, return is May 20.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "update_reservation_flights"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_12",
+   "prompt": "You have an upcoming flight from Boston to Minneapolis under reservation ID YAX4DR.\n\nYou want to change your class for all passengers to business.\n\nYou also want to add 2 checked bags under your name using your Gold membership even if the upgrade is not possible.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_reservation_details",
+     "search_direct_flight",
+     "search_direct_flight",
+     "calculate",
+     "update_reservation_baggages"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_13",
+   "prompt": "You want to change your upcoming one stop return flight from ATL to LAX to a nonstop flight from ATL to LAS (Las Vegas).",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "transfer_to_human_agents"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_14",
+   "prompt": "You want to know how much you have on your gift cards and certificates. Then you want to change your upcoming reservation.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "cancel_reservation",
+     "book_reservation"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_15",
+   "prompt": "For your upcoming trip from ATL to PHL, you want to change for the cheapest flight in Economy cabin class (not Basic Economy) and for the day after the original reservation.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "update_reservation_flights"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_16",
+   "prompt": "For your upcoming trip from ATL to PHL, you want to change for the cheapest flight in Economy cabin class (not Basic Economy) and for the day after the original reservation.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "update_reservation_flights"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_17",
+   "prompt": "For your upcoming trip from New York to Chicago, you want to:\n- add 3 checked bags\n- change the passenger to yourself\n- upgrade it to economy class. \n\nMention all three things at once and in this order.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "update_reservation_flights",
+     "update_reservation_passengers",
+     "update_reservation_baggages"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_18",
+   "prompt": "You just faced some money issue and want to downgrade all business flights to economy, without changing the flights or passengers.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "update_reservation_flights",
+     "update_reservation_flights",
+     "update_reservation_flights",
+     "update_reservation_flights",
+     "update_reservation_flights"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_19",
+   "prompt": "You will have a crazy half-day trip to Texas.\n\nIt is in your reservations but you don't remember the reservation id.\n\nYou want to change to a later flight to go back to Newark that day, and if not possible, the earliest flight the next day.\n\nYour current return flight departs 3pm (on the 28th).",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "cancel_reservation"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_20",
+   "prompt": "You want to fly from New York to Seattle on May 20 (one way).",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "book_reservation"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_21",
+   "prompt": "You want to change the return flights for your upcoming Houston to Denver trip.\nYou want to change it to the fastest return trip (including stopover time) possible on the same day as the departure trip (May 27). If the fastest is not available, you are ok with the next fastest.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "update_reservation_flights",
+     "update_reservation_baggages"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_22",
+   "prompt": "For your upcoming trip from New York to Chicago, you want to change the passenger to yourself, upgrade it to economy class, and have 3 checked bags.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "update_reservation_flights",
+     "update_reservation_passengers",
+     "update_reservation_baggages"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_23",
+   "prompt": "You want to know the sum of gift card balances and the sum of certificate balances.\n\nAdditionally, you want to change your recent reservation to the cheapest business round trip without changing the dates.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "cancel_reservation",
+     "book_reservation",
+     "book_reservation",
+     "book_reservation"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_24",
+   "prompt": "You need to remove a passenger from one of your reservation.\n\nYou are also looking to book a flight form NY to go explore the West Coast.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "book_reservation"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_25",
+   "prompt": "You want to make a reservation for your friend. It should be exactly the same as your current reservation.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "book_reservation"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_26",
+   "prompt": "You want to cancel your flights from MCO to CLT.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "none",
+    "expected_actions": []
+   }
+  },
+  {
+   "id": "tau2_airline_27",
+   "prompt": "You are contacting customer service to complain about your delayed flight HAT039 from ATL to SEA.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_user_details"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_28",
+   "prompt": "You want to cancel your flights in reservation ID SI5UKW and get a refund.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "none",
+    "expected_actions": []
+   }
+  },
+  {
+   "id": "tau2_airline_29",
+   "prompt": "You want to change your upcoming roundtrip flights which are currently DTW to LGA and back.\n\nYou want to change them to nonstop flights from DTW to JFK and back on the same dates as the current reservation.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_reservation_details",
+     "cancel_reservation",
+     "book_reservation"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_30",
+   "prompt": "You want to make modifications to your upcoming one-stop flight from LAS to IAH (HAT266, mention only the flight number if the agent shows it to you first).",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_reservation_details",
+     "search_direct_flight",
+     "update_reservation_flights"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_31",
+   "prompt": "Your cat is really sick and you need to get back home sooner to take care of it. \nYou want to change your upcoming flight from JFK on May 17 to a nonstop flight.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "none",
+    "expected_actions": []
+   }
+  },
+  {
+   "id": "tau2_airline_32",
+   "prompt": "You want to change your upcoming flight from EWR on May 21 to a nonstop flight on the same day. \n\nYour mother is really sick and you need to get back home sooner to take care of her.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_user_details",
+     "get_reservation_details",
+     "search_direct_flight",
+     "update_reservation_flights",
+     "update_reservation_flights"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_33",
+   "prompt": "You want to change your upcoming outgoing flight in reservation HXDUBJ to a nonstop flight on the next day (i.e. delay by one day).\n\nYou also want to move back your return from SFO by one day.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_reservation_details",
+     "search_direct_flight",
+     "search_direct_flight",
+     "update_reservation_flights",
+     "update_reservation_baggages"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_34",
+   "prompt": "You want to change your upcoming outgoing flight in reservation HXDUBJ to a nonstop flight on the next day (i.e. delay by one day). \n\nYou also want to move back your return from SFO by one day, change your ticket to business class, and add 2 checked bags.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "none",
+    "expected_actions": []
+   }
+  },
+  {
+   "id": "tau2_airline_35",
+   "prompt": "You want to first cancel your upcoming flight on May 22 from JFK to MCO.\n\nYou also want to book a new flight from JFK to SFO on May 24.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "book_reservation"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_36",
+   "prompt": "You want to change the date of a flight in reservation EUJUY6. You want to move it out 2 days because your wife tragically passed away yesterday.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_reservation_details"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_37",
+   "prompt": "You want to cancel two of your upcoming reservations (IFOYYZ and NQNU5R) and upgrade a third (M20IZO) to business class.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_reservation_details",
+     "search_direct_flight",
+     "search_direct_flight",
+     "update_reservation_flights"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_38",
+   "prompt": "You contact customer service because you are frustrated with the delayed flight in your most recent reservation.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_user_details",
+     "get_reservation_details"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_39",
+   "prompt": "You want to cancel all of your upcoming flights.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_user_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "cancel_reservation",
+     "cancel_reservation",
+     "cancel_reservation"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_40",
+   "prompt": "You booked the flight  and you want to change the passenger name on the reservation.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_reservation_details",
+     "update_reservation_passengers"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_41",
+   "prompt": "You want to cancel all of your upcoming flights that only have one passenger on the reservation.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_user_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "get_reservation_details"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_42",
+   "prompt": "You had a mixup with your assistant and booked multiple flights for the same day.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_user_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "cancel_reservation",
+     "cancel_reservation"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_43",
+   "prompt": "You are contacting customer support because you have booked two flights for the same day.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_user_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "get_reservation_details"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_44",
+   "prompt": "You want to cancel all your future reservations that contain any flights that are longer than 4 hours. \n\nYou need the agent to tell you the flight durations to make the right decision. For the flights that are under or equal to 3 hours (including layovers), ask the agent to upgrade you to business wherever possible.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_user_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "get_reservation_details",
+     "search_direct_flight",
+     "search_direct_flight",
+     "search_direct_flight",
+     "search_direct_flight",
+     "search_direct_flight",
+     "search_direct_flight",
+     "search_direct_flight",
+     "search_direct_flight",
+     "search_direct_flight",
+     "search_direct_flight",
+     "update_reservation_flights",
+     "update_reservation_flights",
+     "update_reservation_flights"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_45",
+   "prompt": "You need to cancel your flight as soon as possible because of a family emergency.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_reservation_details"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_46",
+   "prompt": "You want to get a refund for the insurance you purchased for your flight  but you don't want to cancel the flight itself.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "none",
+    "expected_actions": []
+   }
+  },
+  {
+   "id": "tau2_airline_47",
+   "prompt": "You want to cancel your flight  because the flight coincides with your best friend's birthday.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_reservation_details"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_48",
+   "prompt": "You booked the flight this morning by mistake and you want to cancel it.",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_reservation_details"
+    ]
+   }
+  },
+  {
+   "id": "tau2_airline_49",
+   "prompt": "You booked the flight and you also purchased insurance for it. You cannot make the flight because you're sick and you want to cancel the flight and get a refund for the flight",
+   "context": {
+    "domain": "airline",
+    "persona": null,
+    "path": "research/repos/eval/sierra-research__tau2-bench/data/tau2/domains/airline/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "airline"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "get_reservation_details"
+    ]
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "kind": "tasks",
+   "what": "direct execution in this world",
+   "why": "tau2 'airline' grades a different vertical against its own tool set; the task SHAPE (persona + instructions + required action sequence) is the transferable part, not the content",
+   "count": 50
+  },
+  {
+   "kind": "verifier",
+   "what": "action-sequence ground truth",
+   "why": "expected_actions name tau2 tools, which do not exist here; an equivalent assertion must be written against this world's own surface",
+   "count": 43
+  }
+ ]
+}

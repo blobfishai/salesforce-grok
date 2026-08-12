@@ -324,6 +324,163 @@ def adapt_skillpacks(_: Path | None = None) -> list[dict]:
     return pkgs
 
 
+# ----------------------------------------------------------------- eval adapter
+# Graded benchmarks that were cloned but never ingested. Unlike the schema adapter,
+# the interesting question here is not "how much is there" but "how much of it is
+# actually about selling" — a task with immaculate ground truth in the wrong vertical
+# is not evidence that this world covers its domain, and porting it anyway is how a
+# benchmark ends up measuring nothing.
+
+def _tau2_pkgs() -> list[dict]:
+    """tau2-bench and its Amazon verified fork: persona + instructions + action ground truth."""
+    pkgs = []
+    for repo_name in ("sierra-research__tau2-bench", "amazon-agi__tau2-bench-verified"):
+        repo_dir = REPOS / "eval" / repo_name
+        domains = repo_dir / "data" / "tau2" / "domains"
+        if not domains.is_dir():
+            continue
+        for domain_dir in sorted(d for d in domains.iterdir() if d.is_dir()):
+            tasks_file = domain_dir / "tasks.json"
+            if not tasks_file.exists():
+                continue
+            try:
+                raw = json.loads(tasks_file.read_text())
+            except ValueError:
+                continue
+            tasks = raw.get("tasks", raw) if isinstance(raw, dict) else raw
+            if not isinstance(tasks, list):
+                continue
+            pkg = wcp(repo_dir, "eval", "reference")
+            pkg["source"]["domain"] = domain_dir.name
+            graded = 0
+            for t in tasks:
+                if not isinstance(t, dict):
+                    continue
+                scen = t.get("user_scenario") or {}
+                instr = scen.get("instructions")
+                if isinstance(instr, dict):
+                    instr = instr.get("reason_for_call") or instr.get("task_instructions") or ""
+                actions = ((t.get("evaluation_criteria") or {}).get("actions")) or []
+                if actions:
+                    graded += 1
+                pkg["tasks"].append({
+                    "id": f"tau2_{domain_dir.name}_{t.get('id')}",
+                    "prompt": str(instr or "")[:1200],
+                    "context": {"domain": domain_dir.name, "persona": scen.get("persona"),
+                                "path": str(tasks_file.relative_to(ROOT))},
+                    "tags": ["eval", "tau2", domain_dir.name],
+                    "fidelity": "reference",
+                    "verifier": {"kind": "action_sequence" if actions else "none",
+                                 "expected_actions": [a.get("name") for a in actions if isinstance(a, dict)]},
+                })
+            # The ground truth is real; the vertical is not ours. Say so rather than
+            # importing airline refunds into a CRM and calling it sales coverage.
+            refuse(pkg, "tasks", "direct execution in this world",
+                   f"tau2 '{domain_dir.name}' grades a different vertical against its own tool set; "
+                   "the task SHAPE (persona + instructions + required action sequence) is the "
+                   "transferable part, not the content", len(pkg["tasks"]))
+            if graded:
+                refuse(pkg, "verifier", "action-sequence ground truth",
+                       "expected_actions name tau2 tools, which do not exist here; an equivalent "
+                       "assertion must be written against this world's own surface", graded)
+            pkgs.append(pkg)
+    return pkgs
+
+
+_ATTIO_SECTION = re.compile(r"^##\s+(.+?)\s*$", re.M)
+
+
+def _attio_pkgs() -> list[dict]:
+    """ArcadeAI's Attio benchmark: CRM read/filter queries with acceptance criteria."""
+    repo_dir = REPOS / "eval" / "ArcadeAI__attio-mcp-benchmark"
+    evals = repo_dir / "evals"
+    if not evals.is_dir():
+        return []
+    pkg = wcp(repo_dir, "eval", "adapted")
+    pkg["source"]["domain"] = "attio-crm-queries"
+    not_expressible = 0
+    for md in sorted(evals.glob("*.md")):
+        text = md.read_text(errors="ignore")
+        sections, order = {}, _ATTIO_SECTION.split(text)
+        for i in range(1, len(order) - 1, 2):
+            sections[order[i].strip().lower()] = order[i + 1].strip()
+        query = sections.get("query", "").strip().strip('"')
+        criteria = [ln.strip("- [ ]").strip()
+                    for ln in sections.get("acceptance criteria", "").splitlines()
+                    if ln.strip().startswith("- [")]
+        if not query:
+            not_expressible += 1
+            continue
+        pkg["tasks"].append({
+            "id": f"attio_{md.stem}",
+            "prompt": query,
+            "context": {"expected_behavior": sections.get("expected behavior", "")[:600],
+                        "path": str(md.relative_to(ROOT))},
+            "tags": ["eval", "attio", "crm-query"],
+            "fidelity": "adapted",
+            "verifier": {"kind": "acceptance_criteria", "criteria": criteria},
+        })
+    # Attio IS a CRM, so these port on subject matter. What does not port is the
+    # grading: acceptance criteria are prose, not a state assertion.
+    refuse(pkg, "verifier", "machine-checkable ground truth",
+           "acceptance criteria are natural-language checklists; running them here needs a SQL "
+           "or state-diff assertion authored against this world's tables", len(pkg["tasks"]))
+    if not_expressible:
+        refuse(pkg, "tasks", "eval file without a Query section",
+               "file does not follow the eval template", not_expressible)
+    return [pkg] if pkg["tasks"] else []
+
+
+def _r2a_pkgs() -> list[dict]:
+    """R2A sales benchmark: structured policy atoms — required and forbidden behaviour."""
+    repo_dir = REPOS / "eval" / "qinyh10300__R2A-Sales-Benchmark"
+    atoms = repo_dir / "benchmark" / "policy_atoms"
+    if not atoms.is_dir():
+        return []
+    try:
+        import yaml
+    except ImportError:
+        return []
+    pkg = wcp(repo_dir, "eval", "adapted")
+    pkg["source"]["domain"] = "sales-policy-atoms"
+    unparsed = 0
+    for yf in sorted(atoms.glob("*.yaml")):
+        try:
+            d = yaml.safe_load(yf.read_text(errors="ignore")) or {}
+        except Exception:
+            unparsed += 1
+            continue
+        if not isinstance(d, dict) or not d.get("id"):
+            unparsed += 1
+            continue
+        pkg["policies"].append({
+            "id": d.get("id"),
+            "severity": d.get("severity"),
+            "hard_fail": bool(d.get("hard_fail")),
+            "applies_when": d.get("applicability"),
+            "required_behaviors": d.get("required_behaviors") or [],
+            "forbidden_claims": d.get("forbidden_claims") or [],
+            "escalate_when": d.get("escalate_when") or [],
+            "context": {"path": str(yf.relative_to(ROOT))},
+        })
+    hard = [p for p in pkg["policies"] if p["hard_fail"]]
+    # These are the best restraint source in the corpus: a hard_fail atom states an
+    # action that must NOT be taken, which is exactly what a restraint task asserts.
+    refuse(pkg, "tasks", "runnable task",
+           "a policy atom states a rule, not a scenario; each becomes a restraint task only "
+           "once paired with world state that tempts the agent to break it", len(pkg["policies"]))
+    if unparsed:
+        refuse(pkg, "policies", "unparsable atom", "YAML did not load or had no id", unparsed)
+    print(f"    r2a: {len(pkg['policies'])} policy atoms ({len(hard)} hard-fail)")
+    return [pkg] if pkg["policies"] else []
+
+
+@adapter("eval")
+def adapt_evals(_: Path | None = None) -> list[dict]:
+    """Graded sales/agent benchmarks that were cloned but never ingested."""
+    return _tau2_pkgs() + _attio_pkgs() + _r2a_pkgs()
+
+
 # --------------------------------------------------------------- schema adapter
 # Real production CRM/ERP data models. This is the denominator for the claim that
 # the world covers its domain: not what one benchmark models, but what shipping

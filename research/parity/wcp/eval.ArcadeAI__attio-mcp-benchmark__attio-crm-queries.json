@@ -1,0 +1,204 @@
+{
+ "source": {
+  "repo": "ArcadeAI/attio-mcp-benchmark",
+  "commit": "b2258b0d11dad011fdbd4d40c1c67655ebf866c0",
+  "path": "research/repos/eval/ArcadeAI__attio-mcp-benchmark",
+  "url": "https://github.com/ArcadeAI/attio-mcp-benchmark",
+  "license": "UNKNOWN",
+  "domain": "attio-crm-queries"
+ },
+ "adapter": {
+  "name": "eval",
+  "version": "1.0"
+ },
+ "fidelity": "adapted",
+ "tables": [],
+ "tools": [],
+ "policies": [],
+ "tasks": [
+  {
+   "id": "attio_01-list-all-companies",
+   "prompt": "Show me all companies in our CRM",
+   "context": {
+    "expected_behavior": "- Object: companies\n- Filter: None (list all, limit 25)\n- Fields needed: name (at minimum)\n- Expected results: 25 company records with names",
+    "path": "research/repos/eval/ArcadeAI__attio-mcp-benchmark/evals/01-list-all-companies.md"
+   },
+   "tags": [
+    "eval",
+    "attio",
+    "crm-query"
+   ],
+   "fidelity": "adapted",
+   "verifier": {
+    "kind": "acceptance_criteria",
+    "criteria": [
+     "Returns company records (up to 25)",
+     "Response includes company names",
+     "Agent can list the companies from the response"
+    ]
+   }
+  },
+  {
+   "id": "attio_02-deals-by-stage",
+   "prompt": "Find all deals in the Nurture stage",
+   "context": {
+    "expected_behavior": "- Object: deals\n- Filter: stage equals \"Nurture\"\n- Fields needed: name, stage\n- Expected results: ~22 deals all with stage = Nurture",
+    "path": "research/repos/eval/ArcadeAI__attio-mcp-benchmark/evals/02-deals-by-stage.md"
+   },
+   "tags": [
+    "eval",
+    "attio",
+    "crm-query"
+   ],
+   "fidelity": "adapted",
+   "verifier": {
+    "kind": "acceptance_criteria",
+    "criteria": [
+     "Returns only deals where stage is \"Nurture\" (not all deals)",
+     "Response includes deal names and stage values",
+     "Agent can answer \"which deals are in Nurture?\" from the response"
+    ]
+   }
+  },
+  {
+   "id": "attio_03-deals-over-50k",
+   "prompt": "Show me deals worth more than $50,000",
+   "context": {
+    "expected_behavior": "- Object: deals\n- Filter: deal value greater than 50000\n- Fields needed: name, deal_value\n- Expected results: 25+ deals all with value > $50K",
+    "path": "research/repos/eval/ArcadeAI__attio-mcp-benchmark/evals/03-deals-over-50k.md"
+   },
+   "tags": [
+    "eval",
+    "attio",
+    "crm-query"
+   ],
+   "fidelity": "adapted",
+   "verifier": {
+    "kind": "acceptance_criteria",
+    "criteria": [
+     "Returns only deals where value exceeds $50,000 (not all deals)",
+     "Response includes deal names and values",
+     "Every returned deal has a value > $50,000"
+    ]
+   }
+  },
+  {
+   "id": "attio_04-companies-name-search",
+   "prompt": "Find companies with 'Tech' in their name",
+   "context": {
+    "expected_behavior": "- Object: companies\n- Filter: company name contains \"Tech\"\n- Fields needed: name\n- Expected results: ~8 companies with \"Tech\" somewhere in their name",
+    "path": "research/repos/eval/ArcadeAI__attio-mcp-benchmark/evals/04-companies-name-search.md"
+   },
+   "tags": [
+    "eval",
+    "attio",
+    "crm-query"
+   ],
+   "fidelity": "adapted",
+   "verifier": {
+    "kind": "acceptance_criteria",
+    "criteria": [
+     "Returns only companies whose name contains \"Tech\" (not all companies)",
+     "Response includes company names",
+     "Every returned company has \"Tech\" in its name (not just in any field)"
+    ]
+   }
+  },
+  {
+   "id": "attio_05-technology-companies",
+   "prompt": "List all Technology companies",
+   "context": {
+    "expected_behavior": "- Object: companies\n- Filter: industry/category equals \"Technology\"\n- Fields needed: name, industry/category\n- Expected results: ~23 companies categorized as Technology",
+    "path": "research/repos/eval/ArcadeAI__attio-mcp-benchmark/evals/05-technology-companies.md"
+   },
+   "tags": [
+    "eval",
+    "attio",
+    "crm-query"
+   ],
+   "fidelity": "adapted",
+   "verifier": {
+    "kind": "acceptance_criteria",
+    "criteria": [
+     "Returns only companies in the Technology category (not all companies)",
+     "Response includes company names and their category/industry",
+     "Agent can answer \"which companies are in Technology?\" from the response"
+    ]
+   }
+  },
+  {
+   "id": "attio_06-deals-by-close-date",
+   "prompt": "Show me deals closing before March 2026",
+   "context": {
+    "expected_behavior": "- Object: deals\n- Filter: close date before 2026-03-01\n- Fields needed: name, close_date, deal_value\n- Expected results: 20+ deals with close dates before March 2026",
+    "path": "research/repos/eval/ArcadeAI__attio-mcp-benchmark/evals/06-deals-by-close-date.md"
+   },
+   "tags": [
+    "eval",
+    "attio",
+    "crm-query"
+   ],
+   "fidelity": "adapted",
+   "verifier": {
+    "kind": "acceptance_criteria",
+    "criteria": [
+     "Returns only deals with close date before March 2026 (not all deals)",
+     "Response includes deal names, close dates, and values",
+     "Every returned deal has a close date before 2026-03-01"
+    ]
+   }
+  },
+  {
+   "id": "attio_07-compound-filter",
+   "prompt": "Find Technology companies with more than 100 employees",
+   "context": {
+    "expected_behavior": "- Object: companies\n- Filter: industry/category equals \"Technology\" AND employee count greater than 100\n- Fields needed: name, industry/category, employee_count\n- Expected results: 10+ companies matching both conditions",
+    "path": "research/repos/eval/ArcadeAI__attio-mcp-benchmark/evals/07-compound-filter.md"
+   },
+   "tags": [
+    "eval",
+    "attio",
+    "crm-query"
+   ],
+   "fidelity": "adapted",
+   "verifier": {
+    "kind": "acceptance_criteria",
+    "criteria": [
+     "Returns only companies that are BOTH in Technology AND have 100+ employees",
+     "Response includes company names, categories, and employee counts",
+     "No returned company is outside Technology or has fewer than 100 employees"
+    ]
+   }
+  },
+  {
+   "id": "attio_08-sort-and-limit",
+   "prompt": "What is my highest-value deal?",
+   "context": {
+    "expected_behavior": "- Object: deals\n- Filter: None \u2014 sort by deal value descending, limit 1\n- Fields needed: name, deal_value, associated company\n- Expected results: Exactly 1 deal \u2014 the one with the highest value",
+    "path": "research/repos/eval/ArcadeAI__attio-mcp-benchmark/evals/08-sort-and-limit.md"
+   },
+   "tags": [
+    "eval",
+    "attio",
+    "crm-query"
+   ],
+   "fidelity": "adapted",
+   "verifier": {
+    "kind": "acceptance_criteria",
+    "criteria": [
+     "Returns exactly 1 deal (not all deals sorted client-side)",
+     "The deal returned has the highest value in the workspace",
+     "Response includes deal name, value, and associated company"
+    ]
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "kind": "verifier",
+   "what": "machine-checkable ground truth",
+   "why": "acceptance criteria are natural-language checklists; running them here needs a SQL or state-diff assertion authored against this world's tables",
+   "count": 8
+  }
+ ]
+}

@@ -1,0 +1,219 @@
+{
+ "source": {
+  "repo": "amazon-agi/tau2-bench-verified",
+  "commit": "864350a8971a8f8ee9e7b8472e2edc380a806b0c",
+  "path": "research/repos/eval/amazon-agi__tau2-bench-verified",
+  "url": "https://github.com/amazon-agi/tau2-bench-verified",
+  "license": "MIT",
+  "domain": "mock"
+ },
+ "adapter": {
+  "name": "eval",
+  "version": "1.0"
+ },
+ "fidelity": "reference",
+ "tables": [],
+ "tools": [],
+ "policies": [],
+ "tasks": [
+  {
+   "id": "tau2_mock_create_task_1",
+   "prompt": "You are a team member who needs to create a task for an upcoming meeting. Your goal is to create a task to track this important meeting. Create a new task called 'Important Meeting' for user_1.",
+   "context": {
+    "domain": "mock",
+    "persona": "Professional and direct communicator who writes in a clear and concise style",
+    "path": "research/repos/eval/amazon-agi__tau2-bench-verified/data/tau2/domains/mock/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "mock"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "create_task"
+    ]
+   }
+  },
+  {
+   "id": "tau2_mock_create_task_1_with_env_assertions",
+   "prompt": "You are a team member who needs to create a task for an upcoming meeting. Your goal is to create a task to track this important meeting. Create a new task called 'Important Meeting' for user_1.",
+   "context": {
+    "domain": "mock",
+    "persona": "Professional and direct communicator who writes in a clear and concise style",
+    "path": "research/repos/eval/amazon-agi__tau2-bench-verified/data/tau2/domains/mock/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "mock"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "create_task"
+    ]
+   }
+  },
+  {
+   "id": "tau2_mock_create_task_1_nl_eval",
+   "prompt": "You are a team member who needs to create a task for an upcoming meeting. Your goal is to create a task to track an important meeting. Request a new task called 'Important Meeting' for user_1. Then, request a compliment.",
+   "context": {
+    "domain": "mock",
+    "persona": "Professional and direct communicator who writes in a clear and concise style",
+    "path": "research/repos/eval/amazon-agi__tau2-bench-verified/data/tau2/domains/mock/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "mock"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "none",
+    "expected_actions": []
+   }
+  },
+  {
+   "id": "tau2_mock_update_task_1",
+   "prompt": "You have completed the task and need to update its status. Your goal is to mark an existing task as completed. Request that task_1 be marked as completed.",
+   "context": {
+    "domain": "mock",
+    "persona": null,
+    "path": "research/repos/eval/amazon-agi__tau2-bench-verified/data/tau2/domains/mock/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "mock"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "update_task_status"
+    ]
+   }
+  },
+  {
+   "id": "tau2_mock_update_task_with_message_history",
+   "prompt": "Continue the conversation about task management. The previous discussion was about creating a task. Now you want to mark the task as completed.",
+   "context": {
+    "domain": "mock",
+    "persona": "Professional and direct communicator",
+    "path": "research/repos/eval/amazon-agi__tau2-bench-verified/data/tau2/domains/mock/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "mock"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "update_task_status"
+    ]
+   }
+  },
+  {
+   "id": "tau2_mock_update_task_with_initialization_data",
+   "prompt": "Continue the conversation about task management. The previous discussion was about creating a task with ID task_2. Now you want to mark the task as completed.",
+   "context": {
+    "domain": "mock",
+    "persona": "Professional and direct communicator",
+    "path": "research/repos/eval/amazon-agi__tau2-bench-verified/data/tau2/domains/mock/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "mock"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "update_task_status"
+    ]
+   }
+  },
+  {
+   "id": "tau2_mock_update_task_with_initialization_actions",
+   "prompt": "Continue the conversation about task management. The previous discussion was about creating a task with ID task_2. Now you want to mark the task as completed.",
+   "context": {
+    "domain": "mock",
+    "persona": "Professional and direct communicator",
+    "path": "research/repos/eval/amazon-agi__tau2-bench-verified/data/tau2/domains/mock/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "mock"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "update_task_status"
+    ]
+   }
+  },
+  {
+   "id": "tau2_mock_update_task_with_history_and_env_assertions",
+   "prompt": "Continue the conversation about task management. The previous discussion was about creating a task with ID task_2. Now you want to mark the task as completed.",
+   "context": {
+    "domain": "mock",
+    "persona": "Professional and direct communicator",
+    "path": "research/repos/eval/amazon-agi__tau2-bench-verified/data/tau2/domains/mock/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "mock"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "none",
+    "expected_actions": []
+   }
+  },
+  {
+   "id": "tau2_mock_impossible_task_1",
+   "prompt": "You want to delete all your current tasks.",
+   "context": {
+    "domain": "mock",
+    "persona": "Professional and direct communicator who writes in a clear and concise style",
+    "path": "research/repos/eval/amazon-agi__tau2-bench-verified/data/tau2/domains/mock/tasks.json"
+   },
+   "tags": [
+    "eval",
+    "tau2",
+    "mock"
+   ],
+   "fidelity": "reference",
+   "verifier": {
+    "kind": "action_sequence",
+    "expected_actions": [
+     "transfer_to_human_agents"
+    ]
+   }
+  }
+ ],
+ "refusals": [
+  {
+   "kind": "tasks",
+   "what": "direct execution in this world",
+   "why": "tau2 'mock' grades a different vertical against its own tool set; the task SHAPE (persona + instructions + required action sequence) is the transferable part, not the content",
+   "count": 9
+  },
+  {
+   "kind": "verifier",
+   "what": "action-sequence ground truth",
+   "why": "expected_actions name tau2 tools, which do not exist here; an equivalent assertion must be written against this world's own surface",
+   "count": 7
+  }
+ ]
+}
