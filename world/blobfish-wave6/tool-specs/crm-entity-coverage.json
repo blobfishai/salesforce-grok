@@ -1,0 +1,4078 @@
+{
+ "vendor": "salesforce-crm",
+ "namespace": "salesforce",
+ "tables": [
+  {
+   "name": "crm_email_templates",
+   "description": "Reusable email templates with merge fields. Modelled by 8 of the 26 independent CRM families in the corpus — the most-implemented entity this world was missing.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "subject",
+     "type": "TEXT"
+    },
+    {
+     "name": "body",
+     "type": "TEXT"
+    },
+    {
+     "name": "category",
+     "type": "TEXT"
+    },
+    {
+     "name": "merge_fields",
+     "type": "TEXT"
+    },
+    {
+     "name": "owner_employee_id",
+     "type": "INTEGER"
+    },
+    {
+     "name": "is_active",
+     "type": "INTEGER"
+    },
+    {
+     "name": "times_used",
+     "type": "INTEGER"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    },
+    {
+     "name": "updated_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "tmpl_0001",
+     "name": "Discovery Follow-Up",
+     "subject": "Following up on our call, {{contact.first_name}}",
+     "body": "Hi {{contact.first_name}},\n\nThanks for the time today. As promised, here is the summary...",
+     "category": "prospecting",
+     "merge_fields": "contact.first_name,account.name",
+     "owner_employee_id": 1,
+     "is_active": 1,
+     "times_used": 214,
+     "created_at": "2026-01-06T09:00:00Z",
+     "updated_at": "2026-02-01T09:00:00Z"
+    },
+    {
+     "id": "tmpl_0002",
+     "name": "Renewal Notice T-120",
+     "subject": "{{account.name}} renewal — 120 day notice",
+     "body": "Hi {{contact.first_name}},\n\nYour agreement renews on {{contract.end_date}}...",
+     "category": "renewal",
+     "merge_fields": "contact.first_name,account.name,contract.end_date",
+     "owner_employee_id": 2,
+     "is_active": 1,
+     "times_used": 88,
+     "created_at": "2026-01-06T09:00:00Z",
+     "updated_at": "2026-01-30T09:00:00Z"
+    },
+    {
+     "id": "tmpl_0003",
+     "name": "Quote Sent",
+     "subject": "Your quote {{quote.id}} is ready",
+     "body": "Hi {{contact.first_name}},\n\nPlease find the attached quote for review...",
+     "category": "deal",
+     "merge_fields": "contact.first_name,quote.id",
+     "owner_employee_id": 4,
+     "is_active": 1,
+     "times_used": 132,
+     "created_at": "2026-01-06T09:00:00Z",
+     "updated_at": "2026-02-05T09:00:00Z"
+    },
+    {
+     "id": "tmpl_0004",
+     "name": "Win-Back — Closed Lost",
+     "subject": "Checking back in, {{contact.first_name}}",
+     "body": "It has been a while since we spoke...",
+     "category": "prospecting",
+     "merge_fields": "contact.first_name",
+     "owner_employee_id": 1,
+     "is_active": 0,
+     "times_used": 41,
+     "created_at": "2025-09-01T09:00:00Z",
+     "updated_at": "2025-12-01T09:00:00Z"
+    },
+    {
+     "id": "tmpl_0005",
+     "name": "Case Resolved",
+     "subject": "Case {{case.id}} has been resolved",
+     "body": "Hi {{contact.first_name}},\n\nWe have resolved your case...",
+     "category": "service",
+     "merge_fields": "contact.first_name,case.id",
+     "owner_employee_id": 3,
+     "is_active": 1,
+     "times_used": 305,
+     "created_at": "2026-01-06T09:00:00Z",
+     "updated_at": "2026-02-08T09:00:00Z"
+    },
+    {
+     "id": "tmpl_0006",
+     "name": "Exec Intro — Tier 1",
+     "subject": "Introduction from Morgan Stanley (SIMULATED)",
+     "body": "Hi {{contact.first_name}},\n\nI lead our platform team...",
+     "category": "prospecting",
+     "merge_fields": "contact.first_name,account.name",
+     "owner_employee_id": 4,
+     "is_active": 1,
+     "times_used": 27,
+     "created_at": "2026-01-20T09:00:00Z",
+     "updated_at": "2026-02-10T09:00:00Z"
+    }
+   ]
+  },
+  {
+   "name": "crm_tags",
+   "description": "Free-form labels applied across CRM records. Six independent families model it.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "color",
+     "type": "TEXT"
+    },
+    {
+     "name": "category",
+     "type": "TEXT"
+    },
+    {
+     "name": "usage_count",
+     "type": "INTEGER"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "tag_0001",
+     "name": "strategic",
+     "color": "#1f6feb",
+     "category": "account",
+     "usage_count": 14,
+     "created_at": "2026-01-06T09:00:00Z"
+    },
+    {
+     "id": "tag_0002",
+     "name": "at-risk",
+     "color": "#d1242f",
+     "category": "account",
+     "usage_count": 6,
+     "created_at": "2026-01-06T09:00:00Z"
+    },
+    {
+     "id": "tag_0003",
+     "name": "champion",
+     "color": "#1a7f37",
+     "category": "contact",
+     "usage_count": 9,
+     "created_at": "2026-01-06T09:00:00Z"
+    },
+    {
+     "id": "tag_0004",
+     "name": "do-not-contact",
+     "color": "#6e7781",
+     "category": "contact",
+     "usage_count": 3,
+     "created_at": "2026-01-06T09:00:00Z"
+    },
+    {
+     "id": "tag_0005",
+     "name": "competitive-displacement",
+     "color": "#bf3989",
+     "category": "opportunity",
+     "usage_count": 5,
+     "created_at": "2026-01-06T09:00:00Z"
+    },
+    {
+     "id": "tag_0006",
+     "name": "expansion",
+     "color": "#8250df",
+     "category": "opportunity",
+     "usage_count": 7,
+     "created_at": "2026-01-06T09:00:00Z"
+    }
+   ]
+  },
+  {
+   "name": "crm_tag_assignments",
+   "description": "Join table binding a tag to any CRM record.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "tag_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "record_type",
+     "type": "TEXT"
+    },
+    {
+     "name": "record_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "assigned_by_employee_id",
+     "type": "INTEGER"
+    },
+    {
+     "name": "assigned_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "tga_0001",
+     "tag_id": "tag_0001",
+     "record_type": "account",
+     "record_id": "account_001",
+     "assigned_by_employee_id": 1,
+     "assigned_at": "2026-01-10T09:00:00Z"
+    },
+    {
+     "id": "tga_0002",
+     "tag_id": "tag_0002",
+     "record_type": "account",
+     "record_id": "account_007",
+     "assigned_by_employee_id": 2,
+     "assigned_at": "2026-02-06T09:00:00Z"
+    },
+    {
+     "id": "tga_0003",
+     "tag_id": "tag_0003",
+     "record_type": "contact",
+     "record_id": "contact_006",
+     "assigned_by_employee_id": 3,
+     "assigned_at": "2026-02-06T09:00:00Z"
+    },
+    {
+     "id": "tga_0004",
+     "tag_id": "tag_0001",
+     "record_type": "account",
+     "record_id": "account_002",
+     "assigned_by_employee_id": 3,
+     "assigned_at": "2026-01-12T09:00:00Z"
+    },
+    {
+     "id": "tga_0005",
+     "tag_id": "tag_0004",
+     "record_type": "contact",
+     "record_id": "contact_004",
+     "assigned_by_employee_id": 1,
+     "assigned_at": "2026-01-22T09:00:00Z"
+    },
+    {
+     "id": "tga_0006",
+     "tag_id": "tag_0006",
+     "record_type": "account",
+     "record_id": "account_009",
+     "assigned_by_employee_id": 3,
+     "assigned_at": "2026-02-09T09:00:00Z"
+    }
+   ]
+  },
+  {
+   "name": "crm_documents",
+   "description": "Document library: proposals, MSAs, security packets and order forms attached to CRM records, with revision tracking.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "document_type",
+     "type": "TEXT"
+    },
+    {
+     "name": "related_type",
+     "type": "TEXT"
+    },
+    {
+     "name": "related_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "revision",
+     "type": "INTEGER"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "file_size",
+     "type": "INTEGER"
+    },
+    {
+     "name": "mime_type",
+     "type": "TEXT"
+    },
+    {
+     "name": "owner_employee_id",
+     "type": "INTEGER"
+    },
+    {
+     "name": "is_confidential",
+     "type": "INTEGER"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "doc_0001",
+     "name": "Summit Group — Proposal v3.pdf",
+     "document_type": "proposal",
+     "related_type": "account",
+     "related_id": "account_001",
+     "revision": 3,
+     "status": "final",
+     "file_size": 482113,
+     "mime_type": "application/pdf",
+     "owner_employee_id": 1,
+     "is_confidential": 0,
+     "created_at": "2026-02-04T09:00:00Z"
+    },
+    {
+     "id": "doc_0002",
+     "name": "Riverside — MSA executed.pdf",
+     "document_type": "contract",
+     "related_type": "account",
+     "related_id": "account_002",
+     "revision": 1,
+     "status": "executed",
+     "file_size": 921004,
+     "mime_type": "application/pdf",
+     "owner_employee_id": 4,
+     "is_confidential": 1,
+     "created_at": "2026-02-13T09:00:00Z"
+    },
+    {
+     "id": "doc_0003",
+     "name": "Security Packet — SOC2 + pentest.zip",
+     "document_type": "security",
+     "related_type": "account",
+     "related_id": "account_002",
+     "revision": 2,
+     "status": "final",
+     "file_size": 3341882,
+     "mime_type": "application/zip",
+     "owner_employee_id": 3,
+     "is_confidential": 1,
+     "created_at": "2026-02-05T09:00:00Z"
+    },
+    {
+     "id": "doc_0004",
+     "name": "Ironwood — Order Form draft.docx",
+     "document_type": "order_form",
+     "related_type": "account",
+     "related_id": "account_010",
+     "revision": 1,
+     "status": "draft",
+     "file_size": 88210,
+     "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+     "owner_employee_id": 4,
+     "is_confidential": 0,
+     "created_at": "2026-02-11T09:00:00Z"
+    },
+    {
+     "id": "doc_0005",
+     "name": "Lakeshore — Competitive teardown.pdf",
+     "document_type": "internal",
+     "related_type": "account",
+     "related_id": "account_009",
+     "revision": 1,
+     "status": "final",
+     "file_size": 210043,
+     "mime_type": "application/pdf",
+     "owner_employee_id": 3,
+     "is_confidential": 1,
+     "created_at": "2026-02-09T09:00:00Z"
+    },
+    {
+     "id": "doc_0006",
+     "name": "FY2026 Price List.xlsx",
+     "document_type": "reference",
+     "related_type": "global",
+     "related_id": null,
+     "revision": 4,
+     "status": "final",
+     "file_size": 45120,
+     "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+     "owner_employee_id": 2,
+     "is_confidential": 0,
+     "created_at": "2026-01-05T09:00:00Z"
+    }
+   ]
+  },
+  {
+   "name": "crm_events",
+   "description": "Calendar events distinct from customer meetings: internal reviews, deadlines and all-day markers.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "title",
+     "type": "TEXT"
+    },
+    {
+     "name": "event_type",
+     "type": "TEXT"
+    },
+    {
+     "name": "starts_at",
+     "type": "TEXT"
+    },
+    {
+     "name": "ends_at",
+     "type": "TEXT"
+    },
+    {
+     "name": "all_day",
+     "type": "INTEGER"
+    },
+    {
+     "name": "owner_employee_id",
+     "type": "INTEGER"
+    },
+    {
+     "name": "location",
+     "type": "TEXT"
+    },
+    {
+     "name": "related_type",
+     "type": "TEXT"
+    },
+    {
+     "name": "related_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "evt_0001",
+     "title": "Q1 Forecast Review",
+     "event_type": "internal",
+     "starts_at": "2026-02-17T16:00:00Z",
+     "ends_at": "2026-02-17T17:00:00Z",
+     "all_day": 0,
+     "owner_employee_id": 4,
+     "location": "Board Room",
+     "related_type": null,
+     "related_id": null,
+     "status": "confirmed"
+    },
+    {
+     "id": "evt_0002",
+     "title": "Quarter end — all deals must be booked",
+     "event_type": "deadline",
+     "starts_at": "2026-03-31T00:00:00Z",
+     "ends_at": "2026-03-31T23:59:59Z",
+     "all_day": 1,
+     "owner_employee_id": 4,
+     "location": null,
+     "related_type": null,
+     "related_id": null,
+     "status": "confirmed"
+    },
+    {
+     "id": "evt_0003",
+     "title": "Deal desk office hours",
+     "event_type": "internal",
+     "starts_at": "2026-02-18T15:00:00Z",
+     "ends_at": "2026-02-18T16:00:00Z",
+     "all_day": 0,
+     "owner_employee_id": 2,
+     "location": "Zoom",
+     "related_type": null,
+     "related_id": null,
+     "status": "confirmed"
+    },
+    {
+     "id": "evt_0004",
+     "title": "Summit Group security review window",
+     "event_type": "milestone",
+     "starts_at": "2026-02-24T00:00:00Z",
+     "ends_at": "2026-02-28T23:59:59Z",
+     "all_day": 1,
+     "owner_employee_id": 1,
+     "location": null,
+     "related_type": "account",
+     "related_id": "account_001",
+     "status": "tentative"
+    },
+    {
+     "id": "evt_0005",
+     "title": "Comp plan rollout",
+     "event_type": "internal",
+     "starts_at": "2026-02-20T14:00:00Z",
+     "ends_at": "2026-02-20T15:00:00Z",
+     "all_day": 0,
+     "owner_employee_id": 4,
+     "location": "Zoom",
+     "related_type": null,
+     "related_id": null,
+     "status": "confirmed"
+    }
+   ]
+  },
+  {
+   "name": "crm_reminders",
+   "description": "Follow-up reminders bound to a record and an owner.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "subject",
+     "type": "TEXT"
+    },
+    {
+     "name": "remind_at",
+     "type": "TEXT"
+    },
+    {
+     "name": "owner_employee_id",
+     "type": "INTEGER"
+    },
+    {
+     "name": "related_type",
+     "type": "TEXT"
+    },
+    {
+     "name": "related_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "channel",
+     "type": "TEXT"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "rem_0001",
+     "subject": "Chase Riverside security sign-off",
+     "remind_at": "2026-02-18T09:00:00Z",
+     "owner_employee_id": 3,
+     "related_type": "account",
+     "related_id": "account_002",
+     "status": "pending",
+     "channel": "email",
+     "created_at": "2026-02-11T09:00:00Z"
+    },
+    {
+     "id": "rem_0002",
+     "subject": "Retry Riverside Services voicemail",
+     "remind_at": "2026-02-16T15:00:00Z",
+     "owner_employee_id": 2,
+     "related_type": "account",
+     "related_id": "account_007",
+     "status": "pending",
+     "channel": "in_app",
+     "created_at": "2026-02-06T09:00:00Z"
+    },
+    {
+     "id": "rem_0003",
+     "subject": "Send Ironwood revised pricing",
+     "remind_at": "2026-02-13T09:00:00Z",
+     "owner_employee_id": 4,
+     "related_type": "account",
+     "related_id": "account_010",
+     "status": "completed",
+     "channel": "email",
+     "created_at": "2026-02-10T09:00:00Z"
+    },
+    {
+     "id": "rem_0004",
+     "subject": "Confirm Summit Group budget owner",
+     "remind_at": "2026-02-20T09:00:00Z",
+     "owner_employee_id": 1,
+     "related_type": "account",
+     "related_id": "account_001",
+     "status": "pending",
+     "channel": "in_app",
+     "created_at": "2026-02-04T09:00:00Z"
+    },
+    {
+     "id": "rem_0005",
+     "subject": "Lakeshore displacement motion — start Q3",
+     "remind_at": "2026-07-01T09:00:00Z",
+     "owner_employee_id": 3,
+     "related_type": "account",
+     "related_id": "account_009",
+     "status": "pending",
+     "channel": "email",
+     "created_at": "2026-02-09T09:00:00Z"
+    }
+   ]
+  },
+  {
+   "name": "crm_webhooks",
+   "description": "Outbound webhook subscriptions: the integration surface every CRM exposes.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "target_url",
+     "type": "TEXT"
+    },
+    {
+     "name": "event_types",
+     "type": "TEXT"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "secret_set",
+     "type": "INTEGER"
+    },
+    {
+     "name": "last_delivery_at",
+     "type": "TEXT"
+    },
+    {
+     "name": "failure_count",
+     "type": "INTEGER"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "wh_0001",
+     "name": "Billing — order activated",
+     "target_url": "https://billing.internal.example/hooks/orders",
+     "event_types": "order.activated,order.cancelled",
+     "status": "active",
+     "secret_set": 1,
+     "last_delivery_at": "2026-02-14T11:02:00Z",
+     "failure_count": 0,
+     "created_at": "2026-01-06T09:00:00Z"
+    },
+    {
+     "id": "wh_0002",
+     "name": "Data warehouse — opportunity changes",
+     "target_url": "https://dw.internal.example/ingest/opportunity",
+     "event_types": "opportunity.created,opportunity.updated,opportunity.deleted",
+     "status": "active",
+     "secret_set": 1,
+     "last_delivery_at": "2026-02-15T08:40:00Z",
+     "failure_count": 0,
+     "created_at": "2026-01-06T09:00:00Z"
+    },
+    {
+     "id": "wh_0003",
+     "name": "Legacy CPQ bridge",
+     "target_url": "https://cpq-legacy.internal.example/hook",
+     "event_types": "quote.approved",
+     "status": "failing",
+     "secret_set": 1,
+     "last_delivery_at": "2026-02-02T09:15:00Z",
+     "failure_count": 41,
+     "created_at": "2025-08-01T09:00:00Z"
+    },
+    {
+     "id": "wh_0004",
+     "name": "Slack deal alerts",
+     "target_url": "https://hooks.slack.example/services/T0/B0/x",
+     "event_types": "opportunity.closed_won",
+     "status": "active",
+     "secret_set": 1,
+     "last_delivery_at": "2026-02-13T17:20:00Z",
+     "failure_count": 0,
+     "created_at": "2026-01-06T09:00:00Z"
+    },
+    {
+     "id": "wh_0005",
+     "name": "Disabled — old marketing sync",
+     "target_url": "https://marketing-old.internal.example/sync",
+     "event_types": "lead.created",
+     "status": "disabled",
+     "secret_set": 0,
+     "last_delivery_at": "2025-11-30T09:00:00Z",
+     "failure_count": 0,
+     "created_at": "2025-03-01T09:00:00Z"
+    }
+   ]
+  },
+  {
+   "name": "crm_workflows",
+   "description": "Declarative automation rules (trigger, condition, action) — the workflow engine four independent CRM families model.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "object_name",
+     "type": "TEXT"
+    },
+    {
+     "name": "trigger_event",
+     "type": "TEXT"
+    },
+    {
+     "name": "condition_expr",
+     "type": "TEXT"
+    },
+    {
+     "name": "action_type",
+     "type": "TEXT"
+    },
+    {
+     "name": "action_payload",
+     "type": "TEXT"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "run_count",
+     "type": "INTEGER"
+    },
+    {
+     "name": "owner_employee_id",
+     "type": "INTEGER"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "wfr_0001",
+     "name": "Route enterprise inbound to AE",
+     "object_name": "Lead",
+     "trigger_event": "on_create",
+     "condition_expr": "lead.estimated_value >= 100000",
+     "action_type": "assign_owner",
+     "action_payload": "{\"owner_employee_id\": 4}",
+     "status": "active",
+     "run_count": 212,
+     "owner_employee_id": 4,
+     "created_at": "2026-01-06T09:00:00Z"
+    },
+    {
+     "id": "wfr_0002",
+     "name": "Flag discount above policy",
+     "object_name": "Quote",
+     "trigger_event": "on_update",
+     "condition_expr": "quote.discount_pct > 25",
+     "action_type": "require_approval",
+     "action_payload": "{\"approver_role\": \"Finance\"}",
+     "status": "active",
+     "run_count": 47,
+     "owner_employee_id": 2,
+     "created_at": "2026-01-06T09:00:00Z"
+    },
+    {
+     "id": "wfr_0003",
+     "name": "Renewal reminder at T-120",
+     "object_name": "Contract",
+     "trigger_event": "scheduled",
+     "condition_expr": "contract.end_date <= now + 120d",
+     "action_type": "create_reminder",
+     "action_payload": "{\"template_id\": \"tmpl_0002\"}",
+     "status": "active",
+     "run_count": 88,
+     "owner_employee_id": 2,
+     "created_at": "2026-01-06T09:00:00Z"
+    },
+    {
+     "id": "wfr_0004",
+     "name": "Suppress bounced contacts",
+     "object_name": "Contact",
+     "trigger_event": "on_update",
+     "condition_expr": "contact.email IN bounces",
+     "action_type": "set_field",
+     "action_payload": "{\"Do_Not_Sequence__c\": true}",
+     "status": "active",
+     "run_count": 87,
+     "owner_employee_id": 1,
+     "created_at": "2026-01-06T09:00:00Z"
+    },
+    {
+     "id": "wfr_0005",
+     "name": "Auto-close stale opportunities",
+     "object_name": "Opportunity",
+     "trigger_event": "scheduled",
+     "condition_expr": "opportunity.last_activity_at < now - 180d",
+     "action_type": "set_field",
+     "action_payload": "{\"status\": \"closed_lost\"}",
+     "status": "paused",
+     "run_count": 0,
+     "owner_employee_id": 4,
+     "created_at": "2026-01-15T09:00:00Z"
+    }
+   ]
+  },
+  {
+   "name": "crm_contracts",
+   "description": "Signed customer agreements with term, value and renewal posture.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "account_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "contract_number",
+     "type": "TEXT"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "start_date",
+     "type": "TEXT"
+    },
+    {
+     "name": "end_date",
+     "type": "TEXT"
+    },
+    {
+     "name": "term_months",
+     "type": "INTEGER"
+    },
+    {
+     "name": "total_value",
+     "type": "REAL"
+    },
+    {
+     "name": "currency",
+     "type": "TEXT"
+    },
+    {
+     "name": "auto_renew",
+     "type": "INTEGER"
+    },
+    {
+     "name": "notice_days",
+     "type": "INTEGER"
+    },
+    {
+     "name": "owner_employee_id",
+     "type": "INTEGER"
+    },
+    {
+     "name": "signed_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "ctr_0001",
+     "account_id": "account_001",
+     "contract_number": "MS-2025-0041",
+     "status": "active",
+     "start_date": "2025-04-01",
+     "end_date": "2026-03-31",
+     "term_months": 12,
+     "total_value": 142000.0,
+     "currency": "usd",
+     "auto_renew": 1,
+     "notice_days": 90,
+     "owner_employee_id": 1,
+     "signed_at": "2025-03-18T09:00:00Z"
+    },
+    {
+     "id": "ctr_0002",
+     "account_id": "account_002",
+     "contract_number": "MS-2026-0002",
+     "status": "active",
+     "start_date": "2026-02-13",
+     "end_date": "2029-02-12",
+     "term_months": 36,
+     "total_value": 708000.0,
+     "currency": "usd",
+     "auto_renew": 0,
+     "notice_days": 120,
+     "owner_employee_id": 4,
+     "signed_at": "2026-02-13T09:00:00Z"
+    },
+    {
+     "id": "ctr_0003",
+     "account_id": "account_007",
+     "contract_number": "MS-2025-0088",
+     "status": "expiring",
+     "start_date": "2025-03-01",
+     "end_date": "2026-02-28",
+     "term_months": 12,
+     "total_value": 84000.0,
+     "currency": "eur",
+     "auto_renew": 0,
+     "notice_days": 60,
+     "owner_employee_id": 2,
+     "signed_at": "2025-02-14T09:00:00Z"
+    },
+    {
+     "id": "ctr_0004",
+     "account_id": "account_009",
+     "contract_number": "MS-2024-0203",
+     "status": "expired",
+     "start_date": "2024-01-01",
+     "end_date": "2025-12-31",
+     "term_months": 24,
+     "total_value": 96000.0,
+     "currency": "usd",
+     "auto_renew": 0,
+     "notice_days": 30,
+     "owner_employee_id": 3,
+     "signed_at": "2023-12-11T09:00:00Z"
+    },
+    {
+     "id": "ctr_0005",
+     "account_id": "account_005",
+     "contract_number": "MS-2026-0007",
+     "status": "pending_signature",
+     "start_date": "2026-03-01",
+     "end_date": "2027-02-28",
+     "term_months": 12,
+     "total_value": 61000.0,
+     "currency": "gbp",
+     "auto_renew": 1,
+     "notice_days": 90,
+     "owner_employee_id": 2,
+     "signed_at": null
+    }
+   ]
+  },
+  {
+   "name": "crm_product_categories",
+   "description": "Product family hierarchy used for catalogue browsing and reporting.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "parent_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "display_order",
+     "type": "INTEGER"
+    },
+    {
+     "name": "is_active",
+     "type": "INTEGER"
+    },
+    {
+     "name": "description",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "pcat_0001",
+     "name": "Platform",
+     "parent_id": null,
+     "display_order": 1,
+     "is_active": 1,
+     "description": "Core Atlas platform licences."
+    },
+    {
+     "id": "pcat_0002",
+     "name": "Market Data",
+     "parent_id": null,
+     "display_order": 2,
+     "is_active": 1,
+     "description": "Real-time and delayed market data feeds."
+    },
+    {
+     "id": "pcat_0003",
+     "name": "Analytics",
+     "parent_id": null,
+     "display_order": 3,
+     "is_active": 1,
+     "description": "Risk and portfolio analytics modules."
+    },
+    {
+     "id": "pcat_0004",
+     "name": "Support",
+     "parent_id": null,
+     "display_order": 4,
+     "is_active": 1,
+     "description": "Support and success plans."
+    },
+    {
+     "id": "pcat_0005",
+     "name": "Level 2 Feeds",
+     "parent_id": "pcat_0002",
+     "display_order": 1,
+     "is_active": 1,
+     "description": "Depth-of-book feeds."
+    },
+    {
+     "id": "pcat_0006",
+     "name": "Legacy",
+     "parent_id": null,
+     "display_order": 9,
+     "is_active": 0,
+     "description": "End-of-life SKUs retained for renewals only."
+    }
+   ]
+  },
+  {
+   "name": "crm_addresses",
+   "description": "Normalised postal addresses attached to accounts and contacts.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "related_type",
+     "type": "TEXT"
+    },
+    {
+     "name": "related_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "address_type",
+     "type": "TEXT"
+    },
+    {
+     "name": "line1",
+     "type": "TEXT"
+    },
+    {
+     "name": "line2",
+     "type": "TEXT"
+    },
+    {
+     "name": "city",
+     "type": "TEXT"
+    },
+    {
+     "name": "state",
+     "type": "TEXT"
+    },
+    {
+     "name": "postal_code",
+     "type": "TEXT"
+    },
+    {
+     "name": "country_code",
+     "type": "TEXT"
+    },
+    {
+     "name": "is_primary",
+     "type": "INTEGER"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "addr_0001",
+     "related_type": "account",
+     "related_id": "account_001",
+     "address_type": "billing",
+     "line1": "200 West Street",
+     "line2": "Floor 34",
+     "city": "New York",
+     "state": "NY",
+     "postal_code": "10282",
+     "country_code": "US",
+     "is_primary": 1
+    },
+    {
+     "id": "addr_0002",
+     "related_type": "account",
+     "related_id": "account_002",
+     "address_type": "billing",
+     "line1": "1 Riverside Plaza",
+     "line2": null,
+     "city": "Chicago",
+     "state": "IL",
+     "postal_code": "60606",
+     "country_code": "US",
+     "is_primary": 1
+    },
+    {
+     "id": "addr_0003",
+     "related_type": "account",
+     "related_id": "account_002",
+     "address_type": "shipping",
+     "line1": "1 Riverside Plaza",
+     "line2": "Dock B",
+     "city": "Chicago",
+     "state": "IL",
+     "postal_code": "60606",
+     "country_code": "US",
+     "is_primary": 0
+    },
+    {
+     "id": "addr_0004",
+     "related_type": "account",
+     "related_id": "account_007",
+     "address_type": "billing",
+     "line1": "25 Bishopsgate",
+     "line2": null,
+     "city": "London",
+     "state": null,
+     "postal_code": "EC2N 4AJ",
+     "country_code": "GB",
+     "is_primary": 1
+    },
+    {
+     "id": "addr_0005",
+     "related_type": "account",
+     "related_id": "account_009",
+     "address_type": "billing",
+     "line1": "Marienplatz 8",
+     "line2": null,
+     "city": "Munich",
+     "state": null,
+     "postal_code": "80331",
+     "country_code": "DE",
+     "is_primary": 1
+    }
+   ]
+  },
+  {
+   "name": "crm_countries",
+   "description": "ISO country reference data with the region and currency defaults that territory and pricing rules key off.",
+   "columns": [
+    {
+     "name": "code",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "region",
+     "type": "TEXT"
+    },
+    {
+     "name": "default_currency",
+     "type": "TEXT"
+    },
+    {
+     "name": "is_sales_territory",
+     "type": "INTEGER"
+    },
+    {
+     "name": "data_residency_required",
+     "type": "INTEGER"
+    }
+   ],
+   "sample_rows": [
+    {
+     "code": "US",
+     "name": "United States",
+     "region": "NA",
+     "default_currency": "usd",
+     "is_sales_territory": 1,
+     "data_residency_required": 0
+    },
+    {
+     "code": "GB",
+     "name": "United Kingdom",
+     "region": "EMEA",
+     "default_currency": "gbp",
+     "is_sales_territory": 1,
+     "data_residency_required": 0
+    },
+    {
+     "code": "DE",
+     "name": "Germany",
+     "region": "EMEA",
+     "default_currency": "eur",
+     "is_sales_territory": 1,
+     "data_residency_required": 1
+    },
+    {
+     "code": "FR",
+     "name": "France",
+     "region": "EMEA",
+     "default_currency": "eur",
+     "is_sales_territory": 1,
+     "data_residency_required": 1
+    },
+    {
+     "code": "SG",
+     "name": "Singapore",
+     "region": "APAC",
+     "default_currency": "sgd",
+     "is_sales_territory": 1,
+     "data_residency_required": 1
+    },
+    {
+     "code": "JP",
+     "name": "Japan",
+     "region": "APAC",
+     "default_currency": "jpy",
+     "is_sales_territory": 1,
+     "data_residency_required": 1
+    },
+    {
+     "code": "CA",
+     "name": "Canada",
+     "region": "NA",
+     "default_currency": "cad",
+     "is_sales_territory": 1,
+     "data_residency_required": 0
+    },
+    {
+     "code": "AU",
+     "name": "Australia",
+     "region": "APAC",
+     "default_currency": "aud",
+     "is_sales_territory": 1,
+     "data_residency_required": 0
+    }
+   ]
+  },
+  {
+   "name": "crm_projects",
+   "description": "Delivery/onboarding projects opened after a deal closes.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "account_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "health",
+     "type": "TEXT"
+    },
+    {
+     "name": "start_date",
+     "type": "TEXT"
+    },
+    {
+     "name": "target_end_date",
+     "type": "TEXT"
+    },
+    {
+     "name": "owner_employee_id",
+     "type": "INTEGER"
+    },
+    {
+     "name": "percent_complete",
+     "type": "INTEGER"
+    },
+    {
+     "name": "budget",
+     "type": "REAL"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "prj_0001",
+     "name": "Summit Group — Platform onboarding",
+     "account_id": "account_001",
+     "status": "in_progress",
+     "health": "green",
+     "start_date": "2026-01-15",
+     "target_end_date": "2026-03-15",
+     "owner_employee_id": 3,
+     "percent_complete": 60,
+     "budget": 45000.0
+    },
+    {
+     "id": "prj_0002",
+     "name": "Riverside — Market data rollout",
+     "account_id": "account_002",
+     "status": "in_progress",
+     "health": "amber",
+     "start_date": "2026-02-01",
+     "target_end_date": "2026-04-30",
+     "owner_employee_id": 3,
+     "percent_complete": 25,
+     "budget": 88000.0
+    },
+    {
+     "id": "prj_0003",
+     "name": "Riverside Services — Migration",
+     "account_id": "account_007",
+     "status": "at_risk",
+     "health": "red",
+     "start_date": "2025-11-01",
+     "target_end_date": "2026-02-28",
+     "owner_employee_id": 2,
+     "percent_complete": 40,
+     "budget": 30000.0
+    },
+    {
+     "id": "prj_0004",
+     "name": "Lakeshore Systems — Pilot",
+     "account_id": "account_009",
+     "status": "completed",
+     "health": "green",
+     "start_date": "2025-09-01",
+     "target_end_date": "2025-12-15",
+     "owner_employee_id": 3,
+     "percent_complete": 100,
+     "budget": 12000.0
+    }
+   ]
+  },
+  {
+   "name": "crm_project_tasks",
+   "description": "Work items inside a delivery project, with dependencies and effort.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "project_id",
+     "type": "TEXT"
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "status",
+     "type": "TEXT"
+    },
+    {
+     "name": "assigned_to",
+     "type": "INTEGER"
+    },
+    {
+     "name": "due_date",
+     "type": "TEXT"
+    },
+    {
+     "name": "depends_on",
+     "type": "TEXT"
+    },
+    {
+     "name": "estimated_hours",
+     "type": "REAL"
+    },
+    {
+     "name": "actual_hours",
+     "type": "REAL"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "ptask_0001",
+     "project_id": "prj_0001",
+     "name": "SSO configuration",
+     "status": "completed",
+     "assigned_to": 3,
+     "due_date": "2026-01-30",
+     "depends_on": null,
+     "estimated_hours": 16.0,
+     "actual_hours": 14.5
+    },
+    {
+     "id": "ptask_0002",
+     "project_id": "prj_0001",
+     "name": "Data migration dry run",
+     "status": "in_progress",
+     "assigned_to": 3,
+     "due_date": "2026-02-20",
+     "depends_on": "ptask_0001",
+     "estimated_hours": 40.0,
+     "actual_hours": 22.0
+    },
+    {
+     "id": "ptask_0003",
+     "project_id": "prj_0001",
+     "name": "User training",
+     "status": "not_started",
+     "assigned_to": 2,
+     "due_date": "2026-03-10",
+     "depends_on": "ptask_0002",
+     "estimated_hours": 12.0,
+     "actual_hours": null
+    },
+    {
+     "id": "ptask_0004",
+     "project_id": "prj_0002",
+     "name": "Feed entitlement review",
+     "status": "blocked",
+     "assigned_to": 3,
+     "due_date": "2026-02-18",
+     "depends_on": null,
+     "estimated_hours": 8.0,
+     "actual_hours": 3.0
+    },
+    {
+     "id": "ptask_0005",
+     "project_id": "prj_0003",
+     "name": "Legacy export validation",
+     "status": "in_progress",
+     "assigned_to": 2,
+     "due_date": "2026-02-14",
+     "depends_on": null,
+     "estimated_hours": 24.0,
+     "actual_hours": 31.0
+    }
+   ]
+  },
+  {
+   "name": "crm_reports",
+   "description": "Saved report definitions — the reporting surface three independent families model.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "object_name",
+     "type": "TEXT"
+    },
+    {
+     "name": "report_type",
+     "type": "TEXT"
+    },
+    {
+     "name": "filter_expr",
+     "type": "TEXT"
+    },
+    {
+     "name": "group_by",
+     "type": "TEXT"
+    },
+    {
+     "name": "metrics",
+     "type": "TEXT"
+    },
+    {
+     "name": "owner_employee_id",
+     "type": "INTEGER"
+    },
+    {
+     "name": "is_scheduled",
+     "type": "INTEGER"
+    },
+    {
+     "name": "schedule_cron",
+     "type": "TEXT"
+    },
+    {
+     "name": "last_run_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "rpt_0001",
+     "name": "Pipeline by Stage",
+     "object_name": "Opportunity",
+     "report_type": "summary",
+     "filter_expr": "status NOT IN ('closed_won','closed_lost')",
+     "group_by": "status",
+     "metrics": "count,sum(amount)",
+     "owner_employee_id": 4,
+     "is_scheduled": 1,
+     "schedule_cron": "0 8 * * MON",
+     "last_run_at": "2026-02-16T08:00:00Z"
+    },
+    {
+     "id": "rpt_0002",
+     "name": "Quota Attainment by Rep",
+     "object_name": "RepQuota",
+     "report_type": "matrix",
+     "filter_expr": "period = 'FY2026-Q1'",
+     "group_by": "employee_name",
+     "metrics": "sum(attainment_amount),sum(quota_amount)",
+     "owner_employee_id": 4,
+     "is_scheduled": 1,
+     "schedule_cron": "0 7 * * *",
+     "last_run_at": "2026-02-16T07:00:00Z"
+    },
+    {
+     "id": "rpt_0003",
+     "name": "Cases Breaching SLA",
+     "object_name": "Case",
+     "report_type": "tabular",
+     "filter_expr": "sla_breached = 1",
+     "group_by": null,
+     "metrics": "count",
+     "owner_employee_id": 3,
+     "is_scheduled": 0,
+     "schedule_cron": null,
+     "last_run_at": "2026-02-15T13:20:00Z"
+    },
+    {
+     "id": "rpt_0004",
+     "name": "Discount Exceptions",
+     "object_name": "Quote",
+     "report_type": "tabular",
+     "filter_expr": "discount_pct > 25",
+     "group_by": null,
+     "metrics": "count,avg(discount_pct)",
+     "owner_employee_id": 2,
+     "is_scheduled": 1,
+     "schedule_cron": "0 9 * * FRI",
+     "last_run_at": "2026-02-13T09:00:00Z"
+    }
+   ]
+  },
+  {
+   "name": "crm_dashboards",
+   "description": "Dashboards composing saved reports for a role.",
+   "columns": [
+    {
+     "name": "id",
+     "type": "TEXT",
+     "pk": true
+    },
+    {
+     "name": "name",
+     "type": "TEXT"
+    },
+    {
+     "name": "owner_employee_id",
+     "type": "INTEGER"
+    },
+    {
+     "name": "audience_role",
+     "type": "TEXT"
+    },
+    {
+     "name": "report_ids",
+     "type": "TEXT"
+    },
+    {
+     "name": "layout",
+     "type": "TEXT"
+    },
+    {
+     "name": "is_default",
+     "type": "INTEGER"
+    },
+    {
+     "name": "created_at",
+     "type": "TEXT"
+    }
+   ],
+   "sample_rows": [
+    {
+     "id": "dash_0001",
+     "name": "Sales Leadership",
+     "owner_employee_id": 4,
+     "audience_role": "VP Sales",
+     "report_ids": "rpt_0001,rpt_0002",
+     "layout": "2-column",
+     "is_default": 1,
+     "created_at": "2026-01-06T09:00:00Z"
+    },
+    {
+     "id": "dash_0002",
+     "name": "Deal Desk",
+     "owner_employee_id": 2,
+     "audience_role": "Deal Desk",
+     "report_ids": "rpt_0004",
+     "layout": "1-column",
+     "is_default": 0,
+     "created_at": "2026-01-06T09:00:00Z"
+    },
+    {
+     "id": "dash_0003",
+     "name": "Support Operations",
+     "owner_employee_id": 3,
+     "audience_role": "Support Manager",
+     "report_ids": "rpt_0003",
+     "layout": "1-column",
+     "is_default": 0,
+     "created_at": "2026-01-06T09:00:00Z"
+    }
+   ]
+  }
+ ],
+ "tools": [
+  {
+   "name": "email_templates_list",
+   "description": "List email templates (GET /crm/v3/objects/email_templates).",
+   "op": "list",
+   "table": "crm_email_templates",
+   "params": {
+    "category": {
+     "type": "string",
+     "description": "Filter by category."
+    },
+    "is_active": {
+     "type": "string",
+     "description": "Filter by is_active."
+    },
+    "owner_employee_id": {
+     "type": "string",
+     "description": "Filter by owner_employee_id."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return."
+    }
+   },
+   "filters": [
+    "category",
+    "is_active",
+    "owner_employee_id"
+   ]
+  },
+  {
+   "name": "email_template_get",
+   "description": "Retrieve one email template (GET /crm/v3/objects/email_templates/{id}).",
+   "op": "get",
+   "table": "crm_email_templates",
+   "id_param": "template_id",
+   "id_column": "id",
+   "required": [
+    "template_id"
+   ],
+   "params": {
+    "template_id": {
+     "type": "string",
+     "description": "Identifier of the record to retrieve."
+    }
+   }
+  },
+  {
+   "name": "email_template_create",
+   "description": "Create an email template (POST /crm/v3/objects/email_templates).",
+   "op": "create",
+   "table": "crm_email_templates",
+   "fields": [
+    "name",
+    "subject",
+    "body",
+    "category",
+    "merge_fields",
+    "owner_employee_id"
+   ],
+   "params": {
+    "name": {
+     "type": "string",
+     "description": "Value for name."
+    },
+    "subject": {
+     "type": "string",
+     "description": "Value for subject."
+    },
+    "body": {
+     "type": "string",
+     "description": "Value for body."
+    },
+    "category": {
+     "type": "string",
+     "description": "Value for category."
+    },
+    "merge_fields": {
+     "type": "string",
+     "description": "Value for merge_fields."
+    },
+    "owner_employee_id": {
+     "type": "string",
+     "description": "Value for owner_employee_id."
+    }
+   },
+   "required": [
+    "name",
+    "subject",
+    "body"
+   ],
+   "defaults": {
+    "is_active": 1,
+    "times_used": 0
+   },
+   "id_prefix": "tmpl_"
+  },
+  {
+   "name": "email_template_update",
+   "description": "Update an email template (PATCH /crm/v3/objects/email_templates/{id}).",
+   "op": "update",
+   "table": "crm_email_templates",
+   "id_param": "template_id",
+   "id_column": "id",
+   "set_fields": [
+    "name",
+    "subject",
+    "body",
+    "category",
+    "merge_fields",
+    "is_active",
+    "updated_at"
+   ],
+   "required": [
+    "template_id"
+   ],
+   "params": {
+    "template_id": {
+     "type": "string",
+     "description": "Identifier of the record to update."
+    },
+    "name": {
+     "type": "string",
+     "description": "New value for name."
+    },
+    "subject": {
+     "type": "string",
+     "description": "New value for subject."
+    },
+    "body": {
+     "type": "string",
+     "description": "New value for body."
+    },
+    "category": {
+     "type": "string",
+     "description": "New value for category."
+    },
+    "merge_fields": {
+     "type": "string",
+     "description": "New value for merge_fields."
+    },
+    "is_active": {
+     "type": "string",
+     "description": "New value for is_active."
+    },
+    "updated_at": {
+     "type": "string",
+     "description": "New value for updated_at."
+    }
+   }
+  },
+  {
+   "name": "email_template_delete",
+   "description": "Delete an email template (DELETE /crm/v3/objects/email_templates/{id}).",
+   "op": "delete",
+   "table": "crm_email_templates",
+   "id_param": "template_id",
+   "id_column": "id",
+   "required": [
+    "template_id"
+   ],
+   "params": {
+    "template_id": {
+     "type": "string",
+     "description": "Identifier of the record to delete."
+    }
+   }
+  },
+  {
+   "name": "email_templates_search",
+   "description": "Search templates by name, subject or body (POST /crm/v3/objects/email_templates/search).",
+   "op": "search",
+   "table": "crm_email_templates",
+   "query_param": "query",
+   "search_columns": [
+    "name",
+    "subject",
+    "body"
+   ],
+   "required": [
+    "query"
+   ],
+   "params": {
+    "query": {
+     "type": "string",
+     "description": "Free-text search string."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return."
+    },
+    "category": {
+     "type": "string",
+     "description": "Restrict results to this category."
+    }
+   },
+   "filters": [
+    "category"
+   ]
+  },
+  {
+   "name": "tags_list",
+   "description": "List tags (GET /crm/v3/objects/tags).",
+   "op": "list",
+   "table": "crm_tags",
+   "params": {
+    "category": {
+     "type": "string",
+     "description": "Filter by category."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return."
+    }
+   },
+   "filters": [
+    "category"
+   ]
+  },
+  {
+   "name": "tag_create",
+   "description": "Create a tag (POST /crm/v3/objects/tags).",
+   "op": "create",
+   "table": "crm_tags",
+   "fields": [
+    "name",
+    "color",
+    "category"
+   ],
+   "params": {
+    "name": {
+     "type": "string",
+     "description": "Value for name."
+    },
+    "color": {
+     "type": "string",
+     "description": "Value for color."
+    },
+    "category": {
+     "type": "string",
+     "description": "Value for category."
+    }
+   },
+   "required": [
+    "name"
+   ],
+   "defaults": {
+    "usage_count": 0
+   },
+   "id_prefix": "tag_"
+  },
+  {
+   "name": "tag_update",
+   "description": "Rename or recolour a tag (PATCH /crm/v3/objects/tags/{id}).",
+   "op": "update",
+   "table": "crm_tags",
+   "id_param": "tag_id",
+   "id_column": "id",
+   "set_fields": [
+    "name",
+    "color",
+    "category",
+    "usage_count"
+   ],
+   "required": [
+    "tag_id"
+   ],
+   "params": {
+    "tag_id": {
+     "type": "string",
+     "description": "Identifier of the record to update."
+    },
+    "name": {
+     "type": "string",
+     "description": "New value for name."
+    },
+    "color": {
+     "type": "string",
+     "description": "New value for color."
+    },
+    "category": {
+     "type": "string",
+     "description": "New value for category."
+    },
+    "usage_count": {
+     "type": "string",
+     "description": "New value for usage_count."
+    }
+   }
+  },
+  {
+   "name": "tag_delete",
+   "description": "Delete a tag (DELETE /crm/v3/objects/tags/{id}).",
+   "op": "delete",
+   "table": "crm_tags",
+   "id_param": "tag_id",
+   "id_column": "id",
+   "required": [
+    "tag_id"
+   ],
+   "params": {
+    "tag_id": {
+     "type": "string",
+     "description": "Identifier of the record to delete."
+    }
+   }
+  },
+  {
+   "name": "tag_assignments_list",
+   "description": "List tag assignments (GET /crm/v3/objects/tags/assignments).",
+   "op": "list",
+   "table": "crm_tag_assignments",
+   "params": {
+    "tag_id": {
+     "type": "string",
+     "description": "Filter by tag_id."
+    },
+    "record_type": {
+     "type": "string",
+     "description": "Filter by record_type."
+    },
+    "record_id": {
+     "type": "string",
+     "description": "Filter by record_id."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return."
+    }
+   },
+   "filters": [
+    "tag_id",
+    "record_type",
+    "record_id"
+   ]
+  },
+  {
+   "name": "tag_assign",
+   "description": "Apply a tag to a record (POST /crm/v3/objects/tags/assignments).",
+   "op": "create",
+   "table": "crm_tag_assignments",
+   "fields": [
+    "tag_id",
+    "record_type",
+    "record_id",
+    "assigned_by_employee_id"
+   ],
+   "params": {
+    "tag_id": {
+     "type": "string",
+     "description": "Value for tag_id."
+    },
+    "record_type": {
+     "type": "string",
+     "description": "Value for record_type."
+    },
+    "record_id": {
+     "type": "string",
+     "description": "Value for record_id."
+    },
+    "assigned_by_employee_id": {
+     "type": "string",
+     "description": "Value for assigned_by_employee_id."
+    }
+   },
+   "required": [
+    "tag_id",
+    "record_type",
+    "record_id"
+   ],
+   "id_prefix": "tga_"
+  },
+  {
+   "name": "tag_unassign",
+   "description": "Remove a tag assignment (DELETE /crm/v3/objects/tags/assignments/{id}).",
+   "op": "delete",
+   "table": "crm_tag_assignments",
+   "id_param": "assignment_id",
+   "id_column": "id",
+   "required": [
+    "assignment_id"
+   ],
+   "params": {
+    "assignment_id": {
+     "type": "string",
+     "description": "Identifier of the record to delete."
+    }
+   }
+  },
+  {
+   "name": "documents_list",
+   "description": "List documents (GET /crm/v3/objects/documents).",
+   "op": "list",
+   "table": "crm_documents",
+   "params": {
+    "related_type": {
+     "type": "string",
+     "description": "Filter by related_type."
+    },
+    "related_id": {
+     "type": "string",
+     "description": "Filter by related_id."
+    },
+    "document_type": {
+     "type": "string",
+     "description": "Filter by document_type."
+    },
+    "status": {
+     "type": "string",
+     "description": "Filter by status."
+    },
+    "is_confidential": {
+     "type": "string",
+     "description": "Filter by is_confidential."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return."
+    }
+   },
+   "filters": [
+    "related_type",
+    "related_id",
+    "document_type",
+    "status",
+    "is_confidential"
+   ]
+  },
+  {
+   "name": "document_get",
+   "description": "Retrieve document metadata (GET /crm/v3/objects/documents/{id}).",
+   "op": "get",
+   "table": "crm_documents",
+   "id_param": "document_id",
+   "id_column": "id",
+   "required": [
+    "document_id"
+   ],
+   "params": {
+    "document_id": {
+     "type": "string",
+     "description": "Identifier of the record to retrieve."
+    }
+   }
+  },
+  {
+   "name": "document_create",
+   "description": "Register a document (POST /crm/v3/objects/documents).",
+   "op": "create",
+   "table": "crm_documents",
+   "fields": [
+    "name",
+    "document_type",
+    "related_type",
+    "related_id",
+    "mime_type",
+    "file_size",
+    "owner_employee_id",
+    "is_confidential"
+   ],
+   "params": {
+    "name": {
+     "type": "string",
+     "description": "Value for name."
+    },
+    "document_type": {
+     "type": "string",
+     "description": "Value for document_type."
+    },
+    "related_type": {
+     "type": "string",
+     "description": "Value for related_type."
+    },
+    "related_id": {
+     "type": "string",
+     "description": "Value for related_id."
+    },
+    "mime_type": {
+     "type": "string",
+     "description": "Value for mime_type."
+    },
+    "file_size": {
+     "type": "string",
+     "description": "Value for file_size."
+    },
+    "owner_employee_id": {
+     "type": "string",
+     "description": "Value for owner_employee_id."
+    },
+    "is_confidential": {
+     "type": "string",
+     "description": "Value for is_confidential."
+    }
+   },
+   "required": [
+    "name",
+    "document_type"
+   ],
+   "defaults": {
+    "revision": 1,
+    "status": "draft"
+   },
+   "id_prefix": "doc_"
+  },
+  {
+   "name": "document_update",
+   "description": "Update document metadata or revision (PATCH /crm/v3/objects/documents/{id}).",
+   "op": "update",
+   "table": "crm_documents",
+   "id_param": "document_id",
+   "id_column": "id",
+   "set_fields": [
+    "name",
+    "status",
+    "revision",
+    "is_confidential",
+    "document_type"
+   ],
+   "required": [
+    "document_id"
+   ],
+   "params": {
+    "document_id": {
+     "type": "string",
+     "description": "Identifier of the record to update."
+    },
+    "name": {
+     "type": "string",
+     "description": "New value for name."
+    },
+    "status": {
+     "type": "string",
+     "description": "New value for status."
+    },
+    "revision": {
+     "type": "string",
+     "description": "New value for revision."
+    },
+    "is_confidential": {
+     "type": "string",
+     "description": "New value for is_confidential."
+    },
+    "document_type": {
+     "type": "string",
+     "description": "New value for document_type."
+    }
+   }
+  },
+  {
+   "name": "document_delete",
+   "description": "Delete a document (DELETE /crm/v3/objects/documents/{id}).",
+   "op": "delete",
+   "table": "crm_documents",
+   "id_param": "document_id",
+   "id_column": "id",
+   "required": [
+    "document_id"
+   ],
+   "params": {
+    "document_id": {
+     "type": "string",
+     "description": "Identifier of the record to delete."
+    }
+   }
+  },
+  {
+   "name": "documents_search",
+   "description": "Search documents by name (POST /crm/v3/objects/documents/search).",
+   "op": "search",
+   "table": "crm_documents",
+   "query_param": "query",
+   "search_columns": [
+    "name"
+   ],
+   "required": [
+    "query"
+   ],
+   "params": {
+    "query": {
+     "type": "string",
+     "description": "Free-text search string."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return."
+    },
+    "document_type": {
+     "type": "string",
+     "description": "Restrict results to this document_type."
+    },
+    "status": {
+     "type": "string",
+     "description": "Restrict results to this status."
+    }
+   },
+   "filters": [
+    "document_type",
+    "status"
+   ]
+  },
+  {
+   "name": "events_list",
+   "description": "List calendar events (GET /crm/v3/objects/events).",
+   "op": "list",
+   "table": "crm_events",
+   "params": {
+    "event_type": {
+     "type": "string",
+     "description": "Filter by event_type."
+    },
+    "owner_employee_id": {
+     "type": "string",
+     "description": "Filter by owner_employee_id."
+    },
+    "status": {
+     "type": "string",
+     "description": "Filter by status."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return."
+    }
+   },
+   "filters": [
+    "event_type",
+    "owner_employee_id",
+    "status"
+   ]
+  },
+  {
+   "name": "event_get",
+   "description": "Retrieve one calendar event (GET /crm/v3/objects/events/{id}).",
+   "op": "get",
+   "table": "crm_events",
+   "id_param": "event_id",
+   "id_column": "id",
+   "required": [
+    "event_id"
+   ],
+   "params": {
+    "event_id": {
+     "type": "string",
+     "description": "Identifier of the record to retrieve."
+    }
+   }
+  },
+  {
+   "name": "event_create",
+   "description": "Create a calendar event (POST /crm/v3/objects/events).",
+   "op": "create",
+   "table": "crm_events",
+   "fields": [
+    "title",
+    "event_type",
+    "starts_at",
+    "ends_at",
+    "all_day",
+    "owner_employee_id",
+    "location",
+    "related_type",
+    "related_id"
+   ],
+   "params": {
+    "title": {
+     "type": "string",
+     "description": "Value for title."
+    },
+    "event_type": {
+     "type": "string",
+     "description": "Value for event_type."
+    },
+    "starts_at": {
+     "type": "string",
+     "description": "Value for starts_at."
+    },
+    "ends_at": {
+     "type": "string",
+     "description": "Value for ends_at."
+    },
+    "all_day": {
+     "type": "string",
+     "description": "Value for all_day."
+    },
+    "owner_employee_id": {
+     "type": "string",
+     "description": "Value for owner_employee_id."
+    },
+    "location": {
+     "type": "string",
+     "description": "Value for location."
+    },
+    "related_type": {
+     "type": "string",
+     "description": "Value for related_type."
+    },
+    "related_id": {
+     "type": "string",
+     "description": "Value for related_id."
+    }
+   },
+   "required": [
+    "title",
+    "starts_at"
+   ],
+   "defaults": {
+    "status": "confirmed"
+   },
+   "id_prefix": "evt_"
+  },
+  {
+   "name": "event_update",
+   "description": "Update a calendar event (PATCH /crm/v3/objects/events/{id}).",
+   "op": "update",
+   "table": "crm_events",
+   "id_param": "event_id",
+   "id_column": "id",
+   "set_fields": [
+    "title",
+    "starts_at",
+    "ends_at",
+    "all_day",
+    "location",
+    "status",
+    "event_type"
+   ],
+   "required": [
+    "event_id"
+   ],
+   "params": {
+    "event_id": {
+     "type": "string",
+     "description": "Identifier of the record to update."
+    },
+    "title": {
+     "type": "string",
+     "description": "New value for title."
+    },
+    "starts_at": {
+     "type": "string",
+     "description": "New value for starts_at."
+    },
+    "ends_at": {
+     "type": "string",
+     "description": "New value for ends_at."
+    },
+    "all_day": {
+     "type": "string",
+     "description": "New value for all_day."
+    },
+    "location": {
+     "type": "string",
+     "description": "New value for location."
+    },
+    "status": {
+     "type": "string",
+     "description": "New value for status."
+    },
+    "event_type": {
+     "type": "string",
+     "description": "New value for event_type."
+    }
+   }
+  },
+  {
+   "name": "event_delete",
+   "description": "Delete a calendar event (DELETE /crm/v3/objects/events/{id}).",
+   "op": "delete",
+   "table": "crm_events",
+   "id_param": "event_id",
+   "id_column": "id",
+   "required": [
+    "event_id"
+   ],
+   "params": {
+    "event_id": {
+     "type": "string",
+     "description": "Identifier of the record to delete."
+    }
+   }
+  },
+  {
+   "name": "reminders_list",
+   "description": "List reminders (GET /crm/v3/objects/reminders).",
+   "op": "list",
+   "table": "crm_reminders",
+   "params": {
+    "owner_employee_id": {
+     "type": "string",
+     "description": "Filter by owner_employee_id."
+    },
+    "status": {
+     "type": "string",
+     "description": "Filter by status."
+    },
+    "related_type": {
+     "type": "string",
+     "description": "Filter by related_type."
+    },
+    "related_id": {
+     "type": "string",
+     "description": "Filter by related_id."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return."
+    }
+   },
+   "filters": [
+    "owner_employee_id",
+    "status",
+    "related_type",
+    "related_id"
+   ]
+  },
+  {
+   "name": "reminder_get",
+   "description": "Retrieve one reminder (GET /crm/v3/objects/reminders/{id}).",
+   "op": "get",
+   "table": "crm_reminders",
+   "id_param": "reminder_id",
+   "id_column": "id",
+   "required": [
+    "reminder_id"
+   ],
+   "params": {
+    "reminder_id": {
+     "type": "string",
+     "description": "Identifier of the record to retrieve."
+    }
+   }
+  },
+  {
+   "name": "reminder_create",
+   "description": "Create a reminder (POST /crm/v3/objects/reminders).",
+   "op": "create",
+   "table": "crm_reminders",
+   "fields": [
+    "subject",
+    "remind_at",
+    "owner_employee_id",
+    "related_type",
+    "related_id",
+    "channel"
+   ],
+   "params": {
+    "subject": {
+     "type": "string",
+     "description": "Value for subject."
+    },
+    "remind_at": {
+     "type": "string",
+     "description": "Value for remind_at."
+    },
+    "owner_employee_id": {
+     "type": "string",
+     "description": "Value for owner_employee_id."
+    },
+    "related_type": {
+     "type": "string",
+     "description": "Value for related_type."
+    },
+    "related_id": {
+     "type": "string",
+     "description": "Value for related_id."
+    },
+    "channel": {
+     "type": "string",
+     "description": "Value for channel."
+    }
+   },
+   "required": [
+    "subject",
+    "remind_at"
+   ],
+   "defaults": {
+    "status": "pending"
+   },
+   "id_prefix": "rem_"
+  },
+  {
+   "name": "reminder_update",
+   "description": "Update or complete a reminder (PATCH /crm/v3/objects/reminders/{id}).",
+   "op": "update",
+   "table": "crm_reminders",
+   "id_param": "reminder_id",
+   "id_column": "id",
+   "set_fields": [
+    "subject",
+    "remind_at",
+    "status",
+    "channel"
+   ],
+   "required": [
+    "reminder_id"
+   ],
+   "params": {
+    "reminder_id": {
+     "type": "string",
+     "description": "Identifier of the record to update."
+    },
+    "subject": {
+     "type": "string",
+     "description": "New value for subject."
+    },
+    "remind_at": {
+     "type": "string",
+     "description": "New value for remind_at."
+    },
+    "status": {
+     "type": "string",
+     "description": "New value for status."
+    },
+    "channel": {
+     "type": "string",
+     "description": "New value for channel."
+    }
+   }
+  },
+  {
+   "name": "reminder_delete",
+   "description": "Delete a reminder (DELETE /crm/v3/objects/reminders/{id}).",
+   "op": "delete",
+   "table": "crm_reminders",
+   "id_param": "reminder_id",
+   "id_column": "id",
+   "required": [
+    "reminder_id"
+   ],
+   "params": {
+    "reminder_id": {
+     "type": "string",
+     "description": "Identifier of the record to delete."
+    }
+   }
+  },
+  {
+   "name": "webhooks_list",
+   "description": "List webhook subscriptions (GET /webhooks/v3/subscriptions).",
+   "op": "list",
+   "table": "crm_webhooks",
+   "params": {
+    "status": {
+     "type": "string",
+     "description": "Filter by status."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return."
+    }
+   },
+   "filters": [
+    "status"
+   ]
+  },
+  {
+   "name": "webhook_get",
+   "description": "Retrieve a webhook subscription (GET /webhooks/v3/subscriptions/{id}).",
+   "op": "get",
+   "table": "crm_webhooks",
+   "id_param": "webhook_id",
+   "id_column": "id",
+   "required": [
+    "webhook_id"
+   ],
+   "params": {
+    "webhook_id": {
+     "type": "string",
+     "description": "Identifier of the record to retrieve."
+    }
+   }
+  },
+  {
+   "name": "webhook_create",
+   "description": "Create a webhook subscription (POST /webhooks/v3/subscriptions).",
+   "op": "create",
+   "table": "crm_webhooks",
+   "fields": [
+    "name",
+    "target_url",
+    "event_types",
+    "secret_set"
+   ],
+   "params": {
+    "name": {
+     "type": "string",
+     "description": "Value for name."
+    },
+    "target_url": {
+     "type": "string",
+     "description": "Value for target_url."
+    },
+    "event_types": {
+     "type": "string",
+     "description": "Value for event_types."
+    },
+    "secret_set": {
+     "type": "string",
+     "description": "Value for secret_set."
+    }
+   },
+   "required": [
+    "name",
+    "target_url",
+    "event_types"
+   ],
+   "defaults": {
+    "status": "active",
+    "failure_count": 0
+   },
+   "id_prefix": "wh_"
+  },
+  {
+   "name": "webhook_update",
+   "description": "Update a webhook subscription (PATCH /webhooks/v3/subscriptions/{id}).",
+   "op": "update",
+   "table": "crm_webhooks",
+   "id_param": "webhook_id",
+   "id_column": "id",
+   "set_fields": [
+    "name",
+    "target_url",
+    "event_types",
+    "status"
+   ],
+   "required": [
+    "webhook_id"
+   ],
+   "params": {
+    "webhook_id": {
+     "type": "string",
+     "description": "Identifier of the record to update."
+    },
+    "name": {
+     "type": "string",
+     "description": "New value for name."
+    },
+    "target_url": {
+     "type": "string",
+     "description": "New value for target_url."
+    },
+    "event_types": {
+     "type": "string",
+     "description": "New value for event_types."
+    },
+    "status": {
+     "type": "string",
+     "description": "New value for status."
+    }
+   }
+  },
+  {
+   "name": "webhook_delete",
+   "description": "Delete a webhook subscription (DELETE /webhooks/v3/subscriptions/{id}).",
+   "op": "delete",
+   "table": "crm_webhooks",
+   "id_param": "webhook_id",
+   "id_column": "id",
+   "required": [
+    "webhook_id"
+   ],
+   "params": {
+    "webhook_id": {
+     "type": "string",
+     "description": "Identifier of the record to delete."
+    }
+   }
+  },
+  {
+   "name": "workflows_list",
+   "description": "List workflow automation rules (GET /automation/v4/workflows).",
+   "op": "list",
+   "table": "crm_workflows",
+   "params": {
+    "object_name": {
+     "type": "string",
+     "description": "Filter by object_name."
+    },
+    "status": {
+     "type": "string",
+     "description": "Filter by status."
+    },
+    "trigger_event": {
+     "type": "string",
+     "description": "Filter by trigger_event."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return."
+    }
+   },
+   "filters": [
+    "object_name",
+    "status",
+    "trigger_event"
+   ]
+  },
+  {
+   "name": "workflow_get",
+   "description": "Retrieve one workflow rule (GET /automation/v4/workflows/{id}).",
+   "op": "get",
+   "table": "crm_workflows",
+   "id_param": "rule_id",
+   "id_column": "id",
+   "required": [
+    "rule_id"
+   ],
+   "params": {
+    "rule_id": {
+     "type": "string",
+     "description": "Identifier of the record to retrieve."
+    }
+   }
+  },
+  {
+   "name": "workflow_create",
+   "description": "Create a workflow rule (POST /automation/v4/workflows).",
+   "op": "create",
+   "table": "crm_workflows",
+   "fields": [
+    "name",
+    "object_name",
+    "trigger_event",
+    "condition_expr",
+    "action_type",
+    "action_payload",
+    "owner_employee_id"
+   ],
+   "params": {
+    "name": {
+     "type": "string",
+     "description": "Value for name."
+    },
+    "object_name": {
+     "type": "string",
+     "description": "Value for object_name."
+    },
+    "trigger_event": {
+     "type": "string",
+     "description": "Value for trigger_event."
+    },
+    "condition_expr": {
+     "type": "string",
+     "description": "Value for condition_expr."
+    },
+    "action_type": {
+     "type": "string",
+     "description": "Value for action_type."
+    },
+    "action_payload": {
+     "type": "string",
+     "description": "Value for action_payload."
+    },
+    "owner_employee_id": {
+     "type": "string",
+     "description": "Value for owner_employee_id."
+    }
+   },
+   "required": [
+    "name",
+    "object_name",
+    "trigger_event",
+    "action_type"
+   ],
+   "defaults": {
+    "status": "draft",
+    "run_count": 0
+   },
+   "id_prefix": "wfr_"
+  },
+  {
+   "name": "workflow_update",
+   "description": "Update or pause a workflow rule (PATCH /automation/v4/workflows/{id}).",
+   "op": "update",
+   "table": "crm_workflows",
+   "id_param": "rule_id",
+   "id_column": "id",
+   "set_fields": [
+    "name",
+    "condition_expr",
+    "action_type",
+    "action_payload",
+    "status"
+   ],
+   "required": [
+    "rule_id"
+   ],
+   "params": {
+    "rule_id": {
+     "type": "string",
+     "description": "Identifier of the record to update."
+    },
+    "name": {
+     "type": "string",
+     "description": "New value for name."
+    },
+    "condition_expr": {
+     "type": "string",
+     "description": "New value for condition_expr."
+    },
+    "action_type": {
+     "type": "string",
+     "description": "New value for action_type."
+    },
+    "action_payload": {
+     "type": "string",
+     "description": "New value for action_payload."
+    },
+    "status": {
+     "type": "string",
+     "description": "New value for status."
+    }
+   }
+  },
+  {
+   "name": "workflow_delete",
+   "description": "Delete a workflow rule (DELETE /automation/v4/workflows/{id}).",
+   "op": "delete",
+   "table": "crm_workflows",
+   "id_param": "rule_id",
+   "id_column": "id",
+   "required": [
+    "rule_id"
+   ],
+   "params": {
+    "rule_id": {
+     "type": "string",
+     "description": "Identifier of the record to delete."
+    }
+   }
+  },
+  {
+   "name": "contracts_list",
+   "description": "List contracts (GET /crm/v3/objects/contracts).",
+   "op": "list",
+   "table": "crm_contracts",
+   "params": {
+    "account_id": {
+     "type": "string",
+     "description": "Filter by account_id."
+    },
+    "status": {
+     "type": "string",
+     "description": "Filter by status."
+    },
+    "owner_employee_id": {
+     "type": "string",
+     "description": "Filter by owner_employee_id."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return."
+    }
+   },
+   "filters": [
+    "account_id",
+    "status",
+    "owner_employee_id"
+   ]
+  },
+  {
+   "name": "contract_get",
+   "description": "Retrieve one contract (GET /crm/v3/objects/contracts/{id}).",
+   "op": "get",
+   "table": "crm_contracts",
+   "id_param": "contract_id",
+   "id_column": "id",
+   "required": [
+    "contract_id"
+   ],
+   "params": {
+    "contract_id": {
+     "type": "string",
+     "description": "Identifier of the record to retrieve."
+    }
+   }
+  },
+  {
+   "name": "contract_create",
+   "description": "Create a contract (POST /crm/v3/objects/contracts).",
+   "op": "create",
+   "table": "crm_contracts",
+   "fields": [
+    "account_id",
+    "contract_number",
+    "start_date",
+    "end_date",
+    "term_months",
+    "total_value",
+    "currency",
+    "auto_renew",
+    "notice_days",
+    "owner_employee_id"
+   ],
+   "params": {
+    "account_id": {
+     "type": "string",
+     "description": "Value for account_id."
+    },
+    "contract_number": {
+     "type": "string",
+     "description": "Value for contract_number."
+    },
+    "start_date": {
+     "type": "string",
+     "description": "Value for start_date."
+    },
+    "end_date": {
+     "type": "string",
+     "description": "Value for end_date."
+    },
+    "term_months": {
+     "type": "string",
+     "description": "Value for term_months."
+    },
+    "total_value": {
+     "type": "string",
+     "description": "Value for total_value."
+    },
+    "currency": {
+     "type": "string",
+     "description": "Value for currency."
+    },
+    "auto_renew": {
+     "type": "string",
+     "description": "Value for auto_renew."
+    },
+    "notice_days": {
+     "type": "string",
+     "description": "Value for notice_days."
+    },
+    "owner_employee_id": {
+     "type": "string",
+     "description": "Value for owner_employee_id."
+    }
+   },
+   "required": [
+    "account_id",
+    "contract_number",
+    "start_date",
+    "end_date"
+   ],
+   "defaults": {
+    "status": "draft"
+   },
+   "id_prefix": "ctr_"
+  },
+  {
+   "name": "contract_update",
+   "description": "Update a contract (PATCH /crm/v3/objects/contracts/{id}).",
+   "op": "update",
+   "table": "crm_contracts",
+   "id_param": "contract_id",
+   "id_column": "id",
+   "set_fields": [
+    "status",
+    "end_date",
+    "term_months",
+    "total_value",
+    "auto_renew",
+    "notice_days",
+    "signed_at"
+   ],
+   "required": [
+    "contract_id"
+   ],
+   "params": {
+    "contract_id": {
+     "type": "string",
+     "description": "Identifier of the record to update."
+    },
+    "status": {
+     "type": "string",
+     "description": "New value for status."
+    },
+    "end_date": {
+     "type": "string",
+     "description": "New value for end_date."
+    },
+    "term_months": {
+     "type": "string",
+     "description": "New value for term_months."
+    },
+    "total_value": {
+     "type": "string",
+     "description": "New value for total_value."
+    },
+    "auto_renew": {
+     "type": "string",
+     "description": "New value for auto_renew."
+    },
+    "notice_days": {
+     "type": "string",
+     "description": "New value for notice_days."
+    },
+    "signed_at": {
+     "type": "string",
+     "description": "New value for signed_at."
+    }
+   }
+  },
+  {
+   "name": "contract_delete",
+   "description": "Delete a contract (DELETE /crm/v3/objects/contracts/{id}).",
+   "op": "delete",
+   "table": "crm_contracts",
+   "id_param": "contract_id",
+   "id_column": "id",
+   "required": [
+    "contract_id"
+   ],
+   "params": {
+    "contract_id": {
+     "type": "string",
+     "description": "Identifier of the record to delete."
+    }
+   }
+  },
+  {
+   "name": "product_categories_list",
+   "description": "List product categories (GET /crm/v3/objects/product_categories).",
+   "op": "list",
+   "table": "crm_product_categories",
+   "params": {
+    "parent_id": {
+     "type": "string",
+     "description": "Filter by parent_id."
+    },
+    "is_active": {
+     "type": "string",
+     "description": "Filter by is_active."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return."
+    }
+   },
+   "filters": [
+    "parent_id",
+    "is_active"
+   ]
+  },
+  {
+   "name": "product_category_create",
+   "description": "Create a product category (POST /crm/v3/objects/product_categories).",
+   "op": "create",
+   "table": "crm_product_categories",
+   "fields": [
+    "name",
+    "parent_id",
+    "display_order",
+    "description"
+   ],
+   "params": {
+    "name": {
+     "type": "string",
+     "description": "Value for name."
+    },
+    "parent_id": {
+     "type": "string",
+     "description": "Value for parent_id."
+    },
+    "display_order": {
+     "type": "string",
+     "description": "Value for display_order."
+    },
+    "description": {
+     "type": "string",
+     "description": "Value for description."
+    }
+   },
+   "required": [
+    "name"
+   ],
+   "defaults": {
+    "is_active": 1
+   },
+   "id_prefix": "pcat_"
+  },
+  {
+   "name": "product_category_update",
+   "description": "Update a product category (PATCH /crm/v3/objects/product_categories/{id}).",
+   "op": "update",
+   "table": "crm_product_categories",
+   "id_param": "category_id",
+   "id_column": "id",
+   "set_fields": [
+    "name",
+    "parent_id",
+    "display_order",
+    "is_active",
+    "description"
+   ],
+   "required": [
+    "category_id"
+   ],
+   "params": {
+    "category_id": {
+     "type": "string",
+     "description": "Identifier of the record to update."
+    },
+    "name": {
+     "type": "string",
+     "description": "New value for name."
+    },
+    "parent_id": {
+     "type": "string",
+     "description": "New value for parent_id."
+    },
+    "display_order": {
+     "type": "string",
+     "description": "New value for display_order."
+    },
+    "is_active": {
+     "type": "string",
+     "description": "New value for is_active."
+    },
+    "description": {
+     "type": "string",
+     "description": "New value for description."
+    }
+   }
+  },
+  {
+   "name": "product_category_delete",
+   "description": "Delete a product category (DELETE /crm/v3/objects/product_categories/{id}).",
+   "op": "delete",
+   "table": "crm_product_categories",
+   "id_param": "category_id",
+   "id_column": "id",
+   "required": [
+    "category_id"
+   ],
+   "params": {
+    "category_id": {
+     "type": "string",
+     "description": "Identifier of the record to delete."
+    }
+   }
+  },
+  {
+   "name": "addresses_list",
+   "description": "List addresses (GET /crm/v3/objects/addresses).",
+   "op": "list",
+   "table": "crm_addresses",
+   "params": {
+    "related_type": {
+     "type": "string",
+     "description": "Filter by related_type."
+    },
+    "related_id": {
+     "type": "string",
+     "description": "Filter by related_id."
+    },
+    "address_type": {
+     "type": "string",
+     "description": "Filter by address_type."
+    },
+    "country_code": {
+     "type": "string",
+     "description": "Filter by country_code."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return."
+    }
+   },
+   "filters": [
+    "related_type",
+    "related_id",
+    "address_type",
+    "country_code"
+   ]
+  },
+  {
+   "name": "address_create",
+   "description": "Attach an address to a record (POST /crm/v3/objects/addresses).",
+   "op": "create",
+   "table": "crm_addresses",
+   "fields": [
+    "related_type",
+    "related_id",
+    "address_type",
+    "line1",
+    "line2",
+    "city",
+    "state",
+    "postal_code",
+    "country_code",
+    "is_primary"
+   ],
+   "params": {
+    "related_type": {
+     "type": "string",
+     "description": "Value for related_type."
+    },
+    "related_id": {
+     "type": "string",
+     "description": "Value for related_id."
+    },
+    "address_type": {
+     "type": "string",
+     "description": "Value for address_type."
+    },
+    "line1": {
+     "type": "string",
+     "description": "Value for line1."
+    },
+    "line2": {
+     "type": "string",
+     "description": "Value for line2."
+    },
+    "city": {
+     "type": "string",
+     "description": "Value for city."
+    },
+    "state": {
+     "type": "string",
+     "description": "Value for state."
+    },
+    "postal_code": {
+     "type": "string",
+     "description": "Value for postal_code."
+    },
+    "country_code": {
+     "type": "string",
+     "description": "Value for country_code."
+    },
+    "is_primary": {
+     "type": "string",
+     "description": "Value for is_primary."
+    }
+   },
+   "required": [
+    "related_type",
+    "related_id",
+    "line1",
+    "country_code"
+   ],
+   "id_prefix": "addr_"
+  },
+  {
+   "name": "address_update",
+   "description": "Update an address (PATCH /crm/v3/objects/addresses/{id}).",
+   "op": "update",
+   "table": "crm_addresses",
+   "id_param": "address_id",
+   "id_column": "id",
+   "set_fields": [
+    "line1",
+    "line2",
+    "city",
+    "state",
+    "postal_code",
+    "country_code",
+    "is_primary",
+    "address_type"
+   ],
+   "required": [
+    "address_id"
+   ],
+   "params": {
+    "address_id": {
+     "type": "string",
+     "description": "Identifier of the record to update."
+    },
+    "line1": {
+     "type": "string",
+     "description": "New value for line1."
+    },
+    "line2": {
+     "type": "string",
+     "description": "New value for line2."
+    },
+    "city": {
+     "type": "string",
+     "description": "New value for city."
+    },
+    "state": {
+     "type": "string",
+     "description": "New value for state."
+    },
+    "postal_code": {
+     "type": "string",
+     "description": "New value for postal_code."
+    },
+    "country_code": {
+     "type": "string",
+     "description": "New value for country_code."
+    },
+    "is_primary": {
+     "type": "string",
+     "description": "New value for is_primary."
+    },
+    "address_type": {
+     "type": "string",
+     "description": "New value for address_type."
+    }
+   }
+  },
+  {
+   "name": "address_delete",
+   "description": "Delete an address (DELETE /crm/v3/objects/addresses/{id}).",
+   "op": "delete",
+   "table": "crm_addresses",
+   "id_param": "address_id",
+   "id_column": "id",
+   "required": [
+    "address_id"
+   ],
+   "params": {
+    "address_id": {
+     "type": "string",
+     "description": "Identifier of the record to delete."
+    }
+   }
+  },
+  {
+   "name": "countries_list",
+   "description": "List country reference data (GET /crm/v3/properties/countries).",
+   "op": "list",
+   "table": "crm_countries",
+   "params": {
+    "region": {
+     "type": "string",
+     "description": "Filter by region."
+    },
+    "is_sales_territory": {
+     "type": "string",
+     "description": "Filter by is_sales_territory."
+    },
+    "data_residency_required": {
+     "type": "string",
+     "description": "Filter by data_residency_required."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return."
+    }
+   },
+   "filters": [
+    "region",
+    "is_sales_territory",
+    "data_residency_required"
+   ]
+  },
+  {
+   "name": "country_get",
+   "description": "Retrieve one country by ISO code (GET /crm/v3/properties/countries/{code}).",
+   "op": "get",
+   "table": "crm_countries",
+   "id_param": "country_code",
+   "id_column": "code",
+   "required": [
+    "country_code"
+   ],
+   "params": {
+    "country_code": {
+     "type": "string",
+     "description": "Identifier of the record to retrieve."
+    }
+   }
+  },
+  {
+   "name": "projects_list",
+   "description": "List delivery projects (GET /crm/v3/objects/projects).",
+   "op": "list",
+   "table": "crm_projects",
+   "params": {
+    "account_id": {
+     "type": "string",
+     "description": "Filter by account_id."
+    },
+    "status": {
+     "type": "string",
+     "description": "Filter by status."
+    },
+    "health": {
+     "type": "string",
+     "description": "Filter by health."
+    },
+    "owner_employee_id": {
+     "type": "string",
+     "description": "Filter by owner_employee_id."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return."
+    }
+   },
+   "filters": [
+    "account_id",
+    "status",
+    "health",
+    "owner_employee_id"
+   ]
+  },
+  {
+   "name": "project_get",
+   "description": "Retrieve one project (GET /crm/v3/objects/projects/{id}).",
+   "op": "get",
+   "table": "crm_projects",
+   "id_param": "project_id",
+   "id_column": "id",
+   "required": [
+    "project_id"
+   ],
+   "params": {
+    "project_id": {
+     "type": "string",
+     "description": "Identifier of the record to retrieve."
+    }
+   }
+  },
+  {
+   "name": "project_create",
+   "description": "Open a delivery project (POST /crm/v3/objects/projects).",
+   "op": "create",
+   "table": "crm_projects",
+   "fields": [
+    "name",
+    "account_id",
+    "start_date",
+    "target_end_date",
+    "owner_employee_id",
+    "budget"
+   ],
+   "params": {
+    "name": {
+     "type": "string",
+     "description": "Value for name."
+    },
+    "account_id": {
+     "type": "string",
+     "description": "Value for account_id."
+    },
+    "start_date": {
+     "type": "string",
+     "description": "Value for start_date."
+    },
+    "target_end_date": {
+     "type": "string",
+     "description": "Value for target_end_date."
+    },
+    "owner_employee_id": {
+     "type": "string",
+     "description": "Value for owner_employee_id."
+    },
+    "budget": {
+     "type": "string",
+     "description": "Value for budget."
+    }
+   },
+   "required": [
+    "name",
+    "account_id"
+   ],
+   "defaults": {
+    "status": "not_started",
+    "health": "green",
+    "percent_complete": 0
+   },
+   "id_prefix": "prj_"
+  },
+  {
+   "name": "project_update",
+   "description": "Update project status or health (PATCH /crm/v3/objects/projects/{id}).",
+   "op": "update",
+   "table": "crm_projects",
+   "id_param": "project_id",
+   "id_column": "id",
+   "set_fields": [
+    "name",
+    "status",
+    "health",
+    "target_end_date",
+    "percent_complete",
+    "budget"
+   ],
+   "required": [
+    "project_id"
+   ],
+   "params": {
+    "project_id": {
+     "type": "string",
+     "description": "Identifier of the record to update."
+    },
+    "name": {
+     "type": "string",
+     "description": "New value for name."
+    },
+    "status": {
+     "type": "string",
+     "description": "New value for status."
+    },
+    "health": {
+     "type": "string",
+     "description": "New value for health."
+    },
+    "target_end_date": {
+     "type": "string",
+     "description": "New value for target_end_date."
+    },
+    "percent_complete": {
+     "type": "string",
+     "description": "New value for percent_complete."
+    },
+    "budget": {
+     "type": "string",
+     "description": "New value for budget."
+    }
+   }
+  },
+  {
+   "name": "project_delete",
+   "description": "Delete a project (DELETE /crm/v3/objects/projects/{id}).",
+   "op": "delete",
+   "table": "crm_projects",
+   "id_param": "project_id",
+   "id_column": "id",
+   "required": [
+    "project_id"
+   ],
+   "params": {
+    "project_id": {
+     "type": "string",
+     "description": "Identifier of the record to delete."
+    }
+   }
+  },
+  {
+   "name": "project_tasks_list",
+   "description": "List tasks in a project (GET /crm/v3/objects/projects/{id}/tasks).",
+   "op": "list",
+   "table": "crm_project_tasks",
+   "params": {
+    "project_id": {
+     "type": "string",
+     "description": "Filter by project_id."
+    },
+    "status": {
+     "type": "string",
+     "description": "Filter by status."
+    },
+    "assigned_to": {
+     "type": "string",
+     "description": "Filter by assigned_to."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return."
+    }
+   },
+   "filters": [
+    "project_id",
+    "status",
+    "assigned_to"
+   ]
+  },
+  {
+   "name": "project_task_create",
+   "description": "Add a task to a project (POST /crm/v3/objects/projects/{id}/tasks).",
+   "op": "create",
+   "table": "crm_project_tasks",
+   "fields": [
+    "project_id",
+    "name",
+    "assigned_to",
+    "due_date",
+    "depends_on",
+    "estimated_hours"
+   ],
+   "params": {
+    "project_id": {
+     "type": "string",
+     "description": "Value for project_id."
+    },
+    "name": {
+     "type": "string",
+     "description": "Value for name."
+    },
+    "assigned_to": {
+     "type": "string",
+     "description": "Value for assigned_to."
+    },
+    "due_date": {
+     "type": "string",
+     "description": "Value for due_date."
+    },
+    "depends_on": {
+     "type": "string",
+     "description": "Value for depends_on."
+    },
+    "estimated_hours": {
+     "type": "string",
+     "description": "Value for estimated_hours."
+    }
+   },
+   "required": [
+    "project_id",
+    "name"
+   ],
+   "defaults": {
+    "status": "not_started"
+   },
+   "id_prefix": "ptask_"
+  },
+  {
+   "name": "project_task_update",
+   "description": "Update a project task (PATCH /crm/v3/objects/projects/tasks/{id}).",
+   "op": "update",
+   "table": "crm_project_tasks",
+   "id_param": "task_id",
+   "id_column": "id",
+   "set_fields": [
+    "name",
+    "status",
+    "assigned_to",
+    "due_date",
+    "depends_on",
+    "estimated_hours",
+    "actual_hours"
+   ],
+   "required": [
+    "task_id"
+   ],
+   "params": {
+    "task_id": {
+     "type": "string",
+     "description": "Identifier of the record to update."
+    },
+    "name": {
+     "type": "string",
+     "description": "New value for name."
+    },
+    "status": {
+     "type": "string",
+     "description": "New value for status."
+    },
+    "assigned_to": {
+     "type": "string",
+     "description": "New value for assigned_to."
+    },
+    "due_date": {
+     "type": "string",
+     "description": "New value for due_date."
+    },
+    "depends_on": {
+     "type": "string",
+     "description": "New value for depends_on."
+    },
+    "estimated_hours": {
+     "type": "string",
+     "description": "New value for estimated_hours."
+    },
+    "actual_hours": {
+     "type": "string",
+     "description": "New value for actual_hours."
+    }
+   }
+  },
+  {
+   "name": "project_task_delete",
+   "description": "Delete a project task (DELETE /crm/v3/objects/projects/tasks/{id}).",
+   "op": "delete",
+   "table": "crm_project_tasks",
+   "id_param": "task_id",
+   "id_column": "id",
+   "required": [
+    "task_id"
+   ],
+   "params": {
+    "task_id": {
+     "type": "string",
+     "description": "Identifier of the record to delete."
+    }
+   }
+  },
+  {
+   "name": "reports_list",
+   "description": "List saved reports (GET /crm/v3/reports).",
+   "op": "list",
+   "table": "crm_reports",
+   "params": {
+    "object_name": {
+     "type": "string",
+     "description": "Filter by object_name."
+    },
+    "owner_employee_id": {
+     "type": "string",
+     "description": "Filter by owner_employee_id."
+    },
+    "is_scheduled": {
+     "type": "string",
+     "description": "Filter by is_scheduled."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return."
+    }
+   },
+   "filters": [
+    "object_name",
+    "owner_employee_id",
+    "is_scheduled"
+   ]
+  },
+  {
+   "name": "report_get",
+   "description": "Retrieve a saved report definition (GET /crm/v3/reports/{id}).",
+   "op": "get",
+   "table": "crm_reports",
+   "id_param": "report_id",
+   "id_column": "id",
+   "required": [
+    "report_id"
+   ],
+   "params": {
+    "report_id": {
+     "type": "string",
+     "description": "Identifier of the record to retrieve."
+    }
+   }
+  },
+  {
+   "name": "report_create",
+   "description": "Create a saved report (POST /crm/v3/reports).",
+   "op": "create",
+   "table": "crm_reports",
+   "fields": [
+    "name",
+    "object_name",
+    "report_type",
+    "filter_expr",
+    "group_by",
+    "metrics",
+    "owner_employee_id",
+    "schedule_cron"
+   ],
+   "params": {
+    "name": {
+     "type": "string",
+     "description": "Value for name."
+    },
+    "object_name": {
+     "type": "string",
+     "description": "Value for object_name."
+    },
+    "report_type": {
+     "type": "string",
+     "description": "Value for report_type."
+    },
+    "filter_expr": {
+     "type": "string",
+     "description": "Value for filter_expr."
+    },
+    "group_by": {
+     "type": "string",
+     "description": "Value for group_by."
+    },
+    "metrics": {
+     "type": "string",
+     "description": "Value for metrics."
+    },
+    "owner_employee_id": {
+     "type": "string",
+     "description": "Value for owner_employee_id."
+    },
+    "schedule_cron": {
+     "type": "string",
+     "description": "Value for schedule_cron."
+    }
+   },
+   "required": [
+    "name",
+    "object_name"
+   ],
+   "defaults": {
+    "is_scheduled": 0
+   },
+   "id_prefix": "rpt_"
+  },
+  {
+   "name": "report_update",
+   "description": "Update a saved report (PATCH /crm/v3/reports/{id}).",
+   "op": "update",
+   "table": "crm_reports",
+   "id_param": "report_id",
+   "id_column": "id",
+   "set_fields": [
+    "name",
+    "filter_expr",
+    "group_by",
+    "metrics",
+    "is_scheduled",
+    "schedule_cron",
+    "last_run_at"
+   ],
+   "required": [
+    "report_id"
+   ],
+   "params": {
+    "report_id": {
+     "type": "string",
+     "description": "Identifier of the record to update."
+    },
+    "name": {
+     "type": "string",
+     "description": "New value for name."
+    },
+    "filter_expr": {
+     "type": "string",
+     "description": "New value for filter_expr."
+    },
+    "group_by": {
+     "type": "string",
+     "description": "New value for group_by."
+    },
+    "metrics": {
+     "type": "string",
+     "description": "New value for metrics."
+    },
+    "is_scheduled": {
+     "type": "string",
+     "description": "New value for is_scheduled."
+    },
+    "schedule_cron": {
+     "type": "string",
+     "description": "New value for schedule_cron."
+    },
+    "last_run_at": {
+     "type": "string",
+     "description": "New value for last_run_at."
+    }
+   }
+  },
+  {
+   "name": "report_delete",
+   "description": "Delete a saved report (DELETE /crm/v3/reports/{id}).",
+   "op": "delete",
+   "table": "crm_reports",
+   "id_param": "report_id",
+   "id_column": "id",
+   "required": [
+    "report_id"
+   ],
+   "params": {
+    "report_id": {
+     "type": "string",
+     "description": "Identifier of the record to delete."
+    }
+   }
+  },
+  {
+   "name": "dashboards_list",
+   "description": "List dashboards (GET /crm/v3/dashboards).",
+   "op": "list",
+   "table": "crm_dashboards",
+   "params": {
+    "owner_employee_id": {
+     "type": "string",
+     "description": "Filter by owner_employee_id."
+    },
+    "audience_role": {
+     "type": "string",
+     "description": "Filter by audience_role."
+    },
+    "limit": {
+     "type": "integer",
+     "description": "Maximum number of records to return."
+    }
+   },
+   "filters": [
+    "owner_employee_id",
+    "audience_role"
+   ]
+  },
+  {
+   "name": "dashboard_get",
+   "description": "Retrieve a dashboard (GET /crm/v3/dashboards/{id}).",
+   "op": "get",
+   "table": "crm_dashboards",
+   "id_param": "dashboard_id",
+   "id_column": "id",
+   "required": [
+    "dashboard_id"
+   ],
+   "params": {
+    "dashboard_id": {
+     "type": "string",
+     "description": "Identifier of the record to retrieve."
+    }
+   }
+  },
+  {
+   "name": "dashboard_create",
+   "description": "Create a dashboard (POST /crm/v3/dashboards).",
+   "op": "create",
+   "table": "crm_dashboards",
+   "fields": [
+    "name",
+    "owner_employee_id",
+    "audience_role",
+    "report_ids",
+    "layout"
+   ],
+   "params": {
+    "name": {
+     "type": "string",
+     "description": "Value for name."
+    },
+    "owner_employee_id": {
+     "type": "string",
+     "description": "Value for owner_employee_id."
+    },
+    "audience_role": {
+     "type": "string",
+     "description": "Value for audience_role."
+    },
+    "report_ids": {
+     "type": "string",
+     "description": "Value for report_ids."
+    },
+    "layout": {
+     "type": "string",
+     "description": "Value for layout."
+    }
+   },
+   "required": [
+    "name"
+   ],
+   "defaults": {
+    "is_default": 0
+   },
+   "id_prefix": "dash_"
+  },
+  {
+   "name": "dashboard_update",
+   "description": "Update a dashboard (PATCH /crm/v3/dashboards/{id}).",
+   "op": "update",
+   "table": "crm_dashboards",
+   "id_param": "dashboard_id",
+   "id_column": "id",
+   "set_fields": [
+    "name",
+    "audience_role",
+    "report_ids",
+    "layout",
+    "is_default"
+   ],
+   "required": [
+    "dashboard_id"
+   ],
+   "params": {
+    "dashboard_id": {
+     "type": "string",
+     "description": "Identifier of the record to update."
+    },
+    "name": {
+     "type": "string",
+     "description": "New value for name."
+    },
+    "audience_role": {
+     "type": "string",
+     "description": "New value for audience_role."
+    },
+    "report_ids": {
+     "type": "string",
+     "description": "New value for report_ids."
+    },
+    "layout": {
+     "type": "string",
+     "description": "New value for layout."
+    },
+    "is_default": {
+     "type": "string",
+     "description": "New value for is_default."
+    }
+   }
+  },
+  {
+   "name": "dashboard_delete",
+   "description": "Delete a dashboard (DELETE /crm/v3/dashboards/{id}).",
+   "op": "delete",
+   "table": "crm_dashboards",
+   "id_param": "dashboard_id",
+   "id_column": "id",
+   "required": [
+    "dashboard_id"
+   ],
+   "params": {
+    "dashboard_id": {
+     "type": "string",
+     "description": "Identifier of the record to delete."
+    }
+   }
+  }
+ ]
+}

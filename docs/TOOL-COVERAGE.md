@@ -6,7 +6,7 @@ tool list, matched on a normalized `action:object` form so `create_deal`,
 `deals_create` and `post_deals` count once — and so HubSpot's *deal* and
 Salesforce's *opportunity* are recognized as the same object.
 
-- world tools: **524** across 11 namespaces
+- world tools: **597** across 11 namespaces
 - distinct domain verbs in the corpus: **129**
 - covered by the world: **129** (100%)
 - not yet covered: **0**

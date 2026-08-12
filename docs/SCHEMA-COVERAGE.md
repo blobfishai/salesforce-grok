@@ -12,9 +12,9 @@ all count once.
 - distinct domain entities in the corpus: **2,683**
 - independent product families (after collapsing forks): **26** from 27 codebases
 - core entities (modelled by >= 3 independent families): **43**
-- covered by the world: **23** (53%)
-- not yet covered: **20**
-- world tables: **323** -> **308** distinct entities
+- covered by the world: **37** (86%)
+- not yet covered: **6**
+- world tables: **339** -> **324** distinct entities
 
 The headline is computed over core entities on purpose: an entity six unrelated CRMs model
 is a domain concept, while one that appears in a single codebase is that product's
@@ -61,46 +61,39 @@ something if the codebases are independent. Detected by entity-set Jaccard >= 0.
 
 - `SuiteCRM/SuiteCRM` + `ictinnovations/ictcrm`
 
-## Uncovered core entities (20), ranked by independent implementations
+## Uncovered core entities (6), ranked by independent implementations
 
 The whole list, never a top-N: this is the backlog, and a truncated backlog reads as
 coverage the world does not have.
 
 | entity | codebases modelling it |
 |---|---:|
-| `email_template` | 8 |
-| `tag` | 6 |
-| `document` | 5 |
-| `country` | 4 |
-| `event` | 4 |
 | `favorite` | 4 |
-| `reminder` | 4 |
-| `webhook` | 4 |
-| `workflow` | 4 |
-| `address` | 3 |
-| `contract` | 3 |
-| `dashboard` | 3 |
 | `field` | 3 |
 | `import_map` | 3 |
 | `link` | 3 |
 | `module` | 3 |
 | `oauth_token` | 3 |
-| `product_category` | 3 |
-| `project` | 3 |
-| `report` | 3 |
 
-## Covered core entities (23)
+## Covered core entities (37)
 
 ```
 account
 activity
+address
 call
 campaign
 case
 contact
+contract
+country
 currency
 custom_field
+dashboard
+document
 email
+email_template
+event
 file
 invoice
 knowledge_article
@@ -111,8 +104,15 @@ opportunity
 pipeline
 pipeline_stage
 product
+product_category
+project
 quote
+reminder
+report
+tag
 task
 team
 user
+webhook
+workflow
 ```
